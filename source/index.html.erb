@@ -3,9 +3,76 @@
 ---
 
 <% partial 'partials/material_heading' do %>
-  Haha
+  Yleistä kurssista
 <% end %>
 
-<p>
-  <%= lorem.sentences 8 %>
-</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kohdeyleisö
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Oppimistavoitteet ja kurssin sisältö
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Työskentelytavat
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kurssin arvostelu
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kurssin tekijät ja kurssilla tehdystä tutkimuksesta
+<% end %>
+
+
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Tunnukset ja työvälineet
+<% end %>
+
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Käyttäjätunnuksen luominen
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ohjelmointiympäristön asentaminen
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ensimmäisen ohjelman palauttaminen
+<% end %>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Lorem ipsum dolor sit amet' } do %>
+  <h2>Sitten materiaaliin...</h2>
+
+  <p>
+    <%= lorem.sentences 8 %>
+  </p>
+<% end %>
+
