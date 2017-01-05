@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC 2016 | <%= current_page.data.title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'styles' %>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <% if build? %>
+      <%= partial 'partials/analytics' %>
+    <% end %>
+  </head>
+  <body>
+    <%= partial 'partials/browser_warning' %>
+
+    <%= partial 'partials/navigation' %>
+
+    <div class="container material" id="material">
+      <% if current_page.data.exercise_page %>
+        <%= partial 'partials/exercise_list', locals: { include_quizzes: current_page.data.quiz_page } %>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <%= partial 'partials/login_modal' %>
+
+    <%= partial 'partials/table_of_contents' %>
+
+    <%= partial 'partials/quiznator' %>
+
+    <%=
+      partial 'partials/student-dashboard',
+      locals: {
+        config: {
+          'courseId' => '145',
+          'courseName' => 'Ohjelmoinnin perusteet',
+          'exerciseGroups' => {
+            'Week 1' => ['07.09.2016 01:00', '14.09.2016 23:59', 'viikko01-'],
+            'Week 2' => ['14.09.2016 01:00', '21.09.2016 23:59', 'viikko02-'],
+            'Week 3' => ['21.09.2016 01:00', '28.09.2016 23:59', 'viikko03-'],
+            'Week 4' => ['28.09.2016 01:00', '05.10.2016 23:59', 'viikko04-'],
+            'Week 5' => ['05.10.2016 01:00', '12.10.2016 23:59', 'viikko05-']
+          }
+        }
+      }
+    %>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <%= javascript_include_tag 'scripts' %>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}});</script>
+  </body>
+</html>
