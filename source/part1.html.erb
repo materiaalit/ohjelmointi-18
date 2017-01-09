@@ -4,6 +4,2293 @@
   quiz_page: true
 ---
 
+
+<% partial 'partials/material_heading' do %>
+  Ohjelma ja lähdekoodi
+<% end %>
+
+
+
+<p>
+  Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on aloitteleva leipuri, tietokone-ohjelma kokkikirjasta saatu resepti, ja tietokoneen resurssit -- esimerkiksi näyttö, tietokoneelle tallennettu tiedosto ja verkkokortti -- leipomiseen käytettäviä raaka-aineita. Tietokone noudattaa sille annettua reseptiä säntillisesti askel kerrallaan ilman ymmärrystä tai tietoa hamaan ikuisuuteen asti. Jos reseptissä on kirjoitusvirhe, ei tietokone tiedä miten sen tulee toimia. Tietokone ei myöskään osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti kerro täsmällisesti miten rikkinäinen uuni tunnistetaan ja mitä uunin rikkoutuessa tulee tehdä.
+</p>
+
+
+<p>
+  Aloittelevalla leipurilla ja tietokoneella on muutamia merkittäviä eroja. Tietokone pystyy suorittamaan miljoonia yksittäisiä käskyjä sekunnissa, kun aloittelevalla leipurilla voi mennä yhteen reseptissä olevan käskyn noudattamiseen minuutteja. Toisaalta, aloitteleva leipuri oppii ja kehittyy leipoessaan. Hän voi luovasti kokeilla uusia raaka-aineita ja reseptejä, sekä kehitellä itselleen paremmin sopivia työskentelytapoja. Tietokoneella ei tällaista kehittymiskykyä ole, ellei sitä erikseen -- askel askeleelta -- ole sille annettuun reseptiin kirjoitettu. Tällä kurssilla opit kirjoittamaan tietokoneelle tarkoitettuja reseptejä.
+</p>
+
+
+<p>
+  Tietokoneelle annettava resepti eli <strong>ohjelma</strong> on järjestetty joukko ennalta laadittuja käskyjä, joita tietokone noudattaa yksi kerrallaan. Ohjelmoijat eivät tyypillisesti ohjelmoi tietokoneen suoraan ymmärtämiä käskyjä käyttäen, vaan ohjelmoinnissa käytetään ihmisen kirjoitettavaksi ja luettavaksi tarkoitettua ohjelmointikieltä, kuten tällä kurssilla käytettyä <a href="https://en.wikipedia.org/wiki/Java_(programming_language)" target="_blank">Javaa</a>. Ohjelmoijan kirjoittamaa ohjelmakoodia kutsutaan <strong>lähdekoodiksi</strong>. Lähdekoodi käännetään ohjelmaksi tähän erityisesti tarkoitetun ja kirjoitetun kääntäjäohjelman avulla.
+</p>
+  
+
+<p>
+  Lähdekoodi koostuu lauseista (statement) ja lausekkeista (expression), joita voidaan lukea rivi riviltä ylhäältä alaspäin ja vasemmalta oikealle. Esimerkiksi tekstin "Hei maailma" tulostuksessa käytetään Java-ohjelmointikielellä lausetta:
+</p>
+
+<pre class="sh_java">
+  System.out.println("Hei maailma");
+</pre>
+
+<p>
+  Lause <code>System.out.println</code> on Java-ohjelmointikielen valmiiksi tarjoama komento, jota käytetään merkkijonon tulostamiseen. Komento tulostaa sille sulkeiden sisällä hipsuissa annetun merkkijonon. Komennon pääte <code>ln</code> on lyhenne sanasta <em>line</em>, eli komento tulostaa merkkijonon jälkeen myös rivinvaihdon.
+</p>
+
+<p>
+  Lauseen loppuun kirjoitetaan puolipiste <code>;</code>.
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Ohjelmarunko
+<% end %>
+
+
+<p>
+  Java-ohjelmat vaativat toimiakseen kurssin aikana tutuksi tulevan rungon. Ohjelman runko on seuraavanlainen.
+</p>
+
+<pre class="sh_java">
+public class Esimerkki {
+    public static void main(String[] args) {
+
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet 
+        System.out.println("Tulostettava teksti");
+
+    }
+}
+</pre>
+
+<p>
+  Kirjoittamamme ohjelman suoritus alkaa riviä <code>public static void main(String[] args) {</code> seuraavalta riviltä, ja ohjelman suoritus päättyy sulkevaan aaltosulkuun <code>}</code>. Lauseet suoritetaan yksi kerrallaan. Tällä hetkellä ainoa suoritettava lause on <em>System.out.println("Tulostettava teksti");</em>, mikä tulostaa tekstin "Tulostettava teksti".
+</p>
+
+<p>
+  Jatkossa materiaalin esimerkeissä ei aina erikseen näytetä ohjelmarunkoa, mutta voit olettaa, että se tarvitaan.
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Lähdekoodin sijainti' } do %>
+  
+  <p>
+    TODO: missä lähdekoodi tietsikalla? Entä NB:Ssä?
+  </p>
+  
+  <p>
+    Ohjelmarunko sijaitsee <i>.java</i>-päätteisessä tekstitiedostossa, jonka nimi on sama kuin ohjelman nimi -- tässä Esimerkki -- "public class <em>Esimerkki</em>". Ohjelma <i>Esimerkki</i> sijaitsee siis tiedostossa, jonka nimi on <code>Esimerkki.java</code>.
+  </p>
+  
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Ada Lovelace' } do %>
+  
+  <p>Tehtäväpohjassa on seuraavanlainen ohjelmarunko:</p>
+  
+  <pre class="sh_java">
+public class Nimi {
+    
+    public static void main(String[] args) {
+        // Kirjoita ohjelmasi tähän alle
+
+    }
+}
+  </pre>
+  
+  <p>
+    Rivi "// Kirjoita ohjelmasi tähän alle" on <em>kommenttirivi</em>, jota tietokone ei ota huomioon ohjelmaa suoritettaessa. Lisää kommenttirivin alle lause, joka tulostaa merkkijonon "Ada Lovelace" ja suorita ohjelma. Ohjelman tulostuksen tulee olla seuraavanlainen:
+  </p>
+  
+  <pre>
+Ada Lovelace
+  </pre>
+  
+  <p>
+    Kun olet tehnyt tehtävän ja huomaat, että ohjelma tulostaa halutun merkkijonon, palauta tehtävä TMC:lle. Tutustu tämän jälkeen halutessasi lisää <a href="https://en.wikipedia.org/wiki/Ada_Lovelace" target="_blank">Ada Lovelaceen</a>, joka oli yksi ensimmäisistä ohjelmoijista.
+  </p>
+  
+<% end %>
+  
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ohjelman osia
+<% end %>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Kommentit
+<% end %>
+
+
+<p>
+  Lähdekoodia kirjoitetaan myös muita ohjelmoijia varten, joten siitä halutaan mahdollisimman ymmärrettävää. Ohjelmoija voi kommentoida kirjoittamaansa koodia selkeyttääkseen sitä tai lisätäkseen muistiinpanoja kahdella eri tavalla.
+</p>
+
+<ul>
+  <li>Yhden rivin kommentit aloitetaan kahdella vinoviivalla, <code>//</code>. Kaikki kahta vinoviivaa seuraava samalla rivillä oleva teksti tulkitaan kommentiksi.</li>
+  <li>Useamman rivin kommentit aloitetaan yhdellä vinoviivalla ja tähdellä <code>/*</code> ja lopetetaan tähdellä ja vinoviivalla <code>*/</code>. Kaikki useamman rivin kommentin aloittavan ja lopettavan alueen välillä tulkitaan kommentiksi.</li>
+</ul>
+
+<p>
+  Alla on esimerkki ohjelmasta, jossa kumpikin kommenttityyppi on käytössä.
+</p>
+
+
+<pre class="sh_java">
+public class Kommentteja {
+    public static void main(String[] args) {
+
+        // Tulostetaan 
+        System.out.println("Tulostettava teksti");
+        System.out.println("Lisää tulostettavaa!");
+
+        /*
+          Seuraavaksi:
+            - lisää tulostamisesta
+            - lisää harjoittelua
+            - muuttujat
+            - ...
+        */
+
+        // System.out.println("Muuta tulostettavaa");
+    }
+}
+</pre>
+
+<p>
+  Esimerkin alin rivi esittelee erityisen kätevän käyttökohteen kommenteille. Kirjoitettua koodia ei tarvitse poistaa jos haluaa tilapäisesti kokeilla jotain.
+</p>
+
+<% partial 'partials/exercise', locals: { name: 'Hei Maailma! (Ja Mualima!)' } do %>
+  
+  <p>
+    Tee ohjelma, jonka tulostus on seuraava:
+  </p>
+
+  <pre>
+Hei Maailma!
+(Ja Mualima!)
+  </pre>
+    
+<% end %>
+
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Tulostaminen
+<% end %>
+
+
+<p>Käytimme edellä lausetta <code>System.out.println("tulostettava");</code> merkkijonon tulostamiseen, mutta toinenkin vaihtoehto on olemassa. Tulostamiseen on eri kaksi lausetta:</p>
+
+<ul>
+  <li><code>System.out.println("sana");</code> tulostaa tekstin "sana" ja loppurivinvaihdon</li>
+  <li><code>System.out.print("sana");</code> tulostaa tekstin "sana" ilman loppurivinvaihtoa</li>
+</ul>
+
+<p>Tulostettavan tekstin osana voi olla myös erikoismerkkejä, joista tärkein on rivinvaihto. Rivinvaihto ilmaistaan kenoviivalla ja n-merkillä seuraavasti: <code>\n</code>. Erikoismerkkejä on <a href="http://en.wikipedia.org/wiki/Escape_character" title="Escape character - Wikipedia, the free encyclopedia" target="_blank">muitakin</a>.</p>
+
+<pre class="sh_java">
+  System.out.println("Ensimmäinen\nToinen\nKolmas");
+</pre>
+
+<p>Ylläoleva lause tulostaa seuraavaa:</p>
+
+<pre>
+Ensimmäinen
+Toinen
+Kolmas
+</pre>
+
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Komennon parametrit
+<% end %>
+
+ 
+
+<p>
+  Tulostuslauseen tulostama tieto eli komennon <em>parametrit</em> annetaan tulostuskomennolle lisäämällä ne lauseen perässä olevien sulkujen <code>()</code> sisään.  Esimerkiksi <code>System.out.println</code> -komennon parametriksi voidaan antaa merkkijono <em>hei</em> hipsujen sisällä seuraavasti: <code>System.out.println("hei")</code>.
+</p>
+
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Puolipiste
+<% end %>
+
+<p>Puolipisteellä <code>;</code> erotetaan lauseet toisistaan. Voisimme oikeastaan kirjoittaa koko ohjelman yhdelle riville -- mikä ei kuitenkaan ole kovin ymmärrettävää.</p>
+
+<pre class="sh_java">
+System.out.print("Hei "); System.out.print("maailma"); System.out.print("!\n");
+</pre>
+
+<pre>
+Hei maailma!
+</pre>
+
+<p>
+  Vaikka ylläoleva esimerkki toimii, on rivinvaihtojen käyttö tärkeää muita ohjelmoijia ajatellen. Selkeä lähdekoodin osien erottelu vaatii rivinvaihtojen käyttöä. Tätä ja muita lähdekoodin luettavuuteen liittyviä seikkoja tullaan painottamaan tällä kurssilla.
+</p>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ohjelmointityylistä
+<% end %>
+
+
+<p>
+  Vaikka tietokone ja käyttämämme ohjelmointikieli ei aseta rajoituksia kirjoitettavan ohjelmakoodin ulkoasulle, olemme osana ohjelmoinnin opetuksen ja oppimisen tutkimista huomanneet että ohjelmoijan -- tai opiskelevan ohjelmoijan -- kirjoittaman koodin ulkoasulla on merkitystä myös oppimisen kannalta. Esimerkiksi lähdekoodin luettavuus ja sisennyksen säännönmukaisuus ovat asioita, jotka vaikuttavat lähdekoodin ymmärrettävyyteen, ja sitä kautta myös oppimistuloksiin. Seuraava koodi on säännönmukaisesti sisennettyä.
+</p>
+
+<pre class="sh_java">
+public class Esimerkki {
+    public static void main(String[] args) {
+        System.out.println("Heippa vaan! Tämä koodi on siististi sisennetty.");
+        System.out.println("public class -- ei sisennystä.");
+        System.out.println("public static -- neljän merkin sisennys.");
+        System.out.println("public static ... sisällä -- kahdeksan merkin sisennys -- tai enemmän.");
+    }
+}</pre>
+
+
+<p>
+  Tämä koodi taas ei ole kovin ymmärrettävää.
+</p>
+
+<pre class="sh_java">
+               public class Esimerkki {
+    public static void main(String[] args) {
+System.out.println("Heippa vaan! Tämä koodi on siististi sisennetty.");
+                              System.out.println("public class -- ei sisennystä.");
+  System.out.println("public static -- neljän merkin sisennys."); 
+System.out.println("public static ... sisällä -- kahdeksan merkin sisennys -- tai enemmän.");}}</pre>
+
+<p>
+  Kurssilla käytettävässä Test My Code-ympäristössä tulee mukana Checkstyle-niminen työväline, joka ohjaa hyvään ohjelmointityyliin. Checkstyle tarkistaa mm. koodin sisennystä, metodien nimeämistä, tyhjiä lohkoja ja paljon muuta -- kurssin edetessä nämä käsitteet tulevat tutuiksi. Tällä kurssilla Checkstyle tarkistaa lähes ainoastaan tyylivirheitä -- ohjeita tulee kurssin edetessä.
+</p>
+
+<p>
+  Tyylivirheet näytetään ohjelmointiympäristössä keltaisella, ja normaalit testi-ilmoitukset punaisella. Kurssilla tutuksi tuleva tehtävän edistymispalkki muuttuu myöskin keltaiseksi, jos koodissa havaitaan tyylivirheitä. Vaikkakin näppäinyhdistelmä alt + shift + f (OS X control + shift + f) auttaa useimpien tyylivirheiden korjaamiseen, on koodia syytä kirjoittaa oikein alusta alkaen.
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Lähdekoodi tulee sisentää oikein' } do %>
+  
+  <p>
+    Javassa koodia sisennetään neljän välilyönnin tai yhden tabulaattorin verran jokaisen lohkon kohdalla. Käytä sisentämiseen joko välilyöntejä tai tabulaattoreita. Joissakin tapauksissa sisennys saattaa hajota mikäli käytät molempia. NetBeans auttaa tässä kun painat kirjainyhdistelmää "alt + shift + f" (OS X "control + shift + f").
+  </p>
+
+  <p>
+    Jatkossa ohjelmakoodi tulee sisentää oikein myös tehtävissä. Jos sisennys on väärin, ei ohjelmointiympäristö hyväksy tehtävää.
+  </p>
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Kuusi' } do %>
+
+  <p>
+    Tee ohjelma, jonka tulostus on seuraava:
+  </p>
+
+  <pre>
+    *
+   ***
+  *****
+ *******
+*********
+    *
+  </pre>
+  
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Lyhenne "sout"' } do %>
+  
+  <p>
+    Kirjoitit todennäköisesti aika monta kertaa <code>System.out.println("...")</code>. Kokeile kirjoittaa NetBeans:iin (main:in sisään) tyhjälle riville <em>sout</em> ja paina tabulaatoria (näppäin q:n vasemmalla puolella). Mitä tapahtuu? Tämä pieni apuväline säästänee jatkossa runsaasti aikaasi.
+  </p>
+
+<% end %>
+
+
+
+<% partial 'partials/material_heading' do %>
+  Muuttuja ja sijoitus
+<% end %>
+
+
+<p>
+  Keskeinen käsite ohjelmoinnissa on <em>muuttuja</em>, jota käytetään tiedon tallentamiseen myöhempää käyttöä varten.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujan  esittely
+<% end %>
+
+<p>
+  Muuttujaan säilöttävällä tiedolla on aina tyyppi. Tyyppejä ovat esimerkiksi teksti eli merkkijono (<code>String</code>), kokonaisluku (<code>int</code>), liukuluku (<code>double</code>) eli desimaaliluku ja ja totuusarvo (<em>boolean</em>).
+</p>
+
+<p>
+  Muuttuja esitellään kertomalla ensin sen tyyppi, jota seuraa muuttujalle annettava nimi. Muuttujaan asetetaan arvo yhtäsuuruusmerkillä (<code>=</code>).
+</p>
+
+<pre class="sh_java">
+int kuukausia = 12;
+</pre>
+
+<p>
+  Yllä olevassa lauseessa luodaan kokonaisluku-tyyppinen muuttuja <em>(int)</em>, jolle annetaan nimeksi <em>kuukausia</em>. Muuttujaan kuukausia asetetaan arvo 12.  Lause luetaan "muuttuja <em>kuukausia</em> saa <em>arvon</em> 12".
+</p>
+
+<p>
+  Muuttujan arvo voidaan yhdistää tulostuslauseelle annettavaan parametriin <code>+</code>-merkillä seuraavan esimerkin mukaisesti.
+</p>
+
+<pre class="sh_java">
+String teksti = "sisältää tekstiä";
+int kokonaisluku = 123;
+double liukuluku = 3.141592653;
+
+System.out.println("Tekstimuuttuja: " + teksti);
+System.out.println("Kokonaislukumuuttuja: " + kokonaisluku);
+System.out.println("Liukulukumuuttuja: " + liukuluku);
+</pre>
+
+
+<p>
+  Tulostus:
+</p>
+
+<pre>
+Tekstimuuttuja: sisältää tekstiä
+Kokonaislukumuuttuja: 123
+Liukulukumuuttuja: 3.141592653
+</pre>
+
+<% partial 'partials/hint', locals: { name: 'Ohjelman suorituksen visualisointi' } do %>
+
+  
+  <p>
+    Java-ohjelmien suorituksen etenemistä voi tarkastella osoitteessa <a href="http://www.pythontutor.com/java.html" target="_blank">http://www.pythontutor.com/java.html</a> olevan palvelun avulla. Alla on liitettynä edellinen esimerkki visualisoituna. Painamalla nappia "Forward" ohjelman suoritus etenee.
+  </p>
+
+  <p>TODO: ENABLE</p>
+
+  <!-- -
+  <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20YourClassNameHere%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20String%20teksti%20%3D%20%22sis%C3%A4lt%C3%A4%C3%A4%20teksti%C3%A4%22%3B%0A%20%20%20%20int%20kokonaisluku%20%3D%20123%3B%0A%20%20%20%20double%20liukuluku%20%3D%203.141592653%3B%0A%0A%20%20%20%20System.out.println(%22Tekstimuuttuja%3A%20%22%20%2B%20teksti%29%3B%0A%20%20%20%20System.out.println(%22Kokonaislukumuuttuja%3A%20%22%20%2B%20kokonaisluku%29%3B%0A%20%20%20%20System.out.println(%22Liukulukumuuttuja%3A%20%22%20%2B%20liukuluku%29%3B%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+  -->
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Muuttuvat muuttujat' } do %>
+  
+  <p>Tehtäväpohja sisältää ohjelman, joka tulostaa seuraavaa.</p>
+  
+  <pre>
+Kanoja:
+3
+Pekonia (kg):
+5.5
+Traktori:
+Ei ole!
+
+Tässä vielä tiivistelmä:
+3
+5.5
+Ei ole!
+  </pre>
+
+  <p>Muuta ohjelmaa annetuista kohdista niin että tuloste on:</p>
+
+  <pre>
+Kanoja:
+9000
+Pekonia (kg):
+0.1
+Traktori:
+Zetor
+
+Tässä vielä tiivistelmä:
+9000
+0.1
+Zetor
+  </pre>
+  
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujaan asetetun arvon muuttaminen
+<% end %>
+
+<p>
+  Muuttujaan asetettu arvo säilyy kunnes muuttujaan asetetaan toinen arvo.  Huomaa että muuttujan tyyppi kirjoitetaan vain kun muuttuja esitellään ohjelmassa ensimmäistä kertaa.
+</p>
+
+<pre class="sh_java">
+int luku = 123;
+System.out.println("Muuttujan arvo on " + luku);
+
+luku = 42;
+System.out.println("Muuttujan arvo on " + luku);
+</pre>
+
+<p>
+  Tulostus:
+</p>
+
+<pre>
+Muuttujan arvo on 123
+Muuttujan arvo on 42
+</pre>
+
+
+<p>
+  Tarkastellaan edellisen ohjelmakoodin suoritusta askel askeleelta. Kun muuttuja esitellään ohjelmakoodissa ensimmäistä kertaa, eli sekä muuttujan tyyppi (tässä <code>int</code>) että sen nimi (tässä <code>luku</code>) kerrotaan tietokoneelle, tietokone luo muuttujaa varten "nimetyn lokeron". Tämän jälkeen yhtäsuuruusmerkin oikealla puolella oleva arvo kopioidaan tähän nimettyyn lokeroon.
+</p>
+
+<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-1.png"/>
+
+<p>
+  Kun ohjelmakoodissa viitataan muuttujaan sen nimellä -- tässä halutaan tulostaa merkkijono "Muuttujan arvo on " sekä muuttujan <code>luku</code> arvo, muuttujan <code>luku</code> arvo haetaan sen nimellä löytyvästä lokerosta.
+</p>
+
+<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-2.png"/>
+
+<p>
+  Kun muuttujaan asetetaan arvo (tässä <code>luku = 42</code>), tarkistetaan ensin löytyykö muuttujan nimistä lokeroa. Jos lokero löytyy, uusi arvo kopioidaan lokeroon vanhan arvon tilalle ja vanha arvo katoaa. Jos muuttujan nimellä ei löydy lokeroa, ohjelman suoritus päättyy virheilmoitukseen tai ohjelmaa ei voida käynnistää.
+</p>
+
+<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-3.png"/>
+
+<p>
+  Seuraavaksi ohjelmakoodissa viitataan taas muuttujaan sen nimellä -- tässäkin halutaan tulostaa merkkijono "Muuttujan arvo on " sekä muuttujan <code>luku</code> arvo. Toimitaan kuten normaalisti, eli haetaan muuttujan <code>luku</code> arvo sen nimellä löytyvästä lokerosta.
+</p>
+
+<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-4.png"/>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujan tyyppi pysyy
+<% end %>
+
+
+<p>
+  Kun muuttujan tyyppi on kertaalleen määritelty, ei sitä voi enää muuttaa.  Merkkijonoa ei siis voi esimerkiksi asettaa kokonaislukutyyppiseen muuttujaan, eikä merkkijonomuuttujaan voi asettaa kokonaislukua.
+</p>
+
+<pre class="sh_java">
+String merkkijono = "Hei maailma!";
+merkkijono = 42; // Ei onnistu
+
+int luku = 10;
+merkkijono = luku; // Ei myöskään onnistu
+</pre>
+
+<p>
+  Poikkeus kuitenkin löytyy: liukulukutyyppiseen muuttujaan voi asettaa kokonaisluvun, sillä Java osaa muuttaa kokonaisluvun liukuluvuksi asetuksen yhteydessä.
+</p>
+
+<pre class="sh_java">
+double liukuluku = 0.42;
+liukuluku = 1; // Onnistuu
+
+int luku = 10;
+liukuluku = luku; // Onnistuu myös
+</pre>
+
+<p>
+  Liukulukua ei kuitenkaan voi asettaa kokonaislukuun, sillä emme halua että desimaaliarvot leikkautuisivat vahingossa pois.
+</p>
+
+<pre class="sh_java">
+int luku = 4.2; // Ei onnistu
+
+double liukuluku = 0.42;
+luku = liukuluku; // Ei myöskään onnistu
+</pre>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujan nimentä
+<% end %>
+
+
+<p>
+  Muuttujan nimeämistä rajoittavat tietyt ehdot. Vaikka muuttujan nimessä voidaan käyttää ääkkösiä, on parempi olla <em>kayttamatta niita</em>, sillä <a href="http://en.wikipedia.org/wiki/Character_encoding" title="Character encoding - Wikipedia, the free encyclopedia">merkistökoodauksesta</a> saattaa tulla ongelmia.
+</p>
+
+<p>
+  Muuttujan nimessä ei saa olla tiettyjä erikoismerkkejä, kuten huutomerkkejä (!).  Välilyönti ei ole sallittu, sillä se erottaa komentojen osat toisistaan. Välilyönti kannattaa korvata <a href="http://fi.wikipedia.org/wiki/CamelCase" title="CamelCase – Wikipedia">camelCase</a><-tyylillä, jolloin nimi <code>muistuttaneeKamelia</code>. <strong>Huom!</strong> Muuttujien nimien ensimmäinen kirjain kirjoitetaan aina pienellä:
+</p>
+
+<pre class="sh_java">
+int camelCaseMuuttuja = 7;
+</pre>
+
+<p>
+  Numeroita voidaan käyttää muuttujan nimessä, kunhan nimi ei ala numerolla.  Nimi ei myöskään voi koostua pelkistä numeroista.
+</p>
+
+<pre class="sh_java">
+int 7muuttuja = 4; // Ei sallittu!
+int muuttuja7 = 4; // Sallittu, mutta ei kuvaava muuttujan nimi
+</pre>
+
+<p>
+  Muuttujan nimi ei myöskään saa olla jo entuudestaan käytössä.  Tälläisiä nimiä ovat mm. aikaisemmin määritellyt muuttujat ja komennot, kuten <code>System.out.print</code> ja <code>System.out.println</code>.
+</p>
+
+<pre class="sh_java">
+int camelCase = 2;
+int camelCase = 5; // Ei sallittu -- muuttuja camelCase on jo käytössä!
+</pre>
+
+<p>
+  Muuttuja kannattaa nimetä siten, että sen käyttötarkoitus on selvää ilman kommentteja tai miettimistä.  Tällä kurssilla muuttujat <strong>pitää</strong> nimetä kuvaavasti.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Sallittuja muuttujien nimiä
+<% end %>
+
+<ul>
+  <li>kuukaudenViimeinenPaiva = 20</li>
+  <li>ensimmainenVuosi = 1952</li>
+  <li>nimi = "Essi"</li>
+</ul>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Virheellisiä muuttujien nimiä
+<% end %>
+
+<ul>
+  <li>kuukauden viimeinen päivä = 20</li>
+  <li>1paiva = 1952</li>
+  <li>varo! = 1910</li>
+  <li>1920 = 1</li>
+</ul>
+
+
+<p>
+  <strong>Huom!</strong> Älä myöskään käytä ääkkösiä muuttujien nimissä!
+</p>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Laskentaa
+<% end %>
+
+
+<p>
+  Laskentaoperaatiot ovat tuttuja ja suoraviivaisia: yhteenlasku <code>+</code>, erotus <code>-</code>, kertolasku <code>*</code> ja jakolasku <code>/</code>. Laskentajärjestys on myös tuttu: laskenta tehdään vasemmalta oikealle sulut huomioon ottaen. Kuitenkin <code>*</code> ja <code>/</code> lasketaan ennen <code>+</code> ja <code>-</code> operaatioita, samoin kuin perus- tai kansakoulumatematiikassa on tullut tutuksi.
+</p>
+
+<p>
+  <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html" target="_blank">Tässä vielä tarkemmin laskujärjestyksestä javassa.</a> Linkin takana oleva materiaali ei ole kuitenkaan aloittelijan kannalta kovin oleellista.
+</p>
+
+<pre class="sh_java">
+int eka = 2;
+System.out.println(eka); // tulostaa 2
+int toka = 4;
+System.out.println(toka); // tulostaa 4
+
+int summa = eka + toka; // muuttujaan summa asetetaan muuttujien eka ja toka arvojen summa
+System.out.println(summa); // tulostaa 6
+</pre>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Laskujärjestys ja sulut
+<% end %>
+
+<p>
+  Laskujärjestykseen voi vaikuttaa sulkujen avulla. Sulkujen sisällä olevat laskuoperaatiot suoritetaan ennen niiden ulkopuolella olevia laskuoperaatioita.
+</p>
+
+<pre class="sh_java">
+int laskuSuluilla = (1 + 1) + 3 * (2 + 5);
+System.out.println(laskuSuluilla); // tulostaa 23
+
+int laskuSuluitta = 1 + 1 + 3 * 2 + 5;
+System.out.println(laskuSuluitta); // tulostaa 13
+</pre>
+
+
+<p>Yllä olevan sulkuesimerkin voi suorittaa myös askeleittain.</p>
+
+<pre class="sh_java">
+int laskuSuluilla = (1 + 1);
+System.out.println(laskuSuluilla); // tulostaa 2
+laskuSuluilla = laskuSuluilla + 3 * (2 + 5);
+System.out.println(laskuSuluilla); // tulostaa 23
+
+int laskuSuluitta = 1 + 1;
+laskuSuluitta = laskuSuluitta + 3 * 2;
+laskuSuluitta = laskuSuluitta + 5;
+System.out.println(laskuSuluitta); // tulostaa 13
+</pre>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Sekunnit vuodessa' } do %>
+
+  <p>Täydennä tehtäväpohjassa olevaa ohjelmaa siten, että se laskee kuinka monta sekuntia on vuodessa. Voit olettaa, että vuodessa on 365 päivää (eli ei ole karkausvuosi).</p>
+
+  <p>Ohjelman tulostus on seuraava:</p>
+  
+  <pre>
+Vuodessa on X sekuntia.
+  </pre>
+
+  <p>X:n kohdalle tulee ohjelmasi laskema tulos. Huom! Hyödynnä tässä tehtävässä muuttujia :)</p>
+
+<% end %>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Lauseke ja lause' } do %>
+
+  <p>Lauseke (expression) on arvojen yhdistelmä, joka muuntuu arvoksi laskuoperaation tai evaluaation yhteydessä. Alla oleva lause sisältää lausekkeen <code>1 + 1 + 3 * 2 + 5</code>, joka evaluoidaan ennen arvon asetusta muuttujaan.</p>
+
+  <pre class="sh_java">
+int laskuSuluitta = 1 + 1 + 3 * 2 + 5;
+  </pre>
+
+  <p>Lausekkeen evaluaatio tapahtuu aina ennen muuttujan arvon asetusta. Tarkastele esimerkkiä alla. Jos lauseke evaluoitaisiin vasta tulostuskutsun yhteydessä, olisi tulostus jotain muuta.</p>
+
+  <pre class="sh_java">
+int eka = 10;
+int toka = eka + 5;
+eka = 20;
+
+System.out.println(toka); // tulostaa 15
+  </pre>
+
+<% end %>
+
+
+<p>
+  Lausekkeen evaluointi tapahtuu ohjelmakoodissa siinä kohtaa, missä lauseke on. Evaluointi onnistuu siis esimerkiksi myös tulostuslauseen yhteydessä, jos lauseketta käytetään tulostuslauseen parametrin arvon laskemisessa.
+</p>
+
+<pre class="sh_java">
+int eka = 2;
+int toka = 4;
+
+System.out.println(eka + toka); // tulostaa 6
+System.out.println(2 + toka - eka - toka); // tulostaa 0
+</pre>
+
+
+<p>
+  TODO: lausekeQUIZ
+</p>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonot osana laskentaa
+<% end %>
+
+
+<p>
+  Tarkastellaan vielä lähemmin merkkijonojen yhdistämistä <code>+</code>-merkinnän avulla.
+</p>
+
+<p>
+  Jos operaatiota <code>+</code> sovelletaan kahden merkkijonon välille, syntyy uusi merkkijono, jossa kaksi merkkijonoa on yhdistetty. Huomaa nokkela välilyönnin käyttö lauseen "muuttujien" osana!
+</p>
+
+<pre class="sh_java">
+String tervehdys = "Hei ";
+String nimi = "Matti";
+String hyvastely = ", ja näkemiin!";
+
+String lause = tervehdys + nimi + hyvastely;
+
+System.out.println(lause);
+</pre>
+
+<pre>
+Hei Matti, ja näkemiin!
+</pre>
+
+<p>
+  Jos toinen operaation <code>+</code> kohteista on merkkijono, muutetaan myös toinen operaation kohteista merkkijonoksi. Alla olevassa esimerkissä kokonaisluku <code>2</code> on muutettu merkkijonoksi "2", ja siihen on yhdistetty merkkijono.
+</p>
+
+<pre class="sh_java">
+System.out.println("tuossa on kokonaisluku --&gt; " + 2);
+System.out.println(2 + " &lt;-- tuossa on kokonaisluku");
+</pre>
+
+<pre>
+tuossa on kokonaisluku --&gt; 2
+2 &lt;-- tuossa on kokonaisluku
+</pre>
+
+<p>
+  Edellä esitellyt laskusäännöt pätevät täälläkin:
+</p>
+
+<pre class="sh_java">
+System.out.println("Neljä: " + (2 + 2));
+System.out.println("Mutta! kaksikymmentäkaksi: " + 2 + 2);
+</pre>
+
+<pre>
+Neljä: 4
+Mutta! kaksikymmentäkaksi: 22
+</pre>
+
+<p>
+  Edellistä soveltamalla voimme myös luoda lausekkeen, joka sisältää tekstiä ja muuttujan, ja joka evaluoidaan tulostuksen yhteydessä:
+</p>
+
+<pre class="sh_java">
+int x = 10;
+
+System.out.println("muuttujan x arvo on: " + x);
+
+int y = 5;
+int z = 6;
+
+System.out.println("y on " + y + " ja z on " + z);
+</pre>
+
+<p>
+  Tulostus:
+</p>
+
+<pre>
+muuttujan x arvo on: 10
+y on 5 ja z on 6
+</pre>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Yhteenlasku' } do %>
+  
+  <p>
+    Tee ohjelma, jonka avulla voidaan laskea kahden kokonaisluvun summa. Ohjelman alussa määritellään kaksi muuttujaa, jotka sisältävät summattavat luvut. Voit tarvittaessa käyttää myös muita muuttujia.
+  </p>
+
+  <p>
+    Esimerkiksi jos muuttujissa on luvut 5 ja 4, ohjelman tulostus on seuraava:
+  </p>
+
+  <pre>
+5 + 4 = 9
+  </pre>
+
+  <p>
+    Jos taas muuttujissa on luvut 73457 ja 12888, ohjelman tulostus on seuraava:
+  </p>
+
+  <pre>
+73457 + 12888 = 86345
+  </pre>
+  
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Kertolasku' } do %>
+  
+  <p>
+    Tee edellistä ohjelmaa vastaava ohjelma, joka laskee kahden kokonaislukumuuttujaan sijoitetun arvon kertolaskun.
+  </p>
+  
+  <p>
+    Esimerkiksi jos muuttujissa on luvut 2 ja 8, ohjelman tulostus on seuraava:
+  </p>
+
+  <pre>
+2 * 8 = 16
+  </pre>
+
+  <p>
+    Jos taas muuttujissa on luvut 277 ja 111, ohjelman tulostus on seuraava:
+  </p>
+
+  <pre>
+277 * 111 = 30747
+  </pre>
+
+  <p>
+    Kokeile myös kuinka suuren kertolaskun ohjelmasi pystyy laskemaan!
+  </p>
+
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Jakolasku
+<% end %>
+
+
+<p>
+  Kokonaislukujen jakolasku on hieman hankalampi operaatio. Jakolausekkeessa käytettyjen muuttujien tyyppi määrää evaluaation tuloksena saatavan arvon tyypin. Jos kaikki jakolausekkeessa olevat muuttujat ovat kokonaislukuja, on tulos myös kokonaisluku.
+</p>
+
+<pre class="sh_java">
+int tulos = 3 / 2;
+System.out.println(tulos); // Huom! tulostaa 1 (kokonaisluku), sillä 3 ja 2 ovat myös kokonaislukuja
+</pre>
+
+<pre class="sh_java">
+int eka = 3:
+int toka = 2;
+double tulos = eka / toka;
+System.out.println(tulos); // nytkin tulostus on 1, sillä eka ja toka ovat kokonaislukuja
+</pre>
+
+<p>
+  Jos jakolaskun jakaja tai jaettava (tai molemmat!) ovat liukulukuja, tulee tulokseksi myös liukuluku.
+</p>
+
+<pre class="sh_java">
+double kunJaettavaOnLiukuluku = 3.0 / 2;
+System.out.println(kunJaettavaOnLiukuluku); // tulostaa 1.5
+
+double kunJakajaOnLiukuluku = 3 / 2.0;
+System.out.println(kunJakajaOnLiukuluku); // tulostaa 1.5
+</pre>
+
+<p>
+  Kokonaisluku voidaan tarvittaessa muuttaa liukuluvuksi lisäämällä sen eteen tyyppimuunnosoperaatio <code>(double)</code>:
+</p>
+
+<pre class="sh_java">
+int eka = 3;
+int toka = 2;
+
+double tulos1 = (double) eka / toka;
+System.out.println(tulos1); // tulostaa 1.5
+
+double tulos2 = eka / (double) toka;
+System.out.println(tulos2); // tulostaa 1.5
+
+double tulos3 = (double) (eka / toka);
+System.out.println(tulos3); // tulostaa 1
+</pre>
+
+<p>
+  Jälkimmäisessä esimerkissä tulos pyöristyy väärin sillä laskuoperaatio kokonaisluvuilla suoritetaan ennen tyyppimuunnosta.
+</p>
+
+<p>
+  Jos jakolausekkeen tulos asetetaan kokonaislukutyyppiseen muuttujaan, on tulos automaattisesti kokonaisluku.
+</p>
+
+<pre class="sh_java">
+int tulosKokonaislukuKoskaTyyppiKokonaisluku = 3.0 / 2;  // tulos automaattisesti kokonaisluku: 1
+</pre>
+
+<p>
+  Seuraava esimerkki tulostaa "1.5", sillä jaettavasta tehdään liukuluku kertomalla se liukuluvulla (1.0 * 3 = 3.0) ennen jakolaskua.
+</p>
+
+<pre class="sh_java">
+int jaettava = 3;
+int jakaja = 2;
+
+double tulos = 1.0 * jaettava / jakaja;
+System.out.println(tulos);
+</pre>
+
+
+<% partial 'partials/exercise', locals: { name: 'Kolmen luvun keskiarvo' } do %>
+
+  <p>
+    Tehtäväpohjassa on ohjelma, jossa on kolme muuttujaa. Ohjelman tulostus on tällä hetkellä seuraava.
+  </p>
+
+  <pre>
+eka: 3
+toka: 5
+kolmas: 5
+  </pre>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelma tulostaa myös muuttujien keskiarvon.
+  </p>
+
+  <pre>
+eka: 3
+toka: 5
+kolmas: 5
+keskiarvo: 4.333333333333333
+  </pre>
+
+  <p>
+    Huom! Jos muuttujien arvoja muutetaan, tulee myös tulostuksen muuttua.
+  </p>
+
+  <pre>
+eka: 5
+toka: 7
+kolmas: 4
+keskiarvo: 5.333333333333333
+  </pre>
+
+  
+<% end %>
+
+<p>TODO: QUIZ</p>
+
+<p>Mitä seuraava tulostaa?</p>
+
+
+<pre class="sh_java">
+int jaettava = 3;
+int jakaja = 2;
+
+double tulos = jaettava / jakaja * 1.0;
+System.out.println(tulos);
+</pre>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Nelilaskin' } do %>
+
+  <p>Tehtäväpohjassa on ohjelma, jossa on kaksi muuttujaa. Ohjelman tulostus on tällä hetkellä seuraava.</p>
+
+  <pre>
+1 + 3 = 4
+  </pre>
+
+  <p>Muokkaa ohjelmaa siten, että ohjelma laskee myös lukujen erotuksen, tulon, ja jakolaskun.</p>
+
+  <pre>
+1 + 3 = 4
+1 - 3 = -2
+1 * 3 = 3
+1 / 3 = 0.33333
+  </pre>
+
+  <p>Huom! Jos muuttujien arvoja muutetaan, tulee myös tulostuksen muuttua.</p>
+
+  <pre>
+5 + 3 = 8
+5 - 3 = 2
+5 * 3 = 15
+5 / 3 = 1.66666
+  </pre>
+
+  <p>Tehtävässä ei ole testejä jotka kertovat onko tulostus oikein vai ei. Tarmista että ohjelmasi toimii oikein ennen tehtävän palautusta suorittamalla se useammalla muuttujien arvoilla.</p>
+  
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujan arvoon liittyviä väärinkäsityksiä
+<% end %>
+
+
+
+
+<p>Kun tietokone suorittaa ohjelmakoodia, suorittaa se sitä käsky kerrallaan, edeten aina täsmälleen siten, kuin ohjelmakoodissa sanotaan. Kun muuttujaan asetetaan arvo, tapahtuu aina sama asia, eli yhtäsuuruusmerkin oikealla puolella oleva arvo kopioidaan yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi, eli muuttujan nimeämään paikkaan.</p>
+
+<p>On tärkeää, että ohjelmoija ymmärtää, että arvon asettaminen muuttujaan tekee aina saman asian.</p>
+
+<p>Kolme yleistä väärinkäsitystä, jotka liittyvät muuttujan arvon asettamiseen ovat seuraavat:</p>
+
+<ul>
+  <li>Muuttujan asettamisen näkeminen siirtona kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että muuttujan <code>toka</code> arvo on siirtynyt muuttujan <code>eka</code> arvoksi, jonka jälkeen muuttujalla <code>toka</code> ei ole enää arvoa, tai sen arvo on esimerkiksi nolla. Tämä ei pidä paikkansa, sillä ohjelmakoodin <code>eka = toka</code> suorituksessa muuttujan <code>toka</code> nimeämässä paikassa oleva arvo kopioidaan muuttujan <code>eka</code> nimeämään paikkaan. Muuttujan <code>toka</code> arvo ei siis muutu.<br/></li>
+  <li>Muuttujan asettamisen näkeminen riippuvuutena kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että mikä tahansa muutos muuttujaan <code>toka</code> vaikuttaa automaattisesti myös muuttujaan <code>eka</code>. Tämä ei pidä paikkansa, sillä asetus -- kopiointi -- on yksittäinen tapahtuma. Se tapahtuu vain silloin, ohjelmakoodi <code>eka = toka</code> suoritetaan.<br/></li>
+  <li>Kolmas väärinkäsitys liittyy kopioimisen suuntaan: ohjelmakoodin <code>eka = toka</code> suorituksessa ajatellaan, että muuttujan <code>toka</code> arvoksi kopioidaan muuttujan <code>eka</code> arvo. Tämä näkyy myös tilanteina, missä ohjelmoija voi vahingossa kirjoittaa esimerkiksi <code>42 = arvo</code> -- onneksi ohjelmointiympäristöt tukevat myös tässä.</li>
+</ul>
+
+<p>Ehkäpä paras tapa tietokoneen ohjelmakoodin suorittamisen ymmärtämiseen on paperin ja kynän käyttäminen. Kun luet ohjelmakoodia, kirjoita paperille uusien muuttujien nimet, sekä kirjoita ylös rivi riviltä, miten ohjelmakoodissa olevien muuttujien arvot muuttuvat. Havainnollistetaan suoritusta seuraavalla ohjelmakoodilla:</p>
+
+<pre class="sh_java">
+rivi 1: int eka = (1 + 1);
+rivi 2: int toka = eka + 3 * (2 + 5);
+rivi 3: 
+rivi 4: eka = 5;
+rivi 5:
+rivi 6: int kolmas = eka + toka;
+rivi 7: System.out.println(eka);
+rivi 8: System.out.println(toka);
+rivi 9: System.out.println(kolmas);
+</pre>
+
+<p>Alla on kirjoitettu ylläolevan ohjelmakoodin suoritus auki.</p>
+
+<pre>
+rivi 1: luodaan muuttuja eka
+rivi 1: kopioidaan muuttujan eka arvoksi laskun 1 + 1 tulos
+rivi 1: muuttujan eka arvo on 2
+
+rivi 2: luodaan muuttuja toka
+rivi 2: lasketaan 2 + 5, 2 + 5 ->  7
+rivi 2: lasketaan 3 * 7, 3 * 7 -> 21
+rivi 2: lasketaan eka + 21
+rivi 2: kopioidaan muuttujan eka arvo laskuun, muuttujan eka arvo on 2
+rivi 2: lasketaan 2 + 21, 2 + 21 -> 23
+rivi 2: kopioidaan muuttujan toka arvoksi 23
+rivi 2: muuttujan toka arvo on 23
+
+rivi 3: (tyhjä, ei tehdä mitään)
+
+rivi 4: kopioidaan muuttujan eka arvoksi 5
+rivi 4: muuttujan eka arvo on 5
+
+rivi 5: (tyhjä, ei tehdä mitään)
+
+rivi 6: luodaan muuttuja kolmas
+rivi 6: lasketaan eka + toka
+rivi 6: kopioidaan muuttujan eka arvo laskuun, muuttujan eka arvo on 5
+rivi 6: lasketaan 5 + toka
+rivi 6: kopioidaan muuttujan toka arvo laskuun, muuttujan toka arvo on 23
+rivi 6: lasketaan 5 + 23 -> 28
+rivi 6: kopioidaan muuttujan kolmas arvoksi 28
+rivi 6: muuttujan kolmas arvo on 28
+
+rivo 7: tulostetaan muuttuja eka
+rivi 7: kopioidaan muuttujan eka arvo tulostettavaksi, muuttujan eka arvo on 5
+rivi 7: tulostetaan arvo 5
+
+rivi 8: tulostetaan muuttuja toka
+rivi 8: kopioidaan muuttujan toka arvo tulostettavaksi, muuttujan toka arvo on 23
+rivi 8: tulostetaan arvo 23
+
+rivi 9: tulostetaan muuttuja kolmas
+rivi 9: kopioidaan muuttujan kolmas arvo tulostettavaksi, muuttujan kolmas arvo on 28
+rivi 9: tulostetaan arvo 28
+</pre>
+
+
+<p>Alla edellinen ohjelma askeleittain visualisoituna. Käytössä oleva askeleittainen visualisointi käsittelee ohjelmakoodia riveittäin -- pohdi askeleiden kohdalla miten ohjelma päätyy sen tulostamaan lopputulokseen.</p>
+
+<p>TODO: ENABLE</p>
+
+<!-- 
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20LaskentaAskeleittain%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20int%20eka%20%3D%20(1%20%2B%201%29%3B%0A%20%20%20%20int%20toka%20%3D%20eka%20%2B%203%20*%20(2%20%2B%205%29%3B%0A%0A%20%20%20%20eka%20%3D%205%3B%0A%0A%20%20%20%20int%20kolmas%20%3D%20eka%20%2B%20toka%3B%0A%20%20%20%20System.out.println(eka%29%3B%0A%20%20%20%20System.out.println(toka%29%3B%0A%20%20%20%20System.out.println(kolmas%29%3B%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+-->
+
+<p>TODO: QUIZ</p>
+
+<p>Kirjota allaolevan ohjelmakoodin suoritus auki.</p> 
+
+<pre class="sh_java">
+int toka = 32;
+int eka = toka; 
+toka = 17;
+</pre>
+
+<p>Mikä muuttujan <code>eka</code> arvo on lopuksi?</p>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Käyttäjän syötteen lukeminen
+<% end %>
+
+
+
+
+<p>
+  Seuraavaksi tutustumme käyttäjän kirjoittaman tekstin lukemiseen. Käytämme tähän <em>Scanner</em>-apuvälinettä. Apuväline tuodaan käyttöön lisäämällä komento <code>import java.util.Scanner;</code> ennen pääohjelmarungon aloitusta (<code>public class ...</code>).
+</p>
+
+
+<pre class="sh_java">
+import java.util.Scanner; // tuodaan lukemiseen käytetty apuväline Scanner käyttöömme
+
+public class Esimerkki {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // ohjelmakoodi
+    }
+}
+</pre>
+
+<p>
+  Älä hätäile vaikka pääohjelmarunko saattaa näyttää vaikeaselkoiselta! Jatkamme yhä ohjelmointia kommentilla <em>ohjelmakoodi</em> merkittyyn kohtaan.
+</p>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonon lukeminen
+<% end %>
+
+
+<p>
+  Seuraava lähdekoodi lukee käyttäjän nimen ja tulostaa tervehdyksen (käyttäjän syöttämä teksti merkitty punaisella):
+</p>
+
+<pre class="sh_java">
+System.out.print("Mikä on nimesi? ");
+String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan se muuttujaan nimi
+
+System.out.println("Hei " + nimi);
+</pre>
+
+<pre>
+Mikä on nimesi? <span class="red">Venla</span>
+Hei Venla
+</pre>
+
+<p>Seuraavassa on yllä oleva ohjelma pääohjelmarungon kanssa.  Ohjelman nimeksi on asetettu on <em>Tervehdys</em>.</p>
+
+<!--
+   -- Käyttäessäsi NetBeans-ohjelmointiympäristöä, toimi kuten alussa olleessa
+     <a class="hidden-in-mooc" href="netbeansohje.html">ohjeessa</a>
+     <a class="hidden-in-hy" href="http://mooc.fi/courses/general/ohjelmointi/ukk/#netbeansilla-työskentelyä-helpottavia-näppäinkomentoja-ym.">ohjeessa</a>
+     tehtiin, mutta muuta ohjelman nimi Heistä (<em>Hei</em>) Tervehdykseksi (<em>Tervehdys</em>)</p>
+   -->
+
+<pre class="sh_java">
+import java.util.Scanner;
+
+public class Tervehdys {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.print("Kenelle sanotaan hei: ");
+        String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan sen arvo muuttujaan nimi
+
+        System.out.println("Hei " + nimi);
+    }
+}
+</pre>
+
+<p>
+  Kun yllä oleva ohjelma ajetaan, pääset kirjoittamaan syötteen.  NetBeansin tulostusvälilehti näyttää ajetun ohjelman jälkeen seuraavalta (alla olevassa esimerkissä käyttäjä syöttää nimen "Venla").
+</p>
+
+<div><img class="naytto" src="../img/material/netbeans-output-venla.png"/></div>
+
+<p>
+  &nbsp;
+</p>
+
+<% partial 'partials/exercise', locals: { name: 'Tulostus kolmesti' } do %>
+  
+  <p>
+    Tee ohjelma joka lukee käyttäjältä merkkijonon ja tulostaa merkkijonon kolmesti peräkkäin.
+  </p>
+  
+  <pre>
+Mikä tulostetaan? <font color="red">kukka</font>
+
+kukkakukkakukka
+
+TODO: eri riveille
+  </pre>
+  
+  <p>
+    Esimerkissä punainen väri tarkoittaa käyttäjän kirjoittamaa tekstiä. Tätä käytäntöä noudatetaan jatkossa esimerkeissä.
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kokonaisluvun lukeminen
+<% end %>
+
+
+<p>
+  Scanner-apuvälineemme ei ole kovin hyvä kokonaislukujen lukemiseen, joten käytämme toista apuvälinettä merkkijonon kokonaisluvuksi muuttamisessa.  Komento <code>Integer.parseInt</code> muuntaa sille annetussa tekstimuuttujassa olevan kokonaisluvun kokonaislukumuuttujaksi.  Komennolle annetaan tekstimuuttuja parametrina, ja se palauttaa kokonaisluvun joka asetetaan kokonaislukumuuttujaan.
+</p>
+
+<p>
+  Käytännössä kytkemme kaksi komentoa yhteen. Ensin luemme käyttäjältä rivin, jonka annamme heti komennolle <code>Integer.parseInt</code>.
+</p>
+
+<pre class="sh_java">
+System.out.print("Anna kokonaisluku: ");
+int kokonaisluku = Integer.parseInt(lukija.nextLine());
+
+System.out.println("Annoit " + kokonaisluku);
+</pre>
+
+
+<p>
+  Seuraavassa esimerkissä käyttäjältä kysytään ensin nimi, ja sen jälkeen ikä. Tällä kertaa esimerkissä on myös ohjelmarunko mukana.
+</p>
+
+<pre class="sh_java">
+import java.util.Scanner;
+
+public class NimiJaIkaTervehdys {
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.print("Nimesi: ");
+        String nimi = lukija.nextLine();   // Luetaan käyttäjältä rivi tekstiä
+
+        System.out.print("Kuinka vanha olet: ");
+        int ika = Integer.parseInt(lukija.nextLine()); // luetaan käyttäjältä tekstimuuttuja ja muutetaan se kokonaisluvuksi
+
+        System.out.println("Nimesi on siis " + nimi + " ja ikäsi " + ika + ", hauska tutustua.");
+    }
+}
+</pre>
+
+<p>Tulostus esimerkiksi:</p>
+
+<pre>
+Nimesi: <font color="red">Nelli</font>
+Kuinka vanha olet: <font color="red">4</font>
+Nimesi on siis Nelli ja ikäsi 4, hauska tutustua.
+</pre>
+
+<p>
+  TODO: Tehtävä
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Lyhyt yhteenveto
+<% end %>
+
+<p>
+  Käyttäjän kanssa keskustelevan ohjelman runko:
+</p>
+
+<pre class="sh_java">
+import java.util.Scanner;
+
+public class OhjelmanNimi {
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // koodi tähän
+    }
+}
+</pre>
+
+<p>
+  Merkkijonon lukeminen:
+</p>
+
+<pre class="sh_java">
+String merkkijono = lukija.nextLine();
+</pre>
+
+<p>
+  Kokonaisluvun lukeminen:
+</p>
+
+<pre class="sh_java">
+int kokonaisluku = Integer.parseInt(lukija.nextLine());
+</pre>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Summaaja' } do %>
+  
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja tulostaa niiden summan.
+  </p>
+
+  <pre>
+Anna ensimmäinen luku: <font color="red">6</font>
+Anna toinen luku: <font color="red">2</font>
+
+Lukujen summa: 8
+  </pre>
+
+  <p>
+    Kuten aiemminkin, esimerkin punaisella värjätty teksti tarkoittaa käyttäjän kirjoittamaa tekstiä.
+  </p>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Jakaja' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja tulostaa niiden osamäärän. Varmista, että <code>3 / 2 = 1.5</code>. Jos desimaaliosa katoaa, lue uudelleen materiaalin kohta 3.3. Jakolasku.
+  </p>
+
+  <pre>
+Anna ensimmäinen luku: <font color="red">3</font>
+Anna toinen luku: <font color="red">2</font>
+
+Jakolasku: 3 / 2 = 1.5
+  </pre>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Ympyrän kehän pituus' } do %>
+
+
+  <p>
+    Ympyrän kehän pituus lasketaan kaavalla <code>2 * pii * säde</code>. Tee ohjelma, joka kysyy käyttäjältä ympyrän säteen ja laskee sen perusteella ympyrän kehän pituuden. Javasta löytyy valmis piin arvo, saat sen kirjoittamalla <code>Math.PI</code> laskutoimitukseen.
+  </p>
+
+  <pre>
+Anna ympyrän säde: <font color="red">20</font>
+
+Ympyrän kehä: 125.66370614359172
+  </pre>
+  
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Ikien summa' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy kahden henkilön nimet ja iät.  Tämän jälkeen ohjelma tulostaa henkilöiden nimet sekä heidän ikien summan.
+  </p>
+  
+  <pre>
+Kerro nimi: <font color="red">Charles Babbage</font>
+Kerro ikä: <font color="red">226</font>
+
+Kerro nimi: <font color="red">Ada Lovelace</font>
+Kerro ikä: <font color="red">202</font>
+
+Charles Babbage ja Ada Lovelace ovat yhteensä 428 vuotta vanhoja.
+  </pre>
+
+
+  <p>
+    Kuka ihmeen Charles Babbage? Lue lisää <a href="https://en.wikipedia.org/wiki/Charles_Babbage" target="_blank">Wikipediasta</a>.
+  </p>
+  
+<% end %>
+
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Ehtolause
+<% end %>
+
+
+
+<p>
+  Ohjelmamme ovat toistaiseksi edenneet suoraviivaisesti lauseesta seuraavaan, toimien jokaisella suorituskerralla samalla tavalla. Haluamme mahdollisuuden erilaisille ohjelman suorituspoluille. Jotta ohjelman suoritus voisi <em>haarautua</em> esimerkiksi käyttäjän antaman syötteen perusteella, tarvitsemme käyttöömme <strong>ehtolauseen</strong>.
+</p>
+
+<pre class="sh_java">
+int luku = 11;
+
+if (luku &gt; 10) {
+    System.out.println("Luku oli suurempi kuin 10");
+}
+</pre>
+
+<p>
+  Ehtolause alkaa avainsanalla <code>if</code>, jota seuraa sulut. Sulkujen sisälle asetetaan lauseke, joka evaluoidaan kun ehtolause saavutetaan. Sulkuja seuraa lohko, joka määritellään avaavan aaltosulun <code>{</code> ja sulkevan aaltosulun <code>}</code> sisään.
+</p>
+
+<p>
+  Jos ehtolauseen lauseke evaluoidaan todeksi, ohjelman suoritus siirtyy ehtolauseen määrittelemään lohkoon. Jos taas lauseke on epätotta, ohjelman suoritus siirtyy ehtolauseeseen liittyvän lohkon päättävän aaltosulun jälkeiseen lauseeseen. 
+</p>
+
+<p>
+  Huomaa, että <code>if</code> -lauseen perään ei tule puolipistettä, sillä lause ei lopu ehto-osan jälkeen.
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Ohjelmakoodin sisennys' } do %>
+
+
+  <p>
+    Lohkojen sisällä oleva koodi sisennetään. Esimerkiksi ehtolauseeseen liittyvän lohkon sisältämä lähdekoodi sisennetään neljä välilyöntiä sisemmälle kuin ehtolauseen aloittava <code>if</code>-komento. Neljä merkkiä saa myös tabulaattorimerkillä (q:n vasemmalla puolella oleva näppäin). Kun lohko sulkeutuu, eli tulee }-merkki, sisennys loppuu. }-merkki on samalla tasolla kuin ehtolauseen aloittanut <code>if</code>-komento.
+  </p>
+
+  <table class="table">
+    <thead>
+      <tr><th>Väärin</th><th>Oikein</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+	<td>
+          <pre class="sh_java">
+if (luku &gt; 10) {
+luku = 9;
+}</pre>
+	</td>
+	<td>
+          <pre class="sh_java">
+if (luku &gt; 10) {
+    luku = 9;
+}</pre>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Ylinopeussakko' } do %>
+
+  <p>Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Ylinopeussakko!" jos luku on suurempi kuin 120.</p>
+
+  <pre>
+Kerro nopeus: <font color="red">15</font>
+  </pre>
+
+  <pre>
+Kerro nopeus: <font color="red">135</font>
+
+Ylinopeussakko!
+  </pre>
+  
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Vertailuoperaattorit
+<% end %>
+
+
+
+<p>
+  Vertailuoperaattoreita ovat seuraavat:
+</p>
+
+<ul>
+  <li><code>&gt;</code>suurempi kuin</li>
+  <li><code>&gt;=</code>suurempi tai yhtäsuuri kuin</li>
+  <li><code>&lt;</code>pienempi kuin</li>
+  <li><code>&lt;=</code> pienempi tai yhtäsuuri kuin</li>
+  <li><code>==</code> yhtäsuuri kuin</li>
+  <li><code>!=</code> erisuuri kuin</li>
+</ul>
+
+<pre class="sh_java">
+int luku = 55;
+
+if (luku != 0) {
+    System.out.println("Luku oli erisuuri kuin 0");
+}
+
+if (luku &gt;= 1000) {
+    System.out.println("Luku oli vähintään 1000");
+}</pre>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Orwell' } do %>
+  
+  <p>Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Orwell" jos luku on täsmälleen 1984.</p>
+
+  <pre>
+Anna luku: <font color="red">1983</font>
+  </pre>
+
+  <pre>
+Anna luku: <font color="red">1984</font>
+
+Orwell
+  </pre>
+
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muulloin eli else
+<% end %>
+
+<p>
+  Jos ehtolauseen sulkujen sisällä oleva lauseke evaluoituu epätodeksi, ohjelmakoodin suoritus siirtyy ehtolauseen lohkon lopettavan aaltosulun seuraavaan lauseeseen. Tämä ei aina ole toivottua, vaan usein halutaan luoda vaihtoehtoinen toiminta tilanteeseen, missä ehtolauseen lauseke on epätotta.
+</p>
+
+<p>
+  Tämä onnistuu <code>if</code>-komennon yhteydessä käytettävän <code>else</code>-komennon avulla.
+</p>
+
+<pre class="sh_java">
+int luku = 4;
+
+if (luku &gt; 5) {
+    System.out.println("Lukusi on suurempi kuin viisi!");
+} else {
+    System.out.println("Lukusi on viisi tai alle!");
+}
+</pre>
+
+<pre>
+  Lukusi on viisi tai alle!
+</pre>
+
+<p>
+  Jos ehtolauseeseen on määritelty <code>else</code>-haara, suoritetaan else-haaran määrittelemä lohko jos ehtolauseen ehto ei ole totta. Komento <code>else</code> tulee samalle riville <code>if</code>-komennon määrittelemän lohkon lopettavan aaltosulun kanssa.
+</p>
+
+<p>
+  Huom! Jos et sisennä em. tavalla, tyylitarkastaja valittaa "Line xx: '}' should be on the same line."
+</p>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Positiivinen luku' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja kertoo, onko se positiivinen (eli suurempi kuin nolla) vai ei.
+  </p>
+  
+  <pre>
+Anna luku: <font color="red">5</font>
+
+Luku on positiivinen.
+  </pre>
+  
+  <pre>
+Anna luku: <font color="red">-2</font>
+
+Luku ei ole positiivinen.
+  </pre>
+  
+<% end %>
+
+
+<p>TODO: tarkasta tulosteet</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Täysi-ikäisyys' } do %>
+
+  
+  <p>Tee ohjelma, joka kysyy käyttäjän ikää ja kertoo, onko tämä täysi-ikäinen (eli 18-vuotias tai vanhempi).</p>
+
+  <pre>
+Kuinka vanha olet? <font color="red">12</font>
+
+Et ole täysi-ikäinen!
+  </pre>
+
+  <pre>
+Kuinka vanha olet? <font color="red">32</font>
+
+Olet täysi-ikäinen!
+  </pre>
+  
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Lisää vaihtoehtoja: else if
+<% end %>
+
+<p>Jos vaihtoehtoja on useampia käytetään <code>else if</code>-komentoa. Komento <code>else if</code> on kuin <code>else</code>, mutta lisäehdolla. <code>else if</code> tulee <code>if</code>-ehdon jälkeen, ja niitä voi olla useita.</p>
+
+<pre class="sh_java">
+int luku = 3;
+
+if (luku == 1) {
+    System.out.println("Luku on yksi");
+} else if (luku == 2) {
+    System.out.println("Lukuna on kaksi");
+} else if (luku == 3) {
+    System.out.println("Kolme lienee lukuna!");
+} else {
+    System.out.println("Jotain muuta!");
+}
+</pre>
+
+<pre>
+Kolme lienee lukuna!
+</pre>
+
+
+<p>
+  Luetaan ylläoleva esimerkki: 'Jos luku on yksi, tulosta "Luku on yksi", muuten jos luku on kaksi, tulosta "Lukuna on kaksi", muuten jos lukuna on kolme, tulosta "Kolme lienee lukuna!".  Muulloin, tulosta "Jotain muuta!"'.
+</p>
+
+<p>
+  Ylläolevan ohjelman askeleittainen visualisointi TODO ENABLE:
+</p>
+
+<!-- 
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20ElseIfEsimerkki%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20int%20luku%20%3D%203%3B%0A%0A%20%20%20%20if%20(luku%20%3D%3D%201%29%20%7B%0A%20%20%20%20%20%20System.out.println(%22Luku%20on%20yksi%22%29%3B%0A%20%20%20%20%7D%20else%20if%20(luku%20%3D%3D%202%29%20%7B%0A%20%20%20%20%20%20System.out.println(%22Lukuna%20on%20kaksi%22%29%3B%0A%20%20%20%20%7D%20else%20if%20(luku%20%3D%3D%203%29%20%7B%0A%20%20%20%20%20%20System.out.println(%22Kolme%20lienee%20lukuna!%22%29%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20System.out.println(%22Jotain%20muuta!%22%29%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+-->
+
+<% partial 'partials/exercise', locals: { name: 'Suurempi tai yhtäsuuri' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja tulostaa niistä suuremman. Jos luvut ovat yhtä suuret, ohjelma huomaa myös tämän.
+  </p>
+
+  <p>
+    Esimerkkitulostuksia:
+  </p>
+
+  <pre>
+Anna ensimmäinen luku: <font color="red">5</font>
+Anna toinen luku: <font color="red">3</font>
+
+Suurempi luku: 5
+  </pre>
+  
+  <pre>
+Anna ensimmäinen luku: <font color="red">5</font>
+Anna toinen luku: <font color="red">8</font>
+
+Suurempi luku: 8
+  </pre>
+  
+  <pre>
+Anna ensimmäinen luku: <font color="red">5</font>
+Anna toinen luku: <font color="red">5</font>
+
+Luvut ovat yhtä suuret!
+  </pre>
+
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Vertailujen suoritusjärjestys
+<% end %>
+
+<p>
+  Vertailut suoritetaan järjestyksessä ylhäältä alaspäin. Kun suorituksessa päästään lohkoon, jonka ehto on totta, suoritetaan lohko ja lopetetaan vertailu.
+</p>
+
+<pre class="sh_java">
+int luku = 5;
+
+if (luku == 0) {
+    System.out.println("Luku on nolla.");
+} else if (luku &gt; 0) {
+    System.out.println("Luku on suurempi kuin nolla.");
+} else if (luku &gt; 2) {
+    System.out.println("Luku on suurempi kuin kaksi.");
+} else {
+    System.out.println("Luku on pienempi kuin nolla.");
+}
+</pre>
+
+<pre>
+Luku on suurempi kuin nolla.
+</pre>
+
+<p>
+  Yllä oleva esimerkki tulostaa merkkijonon "Luku on suurempi kuin nolla." vaikka myös ehto <code>luku &gt; 2</code> on totta. Vertailu siis lopetetaan ensimmäiseen valintakäskyyn, jonka ehto on totta.
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Arvosanat ja pisteet' } do %>
+  <p>Tee ohjelma, joka ilmoittaa kurssiarvosanan seuraavan taulukon mukaisesti.</p>
+
+  <table class="table">
+    <tr>
+      <th>pistemäärä</th>
+      <th>arvosana</th>
+    </tr>
+    <tr>
+      <td>&lt; 0</td>
+      <td>mahdotonta!</td>
+    </tr>
+    <tr>
+      <td>0-50</td>
+      <td>hylätty</td>
+    </tr>
+    <tr>
+      <td>51-60</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>61-70</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>71-80</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>81-90</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>91-100</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>&gt; 100</td>
+      <td>uskomatonta!</td>
+    </tr>
+  </table>
+  
+  <p>Esimerkkitulostuksia:</p>
+
+  <pre>
+Anna pisteet [0-100]: <font color="red">37</font>
+
+Arvosana: hylätty
+  </pre>
+
+  <pre>
+Anna pisteet [0-100]: <font color="red">76</font>
+
+Arvosana: 3
+  </pre>
+
+  <pre>
+Anna pisteet [0-100]: <font color="red">95</font>
+
+Arvosana: 5
+  </pre>
+
+
+  <pre>
+Anna pisteet [0-100]: <font color="red">-3</font>
+
+Arvosana: mahdotonta!
+  </pre>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Loogiset operaatiot
+<% end %>
+
+
+<p>
+  Ehtolauseen lauseke voi olla myös monimutkaisempi, yksittäisten loogisten operaatioiden avulla koostettu ehto. Loogisia operaatioita ovat:
+</p>
+
+<ul>
+  <li><code>lauseke1 &amp;&amp; lauseke2</code> lausekkeen arvo on tosi kun molemmat ehdoista ovat tosia</li>
+  <li><code>lauseke1 || lauseke2</code> lausekkeen arvo on tosi jos jompi kumpi tai molemmat ehdoista tosia</li>
+</ul>
+
+<p>
+  Seuraavassa yhdistetään <code>&amp;&amp;</code>:lla eli ja-operaatiolla kaksi yksittäistä ehtoa. Koodilla tarkistetaan, onko muuttujassa oleva luku suurempi kuin 4 <strong>ja</strong> pienempi kuin 11, eli siis välillä 5-10:
+</p>
+
+<pre class="sh_java">
+System.out.println("Onkohan luku väliltä 5-10: ");
+int luku = 7;
+
+if (luku &gt; 4 &amp;&amp; luku &lt; 11) {
+    System.out.println("On! :)");
+} else {
+    System.out.println("Ei ollut :(")
+}
+</pre>
+
+<pre>
+Onkohan luku väliltä 5-10:
+On! :)
+</pre>
+
+<p>
+  Seuraavassa annetaan <code>||</code>:n eli tai-operaation avulla kaksi vaihtoehtoa, onko luku pienempi kuin 0 <strong>tai</strong> suurempi kuin 100. Ehto toteutuu jos luku täyttää jomman kumman ehdon:
+</p>
+
+<pre class="sh_java">
+System.out.println("Onkohan luku pienempi kuin 0 tai suurempi kuin 100");
+int luku = 145;
+
+if (luku &lt; 0 || luku &gt; 100) {
+    System.out.println("On! :)");
+} else {
+    System.out.println("Ei ollut :(")
+}
+</pre>
+
+<pre>
+Onkohan luku pienempi kuin 0 tai suurempi kuin 100
+On! :)
+</pre>
+
+
+<% partial 'partials/exercise', locals: { name: 'Iän tarkistus' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjän iän ja tarkistaa, että se on mahdollinen (ainakin 0 ja korkeintaan 120).
+  </p>
+
+  <pre>
+Kuinka vanha olet? <font color="red">10</font>
+OK
+  </pre>
+
+  <pre>
+Kuinka vanha olet? <font color="red">55</font>
+OK
+  </pre>
+
+  <pre>
+Kuinka vanha olet? <font color="red">-3</font>
+Mahdotonta!
+  </pre>
+
+  <pre>
+Kuinka vanha olet? <font color="red">150</font>
+Mahdotonta!
+  </pre>
+  
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ehtolauseen lauseke ja totuusarvomuuttuja
+<% end %>
+
+
+<p>
+  Ehtolauseen sulkuihin asetettavan arvon tulee olla lausekkeen evaluoinnin jälkeen totuusarvotyyppinen. Totuusarvomuuttujan tyyppi on <code>boolean</code> ja arvo <em>true</em> tai <em>false</em>.
+</p>
+
+<pre class="sh_java">
+boolean onkoTotta = true;
+System.out.println("Totuusarvomuuttujan arvo on " + onkoTotta);
+</pre>
+
+<pre>
+Totuusarvomuuttujan arvo on true
+</pre>
+
+<p>
+  Ehtolauseen voi suorittaa myös seuraavasti:
+</p>
+
+<pre class="sh_java">
+boolean onkoTotta = true;
+
+if (onkoTotta) {
+    System.out.println("Aika vinhaa!");
+}
+</pre>
+
+<pre>
+Aika vinhaa!
+</pre>
+
+
+<p>
+  Vertailuoperaattoreita voi käyttää myös ehtojen ulkopuolella. Tällöin vertailun tuloksena saatu totuusarvo asetetaan talteen totuusarvomuuttujaan myöhempää käyttöä varten.
+</p>
+
+<pre class="sh_java">
+int eka = 1;
+int toka = 3;
+
+boolean onkoSuurempi = eka &gt; toka;
+</pre>
+
+<p>
+  Yllä olevassa esimerkissä totuusarvomuuttuja <code>onkoSuurempi</code> sisältää nyt totuusarvon <em>false</em>. Yllä olevaa esimerkkiä voi myös jatkaa ja ottaa siihen mukaan ehtolauseen.</p>
+
+<pre class="sh_java">
+int eka = 1;
+int toka = 3;
+
+boolean onkoPienempi = eka &lt; toka;
+
+if (onkoPienempi) {
+    System.out.println("1 on pienempi kuin 3!");
+}
+</pre>
+
+<img class="naytto" src="../img/drawings/boolean-muuttuja.png"/>
+
+<p>
+  Yllä olevassa kuvassa ohjelmakoodia on suoritettu niin pitkään, että ohjelman muuttujat on luotu ja niihin on asetettu arvot. Muuttujassa <code>onkoPienempi</code> on arvona <code>true</code>. Seuraavana suoritetaan vertailu <code>if (onkoPienempi) </code> -- muuttujaan <code>onkoPienempi</code> liittyvä arvo löytyy sen lokerosta, ja lopulta ohjelma tulostaa:
+</p>
+
+
+<pre>
+1 on pienempi kuin 3!
+</pre>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Jakojäännös' } do %>
+  
+  <p>
+    Jakojäännös on hieman harvemmin käytetty operaatio, joka on kuitenkin varsin näppärä kun halutaan tarkistaa esimerkiksi luvun jaollisuutta. Jakojäännösoperaation merkki on <code>%</code>.
+  </p>
+
+  <pre class="sh_java">
+int jakojaannos = 7 % 2; 
+System.out.println(jakojaannos); // tulostaa 1
+
+System.out.println(5 % 3); // tulostaa 2
+System.out.println(7 % 4); // tulostaa 3
+System.out.println(8 % 4); // tulostaa 0
+System.out.println(1 % 2); // tulostaa 1
+  </pre>
+  
+  <p>
+    Jos haluamme tietää onko käyttäjän syöttämä luku jaollinen neljälläsadalla, tarkastamme onko syötetyn luvun jakojäännös neljänsadan suhteen nolla.
+  </p>
+  
+
+  <pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+int luku = Integer.parseInt(lukija.nextLine());
+int jakojaannos = luku % 400;
+
+if (jakojaannos == 0) {
+    System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
+} else {
+    System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
+}
+  </pre>
+
+  <p>
+    Koska jakojäännös on samanlainen operaatio kuin muutkin laskut, voi sen asettaa osaksi valintakäskyä.
+  </p>
+
+
+  <pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+int luku = Integer.parseInt(lukija.nextLine());
+
+if (luku % 400 == 0) {
+    System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
+} else {
+    System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
+}
+  </pre>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Pariton vai parillinen' } do %>
+
+  <p>Tee ohjelma, joka kysyy käyttäjältä luvun ja ilmoittaa, onko syötetty luku parillinen vai pariton.</p>
+
+  <pre>
+Anna luku: <font color="red">2</font>
+Luku 2 on parillinen.
+  </pre>
+
+  <pre>
+Anna luku: <font color="red">7</font>
+Luku 7 on pariton.
+  </pre>
+
+  <p>Vihje: Luvun jakojäännös 2:lla kertoo, onko luku parillinen vai pariton. Jakojäännos taas saadaan <code>%</code>-operaattorilla, tehtäväpohjassa on lisää ohjeita miten parittomuustarkastus hoituu jakojäännöksen avulla.</p>
+
+<% end %>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Virhetilanteet
+<% end %>
+
+
+<p>
+  Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle, mutta joskus virheet voivat johtaa hyvinkin vakaviin seurauksiin. Varmaa on joka tapauksessa se, että ohjelmoimaan opetteleva ihminen tekee paljon virheitä.
+</p>
+
+<p>
+  Tätä ei kuitenkaan kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä. 
+</p>
+
+
+<aside class="info">
+  <p><strong>Ohjelmistovirhe</strong></p>
+
+  <p>Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman, sekä ohjelmistovirheen.</p>
+
+  <p>Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.</p>
+
+  <p>Satelliitti tuhoutui.</p>
+
+</aside>
+
+
+<p>
+  Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Seuraavalla screencastilla esitellään debuggerin käyttöä. Screencast esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.
+</p>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+<% partial 'partials/material_sub_heading' do %>
+  Stack trace
+<% end %>
+
+
+<p>
+  Kun ohjelmassa tapahtuu virhe, se tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:
+</p>
+
+<pre>
+Exception in thread "main" ...
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+<p>
+  Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.
+</p>
+
+<pre>
+        at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muistilista virheenselvitykseen
+<% end %>
+
+<p>
+  Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.
+</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Tarkista ovatko käytetyt muuttujat oikean nimisiä.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Ongelman ratkaiseminen osa kerrallaan
+<% end %>
+
+
+<p>
+  Tutustutaan klassiseen ohjelmointiongelmaan:</p>
+
+<p><em>
+  'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.
+</em></p>
+
+<p>
+  Ohjelmoija lähtee ratkaisemaan tehtävää lukemalla ongelmakuvauksen, ja luomalla ohjelmakoodia ongelmakuvausta seuraten. Koska ohjelman suoritusehdot esitellään ongelmassa annetussa järjestyksessä, muodostuu ohjelman rakenne järjestyksen perusteella. Ohjelman rakenne muodostuu seuraavien askelten perusteella:
+</p>
+
+<ol>
+  <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
+  <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+  <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+  <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+</ol>
+
+<p>
+  Jos-tyyppiset ehdot on helppo toteuttaa <code>if - else if - else</code> -valintakäskyjen avulla. Alla oleva koodi on toteutettu ylläolevien askelten perusteella, mutta se ei kuitenkaan toimi oikein. Miksi ei? Kokeile itse!
+</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+
+int luku = Integer.parseInt(lukija.nextLine());
+
+if (luku % 3 == 0) {
+    System.out.println("Fizz");
+} else if (luku % 5 == 0) {
+    System.out.println("Buzz");
+} else if (luku % 3 == 0 && luku % 5 == 0) {
+    System.out.println("FizzBuzz");
+} else {
+    System.out.println(luku);
+}
+</pre>
+
+<p>Alla kerrotaan syy edellisen ohjelman toimimattomuuteen, spoilerivaroitus!</p>
+
+<p><img src="../img/doh/spoileri.png"/></p>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Valintakäskyjen suoritusjärjestyksestä
+<% end %>
+
+<p>
+  Edellisessä lähestymistavassa ongelmana on se, että <em>valintakäskyjen läpikäynti lopetetaan ensimmäiseen ehtoon, jonka arvo on totta</em>. Esimerkiksi luvulla 15 tulostetaan merkkijono "Fizz", sillä luku on kolmella jaollinen (15 % 3 == 0).
+</p>
+
+<p>
+  Yksi lähestymistapa ylläolevan ajatusketjun kehittämiseen on ensin etsiä <em>vaativin ehto</em> ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.
+</p>
+
+<ol>
+  <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
+  <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+  <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+  <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+</ol>
+
+<p>Nyt ongelmakin tuntuu ratkeavan.</p>
+
+<pre class="sh_java">
+Scanner lukija = new Scanner(System.in);
+
+int luku = Integer.parseInt(lukija.nextLine());
+
+if (luku % 3 == 0 && luku % 5 == 0) {
+    System.out.println("FizzBuzz");
+} else if (luku % 3 == 0) {
+    System.out.println("Fizz");
+} else if (luku % 5 == 0) {
+    System.out.println("Buzz");
+} else {
+    System.out.println(luku);
+}
+</pre>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ehtolauseista ja lohkoista
+<% end %>
+
+<p>
+  Monimutkaisempien ehtolauseiden muodostamisessa voi hyödyntää sulkuja:
+</p>
+
+<pre class="sh_java">
+int luku = 99;
+
+if ((luku &gt; 0 &amp;&amp; luku &lt; 10) || luku &gt; 100) {
+    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
+} else {
+    System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
+}
+</pre>
+
+<pre>
+luku oli 0 tai pienempi tai väliltä 10-99
+</pre>
+
+<p>
+  Yllä oleva esimerkki toimii käytännössä samoin kuin seuraava esimerkki.
+</p>
+
+<pre class="sh_java">
+int luku = 99;
+
+if (luku &gt; 0 &amp;&amp; luku &lt; 10) {
+    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
+} else if (luku &gt; 100) {
+    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
+} else {
+    System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
+}
+</pre>
+
+
+<p>
+  Ehtolauseen lohkon sisällä voi olla mitä tahansa koodia, myös toinen ehtolause.
+</p>
+
+<pre class="sh_java">
+int x = 45;
+int luku = 55;
+
+if (luku &gt; 0) {
+    System.out.println("Luku on positiivinen");
+
+    if (luku &gt; x) {
+        System.out.println(" ja suurempi kuin muuttujan x arvo");
+        System.out.println("muuttujan x arvohan on " + x);
+    }
+}
+</pre>
+
+
+<% partial 'partials/exercise', locals: { name: 'Karkausvuosi' } do %>
+
+  
+  <p>
+    Vuosi on karkausvuosi, jos se on jaollinen 4:llä. Kuitenkin jos vuosi on jaollinen 100:lla, se on karkausvuosi vain silloin, kun se on jaollinen myös 400:lla.
+  </p>
+
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä vuosiluvun, ja tarkistaa, onko vuosi karkausvuosi.
+  </p>
+
+  <pre>
+Anna vuosi: <font color="red">2011</font>
+Vuosi ei ole karkausvuosi.
+  </pre>
+  
+  <pre>
+Anna vuosi: <font color="red">2012</font>
+Vuosi on karkausvuosi.
+  </pre>
+
+  <pre>
+Anna vuosi: <font color="red">1800</font>
+Vuosi ei ole karkausvuosi.
+  </pre>
+
+  <pre>
+Anna vuosi: <font color="red">2000</font>
+Vuosi on karkausvuosi.
+  </pre>
+  
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Sekunnit vuodessa' } do %>
+  
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Lähdekoodin sijainti' } do %>
+  
+<% end %>
+
+
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+
+
 <% partial 'partials/material_heading' do %>
   Lorem ipsum dolor sit amet
 <% end %>
