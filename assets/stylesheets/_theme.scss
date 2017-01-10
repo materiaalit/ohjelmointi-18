@@ -11,6 +11,12 @@ header > h1 {
   margin: $spacer-y * 1.5 0rem;
 }
 
+.hljs {
+  border-radius: $border-radius;
+  padding: $spacer-y $spacer-x !important;
+  background-color: $gray-lightest !important;
+}
+
 .exercise-list {
   @include floating;
 

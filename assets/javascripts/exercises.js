@@ -76,7 +76,7 @@ class Exercises {
 
   renderExecisesList() {
     const list = this.exerciseNames.map((exercise, index) => `
-      <div class="exercise-list__item col col-md-4">
+      <div class="exercise-list__item col col-lg-4 col-md-6 col-sm-12">
         <a data-toggle="collapse" class="exercise-list__link" href="${exercise.href}">
           Tehtävä ${index + 1}: ${exercise.name}
         </a>
