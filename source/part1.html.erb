@@ -6,15 +6,6 @@
 
 
 <% partial 'partials/material_heading' do %>
-  Oppimistavoitteet
-<% end %>
-
-<p>
-  TODO
-</p>
-
-
-<% partial 'partials/material_heading' do %>
   Ohjelma ja lähdekoodi
 <% end %>
 
@@ -471,25 +462,25 @@ Muuttujan arvo on 42
   Tarkastellaan edellisen ohjelmakoodin suoritusta askel askeleelta. Kun muuttuja esitellään ohjelmakoodissa ensimmäistä kertaa, eli sekä muuttujan tyyppi (tässä <code>int</code>) että sen nimi (tässä <code>luku</code>) kerrotaan tietokoneelle, tietokone luo muuttujaa varten "nimetyn lokeron". Tämän jälkeen yhtäsuuruusmerkin oikealla puolella oleva arvo kopioidaan tähän nimettyyn lokeroon.
 </p>
 
-<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-1.png"/>
+<img class="naytto" src="/img/drawings/muuttujan-arvon-vaihto-1.png"/>
 
 <p>
   Kun ohjelmakoodissa viitataan muuttujaan sen nimellä -- tässä halutaan tulostaa merkkijono "Muuttujan arvo on " sekä muuttujan <code>luku</code> arvo, muuttujan <code>luku</code> arvo haetaan sen nimellä löytyvästä lokerosta.
 </p>
 
-<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-2.png"/>
+<img class="naytto" src="/img/drawings/muuttujan-arvon-vaihto-2.png"/>
 
 <p>
   Kun muuttujaan asetetaan arvo (tässä <code>luku = 42</code>), tarkistetaan ensin löytyykö muuttujan nimistä lokeroa. Jos lokero löytyy, uusi arvo kopioidaan lokeroon vanhan arvon tilalle ja vanha arvo katoaa. Jos muuttujan nimellä ei löydy lokeroa, ohjelman suoritus päättyy virheilmoitukseen tai ohjelmaa ei voida käynnistää.
 </p>
 
-<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-3.png"/>
+<img class="naytto" src="/img/drawings/muuttujan-arvon-vaihto-3.png"/>
 
 <p>
   Seuraavaksi ohjelmakoodissa viitataan taas muuttujaan sen nimellä -- tässäkin halutaan tulostaa merkkijono "Muuttujan arvo on " sekä muuttujan <code>luku</code> arvo. Toimitaan kuten normaalisti, eli haetaan muuttujan <code>luku</code> arvo sen nimellä löytyvästä lokerosta.
 </p>
 
-<img class="naytto" src="../img/drawings/muuttujan-arvon-vaihto-4.png"/>
+<img class="naytto" src="/img/drawings/muuttujan-arvon-vaihto-4.png"/>
 
 
 
@@ -1124,6 +1115,8 @@ toka = 17;
     Tehtäväpohjassa on jakolaskin, johon on toteutettu graafinen käyttöliittymä (ikkuna). Ohjelman jakolaskutoiminnossa on pientä häikkää eikä se tunnu toimivan oikein. Korjaa se.
   </p>
 
+  <img class="naytto" src="/img/exercises/01-30-jahtaus.png"/>
+
   <p>
     Huom! Vaikka suurin osa ohjelmasta tuntuu todennäköisesti hyvin kryptiseltä, löytänet lähdekoodista myös jotain tuttua.
   </p>
@@ -1215,7 +1208,7 @@ public class Tervehdys {
   Kun yllä oleva ohjelma ajetaan, pääset kirjoittamaan syötteen.  NetBeansin tulostusvälilehti näyttää ajetun ohjelman jälkeen seuraavalta (alla olevassa esimerkissä käyttäjä syöttää nimen "Venla").
 </p>
 
-<div><img class="naytto" src="../img/material/netbeans-output-venla.png"/></div>
+<div><img class="naytto" src="/img/material/netbeans-output-venla.png"/></div>
 
 <p>
   &nbsp;
@@ -1812,7 +1805,13 @@ Arvosana: mahdotonta!
 
 
   <p>
-    Tehtävän graafiseen käyttöliittymään on lisätty liukuri sekä tekstikenttä. Tutustu ohjelman koodiin ja muokkaa ohjelmaa siten, että tekstikentän arvo muuttuu liukurista saatavien arvojen perusteella seuraavasti:
+    Tehtävän graafiseen käyttöliittymään on lisätty liukuri sekä tekstikenttä.
+  </p>
+
+  <img class="naytto" src="/img/exercises/01-22-maara.png"/>
+
+  <p>
+    Tutustu ohjelman koodiin ja muokkaa ohjelmaa siten, että tekstikentän arvo muuttuu liukurista saatavien arvojen perusteella seuraavasti:
   </p>
 
   <ul>
@@ -2599,6 +2598,26 @@ Vuosi on karkausvuosi.
 
 <% end %>
 
+
+
+<% partial 'partials/exercise', locals: { name: 'Jahtaus' } do %>
+
+
+  <p>
+    Osan viimeisessä tehtävässä pääset taas tarkastelemaan melko tuntematonta lähdekoodia. Tehtävässä on valmiiksi toteutettuna ohjelma, missä hymiö seuraa hiirtä.  
+  </p>
+
+  <img class="naytto" src="/img/exercises/01-30-jahtaus.png"/>
+
+  <p>
+    Tehtävänäsi on muokata ohjelmaa siten, että sen sijaan, että hymiö seuraa hiirtä, hymiön pitäisi vältellä hiirtä. Lähdekoodissa on valmiina muuttujia hiiren ja kuvan sijaintiin, joista saattaa olla tässä hyötyä. 
+  </p>
+
+  <p>
+    Tehtävässä ei ole erillisiä automaattisia testejä. Palauta se kun olet mielestäsi saavuttanut tehtävän tavoitteen. 
+  </p>
+
+<% end %>
 
 
 <% partial 'partials/material_heading' do %>
