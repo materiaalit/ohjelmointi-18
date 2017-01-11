@@ -6,6 +6,15 @@
 
 
 <% partial 'partials/material_heading' do %>
+  Oppimistavoitteet
+<% end %>
+
+<p>
+  TODO
+</p>
+
+
+<% partial 'partials/material_heading' do %>
   Ohjelma ja lähdekoodi
 <% end %>
 
@@ -371,7 +380,7 @@ System.out.println("Liukulukumuuttuja: " + liukuluku);
   Tulostus:
 </p>
 
-<% partial 'partials/code_highlight' do %>
+<% partial 'partials/sample_output' do %>
 Tekstimuuttuja: sisältää tekstiä
 Kokonaislukumuuttuja: 123
 Liukulukumuuttuja: 3.141592653
@@ -733,7 +742,7 @@ String lause = tervehdys + nimi + hyvastely;
 System.out.println(lause);
 <% end %>
 
-<% partial 'partials/code_highlight' do %>
+<% partial 'partials/sample_output' do %>
 Hei Matti, ja näkemiin!
 <% end %>
 
@@ -1097,7 +1106,7 @@ rivi 9: tulostetaan arvo 28
 
 <p>TODO: QUIZ</p>
 
-<p>Kirjota allaolevan ohjelmakoodin suoritus auki.</p>
+<p>Kirjoita allaolevan ohjelmakoodin suoritus auki.</p>
 
 <% partial 'partials/code_highlight' do %>
 int toka = 32;
@@ -1221,11 +1230,7 @@ public class Tervehdys {
   <% partial 'partials/sample_output' do %>
 Mikä tulostetaan? <font color="red">kukka</font>
 
-kukka
-kukka
-kukka
-
-TODO: eri riveille
+kukkakukkakukka
   <% end %>
 
   <p>
@@ -1536,6 +1541,10 @@ Orwell
 
 
 
+
+
+
+
 <% partial 'partials/material_sub_heading' do %>
   Muulloin eli else
 <% end %>
@@ -1722,7 +1731,10 @@ Luku on suurempi kuin nolla.
 
 
 <% partial 'partials/exercise', locals: { name: 'Arvosanat ja pisteet' } do %>
-  <p>Tee ohjelma, joka ilmoittaa kurssiarvosanan seuraavan taulukon mukaisesti.</p>
+
+  <p>
+    Tee ohjelma, joka ilmoittaa kurssiarvosanan seuraavan taulukon mukaisesti.
+  </p>
 
   <table class="table">
     <tr>
@@ -1763,7 +1775,9 @@ Luku on suurempi kuin nolla.
     </tr>
   </table>
 
-  <p>Esimerkkitulostuksia:</p>
+  <p>
+    Esimerkkitulostuksia:
+  </p>
 
   <% partial 'partials/sample_output' do %>
 Anna pisteet [0-100]: <font color="red">37</font>
@@ -1791,6 +1805,30 @@ Arvosana: mahdotonta!
   <% end %>
 
 <% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Määrä' } do %>
+
+
+  <p>
+    Tehtävän graafiseen käyttöliittymään on lisätty liukuri sekä tekstikenttä. Tutustu ohjelman koodiin ja muokkaa ohjelmaa siten, että tekstikentän arvo muuttuu liukurista saatavien arvojen perusteella seuraavasti:
+  </p>
+
+  <ul>
+    <li>Jos liukurin arvo on 0, tekstin tulee olla "Ei lainkaan."</li>
+    <li>Jos liukurin arvo on 1-25, tekstin tulee olla "Vähän."</li>
+    <li>Jos liukurin arvo on 26-74, tekstin tulee olla "Kohtalaisesti."</li>
+    <li>Jos liukurin arvo on 75-99, tekstin tulee olla "Paljon."</li>
+    <li>Jos liukurin arvo on 100, tekstin tulee olla "Kaikki."</li>
+  </ul>
+
+  <p>
+    Huomaa tässäkin tehtävässä, ettei sinun tarvitse ymmärtää ohjelmakoodista kuin vain muutamia oleellisia kohtia.
+  </p>
+  
+<% end %>
+
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1939,7 +1977,7 @@ if (onkoPienempi) {
 }
 <% end %>
 
-<img class="naytto" src="../img/drawings/boolean-muuttuja.png"/>
+<img class="naytto" src="/img/drawings/boolean-muuttuja.png"/>
 
 <p>
   Yllä olevassa kuvassa ohjelmakoodia on suoritettu niin pitkään, että ohjelman muuttujat on luotu ja niihin on asetettu arvot. Muuttujassa <code>onkoPienempi</code> on arvona <code>true</code>. Seuraavana suoritetaan vertailu <code>if (onkoPienempi) </code> -- muuttujaan <code>onkoPienempi</code> liittyvä arvo löytyy sen lokerosta, ja lopulta ohjelma tulostaa:
@@ -2024,9 +2062,296 @@ Luku 7 on pariton.
 
 
 
+<% partial 'partials/material_sub_heading' do %>
+  Ehtolauseista ja lohkoista
+<% end %>
+
+<p>
+  Monimutkaisempien ehtolauseiden muodostamisessa voi hyödyntää sulkuja:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int luku = 99;
+
+if ((luku &gt; 0 &amp;&amp; luku &lt; 10) || luku &gt; 100) {
+    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
+} else {
+    System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
+}
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  luku oli 0 tai pienempi tai väliltä 10-99
+<% end %>
+
+<p>
+  Yllä oleva esimerkki toimii käytännössä samoin kuin seuraava esimerkki.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int luku = 99;
+
+if (luku &gt; 0 &amp;&amp; luku &lt; 10) {
+    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
+} else if (luku &gt; 100) {
+    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
+} else {
+    System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
+}
+<% end %>
+
+
+<p>
+  Ehtolauseen lohkon sisällä voi olla mitä tahansa koodia, myös toinen ehtolause.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int x = 45;
+int luku = 55;
+
+if (luku &gt; 0) {
+    System.out.println("Luku on positiivinen");
+
+    if (luku &gt; x) {
+        System.out.println(" ja suurempi kuin muuttujan x arvo");
+        System.out.println("muuttujan x arvohan on " + x);
+    }
+}
+<% end %>
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonojen vertailu
+<% end %>
+
+<p>
+  Yhtäsuuruusoperaattorilla <code>==</code> ja erisuuruusoperaattorilla <code>!=</code> tutkitaan kahden muuttujan arvo samuutta. Tämä toimii esimerkiksi kokonaisluvuilla ja oikeastaan kaikilla muuttujatyypeille, joiden tyyppi alkaa pienellä alkukirjaimella. Merkkijonojen tapauksessa tilanne on kuitenkin toinen.
+</p>
+
+<p>
+  Tarkastellaan alla olevaa esimerkkiohjelmaa.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+import java.util.Scanner;
+  
+public class MerkkijonojenVertailu {
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+  
+        System.out.println("Syötä kaksi merkkijonoa.");
+        String eka = lukija.nextLine();
+        String toka = lukija.nextLine();
+
+        if (eka != toka) {
+            System.out.println("Syötetyt merkkijonot eivät olleet samat!");
+        }
+    }
+}
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  Syötä kaksi merkkijonoa.
+  <font color="red">merkkijono</font>
+  <font color="red">merkkijono</font>
+  Syötetyt merkkijonot eivät olleet samat!
+<% end %>
+
+
+
+<p>
+  Merkkijonoja, eli tekstejä, ei siis voi vertailla yhtäsuuruusoperaatiolla.
+</p>
+
+<p>
+  Merkkijonojen vertailuun käytetään erillistä <code>equals</code>-komentoa, joka liittyy aina verrattavaan merkkijonoon.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String teksti = "kurssi";
+
+if (teksti.equals("marsipaani")) {
+    System.out.println("Teksti-muuttujassa on teksti marsipaani.");
+} else {
+    System.out.println("Teksti-muuttujassa ei ole tekstiä marsipaani.");
+}
+<% end %>
+
+
+<p>
+  Komento <code>equals</code> liitetään aina siihen verrattavaan tekstimuuttujaan, "tekstimuuttuja piste equals teksti".  Tekstimuuttujaa voidaan myös verrata toiseen tekstimuuttujaan.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String teksti = "kurssi";
+String toinenTeksti = "pursi";
+
+if (teksti.equals(toinenTeksti)) {
+    System.out.println("Samat tekstit!");
+} else {
+    System.out.println("Ei samat tekstit!");
+}
+<% end %>
+
+<p>
+  Merkkijonoja vertailtaessa on syytä varmistaa että verrattavalla tekstimuuttujalla on arvo.  Jos muuttujalla ei ole arvoa, ohjelma tuottaa virheen <em>NullPointerException</em>, joka tarkoittaa ettei muuttujan arvoa ole asetettu tai se on tyhjä (<em>null</em>).
+</p>
+
+<p>
+  Seuraavassa käännetään <code>!</code>:n eli negaatio-operaation avulla ehdon arvo päinvastaiseksi:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+System.out.println("Eihän merkkijono ole 'maito'");
+String merkkijono = "piimä";
+
+if (!(merkkijono.equals("maito"))) {  // tosi jos ehto merkkijono.equals("maito") on epätosi
+    System.out.println("ei ollut!");
+} else {
+    System.out.println("oli");
+}
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+ei ollut!
+<% end %>
+
+
+<p>
+  Negaatio-operaatio, eli <code>!ehto</code>, kääntää siis totuusarvon ympäri.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int eka = 1;
+int toka = 3;
+
+boolean onkoSuurempi = eka &gt; toka;
+
+if (!onkoSuurempi) {
+    System.out.println("1 ei ole suurempi kuin 3");
+}
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+1 ei ole suurempi kuin 3
+<% end %>
+  
+
+<p>
+  Tämä ilmiö selvenee myöhemmin kurssilla.
+</p>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Merkkijonojen vertailu' } do %>
+
+  <p>
+    Tehtäväpohjassa on yritetty luoda ohjelma kahden merkkijonon vertailuun. Lähdekoodi on tällä hetkellä seuraava:
+  </p>
+
+
+  <% partial 'partials/code_highlight' do %>
+import java.util.Scanner;
+
+public class MerkkijonojenVertailu {
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+    
+        System.out.println("Syötä kaksi merkkijonoa.");
+        String eka = lukija.nextLine();
+        String toka = lukija.nextLine();
+
+        if (eka == toka) {
+            System.out.println("Syötetyt merkkijonot olivat samat!");
+        } else {
+            System.out.println("Syötetyt merkkijonot eivät olleet samat!");
+        }
+    }
+}
+  <% end %>
+
+  <p>Ohjelma ei kuitenkaan toimi halutulla tavalla. Korjaa se.</p>
+
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Onko totta' } do %>
+
+  <p>
+    Tee ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Jos käyttäjä kirjoittaa merkkijonon "totta", tulostetaan merkkijono "Oikein meni!", muulloin tulostetaan merkkijono "Koitappa uudelleen!".
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Kirjoita merkkijono: <font color="red">totta</font>
+Oikein meni!
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Kirjoita merkkijono: <font color="red">tottapa</font>
+Koitappa uudelleen!
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Käyttäjätunnukset' } do %>
+
+  <p>
+    Tee ohjelma, joka tunnistaa seuraavat käyttäjät:
+  </p>
+  
+  <table border style="margin-left:50px">
+    <tr>
+      <th>tunnus</th>
+      <th>salasana</th>
+    </tr>
+    <tr>
+      <td>aleksi</td>
+      <td>tappara</td>
+    </tr>
+    <tr>
+      <td>elina</td>
+      <td>kissa</td>
+    </tr>
+  </table>
+  
+  <p>
+    Ohjelma näyttää käyttäjälle henkilökohtaisen viestin tai ilmoittaa, jos tunnus tai salasana on väärin.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna tunnus: <font color="red">aleksi</font>
+Anna salasana: <font color="red">tappara</font>
+Hei aleksi, olet kirjautunut järjestelmään
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna tunnus: <font color="red">elina</font>
+Anna salasana: <font color="red">kissa</font>
+Hei elina, olet kirjautunut järjestelmään
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna tunnus: <font color="red">aleksi</font>
+Anna salasana: <font color="red">jokerit</font>
+Virheellinen tunnus tai salasana!
+  <% end %>
+  
+<% end %>
+
+
+
+
+
+
 
 <% partial 'partials/material_heading' do %>
-  Virhetilanteet
+  Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan
 <% end %>
 
 
@@ -2039,16 +2364,24 @@ Luku 7 on pariton.
 </p>
 
 
-<aside class="info">
-  <p><strong>Ohjelmistovirhe</strong></p>
 
-  <p>Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman, sekä ohjelmistovirheen.</p>
 
-  <p>Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.</p>
+<% partial 'partials/hint', locals: { name: 'Ohjelmistovirhe' } do %>
 
-  <p>Satelliitti tuhoutui.</p>
+  <p>
+    Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman, sekä ohjelmistovirheen.
+  </p>
 
-</aside>
+  <p>
+    Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.
+  </p>
+
+  <p>
+    Satelliitti tuhoutui.
+  </p>
+
+  
+<% end %>
 
 
 <p>
@@ -2101,13 +2434,14 @@ Exception in thread "main" ...
 
 
 
-<% partial 'partials/material_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Ongelman ratkaiseminen osa kerrallaan
 <% end %>
 
 
 <p>
-  Tutustutaan klassiseen ohjelmointiongelmaan:</p>
+  Tutustutaan klassiseen ohjelmointiongelmaan:
+</p>
 
 <p><em>
   'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.
@@ -2151,7 +2485,7 @@ if (luku % 3 == 0) {
 
 
 
-<% partial 'partials/material_sub_heading' do %>
+<% partial 'partials/material_sub_sub_heading' do %>
   Valintakäskyjen suoritusjärjestyksestä
 <% end %>
 
@@ -2190,65 +2524,6 @@ if (luku % 3 == 0 && luku % 5 == 0) {
 
 
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Ehtolauseista ja lohkoista
-<% end %>
-
-<p>
-  Monimutkaisempien ehtolauseiden muodostamisessa voi hyödyntää sulkuja:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int luku = 99;
-
-if ((luku &gt; 0 &amp;&amp; luku &lt; 10) || luku &gt; 100) {
-    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
-} else {
-    System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
-}
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-luku oli 0 tai pienempi tai väliltä 10-99
-<% end %>
-
-<p>
-  Yllä oleva esimerkki toimii käytännössä samoin kuin seuraava esimerkki.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int luku = 99;
-
-if (luku &gt; 0 &amp;&amp; luku &lt; 10) {
-    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
-} else if (luku &gt; 100) {
-    System.out.println("luku oli joko yhden ja yhdeksän väliltä tai yli sata");
-} else {
-    System.out.println("luku oli 0 tai pienempi tai väliltä 10-99");
-}
-<% end %>
-
-
-<p>
-  Ehtolauseen lohkon sisällä voi olla mitä tahansa koodia, myös toinen ehtolause.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int x = 45;
-int luku = 55;
-
-if (luku &gt; 0) {
-    System.out.println("Luku on positiivinen");
-
-    if (luku &gt; x) {
-        System.out.println(" ja suurempi kuin muuttujan x arvo");
-        System.out.println("muuttujan x arvohan on " + x);
-    }
-}
-<% end %>
-
-
 <% partial 'partials/exercise', locals: { name: 'Karkausvuosi' } do %>
 
 
@@ -2284,103 +2559,13 @@ Vuosi on karkausvuosi.
 
 
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Lorem ipsum dolor sit amet
-<% end %>
-
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Sekunnit vuodessa' } do %>
-
-<% end %>
-
-
-<% partial 'partials/hint', locals: { name: 'Lähdekoodin sijainti' } do %>
-
-<% end %>
-
-
-
-<p>
-  <%= lorem.sentences 8 %>
-</p>
-
-
-
 <% partial 'partials/material_heading' do %>
-  Lorem ipsum dolor sit amet
+  Yhteenveto
 <% end %>
 
 <p>
-  <%= lorem.sentences 8 %>
+  TODO
 </p>
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Lorem ipsum dolor sit amet
-<% end %>
-
-<p>
-  <%= lorem.sentences 8 %>
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Lorem ipsum dolor sit amet
-<% end %>
-
-<p>
-  <%= lorem.sentences 8 %>
-</p>
-
-<% partial 'partials/hint', locals: { name: 'Lorem ipsum dolor sit amet' } do %>
-  <h2>Sub heading</h2>
-
-  <p>
-    <%= lorem.sentences 8 %>
-  </p>
-<% end %>
-
-<% partial 'partials/material_sub_heading' do %>
-  Lorem ipsum dolor sit amet
-<% end %>
-
-<p>
-  <%= lorem.sentences 8 %>
-</p>
-
-<% partial 'partials/exercise', locals: { name: 'Lorem ipsum dolor sit amet' } do %>
-  <p>
-    <%= lorem.sentences 8 %>
-  </p>
-
-  <h2>Sub heading</h2>
-
-  <p>
-    <%= lorem.sentences 8 %>
-  </p>
-
-  <h2>Sub heading</h2>
-
-  <p>
-    <%= lorem.sentences 8 %>
-  </p>
-<% end %>
-
-<% partial 'partials/material_heading' do %>
-  Lorem ipsum dolor sit amet
-<% end %>
-
-<p>
-  <%= lorem.sentences 8 %>
-</p>
 
 <%= partial 'partials/quiz', locals: { id: '57d8f3f9e6fc9b00030b32a3' } %>
-
-<% partial 'partials/exercise', locals: { name: 'Lorem' } do %>
-  <p>
-    <%= lorem.sentences 8 %>
-  </p>
-<% end %>

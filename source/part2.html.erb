@@ -1,0 +1,111 @@
+---
+  title: Osa 2
+  exercise_page: true
+  quiz_page: true
+---
+
+
+<% partial 'partials/material_heading' do %>
+  Osa 2
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Sekunnit vuodessa' } do %>
+
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Lähdekoodin sijainti' } do %>
+
+<% end %>
+
+
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+
+
+<% partial 'partials/material_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Lorem ipsum dolor sit amet' } do %>
+  <h2>Sub heading</h2>
+
+  <p>
+    <%= lorem.sentences 8 %>
+  </p>
+<% end %>
+
+<% partial 'partials/material_sub_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+<% partial 'partials/exercise', locals: { name: 'Lorem ipsum dolor sit amet' } do %>
+  <p>
+    <%= lorem.sentences 8 %>
+  </p>
+
+  <h2>Sub heading</h2>
+
+  <p>
+    <%= lorem.sentences 8 %>
+  </p>
+
+  <h2>Sub heading</h2>
+
+  <p>
+    <%= lorem.sentences 8 %>
+  </p>
+<% end %>
+
+<% partial 'partials/material_heading' do %>
+  Lorem ipsum dolor sit amet
+<% end %>
+
+<p>
+  <%= lorem.sentences 8 %>
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '57d8f3f9e6fc9b00030b32a3' } %>
+
+<% partial 'partials/exercise', locals: { name: 'Lorem' } do %>
+  <p>
+    <%= lorem.sentences 8 %>
+  </p>
+<% end %>
