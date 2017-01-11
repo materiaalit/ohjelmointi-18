@@ -2558,6 +2558,48 @@ Vuosi on karkausvuosi.
 <% end %>
 
 
+<% partial 'partials/exercise', locals: { name: 'Laskin' } do %>
+
+
+  <p>
+    Toteuta laskin, joka tarjoaa plus, miinus, kerto sekä jakolaskutoiminnallisuuden. Alla on kuvattu laskimelta toivottu toiminallisuus.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Anna ensimmäinen luku: <font color="red">7</font>
+    Anna toinen luku: <font color="red">1</font>
+    Anna operaatio: <font color="red">+</font>
+
+    7 + 1 = 8
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Anna ensimmäinen luku: <font color="red">5</font>
+    Anna toinen luku: <font color="red">3</font>
+    Anna operaatio: <font color="red">-</font>
+
+    5 - 3 = 2
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Anna ensimmäinen luku: <font color="red">22</font>
+    Anna toinen luku: <font color="red">3</font>
+    Anna operaatio: <font color="red">*</font>
+
+    22 * 3 = 66
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Anna ensimmäinen luku: <font color="red">22</font>
+    Anna toinen luku: <font color="red">3</font>
+    Anna operaatio: <font color="red">/</font>
+
+    17 / 3 = 5.666666666666667
+  <% end %>
+
+<% end %>
+
+
 
 <% partial 'partials/material_heading' do %>
   Yhteenveto
