@@ -7,16 +7,13 @@
 <% end %>
 
 <p>
-  Tämä materiaali on tarkoitettu Helsingin yliopiston tietojenkäsittelytieteen laitoksen kursseille ohjelmoinnin perusteet (5 op) ja ohjelmoinnin jatkokurssi (5 op). Materiaalin ensimmäiset 7 osaa liittyvät kurssiin ohjelmoinnin perusteet, ja seuraavat 7 osaa kurssiin ohjelmoinnin jatkokurssi. Kurssimateriaalia ja tehtäviä julkaistaan kurssin edetessä viikoittain.
+  Tämä materiaali on tarkoitettu Helsingin yliopiston tietojenkäsittelytieteen laitoksen kursseille ohjelmoinnin perusteet (5 op) ja ohjelmoinnin jatkokurssi (5 op) sekä <a href="http://mooc.fi/courses/2017/ohjelmoinnin-mooc/" target="_blank">Ohjelmoinnin MOOCin</a> materiaaliksi. Materiaalin ensimmäiset 7 osaa liittyvät kurssiin ohjelmoinnin perusteet ja seuraavat 7 osaa kurssiin ohjelmoinnin jatkokurssi. Kurssimateriaalia ja tehtäviä julkaistaan lisää viikoittain kurssin edetessä.
 </p>
 
 <p>
-  Kurssien oletettu työkuorma on noin 8-20 tuntia yhtä kurssin osaa kohden. Varaa siis opiskeluun aikaa.
+  Kurssien oletettu työkuorma on noin 8-20 tuntia yhtä osaa kohden. Varaa siis opiskeluun aikaa. 
 </p>
 
-<p>
-  Kurssia käytetään myös Ohjelmoinnin MOOCin materiaalina.
-</p>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -24,7 +21,7 @@
 <% end %>
 
 <p>
-  Kurssi on tarkoitettu kaikille ohjelmoinnin oppimisesta kiinnostuneille. Aiempaa ohjelmointikokemusta ei oleteta tai vaadita. Kurssille osallistuminen vaatii tietokoneen sekä kyvyn asentaa tietokoneelle kurssilla käytetyt ohjelmointivälineet. Helsingin yliopiston opiskelijat voivat myös tehdä kurssin tehtäviä Kumpulan kampuksella sijaitsevilla koneilla.
+  Materiaali on tarkoitettu kaikille ohjelmoinnin oppimisesta kiinnostuneille. Aiempaa ohjelmointikokemusta ei oleteta tai vaadita. Kurssille osallistuminen vaatii kuitenkin tietokoneen sekä mahdollisuuden kurssilla käytettävien ohjelmistojen asentamiseen. Helsingin yliopiston opiskelijat voivat tehdä kurssin tehtäviä Kumpulan kampuksella sijaitsevilla koneilla, jolloin omaa tietokonetta ei tarvita.
 </p>
 
 
@@ -32,17 +29,51 @@
   Osaamistavoitteet ja kurssin sisältö
 <% end %>
 
+
+
 <% partial 'partials/material_sub_heading' do %>
-  Työskentelytavat
+  Työskentelytavat ja aikataulu
 <% end %>
 
 
 <p>
-  Kurssin työskentelytavat sisältävät omatoimisen kurssimateriaalin lukemisen, ohjelmointitehtävien tekemisen joko kotona tai Kumpulan kampuksella Helsingissä, pariohjelmointitilaisuuksiin osallistumisen Kumpulassa, sekä konekokeiden suorittamisen.
+  Kurssin työskentelyyn kuuluu kurssimateriaalin lukeminen ja pohdinta, ohjelmointitehtävien tekeminen (joko kotona tai Kumpulan kampuksella Helsingissä), pariohjelmointitehtävät (Kumpulassa), sekä konekokeiden suorittamisen.
 </p>
 
 <p>
-  Ohjelmoinnin MOOCi osallistujat eivät tee pariohjelmointitehtäviä.
+  Kurssilla järjestetään viikoittain ohjausta Kumpulan kampuksella Exactum-rakennuksen salissa BK107. Ohjausta järjestetään 16.1.-3.3. ja 13.3.-7.5. seuraavina aikoina:
+</p>
+
+<ul>
+  <li>
+    Tiistaisin 10-12
+  </li>
+  <li>
+    Keskiviikkoisin 10-12, 14-19
+  </li>
+  <li>
+    Torstaisin 14-19
+  </li>
+  <li>
+    Perjantaisin 10-14
+  </li>
+</ul>
+
+<p>
+  Pariohjelmointitehtävien tekemiseen järjestetään yhteisiä aloitusaikoja, jotta parien muodostaminen sujuu luontevasti. Aloitukset ovat kurssin toisesta viikosta lähtien tiistaisin klo 10:15, keskiviikkoisin klo 10:15 ja 16:15 sekä torstaisin klo 14:15.
+</p>
+
+<p>
+  Yksittäisen osan viimeinen palautusaika on Helsingin yliopiston kurssilaisilla aina perjantaisin klo 14:00. Tarkista tarkempi aika <a href="https://tmc.mooc.fi/" target="_blank">tehtäväsivulta TMC:stä</a>. 
+</p>
+
+<p>
+  Kumpulan mikroluokissa (BK107, B221) saa työskennellä myös ohjausaikojen ulkopuolella, jos siellä ei ole tuolloin muuta toimintaa.
+</p>
+
+
+<p>
+  MOOC-osallistujat saavat tulla myös ohjausaikoihin kyselemään apua tehtäviin liittyen. Pariohjelmointia ei MOOC-osallistujille erikseen järjestetä.
 </p>
 
 
@@ -66,11 +97,14 @@
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
-  Tehtävien tekeminen
+  Tehtävien tekeminen ja pariohjelmointi
 <% end %>
 
 <p>
-  Kurssilla on käytössä ohjelmointiympäristö Test My Code (asennusohjeet alempana), joka lataa tehtävät sekä antaa niistä automaattista palautetta.
+  Kurssilla on käytössä ohjelmointiympäristö Test My Code (asennusohjeet alempana), joka lataa tehtävät sekä antaa niistä automaattista palautetta. Normaalien ohjelmointitehtävien lisäksi kurssilla on myös pariohjelmointitehtäviä, joita tehdään Kumpulassa. Parit muodostetaan aina pariohjelmointitilaisuuksien alussa.
+</p>
+
+<p>
 </p>
 
 
@@ -80,7 +114,7 @@
 <% end %>
 
 <p>
-  Hyvä yhteistyö keskittyy jokaisen osapuolen oppimiseen ja parantaa oppimistuloksia. Yhteistyö on kurssin ohjelmointitehtäviä pohtiessa sallittua ja suositeltavaa. Kumpulan kampuksella tehtävissä pariohjelmointitehtävissä yhteistyö on koko tekemisen ydin.
+  Hyvä yhteistyö keskittyy jokaisen osapuolen oppimiseen ja parantaa oppimistuloksia. Yhteistyö on kurssin ohjelmointitehtäviä pohtiessa sallittua ja suositeltavaa. Kumpulan kampuksella tehtävissä pariohjelmointitehtävissä yhteistyö on myös koko tekemisen ydin.
 </p>
 
 <p>
@@ -94,20 +128,21 @@
 </em></p>
 
 <p>
-  Jos pohdit tehtäviä muiden kanssa, sinun tulee tehdä ja palauttaa omat ratkaisusi itse. Pidä yhteistyörupeaman jälkeen ainakin puolen tunnin tauko, jolloin teet jotain täysin muuta, ja aloita omien tehtäviesi työstäminen vasta sitten. Kirjoita myös palautuksen yhteyteen niiden kurssikavereidesi TMC-tunnukset, joiden kanssa teit yhteistyötä.
+  Jos teet tehtäviä yhdessä muiden kanssa, sinun tulee tehdä ja palauttaa omat ratkaisusi itse. Pidä yhteistyörupeaman jälkeen ainakin puolen tunnin tauko, jolloin teet jotain täysin muuta, ja aloita omien tehtäviesi työstäminen vasta sitten. Kirjoita myös tehtävien palautuksen yhteyteen niiden kurssikavereidesi TMC-tunnukset, joiden kanssa teit yhteistyötä.
 </p>
+
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
-  Plagiarismi
+  Opintovilpistä
 <% end %>
 
 <p>
-  Kurssilla seurataan Helsingin yliopiston hyviä opintokäytäntöjä. Plagiarismi ja opintovilppi, eli esimerkiksi netissä olevien vastausten kopiointi ja niiden palauttaminen omana työnä on kurssilla kiellettyä. Opintovilppi -- esimerkiksi avun kysyminen -- on luonnollisesti kiellettyä myös kurssin konekokeissa.
+  Kurssilla seurataan Helsingin yliopiston opintokäytäntöjä. Plagiarismi ja opintovilppi, eli esimerkiksi netissä olevien vastausten kopiointi ja niiden palauttaminen omana työnä on kurssilla kiellettyä. Konekokeen aikana kaikenlainen yhteistyö ja avun kysyminen tai antaminen on kiellettyä. 
 </p>
 
 <p>
-  Lue lisää osoitteesta <a href="http://blogs.helsinki.fi/alakopsaa/opiskelijalle/"  target="_blank" >http://blogs.helsinki.fi/alakopsaa/opiskelijalle/</a>.
+  Todettu opintovilppi johtaa kurssisuorituksen hylkäämiseen, toistuva opintovilppi voi johtaa opinto-oikeuden määräaikaiseen menettämiseen.  Lue lisää osoitteesta <a href="http://blogs.helsinki.fi/alakopsaa/opiskelijalle/"  target="_blank" >http://blogs.helsinki.fi/alakopsaa/opiskelijalle/</a>.
 </p>
 
 
@@ -310,11 +345,11 @@
 
 
 <p>
-  Huom! Edeltävä arvosteluasteikko olettaa, että hyväksyt analytiikkadatan keräämisen kurssin ohjelmointitehtävien ja konekokeiden tekekemisestä. Analytiikkadata sisältää ajoittain kerättäviä aikaleimattuja kopioita kullakin ajanhetkellä työstämästäsi ohjelmointitehtävästä. Analytiikkadataa ei kerätä omista projekteistasi tai muualta koneeltasi.
+  <strong>Huom!</strong> Edeltävä arvosteluasteikko olettaa, että hyväksyt analytiikkadatan keräämisen kurssin ohjelmointitehtävien ja konekokeiden tekekemisestä. Analytiikkadata sisältää ajoittain kerättäviä aikaleimattuja kopioita kullakin ajanhetkellä työstämästäsi ohjelmointitehtävästä. Analytiikkadataa ei kerätä omista projekteistasi tai muualta koneeltasi.
 </p>
 
 <p>
-  Jos et hyväksy analytiikkadatan keräämistä, kurssin suoritus tapahtuu tehtäviä tekemällä sekä Kumpulassa järjestettävään erilliskoetta vastaavaan kokeeseen osallistumalla. Tällöin koko kurssin arvostelu perustuu vain erilliskokeessa suoriutumiseen. Analytiikkadatan keräämisen kytkemiseen annetaan ohjeet ohjelmointiympäristön asennuksen yhteydessä.
+  Jos et hyväksy analytiikkadatan keräämistä, kurssin suoritus tapahtuu tehtäviä tekemällä sekä Kumpulassa järjestettävään erilliskokeeseen osallistumalla. Tällöin koko kurssin arvostelu perustuu vain erilliskokeessa suoriutumiseen. Analytiikkadatan keräämisen kytkemiseen annetaan ohjeet ohjelmointiympäristön asennuksen yhteydessä.
 </p>
 
 
@@ -324,10 +359,80 @@
 <% end %>
 
 <p>
-  Arvosteluasteikko on sama kuin Helsingin yliopiston opiskelijoilla. Jos haluat kurssista suoritusmerkinnän Helsingin yliopiston Avoimen yliopiston kautta, tai pyrit kurssin kautta opiskelijaksi Helsingin yliopistoon, tulee sinun hyväksyä analytiikkadatan kerääminen.  Analytiikkadatan keräämisen kytkemiseen annetaan ohjeet ohjelmointiympäristön asennuksen yhteydessä.
+  Arvosteluasteikko on sama kuin Helsingin yliopiston opiskelijoilla. Jos haluat kurssista suoritusmerkinnän Helsingin yliopiston Avoimen yliopiston kautta, tai pyrit kurssin kautta opiskelijaksi Helsingin yliopistoon, tulee sinun hyväksyä analytiikkadatan kerääminen. Analytiikkadatan keräämisen kytkemiseen annetaan ohjeet ohjelmointiympäristön asennuksen yhteydessä.
 </p>
 
-http://www.acm.org/about-acm/acm-code-of-ethics-and-professional-conduct
+<p>
+  Helsingin yliopistoon pyrkijöiden tulee kerätä kurssin jokaisesta osasta vähintään 90% saatavilla olevista pisteistä. Tarkempaa tietoa tästä osoitteessa <a href="http://mooc.fi/courses/2017/ohjelmoinnin-mooc/" target="_blank">http://mooc.fi/courses/2017/ohjelmoinnin-mooc/</a>.
+</p>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Tunnukset ja työvälineet
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Käyttäjätunnuksen luominen
+<% end %>
+
+<p>
+  Kurssilla tarvitaan käyttäjätunnus Test My Code (TMC) -järjestelmään, jota käytetään tehtävien automaattiseen arviointiin. Käyttäjätunnuksella voit myös kirjautua tähän materiaaliin, jolloin pääset vastaamaan materiaalissa oleviin kyselyihin.
+</p>
+
+<p>
+  <strong>Huom!</strong> Jos olet Helsingin yliopiston opiskelija, käytä käyttäjätunnuksenasi opiskelijanumeroasi (joudut luomaan sen silti). Näin opintopisteiden liittäminen kurssisuoritukseen helpottuu merkittävästi. Jos taas et ole Helsingin yliopiston opiskelija, keksi itsellesi sopiva käyttäjätunnus. Kun jatkossa kysymme TMC-tunnustasi, tarkoitamme sillä tätä käyttäjätunnusta.
+</p>
+
+<p>
+  Käyttäjätunnuksen luominen onnistuu sivulla <a href="https://tmc.mooc.fi/user/new" target="_blank">https://tmc.mooc.fi/user/new</a>.
+</p>
+
+<p>
+  Kun olet luonut käyttäjätunnuksen, voit kirjautua tähän materiaaliin materiaalin oikeassa ylälaidassa olevan "Kirjaudu sisään"-napin kautta.
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Ohjelmointiympäristön asentaminen
+<% end %>
+
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Oikean kurssin valinta ohjelmointiympäristössä
+<% end %>
+
+<p>
+  Kurssimateriaalia käytetään tällä hetkellä (ainakin) kolmella eri kurssilla.
+</p>
+
+<ul>
+  <li>
+    Helsingin yliopiston kurssi Ohjelmoinnin perusteet (kurssi <a href="https://courses.helsinki.fi/fi/581325/117155146" target="_blank">https://courses.helsinki.fi/fi/581325/117155146</a>). Jos teet kurssia Helsingin yliopistolla, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <strong>https://tmc.mooc.fi/org/hy/courses/198</strong>. Kurssin nimi on tällöin <strong>hy-ohpe-k2017</strong>.
+  </li>
+  <li>
+    Aikataulutettu Ohjelmoinnin MOOC (ja Avoin yliopisto) (kurssi <a href="http://mooc.fi/courses/2017/ohjelmoinnin-mooc/" target="_blank">http://mooc.fi/courses/2017/ohjelmoinnin-mooc/</a>). Jos teet Ohjelmoinnin MOOCia aikataulutettuna versiona, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <strong>https://tmc.mooc.fi/org/mooc/courses/199</strong>. Kurssin nimi on tällöin <strong>mooc-2017-ohjelmointi</strong>.
+  </li>
+  <li>
+    Aikatauluttamaton Ohjelmoinnin MOOC (kurssi <a href="http://mooc.fi/courses/2017/ohjelmoinnin-mooc/" target="_blank">http://mooc.fi/courses/2017/ohjelmoinnin-mooc/</a>). Jos teet Ohjelmoinnin MOOCia aikatauluttamattomana versiona, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <strong>https://tmc.mooc.fi/org/mooc/courses/200</strong>. Kurssin nimi on tällöin <strong>mooc-2017-ohjelmointi-nodl</strong>.
+  </li>
+</ul>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ensimmäisen ohjelman palauttaminen
+<% end %>
+
+
+<% partial 'partials/code_template' do %>
+  Perkele...
+<% end %>
+
+
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -349,11 +454,7 @@ http://www.acm.org/about-acm/acm-code-of-ethics-and-professional-conduct
 
 
 <p>
-  Muutama sana kurssimateriaalissa olevista kyselyistä sekä kurssilla tehtävästä tutkimuksesta. Kurssimateriaalin kyselyistä kerättävää tietoa käytetään
-</p>
-
-<p>
-  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) auttaa muita vastaavien oppimaterialien kehittäjiä ja tutkijoita.
+  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita.
 </p>
 
 <p>
@@ -361,31 +462,7 @@ http://www.acm.org/about-acm/acm-code-of-ethics-and-professional-conduct
 </p>
 
 
-
-
-<% partial 'partials/material_heading' do %>
-  Tunnukset ja työvälineet
-<% end %>
-
-
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Käyttäjätunnuksen luominen
-<% end %>
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Ohjelmointiympäristön asentaminen
-<% end %>
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Ensimmäisen ohjelman palauttaminen
-<% end %>
+<%= partial 'partials/quiz', locals: { id: '5877e97fd095c40004e4b1a9' } %>
 
 
 
