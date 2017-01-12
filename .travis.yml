@@ -1,0 +1,30 @@
+language: ruby
+rvm: 2.3.3
+cache:
+  bundler: true
+  directories:
+  - node_modules
+branches:
+  only:
+  - master
+before_install:
+  - nvm install 7.4.0
+install:
+- npm install
+- bundle install --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}
+before_script:
+- git config --global user.name "hnbot"
+- git config --global user.email "nygrenh+hnbot@gmail.com"
+- export COMMIT_MESSAGE=Update:\ $(git log -1 --pretty=%s)
+- git clone https://github.com/2017-ohjelmointi/2017-ohjelmointi.github.io.git build
+script:
+- bundle exec middleman build
+after_success:
+- cd build
+- git checkout HEAD README.md .github
+- git add --all
+- git commit -m "$COMMIT_MESSAGE"
+- git push "https://hnbot:$GITHUB_API_KEY@github.com/2017-ohjelmointi/2017-ohjelmointi.github.io.git" master:master 2>&1 | sed "s/$GITHUB_API_KEY/<confidential>/g"
+env:
+  global:
+    secure: HlgQgENlU8jExlA2XZJoyZzlENctg6sSJKhutGPIfRa0seXwJS476X4Li9JroJ5kBN0ynng92POTdSinnJ0ybY9QGF5nkfmYZNCj/3xIDZObQY6sSisls6tpIQQGoB3LJ4DMkvgYGkwEV7IwFse9QgQp2NmArK4xBKkYJCEBU4I8paKQExMTCUtE5cAOCBma+H+bTT6TpAVYdtogj9ng+SMPAowkJZ+NnsuaJ90sBtEVOXTosbKS8SHPgX6XrM8UyAC8jt1NPLY1S+as8toLGu0oTx1hQf7SKs7vRUSXKKzQpvluVmffzTMtTHQjgV6b6144ric3K62nOLke2VgBNMyyVXaCJAMs4ymk2Ch3uUUupSt95HK90O6G/Q2G+A+xI3BmPyNrvXOZn4pgg/E8aJ1buSqAFIMTwUKkw6kHeD7LlBnpaeQFbpThT2I5vCKYn2APL64t+lt1uDRombmfnlp2f/SBZBqmdqeb2RNH8WKvyDgy9R7rRzntTMM1syvSh2l1bZlSWwmXBHYy/z0Ao5Cn+1YM/M+n8F1U/zP1NyojoT/3KTHDJqdD0dYycccCew3O47b5G8b3RFJCKxeSFMgt1xQAJwoI+QMccx8E+8o31S5rmxLXAvX0XswH95hvZHuI37xh1IVacmLsDcBrf3jqFxZPFQEhpEsDODj+Slw=
