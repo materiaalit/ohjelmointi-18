@@ -28,6 +28,8 @@
     "bootstrap": "4.0.0-alpha.5",
     "bowser": "^1.6.0",
     "lodash": "^4.17.4",
+    "store": "^1.3.20",
+    "tmc-analytics": "0.0.0-alpha4",
     "tmc-client-js": "0.0.7"
   }
 }

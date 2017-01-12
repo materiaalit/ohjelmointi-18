@@ -1,6 +1,33 @@
 import TmcClient from 'tmc-client-js';
+import Spyware from 'tmc-analytics';
 
 const client = new TmcClient();
+
+const spywares = {};
+
+function onFieldChange(e) {
+  const DELETE_KEY = 8;
+
+  const user = client.getUser();
+  const keyCode = e.which || e.keyCode;
+  const action = keyCode === DELETE_KEY ? 'text_remove' : 'text_insert';
+  const content = e.target.value;
+  const elemNode = $(e.target);
+  const pluginElem = elemNode.closest('.quiznator-plugin');
+  const quizId = pluginElem.data('quiz-id');
+  const exerciseName = `quiznator-${quizId}`;
+
+  const quiznatorSpyware = spywares[quizId]
+    ? spywares[quizId]
+    : new Spyware(user.username, user.accessToken, '2017-ohjelmointi', exerciseName, 'https://hy.spyware.testmycode.net');
+
+  quiznatorSpyware.spyEvent(exerciseName, content, action);
+}
+
+function initSnapshotListeners() {
+  $('.quiznator-plugin').on('keyup', 'textarea', onFieldChange);
+  $('.quiznator-plugin').on('keyup', 'input[type="text"]', onFieldChange);
+}
 
 function init() {
   const user = client.getUser();
@@ -9,6 +36,8 @@ function init() {
     id: user.username,
     accessToken: user.accessToken
   });
+
+  initSnapshotListeners();
 }
 
 function initQuiznator() {
