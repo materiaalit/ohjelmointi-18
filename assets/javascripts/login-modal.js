@@ -1,4 +1,5 @@
 import TmcClient from 'tmc-client-js';
+import * as store from 'store';
 
 import initQuiznator from './quiznator';
 import initStudentDashboard from './student-dashboard';
@@ -56,8 +57,10 @@ class LoginModal {
     if(client.getUser()) {
       client.unauthenticate();
 
-      window.StudentDashboard.destroy();
-      window.Quiznator.removeUser();
+      try {
+        window.StudentDashboard.destroy();
+        window.Quiznator.removeUser();
+      } catch(e) {}
     } else {
       this.loginModalNode.modal('show');
     }
@@ -70,12 +73,19 @@ class LoginModal {
 
     this.hideError();
 
-    var username = this.loginUsernameNode.val();
-    var password = this.loginPasswordNode.val();
+    const username = this.loginUsernameNode.val();
+    const password = this.loginPasswordNode.val();
+    const courseNode = this.loginFormNode.find('input[name="tmcLoginCourse"]:checked');
 
-    if(!username || !password) {
+    if(courseNode.length === 0) {
+      this.showError('Et valinnut kurssia');
+    } else if(!username || !password) {
       this.showError('Käyttäjätunnus tai salasana puuttuu');
     } else {
+      const course = courseNode.val();
+
+      store.set('tmc.course', course);
+
       client.authenticate({ username: username, password: password })
         .then(response => {
           this.loginModalNode.modal('hide');

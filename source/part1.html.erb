@@ -4,12 +4,17 @@
   quiz_page: true
 ---
 
+<h1>Kysely: Opiskeluun liittyvät toimintatavat</h1>
+
+<p>
+  Kyselyn lataaminen saattaa kestää hetken. Joudut kirjautumaan sisään vastaaksesi kyselyyn. Kirjaudu sisään painamalla yläpalkin "Kirjaudu sisään"-painiketta.
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '5877687bd095c40004e4b185' } %>
 
 <% partial 'partials/material_heading' do %>
   Ohjelma ja lähdekoodi
 <% end %>
-
-
 
 <p>
   Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on aloitteleva leipuri, tietokone-ohjelma kokkikirjasta saatu resepti, ja tietokoneen resurssit -- esimerkiksi näyttö, tietokoneelle tallennettu tiedosto ja verkkokortti -- leipomiseen käytettäviä raaka-aineita. Tietokone noudattaa sille annettua reseptiä säntillisesti askel kerrallaan ilman ymmärrystä tai tietoa hamaan ikuisuuteen asti. Jos reseptissä on kirjoitusvirhe, ei tietokone tiedä miten sen tulee toimia. Tietokone ei myöskään osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti kerro täsmällisesti miten rikkinäinen uuni tunnistetaan ja mitä uunin rikkoutuessa tulee tehdä.
@@ -19,7 +24,6 @@
 <p>
   Aloittelevalla leipurilla ja tietokoneella on muutamia merkittäviä eroja. Tietokone pystyy suorittamaan miljoonia yksittäisiä käskyjä sekunnissa, kun aloittelevalla leipurilla voi mennä yhteen reseptissä olevan käskyn noudattamiseen minuutteja. Toisaalta, aloitteleva leipuri oppii ja kehittyy leipoessaan. Hän voi luovasti kokeilla uusia raaka-aineita ja reseptejä, sekä kehitellä itselleen paremmin sopivia työskentelytapoja. Tietokoneella ei tällaista kehittymiskykyä ole, ellei sitä erikseen -- askel askeleelta -- ole sille annettuun reseptiin kirjoitettu. Tällä kurssilla opit kirjoittamaan tietokoneelle tarkoitettuja reseptejä.
 </p>
-
 
 <p>
   Tietokoneelle annettava resepti eli <strong>ohjelma</strong> on järjestetty joukko ennalta laadittuja käskyjä, joita tietokone noudattaa yksi kerrallaan. Ohjelmoijat eivät tyypillisesti ohjelmoi tietokoneen suoraan ymmärtämiä käskyjä käyttäen, vaan ohjelmoinnissa käytetään ihmisen kirjoitettavaksi ja luettavaksi tarkoitettua ohjelmointikieltä, kuten tällä kurssilla käytettyä <a href="https://en.wikipedia.org/wiki/Java_(programming_language)" target="_blank">Javaa</a>. Ohjelmoijan kirjoittamaa ohjelmakoodia kutsutaan <strong>lähdekoodiksi</strong>. Lähdekoodi käännetään ohjelmaksi tähän erityisesti tarkoitetun ja kirjoitetun kääntäjäohjelman avulla.
@@ -45,7 +49,6 @@
 <% partial 'partials/material_sub_heading' do %>
   Ohjelmarunko
 <% end %>
-
 
 <p>
   Java-ohjelmat vaativat toimiakseen kurssin aikana tutuksi tulevan rungon. Ohjelman runko on seuraavanlainen.
@@ -1120,7 +1123,7 @@ toka = 17;
   <p>
     Huom! Vaikka suurin osa ohjelmasta tuntuu todennäköisesti hyvin kryptiseltä, löytänet lähdekoodista myös jotain tuttua.
   </p>
-  
+
 <% end %>
 
 
@@ -1825,7 +1828,7 @@ Arvosana: mahdotonta!
   <p>
     Huomaa tässäkin tehtävässä, ettei sinun tarvitse ymmärtää ohjelmakoodista kuin vain muutamia oleellisia kohtia.
   </p>
-  
+
 <% end %>
 
 
@@ -2136,11 +2139,11 @@ if (luku &gt; 0) {
 
 <% partial 'partials/code_highlight' do %>
 import java.util.Scanner;
-  
+
 public class MerkkijonojenVertailu {
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
-  
+
         System.out.println("Syötä kaksi merkkijonoa.");
         String eka = lukija.nextLine();
         String toka = lukija.nextLine();
@@ -2238,7 +2241,7 @@ if (!onkoSuurempi) {
 <% partial 'partials/sample_output' do %>
 1 ei ole suurempi kuin 3
 <% end %>
-  
+
 
 <p>
   Tämä ilmiö selvenee myöhemmin kurssilla.
@@ -2259,7 +2262,7 @@ import java.util.Scanner;
 public class MerkkijonojenVertailu {
     public static void main(String[] args) {
         Scanner lukija = new Scanner(System.in);
-    
+
         System.out.println("Syötä kaksi merkkijonoa.");
         String eka = lukija.nextLine();
         String toka = lukija.nextLine();
@@ -2275,7 +2278,7 @@ public class MerkkijonojenVertailu {
 
   <p>Ohjelma ei kuitenkaan toimi halutulla tavalla. Korjaa se.</p>
 
-  
+
 <% end %>
 
 
@@ -2303,7 +2306,7 @@ Koitappa uudelleen!
   <p>
     Tee ohjelma, joka tunnistaa seuraavat käyttäjät:
   </p>
-  
+
   <table border style="margin-left:50px">
     <tr>
       <th>tunnus</th>
@@ -2318,7 +2321,7 @@ Koitappa uudelleen!
       <td>kissa</td>
     </tr>
   </table>
-  
+
   <p>
     Ohjelma näyttää käyttäjälle henkilökohtaisen viestin tai ilmoittaa, jos tunnus tai salasana on väärin.
   </p>
@@ -2340,7 +2343,7 @@ Anna tunnus: <font color="red">aleksi</font>
 Anna salasana: <font color="red">jokerit</font>
 Virheellinen tunnus tai salasana!
   <% end %>
-  
+
 <% end %>
 
 
@@ -2379,7 +2382,7 @@ Virheellinen tunnus tai salasana!
     Satelliitti tuhoutui.
   </p>
 
-  
+
 <% end %>
 
 
@@ -2587,7 +2590,7 @@ Vuosi on karkausvuosi.
 
     22 * 3 = 66
   <% end %>
-  
+
   <% partial 'partials/sample_output' do %>
     Anna ensimmäinen luku: <font color="red">22</font>
     Anna toinen luku: <font color="red">3</font>
@@ -2604,17 +2607,17 @@ Vuosi on karkausvuosi.
 
 
   <p>
-    Osan viimeisessä tehtävässä pääset taas tarkastelemaan melko tuntematonta lähdekoodia. Tehtävässä on valmiiksi toteutettuna ohjelma, missä hymiö seuraa hiirtä.  
+    Osan viimeisessä tehtävässä pääset taas tarkastelemaan melko tuntematonta lähdekoodia. Tehtävässä on valmiiksi toteutettuna ohjelma, missä hymiö seuraa hiirtä.
   </p>
 
   <img class="naytto" src="/img/exercises/01-30-jahtaus.png"/>
 
   <p>
-    Tehtävänäsi on muokata ohjelmaa siten, että sen sijaan, että hymiö seuraa hiirtä, hymiön pitäisi vältellä hiirtä. Lähdekoodissa on valmiina muuttujia hiiren ja kuvan sijaintiin, joista saattaa olla tässä hyötyä. 
+    Tehtävänäsi on muokata ohjelmaa siten, että sen sijaan, että hymiö seuraa hiirtä, hymiön pitäisi vältellä hiirtä. Lähdekoodissa on valmiina muuttujia hiiren ja kuvan sijaintiin, joista saattaa olla tässä hyötyä.
   </p>
 
   <p>
-    Tehtävässä ei ole erillisiä automaattisia testejä. Palauta se kun olet mielestäsi saavuttanut tehtävän tavoitteen. 
+    Tehtävässä ei ole erillisiä automaattisia testejä. Palauta se kun olet mielestäsi saavuttanut tehtävän tavoitteen.
   </p>
 
 <% end %>

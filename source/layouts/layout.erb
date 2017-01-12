@@ -36,22 +36,7 @@
 
     <%= partial 'partials/quiznator' %>
 
-    <%=
-      partial 'partials/student-dashboard',
-      locals: {
-        config: {
-          'courseId' => '145',
-          'courseName' => 'Ohjelmoinnin perusteet',
-          'exerciseGroups' => {
-            'Week 1' => ['07.09.2016 01:00', '14.09.2016 23:59', 'viikko01-'],
-            'Week 2' => ['14.09.2016 01:00', '21.09.2016 23:59', 'viikko02-'],
-            'Week 3' => ['21.09.2016 01:00', '28.09.2016 23:59', 'viikko03-'],
-            'Week 4' => ['28.09.2016 01:00', '05.10.2016 23:59', 'viikko04-'],
-            'Week 5' => ['05.10.2016 01:00', '12.10.2016 23:59', 'viikko05-']
-          }
-        }
-      }
-    %>
+    <%= partial 'partials/student-dashboard' %>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
 	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -68,6 +53,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
 
     <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}});</script>
   </body>
