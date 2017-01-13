@@ -74,20 +74,6 @@ public class Esimerkki {
 </p>
 
 
-<% partial 'partials/hint', locals: { name: 'Lähdekoodin sijainti' } do %>
-
-  <p>
-    TODO: missä lähdekoodi tietsikalla? Entä NB:Ssä?
-  </p>
-
-  <p>
-    Ohjelmarunko sijaitsee <i>.java</i>-päätteisessä tekstitiedostossa, jonka nimi on sama kuin ohjelman nimi -- tässä Esimerkki -- "public class <em>Esimerkki</em>". Ohjelma <i>Esimerkki</i> sijaitsee siis tiedostossa, jonka nimi on <code>Esimerkki.java</code>.
-  </p>
-
-<% end %>
-
-
-
 <% partial 'partials/exercise', locals: { name: 'Ada Lovelace' } do %>
 
   <p>Tehtäväpohjassa on seuraavanlainen ohjelmarunko:</p>
@@ -115,6 +101,26 @@ Ada Lovelace
   </p>
 
 <% end %>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Lähdekoodin sijainti' } do %>
+
+  <p>
+    Lähdekoodi ladataan ja tallennetaan tietokoneen kovalevylle. Näet lähdekoodin tarkemman sijainnin klikkaamalla projektin nimeä (esim. Osa01_01.AdaLovelace) hiiren oikealla näppäimellä ja valitsemalla Properties. Tämä avaa projektiin liittyvän asetusikkunan. Ikkunan Sources-valikossa löytyy tieto projektin kansiosta (Project Folder).
+  </p>
+
+  <p>
+    Kyseiseen kansioon voi mennä myös ilman NetBeansia. Huomaat, että projektin kansiossa on useita tiedostoja. Lähdekoodit, joita muokkaamme ja luomme tällä kurssilla sijaitsevat aina kansiossa <em>src</em> eli sources. 
+  </p>
+
+  <p>
+    Lähdekooditiedostojen nimi päättyy merkkijonoon <em>.java</em>, ja tiedoston nimi on sama kuin ohjelman nimi. Esimerkiksi jos ohjelma alkaa sanoilla <code>public class Esimerkki</code>, löytyy siihen liittyvä lähdekoodi tiedostosta <code>Esimerkki.java</code>.
+  </p>
+
+<% end %>
+
+
 
 
 
@@ -706,10 +712,23 @@ System.out.println(2 + toka - eka - toka); // tulostaa 0
 <% end %>
 
 
+
 <p>
-  TODO: lausekeQUIZ
+  Lauseke ei myöskään muuta muuttujassa olevaa arvoa, ellei lausekkeen lopputulosta aseteta muuttujan arvoksi tai anneta parametrina esimerkiksi tulostukselle. 
 </p>
 
+<% partial 'partials/code_highlight' do %>
+  int eka = 2;
+  int toka = 4;
+
+  // alla oleva lauseke ei edes toimi, sillä lauseketta
+  // ei aseteta minkään muuttujan arvoksi tai anneta parametrina
+  // tulostuslauseelle
+  eka + toka;
+<% end %>
+
+
+<%= partial 'partials/quiz', locals: { id: '5878a0b579db890004df0d1d' } %>
 
 
 
@@ -964,18 +983,9 @@ keskiarvo: 5.333333333333333
 
 <% end %>
 
-<p>TODO: QUIZ</p>
-
-<p>Mitä seuraava tulostaa?</p>
 
 
-<% partial 'partials/code_highlight' do %>
-int jaettava = 3;
-int jakaja = 2;
-
-double tulos = jaettava / jakaja * 1.0;
-System.out.println(tulos);
-<% end %>
+<%= partial 'partials/quiz', locals: { id: '5878a2b179db890004df0d1e' } %>
 
 
 
@@ -1098,31 +1108,26 @@ rivi 9: tulostetaan arvo 28
 <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20LaskentaAskeleittain%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20int%20eka%20%3D%20(1%20%2B%201%29%3B%0A%20%20%20%20int%20toka%20%3D%20eka%20%2B%203%20*%20(2%20%2B%205%29%3B%0A%0A%20%20%20%20eka%20%3D%205%3B%0A%0A%20%20%20%20int%20kolmas%20%3D%20eka%20%2B%20toka%3B%0A%20%20%20%20System.out.println(eka%29%3B%0A%20%20%20%20System.out.println(toka%29%3B%0A%20%20%20%20System.out.println(kolmas%29%3B%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 -->
 
-<p>TODO: QUIZ</p>
 
-<p>Kirjoita allaolevan ohjelmakoodin suoritus auki.</p>
-
-<% partial 'partials/code_highlight' do %>
-int toka = 32;
-int eka = toka;
-toka = 17;
-<% end %>
-
-<p>Mikä muuttujan <code>eka</code> arvo on lopuksi?</p>
+<%= partial 'partials/quiz', locals: { id: '5878a3ee79db890004df0d1f' } %>
 
 
 
 <% partial 'partials/exercise', locals: { name: 'Jakolaskin' } do %>
 
   <p>
-    Tehtäväpohjassa on jakolaskin, johon on toteutettu graafinen käyttöliittymä (ikkuna). Ohjelman jakolaskutoiminnossa on pientä häikkää eikä se tunnu toimivan oikein. Korjaa se.
+    Tässä tehtävässä harjoittelet ensimmäistä kertaa tuntemattoman ohjelman muokkaamista. Vaikka suurin osa ohjelmasta tuntuu kryptiseltä, etkä tunne lähdekoodissa käytettyjä sanoja lainkaan, huomaat sieltä todennäköisesti myös tuttuja asioita.
   </p>
-
-  <img class="naytto" src="/img/exercises/01-30-jahtaus.png"/>
+  
+  <p>
+    Tehtäväpohjaan on toteutettuna graafinen (eli ohjelma avautuu ikkunassa) jakolaskin. Ohjelmassa on kuitenkin pientä häikkää, kuten alla olevasta esimerkistä huomaat.
+  </p>
 
   <p>
-    Huom! Vaikka suurin osa ohjelmasta tuntuu todennäköisesti hyvin kryptiseltä, löytänet lähdekoodista myös jotain tuttua.
+    Korjaa ohjelma.
   </p>
+
+  <img class="naytto" src="/img/exercises/01-10-jakolaskin.png"/>
 
 <% end %>
 
@@ -1287,9 +1292,6 @@ Kuinka vanha olet: <font color="red">4</font>
 Nimesi on siis Nelli ja ikäsi 4, hauska tutustua.
 <% end %>
 
-<p>
-  TODO: Tehtävä
-</p>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1596,9 +1598,6 @@ Luku ei ole positiivinen.
   <% end %>
 
 <% end %>
-
-
-<p>TODO: tarkasta tulosteet</p>
 
 
 <% partial 'partials/exercise', locals: { name: 'Täysi-ikäisyys' } do %>
