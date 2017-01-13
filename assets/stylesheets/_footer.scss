@@ -1,0 +1,13 @@
+.footer {
+  background-color: $gray-lightest;
+  padding: 0rem $spacer-x * 3;
+  line-height: $spacer-y * 6;
+  color: $gray-light;
+  text-align: center;
+
+  &__github-link {
+    vertical-align: middle;
+    font-size: 2rem;
+    color: black;
+  }
+}

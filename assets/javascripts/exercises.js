@@ -1,4 +1,4 @@
-import { uniqueId, kebabCase } from 'lodash';
+import { uniqueId, kebabCase, chunk } from 'lodash';
 import { scrollToId } from './utils';
 
 class Exercises {
@@ -75,19 +75,24 @@ class Exercises {
   }
 
   renderExecisesList() {
-    const list = this.exerciseNames.map((exercise, index) => `
-      <div class="exercise-list__item col col-lg-4 col-md-6 col-sm-12">
-        <a data-toggle="collapse" class="exercise-list__link" href="${exercise.href}">
-          Tehtävä ${index + 1}: ${exercise.name}
-        </a>
-      </div>
-    `).join('');
+    const template = _.chain(this.exerciseNames)
+      .map((exercise, index) => `
+        <div class="exercise-list__item col col-lg-4 col-md-6 col-sm-12">
+          <a data-toggle="collapse" class="exercise-list__link" href="${exercise.href}">
+            Tehtävä ${index + 1}: ${exercise.name}
+          </a>
+        </div>
+      `)
+      .chunk(3)
+      .map(chunk => `
+        <div class="row">
+          ${chunk.join('')}
+        </div>
+      `)
+      .value()
+      .join('');
 
-    this.exerciseListNode.html(`
-      <div class="row">
-        ${list}
-      </div>
-    `);
+    this.exerciseListNode.html(template);
   }
 }
 

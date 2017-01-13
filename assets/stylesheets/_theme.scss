@@ -1,10 +1,21 @@
 html {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 header > h1 {
   border-bottom: 1px solid $gray-lighter;
   padding-bottom: $spacer-y;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .content-wrapper {
+    flex: 1;
+    padding-bottom: $spacer-y * 3;
+  }
 }
 
 .material-heading {

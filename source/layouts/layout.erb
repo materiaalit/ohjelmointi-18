@@ -18,16 +18,26 @@
     <% end %>
   </head>
   <body>
-    <%= partial 'partials/browser_warning' %>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <%= partial 'partials/browser_warning' %>
 
-    <%= partial 'partials/navigation' %>
+        <%= partial 'partials/navigation' %>
+      </div>
 
-    <div class="container material" id="material">
-      <% if current_page.data.exercise_page %>
-        <%= partial 'partials/exercise_list', locals: { include_quizzes: current_page.data.quiz_page } %>
-      <% end %>
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+          <% if current_page.data.exercise_page %>
+            <%= partial 'partials/exercise_list', locals: { include_quizzes: current_page.data.quiz_page } %>
+          <% end %>
 
-      <%= yield %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <%= partial 'partials/footer' %>
+      </div>
     </div>
 
     <%= partial 'partials/login_modal' %>

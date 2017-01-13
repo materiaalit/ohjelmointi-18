@@ -3,6 +3,8 @@ import * as store from 'store';
 
 import initQuiznator from './quiznator';
 import initStudentDashboard from './student-dashboard';
+import pheromones from './pheromones';
+import jsLogger from './js-logger';
 
 const client = new TmcClient();
 
@@ -18,12 +20,37 @@ class LoginModal {
     this.updateLoginButtonText();
 
     if(client.getUser()) {
-      initQuiznator();
-      initStudentDashboard();
+      this.afterLogin();
     }
 
     this.loginModalToggleNode.on('click', this.onToggleLoginModal.bind(this));
     this.loginFormNode.on('submit', this.onSubmitLoginForm.bind(this));
+  }
+
+  afterLogin() {
+    initQuiznator();
+    initStudentDashboard();
+
+    this.initPheromones();
+    this.initLogger();
+  }
+
+  initPheromones(){
+    const { username } = client.getUser();
+
+    pheromones.init({
+      apiUrl: 'https://data.pheromones.io/',
+      username,
+      submitAfter: 20
+    });
+  }
+
+  initLogger() {
+    const { username } = client.getUser();
+
+    jsLogger.setUser(username);
+    jsLogger.setApiUrl('https://data.pheromones.io/');
+    jsLogger.init();
   }
 
   getLoginText() {
@@ -93,9 +120,7 @@ class LoginModal {
           this.loginPasswordNode.val('');
 
           this.updateLoginButtonText();
-
-          initQuiznator();
-          initStudentDashboard();
+          this.afterLogin();
         })
         .catch(() => {
           if(username.indexOf('@') > 0) {
