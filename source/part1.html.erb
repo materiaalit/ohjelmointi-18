@@ -404,11 +404,7 @@ Liukulukumuuttuja: 3.141592653
     Java-ohjelmien suorituksen etenemistä voi tarkastella osoitteessa <a href="http://www.pythontutor.com/java.html" target="_blank">http://www.pythontutor.com/java.html</a> olevan palvelun avulla. Alla on liitettynä edellinen esimerkki visualisoituna. Painamalla nappia "Forward" ohjelman suoritus etenee.
   </p>
 
-  <p>TODO: ENABLE</p>
-
-  <!-- -
   <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20YourClassNameHere%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20String%20teksti%20%3D%20%22sis%C3%A4lt%C3%A4%C3%A4%20teksti%C3%A4%22%3B%0A%20%20%20%20int%20kokonaisluku%20%3D%20123%3B%0A%20%20%20%20double%20liukuluku%20%3D%203.141592653%3B%0A%0A%20%20%20%20System.out.println(%22Tekstimuuttuja%3A%20%22%20%2B%20teksti%29%3B%0A%20%20%20%20System.out.println(%22Kokonaislukumuuttuja%3A%20%22%20%2B%20kokonaisluku%29%3B%0A%20%20%20%20System.out.println(%22Liukulukumuuttuja%3A%20%22%20%2B%20liukuluku%29%3B%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-  -->
 
 <% end %>
 
@@ -1113,11 +1109,7 @@ rivi 9: tulostetaan arvo 28
 
 <p>Alla edellinen ohjelma askeleittain visualisoituna. Käytössä oleva askeleittainen visualisointi käsittelee ohjelmakoodia riveittäin -- pohdi askeleiden kohdalla miten ohjelma päätyy sen tulostamaan lopputulokseen.</p>
 
-<p>TODO: ENABLE</p>
-
-<!--
 <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20LaskentaAskeleittain%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20int%20eka%20%3D%20(1%20%2B%201%29%3B%0A%20%20%20%20int%20toka%20%3D%20eka%20%2B%203%20*%20(2%20%2B%205%29%3B%0A%0A%20%20%20%20eka%20%3D%205%3B%0A%0A%20%20%20%20int%20kolmas%20%3D%20eka%20%2B%20toka%3B%0A%20%20%20%20System.out.println(eka%29%3B%0A%20%20%20%20System.out.println(toka%29%3B%0A%20%20%20%20System.out.println(kolmas%29%3B%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
--->
 
 
 <%= partial 'partials/quiz', locals: { id: '5878a3ee79db890004df0d1f' } %>
@@ -1663,12 +1655,12 @@ Kolme lienee lukuna!
 </p>
 
 <p>
-  Ylläolevan ohjelman askeleittainen visualisointi TODO ENABLE:
+  Ylläolevan ohjelman askeleittainen visualisointi:
 </p>
 
-<!--
+
 <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=public%20class%20ElseIfEsimerkki%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20int%20luku%20%3D%203%3B%0A%0A%20%20%20%20if%20(luku%20%3D%3D%201%29%20%7B%0A%20%20%20%20%20%20System.out.println(%22Luku%20on%20yksi%22%29%3B%0A%20%20%20%20%7D%20else%20if%20(luku%20%3D%3D%202%29%20%7B%0A%20%20%20%20%20%20System.out.println(%22Lukuna%20on%20kaksi%22%29%3B%0A%20%20%20%20%7D%20else%20if%20(luku%20%3D%3D%203%29%20%7B%0A%20%20%20%20%20%20System.out.println(%22Kolme%20lienee%20lukuna!%22%29%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20System.out.println(%22Jotain%20muuta!%22%29%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
--->
+
 
 <% partial 'partials/exercise', locals: { name: 'Suurempi tai yhtäsuuri' } do %>
 
@@ -2633,10 +2625,13 @@ Vuosi on karkausvuosi.
 <% end %>
 
 
-<% partial 'partials/material_heading' do %>
-  Yhteenveto
-<% end %>
 
 <p>
-  TODO
+  Ensimmäinen osio päättyy tähän. Takanasi on jo ainakin 30 erilaista ohjelmaa -- jos osa on jäänyt epäselviksi, kannattaa niihin palata myöhemmin kurssilla. 
 </p>
+
+
+<%= partial 'partials/quiz', locals: { id: '587a99b46b66090004e96c08' } %>
+
+
+
