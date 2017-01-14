@@ -4,13 +4,24 @@
   quiz_page: true
 ---
 
-<h1>Kysely: Opiskeluun liittyvät toimintatavat</h1>
 
-<p>
-  Kyselyn lataaminen saattaa kestää hetken. Joudut kirjautumaan sisään vastaaksesi kyselyyn. Kirjaudu sisään painamalla yläpalkin "Kirjaudu sisään"-painiketta.
-</p>
+<% partial 'partials/hint', locals: { name: 'Aloituskysely' } do %>
 
-<%= partial 'partials/quiz', locals: { id: '5877687bd095c40004e4b185' } %>
+  <p>
+    Kurssiin kuuluu muutama kysely, joiden tavoitteena on parantaa kurssia. Vastaa ensimmäiseen kyselyyn osoitteessa <a href="https://elomake.helsinki.fi/lomakkeet/76573/lomake.html"  target="_blank">https://elomake.helsinki.fi/lomakkeet/76573/lomake.html</a>.
+  </p>
+
+  <p>
+    Käy vastaamassa ensin kyselyyn ja ruksaa sen jälkeen allaoleva tekstikenttä. Jos allaolevan tekstikentän ruksaaminen ei onnistu, varmista että olet kirjautunut tälle sivulle. Kirjautuminen onnistuu sivun oikeasta ylälaidasta.
+  </p>
+
+  <%= partial 'partials/quiz', locals: { id: '587a95326b66090004e96c06' } %>
+
+<% end %>
+
+
+
+
 
 <% partial 'partials/material_heading' do %>
   Ohjelma ja lähdekoodi
