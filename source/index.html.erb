@@ -76,7 +76,7 @@
 </p>
 
 <p>
-  Kumpulan mikroluokissa (BK107, B221) saa työskennellä myös ohjausaikojen ulkopuolella, jos siellä ei ole tuolloin muuta toimintaa.
+  Kumpulan Exactumin mikroluokissa (BK107, B221) saa työskennellä myös ohjausaikojen ulkopuolella, jos siellä ei ole tuolloin muuta toimintaa.
 </p>
 
 
@@ -96,6 +96,10 @@
 
 <p>
   Pyri myös tekemään tai ainakin yrittämään tehtäviä sitä mukaa kuin luet tekstiä. Jos et osaa heti tehdä jotain tehtävää, älä masennu, vaan kysy neuvoa tehtävän tekemiseen. Haastavimpia tehtäviä kannattaa tehdä useampaan otteeseen siten, että tehtävien uudelleen tekemisen välillä pitää muutaman tunnin tai päivän tauon.
+</p>
+
+<p>
+  Kannattaa toimia myös niin, että pyrit sulkemaan muut häiriötekijät pois kun luet materiaalia. Tällaisia ovat esimerkiksi puhelinsovellukset, sosiaalisen median sivun, sähköpostiohjelmistot ym. Eräs hyvä tapa työskentelyn ajoittamiseen on <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Pomodoro-tekniikka</a>, missä (1) päätät seuraavan tavoitteesi tai tehtävän, (2) asetat kellon soimaan 25 minuutin kuluttua, (3) keskityt tavoitteeseesi kunnes kello soi. Jos saat hyvän ajatuksen tai idean, kirjoita se ylös, mutta älä lähde tekemään mitään siihen liittyvää. (4) Kun kello soi, lisää ruksi paperille. Jos rukseja on neljä, pidä pidempi tauko (esim. 30 minuuttia), vedä ne yli, ja aloita kohdasta 1. Jos rukseja on alle neljä, pidä lyhyempi tauko (n. 5 minuuttia). Voit käyttää esimerkiksi osoitteessa <a href="https://tomato-timer.com/" target="_blank">https://tomato-timer.com/</a> olevaa kelloa työsi ajastukseen.
 </p>
 
 <p>
@@ -152,6 +156,9 @@
 <p>
   Todettu opintovilppi johtaa kurssisuorituksen hylkäämiseen ja toistuva opintovilppi voi johtaa opinto-oikeuden määräaikaiseen menettämiseen.  Lue lisää osoitteesta <a href="http://blogs.helsinki.fi/alakopsaa/opiskelijalle/"  target="_blank" >http://blogs.helsinki.fi/alakopsaa/opiskelijalle/</a>.
 </p>
+
+<%= partial 'partials/quiz', locals: { id: '587bc5f11b527d0004a7971c' } %>
+
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -278,7 +285,7 @@
 <p>&nbsp;</p>
 
 <p>
-  Edellisten lisäksi pariohjelmointitehtävien tekemisestä Kumpulan kampuksella voi saada 1.5 pistettä viikkoa kohti. Pariohjelmointitehtävistä kerätyt pisteet lasketaan kokonaiskurssipisteisiin.
+  Edellisten lisäksi pariohjelmointitehtävien tekemisestä Kumpulan kampuksella voi saada yhden lisäpisteen viikkoa kohti. Pariohjelmointitehtävistä kerätyt pisteet lasketaan kokonaiskurssipisteisiin.
 </p>
 
 <p>
@@ -419,7 +426,7 @@
 <ul>
 
   <li>
-    <strong>Javan asentaminen</strong>: lataa uusin Javan kehitysympäristö (Java SE Development Kit 8u112) osoitteesta <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>. Lataamasi versio riippuu käytössäsi olevasta käyttöjärjestelmästä, esimerkiksi Macintosh-käyttäjät lataavat tiedoston <code>jdk-8u112-macosx-x64.dmg</code> ja 64-bittisen Windows-käyttöjärjestelmän käyttäjät lataavat tiedoston <code>jdk-8u112-windows-x64.exe</code>. Kun olet ladannut tiedoston, asenna se koneellesi.
+    <strong>Javan asentaminen *</strong>: lataa uusin Javan kehitysympäristö (Java SE Development Kit 8u112) osoitteesta <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>. Lataamasi versio riippuu käytössäsi olevasta käyttöjärjestelmästä, esimerkiksi Macintosh-käyttäjät lataavat tiedoston <code>jdk-8u112-macosx-x64.dmg</code> ja 64-bittisen Windows-käyttöjärjestelmän käyttäjät lataavat tiedoston <code>jdk-8u112-windows-x64.exe</code>. Kun olet ladannut tiedoston, asenna se koneellesi.
   </li>
   
   <li>
@@ -429,8 +436,13 @@
 
 
 <p>
+  <strong>*</strong> Voit myös halutessasi käyttää <a href="http://openjdk.java.net/" target="_blank">OpenJDK</a>:ta. Joudut tällöin asentamaan myös erikseen käyttöliittymien luomiseen käytettävän JavaFx-kirjaston <a href="http://openjdk.java.net/projects/openjfx/" target="_blank">OpenJFX</a>.
+</p>
+
+<p>
   Kun olet saanut kurssin työvälineet asennettua, seuraava askel on kurssin valinta ohjelmointiympäristössä.
 </p>
+
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
@@ -458,8 +470,17 @@
 </p>
 
 
-  
 
+<% partial 'partials/material_sub_sub_heading' do %>
+  Analytiikkadatan kerääminen ja arvostelu
+<% end %>
+
+<p>
+  Varmista että TMC:n asetuksissa (Valikko TMC -> Settings) kohdassa "Send snapshots of your progress for study" on ruksi.  MOOC-suorituksia tai Helsingin yliopiston avoimen yliopiston suorituksia ei arvostella ilman tätä. Jos olet opiskelijana Helsingin yliopistolla ja et halua että työstämistäsi tehtävistä kerätään ajoittaista dataa kurssiarvostelua varten, voit suorittaa kurssin Kumpulassa järjestettävällä erilliskokeella. Analytiikkadataa kerätään vain kurssiin liittyvistä harjoitustehtävistä, ei muista projekteistasi tai muualta koneeltasi.
+</p>
+
+
+<%= partial 'partials/quiz', locals: { id: '587bc4a71b527d0004a7971b' } %>
 
 
 <% partial 'partials/material_sub_heading' do %>
