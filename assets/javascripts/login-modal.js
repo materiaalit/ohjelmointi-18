@@ -21,7 +21,7 @@ class LoginModal {
 
     if(client.getUser()) {
       this.afterLogin();
-    } else {
+    } else if(window.location.pathname !== '/') {
       this.loginModalNode.modal('show');
     }
 
