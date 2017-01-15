@@ -21,6 +21,8 @@ class LoginModal {
 
     if(client.getUser()) {
       this.afterLogin();
+    } else {
+      this.loginModalNode.modal('show');
     }
 
     this.loginModalToggleNode.on('click', this.onToggleLoginModal.bind(this));
