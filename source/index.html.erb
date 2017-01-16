@@ -440,17 +440,33 @@
 <ul>
 
   <li>
-    <strong>Javan asentaminen *</strong>: lataa uusin Javan kehitysympäristö (Java SE Development Kit 8u112) osoitteesta <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>. Lataamasi versio riippuu käytössäsi olevasta käyttöjärjestelmästä, esimerkiksi Macintosh-käyttäjät lataavat tiedoston <code>jdk-8u112-macosx-x64.dmg</code> ja 64-bittisen Windows-käyttöjärjestelmän käyttäjät lataavat tiedoston <code>jdk-8u112-windows-x64.exe</code>. Kun olet ladannut tiedoston, asenna se koneellesi.
+    <strong>Javan asentaminen (* linux, kts. alla!)</strong>: lataa uusin Javan kehitysympäristö (Java SE Development Kit 8u112) osoitteesta <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>. Lataamasi versio riippuu käytössäsi olevasta käyttöjärjestelmästä, esimerkiksi Macintosh-käyttäjät lataavat tiedoston <code>jdk-8u112-macosx-x64.dmg</code> ja 64-bittisen Windows-käyttöjärjestelmän käyttäjät lataavat tiedoston <code>jdk-8u112-windows-x64.exe</code>. Kun olet ladannut tiedoston, asenna se koneellesi.
   </li>
   
   <li>
-    <strong>NetBeans with TMC:n asentaminen</strong>: Mene osoitteeseen <a href="http://update.testmycode.net/installers/tmc-netbeans_org_mooc/" target="_blank">http://update.testmycode.net/installers/tmc-netbeans_org_mooc/</a>. Osoitteessa on listattuna eri asennusohjelmat eri käyttöjärjestelmille -- valitse listalla olevista sopivin ja lataa se. Esimerkiksi Windows-käyttäjät lataavat tiedoston <code>http://update.testmycode.net/installers/tmc-netbeans_org_mooc/tmc-netbeans_org_mooc_tmcbeans-windows.exe</code> jne. Kun tiedoston lataaminen on valmis, asenna sovellus koneellesi. 
+    <strong>NetBeans with TMC:n asentaminen</strong>: Mene osoitteeseen <a href="http://update.testmycode.net/installers/tmc-netbeans_org_mooc/" target="_blank">http://update.testmycode.net/installers/tmc-netbeans_org_mooc/</a>. Osoitteessa on listattuna eri asennusohjelmat eri käyttöjärjestelmille -- valitse listalla olevista sopivin ja lataa se. Esimerkiksi Windows-käyttäjät lataavat tiedoston <code>http://update.testmycode.net/installers/tmc-netbeans_org_mooc/tmc-netbeans_org_mooc_tmcbeans-windows.exe</code> ja Linuxilla <code>http://update.testmycode.net/installers/tmc-netbeans_org_mooc/tmc-netbeans_org_mooc_tmcbeans-windows.sh</code> jne. Kun tiedoston lataaminen on valmis, asenna sovellus koneellesi. 
   </li>
 </ul>
 
 
 <p>
-  <strong>*</strong> Voit myös halutessasi käyttää <a href="http://openjdk.java.net/" target="_blank">OpenJDK</a>:ta. Joudut tällöin asentamaan myös erikseen käyttöliittymien luomiseen käytettävän JavaFx-kirjaston <a href="http://openjdk.java.net/projects/openjfx/" target="_blank">OpenJFX</a>.
+  <strong>(*)</strong> Linux-koneilla OpenJDK:n asentaminen on todennäköisesti helpompaa kuin yllämainitun Oraclen Java-version. OpenJDK:n asennus tapahtuu Ubuntussa komentoriviltä seuraavalla komennolla:
+</p>
+
+<pre>
+sudo apt-get install openjdk-8-jdk
+</pre>
+
+<p>
+  Asenna tämän jälkeen vielä OpenJFX, jota käytetään käyttöliittymien tekemiseen ja käsittelyyn. Tämän asentaminen onnistuu Ubuntussa (komentoriviltä) komennolla:
+</p>
+
+<pre>
+sudo apt-get install openjfx
+</pre>
+
+<p>
+  Joissain Linux-koneissa tulee lisäksi NetBeans with TMC:n asennuksen yhteydessä asettaa ensiksi ladatulle asennuspaketille suoritusoikeudet. Tämä tapahtuu klikkaamalla asennuspakettia oikealla hiirennapilla ja valitsemalla Properties. Valitse tämän jälkeen Permissions, ja aseta Allow executing file as a program -ruutuun ruksi. Ohjelman asennuksen pitäisi tämän jälkeen käynnistyä kun tuplaklikkaat tiedostoa ja valitset Run.
 </p>
 
 <p>
