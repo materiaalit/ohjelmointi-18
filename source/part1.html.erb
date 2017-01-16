@@ -1180,14 +1180,14 @@ public class Esimerkki {
 
 <% partial 'partials/code_highlight' do %>
 System.out.print("Mikä on nimesi? ");
-  String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja
+String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja
                                    // asetetaan se muuttujaan nimi
 
 System.out.println("Hei " + nimi);
 <% end %>
 
 <% partial 'partials/sample_output' do %>
-Mikä on nimesi? <span class="red">Venla</span>
+Mikä on nimesi? <font color="red">Venla</font>
 Hei Venla
 <% end %>
 
@@ -2595,7 +2595,7 @@ Vuosi on karkausvuosi.
   <% end %>
 
   <% partial 'partials/sample_output' do %>
-    Anna ensimmäinen luku: <font color="red">22</font>
+    Anna ensimmäinen luku: <font color="red">17</font>
     Anna toinen luku: <font color="red">3</font>
     Anna operaatio: <font color="red">/</font>
 
