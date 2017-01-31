@@ -23,7 +23,7 @@
   </p>
 
   <p>
-    Huom! Älä kuitenkaan aloita kokeen tekemistä ennenkuin olet kerrannut osat 1 ja 2, ja olet varma, että sinulla on aikaa tehdä koe.
+    Huom! Älä kuitenkaan aloita kokeen tekemistä ennenkuin olet kerrannut osat 1 ja 2, ja olet varma, että sinulla on aikaa tehdä koe. Konekoe tulee tehdä ennen neljännen osan aloittamista.
   </p>
   
 <% end %>
@@ -859,13 +859,13 @@ public class Paaohjelma {
   Metodi voi palauttaa arvon. Tähän mennessä näkemissämme esimerkeissä ja tehtävissä luomamme metodit eivät palauttaneet mitään. Tämä on merkitty kirjoittamalla metodin määrittelyyn avainsana <em>void</em>.
 </p>
 
-<pre class="sh_java">
+<% partial 'partials/code_highlight' do %>
 public class Ovi {
     public void koputa() {
     ...
     }
 }
-</pre>
+<% end %>
 
 <p>
   Avainsana <strong>void</strong> tarkoittaa että metodi ei palauta arvoa.
@@ -875,19 +875,19 @@ public class Ovi {
   Jos haluamme, että metodi palauttaa arvon, tulee avainsanan <code>void</code> paikalle asettaa palautettavan muuttujan tyyppi. Seuraavassa esimerkissä näkyvälle luokalle Opettaja on määritelty metodi <code>arvostele</code>, joka palauttaa aina kokonaislukutyyppisen (<code>int</code>) muuttujan (tässä arvo 10). Arvon palauttaminen tapahtuu aina komennolla <strong>return</strong>:
 </p>
 
-<pre class="sh_java">
+<% partial 'partials/code_highlight' do %>
 public class Opettaja {
     public int arvostele() {
         return 10;
     }
 }
-</pre>
+<% end %>
 
 <p>
   Ylläoleva metodi siis palauttaa sitä kutsuttaessa <code>int</code>-tyyppisen arvon <code>10</code>. Jotta metodin palauttamaa arvoa voisi käyttää, tulee se ottaa talteen muuttujaan. Tämä tapahtuu samalla tavalla kuin normaali muuttujan arvon asetus, eli yhtäsuuruusmerkillä:
 </p>
 
-<pre class="sh_java">
+<% partial 'partials/code_highlight' do %>
 public static void main(String[] args) {
     Opettaja opettaja = new Opettaja();
 
@@ -895,13 +895,13 @@ public static void main(String[] args) {
 
     System.out.println("Arvosanaksi tuli " + arvostelu);
 }
-</pre>
+<% end %>
 
 <p>
   Metodin paluuarvo sijoitetaan <code>int</code>-tyyppiseen muuttujaan aivan kuin mikä tahansa muukin int-arvo. Paluuarvo voi toimia myös osana mitä tahansa lauseketta:
 </p>
 
-<pre class="sh_java">
+<% partial 'partials/code_highlight' do %>
 public static void main(String[] args) {
     Opettaja opettaja = new Opettaja();
 
@@ -909,7 +909,7 @@ public static void main(String[] args) {
 
     System.out.println("Arvostelujen keskiarvo " + keskiarvo);
 }
-</pre>
+<% end %>
 
 <p>
   Kaikki tähän mennessä näkemämme muuttujatyypit voidaan myös palauttaa metodista. Yhteenveto:
@@ -917,32 +917,33 @@ public static void main(String[] args) {
 
 <ul>
   <li>Metodilla, joka ei palauta mitään, on <code>void</code>-määre palautettavan muuttujan tyyppinä.
-    <pre class="sh_java">
+    <% partial 'partials/code_highlight' do %>
 public void metodiJokaEiPalautaMitaan() {
     // metodin runko
-}</pre>
-  </li>
+}
+<% end %></li>
 
   <li>Metodilla, joka palauttaa kokonaislukutyyppisen muuttujan, on <code>int</code>-määre palautettavan muuttujan tyyppinä.
-    <pre class="sh_java">
+    <% partial 'partials/code_highlight' do %>
 public int metodiJokaPalauttaaKokonaisLuvun() {
     // metodin runko, tarvitsee return-komennon
-}</pre>
-  </li>
+}
+<% end %></li>
 
 
   <li>Metodilla, joka palauttaa merkkijonotyyppisen muuttujan, on <code>String</code>-määre palautettavan muuttujan tyyppinä.
-    <pre class="sh_java">
+    <% partial 'partials/code_highlight' do %>
 public String metodiJokaPalauttaaTekstin() {
     // metodin runko, tarvitsee return-komennon
-}</pre>
-  </li>
+}
+<% end %></li>
 
   <li>Metodilla, joka palauttaa liukulukutyyppisen muuttujan, on <code>double</code>-määre palautettavan muuttujan tyyppinä.
-    <pre class="sh_java">
+    <% partial 'partials/code_highlight' do %>
 public double metodiJokaPalauttaaLiukuluvun() {
     // metodin runko, tarvitsee return-komennon
-}</pre>
+}
+<% end %>
   </li>
 </ul>
 
