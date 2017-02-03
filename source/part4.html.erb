@@ -14,7 +14,7 @@
   </p>
 
   <p>
-    Tavoitteena on, että tämän osion jälkeen osaat tunnistaa annetusta ongelmasta käsitteitä ja muodostaa niiden perusteella luokkia. Osaat tehdä näistä luokista olioita. Osaat luoda ohjelman, joka ratkaisee ongelman olioita hyödyntämällä. Osaat myös luoda ja käsitellä olioita, jotka sisältävät muota olioita.   
+    Tavoitteena on, että tämän osion jälkeen osaat tunnistaa annetusta ongelmasta käsitteitä ja muodostaa niiden perusteella luokkia. Osaat tehdä näistä luokista olioita. Osaat luoda ohjelman, joka ratkaisee ongelman olioita hyödyntämällä. Osaat myös luoda ja käsitellä olioita, jotka sisältävät muita olioita.   
   </p>
 
 
@@ -68,7 +68,7 @@ public class Suorakulmio {
 <% end %>
 
 <p>
-  Osa metodeista eivät palauta arvoa (metodit, joiden määrittelyssä käytetään avainsanaa void), ja osa metodeista palauttaa arvon (metodit, joiden määrittelyssä kerrotaan palautettavan muuttujan tyyppi). Ylläolevassa luokassa on määritelynä myös metodi toString, jota käytetään olion tulostamiseen.
+  Osa metodeista eivät palauta arvoa (metodit, joiden määrittelyssä käytetään avainsanaa void), ja osa metodeista palauttaa arvon (metodit, joiden määrittelyssä kerrotaan palautettavan muuttujan tyyppi). Yllä olevassa luokassa on määriteltynä myös metodi toString, jota käytetään olion tulostamiseen.
 </p>
 
 <p>
@@ -506,7 +506,7 @@ Henkilo ball = joan;
 <% end %>
 
 <p>
-  Lause <code>Henkilo ball = joan;</code> luo uuden Henkilömuuttujan, jonka arvoksi kopioidaan muuttujan <code>joan</code> arvo. Tämä saa aikaan sen, että <code>ball</code> viittaa samaan olioon kuin <code>joan</code>.
+  Lause <code>Henkilo ball = joan;</code> luo uuden henkilömuuttujan, jonka arvoksi kopioidaan muuttujan <code>joan</code> arvo. Tämä saa aikaan sen, että <code>ball</code> viittaa samaan olioon kuin <code>joan</code>.
 </p>
 
 <img src="/img/drawings/olio-joan-ja-ball.png"/>
@@ -610,7 +610,7 @@ ball = null;
 <img src="/img/drawings/olio-joan-ja-ball-null.png"/>
 
 <p>
-  Olioon, jonka nimi on Joan Ball, ei enää viittaa kukaan. Oliosta on siis tullut "roska". Java-ohjelmointikielessä ohjelmoijan ei tarvitse huolehtia ohjelman käyttämästä muistista. Javan sisäinen roskienkerääjä käy siivoamassa roskaksi joutuneet oliot aika ajoin. Jos roskien keruuta ei tehtäisi, jäisivät ne varaamaan muistia ohjelman suorituksen loppuun asti.
+  Olioon, jonka nimi on Joan Ball, ei enää viittaa kukaan. Oliosta on siis tullut "roska". Java-ohjelmointikielessä ohjelmoijan ei tarvitse huolehtia ohjelman käyttämästä muistista. Javan automaattinen roskienkerääjä käy siivoamassa roskaksi joutuneet oliot aika ajoin. Jos automaattista roskien keruuta ei tapahtuisi, jäisivät roskaksi joutuneet oliot varaamaan muistia ohjelman suorituksen loppuun asti.
 </p>
 
 
@@ -695,7 +695,7 @@ Joan Ball, ikä 0 vuotta
 
 
 <p>
-  Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei siis luoda kopiota, vaan listalle lisätään viite olemassaolevaan olioon. 
+  Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei siis luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon. 
 </p>
 
 <p>
@@ -742,7 +742,7 @@ Martin, ikä 1 vuotta
 <% end %>
 
 <p>
-  Listalle on kopioituna viitteet olioihin. Ylläolevassa esimerkissä muuttujan <code>juhana</code> arvona on sama viite kuin listalla, joten "Juhanan" ikä muuttuu myös jos hän vanhenee listan ulkopuolella.
+  Listalle on kopioituna viitteet olioihin. Yllä olevassa esimerkissä muuttujan <code>juhana</code> arvona on sama viite kuin listalla, joten "Juhanan" ikä muuttuu myös jos hän vanhenee listan ulkopuolella.
 </p>
 
 <img src="/img/drawings/henkilot-ja-juhana.png"/>
@@ -879,11 +879,11 @@ Blaise Pascal, syntynyt 19.6.1623
   </p>
 
   <p>
-    Termi algoritmi juontaa juurensa keski-aasialaisen tieteilijän <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank">Muhammad ibn Musa al-Khwarizmin</a> nimeen. Hän kehitti muunmuassa menetelmiä ensimmäisen ja toisen asteen matemaattisten yhtälöiden ratkaisemiseksi.
+    Termi algoritmi juontaa juurensa keski-aasialaisen tieteilijän <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank">Muhammad ibn Musa al-Khwarizmin</a> nimeen. Hän kehitti muun muassa menetelmiä ensimmäisen ja toisen asteen matemaattisten yhtälöiden ratkaisemiseksi.
   </p>
 
   <p>
-    Ylläolevassa esimerkissä esiintynyt Blaise Pascal oli myös merkittävä tietojenkäsittelytieteen alaa edistänyt henkilö. Vaikka hänet tunnetaan yleensä matematiikasta (mm. Binomikertoimen arvot helposti kertova <a href="https://en.wikipedia.org/wiki/Pascal%27s_triangle" target="_blank">Pascalin kolmio</a>), hän kehitti myös <a href="https://en.wikipedia.org/wiki/Pascal%27s_calculator" target="_blank">mekaanisen laskimen</a>.
+    Yllä olevassa esimerkissä esiintynyt Blaise Pascal oli myös merkittävä tietojenkäsittelytieteen alaa edistänyt henkilö. Vaikka hänet tunnetaan yleensä matematiikasta (mm. Binomikertoimen arvot helposti kertova <a href="https://en.wikipedia.org/wiki/Pascal%27s_triangle" target="_blank">Pascalin kolmio</a>), hän kehitti myös <a href="https://en.wikipedia.org/wiki/Pascal%27s_calculator" target="_blank">mekaanisen laskimen</a>.
   </p>
 
 <% end %>
@@ -1379,7 +1379,7 @@ public class Kassapaate {
   <% end %>
 
   <p>
-    Kassapäätteessä on aluksi rahaa 1000 euroa. Toteuta ylläolevan rungon metodit ohjeen ja alla olevan pääohjelman esimerkkitulosteen mukaan toimiviksi.
+    Kassapäätteessä on aluksi rahaa 1000 euroa. Toteuta yllä olevan rungon metodit ohjeen ja alla olevan pääohjelman esimerkkitulosteen mukaan toimiviksi.
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -2248,7 +2248,7 @@ public class Soittolista {
 <p><img src="/img/diagrams/luokkakaavio-soittolista.png"></p>
 
 <p>
-  Kokeile ylläolevan soittolistan käyttöä hiekkalaatikossa!
+  Kokeile yllä olevan soittolistan käyttöä hiekkalaatikossa!
 </p>
 
 
