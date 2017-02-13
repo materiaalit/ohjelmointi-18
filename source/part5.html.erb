@@ -1486,7 +1486,7 @@ double keskiarvo =
                // taulukon indeksissä 2 on kaisaniemen pyöräilijätilastot
                // varmistetaan, että otamme huomioon vain ne rivit, joissa
                // kaisaniemeen liittyen dataa
-               .filter(taulukko -&gt; taulukko[2].isEmpty())
+               .filter(taulukko -&gt; !taulukko[2].isEmpty())
                // muunnetaan kaisaniemen pyöräilijöiden lukumäärä
                // kokonaisluvuksi, ja tehdään virrasta lukuvirta
                .mapToInt(taulukko -&gt; Integer.parseInt(taulukko[2]))
@@ -1711,7 +1711,7 @@ kolmas
 
 // on sama kuin
 .map(luku -&gt; {
-    return luku * 5;
+    return luku * 2;
 })
   <% end %>    
 
