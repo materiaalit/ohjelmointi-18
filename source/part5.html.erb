@@ -1454,7 +1454,7 @@ ArrayList&lt;String[]&gt; rajatut =
                .collect(Collectors.toCollection(ArrayList::new));
 
 double keskiarvo = rajatut.stream()
-                          .filter(taulukko -&gt; taulukko[2].isEmpty())
+                          .filter(taulukko -&gt; !taulukko[2].isEmpty())
                           .mapToInt(taulukko -&gt; Integer.parseInt(taulukko[2]))
                           .average()
                           .getAsDouble();
