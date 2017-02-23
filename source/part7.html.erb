@@ -8,11 +8,11 @@
 <% partial 'partials/hint', locals: { name: 'Seitsemännen osion tavoitteet' } do %>
 
   <p>
-    Seitsemäs osa on viimeinen osa kurssilla Ohjelmoinnin perusteet. Sitä seuraava kahdeksas osa aloittaa kurssin Ohjelmoinnin jatkokurssi. Ohjelmoinnin MOOC sisältää molemmat osat.
+    Seitsemäs osa on viimeinen osa kurssilla Ohjelmoinnin perusteet. Kahdeksas osa aloittaa Ohjelmoinnin jatkokurssin. Kurssit kannattaa suorittaa "putkeen" -- Ohjelmoinnin MOOC sisältää molemmat osat.
   </p>
 
   <p>
-    Seitsemännessä osassa pohditaan ohjelmien kommentointia, rakennetta sekä ohjelmien koostamista useammista paloista. Tutustumme myös lyhyesti automaattiseen testaamiseen (teema tulee syvemmin tutuksi myöhemmissä osissa) sekä opimme kirjoittamaan tietoa tiedostoihin. Suuressa roolissa on myös kertaaminen, joka tapahtuu hieman isompien tehtävien kautta.
+    Seitsemännessä osassa pohditaan ohjelmien kommentointia, rakennetta sekä ohjelmien koostamista useammista paloista. Tutustumme myös lyhyesti automaattiseen testaamiseen (teema tulee tutummaksi Ohjelmoinnin jatkokurssilla) sekä opimme kirjoittamaan tietoa tiedostoihin. Kertaaminen on myös suuressa roolissa.
   </p>
 
   <p>
@@ -51,7 +51,7 @@
 <% end %>
 
 <p>
-  Kurssilla ei ole juurikaan puhuttu lähdekoodin kommentoinnista. Lähdekoodiin voidaan lisätä kommentteja joko yhdelle riville kahden vinoviivan jälkeen <code>// kommentti</code> tai useammalle riville vinoviivan ja tähden sekä tähden ja vinoviivan rajaamalle alueelle <code>/* kommentti */</code>.
+  Lähdekoodiin voidaan lisätä kommentteja joko yhdelle riville kahden vinoviivan jälkeen <code>// kommentti</code> tai useammalle riville vinoviivan ja tähden sekä tähden ja vinoviivan rajaamalle alueelle <code>/* kommentti */</code>.
 </p>
 
 
@@ -69,7 +69,7 @@ while (luku &gt; 0) {
 
 
 <p>
-  Kommenteilla on useita käyttötarkoituksia lähdekoodin tavoitteesta riippuen. Ohjelmointikurssilla ohjelmointia opettelevan kannattaa käyttää kommentteja ohjelman toiminnallisuuden itselleen selittämiseen. Kun yllä oleva lähdekoodi on selitetty kommenteissa rivi riviltä auki, näyttää se esimerkiksi seuraavalta.
+  Kommenteilla on useita käyttötarkoituksia. Ohjelmointikurssilla ohjelmointia opettelevan kannattaa käyttää kommentteja ohjelman toiminnallisuuden itselleen selittämiseen. Kun yllä oleva lähdekoodi on selitetty kommenteissa rivi riviltä auki, näyttää se esimerkiksi seuraavalta.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -97,15 +97,15 @@ while (luku &gt; 0) {
 <% end %>
 
 <p>
-  Kommentit eivät vaikuta ohjelman suoritukseen, eli kaksi yllä olevaa esimerkkiä toimivat täsmälleen samalla tavalla.
+  Kommentit eivät vaikuta ohjelman suoritukseen, eli ohjelma toimii kommenttien kanssa täysin samalla tavalla kuin ilman kommentteja.
 </p>
 
 <p>
-  Edellä käytetty ohjelmoinnin opetteluun tarkoitettu kommentointityyli on kuitenkin ohjelmistokehitykseen kelpaamaton. Ohjelmistoja rakennettaessa lähdekoodin tulee ensisijassa kommentoida itse itsensä. Tällöin ohjelman toiminnallisuus, eli mitä ohjelma tekee, tulee ilmi luokkien, metodien ja muuttujien nimistä. 
+  Edellä käytetty ohjelmoinnin opetteluun tarkoitettu kommentointityyli on kuitenkin ohjelmistokehitykseen kelpaamaton. Ohjelmistoja rakennettaessa <strong>lähdekoodin tulee kommentoida itse itsensä</strong>. Tällöin ohjelman toiminnallisuus tulee ilmi luokkien, metodien ja muuttujien nimistä. 
 </p>
 
 <p>
-  Edelliset esimerkit voidaan yhtä hyvin kommentoida luomalla sopivasti nimetty metodi, joka tekee halutun asian. Alla kaksi esimerkkiä yllä olevan koodin kommentoivista metodeista -- toinen metodeista on hieman yleiskäyttöisempi kuin toinen.
+  Edelliset esimerkit voidaan yhtä hyvin kommentoida kapseloimalla ohjelmakoodi sopivasti nimettyn metodin sisään. Alla on kaksi esimerkkiä yllä olevan koodin kapseloivista metodeista -- toinen metodeista on hieman yleiskäyttöisempi kuin toinen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -120,15 +120,23 @@ public void tulostaLuvutKymmenestaYhteen() {
 
 <% partial 'partials/code_highlight' do %>
 public void tulostaLuvutIsoimmastaPienimpaan(int mista, int mihin) {
-    while (mista &lt;= mihin) {
+    while (mista &gt;= mihin) {
         System.out.println(mista);
         mista--;
     }
 }
 <% end %>
 
+<% partial 'partials/material_sub_heading' do %>
+  Kommenteista ja ymmärrettävyydestä
+<% end %>
+
 <p>
-  Alla on toinen hieman kryptisempi ohjelma. Tutustu lähdekoodiin ja mieti mitä se tekee. 
+  Alla on hieman kryptisempi ohjelma.
+</p>
+
+<p>
+  Tutustu ohjelmaan ja yritä selvittää mitä ohjelma tekee ennen materiaalissa etenemistä. Alla olevan ohjelman suorituksen selvittämisessä kannattaa käyttää esimerkiksi kynää ja paperia. Kun käytössäsi on kynä ja paperi, aloita ohjelmakoodin läpi käyminen rivi riviltä kuin olisit tietokone. Kirjaa jokaisen rivin jälkeen ylös ohjelman käyttämissä muuttujissa tapahtuneet muutokset. 
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -152,7 +160,7 @@ System.out.println("-1");
 <% end %>
 
 <p>
-  Helpotetaan tehtävää hieman ja muunnetaan muuttujien nimet kuvaavammiksi.
+  Kun olet kokeillut ohjelman toiminnan seuraamista yllä olevalla ohjelmalla, toista harjoitus alla olevalla ohjelmalla. Alla olevassa ohjelmassa muuttujien nimet on muutettu kuvaavammiksi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -176,7 +184,7 @@ System.out.println("-1");
 <% end %>
 
 <p>
-  Ylläoleva lähdekoodi on jo melko kuvaava. Haluamme kuitenkin version, joka on ymmärrettävissä nopeasti. Luodaan lähdekoodista metodi.  
+  Lähdekoodi, missä muuttujien nimet on selkeitä, on helpommin ymmärrettävää kuin lähdekoodi, missä muuttujien nimet eivät kuvaa niiden tarkoitusta. Haluamme ohjelmasta kuitenkin version, joka on nopeasti ymmärrettävissä. Luodaan siitä metodi ja nimetään metodi sopivasti.  
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -203,11 +211,11 @@ public int binaariHaku(int[] taulukko, int haettava) {
 </p>
 
 <p>
-  Korjataan tilanne kommentilla. Binäärihaun toiminnan ehtona on se, että taulukko on järjestyksessä pienimmästä suurimpaan. Jos etsittävä luku löytyy, algoritmi palauttaa luvun indeksin. Jos lukua taas ei löydy, algoritmi palauttaa luvun -1. 
+  Korjataan tilanne kommentilla. Yllä esitetyn binäärihakualgoritmin toiminnan ehtona on se, että taulukko on järjestyksessä pienimmästä suurimpaan. Jos etsittävä luku löytyy, algoritmi palauttaa luvun indeksin. Jos lukua taas ei löydy, algoritmi palauttaa luvun -1. 
 </p>
 
 <p>
-  Käytämme alla ohjelman dokumentointiin liittyvää kommentointitapaa, missä kommentti alkaa vinoviivalla ja kahdella tähdellä sekä päättyy yhteen tähteen ja vinoviivaan <code>/** kommentti */</code>. Ohjelmointiympäristöt näyttävät metodeihin liittyvät dokumenttikommentit esimerkiksi lähdekoodin automaattisen täydennyksen yhteydessä.
+  Käytämme alla ohjelman dokumentointiin liittyvää kommentointitapaa, missä kommentti alkaa vinoviivalla ja kahdella tähdellä sekä päättyy yhteen tähteen ja vinoviivaan <code>/** kommentti */</code>. Ohjelmointiympäristöt näyttävät metodeihin liittyvät dokumenttikommentit muunmuassa lähdekoodin automaattisen täydennyksen yhteydessä.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -237,7 +245,7 @@ public int binaariHaku(int[] taulukko, int haettava) {
 <% end %>
 
 <p>
-  Alla olevassa kuvassa näytetään miten ohjelmointiympäristö näyttää metodiin liittyvän kommentin.
+  Alla olevassa kuvassa näytetään miten ohjelmointiympäristö näyttää metodiin liittyvän kommentin. Oletuksena on, että hakualgoritmi on luokassa Hakualgoritmit. Kun luokasta on tehty olio, ja ohjelmoija alkaa kirjoittamaan metodin nimeä, näyttää ohjelmointiympäristö metodiin aiemmin liitetyn dokumentaation.
 </p>
 
 <img src="/img/material/autocomplete-with-comment.png" alt="Ohjelmointiympäristö näyttää metodiin liitetyn kommentin."/>
@@ -247,7 +255,7 @@ public int binaariHaku(int[] taulukko, int haettava) {
 </p>
 
 <p>
-  Kommentteja käytetään siis ensisijaisesti luokkien sekä metodien yleisen toiminnallisuuden kuvaamisessa sen sijaan, että kerrottaisiin yksityiskohtaisesti mitä ohjelma tekee. Yleisesti ottaen voidaan ajatella niin, että vaikeasti ymmärrettävät ohjelmat on hyvä pilkkoa luokkiin ja metodeihin, jotka kuvaavat ohjelman rakennetta. Dokumentointi ja kommentointi niiltä osin, mitkä eivät ole luokkien tai metodien nimistä selviä, on tärkeää -- esimerkiksi metodien paluuarvot sekä toimintaan liittyvät oletukset on hyvä dokumentoida.
+  Kommentteja käytetään siis ensisijaisesti luokkien sekä metodien yleisen toiminnallisuuden kuvaamisessa sen sijaan, että kerrottaisiin yksityiskohtaisesti mitä ohjelma tekee. Yksityiskohtainen ohjelman toiminnan avaaminen on kuitenkin hyvä tapa selittää ohjelmakoodia itselleen. Yleisesti ottaen voidaan ajatella niin, että vaikeasti ymmärrettävät ohjelmat kannattaa pilkkoa luokkiin ja metodeihin, jotka kuvaavat ohjelman rakennetta. Dokumentointi ja kommentointi niiltä osin, mitkä eivät ole luokkien tai metodien nimistä selviä, on tärkeää -- esimerkiksi metodien paluuarvot sekä niiden toimintaan liittyvät oletukset on hyvä dokumentoida.
 </p>
 
 
@@ -256,7 +264,7 @@ public int binaariHaku(int[] taulukko, int haettava) {
 <% end %>
 
 <p>
-  Edellä puhuimme ohjelman pilkkomisesta luokkiin ja metodeihin, jotka kuvaavat ohjelman rakennetta. Seuraava katkelma on Edsger W. Dijkstran artikkelista <a href="https://www.cs.utexas.edu/users/EWD/ewd04xx/EWD447.PDF" target="_blank">On the role of scientific thought</a>.
+  Edellä puhuimme kommenteista sekä ohjelman pilkkomisesta luokkiin ja metodeihin, jotka kuvaavat ohjelman rakennetta. Seuraava katkelma on <a href="https://en.wikipedia.org/wiki/Edsger_W._Dijkstra" target="_blank">Edsger W. Dijkstran</a> artikkelista <a href="https://www.cs.utexas.edu/users/EWD/ewd04xx/EWD447.PDF" target="_blank">On the role of scientific thought</a>.
 </p>
 
 <p>
@@ -288,8 +296,32 @@ public int binaariHaku(int[] taulukko, int haettava) {
 
 
 <p>
-  Selkeys saadaan aikaan sopivalla luokkarakenteella sekä nimeämiskäytänteiden seuraamisella. Jokaisella luokalla tulee olla vastuu, johon liittyviä tehtäviä luokka hoitaa. Metodeja käytetään toiston vähentämiseen ja luokkien sisäisten toimintojen jäsentämiseen. Myös metodilla tulee olla selkeä vastuu eli metodien ei tule olla liian pitkiä ja liian montaa asiaa tekeviä. Liian montaa asiaa tekevät monimutkaiset metodit tuleekin pilkkoa useiksi pienemmiksi apumetodeiksi joita alkuperäinen metodi kutsuu.
+  Selkeys saadaan aikaan sopivalla luokkarakenteella sekä nimeämiskäytänteiden seuraamisella. Jokaisella luokalla tulee olla vastuu, johon liittyviä tehtäviä luokka hoitaa. Metodeja käytetään toiston vähentämiseen ja luokkien sisäisten toimintojen jäsentämiseen. Myös metodeilla tulee olla selkeä vastuu eli metodien ei tule olla liian pitkiä ja liian montaa asiaa tekeviä. Liian montaa asiaa tekevät monimutkaiset metodit tuleekin pilkkoa useiksi pienemmiksi apumetodeiksi joita alkuperäinen metodi kutsuu.
 </p>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Hyvin harva ohjelma kirjoitetaan vain kerran' } do %>
+
+  <p>
+    Ohjelmistoja kehittäessä keskitytään tyypillisesti niihin ohjelmiston ominaisuuksiin, jotka tuovat eniten arvoa ohjelmiston käyttäjälle. Nämä ominaisuudet sovitaan yhdessä ohjelmiston kehittäjän sekä loppukäyttäjän kanssa, mikä mahdollistaa ominaisuuksien järjestämisen tärkeysjärjestykseen.
+  </p>
+
+  <p>
+    Ohjelmistoille on tyypillistä se, että ohjelmistoon liittyvät toiveet sekä ominaisuuksien tärkeysjärjestys muuttuu ohjelmiston elinkaaren aikana. Tämä johtaa siihen, että osia ohjelmistosta kirjoitetaan uudestaan, osia siirrellään paikasta toiseen ja osia poistetaan kokonaan.
+  </p>
+
+  <p>
+    Ohjelmoijan näkökulmasta tämä tarkoittaa ensisijaisesti sitä, että ohjelmisto kehittyy jatkuvasti. Uudelleenkirjoitettavat osat tulevat tyypillisesti paremmiksi, sillä ohjelmoija oppii ongelma-alueesta siihen liittyviä ratkaisuja kehittäessään. Samalla tämä tarkoittaa sitä, että ohjelmoijan tulee myös säilyttää kokonaiskuva ohjelman rakenteesta, sillä joitain osia saatetaan myös uudelleenkäyttää muissa osissa ohjelmistoa.
+  </p>
+
+  <p>
+    Yleisesti ottaen voidaan todeta, että hyvin harva ohjelma kirjoitetaan vain kerran. Tätä ajatusta jatkaen on hyvä pyrkiä tilanteeseen, missä ohjelman käyttäjä pääsee kokeilemaan sitä mahdollisimman nopeasti -- tällöin muutostoiveiden kerääminen myös alkaa nopeasti. Ohjelmistoja tehdessä onkin hyvä usein luoda ensin <a href="https://en.wikipedia.org/wiki/Proof_of_concept" target="_blank">Proof of Concept</a>-sovellus, jolla voidaan kokeilla idean toimivuutta. Jos idea on hyvä, sitä jatkokehitetään -- samalla myös ohjelma ja kehittyy.
+  </p>
+  
+<% end %>
+
+
 
 <% partial 'partials/material_heading' do %>
   Ongelmasta kokonaisuuteen ja takaisin osiin 
@@ -449,7 +481,7 @@ Annoit saman sanan uudestaan!
 <% end %>
 
 <p>
-  Toinen osaongelma on aiemmin syötettyjen sanojen muistaminen. Taulukko sopii mainiosti tähän tarkoitukseen -- myös ArrayList kävisi mainiosti, mutta harjoitellaan taulukkojen käyttöä. Tarvitaan myös muuttuja joka muistaa kuinka monta sanaa on syötetty. Lisätään nämä toistaiseksi luokan Kayttoliittyma oliomuuttujiksi.
+  Toinen osaongelma on aiemmin syötettyjen sanojen muistaminen. Taulukko sopii mainiosti tähän tarkoitukseen -- myös ArrayList kävisi mainiosti, mutta harjoitellaan taulukkojen käyttöä. Taulukon lisäksi tarvitaan muuttuja, joka pitää kirjaa taulukkoon lisättyjen sanojen lukumäärästä ja samalla seuraavaksi taulukkoon lisättävän sanan indeksistä. Lisätään nämä toistaiseksi luokan Kayttoliittyma oliomuuttujiksi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -458,7 +490,7 @@ int sanojaSyotetty = 0;
 <% end %>
 
 <p>
-  Kun uusi sana syötetään, on se lisättävä syötettyjen sanojen joukkoon. Tämä tapahtuu lisäämällä main:in while-silmukkaan taulukkoa ja sanojen laskuria päivittävät rivit:
+  Kun uusi sana syötetään, on se lisättävä syötettyjen sanojen joukkoon. Tämä tapahtuu lisäämällä while-silmukkaan taulukkoa ja sanojen laskuria päivittävät rivit:
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -476,6 +508,9 @@ while (true) {
 }
 <% end %>
 
+<p>
+  Kayttoliittyma näyttää kokonaisuudessaan seuraavalta.
+</p>
 
 <% partial 'partials/code_highlight' do %>
 public class Kayttoliittyma {
@@ -550,7 +585,7 @@ public boolean onJoSyotetty(String sana) {
 <% end %>
 
 <p>
-  Nyt sovellukseen toimii kutakuinkin halutusti.
+  Nyt sovellus toimii kutakuinkin halutusti.
 </p>
 
 <% partial 'partials/material_sub_heading' do %>
@@ -625,7 +660,7 @@ public class Kayttoliittyma {
 <% end %>
 
 <p>
-  Tehdään luokka <code>Sanajoukko</code>, jonka käyttöönoton jälkeen pääohjelma näyttää seuraavalta:
+  Tehdään luokka <code>Sanajoukko</code>, jonka käyttöönoton jälkeen käyttöliittymän metodi <code>kaynnista</code> on seuraavanlainen:
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -755,7 +790,7 @@ public class Sanajoukko {
 <% end %>
 
 <p>
-  Ratkaisu on nyt varsin elegantti. Erillinen käsite on saatu erotettua ja pääohjelma näyttää siistiltä. Kaikki "likaiset yksityiskohdat" (taulukko ja lukumäärä sanoista) on saatu siivottua eli kapseloitua olion sisälle.
+  Ratkaisu on nyt varsin elegantti. Erillinen käsite on saatu erotettua ja käyttöliittymä näyttää siistiltä. Kaikki "likaiset yksityiskohdat" (taulukko ja lukumäärä sanoista) on saatu siivottua eli kapseloitua olion sisälle.
 </p>
 
 <p>
@@ -834,11 +869,11 @@ public class Sanajoukko {
 <% end %>
 
 <p>
-  Näin päädytään ratkaisuun jossa <code>Sanajoukko</code> ainoastaan "kapseloi" ArrayList:in. Onko tässä järkeä? Kenties. Voimme nimittäin halutessamme tehdä Sanajoukolle muitakin muutoksia. Ennen pitkään saatamme esim. huomata, että sanajoukko pitää tallentaa tiedostoon. Jos tekisimme nämä muutokset Sanajoukon koodiin, ei pääohjelmaa tarvitsisi muuttaa mitenkään.
+  Näin päädytään ratkaisuun jossa <code>Sanajoukko</code> ainoastaan "kapseloi" ArrayList:in. Onko tässä järkeä? Kenties. Voimme nimittäin halutessamme tehdä Sanajoukolle muitakin muutoksia. Ennen pitkään saatamme esim. huomata, että sanajoukko pitää tallentaa tiedostoon. Jos tekisimme nämä muutokset Sanajoukkoon muuttamatta käyttöliittymän käyttävien metodien nimiä, ei käyttöliittymää tarvitsisi muuttaa mitenkään.
 </p>
 
 <p>
-  Huomaa, että Sanajoukko-luokkaan tehdyt sisäiset muutokset eivät vaikuta luokkaan Käyttöliittymä. Kun vaihdoimme taulukon listaan, käyttöliittymä ei muutu millään tavalla. Tämä johtuu siitä, että käyttöliittymä käyttää sanajoukkoa sen tarjoamien metodien -- eli julkisten rajapintojen -- kautta. 
+  Oleellista on tässä se, että Sanajoukko-luokkaan tehdyt sisäiset muutokset eivät vaikuta luokkaan Käyttöliittymä. Kun vaihdoimme taulukon listaan, käyttöliittymä ei muutu millään tavalla. Tämä johtuu siitä, että käyttöliittymä käyttää sanajoukkoa sen tarjoamien metodien -- eli julkisten rajapintojen -- kautta. 
 </p>
 
 <% partial 'partials/material_sub_heading' do %>
@@ -846,7 +881,7 @@ public class Sanajoukko {
 <% end %>
 
 <p>
-  Voi olla, että jatkossa ohjelmaa halutaan laajentaa siten, että <code>Sanajoukko</code>-luokan olisi osattava uusia asiota. Jos esimerkiksi pääohjelmassa haluttaisiin tietää kuinka moni syötetyistä sanoista oli palindromi, voidaan sanajoukkoa laajentaa metodilla <code>palindromeja</code>.</p>
+  Voi olla, että jatkossa ohjelmaa halutaan laajentaa siten, että <code>Sanajoukko</code>-luokan olisi osattava uusia asiota. Jos ohjelmassa haluttaisiin esimerkiksi tietää kuinka moni syötetyistä sanoista oli palindromi, voidaan sanajoukkoa laajentaa metodilla <code>palindromeja</code>.</p>
 
 <% partial 'partials/code_highlight' do %>
 public void kaynnista() {
@@ -915,7 +950,7 @@ public class Sanajoukko {
 <% end %>
 
 
-<p>Kun ohjelmakoodin käsitteet on eriytetty omiksi luokikseen, voi niitä uusiokäyttää helposti myös muissa projekteissa. Esimerkiksi luokkaa <code>SanaJoukko</code> voisi käyttää yhtä hyvin graafisesta käyttöliittymästä, ja se voisi myös olla osa kännykässä olevaa sovellusta. Tämän lisäksi ohjelman toiminnan testaaminen on huomattavasti helpompaa silloin kun ohjelma on jaettu erillisiin käsitteisiin, joita kutakin voi käyttää myös omana itsenäisenä yksikkönään.</p>
+<p>Kun ohjelmakoodin käsitteet on eriytetty omiksi luokikseen, voi niitä uusiokäyttää helposti myös muissa projekteissa. Esimerkiksi luokkaa <code>Sanajoukko</code> voisi käyttää yhtä hyvin graafisesta käyttöliittymästä, ja se voisi myös olla osa kännykässä olevaa sovellusta. Tämän lisäksi ohjelman toiminnan testaaminen on huomattavasti helpompaa silloin kun ohjelma on jaettu erillisiin käsitteisiin, joita kutakin voi käyttää myös omana itsenäisenä yksikkönään.</p>
 
 
 <!--
@@ -923,10 +958,6 @@ public class Sanajoukko {
    -->
 <!--  </div> -->
 
-
-<p>
-  Nyt koodi on valmis ja alkaa olla kohtuullisen luettava.
-</p>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -955,32 +986,12 @@ public class Sanajoukko {
       <li> korvaa koodisi "huonot" ja epäsiistit osat siistillä koodilla</li>
     </ul>
   </li>
-  <li> Astu tarvittaessa askel taaksepäin ja mieti kokonaisuutta. Rikkinäinen ohjelma korjaantuu harvemmin lisäämällä siihen lisää koodia. </li>
+  <li> Astu tarvittaessa askel taaksepäin ja mieti kokonaisuutta. Jos ohjelma ei toimi, voi olla hyvä idea palata aiemmin toimineeseen tilaan. Käänteisesti voidaan sanoa, että rikkinäinen ohjelma korjaantuu harvemmin lisäämällä siihen lisää koodia. </li>
 </ul>
 
 <p>
-  Ohjelmoijat noudattavat näitä käytänteitä sen takia että ohjelmointi olisi helpompaa. Näiden käytänteiden noudattaminen tekee myös ohjelmien lukemisesta, ylläpitämisestä ja muokkaamisesta helpompaa muille.
+  Ohjelmoijat noudattavat näitä käytänteitä sen takia että ohjelmointi olisi helpompaa. Käytänteiden noudattaminen tekee myös ohjelmien lukemisesta, ylläpitämisestä ja muokkaamisesta helpompaa muille.
 </p>
-
-<% partial 'partials/hint', locals: { name: 'Hyvin harva ohjelma kirjoitetaan vain kerran' } do %>
-
-  <p>
-    Ohjelmistoja kehittäessä keskitytään tyypillisesti niihin ohjelmiston ominaisuuksiin, jotka tuovat eniten arvoa ohjelmiston käyttäjälle. Arvolla tarkoitetaan tässä ensisijaisesti niitä toiminnallisuuksia, joille on suurin tilaus, ja joita käytettäisiin eniten. Nämä ominaisuudet sovitaan yhdessä ohjelmiston kehittäjän sekä loppukäyttäjän kanssa.
-  </p>
-
-  <p>
-    Ohjelmistoille on tyypillistä se, että ohjelmistoon liittyvät toiveet sekä ominaisuuksien tärkeysjärjestys muuttuu ohjelmiston elinkaaren aikana. Tämä johtaa siihen, että osia ohjelmistosta kirjoitetaan uudestaan, osia siirrellään paikasta toiseen ja osia poistetaan kokonaan.
-  </p>
-
-  <p>
-    Ohjelmoijan näkökulmasta tämä tarkoittaa ensisijaisesti sitä, että ohjelmisto kehittyy jatkuvasti. Uudelleenkirjoitettavat osat tulevat tyypillisesti paremmiksi sillä ohjelmoija on oppinut edellisiä osia kirjoittaessa. Samalla tämä tarkoittaa sitä, että ohjelmoijan tulee myös säilyttää kokonaiskuva ohjelman rakenteesta, sillä joitain osia saatetaan myös uudelleenkäyttää muissa osissa ohjelmistoa.
-  </p>
-
-  <p>
-    Yleisesti ottaen voidaan todeta, että hyvin harva ohjelma kirjoitetaan vain kerran. Tätä ajatusta jatkaen on hyvä pyrkiä tilanteeseen, missä ohjelman käyttäjä pääsee kokeilemaan sitä mahdollisimman nopeasti -- tällöin muutostoiveiden kerääminen myös alkaa nopeasti. Ohjelmistoja tehdessä onkin hyvä usein luoda ensin <a href="https://en.wikipedia.org/wiki/Proof_of_concept" target="_blank">Proof of Concept</a>-sovellus, jolla voidaan kokeilla idean toimivuutta. Jos idea on hyvä, sitä jatkokehitetään -- samalla myös ohjelma ja kehittyy. 
-  </p>
-  
-<% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Arvosanatilastot' } do %>
@@ -1328,7 +1339,7 @@ Sanoistasi 0 oli palindromeja
 <% end %>
 
 <p>
-  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa käyttäjän yhteen nextLine()-komentoon antamaa syötettä.
+  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa yhtä nextLine()-komentoon annettua syötettä.
 </p>
 
 <p>
@@ -1336,7 +1347,7 @@ Sanoistasi 0 oli palindromeja
 </p>
 
 <p>
-  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen kurssin myöhemmissä osissa.
+  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa.
 </p>
 
 
@@ -1527,7 +1538,7 @@ try {
 <% end %>
 
 <p>
-  Ylläoleva esimerkki luo tarvittaessa uuden tiedoston. Jos tiedosto on jo olemassa, tiedoston vanha sisältö poistetaan ennen tiedostoon kirjoittamista.
+  Yllä oleva esimerkki luo tarvittaessa uuden tiedoston. Jos tiedosto on jo olemassa, tiedoston vanha sisältö poistetaan ennen tiedostoon kirjoittamista.
 </p>
 
 <p>
@@ -1543,7 +1554,7 @@ try {
 <% end %>
 
 <p>
-  Tiedoston lukemisen ja tiedostoon kirjoittamisen voi eriyttää omaksi luokakseen. Alla tiedostoon kirjoittamiseen löytyy sekä rivin että listan kirjoittamiseen liittyvät metodit. Allaolevat esimerkit näyttävät myös miten luokan sisällä olevat metodit voivat kutsua muita luokan sisällä olevia metodeja -- jos metodit ovat saman nimisiä, kutsuttava metodi päätellään metodin parametreista. 
+  Tiedoston lukemisen ja tiedostoon kirjoittamisen voi eriyttää omaksi luokakseen. Alla tiedostoon kirjoittamiseen löytyy sekä rivin että listan kirjoittamiseen liittyvät metodit. Allaolevat esimerkit näyttävät myös miten luokan sisällä olevat metodit voivat kutsua muita luokan sisällä olevia metodeja -- jos metodit ovat saman nimisiä, kutsuttava metodi päätellään metodin parametreista ja niiden tyypeistä. 
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1619,7 +1630,7 @@ public static void main(String[] args) {
 <% partial 'partials/exercise', locals: { name: 'Sensuroija' } do %>
 
   <p>
-    Luo luokka Sensuroija, joka saa konstruktorin parametrina sensuroitavan merkkijonon. Luo luokalle tämän jälkeen metodi <code>public void sensuroi(String lahdetiedosto, String kohdetiedosto)</code>, joka (1) lukee lähdetiedoston, (2) poistaa luetusta datasta kaikki sanat, joissa sensuroijalle konstruktorin parametrina annettu merkkijono, ja (3) tallentaa jäljelle jääneet sanat kohdetiedostoon.
+    Luo luokka Sensuroija, joka saa konstruktorin parametrina sensuroitavan merkkijonon. Luo luokalle tämän jälkeen metodi <code>public void sensuroi(String lahdetiedosto, String kohdetiedosto)</code>, joka (1) lukee lähdetiedoston, (2) poistaa luetusta datasta kaikki sanat, joissa esiintyy sensuroijalle konstruktorin parametrina annettu merkkijono, ja (3) tallentaa jäljelle jääneet sanat kohdetiedostoon.
   </p>
 
   <p>
@@ -2082,10 +2093,18 @@ tiiliskivi (4 kg)<% end %>
   <img src="/img/exercises/schelling-alku.png" alt="Tilanne, missä ihmiset asuvat satunnaisesti."/>
 
   <p>
-    Kun simulaatio etenee, päädytään ennen pitkää tyypillisesti tilanteeseen, missä samankaltaiset ihmiset ovat muuttaneet samankaltaisten ihmisten luo.
+    &nbsp;
+  </p>
+
+  <p>
+    Kun simulaatio etenee, päädytään ennen pitkää tilanteeseen, missä samankaltaiset ihmiset ovat muuttaneet samankaltaisten ihmisten luo.
   </p>
 
   <img src="/img/exercises/schelling-loppu.png" alt="Ihmiset ovat muuttaneet sopivampiin paikkoihin."/>
+
+  <p>
+    &nbsp;
+  </p>
 
   <p>
     Simulaatio-ohjelmasta puuttuu muutamia oleellisia toiminnallisuuksia: (1) kartan tyhjennys, (2) tyhjien paikkojen etsiminen, sekä (3) tyytymättömien henkilöiden tunnistaminen. Kannattaa ennen aloitusta tutustua nykyiseen tehtävän koodiin -- ohjelmassa on mukana myös visualisointiin käytettävä komponentti.
@@ -2275,7 +2294,7 @@ tiiliskivi (4 kg)<% end %>
 
 
 <p>
-  Olet nyt Ohjelmoinnin perusteiden ja ohjelmoinnin jatkokurssin puolivälissä. Hengähdä hetkeksi ja mieti kurssin alkua. Olet todennäköisesti kehittynyt huimasti. 
+  Hengähdä hetkeksi ja mieti kurssin alkua. Olet todennäköisesti kehittynyt huimasti. 
 </p>
 
 <%= partial 'partials/quiz', locals: { id: '58ae10d1ad2afb0004f42935' } %>
@@ -2290,7 +2309,7 @@ tiiliskivi (4 kg)<% end %>
   </p>
   
   <p>
-    Jos teet kurssia Ohjelmoinnin perusteet tai aikataulutettua Ohjelmoinnin MOOCia, tässä kohtaa tulee tehdä kurssin kolmas konekoe. Kolmannen konekokeen tekemiseen on kokeen aloitushetkestä 180 minuuttia. Kolmas konekoe vastaa kahtakymmentä kurssipistettä Ohjelmoinnin perusteet -kurssista, ja sen pisteistä tulee saada vähintään puolet.
+    Jos teet kurssia Ohjelmoinnin perusteet tai aikataulutettua Ohjelmoinnin MOOCia, tässä kohtaa tulee tehdä kurssin kolmas konekoe. Kolmannen konekokeen tekemiseen on kokeen aloitushetkestä 180 minuuttia. Kolmas konekoe vastaa kahtakymmentä kurssipistettä Ohjelmoinnin perusteet -kurssista, ja sen pisteistä tulee saada vähintään puolet, jotta kurssi arvostellaan.
   </p>
 
   <p>
@@ -2302,7 +2321,7 @@ tiiliskivi (4 kg)<% end %>
   </p>
 
   <p>
-    Huom! Älä kuitenkaan aloita kokeen tekemistä ennen kuin olet kerrannut edeltävät osat ja olet varma, että sinulla on aikaa tehdä koe. Konekoe tulee tehdä ennen Helsingin yliopiston kurssilla 10.3. klo 14:00 mennessä ja aikataulutetussa Ohjelmoinnin MOOCissa 19.3. mennessä. Koe ja tehtävät julkaistaan osoitteessa https://myexams.herokuapp.com viimeistään 26.2.
+    Huom! Älä kuitenkaan aloita kokeen tekemistä ennen kuin olet kerrannut edeltävät osat ja olet varma, että sinulla on aikaa tehdä koe. Konekoe tulee tehdä Helsingin yliopiston kurssilla 10.3. klo 14:00 mennessä ja aikataulutetussa Ohjelmoinnin MOOCissa 19.3. mennessä. Koe ja tehtävät julkaistaan osoitteessa https://myexams.herokuapp.com viimeistään 27.2.
   </p>
   
 <% end %>
