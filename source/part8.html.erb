@@ -484,7 +484,7 @@ public class Rekisteribongauslaskuri {
     }
 
     public int montakoKertaaBongattu(String bongattu) {
-        this.bongatut.getOrDefault(bongattu, 0);
+        return this.bongatut.getOrDefault(bongattu, 0);
     }
 }
 <% end %>
@@ -518,7 +518,7 @@ System.out.println(matinVelkakirja.paljonkoVelkaa("Joel"));
   
   <% partial 'partials/sample_output' do %>
 51.5
-0
+0.0
   <% end %>
   
   <p>
