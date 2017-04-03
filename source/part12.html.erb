@@ -338,7 +338,7 @@ public class JavaFxSovellus extends Application {
 <% partial 'partials/exercise', locals: { name: 'Nappi ja tekstielementti' } do %>
 
   <p>
-    Luo edellistä esimerkkiä seuraten käyttöliittymä, jossa on nappi (Button) ja tekstielementti (Label). Napin tulee olla tekstielementin vasemmalla puolella tai yläpuolella.
+    Luo edellistä esimerkkiä seuraten tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on nappi (Button) ja tekstielementti (Label). Napin tulee olla tekstielementin vasemmalla puolella tai yläpuolella.
   </p>
   
 <% end %>
@@ -346,7 +346,7 @@ public class JavaFxSovellus extends Application {
 <% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikenttä' } do %>
 
   <p>
-    Luo graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettu luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettu luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
   </p>
   
 <% end %>
@@ -419,7 +419,7 @@ public class JavaFxSovellus extends Application {
 
   
   <p>
-    Luo graafinen käyttöliittymä, joka käyttää BorderPane-luokkaa elementtien asetteluun. Lisää ylälaitaan tekstielementti, jossa on teksti "NORTH", oikeaan laitaan tekstielementti, jossa on teksti "EAST", ja alalaitaan tekstielementti, jossa on teksti "SOUTH".
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, joka käyttää BorderPane-luokkaa elementtien asetteluun. Lisää ylälaitaan tekstielementti, jossa on teksti "NORTH", oikeaan laitaan tekstielementti, jossa on teksti "EAST", ja alalaitaan tekstielementti, jossa on teksti "SOUTH".
   </p>
   
 <% end %>
@@ -593,7 +593,7 @@ public class JavaFxSovellus extends Application {
 <% partial 'partials/exercise', locals: { name: 'Tekstitilastointia' } do %>
 
   <p>
-    Luo sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstielementtiä. Aseta alalaidan tekstielementit HBox-olion sisään. Ensimmäisessä tekstielementissä tulee olla teksti "Kirjaimia: 0". Toisessa tekstielementissä tulee olla teksti "Sanoja: 0". Kolmannessa tekstielementissä tulee olla teksti "Pisin sana on:".
+    Luo tehtäväpohjassa olevaan luokkaan sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstielementtiä. Aseta alalaidan tekstielementit HBox-olion sisään. Ensimmäisessä tekstielementissä tulee olla teksti "Kirjaimia: 0". Toisessa tekstielementissä tulee olla teksti "Sanoja: 0". Kolmannessa tekstielementissä tulee olla teksti "Pisin sana on:".
   </p>
   
 <% end %>
@@ -709,7 +709,7 @@ public void start(Stage ikkuna) {
 <% partial 'partials/exercise', locals: { name: 'Ilmoitin' } do %>
 
   <p>
-    Toteuta tehtäväpohjaan käyttöliittymä, jossa on kolme käyttöliittymäkomponenttia. Ylin komponentti on tekstikenttä (TextField), keskimmäinen komponentti nappi (Button), ja alin komponentti tekstielementti (Label). Asettele komponentit VBox-luokan avulla. Käyttöliittymän tulee näyttää (esimerkiksi) seuraavalta.
+    Toteuta tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on kolme käyttöliittymäkomponenttia. Ylin komponentti on tekstikenttä (TextField), keskimmäinen komponentti nappi (Button), ja alin komponentti tekstielementti (Label). Asettele komponentit VBox-luokan avulla. Käyttöliittymän tulee näyttää (esimerkiksi) seuraavalta.
   </p>
 
   <img src="/img/material/gui-ilmoitin-1.png" alt="."/>
@@ -830,7 +830,7 @@ vasenTeksti.textProperty().addListener((muutos, vanhaArvo, uusiArvo) -&gt; {
 <% partial 'partials/exercise', locals: { name: 'Tekstitilastointia, osa II' } do %>
 
   <p>
-    Kopioi tehtävässä Tekstitilastointia tekemäsi toteutus ja liitä mukaan yllä olevassa esimerkissä oleva toiminnallisuus tilastojen laskemiseen. Lopputuloksena ohjelman pitäisi laskea kirjoitetusta tekstistä tilastoja, jotka päivittyvät automaattisesti sovellukseen.
+    Kopioi tehtävässä Tekstitilastointia tekemäsi toteutus tehtäväpohjassa olevaan luokkaan ja liitä mukaan yllä olevassa esimerkissä oleva toiminnallisuus tilastojen laskemiseen. Lopputuloksena ohjelman pitäisi laskea kirjoitetusta tekstistä tilastoja, jotka päivittyvät automaattisesti sovellukseen.
   </p>
 
   <img src="/img/material/gui-tilastoja.gif" alt="Esimerkki tekstitilastointiin tarkoitetun ohjelman toiminnasta."/>
@@ -918,7 +918,7 @@ public void start(Stage ikkuna) {
     // ...
   
     lisaaNappi.setOnAction((event) -&gt; {
-        henkilovarasto.talleta(new Henkilo(nimiTeksti.getText(), hetuTeksti.getText));
+        henkilovarasto.talleta(new Henkilo(nimiTeksti.getText(), hetuTeksti.getText());
     });
     // ...
 }
