@@ -1173,13 +1173,397 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
   </p>
 
   <pre>
-Vetovoima = 6.67384 * (massa1 * massa2) / (etaisyys * etaisyys)
-  </pre>
+Vetovoima = 6.67384 * (massa1 * massa2) / (etaisyys * etaisyys)</pre>
 
   <p>
-    Tämähän on jotain, jonka konekin voisi laskea... Tehtävä julkaistaan pian.
+    Tietojenkäsittelytieteilijä huomaa nopeasti, että tämähän on jotain, jonka konekin voisi laskea. Rakennetaan tässä tehtävässä sovellus, jota voidaan käyttää planeettajärjestelmän simulointiin -- englanniksi järjestelmä tunnetaan nimellä <a href="https://en.wikipedia.org/wiki/N-body_simulation" target="_blank">N-body simulation</a>. Alla olevassa kuvassa on esimerkki ohjelman lopullisesta toiminnasta -- kuvassa hyörii aurinko, merkurius, venus, maa, ja mars.  
+  </p>
+
+  <img src="/img/material/gui-planeetat.gif" />
+
+  <p>&nbsp;</p>
+
+  <p>
+    Simulaatiot jaetaan tyypillisesti useampaan osaan, missä ensin lasketaan muutokset kappaleiden liikkeeseen, jonka jälkeen kappaleiden liikettä päivitetään. Tämän jälkeen simulaatio piirretään -- jos näin halutaan. 
+  </p>
+
+  <p>
+    Tehtävä on jaettu useampaan osaan. Rakennamme ensin luokan Planeetalle, jonka jälkeen hahmottelemme planeettajärjestelmää ja siihen liittyvää simulaatiota. Lopulta teemme planeettajärjestelmälle visualisaation. Jokaiselle osalle poislukien visualisaatio kirjoitetaan myös testit -- testaat siis sovelluksen toiminnan itse.
+  </p>
+
+
+  <h2>Planeetta</h2>
+
+  <p>
+    Luo pakkaukseen planeettajarjestelma luokka Planeetta. Luokalla planeetta on viisi oliomuuttujaa: x-sijainti, y-sijainti, x-liike, y-liike ja massa. Esitä jokainen muuttuja double-tyyppisenä. Tee luokalle konstruktori, joka on muotoa <code>public Planeetta(double xSijainti, double ySijainti, double xNopeus, double yNopeus, double massa)</code>, ja lisää luokalle "getterit ja setterit", eli oliomuuttujien asettamiseen tarvittavat metodit.
+  </p>
+
+  <p>
+    Tyypillisesti oliomuuttujien asettamiseen käytetyt get- ja set- metodit luodaan automaattisesti. Automaattisesti luotaville metodeille kirjoitetaan harvemmin yksikkötestejä.
+  </p>
+
+  <p>
+    Toteuta tämän jälkeen metodi etäisyyden laskemiseen. Metodi on muotoa <code>public double etaisyys(Planeetta toinen)</code>. Metodi laskee kahden planeetan välisen etäisyyden <a href="https://fi.wikipedia.org/wiki/Pythagoraan_lause" target="_blank">Pythagoraan lauseen</a> avulla.
+  </p>
+
+  <p>
+    Lisää testiluokkaan PlaneettaTest muutama etäisyyden laskemisen tarkastamiseen käytettävä testimetodi. Alla on muutamia planeettoja sekä niiden odotettuja etäisyyksiä, joita voit käyttää testimetodien kirjoittamisessa.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Planeetta yksi = new Planeetta(10, 20, 0, 0, 0);
+Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 0);
+
+System.out.println(yksi.etaisyys(kaksi)); // tulostaa 36.09016486523718
+System.out.println(kaksi.etaisyys(yksi)); // tulostaa 36.09016486523718
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 0);
+Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 0);
+
+System.out.println(yksi.etaisyys(kaksi)); // tulostaa 2.788887883912826E11
+System.out.println(kaksi.etaisyys(yksi)); // tulostaa 2.788887883912826E11
+  <% end %>
+
+  <p>
+    Kuten huomaat, double-muuttujan arvon voi esittää myös <a href="https://fi.wikipedia.org/wiki/Kymmenpotenssimuoto" target="_blank">kymmenpotenssimuodossa</a>.
+  </p>
+
+  <p>
+    Kun vertailet double-tyyppisiä muuttujia JUnit-luokan assertEquals-metodin avulla, käytä metodin <a href="http://junit.org/junit4/javadoc/latest/org/junit/Assert.html#assertArrayEquals(double[], double[], double)" target="_blank">kolmiparametrista versiota</a>. Tällöin voit antaa kolmanneksi parametriksi hyväksyttävän mittavirheen, esim.
   </p>
   
+  <% partial 'partials/code_highlight' do %>
+Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 0);
+Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 0);
+assertEquals(2.788887883912826E11, yksi.etaisyys(kaksi), 1000);
+  <% end %>
+
+  <p>
+    Yllä olevassa esimerkissä kutsun yksi.etaisyys(kaksi) hyväksytään kunhan sen etäisyys luvusta <code>2.788887883912826E11</code> on pienempi kuin 1000.
+  </p>
+
+
+  <h2>Planeetta, osa 2</h2>
+
+  <p>
+    Luodaan seuraavaksi toiminnallisuus planeettaan kohdistuvien voimien selvittämiseksi. Kahden planeetan välisen vetovoiman voi laskea kaavalla:
+  </p>
+
+  <pre>
+Vetovoima = 6.67384 * (massa1 * massa2) / (etaisyys * etaisyys)</pre>
+
+  <p>
+    Koska planeettamme sijatsevat kaksiulotteisessa koordinaatistossa, ja niiden sijaintia ja liikettä kuvataan desimaalilukuina, on mielekästä toteuttaa toiminnallisuus myös suuntakohtaisen (x- ja y-suunnan) vetovoiman laskemiseen. Kaavat näille ovat seuraavat:
+  </p>
+
+  <pre>
+Vetovoima<sub>x</sub> = Vetovoima * etaisyys<sub>x</sub> / etaisyys
+Vetovoima<sub>y</sub> = Vetovoima * etaisyys<sub>y</sub> / etaisyys</pre>
+
+  <p>
+    Yllä merkintä etaisyys<sub>x</sub> tarkoittaa kahden planeetan välistä etäisyyttä x-akselilla, ja etaisyys<sub>y</sub> kahden planeetan välistä etäisyyttä y-akselilla. Käytännössä siis planeettaan vaikuttava voima normalisoidaan planeettojen etäisyyksien suhteen.
+  </p>
+
+  <p>
+    Lisää planeetalle metodit <code>public double vetovoima(Planeetta toinen)</code>, <code>public double vetovoimaX(Planeetta toinen)</code> ja <code>public double vetovoimaY(Planeetta toinen)</code>.
+  </p>
+
+  <p>
+    Kirjoita avuksesi testejä voimiin liittyvien laskujen tarkastamiseksi. Alla muutamia valmiiksi laskettuja arvoja.
+  </p>
+ 
+  <% partial 'partials/code_highlight' do %>
+Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
+Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
+System.out.println(yksi.vetovoima(kaksi)); // 0.001024773896353167
+System.out.println(kaksi.vetovoima(yksi)); // 0.001024773896353167
+  <% end %>
+
+  
+  <% partial 'partials/code_highlight' do %> 
+Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 4.0e+24);
+Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 3.0e+23);    
+System.out.println(yksi.vetovoima(kaksi)); // 1.029662569667683E15
+System.out.println(kaksi.vetovoima(yksi)); // 1.029662569667683E15
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %> 
+Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 4.0e+24);
+Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 3.0e+23);
+System.out.println(yksi.vetovoimaX(kaksi)); // -9.929356893826232E14
+System.out.println(kaksi.vetovoimaY(yksi)); // 2.7255040657630772E14
+  <% end %>
+  
+  <% partial 'partials/code_highlight' do %>
+Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
+Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
+System.out.println(yksi.vetovoimaY(kaksi)); // -1.8456635903904204E-4
+System.out.println(kaksi.vetovoimaX(yksi)); // -0.001008016268597845
+  <% end %>
+
+  <p>
+    Kun toteuttamasi testit menevät läpi, planeettoihin liittyvä perustoiminnallisuus on kohdallaan. Tiedämme nyt minkä verran kukin planeetta vaikuttaa muihin planeettoihin. 
+  </p>
+
+  
+  
+  <h2>Planeettajarjestelma</h2>
+
+  <p>
+    Luodaan seuraavaksi järjestelmä, jonka avulla simuloidaan planeettojen liikettä. Luo pakkaukseen planeettajarjestelma luokka Planeettajarjestelma. Luokka planeettajarjestelma sisältää listan planeettoja, sekä tiedon planeettajärjestelmän halkaisijasta. Luo luokalle Planeettajarjestelma konstruktori <code>public Planeettajarjestelma(List&lt;Planeetta&gt; planeetat, double halkaisija)</code>.  
+  </p>
+
+  <p>
+    Lisää tämän jälkeen luokalle Planeettajarjestelma metodi <code>public List&lt;Planeetta&gt; getPlaneetat()</code>, joka palauttaa listan järjestelmässä olevista planeetoista, sekä metodi <code>public void paivita(double ajanmuutos)</code>, jota käytetään planeettojen liikuttamiseen ajan yli. Ajanmuutos mahdollistaa päivityksen planeettojen liikkeiden tarkemman tarkastelun niin haluttaessa.
+  </p>
+
+  <p>
+    Toteutetaan planeettojen liikuttaminen seuraavaksi -- <em>tämä osa on kahden pisteen arvoinen</em>.
+  </p>
+
+  <ol>
+    <li>
+      Ensin lasketaan jokaiselle planeetalle niihin vaikuttavien voimien summa. Voimien summa lasketaan tarkastelemalla planeettaa jokaisen muun planeettajärjestelmässä olevan planeetan suhteen. Voimien summa lasketaan sekä x- että y-koordinaatille.
+    </li>
+    <li>
+      Tämän jälkeen päivitetään jokaisen planeetan sijaintia ja liikettä. Tämä tapahtuu seuraavasti:
+      <ol>
+	<li>Planeettaan kohdistuva kiihdytys lasketaan voimien summasta. Kiihdytys x-akselin suuntaan on x-akseliin kohdistuvien voimien summa jaettuna planeetan massalla. Vastaavasti kiihdytys y-akselin suuntaan on y-akseliin kohdistuvien voimien summa jaettuna kappaleen massalla.</li>
+	<li>Planeetan uusi nopeus lasketaan vanhan nopeuden sekä kiihdytyksen avulla. Uusi x-akselin suuntainen nopeus on vanha x-akselin suuntainen nopeus + ajanmuutos * x-akseliin kohdistuva kiihdytys. Uusi y-akselin suuntainen nopeus on vanha y-akselin suuntainen nopeus + ajanmuutos * x-akseliin kohdistuva kiihdytys.</li>
+	<li>Planeetan uusi sijainti lasketaan vanhan sijainnin sekä nopeuden avulla. Uusi x-sijainti saadaan laskemalla vanha x-sijainti + ajanmuutos * x-akselin suuntainen nopeus. Vastaavasti uusi y-sijainti saadaan laskemalla vanha y-sijainti + ajanmuutos * y-akselin suuntainen nopeus.</li>
+      </ol>
+    </li>
+  </ol>
+
+  <p>
+    Toteuta edellä mainittu toiminnallisuus metodiin paivita. Tee toiminnallisuudet edellä kuvatussa järjestyksessä (jos yhdistät planeettoihin vaikuttavien voimien summan laskemisen sijaintien päivittämiseen, osa kappaleista käyttää uusia sijainteja ja osa vanhoja -- lopputulos ei ole kovin hyvä).
+  </p>
+
+  <p>
+    Kirjoita myös planeettajärjestelmän paivita-metodin toiminnallisuuden tarkastamiseen liittyviä testejä testiluokkaan PlaneettajarjestelmaTest. Alla muutamia esimerkkejä, joista voi olla hyötyä testien laatimisessa.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
+Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
+
+System.out.println(yksi.getSijaintiX() + ", " + yksi.getSijaintiY());
+System.out.println(yksi.getNopeusX() + ", " + yksi.getNopeusY());
+System.out.println("");
+System.out.println(kaksi.getSijaintiX() + ", " + kaksi.getSijaintiY());
+System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
+System.out.println("");
+
+List&lt;Planeetta&gt; planeetat = new ArrayList&lt;&gt;();
+
+planeetat.add(yksi);
+planeetat.add(kaksi);
+
+Planeettajarjestelma jarjestelma = new Planeettajarjestelma(planeetat, 0);
+jarjestelma.paivita(25000);
+
+System.out.println(yksi.getSijaintiX() + ", " + yksi.getSijaintiY());
+System.out.println(yksi.getNopeusX() + ", " + yksi.getNopeusY());
+System.out.println("");
+System.out.println(kaksi.getSijaintiX() + ", " + kaksi.getSijaintiY());
+System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %> 
+10.0, 20.0
+0.0, 0.0
+
+45.5, 13.5
+0.0, 0.0
+
+16.30010167873653, 18.846460256005987
+2.5200406714946124E-4, -4.614158975976051E-5
+
+42.34994916063174, 14.076769871997007
+-1.2600203357473062E-4, 2.3070794879880254E-5
+  <% end %> 
+
+  <% partial 'partials/code_highlight' do %> 
+Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
+Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
+
+System.out.println(yksi.getSijaintiX() + ", " + yksi.getSijaintiY());
+System.out.println(yksi.getNopeusX() + ", " + yksi.getNopeusY());
+System.out.println("");
+System.out.println(kaksi.getSijaintiX() + ", " + kaksi.getSijaintiY());
+System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
+System.out.println("");
+
+List&lt;Planeetta&gt; planeetat = new ArrayList&lt;&gt;();
+
+planeetat.add(yksi);
+planeetat.add(kaksi);
+
+Planeettajarjestelma jarjestelma = new Planeettajarjestelma(planeetat, 0);
+jarjestelma.paivita(25000);
+
+System.out.println(yksi.getSijaintiX() + ", " + yksi.getSijaintiY());
+System.out.println(yksi.getNopeusX() + ", " + yksi.getNopeusY());
+System.out.println("");
+System.out.println(kaksi.getSijaintiX() + ", " + kaksi.getSijaintiY());
+System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+10.0, 20.0
+0.0, 0.0
+
+45.5, 13.5
+0.0, 0.0
+
+10.000000010080162, 19.999999998154337
+1.008016268597845E-8, -1.8456635903904204E-9
+
+45.49999999495992, 13.500000000922832
+-5.040081342989225E-9, 9.228317951952102E-10
+  <% end %>
+
+  
+  <% partial 'partials/code_highlight' do %> 
+Planeetta aurinko = new Planeetta(538771.2647179796, 311728.01914265234, 0.15944610708562912, 0.15099663888466472, 1.989E30); 
+Planeetta merkurius = new Planeetta(-2.3423738558153862E10, -5.363391883276512E10, 43168.9924212314, -19555.612648233368, 3.302E23); 
+Planeetta venus = new Planeetta(-1.2257733349672739E10, 1.0688994731967513E11, -34980.88986158969, -3903.1360711941647, 4.869E24); 
+Planeetta maa = new Planeetta(7.649815710400691E10, 1.2825871174194992E11, -25608.972746907584, 15340.707015973465, 5.974E24); 
+Planeetta mars = new Planeetta(1.9433739848583844E11, 1.1855926503806793E11, -12591.918312354934, 20580.315270396313, 6.419E23); 
+
+List&lt;Planeetta&gt; planeetat = new ArrayList&lt;&gt;();
+planeetat.add(aurinko);
+planeetat.add(merkurius);
+planeetat.add(venus);
+planeetat.add(maa);
+planeetat.add(mars);
+
+
+planeetat.forEach(p -&gt; {
+    System.out.println(p.getSijaintiX() + ", " + p.getSijaintiY());
+    System.out.println(p.getNopeusX() + ", " + p.getNopeusY());
+    System.out.println("");
+});
+System.out.println("");
+
+Planeettajarjestelma jarjestelma = new Planeettajarjestelma(planeetat, 0);
+jarjestelma.paivita(50000);
+
+planeetat.forEach(p -&gt; {
+    System.out.println(p.getSijaintiX() + ", " + p.getSijaintiY());
+    System.out.println(p.getNopeusX() + ", " + p.getNopeusY());
+    System.out.println("");
+});
+System.out.println("");
+
+jarjestelma.paivita(10000);
+
+planeetat.forEach(p -&gt; {
+    System.out.println(p.getSijaintiX() + ", " + p.getSijaintiY());
+    System.out.println(p.getNopeusX() + ", " + p.getNopeusY());
+    System.out.println("");
+});
+System.out.println("");
+  <% end %>
+  
+
+  <% partial 'partials/sample_output' do %>
+538771.2647179796, 311728.01914265234
+0.15944610708562912, 0.15099663888466472
+
+-2.3423738558153862E10, -5.363391883276512E10
+43168.9924212314, -19555.612648233368
+
+-1.2257733349672739E10, 1.0688994731967513E11
+-34980.88986158969, -3903.1360711941647
+
+7.649815710400691E10, 1.2825871174194992E11
+-25608.972746907584, 15340.707015973465
+
+1.9433739848583844E11, 1.1855926503806793E11
+-12591.918312354934, 20580.315270396313
+
+
+546753.7944816214, 319372.29416968033
+0.15965059527283532, 0.15288550054056047
+
+-2.122651286614097E10, -5.452291443432985E10
+43944.513840257874, -17779.91203129461
+
+-1.400351138533523E10, 1.0666630873327432E11
+-34915.560713249826, -4472.771728016184
+
+7.521008618879851E10, 1.2901296745582213E11
+-25761.418304167997, 15085.114277444087
+
+1.9370233582765106E11, 1.1958494576932034E11
+-12701.253163747268, 20513.61462504828
+
+
+548350.6721603925, 320904.92101260496
+0.15968776787711067, 0.15326268429246453
+
+-2.0785660969037113E10, -5.469710019270493E10
+44085.189710385515, -17418.57583750844
+
+-1.4352517689966866E10, 1.0662044384660854E11
+-34900.63046316362, -4586.4886665782915
+
+7.49521722209357E10, 1.2916330435978476E11
+-25791.396786281566, 15033.69039626289
+
+1.9357510532720624E11, 1.1978994735171835E11
+-12723.050044481151, 20500.15823980136
+  <% end %>
+
+
+  <h2>Piirtäminen</h2>
+
+  <p>
+    Luo pakkauksessa planeettajarjestelma olevaan luokkaan PlaneettajarjestelmaSovellus graafinen käyttöliittymä, joka piirtää planeetat ja kutsuu sovelluksen päivitä metodia. Planeettoina voi käyttää -- esimerkiksi -- aurinkokuntamme seuraavia planeettoja.
+  </p>
+
+  <% partial 'partials/code_highlight' do %> 
+Planeetta aurinko = new Planeetta(538771.2647179796, 311728.01914265234, 0.15944610708562912, 0.15099663888466472, 1.989E30); 
+Planeetta merkurius = new Planeetta(-2.3423738558153862E10, -5.363391883276512E10, 43168.9924212314, -19555.612648233368, 3.302E23); 
+Planeetta venus = new Planeetta(-1.2257733349672739E10, 1.0688994731967513E11, -34980.88986158969, -3903.1360711941647, 4.869E24); 
+Planeetta maa = new Planeetta(7.649815710400691E10, 1.2825871174194992E11, -25608.972746907584, 15340.707015973465, 5.974E24); 
+Planeetta mars = new Planeetta(1.9433739848583844E11, 1.1855926503806793E11, -12591.918312354934, 20580.315270396313, 6.419E23); 
+  <% end %>
+
+  <p>
+    Aseta planeettajärjestelmää luotaessa sen halkaisijaksi <code>5.0E11</code>. Piirtäminen ja päivittäminen voidaan toteuttaa erillisissä AnimationTimer-luokan ilmentymissä. Piirtäminen kannattaa tehdä noin 60 kertaa sekunnissa, ja päivittäminen noin 30 kertaa sekunnissa. Hyödynnä planeettoja piirtäessä tietoa piirtoalustan koosta (saat päättää sen itse), aurinkokunnan halkaisijasta, sekä planeetan sijainnista. Tehtävän alussa näytetyn esimerkin piirtämisessä käytettiin seuraavaa fillOval-komentoa.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>   
+piirturi.fillOval(leveys / 2 + leveys * p.getSijaintiX() / halkaisija, korkeus / 2 + korkeus * p.getSijaintiY() / halkaisija, 10, 10);
+  <% end %>
+
+  <p>
+    Kun animaatio toimii, palauta tehtävä. Voit halutessasi myös lisätä sovellukseen enemmän kappaleita tai tarkastella miten sovellus toimii erilaisissa tilanteissa. Olemme esimerkiksi erittäin onnellisia siitä, ettei aurinko ole kovin paljoa painavampi -- alla olevassa animaatiossa auringon massa on <code>5e30</code> <code>1.9890e+30</code> sijaan.
+  </p>
+
+  <img src="/img/material/gui-planeetat-painava-aurinko.gif" />
+
+  <p>&nbsp;</p>
+  
+  <p>
+    Alla olevassa esimerkissä taas auringon massa on 1e31.
+  </p>
+
+  <img src="/img/material/gui-planeetat-painavampi-aurinko.gif" />
+
+  <p>
+    Huomaat todennäköisesti myös, että päivitysmetodin kutsussa käytettävä aikaväli vaikuttaa simulaation toimintaan. Tämä johtuu sijaintien arviointiin käytetystä päivitystavasta -- mitä lyhyempi aikaväli, sitä tarkempi arviosta saadaan. Sovelluksessa käytetty sijaintien arviointi perustuu numeerisiin menetelmiin -- myös näihin löytyy Kumpulasta sopivia kursseja. 
+  </p>
+
+
+  <p>
+    <em>Alkuperäinen tehtäväidea, Robert Sedgewick ja Kevin Wayne, Princeton</em>
+  </p>
+    
 <% end %>
 
 <%= partial 'partials/quiz', locals: { id: '58f4de17abb24400043532de' } %>
