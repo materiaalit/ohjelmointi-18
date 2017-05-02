@@ -7,6 +7,16 @@ function getCourseName() {
   return store.get('tmc.course');
 }
 
+function getOhpeOhjaKesa17Config() {
+  return {
+    courseId: '214',
+    courseName: 'Ohjelmoinnin perusteet ja jatkokurssi',
+    exerciseGroups: {
+      'Osa 1': ['01.05.2017 16:00', '16.05.2017 23:59', 'osa01-']
+    },
+  }
+}
+
 function getOhjaConfig() {
   return {
     courseId: '208',
@@ -75,6 +85,9 @@ function getConfig() {
     case 'ohja-k2017':
       return getOhjaConfig();
       break;
+    case 'hy-ohpe-ja-ohja-kesa2017':
+      return getOhpeOhjaKesa17Config();
+      break;
     default:
       return getMoocConfig();
   }
@@ -90,6 +103,8 @@ function init() {
   const user = client.getUser();
 
   const config = Object.assign({}, getConfig(), { accessToken: user.accessToken, userId: user.username });
+
+  console.log(config);
 
   window.StudentDashboard.initialize(config);
 }
