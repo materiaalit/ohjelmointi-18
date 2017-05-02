@@ -104,8 +104,6 @@ function init() {
 
   const config = Object.assign({}, getConfig(), { accessToken: user.accessToken, userId: user.username });
 
-  console.log(config);
-
   window.StudentDashboard.initialize(config);
 }
 
