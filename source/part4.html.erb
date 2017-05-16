@@ -8,19 +8,20 @@
 
 
 <% partial 'partials/hint', locals: { name: 'Neljännen osion tavoitteet' } do %>
-  
+
   <p>
     Kurssin neljännessä osassa kerrataan aiempaa ja tuodaan taas käyttöön uusia välineitä. Keskitymme luokkien ja olioiden käyttöön ja luomme olioille uutta toimintaa. Tutustumme sekä olioihin listalla että listoihin oliomuuttujana. Olion elämä tulee myös syvällisemmin tutuksi.
   </p>
 
   <p>
-    Tavoitteena on, että tämän osion jälkeen osaat tunnistaa annetusta ongelmasta käsitteitä ja muodostaa niiden perusteella luokkia. Osaat tehdä näistä luokista olioita. Osaat luoda ohjelman, joka ratkaisee ongelman olioita hyödyntämällä. Osaat myös luoda ja käsitellä olioita, jotka sisältävät muita olioita.   
+    Tavoitteena on, että tämän osion jälkeen osaat tunnistaa annetusta ongelmasta käsitteitä ja muodostaa niiden perusteella luokkia. Osaat tehdä näistä luokista olioita. Osaat luoda ohjelman, joka ratkaisee ongelman olioita hyödyntämällä. Osaat myös luoda ja käsitellä olioita, jotka sisältävät muita olioita.
   </p>
 
-
+<% if false %>
   <p>
     Huom! Jos teet Helsingin yliopiston Ohjelmoinnin perusteet -kurssia tai aikataulutettua MOOCia, tee konekoe ennen tämän osion aloittamista.
   </p>
+<% end %>
 <% end %>
 
 
@@ -29,7 +30,7 @@
 <% end %>
 
 <p>
-  Kerrataan lyhyesti edellistä osiota. Alla on luokka. Luokka määrittelee minkälaisia olioita siitä voidaan luoda. Se sisältää oliomuuttujat, olion luomiseen käytettävän konstruktorin, sekä metodeja. 
+  Kerrataan lyhyesti edellistä osiota. Alla on luokka. Luokka määrittelee minkälaisia olioita siitä voidaan luoda. Se sisältää oliomuuttujat, olion luomiseen käytettävän konstruktorin, sekä metodeja.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -104,7 +105,7 @@ System.out.println(eka.pintaAla());
   <p>
     Luokalla tulee olla:
   </p>
-  
+
   <ul>
     <li>Konstruktori <code>public Kirja(String kirjailija, String nimi, int sivuja)</code></li>
     <li>Metodi <code>public String getKirjailija()</code> joka palauttaa kirjan kirjailijan nimen.</li>
@@ -186,7 +187,7 @@ int indeksi = 0;
 while (indeksi &lt; nimet.size()) {
     System.out.println(nimet.get(indeksi));
     indeksi++;
-}  
+}
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -219,7 +220,7 @@ public class Henkilo {
     private int ika;
     private int paino;
     private int pituus;
-  
+
     public Henkilo(String nimi) {
         this.nimi = nimi;
         this.ika = 0;
@@ -228,7 +229,7 @@ public class Henkilo {
     }
 
     // muita konstruktoreja ja metodeja
-  
+
     public String getNimi() {
         return this.nimi;
     }
@@ -236,7 +237,7 @@ public class Henkilo {
     public int getIka() {
         return this.ika;
     }
-  
+
     public void vanhene() {
         this.ika++;
     }
@@ -262,14 +263,14 @@ public class Henkilo {
 <% end %>
 
 <p>
-  Olioiden käsittely listalla ei oikeastaan poikkea aiemmin näkemästämme listan käytöstä millään tavalla. Oleellista on vain listalle lisättävien olioiden tyypin määrittely listan luomisen yhteydessä. 
+  Olioiden käsittely listalla ei oikeastaan poikkea aiemmin näkemästämme listan käytöstä millään tavalla. Oleellista on vain listalle lisättävien olioiden tyypin määrittely listan luomisen yhteydessä.
 </p>
 
 <p>
   Alla olevassa esimerkissä luodaan ensin Henkilo-tyyppisille olioille tarkoitettu lista, jonka jälkeen listalle lisätään henkilöolioita. Lopulta henkilöoliot tulostetaan yksitellen.
 </p>
 
-  
+
 <% partial 'partials/code_highlight' do %>
 ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
@@ -315,7 +316,7 @@ while (true) {
 
 System.out.println();
 System.out.println("Henkilöitä yhteensä: " + henkilot.size());
-System.out.println("Henkilöt: ");  
+System.out.println("Henkilöt: ");
 
 int indeksi = 0;
 while (indeksi &lt; henkilot.size()) {
@@ -342,7 +343,7 @@ while (indeksi &lt; henkilot.size()) {
     if (henkilo.getIka() &gt;= 18) {
         System.out.println(henkilo);
     }
-  
+
     indeksi++;
 }
 <% end %>
@@ -355,7 +356,7 @@ while (indeksi &lt; henkilot.size()) {
 // ..
 System.out.print("Mikä ikäraja? ");
 int ikaraja = Integer.parseInt(lukija.nextLine());
-  
+
 int indeksi = 0;
 while (indeksi &lt; henkilot.size()) {
     Henkilo henkilo = henkilot.get(indeksi);
@@ -363,7 +364,7 @@ while (indeksi &lt; henkilot.size()) {
     if (henkilo.getIka() &gt;= ikaraja) {
         System.out.println(henkilo);
     }
-  
+
     indeksi++;
 }
 <% end %>
@@ -416,7 +417,7 @@ Miehen puolikkaat, 30 minuuttia
   <p>
     Ohjelmaa varten kannattanee toteuttaa Kirjaa kuvaava luokka. Tehtävä on kahden tehtäväpisteen arvoinen.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Nimi: <font color="red">Minä en sitten muutu</font>
 Sivuja: <font color="red">201</font>
@@ -485,7 +486,7 @@ Henkilo joan = new Henkilo("Joan Ball");
 <img src="/img/drawings/olio-joan.png"/>
 
 <p>
-  Muuttujan arvo on siis olioon liittyvien tietojen paikka eli <strong>viite</strong>. Yllä oleva kuva paljastaa myös sen, että nimi -- tai tarkemmin merkkijonot -- ovat myös olioita. 
+  Muuttujan arvo on siis olioon liittyvien tietojen paikka eli <strong>viite</strong>. Yllä oleva kuva paljastaa myös sen, että nimi -- tai tarkemmin merkkijonot -- ovat myös olioita.
 </p>
 
 
@@ -518,11 +519,11 @@ Henkilo ball = joan;
 <% partial 'partials/code_highlight' do %>
 Henkilo joan = new Henkilo("Joan Ball");
 System.out.println(joan);
-  
+
 Henkilo ball = joan;
-ball.vanhene();  
-ball.vanhene();  
-  
+ball.vanhene();
+ball.vanhene();
+
 System.out.println(joan);
 <% end %>
 
@@ -552,8 +553,8 @@ Henkilo joan = new Henkilo("Joan Ball");
 System.out.println(joan);
 
 Henkilo ball = joan;
-ball.vanhene();  
-ball.vanhene();  
+ball.vanhene();
+ball.vanhene();
 
 System.out.println(joan);
 
@@ -592,8 +593,8 @@ Henkilo joan = new Henkilo("Joan Ball");
 System.out.println(joan);
 
 Henkilo ball = joan;
-ball.vanhene();  
-ball.vanhene();  
+ball.vanhene();
+ball.vanhene();
 
 System.out.println(joan);
 
@@ -624,8 +625,8 @@ Henkilo joan = new Henkilo("Joan Ball");
 System.out.println(joan);
 
 Henkilo ball = joan;
-ball.vanhene();  
-ball.vanhene();  
+ball.vanhene();
+ball.vanhene();
 
 System.out.println(joan);
 
@@ -635,7 +636,7 @@ System.out.println(joan);
 ball = null;
 System.out.println(ball);
 <% end %>
-  
+
 
 <% partial 'partials/sample_output' do %>
 Joan Ball, ikä 0 vuotta
@@ -669,11 +670,11 @@ Joan Ball, ikä 0 vuotta
 <% end %>
 
 <p>
-  Käy huonosti. Tämä on ehkä ensimmäinen kerta kun näet tekstin <strong>NullPointerException</strong>. Ohjelmassa tapahtuu virhe, joka liittyy siihen, että olemme kutsuneet ei mihinkään viittaavan muuttujan metodia. 
+  Käy huonosti. Tämä on ehkä ensimmäinen kerta kun näet tekstin <strong>NullPointerException</strong>. Ohjelmassa tapahtuu virhe, joka liittyy siihen, että olemme kutsuneet ei mihinkään viittaavan muuttujan metodia.
 </p>
 
 <p>
-  Voimme luvata, että tulet näkemään edellisen virheen vielä uudelleen. Tällöin ensimmäinen askel on etsiä muuttujia, joiden arvona saattaisi olla <code>null</code>. Virheilmoitus on onneksi myös hyödyllinen: se kertoo millä rivillä virhe tapahtuu. Kokeile vaikka itse! 
+  Voimme luvata, että tulet näkemään edellisen virheen vielä uudelleen. Tällöin ensimmäinen askel on etsiä muuttujia, joiden arvona saattaisi olla <code>null</code>. Virheilmoitus on onneksi myös hyödyllinen: se kertoo millä rivillä virhe tapahtuu. Kokeile vaikka itse!
 </p>
 
 
@@ -682,7 +683,7 @@ Joan Ball, ikä 0 vuotta
   <p>
     Toteuta ohjelma, jonka suorittaminen aiheuttaa virheen NullPointerException. Virheen tulee tapahtua heti kun ohjelma suoritetaan -- älä siis esimerkiksi lue käyttäjältä syötettä.
   </p>
-  
+
 <% end %>
 
 <p>&nbsp;</p>
@@ -695,7 +696,7 @@ Joan Ball, ikä 0 vuotta
 
 
 <p>
-  Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei siis luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon. 
+  Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei siis luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon.
 </p>
 
 <p>
@@ -730,9 +731,9 @@ while (indeksi &lt; henkilot.size()) {
     System.out.println(henkilo);
 
     // tai: System.out.println(henkilot.get(indeksi));
-  
+
     indeksi++;
-}  
+}
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -786,7 +787,7 @@ public class Paivays {
     public int getVuosi() {
         return this.vuosi;
     }
-  
+
     @Override
     public String toString() {
         return this.paiva + "." + this.kuukausi + "." + this.vuosi;
@@ -804,7 +805,7 @@ public class Henkilo {
     private Paivays syntymaPaiva;
     private int paino = 0;
     private int pituus = 0;
-  
+
     // ...
 <% end %>
 
@@ -836,7 +837,7 @@ public Henkilo(String nimi, int paiva, int kuukausi, int vuosi) {
   <p>
     Kaavio luetaan esimerkiksi "Henkilöllä on syntymäpäivänä päiväys".
   </p>
-  
+
 <img src="/img/diagrams/luokkakaavio-henkilo-ja-syntymapaiva.png" alt="[Paivays|-paiva:int;-kuukausi:int;-vuosi:int|+Paivays(paiva:int¸kuukausi:int¸vuosi:int);+getPaiva():int;+getKuukausi():int;+getVuosi():int;+toString():String]
 		     [Henkilo|-nimi:String;-paino:int;-pituus:int|+Henkilo(nimi:String¸paiva:int¸kuukausi:int¸vuosi:int);+...;+toString():String]
 		     [Henkilo]-syntymapaiva>[Paivays]" />
@@ -954,7 +955,7 @@ public class Kello {
     private YlhaaltaRajoitettuLaskuri sekunnit;
 
     public Kello(int tunnitAlussa, int minuutitAlussa, int sekunnitAlussa) {
-      // laskurit tunneille, minuuteille ja sekunneille; 
+      // laskurit tunneille, minuuteille ja sekunneille;
       // laskurien arvot tulee asettaa parametreina saatuun aikaan
     }
 
@@ -975,7 +976,7 @@ public class Kello {
   <p>
     Voit testata kelloasi seuraavalla pääohjelmalla:
   </p>
-    
+
   <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
@@ -1115,7 +1116,7 @@ Juhana ei pääse jäseneksi
   <p>
     Joillain Linux-koneilla, kuten Kumpulassa olevilla koneilla, tämä saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti.
   </p>
-    
+
 <% end %>
 
 <!-- CAST2 -->
@@ -1131,7 +1132,7 @@ Juhana ei pääse jäseneksi
   </p>
 
   <h2>Henkilöiden punnitseminen</h2>
-  
+
   <p>
     Kasvatuslaitoksen luokkarungossa on valmiina runko metodille <code>punnitse</code>:
   </p>
@@ -1250,7 +1251,7 @@ public static void main(String[] args) {
     System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 }
   <% end %>
-  
+
   <p>
     Tulostuu:
   </p>
@@ -1409,7 +1410,7 @@ kassassa rahaa 1009.3 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
   <% end %>
 
   <h2>Kortilla maksaminen</h2>
-  
+
   <p>
     Laajennetaan kassapäätettä siten että myös kortilla voi maksaa. Teemme kassapäätteelle siis metodit joiden parametrina kassapääte saa maksukortin jolta se vähentää valitun lounaan hinnan. Seuraavassa uusien metodien rungot ja ohje niiden toteuttamiseksi:
   </p>
@@ -1473,7 +1474,7 @@ kassassa rahaa 1002.5 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
   <% end %>
 
   <h2>Rahan lataaminen</h2>
-  
+
   <p>
     Lisätään vielä kassapäätteelle metodi jonka avulla kortille voidaan ladata lisää rahaa. Muista, että rahan lataamisen yhteydessä ladattava summa viedään kassapäätteeseen. Metodin runko:
   </p>
@@ -1661,7 +1662,7 @@ public class Paivays {
         return this.paiva + "." + this.kuukausi + "." + this.vuosi;
     }
 
-    // metodilla tarkistetaan onko tämä päiväysolio (<code>this</code>) ennen 
+    // metodilla tarkistetaan onko tämä päiväysolio (<code>this</code>) ennen
     // parametrina annettavaa päiväysoliota (<code>verrattava</code>)
     public boolean aiemmin(Paivays verrattava) {
         // ensin verrataan vuosia
@@ -2019,7 +2020,7 @@ public static void main(String[] args) {
     }
 
 
-    System.out.println("Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!"); 
+    System.out.println("Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!");
 //    System.out.println("Kokeile " + pvm.paivienPaasta(790));
 }
     <% end %>
@@ -2169,7 +2170,7 @@ Raha c = new Raha(5, 0);
 System.out.println(a.vahemman(b));  // false
 System.out.println(b.vahemman(c));  // true
   <% end %>
-  
+
   <h2>Miinus</h2>
 
   <p>
@@ -2197,7 +2198,7 @@ System.out.println(a);  // 10.00e
 System.out.println(b);  // 3.50e
 System.out.println(c);  // 0.00e
     <% end %>
-    
+
 <% end %>
 
 
@@ -2240,7 +2241,7 @@ public class Soittolista {
             System.out.println(kappale);
 
             indeksi++;
-        } 
+        }
     }
 }
 <% end %>
@@ -2307,7 +2308,7 @@ toisena lisätty ateria
 kolmantena lisätty ateria
   <% end %>
 
-  
+
   <h2>Ruokalistan tyhjentäminen</h2>
 
   <p>
@@ -2486,17 +2487,17 @@ suurin painoindeksi on jäsenellä Petri
 
 
 <% partial 'partials/exercise', locals: { name: 'Puhelinmuistio' } do %>
-  
+
   <p>
     Tehtävässä tehdään puhelinmuistio.
   </p>
-  
+
   <h2>Henkilö</h2>
-  
+
   <p>
     Tee ensin luokka <code>Henkilo</code>. Luokan pitää toimia seuraavan esimerkin osoittamalla tavalla:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 Henkilo pekka = new Henkilo("Pekka Mikkola", "040-123123");
 
@@ -2508,22 +2509,22 @@ System.out.println(pekka);
 pekka.vaihdaNumeroa("050-333444");
 System.out.println(pekka);
   <% end %>
-  
+
   <p>
       Tulostuu:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Pekka Mikkola
 040-123123
 Pekka Mikkola  puh: 040-123123
 Pekka Mikkola  puh: 050-333444
   <% end %>
-  
+
   <p>
     Tee siis luokalle
   </p>
-  
+
   <ul>
     <li> metodi <code>public String toString()</code>, joka palauttaa henkilön merkkijonoesityksen (yo. esimerkin tapaan muotoiltuna)</li>
     <li> konstruktori, jolla asetetaan henkilölle nimi ja puhelinnumero</li>
@@ -2531,23 +2532,23 @@ Pekka Mikkola  puh: 050-333444
     <li> <code>public String haeNumero()</code>, joka palauttaa puhelinnumeron</li>
     <li> metodi <code>public void vaihdaNumeroa(String uusiNumero)</code>, joka muuttaa henkilön puhelinnumeroa</li>
   </ul>
-  
+
   <h2>Henkilöiden lisäys puhelinmuistioon</h2>
-  
-  
+
+
   <p>
     Tee luokka <code>Puhelinmuistio</code> joka tallettaa sisällään olevaan ArrayListiin <code>Henkilo</code>-olioita. Tässä vaiheessa luokalle tehdään seuraavat metodit:
   </p>
-  
+
   <ul>
     <li> <code>public void lisaa(String nimi, String numero)</code> luo <code>Henkilo</code>-olion ja lisää sen puhelinmuistion ArrayListiin.</li>
     <li><code>public void tulostaKaikki()</code>, tulostaa puhelinmuistion sisällön</li>
   </ul>
-  
+
   <p>
     Esimerkki muistion toiminnasta:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 Puhelinmuistio muistio = new Puhelinmuistio();
 
@@ -2557,23 +2558,23 @@ muistio.lisaa("Juhana Laurinharju", "050-222333");
 
 muistio.tulostaKaikki();
   <% end %>
-  
+
   <p>
     Ohjelman tulostus oikein toteutetuilla luokilla on:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Pekka Mikkola  puh: 040-123123
 Antti Laaksonen  puh: 045-456123
 Juhana Laurinharju  puh: 050-222333
   <% end %>
-  
+
   <h2>Numerojen haku muistiosta</h2>
-  
+
   <p>
     Tehdään puhelinmuistiolle metodi <code>public String haeNumero(String nimi)</code>, joka  palauttaa parametrina annetun henkilön numeron. Jos henkilö ei ole muistiossa, palautetaan merkkijono "numero ei tiedossa". Esimerkki metodin toiminnasta:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 Puhelinmuistio muistio = new Puhelinmuistio();
 muistio.lisaa("Pekka Mikkola", "040-123123");
@@ -2586,11 +2587,11 @@ System.out.println(numero);
 numero = muistio.haeNumero("Martti Tienari");
 System.out.println(numero);
   <% end %>
-  
+
   <p>
     Tulostuu:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 040-123123
 numero ei tiedossa
@@ -2601,20 +2602,20 @@ numero ei tiedossa
 <% partial 'partials/exercise', locals: { name: 'Joukkueet ja pelaajat' } do %>
 
   <h2>Joukkue</h2>
-  
+
   <p>
     Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:
   </p>
-  
+
   <ul>
     <li> konstruktori, jolle annetaan joukkueen nimi</li>
     <li> <code>haeNimi</code>, joka palauttaa joukkueen nimen</li>
   </ul>
-  
+
   <p>
     Seuraava pääohjelma testaa luokan toimintaa:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
@@ -2623,11 +2624,11 @@ public class Main {
     }
 }
   <% end %>
-  
+
   <p>
     Ohjelman tulostus on seuraava:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Joukkue: FC Tapiiri
   <% end %>
@@ -2675,11 +2676,11 @@ Pelaaja: Pekka, maaleja 39
     <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
     <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
   </ul>
-    
+
   <p>
     Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.
   </p>
-    
+
   <p>
     Seuraava pääohjelma testaa luokan toimintaa:
   </p>
@@ -2700,7 +2701,7 @@ public class Main {
     }
 }
   <% end %>
-  
+
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
@@ -2721,11 +2722,11 @@ Mikael, maaleja 1
     <li> <code>asetaMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
     <li> <code>koko</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
   </ul>
-  
+
   <p>
     Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16. Metodin <code>asetaMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.
   </p>
-    
+
   <p>
     <strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.
   </p>
@@ -2760,11 +2761,11 @@ Pelaajia yhteensä: 1
   <p>
     Lisää luokkaan <code>Joukkue</code> metodi:
   </p>
-    
+
   <ul>
     <li> <code>maalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
   </ul>
-  
+
   <p>
     Seuraava pääohjelma testaa luokan toimintaa:
   </p>
@@ -2821,7 +2822,7 @@ Maaleja yhteensä: 40
   <p>
     Tehtävässä ei ole automaattisia testejä ja se on yhden pisteen arvoinen. Voit palauttaa tehtävän jo kun saat ensimmäisen parannusehdotuksen tehtyä, mutta peliä saa toki viilata ikuisuuksiin asti.
   </p>
-  
+
 <% end %>
 
 

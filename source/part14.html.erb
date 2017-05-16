@@ -4,7 +4,7 @@
   quiz_page: true
 ---
 
-
+<% if false %>
 <% partial 'partials/hint', locals: { name: 'Kuudes konekoe' } do %>
 
   <p>
@@ -22,16 +22,16 @@
   <p>
     Huom! Älä kuitenkaan aloita kokeen tekemistä ennen kuin olet kerrannut tähänastista materiaalia ja olet varma, että sinulla on aikaa tehdä koe. Konekoe käsittelee materiaalin osia 8-14. Konekokeessa oletetaan, että materiaalin osat 1-7 ovat myös muistissa. <strong>Kuudes ja viimeinen konekoe tulee olla tehtynä keskiviikkoon 10.5. klo 23:59 mennessä.</strong>
   </p>
-    
-<% end %>
 
+<% end %>
+<% end %>
 
 <% partial 'partials/hint', locals: { name: 'Neljännentoista osion tavoitteet' } do %>
 
   <p>
     Neljännessätoista osassa tutustutaan ohjelmien automaattiseen testaamiseen sekä niiden julkaisemiseen. Tämän osan jälkeen tiedät mistä yksikkötesteissä on kyse ja osaat toteuttaa niitä Javan tarjoamaa JUnit-kirjastoa käyttäen. Tiedät myös miten NetBeansissa paketoidun sovelluksen voi suorittaa komentoriviltä, ja tiedät, että sovelluksia voi myös jakaa muille. Tiedät osan jälkeen myös muutamia seuraavia kursseja, joihin tämän kurssin jälkeen voi tutustua.
   </p>
-  
+
 <% end %>
 
 
@@ -40,7 +40,7 @@
 <% end %>
 
 <p>
-  Kurssin ohjelmointitehtäviä tehdessä Test My Code -järjestelmä on antanut palautetta tehtävistä. Välillä palautteet ovat olleet ymmärrettäviä, ja välillä palautteet eivät ole olleet niin ymmärrettäviä kuin toivoisi. Kun tehtävän on saanut valmiiksi, suuressa osassa tehtävistä Test My Code -järjestelmän viimeinen palaute on ollut "All tests passed!". 
+  Kurssin ohjelmointitehtäviä tehdessä Test My Code -järjestelmä on antanut palautetta tehtävistä. Välillä palautteet ovat olleet ymmärrettäviä, ja välillä palautteet eivät ole olleet niin ymmärrettäviä kuin toivoisi. Kun tehtävän on saanut valmiiksi, suuressa osassa tehtävistä Test My Code -järjestelmän viimeinen palaute on ollut "All tests passed!".
 </p>
 
 <p>
@@ -60,11 +60,11 @@
 </p>
 
 <p>
-  Sovelluksen testaaminen on aina iteratiivinen prosessi. Kun testaamisen yhteydessä huomataan virhe, tulee virhe korjata. On kuitenkin mahdollista, että virheen korjauksen yhteydessä luodaan vahingossa toinen virhe, joka ei ole ollut olemassa edellisen testauksen yhteydessä. Manuaalisesti ohjelmaa testattaessa tällaisten tapausten tunnistaminen saattaa olla työlästä, mutta ohjelmallisesti toteutetut testit -- kun ne on toteutettu -- seuraavat niiden laatijan ohjeita orjallisesti, ja mahdollisesti huomaavat uuden virheen automaattisesti.  
+  Sovelluksen testaaminen on aina iteratiivinen prosessi. Kun testaamisen yhteydessä huomataan virhe, tulee virhe korjata. On kuitenkin mahdollista, että virheen korjauksen yhteydessä luodaan vahingossa toinen virhe, joka ei ole ollut olemassa edellisen testauksen yhteydessä. Manuaalisesti ohjelmaa testattaessa tällaisten tapausten tunnistaminen saattaa olla työlästä, mutta ohjelmallisesti toteutetut testit -- kun ne on toteutettu -- seuraavat niiden laatijan ohjeita orjallisesti, ja mahdollisesti huomaavat uuden virheen automaattisesti.
 </p>
 
 <p>
-  Tutustutaan tässä erääseen ohjelmistojen testaamisen peruspilariin, eli yksikkötestaukseen. 
+  Tutustutaan tässä erääseen ohjelmistojen testaamisen peruspilariin, eli yksikkötestaukseen.
 </p>
 
 
@@ -92,19 +92,19 @@ package laskin;
 public class Laskin {
 
     private int arvo;
-    
+
     public Laskin() {
 	this.arvo = 0;
     }
-    
+
     public void summa(int luku) {
 	this.arvo += luku;
     }
-    
+
     public void erotus(int luku) {
 	this.arvo += luku;
     }
-    
+
     public int getArvo() {
 	return this.arvo;
     }
@@ -184,7 +184,7 @@ BUILD SUCCESSFUL (total time: 0 seconds)
 
 
 <p>
-  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta. 
+  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -200,14 +200,14 @@ public class LaskinTest {
 	Laskin laskin = new Laskin();
 	assertEquals(0, laskin.getArvo());
     }
-    
+
     @Test
     public void arvoViisiKunSummataanViisi() {
 	Laskin laskin = new Laskin();
 	laskin.summa(5);
 	assertEquals(5, laskin.getArvo());
     }
-    
+
     @Test
     public void arvoMiinusKaksiKunErotetaanKaksi() {
 	Laskin laskin = new Laskin();
@@ -259,7 +259,7 @@ BUILD SUCCESSFUL (total time: 0 seconds)
 <% end %>
 
 <p>
-  Kun testit suoritetaan uudestaan, testit menevät läpi. 
+  Kun testit suoritetaan uudestaan, testit menevät läpi.
 </p>
 
 <% partial 'partials/sample_output' do %>
@@ -285,23 +285,23 @@ import org.junit.Test;
 public class LaskinTest {
 
     private Laskin laskin;
-    
+
     @Before
     public void alusta() {
 	this.laskin = new Laskin();
     }
-    
+
     @Test
     public void laskimenArvoAlussaNolla() {
 	assertEquals(0, laskin.getArvo());
     }
-    
+
     @Test
     public void arvoViisiKunSummataanViisi() {
 	laskin.summa(5);
 	assertEquals(5, laskin.getArvo());
     }
-    
+
     @Test
     public void arvoMiinusKaksiKunErotetaanKaksi() {
 	laskin.erotus(2);
@@ -315,7 +315,7 @@ public class LaskinTest {
   <p>
     Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo laskimelle esimerkissä näytetyt testit. Kokeile testien toimintaa, ja palauta lopulta tehtävä Test My Code-palvelimelle.
   </p>
-    
+
 <% end %>
 
 <% partial 'partials/material_sub_heading' do %>
@@ -332,16 +332,16 @@ public class LaskinTest {
 
 <ul>
   <li>
-    Kirjoita testi. Ohjelmoija päättää, mitä ohjelman toiminnallisuutta testataan, ja kirjoittaa toiminnallisuutta varten testin. 
+    Kirjoita testi. Ohjelmoija päättää, mitä ohjelman toiminnallisuutta testataan, ja kirjoittaa toiminnallisuutta varten testin.
   </li>
   <li>
-    Suorita testit ja tarkista menevätkö testit läpi. Kun uusi testi on kirjoitettu, testit suoritetaan. Jos testin suoritus päättyy hyväksyttyyn tilaan, testissä on todennäköisesti virhe ja se tulee korjata -- testin pitäisi testata vain toiminnallisuutta, jota ei ole vielä toteutettu.  
+    Suorita testit ja tarkista menevätkö testit läpi. Kun uusi testi on kirjoitettu, testit suoritetaan. Jos testin suoritus päättyy hyväksyttyyn tilaan, testissä on todennäköisesti virhe ja se tulee korjata -- testin pitäisi testata vain toiminnallisuutta, jota ei ole vielä toteutettu.
   </li>
   <li>
-    Kirjoita toiminnallisuus, joka täyttää testin vaatimukset. Ohjelmoija toteuttaa toiminnallisuuden, joka täyttää vain testin vaatimukset. Huomaa, että tässä ei toteuteta asioita, joita testi ei vaadi -- toiminnallisuutta lisätään vain vähän kerrallaan. 
+    Kirjoita toiminnallisuus, joka täyttää testin vaatimukset. Ohjelmoija toteuttaa toiminnallisuuden, joka täyttää vain testin vaatimukset. Huomaa, että tässä ei toteuteta asioita, joita testi ei vaadi -- toiminnallisuutta lisätään vain vähän kerrallaan.
   </li>
   <li>
-    Suorita testit. Jos testit eivät pääty hyväksyttyyn tilaan, kirjoitetussa toiminnallisuudessa on todennäköisesti virhe. Korjaa toiminnallisuus -- tai, jos toiminnallisuudessa ei ole virhettä -- korjaa viimeksi toteutettu testi. 
+    Suorita testit. Jos testit eivät pääty hyväksyttyyn tilaan, kirjoitetussa toiminnallisuudessa on todennäköisesti virhe. Korjaa toiminnallisuus -- tai, jos toiminnallisuudessa ei ole virhettä -- korjaa viimeksi toteutettu testi.
   </li>
   <li>
     Korjaa ohjelman sisäistä rakennetta. Kun ohjelman koko kasvaa, sen sisäistä rakennetta korjataan tarvittaessa. Liian pitkät metodit pilkotaan useampaan osaan ja ohjelmasta eriytetään käsitteisiin liittyviä luokkia. Testejä ei muuteta, vaan niitä hyödynnetään ohjelman sisäiseen rakenteeseen tehtyjen muutosten oikeellisuuden varmistamisessa -- jos ohjelman rakenteeseen tehty muutos muuttaa ohjelman toiminnallisuutta, testit varoittavat siitä, ja ohjelmoija voi korjata tilanteen.
@@ -387,7 +387,7 @@ public class TehtavienhallintaTest {
 <p>&nbsp;</p>
 
 <p>
-  Toiminnallisuus on yksinkertainen. Luokalla Tehtavienhallinta on metodi tehtavalista, joka palauttaa tyhjän listan. 
+  Toiminnallisuus on yksinkertainen. Luokalla Tehtavienhallinta on metodi tehtavalista, joka palauttaa tyhjän listan.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -424,14 +424,14 @@ public class TehtavienhallintaTest {
     public void tehtavalistaAlussaTyhja() {
         Tehtavienhallinta hallinta = new Tehtavienhallinta();
         assertEquals(0, hallinta.tehtavalista().size());
-    }    
+    }
 
     @Test
     public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
         Tehtavienhallinta hallinta = new Tehtavienhallinta();
         hallinta.lisaa("Kirjoita testi");
         assertEquals(1, hallinta.tehtavalista().size());
-    }    
+    }
 }
 <% end %>
 
@@ -450,9 +450,9 @@ public class Tehtavienhallinta {
     public List&lt;String&gt; tehtavalista() {
         return new ArrayList&lt;&gt;();
     }
-    
+
     public void lisaa(String tehtava) {
-    
+
     }
 }
 <% end %>
@@ -470,7 +470,7 @@ expected:<1> but was:<0>
 junit.framework.AssertionFailedError: expected:<1> but was:<0>
     at tehtavat.TehtavienhallintaTest.tehtavanLisaaminenKasvattaa...(TehtavienhallintaTest.java:18)
 <% end %>
-  
+
 <p>
   Testit eivät siis mene vieläkään läpi. Muokataan luokan tehtävänhallinta toiminnallisuutta siten, että luokalle luodaan oliomuuttujaksi tehtävät sisältävä lista. Muokataan metodin lisaa-toiminnallisuutta vain niin, että se läpäisee testin, mutta ei tee todellisuudessa haluttua asiaa.
 </p>
@@ -484,15 +484,15 @@ import java.util.List;
 public class Tehtavienhallinta {
 
     private List&lt;String&gt; tehtavat;
-    
+
     public Tehtavienhallinta() {
 	this.tehtavat = new ArrayList&lt;&gt;();
     }
-    
+
     public List&lt;String&gt; tehtavalista() {
 	return this.tehtavat;
     }
-    
+
     public void lisaa(String tehtava) {
 	this.tehtavat.add("Uusi");
     }
@@ -513,7 +513,7 @@ BUILD SUCCESSFUL (total time: 0 seconds)
 <% end %>
 
 <p>
-  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi assertTrue vaatii, että metodin palauttama arvo on true. 
+  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi assertTrue vaatii, että metodin palauttama arvo on true.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -530,14 +530,14 @@ public class TehtavienhallintaTest {
 	Tehtavienhallinta hallinta = new Tehtavienhallinta();
 	assertEquals(0, hallinta.tehtavalista().size());
     }
-    
+
     @Test
     public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
 	Tehtavienhallinta hallinta = new Tehtavienhallinta();
 	hallinta.lisaa("Kirjoita testi");
 	assertEquals(1, hallinta.tehtavalista().size());
     }
-    
+
     @Test
     public void lisattyTehtavaLoytyyTehtavalistalta() {
 	Tehtavienhallinta hallinta = new Tehtavienhallinta();
@@ -560,15 +560,15 @@ import java.util.List;
 public class Tehtavienhallinta {
 
     private List&lt;String&gt; tehtavat;
-    
+
     public Tehtavienhallinta() {
 	this.tehtavat = new ArrayList&lt;&gt;();
     }
-    
+
     public List&lt;String&gt; tehtavalista() {
 	return this.tehtavat;
     }
-    
+
     public void lisaa(String tehtava) {
 	this.tehtavat.add(tehtava);
     }
@@ -590,23 +590,23 @@ import org.junit.Test;
 public class TehtavienhallintaTest {
 
     private Tehtavienhallinta hallinta;
-    
+
     @Before
     public void alusta() {
 	hallinta = new Tehtavienhallinta();
     }
-    
+
     @Test
     public void tehtavalistaAlussaTyhja() {
 	assertEquals(0, hallinta.tehtavalista().size());
     }
-    
+
     @Test
     public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
 	hallinta.lisaa("Kirjoita testi");
 	assertEquals(1, hallinta.tehtavalista().size());
     }
-    
+
     @Test
     public void lisattyTehtavaLoytyyTehtavalistalta() {
 	hallinta.lisaa("Kirjoita testi");
@@ -616,11 +616,11 @@ public class TehtavienhallintaTest {
 <% end %>
 
 <p>
-  Lisätään seuraavaksi mahdollisuus tehtävän tehdyksi merkkaamiseen. Mutta! Mitä tarkoittaa tehdyksi merkkaaminen? Alunperin tavoitteena oli luoda ohjelma, joka mahdollistaa tehtävien listaamisen, listaamisen, tehdyksi merkkaamisen sekä poistamisen. Miten tarkastamme onko tehtävä tehty? Jos emme voi tietää onko tehtävä tehty vai ei, voisimme periaatteessa jättää koko toiminnallisuuden huomiotta. Voimme toisaalta päättää miten tehtän tehdyksi määrittely tapahtuu. 
+  Lisätään seuraavaksi mahdollisuus tehtävän tehdyksi merkkaamiseen. Mutta! Mitä tarkoittaa tehdyksi merkkaaminen? Alunperin tavoitteena oli luoda ohjelma, joka mahdollistaa tehtävien listaamisen, listaamisen, tehdyksi merkkaamisen sekä poistamisen. Miten tarkastamme onko tehtävä tehty? Jos emme voi tietää onko tehtävä tehty vai ei, voisimme periaatteessa jättää koko toiminnallisuuden huomiotta. Voimme toisaalta päättää miten tehtän tehdyksi määrittely tapahtuu.
 </p>
 
 <p>
-  Määritellään ensin testi, joka mahdollistaa tehtävän tehdyksi merkkaamiseen. 
+  Määritellään ensin testi, joka mahdollistaa tehtävän tehdyksi merkkaamiseen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -660,25 +660,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tehtavienhallinta {
-    
+
     private List&lt;String&gt; tehtavat;
-    
+
     public Tehtavienhallinta() {
 	this.tehtavat = new ArrayList&lt;&gt;();
     }
-    
+
     public List&lt;String&gt; tehtavalista() {
 	return this.tehtavat;
     }
-    
+
     public void lisaa(String tehtava) {
 	this.tehtavat.add(tehtava);
     }
-    
+
     public void merkkaaTehdyksi(String tehtava) {
-    
+
     }
-    
+
     public boolean onTehty(String tehtava) {
 	return true;
     }
@@ -719,24 +719,24 @@ public class Tehtavienhallinta {
 
     private List&lt;String&gt; tehtavat;
     private List&lt;String&gt; tehdytTehtavat;
-    
+
     public Tehtavienhallinta() {
 	this.tehtavat = new ArrayList&lt;&gt;();
 	this.tehdytTehtavat = new ArrayList&lt;&gt;();
     }
-    
+
     public List&lt;String&gt; tehtavalista() {
 	return this.tehtavat;
     }
-    
+
     public void lisaa(String tehtava) {
 	this.tehtavat.add(tehtava);
     }
-    
+
     public void merkkaaTehdyksi(String tehtava) {
 	this.tehdytTehtavat.add(tehtava);
     }
-    
+
     public boolean onTehty(String tehtava) {
 	return this.tehdytTehtavat.contains(tehtava);
     }
@@ -758,20 +758,20 @@ public class Tehtava {
 
     private String nimi;
     private boolean tehty;
-    
+
     public Tehtava(String nimi) {
 	this.nimi = nimi;
 	this.tehty = false;
     }
-    
+
     public String getNimi() {
 	return nimi;
     }
-    
+
     public void setTehty(boolean tehty) {
 	this.tehty = tehty;
     }
-    
+
     public boolean onTehty() {
 	return tehty;
     }
@@ -793,33 +793,33 @@ import java.util.stream.Collectors;
 public class Tehtavienhallinta {
 
     private List&lt;Tehtava&gt; tehtavat;
-    
+
     public Tehtavienhallinta() {
 	this.tehtavat = new ArrayList&lt;&gt;();
     }
-    
+
     public List&lt;String&gt; tehtavalista() {
         return this.tehtavat.stream()
             .map(t -&gt; t.getNimi()).collect(Collectors.toList());
     }
-    
+
     public void lisaa(String tehtava) {
 	this.tehtavat.add(new Tehtava(tehtava));
     }
-    
+
     public void merkkaaTehdyksi(String tehtava) {
         this.tehtavat.stream()
             .filter(t -&gt; t.getNimi().equals(tehtava)).forEach(t -&gt; {
                 t.setTehty(true);
 	    });
     }
-    
+
     public boolean onTehty(String tehtava) {
 	return this.tehtavat.stream()
 	    .filter(t -&gt; t.getNimi().equals(tehtava))
 	    .filter(t -&gt; t.onTehty()).count() &gt; 0;
     }
-}  
+}
 <% end %>
 
 <p>
@@ -836,7 +836,7 @@ public class Tehtavienhallinta {
   <p>
     Kun olet toteuttanut vaaditun toiminnallisuuden, palauta tehtävä lopulta Test My Code-palvelimelle.
   </p>
-  
+
 <% end %>
 
 
@@ -849,7 +849,7 @@ public class Tehtavienhallinta {
   <p>
     Näitä testaamiseen liittyviä menetelmiä tarkastellaan tarkemmin muunmuassa kursseilla ohjelmistotekniikan menetelmät sekä ohjelmistotuotanto.
   </p>
-  
+
 <% end %>
 
 
@@ -880,11 +880,11 @@ public class Tehtavienhallinta {
 
 
 <% partial 'partials/material_heading' do %>
-  Sovellukset ohjelmointiympäristön ulkopuolella  
+  Sovellukset ohjelmointiympäristön ulkopuolella
 <% end %>
 
 <p>
-  Sovelluksemme ovat tähän mennessä toimineet vain ohjelmistoympäristössä. Tämä ei kuitenkaan ole käytännössä totta, sillä ohjelman käynnistäminen ohjelmointiympäristössä vastaa sen käynnistämistä ohjelmointiympäristön ulkopuolella. Voimme määritellä luokan, jossa olevaa metodia <code>public static void main</code> käytetään ohjelman käynnistämiseen. Käynnistämiseen määriteltävän luokan määrittely tapahtuu klikkaamalla projektia oikealla hiirennapilla ja valitsemalla listasta vaihtoehdon Properties. 
+  Sovelluksemme ovat tähän mennessä toimineet vain ohjelmistoympäristössä. Tämä ei kuitenkaan ole käytännössä totta, sillä ohjelman käynnistäminen ohjelmointiympäristössä vastaa sen käynnistämistä ohjelmointiympäristön ulkopuolella. Voimme määritellä luokan, jossa olevaa metodia <code>public static void main</code> käytetään ohjelman käynnistämiseen. Käynnistämiseen määriteltävän luokan määrittely tapahtuu klikkaamalla projektia oikealla hiirennapilla ja valitsemalla listasta vaihtoehdon Properties.
 </p>
 
 <p>
@@ -896,7 +896,7 @@ public class Tehtavienhallinta {
 <p>&nbsp;</p>
 
 <p>
-  Kun sovelluksen käynnistämiseen käytettävä Main Class on määritelty, voi sovelluksen "paketoida". Tämä tapahtuu klikkaamalla sovellusta oikealla hiirennapilla ja valitsemalla Clean and Build. Tämä luo projektista paketin, joka sisältää suoritettavan sovelluksen. 
+  Kun sovelluksen käynnistämiseen käytettävä Main Class on määritelty, voi sovelluksen "paketoida". Tämä tapahtuu klikkaamalla sovellusta oikealla hiirennapilla ja valitsemalla Clean and Build. Tämä luo projektista paketin, joka sisältää suoritettavan sovelluksen.
 </p>
 
 <img src="/img/material/project-clean-and-build.png" />
@@ -927,7 +927,7 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
 <% partial 'partials/hint', locals: { name: 'Asennettavan sovelluksen luominen' } do %>
 
   <p>
-    Edellä kuvattu menetelmä paketoi sovelluksen suoritettavaan muotoon. Tietokoneiden normaalikäyttäjät eivät kuitenkaan ole tottuneet sovellusten käynnistämiseen komentoriviltä -- osalla heistä ei myöskään ole Javaa asennettuna, jonka edellinen komento vaatii. 
+    Edellä kuvattu menetelmä paketoi sovelluksen suoritettavaan muotoon. Tietokoneiden normaalikäyttäjät eivät kuitenkaan ole tottuneet sovellusten käynnistämiseen komentoriviltä -- osalla heistä ei myöskään ole Javaa asennettuna, jonka edellinen komento vaatii.
   </p>
 
   <p>
@@ -969,58 +969,58 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
   </p>
 
   <pre>
-1 0 0 0 
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
 
 &gt; o
-0 0 0 1 
-0 0 0 0 
-0 0 0 0 
-0 1 0 0 
+0 0 0 1
+0 0 0 0
+0 0 0 0
+0 1 0 0
 
 &gt; o
-0 0 0 1 
-0 0 0 0 
-0 0 0 1 
-0 0 0 1 
+0 0 0 1
+0 0 0 0
+0 0 0 1
+0 0 0 1
 
 &gt; a
-0 0 0 0 
-0 0 0 0 
-1 0 0 2 
-0 0 0 1 
+0 0 0 0
+0 0 0 0
+1 0 0 2
+0 0 0 1
 
 &gt; a
-1 0 0 0 
-0 0 0 0 
-0 0 0 2 
-1 0 0 1 
+1 0 0 0
+0 0 0 0
+0 0 0 2
+1 0 0 1
 
 &gt; v
-1 0 0 0 
-0 0 0 0 
-2 0 0 0 
-2 1 0 0 
+1 0 0 0
+0 0 0 0
+2 0 0 0
+2 1 0 0
 
 &gt; y
-1 1 0 0 
-4 0 0 0 
-0 0 0 0 
-0 1 0 0 
+1 1 0 0
+4 0 0 0
+0 0 0 0
+0 1 0 0
 
 &gt; v
-2 0 0 0 
-4 0 0 0 
-0 0 0 0 
-1 0 1 0 
+2 0 0 0
+4 0 0 0
+0 0 0 0
+1 0 1 0
 
 &gt; v
-2 0 0 0 
-4 1 0 0 
-0 0 0 0 
-2 0 0 0 
+2 0 0 0
+4 1 0 0
+0 0 0 0
+2 0 0 0
 
 &gt;
   </pre>
@@ -1046,10 +1046,10 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
   </p>
 
   <pre>
-1 1 1 1 
-1 1 0 1 
-1 1 1 0 
-1 0 1 1 
+1 1 1 1
+1 1 0 1
+1 1 1 0
+1 0 1 1
 
 &gt; o
 0 0 0 4
@@ -1059,8 +1059,8 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
   </pre>
 
   <pre>
-1 0 0 1 
-0 1 0 1 
+1 0 0 1
+0 1 0 1
 2 2 4 0
 0 1 0 0
 
@@ -1094,50 +1094,50 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
   </p>
 
   <% partial 'partials/sample_output' do %>
-1 0 0 0 
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
 
 &gt; <font color="red">o</font>
-0 0 0 1 
-0 0 0 0 
-0 0 0 1 
-0 0 0 0 
+0 0 0 1
+0 0 0 0
+0 0 0 1
+0 0 0 0
 
 &gt; <font color="red">y</font>
-0 0 0 2 
-1 0 0 0 
-0 0 0 0 
-0 0 0 0 
+0 0 0 2
+1 0 0 0
+0 0 0 0
+0 0 0 0
 
 &gt; <font color="red">v</font>
-2 0 1 0 
-1 0 0 0 
-0 0 0 0 
-0 0 0 0 
+2 0 1 0
+1 0 0 0
+0 0 0 0
+0 0 0 0
 
 &gt; <font color="red">o</font>
-0 0 2 1 
-0 0 0 1 
-0 1 0 0 
-0 0 0 0 
+0 0 2 1
+0 0 0 1
+0 1 0 0
+0 0 0 0
 
 &gt; <font color="red">y</font>
-0 1 2 2 
-0 0 0 0 
-0 0 0 0 
-0 0 1 0 
+0 1 2 2
+0 0 0 0
+0 0 0 0
+0 0 1 0
 
 &gt; <font color="red">o</font>
-0 0 1 4 
-0 0 0 0 
-0 0 0 1 
-0 0 0 1 
+0 0 1 4
+0 0 0 0
+0 0 0 1
+0 0 0 1
 
-&gt; <font color="red">x</font> 
+&gt; <font color="red">x</font>
   <% end %>
-  
+
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Kirjoitusharjoittelu' } do %>
@@ -1157,7 +1157,7 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
   <p>
     Tehtävä on kahden tehtäväpisteen arvoinen.
   </p>
-  
+
 
 <% end %>
 
@@ -1176,7 +1176,7 @@ $ java -jar "/<em>polku</em>/osa13/Osa13_09.Matopeli/dist/Osa13_09.Matopeli.jar"
 Vetovoima = 6.67384E-11 * (massa1 * massa2) / (etaisyys * etaisyys)</pre>
 
   <p>
-    Tietojenkäsittelytieteilijä huomaa nopeasti, että tämähän on jotain, jonka konekin voisi laskea. Rakennetaan tässä tehtävässä sovellus, jota voidaan käyttää planeettajärjestelmän simulointiin -- englanniksi järjestelmä tunnetaan nimellä <a href="https://en.wikipedia.org/wiki/N-body_simulation" target="_blank">N-body simulation</a>. Alla olevassa kuvassa on esimerkki ohjelman lopullisesta toiminnasta -- kuvassa hyörii aurinko, merkurius, venus, maa, ja mars.  
+    Tietojenkäsittelytieteilijä huomaa nopeasti, että tämähän on jotain, jonka konekin voisi laskea. Rakennetaan tässä tehtävässä sovellus, jota voidaan käyttää planeettajärjestelmän simulointiin -- englanniksi järjestelmä tunnetaan nimellä <a href="https://en.wikipedia.org/wiki/N-body_simulation" target="_blank">N-body simulation</a>. Alla olevassa kuvassa on esimerkki ohjelman lopullisesta toiminnasta -- kuvassa hyörii aurinko, merkurius, venus, maa, ja mars.
   </p>
 
   <img src="/img/material/gui-planeetat.gif" />
@@ -1184,7 +1184,7 @@ Vetovoima = 6.67384E-11 * (massa1 * massa2) / (etaisyys * etaisyys)</pre>
   <p>&nbsp;</p>
 
   <p>
-    Simulaatiot jaetaan tyypillisesti useampaan osaan, missä ensin lasketaan muutokset kappaleiden liikkeeseen, jonka jälkeen kappaleiden liikettä päivitetään. Tämän jälkeen simulaatio piirretään -- jos näin halutaan. 
+    Simulaatiot jaetaan tyypillisesti useampaan osaan, missä ensin lasketaan muutokset kappaleiden liikkeeseen, jonka jälkeen kappaleiden liikettä päivitetään. Tämän jälkeen simulaatio piirretään -- jos näin halutaan.
   </p>
 
   <p>
@@ -1233,7 +1233,7 @@ System.out.println(kaksi.etaisyys(yksi)); // tulostaa 2.788887883912826E11
   <p>
     Kun vertailet double-tyyppisiä muuttujia JUnit-luokan assertEquals-metodin avulla, käytä metodin <a href="http://junit.org/junit4/javadoc/latest/org/junit/Assert.html#assertArrayEquals(double[], double[], double)" target="_blank">kolmiparametrista versiota</a>. Tällöin voit antaa kolmanneksi parametriksi hyväksyttävän mittavirheen, esim.
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 0);
 Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 0);
@@ -1273,7 +1273,7 @@ Vetovoima<sub>y</sub> = Vetovoima * etaisyys<sub>y</sub> / etaisyys</pre>
   <p>
     Kirjoita avuksesi testejä voimiin liittyvien laskujen tarkastamiseksi. Alla muutamia valmiiksi laskettuja arvoja.
   </p>
- 
+
   <% partial 'partials/code_highlight' do %>
 Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
 Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
@@ -1281,21 +1281,21 @@ System.out.println(yksi.vetovoima(kaksi)); // 0.001024773896353167
 System.out.println(kaksi.vetovoima(yksi)); // 0.001024773896353167
   <% end %>
 
-  
-  <% partial 'partials/code_highlight' do %> 
+
+  <% partial 'partials/code_highlight' do %>
 Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 4.0e+24);
-Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 3.0e+23);    
+Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 3.0e+23);
 System.out.println(yksi.vetovoima(kaksi)); // 1.029662569667683E15
 System.out.println(kaksi.vetovoima(yksi)); // 1.029662569667683E15
   <% end %>
 
-  <% partial 'partials/code_highlight' do %> 
+  <% partial 'partials/code_highlight' do %>
 Planeetta yksi = new Planeetta(2.1186364423281863E11, 8.355224423792712E10, 0, 0, 4.0e+24);
 Planeetta kaksi = new Planeetta(-5.7077501653213165E10, 9.730727456803318E9, 0, 0, 3.0e+23);
 System.out.println(yksi.vetovoimaX(kaksi)); // -9.929356893826232E14
 System.out.println(kaksi.vetovoimaY(yksi)); // 2.7255040657630772E14
   <% end %>
-  
+
   <% partial 'partials/code_highlight' do %>
 Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
 Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
@@ -1304,15 +1304,15 @@ System.out.println(kaksi.vetovoimaX(yksi)); // -0.001008016268597845
   <% end %>
 
   <p>
-    Kun toteuttamasi testit menevät läpi, planeettoihin liittyvä perustoiminnallisuus on kohdallaan. Tiedämme nyt minkä verran kukin planeetta vaikuttaa muihin planeettoihin. 
+    Kun toteuttamasi testit menevät läpi, planeettoihin liittyvä perustoiminnallisuus on kohdallaan. Tiedämme nyt minkä verran kukin planeetta vaikuttaa muihin planeettoihin.
   </p>
 
-  
-  
+
+
   <h2>Planeettajarjestelma</h2>
 
   <p>
-    Luodaan seuraavaksi järjestelmä, jonka avulla simuloidaan planeettojen liikettä. Luo pakkaukseen planeettajarjestelma luokka Planeettajarjestelma. Luokka planeettajarjestelma sisältää listan planeettoja, sekä tiedon planeettajärjestelmän halkaisijasta. Luo luokalle Planeettajarjestelma konstruktori <code>public Planeettajarjestelma(List&lt;Planeetta&gt; planeetat, double halkaisija)</code>.  
+    Luodaan seuraavaksi järjestelmä, jonka avulla simuloidaan planeettojen liikettä. Luo pakkaukseen planeettajarjestelma luokka Planeettajarjestelma. Luokka planeettajarjestelma sisältää listan planeettoja, sekä tiedon planeettajärjestelmän halkaisijasta. Luo luokalle Planeettajarjestelma konstruktori <code>public Planeettajarjestelma(List&lt;Planeetta&gt; planeetat, double halkaisija)</code>.
   </p>
 
   <p>
@@ -1371,7 +1371,7 @@ System.out.println(kaksi.getSijaintiX() + ", " + kaksi.getSijaintiY());
 System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
   <% end %>
 
-  <% partial 'partials/sample_output' do %> 
+  <% partial 'partials/sample_output' do %>
 10.0, 20.0
 0.0, 0.0
 
@@ -1383,9 +1383,9 @@ System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
 
 42.34994916063174, 14.076769871997007
 -1.2600203357473062E-4, 2.3070794879880254E-5
-  <% end %> 
+  <% end %>
 
-  <% partial 'partials/code_highlight' do %> 
+  <% partial 'partials/code_highlight' do %>
 Planeetta yksi = new Planeetta(10, 20, 0, 0, 100000.0);
 Planeetta kaksi = new Planeetta(45.5, 13.5, 0, 0, 200000.0);
 
@@ -1425,13 +1425,13 @@ System.out.println(kaksi.getNopeusX() + ", " + kaksi.getNopeusY());
 -5.040081342989225E-9, 9.228317951952102E-10
   <% end %>
 
-  
-  <% partial 'partials/code_highlight' do %> 
-Planeetta aurinko = new Planeetta(538771.2647179796, 311728.01914265234, 0.15944610708562912, 0.15099663888466472, 1.989E30); 
-Planeetta merkurius = new Planeetta(-2.3423738558153862E10, -5.363391883276512E10, 43168.9924212314, -19555.612648233368, 3.302E23); 
-Planeetta venus = new Planeetta(-1.2257733349672739E10, 1.0688994731967513E11, -34980.88986158969, -3903.1360711941647, 4.869E24); 
-Planeetta maa = new Planeetta(7.649815710400691E10, 1.2825871174194992E11, -25608.972746907584, 15340.707015973465, 5.974E24); 
-Planeetta mars = new Planeetta(1.9433739848583844E11, 1.1855926503806793E11, -12591.918312354934, 20580.315270396313, 6.419E23); 
+
+  <% partial 'partials/code_highlight' do %>
+Planeetta aurinko = new Planeetta(538771.2647179796, 311728.01914265234, 0.15944610708562912, 0.15099663888466472, 1.989E30);
+Planeetta merkurius = new Planeetta(-2.3423738558153862E10, -5.363391883276512E10, 43168.9924212314, -19555.612648233368, 3.302E23);
+Planeetta venus = new Planeetta(-1.2257733349672739E10, 1.0688994731967513E11, -34980.88986158969, -3903.1360711941647, 4.869E24);
+Planeetta maa = new Planeetta(7.649815710400691E10, 1.2825871174194992E11, -25608.972746907584, 15340.707015973465, 5.974E24);
+Planeetta mars = new Planeetta(1.9433739848583844E11, 1.1855926503806793E11, -12591.918312354934, 20580.315270396313, 6.419E23);
 
 List&lt;Planeetta&gt; planeetat = new ArrayList&lt;&gt;();
 planeetat.add(aurinko);
@@ -1467,7 +1467,7 @@ planeetat.forEach(p -&gt; {
 });
 System.out.println("");
   <% end %>
-  
+
 
   <% partial 'partials/sample_output' do %>
 538771.2647179796, 311728.01914265234
@@ -1525,19 +1525,19 @@ System.out.println("");
     Luo pakkauksessa planeettajarjestelma olevaan luokkaan PlaneettajarjestelmaSovellus graafinen käyttöliittymä, joka piirtää planeetat ja kutsuu sovelluksen päivitä metodia. Planeettoina voi käyttää -- esimerkiksi -- aurinkokuntamme seuraavia planeettoja.
   </p>
 
-  <% partial 'partials/code_highlight' do %> 
-Planeetta aurinko = new Planeetta(538771.2647179796, 311728.01914265234, 0.15944610708562912, 0.15099663888466472, 1.989E30); 
-Planeetta merkurius = new Planeetta(-2.3423738558153862E10, -5.363391883276512E10, 43168.9924212314, -19555.612648233368, 3.302E23); 
-Planeetta venus = new Planeetta(-1.2257733349672739E10, 1.0688994731967513E11, -34980.88986158969, -3903.1360711941647, 4.869E24); 
-Planeetta maa = new Planeetta(7.649815710400691E10, 1.2825871174194992E11, -25608.972746907584, 15340.707015973465, 5.974E24); 
-Planeetta mars = new Planeetta(1.9433739848583844E11, 1.1855926503806793E11, -12591.918312354934, 20580.315270396313, 6.419E23); 
+  <% partial 'partials/code_highlight' do %>
+Planeetta aurinko = new Planeetta(538771.2647179796, 311728.01914265234, 0.15944610708562912, 0.15099663888466472, 1.989E30);
+Planeetta merkurius = new Planeetta(-2.3423738558153862E10, -5.363391883276512E10, 43168.9924212314, -19555.612648233368, 3.302E23);
+Planeetta venus = new Planeetta(-1.2257733349672739E10, 1.0688994731967513E11, -34980.88986158969, -3903.1360711941647, 4.869E24);
+Planeetta maa = new Planeetta(7.649815710400691E10, 1.2825871174194992E11, -25608.972746907584, 15340.707015973465, 5.974E24);
+Planeetta mars = new Planeetta(1.9433739848583844E11, 1.1855926503806793E11, -12591.918312354934, 20580.315270396313, 6.419E23);
   <% end %>
 
   <p>
     Aseta planeettajärjestelmää luotaessa sen halkaisijaksi <code>5.0E11</code>. Piirtäminen ja päivittäminen voidaan toteuttaa erillisissä AnimationTimer-luokan ilmentymissä. Piirtäminen kannattaa tehdä noin 60 kertaa sekunnissa, ja päivittäminen noin 30 kertaa sekunnissa. Hyödynnä planeettoja piirtäessä tietoa piirtoalustan koosta (saat päättää sen itse), aurinkokunnan halkaisijasta, sekä planeetan sijainnista. Tehtävän alussa näytetyn esimerkin piirtämisessä käytettiin seuraavaa fillOval-komentoa.
   </p>
 
-  <% partial 'partials/code_highlight' do %>   
+  <% partial 'partials/code_highlight' do %>
 piirturi.fillOval(leveys / 2 + leveys * p.getSijaintiX() / halkaisija, korkeus / 2 + korkeus * p.getSijaintiY() / halkaisija, 10, 10);
   <% end %>
 
@@ -1548,7 +1548,7 @@ piirturi.fillOval(leveys / 2 + leveys * p.getSijaintiX() / halkaisija, korkeus /
   <img src="/img/material/gui-planeetat-painava-aurinko.gif" />
 
   <p>&nbsp;</p>
-  
+
   <p>
     Alla olevassa esimerkissä taas auringon massa on 1e31.
   </p>
@@ -1556,14 +1556,14 @@ piirturi.fillOval(leveys / 2 + leveys * p.getSijaintiX() / halkaisija, korkeus /
   <img src="/img/material/gui-planeetat-painavampi-aurinko.gif" />
 
   <p>
-    Huomaat todennäköisesti myös, että päivitysmetodin kutsussa käytettävä aikaväli vaikuttaa simulaation toimintaan. Tämä johtuu sijaintien arviointiin käytetystä päivitystavasta -- mitä lyhyempi aikaväli, sitä tarkempi arviosta saadaan. Sovelluksessa käytetty sijaintien arviointi perustuu numeerisiin menetelmiin -- myös näihin löytyy Kumpulasta sopivia kursseja. 
+    Huomaat todennäköisesti myös, että päivitysmetodin kutsussa käytettävä aikaväli vaikuttaa simulaation toimintaan. Tämä johtuu sijaintien arviointiin käytetystä päivitystavasta -- mitä lyhyempi aikaväli, sitä tarkempi arviosta saadaan. Sovelluksessa käytetty sijaintien arviointi perustuu numeerisiin menetelmiin -- myös näihin löytyy Kumpulasta sopivia kursseja.
   </p>
 
 
   <p>
     <em>Alkuperäinen tehtäväidea, Robert Sedgewick ja Kevin Wayne, Princeton</em>
   </p>
-    
+
 <% end %>
 
 <%= partial 'partials/quiz', locals: { id: '58f4de17abb24400043532de' } %>

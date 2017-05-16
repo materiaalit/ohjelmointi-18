@@ -4,7 +4,7 @@
   quiz_page: true
 ---
 
-
+<% if false %>
 <% partial 'partials/hint', locals: { name: 'Neljäs konekoe' } do %>
 
   <p>
@@ -12,31 +12,31 @@
   </p>
 
   <p>
-    Konekokeessa on kaksi tehtävää ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe04_01.Tehtava" ja "Konekoe04_02.Tehtava". Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen. 
+    Konekokeessa on kaksi tehtävää ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe04_01.Tehtava" ja "Konekoe04_02.Tehtava". Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen.
   </p>
 
   <p>
-    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen. 
+    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen.
   </p>
 
   <p>
     Huom! Älä kuitenkaan aloita kokeen tekemistä ennen kuin olet kerrannut tähänastista materiaalia ja olet varma, että sinulla on aikaa tehdä koe. Konekoe käsittelee materiaalin osia 8 ja 9. Konekokeessa oletetaan, että materiaalin osat 1-7 ovat myös muistissa. <strong>Konekoe tulee olla tehtynä ohjelmoinnin jatkokurssilla keskiviikkoon 5.4. klo 23:59 mennessä. Aikataulutetussa Ohjelmoinnin MOOCissa konekoe tulee tehdä keskiviikkoon 12.4. klo 23:59 mennessä.</strong>
   </p>
-  
-<% end %>
 
+<% end %>
+<% end %>
 
 
 <% partial 'partials/hint', locals: { name: 'Kymmenennen osion tavoitteet' } do %>
 
   <p>
-    Kymmenennessä osassa käsitellään tiedon ryhmittelyä hajautustaulun avulla, jolloin yhteen hajautustaulun avaimeen voi liittyä useampia arvoja. Tämän lisäksi tutustutaan olioiden monimuotoisuuteen sekä perintään. 
+    Kymmenennessä osassa käsitellään tiedon ryhmittelyä hajautustaulun avulla, jolloin yhteen hajautustaulun avaimeen voi liittyä useampia arvoja. Tämän lisäksi tutustutaan olioiden monimuotoisuuteen sekä perintään.
   </p>
 
   <p>
-    Tämän osan jälkeen osaat ryhmitellä tietoa hajautustaulun avulla, sekä tiedät mistä perinnässä on kyse. Ymmärrät Javan perintähierarkian ja osaat luoda luokkia, jotka perivät toisen luokan muuttujia ja metodeja. Tiedät myös miten näkyvyysmääreet vaikuttavat perittäviin muuttujiin ja metodeihin. Tunnet lisäksi abstraktin luokan käsitteen, ja olet harjoitellut refaktorointia, eli ohjelma rakenteen muuttamista ilman ohjelman toiminnallisuuden muuttamista. 
+    Tämän osan jälkeen osaat ryhmitellä tietoa hajautustaulun avulla, sekä tiedät mistä perinnässä on kyse. Ymmärrät Javan perintähierarkian ja osaat luoda luokkia, jotka perivät toisen luokan muuttujia ja metodeja. Tiedät myös miten näkyvyysmääreet vaikuttavat perittäviin muuttujiin ja metodeihin. Tunnet lisäksi abstraktin luokan käsitteen, ja olet harjoitellut refaktorointia, eli ohjelma rakenteen muuttamista ilman ohjelman toiminnallisuuden muuttamista.
   </p>
-  
+
 <% end %>
 
 
@@ -118,7 +118,7 @@ puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
 
 <% partial 'partials/material_sub_heading' do %>
   Joukoista
-<% end %> 
+<% end %>
 
 <p>
   Rajapinta <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html" target="_blank">Set</a></code> kuvaa joukon toiminnallisuutta. Toisin kuin listalla, joukossa kutakin alkioita on korkeintaan yksi kappale, eli yhtään samanlaista oliota ei ole kahdesti. Olioiden samankaltaisuuden tarkistaminen toteutetaan <code>equals</code> ja <code>hashCode</code> -metodeja käyttämällä.
@@ -139,7 +139,7 @@ public class Tehtavakirjanpito {
     public void lisaa(int tehtava) {
         this.tehdytTehtavat.add(tehtava);
     }
-    
+
     public void tulosta() {
         this.tehdytTehtavat.stream().forEach(t -&gt; System.out.println(t));
     }
@@ -173,20 +173,20 @@ public class Tehtavakirjanpito {
     public Tehtavakirjanpito() {
 	this.tehdytTehtavat = new HashMap&lt;&gt;();
     }
-    
+
     public void lisaa(String kayttaja, int tehtava) {
 	// uudelle käyttäjälle on lisättävä HashMapiin tyhjä tehtäväjoukko jos sitä
 	// ei ole jo lisätty
 	this.tehdytTehtavat.putIfAbsent(kayttaja, new HashSet&lt;&gt;());
-	
+
 	// haetaan ensin käyttäjän tehtävät sisältävä joukko ja tehdään siihen lisäys
 	Set&lt;Integer&gt; tehdyt = this.tehdytTehtavat.get(kayttaja);
 	tehdyt.add(tehtava);
-	
+
 	// edellinen olisi onnitunut myös ilman apumuuttujaa seuraavasti
 	// this.tehdytTehtavat.get(kayttaja).add(tehtava);
     }
-    
+
     public void tulosta() {
 	this.tehdytTehtavat.keySet().stream(kayttaja -&gt; {
 	    System.out.println(kayttaja + ": " + this.tehdytTehtavat.get(kayttaja));
@@ -359,7 +359,7 @@ Uniikit merkkijonot: []
 
 <% partial 'partials/material_sub_heading' do %>
   Sama olio useammassa tietorakenteessa
-<% end %> 
+<% end %>
 
 <p>
   Oliot ovat viittaustyyppisiä, eli muuttuja ei tallenna olioa itseään vaan viitteen. Tämä tarkoittaa myös sitä, että jos olio lisätään esimerkiksi listaan, listalle lisätään viite olioon. Mikään ei estä lisäämästä saman olion viitettä useampaan paikkaan.
@@ -384,27 +384,27 @@ public class Kirjasto {
     private Map&lt;String, List&lt;Kirja&gt;&gt; kirjatKirjailijanPerusteella;
     private List&lt;Kirja&gt; lainassaOlevatKirjat;
     private List&lt;Kirja&gt; hyllyssaOlevatKirjat;
-    
+
     public Kirjasto() {
 	this.kirjaIsbnNumeronPerusteella = new HashMap&lt;&gt;();
 	this.kirjatKirjailijanPerusteella = new HashMap&lt;&gt;();
 	this.lainassaOlevatKirjat = new ArrayList&lt;&gt;();
 	this.hyllyssaOlevatKirjat = new ArrayList&lt;&gt;();
     }
-    
+
     public void lisaaKirjaKokoelmaan(Kirja uusiKirja) {
 	this.kirjaIsbnNumeronPerusteella.put(uusiKirja.getIsbn(), uusiKirja);
-	
+
 	this.kirjatKirjailijanPerusteella.putIfAbsent(uusiKirja.getKirjailija(), new ArrayList&lt;&gt;());
 	this.kirjatKirjailijanPerusteella.get(uusikirja.getKirjailija()).add(uusiKirja);
-	
+
 	this.hyllyssaOlevatKirjat.add(uusiKirja);
     }
-    
+
     public Kirja haeKirjaIsbnNumeronPerusteella(String isbn){
 	return kirjaIsbnNumeronPerusteella.get(isbn);
     }
-    
+
     // ...
 }
 <% end %>
@@ -431,44 +431,44 @@ public class Kirjasto {
     <li>1 puhelinnumeron lisäys henkilölle</li>
     <li>2 henkilön puhelinnumeroiden haku</li>
   </ul>
-  
+
   <p>
     kahteen pisteeseen vaaditaan edellisten lisäksi
   </p>
-  
+
   <ul>
     <li>3 numeroa vastaavan henkilön nimen haku</li>
   </ul>
-  
+
   <p>
     kolmeen pisteeseen vaaditaan edellisten lisäksi
   </p>
-  
+
   <ul>
     <li>4 osoitteen lisäys henkilölle</li>
     <li>5 henkilön tietojen (osoite ja puhelinnumero) haku</li>
   </ul>
-  
+
   <p>
     neljään pisteeseen vaaditaan toiminto
   </p>
-  
+
   <ul>
     <li>6 henkilön tietojen poisto</li>
   </ul>
-  
+
   <p>
     ja täysiin pisteeseen vaaditaan vielä
   </p>
-  
+
   <ul>
     <li>7 hakusanalla filtteröity listaus (nimen mukaan aakkostettuna), hakusana voi esiintyä henkilön nimessä tai osoitteessa</li>
   </ul>
-  
+
   <p>
     Esimerkki ohjelman toiminnasta:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 numerotiedustelu
 käytettävissä olevat komennot:
@@ -576,7 +576,7 @@ komento: <font color="red">x</font>
   <p>
     Huomioita:
   </p>
-  
+
   <ul>
     <li>Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii kuten yllä olevassa esimerkissä. Sovellus voi itse päättää kuinka epäkelvot syötteet käsitellään. Testit sisältävät vaan kelvollisia syötteitä.</li>
     <li><em><strong>Ohjelman tulee käynnistyä kun tehtäväpohjassa oleva main-metodi suoritetaan, tehtävässä saa luoda vain yhden Scanner-olion.</strong></em></li>
@@ -585,7 +585,7 @@ komento: <font color="red">x</font>
     <li>Henkilöllä voi olla useita puhelinnumeroja sekä osoite. Henkilöllä ei kuitenkaan ole välttämättä yhtään puhelinnumeroa tai osoite ei ole tiedossa.</li>
     <li>Jos henkilö poistetaan, ei mikään haku saa enää palauttaa henkilön tietoja.</li>
   </ul>
-  
+
 <% end %>
 
 
@@ -679,8 +679,8 @@ tulostin.tulostaMonesti(sanat, 3);
 <% end %>
 
 <% partial 'partials/sample_output' do %>
- o 
- o 
+ o
+ o
 [polymorfismi, perintä, kapselointi, abstrahointi]
 [polymorfismi, perintä, kapselointi, abstrahointi]
 [polymorfismi, perintä, kapselointi, abstrahointi]
@@ -753,7 +753,7 @@ i
 
 
 <% partial 'partials/exercise', locals: { name: 'Joukkoja' } do %>
-    
+
   <p>
     Tässä tehtävässä teemme eliöita ja eliöistä koostuvia laumoja jotka liikkuvat ympäriinsä. Eliöiden sijaintien ilmoittamiseen käytetään <em>kaksiulotteista koordinaatistoa</em>. Jokaiseen sijaintiin liittyy kaksi lukua, <code>x</code>- ja <code>y</code>-koordinaatti. Koordinaatti <code>x</code> kertoo, kuinka pitkällä "nollapisteestä" mitattuna sijainti on vaakasuunnassa, ja koordinaatti <code>y</code> vastaavasti kuinka pitkällä sijainti on pystysuunnassa. Jos koordinaatiston käsite ei ole tuttu, voit lukea siitä lisää esimerkiksi <a href="http://fi.wikipedia.org/wiki/Koordinaatisto">wikipediasta</a>.
   </p>
@@ -771,13 +771,13 @@ i
   <p>
     Luo pakkaukseen <code>siirrettava</code> luokka <code>Elio</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Eliön tulee tietää oma sijaintinsa (x, y -koordinaatteina). Luokan <code>Elio</code> APIn tulee olla seuraava:
   </p>
-  
+
   <ul>
     <li><strong>public Elio(int x, int y)</strong><br/>Luokan konstruktori, joka saa olion aloitussijainnin x- ja y-koordinaatit parametrina</li>
     <li><strong>public String toString()</strong><br/> Luo ja palauttaa oliosta merkkijonoesityksen. Eliön merkkijonoesityksen tulee olla seuraavanlainen <code>"x: 3; y: 6"</code>. Huomaa että koordinaatit on erotettu puolipisteellä (<code>;</code>)</li>
     <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää oliota parametrina saatujen arvojen verran. Muuttuja <code>dx</code> sisältää muutoksen koordinaattiin <code>x</code>, muuttuja <code>dy</code> sisältää muutoksen koordinaattiin <code>y</code>. Esimerkiksi jos muuttujan <code>dx</code> arvo on 5, tulee oliomuuttujan <code>x</code> arvoa kasvattaa viidellä</li>
   </ul>
-    
+
   <p>
     Kokeile luokan <code>Elio</code> toimintaa seuraavalla esimerkkikoodilla.
   </p>
@@ -797,7 +797,7 @@ x: 10; y: 35
 x: 60; y: 55
   <% end %>
 
-  
+
   <h2>Lauman toteutus</h2>
 
   <p>
@@ -807,13 +807,13 @@ x: 60; y: 55
   <p>
     Luokalla <code>Lauma</code> tulee olla seuraavanlainen API.
   </p>
-    
+
   <ul>
     <li><strong>public String toString()</strong><br/> Palauttaa merkkijonoesityksen lauman jäsenten sijainnista rivin vaihdolla erotettuna.</li>
     <li><strong>public void lisaaLaumaan(Siirrettava siirrettava)</strong><br/> Lisää laumaan uuden <code>Siirrettava</code>-rajapinnan toteuttavan olion</li>
     <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää laumaa parametrina saatujen arvojen verran. Huomaa että tässä sinun tulee siirtää jokaista lauman jäsentä.</li>
   </ul>
-  
+
   <p>Kokeile ohjelmasi toimintaa alla olevalla esimerkkikoodilla.</p>
 
   <% partial 'partials/code_highlight' do %>
@@ -941,7 +941,7 @@ volkswagen
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Näkyvyysmääreet private, protected ja public 
+  Näkyvyysmääreet private, protected ja public
 <% end %>
 
 <p>
@@ -954,7 +954,7 @@ volkswagen
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Yliluokan konstruktorin ja metodien kutsuminen 
+  Yliluokan konstruktorin ja metodien kutsuminen
 <% end %>
 
 <p>
@@ -971,7 +971,7 @@ volkswagen
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Yliluokan metodin kutsuminen 
+  Yliluokan metodin kutsuminen
 <% end %>
 
 <p>
@@ -988,7 +988,7 @@ public String toString() {
 
 <% partial 'partials/exercise', locals: { name: 'Henkilö ja perilliset' } do %>
 
-  
+
   <h2>Henkilo</h2>
 
   <p>
@@ -1009,7 +1009,7 @@ Esko Ukkonen
   Mannerheimintie 15 00100 Helsinki
   <% end %>
 
-  
+
   <h2>Opiskelija</h2>
 
   <p>
@@ -1035,7 +1035,7 @@ opintopisteitä 0
 opintopisteitä 1
   <% end %>
 
-  
+
   <h2>Opiskelijalle toString</h2>
 
   <p>
@@ -1058,7 +1058,7 @@ Olli
   opintopisteitä 1
   <% end %>
 
-  
+
   <h2>Opettaja</h2>
 
   <p>
@@ -1092,7 +1092,7 @@ Olli
   opintopisteitä 25
   <% end %>
 
-  
+
   <h2>Kaikki Henkilot listalle</h2>
 
   <p>
@@ -1121,7 +1121,7 @@ Olli
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Todellinen tyyppi määrää suoritettavan metodin 
+  Todellinen tyyppi määrää suoritettavan metodin
 <% end %>
 
 <p>
@@ -1151,10 +1151,10 @@ String.out.println(olli);   // olli.toString() TOIMII
 Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
 String.out.println(olli);
 Henkilo olliHenkilo = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki")
-System.out.println(olliHenkilo);  
+System.out.println(olliHenkilo);
 Object olliObject = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki")
 System.out.println(olliObject);
-  
+
 Object liisa = new Opiskelija("Liisa", "Väinö Auerin katu 20 00500 Helsinki");
 String.out.println(liisa);
 <% end %>
@@ -1176,7 +1176,7 @@ Liisa
 
 
 <p>
-  Suoritettava metodi valitaan olion todellisen tyypin perusteella, eli sen luokan perusteella, jonka konstruktoria kutsutaan kun olio luodaan. Jos kutsuttua metodia ei ole määritelty luokassa, suoritetaan perintähierarkiassa olion todellista tyyppiä lähinnä oleva metodin toteutus. 
+  Suoritettava metodi valitaan olion todellisen tyypin perusteella, eli sen luokan perusteella, jonka konstruktoria kutsutaan kun olio luodaan. Jos kutsuttua metodia ei ole määritelty luokassa, suoritetaan perintähierarkiassa olion todellista tyyppiä lähinnä oleva metodin toteutus.
 </p>
 
 <p>
@@ -1380,7 +1380,7 @@ public class Piste3D extends Piste {
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Milloin perintää kannattaa käyttää? 
+  Milloin perintää kannattaa käyttää?
 <% end %>
 
 <p>
@@ -1401,7 +1401,7 @@ public class Piste3D extends Piste {
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
-  Perinnän väärinkäyttö 
+  Perinnän väärinkäyttö
 <% end %>
 
 <p>
@@ -1510,46 +1510,46 @@ public class Tilaus {
   <p>
     Tehtäväpohjassa tulee mukana luokka <code>Varasto</code>, jonka tarjoamat konstruktorit ja metodit ovat seuraavat:
   </p>
-  
+
   <ul>
     <li><b>public Varasto(double tilavuus)</b><br/> Luo tyhjän varaston, jonka vetoisuus eli tilavuus annetaan parametrina; sopimaton tilavuus (&lt;=0) luo käyttökelvottoman varaston, jonka tilavuus on 0.</li>
-      
+
     <li><b>public double getSaldo()</b><br/> Palauttaa arvonaan varaston saldon, eli varastossa olevan tavaran tilavuuden.</li>
-      
+
     <li><b>public double getTilavuus()</b><br/> Palauttaa arvonaan varaston kokonaistilavuuden (eli sen, joka annettiin konstruktorille).</li>
-      
+
     <li><b>public double paljonkoMahtuu()</b><br/> Palauttaa arvonaan tiedon, paljonko varastoon vielä mahtuu.</li>
-      
+
     <li><b>public void lisaaVarastoon(double maara)</b><br/> Lisää varastoon pyydetyn määrän; jos määrä on negatiivinen, mikään ei muutu, jos kaikki pyydetty ei enää mahdu, varasto laitetaan täydeksi ja loput määrästä "heitetään menemään", "vuotaa yli".</li>
-      
+
     <li><b>public double otaVarastosta(double maara)</b><br/> Otetaan varastosta pyydetty määrä, metodi palauttaa paljonko <b>saadaan</b>. Jos pyydetty määrä on negatiivinen, mikään ei muutu ja palautetaan nolla. Jos pyydetään enemmän kuin varastossa on, annetaan mitä voidaan ja varasto tyhjenee.</li>
-      
+
     <li><b>public String toString()</b><br/> Palauttaa olion tilan merkkijonoesityksenä tyyliin <tt>saldo = 64.5, tilaa 123.5</tt></li></ul>
-    
+
   <p>
     Tehtävässä rakennetaan <code>Varasto</code>-luokasta useampia erilaisia varastoja. Huom! Toteuta kaikki luokat pakkaukseen <code>varastot</code>.
   </p>
 
   <h2>Tuotevarasto, vaihe 1</h2>
-    
+
   <p>
     Luokka <code>Varasto</code> hallitsee tuotteen määrään liittyvät toiminnot. Nyt tuotteelle halutaan lisäksi tuotenimi ja nimen käsittelyvälineet. <i>  <b>Ohjelmoidaan Tuotevarasto Varaston aliluokaksi!</b></i> Toteutetaan ensin pelkkä yksityinen oliomuuttuja tuotenimelle, konstruktori ja getteri nimikentälle:
   </p>
-  
+
   <ul>
     <li><b>public Tuotevarasto(String tuotenimi, double tilavuus)</b><br/> Luo tyhjän tuotevaraston. Tuotenimi ja vetoisuus annetaan parametrina.</li>
-    
+
     <li><b>public String getNimi()</b><br/> Palauttaa arvonaan tuotteen nimen.</li>
   </ul>
-    
+
   <p>
     <em>Muista millä tavoin konstruktori voi ensi toimenaan suorittaa yliluokan konstruktorin!</em>
   </p>
-    
+
   <p>
     Käyttöesimerkki:
   </p>
-    
+
   <% partial 'partials/code_highlight' do %>
 Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
 mehu.lisaaVarastoon(1000.0);
@@ -1569,13 +1569,13 @@ saldo = 988.7, vielä tilaa 11.3
   <p>
     Kuten edellisestä esimerkistä näkee, Tuotevarasto-olion perimä <code>toString()</code> ei tiedä (tietenkään!) mitään tuotteen nimestä. <em>Asialle on tehtävä jotain!</em> Lisätään samalla myös setteri tuotenimelle:
   </p>
-    
+
   <ul>
     <li><b>public void setNimi(String uusiNimi)</b> asettaa tuotteelle uuden nimen.</li>
-    
+
     <li><b>public String toString()</b> palauttaa olion tilan merkkijonoesityksenä tyyliin <tt>Juice: saldo = 64.5, tilaa 123.5</tt></li>
   </ul>
-    
+
   <p>
     Uuden <code>toString()</code>-metodin voisi toki ohjelmoida käyttäen yliluokalta perittyjä gettereitä, joilla perittyjen, mutta piilossa pidettyjen kenttien arvoja saa käyttöönsä. Koska yliluokkaan on kuitenkin jo ohjelmoitu tarvittava taito varastotilanteen merkkiesityksen tuottamiseen, miksi nähdä vaivaa sen uudelleen ohjelmointiin. Käytä siis hyväksesi perittyä <code>toString</code>iä.
   </p>
@@ -1583,7 +1583,7 @@ saldo = 988.7, vielä tilaa 11.3
   <p>
     <em>Muista miten korvattua metodia voi kutsua aliluokassa!</em>
   </p>
-    
+
   <p>
     Käyttöesimerkki:
   </p>
@@ -1623,15 +1623,15 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
 
   <ul>
     <li><b>public Muutoshistoria()</b> luo tyhjän <code>Muutoshistoria</code>-olion.</li>
-    
+
     <li><b>public void lisaa(double tilanne)</b> lisää muutoshistorian viimeisimmäksi muistettavaksi määräksi parametrina annetun tilanteen. </li>
-    
+
     <li><b>public void nollaa()</b> tyhjää muistin.</li>
-    
+
     <li><b>public String toString()</b> palauttaa muutoshistorian merkkijonoesityksen. <i>ArrayList-luokan antama merkkijonoesitys kelpaa sellaisenaan.</i> </li>
-    
+
   </ul>
-    
+
 
   <h2>Muutoshistoria, vaihe 2</h2>
 
@@ -1640,13 +1640,13 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
   <ul>
 
     <li><b>public double maxArvo()</b> palauttaa muutoshistorian suurimman arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
-    
+
     <li><b>public double minArvo()</b> palauttaa muutoshistorian pienimmän arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
-      
+
     <li><b>public double keskiarvo()</b> palauttaa muutoshistorian arvojen keskiarvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
-      
+
   </ul>
-  
+
   <h2>Muutoshistoria, vaihe 3</h2>
 
   <p>
@@ -1655,10 +1655,10 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
 
   <ul>
     <li><b>public double suurinMuutos()</b> palauttaa muutoshistorian isoimman (huom: -5:n kokoinen muutos on isompi kuin 4:n kokoinen muutos) yksittäisen muutoksen itseisarvon. Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan. Itseisarvo on luvun etäisyys nollasta. Esimerkiksi luvun -5.5 itseisarvo on 5.5, luvun 3.2 itseisarvo on 3.2. </li>
-      
+
     <li><b>public double varianssi()</b> palauttaa muutoshistorian arvojen varianssin (käytetään otosvarianssin kaavaa). Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan.</li>
   </ul>
-    
+
   <p>
     Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi. Esimerkiksi lukujen 3, 2, 7, 2 keskiarvo on 3.5, joten otosvarianssi on ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ≈ 5,666667.)
   </p>
@@ -1669,25 +1669,25 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
   <p>
     Toteuta luokan <code>Tuotevarasto</code> aliluokkana <code>MuistavaTuotevarasto</code>. Uusi versio tarjoaa vanhojen lisäksi varastotilanteen muutoshistoriaan liittyviä palveluita. Historiaa hallitaan <code>Muutoshistoria</code>-oliolla.
   </p>
-    
+
   <p>
     Julkiset konstruktorit ja metodit:
   </p>
-  
+
   <ul>
     <li><b>public MuistavaTuotevarasto(String tuotenimi, double tilavuus, double alkuSaldo)</b>	luo tuotevaraston. Tuotenimi, vetoisuus ja alkusaldo annetaan parametrina. <i>Aseta alkusaldo sekä varaston alkusaldoksi että muutoshistorian ensimmäiseksi arvoksi.</i></li>
-	
+
     <li><b>public String historia()</b> palauttaa tuotehistorian tyyliin <tt>[0.0, 119.2, 21.2]</tt>.  <i>Käytä Muutoshistoria-olion merkkiesitystä sellaisenaan.</i></li>
   </ul>
 
   <p>
     <b>Huomaa</b> että tässä esiversiossa historia ei vielä toimi kunnolla; nyt vasta vain aloitussaldo muistetaan.
   </p>
-  
+
   <p>
     Käyttöesimerkki:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 // tuttuun tapaan:
 MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
@@ -1713,17 +1713,17 @@ Juice: saldo = 989.7, vielä tilaa 10.299999999999955
   <p>
     <i>On aika aloittaa historia!</i> Ensimmäinen versio ei historiasta tiennyt kuin alkupisteen. Täydennä luokkaa metodein
   </p>
-  
+
   <ul>
     <li><b>public void lisaaVarastoon(double maara)</b> toimii kuin <i>Varasto</i>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan.	<b>Huom: </b> historiaan tulee kirjata lisäyksen jälkeinen varastosaldo, ei lisättävää määrää!</li>
-    
+
     <li><b>public double otaVarastosta(double maara)</b> toimii kuin <code>Varasto</code>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan. <b>Huom: </b> historiaan tulee kirjata poiston jälkeinen varastosaldo, ei poistettavaa määrää!</li>
   </ul>
-    
+
   <p>
     Käyttöesimerkki:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 // tuttuun tapaan:
 MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
@@ -1742,22 +1742,22 @@ Juice
 Juice: saldo = 989.7, vielä tilaa 10.299999999999955
 [1000.0, 988.7, 989.7]
   <% end %>
-  
+
   <p>
     <i>Muista miten korvaava metodi voi käyttää hyväkseen korvattua metodia!</i>
   </p>
-  
+
 
   <h4>Muistava tuotevarasto, vaihe 3</h4>
 
   <p>
     Täydennä luokkaa metodilla
   </p>
-  
+
   <ul>
-    
+
     <li><b>public void tulostaAnalyysi()</b>, joka tulostaa tuotteeseen liittyviä historiatietoja esimerkin esittämään tapaan.</li>
-    
+
   </ul>
 
   <p>
@@ -1772,7 +1772,7 @@ mehu.lisaaVarastoon(1.0);
 
 mehu.tulostaAnalyysi();
   <% end %>
-  
+
   <% partial 'partials/sample_output' do %>
 Tuote: Juice
 Historia: [1000.0, 988.7, 989.7]
@@ -1780,7 +1780,7 @@ Suurin tuotemäärä: 1000.0
 Pienin tuotemäärä: 988.7
 Keskiarvo: 992.8
   <% end %>
-    
+
   <h4>Muistava tuotevarasto, vaihe 4</h4>
 
   <p>
@@ -1791,7 +1791,7 @@ Keskiarvo: 992.8
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Perintä, rajapinnat, kumpikin, vai eikö kumpaakaan? 
+  Perintä, rajapinnat, kumpikin, vai eikö kumpaakaan?
 <% end %>
 
 <p>
@@ -1804,7 +1804,7 @@ Keskiarvo: 992.8
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Abstrakti luokka 
+  Abstrakti luokka
 <% end %>
 
 <p>
@@ -1966,14 +1966,14 @@ public abstract class Laatikko {
 }
   <% end %>
 
-    
+
   <h2>Tavaran muokkaus</h2>
 
   <p>
     Lisää <code>Tavara</code>-luokan konstruktoriin tarkistus, jossa tarkistetaan että tavaran paino ei ole koskaan negatiivinen (paino 0 hyväksytään). Jos paino on negatiivinen, tulee konstruktorin heittää <code>IllegalArgumentException</code>-poikkeus. Toteuta <code>Tavara</code>-luokalle myös metodit <code>equals</code> ja <code>hashCode</code>, joiden avulla  pääset hyödyntämään erilaisten listojen ja kokoelmien <code>contains</code>-metodia. Toteuta metodit siten, että Tavara-luokan oliomuuttujan <code>paino</code> arvolla ei ole väliä. <em>Voit hyvin hyödyntää NetBeansin tarjoamaa toiminnallisuutta equalsin ja hashCoden toteuttamiseen.</em>
   </p>
 
-    
+
   <h2>Maksimipainollinen laatikko</h2>
 
   <p>
@@ -1997,7 +1997,7 @@ true
 false
   <% end %>
 
-    
+
   <h2>Yhden tavaran laatikko ja Hukkaava laatikko</h2>
 
   <p>
@@ -2043,7 +2043,7 @@ false
 <% partial 'partials/exercise', locals: { name: 'Asteroids' } do %>
 
   <p>
-    Tehtäväpohjassa on vuonna 1979 julkaistun <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)" target="_blank">Asteroids</a>-nimisen pelin hahmotelma. Peli käynnistyy kun suoritat pakkauksessa asteroids olevan luokan AsteroidsOhjelma main-metodin.  
+    Tehtäväpohjassa on vuonna 1979 julkaistun <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)" target="_blank">Asteroids</a>-nimisen pelin hahmotelma. Peli käynnistyy kun suoritat pakkauksessa asteroids olevan luokan AsteroidsOhjelma main-metodin.
   </p>
 
   <p>
@@ -2055,13 +2055,13 @@ false
   <p>
     &nbsp;
   </p>
-  
+
   <p>
     Tehtävänäsi on <em>refaktoroida</em> lähdekoodia -- eli muuttaa sitä selvemmäksi ilman että pelin toiminnallisuus muuttuu. Keskity pakkauksessa <code>asteroids.domain</code> oleviin luokkiin ja tunnista luokille mahdollisia yhtenäisiä yliluokkia sekä rajapintoja. Siirrä tämän jälkeen luokille yhtenäistä toiminnallisuutta näihin yliluokkiin.
   </p>
 
   <p>
-    Yhteisten yliluokkien sekä rajapintojen tunnistaminen kannattaa aloittaa luokkien toiminnallisuuksien tarkastelulla. Mietin millä luokilla on yhteisiä metodeja, ja mitkä ovatko jotkut luokat jonkinlaisen yleisemmän käsitteen ilmentymiä.  
+    Yhteisten yliluokkien sekä rajapintojen tunnistaminen kannattaa aloittaa luokkien toiminnallisuuksien tarkastelulla. Mietin millä luokilla on yhteisiä metodeja, ja mitkä ovatko jotkut luokat jonkinlaisen yleisemmän käsitteen ilmentymiä.
   </p>
 
   <p>
@@ -2071,7 +2071,7 @@ false
   <p>
     Voit halutessasi myös palata täydentämään ja muokkaamaan pelin toimintaa, sekä lisätä siihen ominaisuuksia. Tee kuitenkin tätä ennen myös seuraava tehtävä.
   </p>
-  
+
 <% end %>
 
 
@@ -2084,7 +2084,7 @@ false
   <p>
     <strong>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden Scanner-olion. Älä käytä luokkien nimissä skandeja. Älä myöskään käytä staattisia muuttujia, testit suorittavat ohjelman useita kertoja joten staattisiin muuttujiin edellisillä suorituskerroilla jääneet arvot todennäköisesti häiritsevät testien toimintaa!</strong> -- ohjelmassa on vain muutamia testejä, varmistathan itse myös ohjelmasi toiminnan.
   </p>
-  
+
   <p>
     Tässä tehtävässä pääset toteuttamaan luolapelin. Pelissä pelaaja on luolassa hirviöitten kanssa. Pelaajan tehtävänä on ehtiä tallata kaikki hirviöt ennen kuin hänen lampustaan loppuu virta ja hirviöt pääsevät pimeän turvin syömään hänet. Pelaaja voi nähdä hirviöiden sijainnit välkäyttämällä lamppua, jonka jälkeen hänen on liikuttava sokkona ennen seuraavaa välkäytystä. Pelaaja voi kulkea monta askelta yhden siirron aikana.
   </p>
@@ -2092,7 +2092,7 @@ false
   <p>
     Pelitilanne eli luola, pelaaja ja hirviöt esitetään pelaajalle tekstimuotoisesti. Tulostuksen ensimmäinen rivi kertoo jäljellä olevien siirtojen (eli lampun jäljellä olevan virran) määrän. Virran määrää seuraa pelaajan ja hirviöitten sijainnit, joiden jälkeen on pelitilanteesta piirretty kartta. Alla olevassa esimerkissä näet pelaajan (<code>@</code>) ja kolme hirviötä (<code>h</code>).  Alla olevassa esimerkissä pelaajalla on virtaa neljääntoista siirtoon.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 14
 
@@ -2146,11 +2146,11 @@ Z................
       <p>Luvut <code>leveys</code> ja <code>korkeus</code> antavat luolan koon (se on aina neliskulmainen), <code>hirvioita</code> antaa hirviöiden lukumäärän alussa (hirviöiden sijainnin voi arpoa), <code>siirtoja</code> antaa siirtojen lukumäärän alussa ja jos <code>hirviotLiikkuvat</code> on <code>false</code>, hirviöt eivät liiku.</p></li>
     <li>metodi <strong><code>public void run(Scanner lukija)</code></strong> joka käynnistää pelin, ja jolle annetaan uusi Scanner-olio parametriksi</li>
   </ul>
-  
+
   <p>
     <em>Huom!</em> pelaajan tulee aloittaa sijainnista 0,0!
   </p>
-  
+
   <p>
     <em>Huom!</em> jos pelaaja tai hirviö koittaa liikkua ulos luolasta tai kaksi hirviötä koittaa liikkua samaan ruutuun, ei liikettä tule tapahtua!
   </p>
@@ -2310,7 +2310,7 @@ h 4 2
 <font color="red">w</font>
 VOITIT
   <% end %>
-  
+
 <% end %>
 
 

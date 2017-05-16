@@ -15,111 +15,111 @@
 <h2>Muutama hyödyllinen vinkki ohjelmointiin NetBeansissa</h2>
 
 <ul>
-  
+
   <li>
-    
+
     <strong>Vältä punaista!</strong>
-    
+
     <p>
       Kun NetBeans alleviivaa yhden tai useamman rivin punaisella värillä ja lähdekoodi-ikkunan vasemmassa ja oikeassa laidassa on punaista, NetBeans kertoo että ohjelmasi ei ole toimivassa tilassa. Ohjelmaasi ei voi myöskään tällöin suorittaa.
     </p>
-    
+
     <img src="/img/material/non-compiling.png" alt="Kuva NetBeans-editorista, missä koodi on kääntymättömässä tilassa."/>
-    
+
     <p>
       Ylläolevassa kuvassa NetBeans korostaa kahta virheellistä kohtaa. Ensimmäisessä kohdassa ehtolauseen ehdosta puuttuu mm. sulut. Toisessa kohdassa yritetään käyttää muuttujaa nimeltä <code>luk</code>, vaikkei sellaista ole.
     </p>
-    
+
     <p>
       Kun punaisten kohtien määrä kasvaa, etkä saa ohjelmaasi toimimaan kuten haluat, pysähdy. Poista tekemiäsi muutoksia (ctrl + z) kunnes ohjelmointiympäristö ei valita lähdekoodissa olevista virheistä.
     </p>
-    
+
     <p>
       Kun virheitä ei näy, hengitä ja kerro ääneen mitä haluat tehdä. Mikä on tavoitteesi ja minkälaisia pienempiä tavoitteita tavoitteesi saavuttamiseksi tulee tehdä? Etene pienin askelin ja toteuta ohjelmaasi osa kerrallaan. Ennen pitkää pienet osat tulevat sinulle tutuksi, ja opit yhä paremmin yhdistelemään niitä kokonaisiksi ohjelmiksi.
     </p>
-    
+
     <img src="/img/material/non-compiling-2.png" alt="Kuva NetBeans-editorista, missä koodi kääntyy."/>
-    
+
     <p>
       Tehtävien uudelleen alusta aloittamisessa ei ole mitään pahaa. Päinvastoin, kertaat tällöin ohjelman rakenteen toteuttamista, ja annat itsellesi aikaa oppia. Ohjelmakoodin lisääminen toimimattomaan ohjelmakoodiin johtaa harvoin toimivaan ratkaisuun.
     </p>
-    
+
   </li>
-  
+
   <li>
-    
+
     <strong>Opettele hyödyntämään näppärää aaltosulkujen täydennystä</strong>
-    
+
     <p>
       Eräs aloittelevan ohjelmoijan tyypillinen syy "punaisen koodin" lisääntymiselle on aaltosulkujen liikakäyttö tai niiden liian vähäinen käyttö. Jokaiselle aaltosululle tulee löytyä ohjelmasta pari, sillä ne määrittelevät lohkoja, joissa ohjelmakoodia suoritetaan.
     </p>
-    
+
     <p>
       NetBeans auttaa tässä huomattavasti. Kun kirjoitat ehtolauseen, siihen liittyvän ehdon, sekä avaavan aaltosulkeen, koodi näyttää esimerkiksi seuraavalta:
     </p>
-    
+
     <img src="/img/material/non-compiling-3.png" alt="Kuva NetBeans-editorista, missä yksi ylimääräinen avonainen aaltosulku."/>
-    
+
     <p>
       Koodi ei käänny -- NetBeans vinkkaa, että virhe on viimeisellä rivillä. Syy on kuitenkin puuttuva aaltosulku.
     </p>
-    
+
     <p>
       Jos painat heti avaavan aaltosulkeen kirjoittamisen jälkeen enteriä, NetBeans luo kirjoittamallesi aaltosululle parin.
     </p>
-    
+
     <img src="/img/material/non-compiling-4.png" alt="Kuva NetBeans-editorista, missä yksi ylimääräinen avonainen aaltosulku."/>
-    
+
     <p>
       Punaista ei näy ja voit edetä rauhassa.
     </p>
-    
+
   </li>
-  
+
   <li>
-    
+
     <strong>Opettele käyttämään koodin automaattista täydennystä</strong>
-    
+
     <p>
       Jos olet esitellyt ohjelmassasi muuttujan, ei sen nimeä tarvitse kirjoittaa joka kerta kokonaan.
     </p>
-    
+
     <p>
       Kokeile mitä tapahtuu kun kirjoitat muuttujan ensimmäisen kirjaimen ja painat sen jälkeen yhtäaikaa ctrl ja välilyönti. <strong>HUOM:</strong> joissakin käyttöjärjestelmissä automaattinen täydennys saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti.
     </p>
-    
-    
+
+
     <p>
       Allaolevassa esimerkissä ohjelmoija on luonut muuttujan <code>sukunimi</code>, jonka jälkeen hän kirjoittaa merkin <code>s</code> ja valitsee näppäinyhdistelmällä automaattisen täydennyksen.
     </p>
-    
+
     <img src="/img/material/autocomplete-2.png" alt="Kuva NetBeans-editorista, demonstroidaan automaattista koodin täydennystä."/>
-    
+
     <p>
       Muuttujan <code>sukunimi</code> voi valita NetBeansin tarjoamasta listasta.  NetBeans osaa täydentää muitakin nimiä sekä avainsanoja, esimerkiksi muuttujan tyypin <code>double</code> aikaansaamiseksi riittää kirjoittaa <code>w</code> sekä valita automaattinen täydennys.
     </p>
-    
+
   </li>
-  
-  
+
+
   <li>
-    
+
     <strong>Käytä lyhennettä sout</strong>
-    
+
     <p>
       Muista että saat tehtyä tulostuskomennon <code>System.out.println("")</code> kirjoittamalla <code>sout</code> ja painamalla <em>tabulaattoria</em> eli q:n vasemmalla puolella olevaa näppäintä.
     </p>
-    
+
   </li>
-  
+
 </ul>
 
 
 
 <% partial 'partials/hint', locals: { name: 'Toisen osion tavoitteet' } do %>
-  
+
   <p>
-    Toisessa osiossa kerrataan ensimmäisen osion sisältöä: muuttujia sekä ehtolauseita. Uusina teemoina tulevat toistolause ja listarakenne. 
+    Toisessa osiossa kerrataan ensimmäisen osion sisältöä: muuttujia sekä ehtolauseita. Uusina teemoina tulevat toistolause ja listarakenne.
   </p>
 
   <p>
@@ -129,7 +129,7 @@
   <p>
     Suosittelemme, että et kopioi (copy-paste) materialissa olevia esimerkkejä tai aiemmin tekemiesi tehtävien sisältöjä tehtäviisi pohjiksi, vaikka se on välillä mahdollista. Kopioimalla osia kurssilla harjoiteltavat rakenteet eivät jää samalla tavalla muistiin kuin jos kirjoittaisit niitä käsin, ja samalla miettisit niiden tarkoitusta.
   </p>
-  
+
 
 <% end %>
 
@@ -140,7 +140,7 @@
 
 <p>
   Ensimmäisen osion oleellisimmat asiat liittyivät muuttujiin, syötteen lukemiseen sekä ehtolauseiden käyttöön. Jatketaan samalla teemalla ja kerrataan samalla hieman.
-</p> 
+</p>
 
 <p>
   Muuttujia käytetään tiedon säilyttämiseen sekä tiedon myöhempään noutamiseen. Muuttujan esittely tapahtui kertomalla ensin muuttujan tyyppi, esimerkiksi kokonaisluku (<code>int</code>), jota seuraa muuttujan nimi, esimerkiksi <code>luku</code> -- yhdessä <code>int luku</code>. Muuttujan esittelyä seuraa tyypillisesti sijoitusoperaatio, minkä avulla muuttujalle asetetaan arvo. Esimerkiksi lause <code>int luku = 5;</code> luo kokonaislukumuuttujan nimeltä luku ja asettaa siihen arvon 5.
@@ -284,7 +284,7 @@ int summa = 0;
 
 System.out.println("Summa: " + summa);
   <% end %>
-  
+
 
   <% partial 'partials/sample_output' do %>
 Anna ensimmäinen luku: <font color="red">3</font>
@@ -316,7 +316,7 @@ Summa: 21
       <li><code>Integer.parseInt("42")</code> muuntaa tekstimuuttujan, jonka arvo on <code>"42"</code>, kokonaislukumuuttujaksi, jonka arvo on <code>42</code>.</li>
     </ol>
   </li>
-  
+
   <li>Lausekkeen <code>Integer.parseInt(lukija.nextLine())</code> paikalle asetetaan sen evaluaatiosta saatu arvo, tässä <code>42</code>. Nyt lauseke on muotoa <code>100 - 42</code>.</li>
 
   <li>Tietokone evaluoi lausekkeen <code>100 - 42</code>, jonka tulos on <code>58</code>.</li>
@@ -404,7 +404,7 @@ System.out.println(pituus);
 <p>
   <strong>Muuttujaa ei ole olemassa ennen sen esittelyä</strong>, eikä sitä voi käyttää ennen kuin se on esitelty.
 </p>
-    
+
 <% partial 'partials/code_highlight' do %>
 // ei toimi sillä muuttujaa luku ei vielä tunneta!
 if (luku &gt; 10) {
@@ -414,7 +414,7 @@ if (luku &gt; 10) {
 int luku = 12;
 <% end %>
 
-    
+
 <% partial 'partials/code_highlight' do %>
 int luku = 12;
 
@@ -432,7 +432,7 @@ Jee!
 <p>
   <strong>Muuttuja ei ole olemassa aaltosulkeidensa ulkopuolella</strong>, eikä siihen siis pääse käsiksi aaltosulkujen ulkopuolelta. Esimerkiksi, jos ehtolauseeseen liittyvässä lohkossa (aaltosuluilla rajattu alue) esitellään muuttuja, on kyseinen muuttuja on käytössä vain kyseisen lohkon sisällä.
 </p>
-    
+
 <% partial 'partials/code_highlight' do %>
 int luku = 12;
 
@@ -472,11 +472,11 @@ Jee!
 <% partial 'partials/exercise', locals: { name: 'Positiivisen luvun lisääminen' } do %>
 
   <p>
-    Kaverisi on hahmotellut summaamiseen ja ehtolauseen toimintaan liittyvää testiohjelmaa. Testiohjelmassa ohjelman alussa luettuun lukuun lisätään käyttäjältä luettu toinen luku. Luvun lisäämisen tulee tapahtua vain jos toisena luettu luku on positiivinen. 
+    Kaverisi on hahmotellut summaamiseen ja ehtolauseen toimintaan liittyvää testiohjelmaa. Testiohjelmassa ohjelman alussa luettuun lukuun lisätään käyttäjältä luettu toinen luku. Luvun lisäämisen tulee tapahtua vain jos toisena luettu luku on positiivinen.
   </p>
 
   <p>
-    Ohjelma ei tällä hetkellä kuitenkaan toimi ihan toivotusti ja siinä näkyy punaista. Kaverisi ohjelma näyttää seuraavalta: 
+    Ohjelma ei tällä hetkellä kuitenkaan toimi ihan toivotusti ja siinä näkyy punaista. Kaverisi ohjelma näyttää seuraavalta:
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -511,17 +511,17 @@ Summa: 9
 <% end %>
 
 
-  
+
 <% partial 'partials/material_heading' do %>
   Toistolause
 <% end %>
 
 
 <p>
-  Tarkastellaan seuraavaksi toistolausetta. Toistolausetta käytetään osana toistolausetta määriteltävän lohkon sisältämän lähdekoodin toistamiseen useampaan kertaan. 
+  Tarkastellaan seuraavaksi toistolausetta. Toistolausetta käytetään osana toistolausetta määriteltävän lohkon sisältämän lähdekoodin toistamiseen useampaan kertaan.
 </p>
 
-<% partial 'partials/material_sub_heading' do %> 
+<% partial 'partials/material_sub_heading' do %>
   Ikuinen toisto
 <% end %>
 
@@ -537,10 +537,10 @@ while (true) {
 
 
 <p>
-  Toistolause <code>while (true) { /* toistettava */ }</code> saa aikaan sen, että toistolauseeseen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja -- yllä <code>System.out.println("osaan ohjelmoida!");</code> -- suoritetaan äärettömän monta kertaa. Lohkossa olevien lähdekoodirivien määrää ei ole rajattu. 
+  Toistolause <code>while (true) { /* toistettava */ }</code> saa aikaan sen, että toistolauseeseen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja -- yllä <code>System.out.println("osaan ohjelmoida!");</code> -- suoritetaan äärettömän monta kertaa. Lohkossa olevien lähdekoodirivien määrää ei ole rajattu.
 </p>
 
-<% partial 'partials/material_sub_heading' do %> 
+<% partial 'partials/material_sub_heading' do %>
   Toistolauseesta poistuminen
 <% end %>
 
@@ -587,11 +587,11 @@ kiitos ja kuulemiin.
 
 
 <% partial 'partials/exercise', locals: { name: 'Salasana' } do %>
-  
+
   <p>
     Tehtävärunkoon on määritelty muuttuja <code>String salasana</code>, jolle on asetettu arvoksi <code>porkkana</code> -- älä muuta tätä salasanaa. Toteuta ohjelma, jossa ohjelma kysyy käyttäjältä salasanaa ja vertailee sitä muuttujassa <code>salasana</code> olevaan arvoon. Salasanaa tulee kysyä uudestaan kunnes käyttäjä kirjoittaa oikean salasanan. Muistathan, että merkkijonoja vertaillaan <code>equals</code>-komennolla!
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Anna salasana: <font color="red">nauris</font>
 Väärin!
@@ -600,9 +600,9 @@ Väärin!
 Anna salasana: <font color="red">porkkana</font>
 Oikein!
 
-Salaisuus!    
+Salaisuus!
   <% end %>
-  
+
   <p>
     Lisää ohjelmaan myös oma salainen viestisi, joka näytetään kun käyttäjä kirjoittaa salasanan oikein. Se voi olla mitä tahansa!
   </p>
@@ -653,11 +653,11 @@ while (true) {
 
 System.out.println("Summa lopussa: " + summa);
   <% end %>
-  
+
   <p>
     Ohjelman tulee toimia seuraavasti:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Anna lukuja, nolla lopettaa:
 <font color="red">3</font>
@@ -675,10 +675,10 @@ Summa: 7
 
 
 
-<% partial 'partials/material_sub_heading' do %> 
+<% partial 'partials/material_sub_heading' do %>
   Yhteenveto: while-true-break
 <% end %>
-  
+
 <img src="/img/drawings/while-true-break.png"/>
 
 <p>
@@ -694,7 +694,7 @@ Summa: 7
 </p>
 
 
-<% partial 'partials/material_sub_heading' do %> 
+<% partial 'partials/material_sub_heading' do %>
   Esimerkki: Laskin
 <% end %>
 
@@ -746,7 +746,7 @@ System.out.println("kiitos ja kuulemiin.");
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Toistolauseen ehto toiston lopettajana 
+  Toistolauseen ehto toiston lopettajana
 <% end %>
 
 
@@ -807,7 +807,7 @@ while (luku &gt;= 1) {
   <p>
     Ohjelman tulostus on seuraava:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 1
 2
@@ -844,7 +844,7 @@ while (luku &gt;= 1) {
 
 <% end %>
 
-  
+
 <% partial 'partials/exercise', locals: { name: 'Parilliset luvut' } do %>
 
   <p>
@@ -867,9 +867,9 @@ while (luku &gt;= 1) {
   <p>
     Tämä tehtävä on ensimmäinen kaksiosainen tehtävä. Kun teet molemmat osat, saat tehtävästä kaksi tehtäväpistettä. Voit palauttaa tehtävän myös siten, että vain ensimmäinen osa on tehtynä.
   </p>
-  
+
   <h2>Mihin asti?</h2>
-  
+
   <p>
     Kirjoita ohjelma, joka tulostaa kokonaisluvut 1:stä käyttäjän antamaan lukuun asti.
   </p>
@@ -895,7 +895,7 @@ Mihin asti? <font color="red">5</font>
 
 
   <h2>Mistä lähtien?</h2>
-  
+
   <p>Lisää ohjelmaan käyttäjältä kysyttävä alaraja.</p>
   <% partial 'partials/sample_output' do %>
 Mihin asti? <font color="red">8</font>
@@ -919,7 +919,7 @@ Mistä lähtien? <font color="red">16</font>
 
 
 
- 
+
 
 <% partial 'partials/material_sub_sub_heading' do %>
   Toistolauseen suorituksen lopettamisesta
@@ -1041,7 +1041,7 @@ System.out.println(tulos);
 <p>
   Toistolauseen suoritus loppuu kun muuttujan <code>summa</code> arvo on 12 ja muuttujan <code>i</code> arvo on 4 (ehto <code>i &lt; 4</code> on tällöin epätotta).
 </p>
- 
+
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=public%20class%20Esimerkki%20%7B%0A%20%20%20%20public%20static%20void%20main(String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20int%20tulos%20%3D%200%3B%0A%0A%20%20%20%20%20%20%20%20int%20i%20%3D%200%3B%0A%20%20%20%20%20%20%20%20while%20(i%20%3C%204%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20tulos%20%2B%3D%203%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20i%2B%2B%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20System.out.println(tulos%29%3B%0A%20%20%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 
@@ -1073,7 +1073,7 @@ Summa on 28
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Rajatun lukusarjan summa' } do %>
-  
+
   <p>
     Muuta edellistä tehtävää siten, että käyttäjä määrää summan laskemisen aloituskohdan. Voit olettaa, että käyttäjä antaa ensin pienemmän luvun ja sitten suuremman luvun.
   </p>
@@ -1112,7 +1112,7 @@ Kertoma on 6
   <% end %>
 
   <p>Nyt laskettiin 1 * 2 * 3 = 6</p>
-	      
+
 
   <% partial 'partials/sample_output' do %>
 Anna luku: <font color="red">10</font>
@@ -1129,14 +1129,14 @@ Kertoma on 3628800
 <% partial 'partials/exercise', locals: { name: 'Plaseeraus on epätoivoista' } do %>
 
   <p>
-    Kaverisi on järjestämässä pienimuotoiset kekkerit. Hän on hyvin tarkka plaseerauksen suhteen ja miettii miten vieraat pitäisi asettaa pöytään. 
+    Kaverisi on järjestämässä pienimuotoiset kekkerit. Hän on hyvin tarkka plaseerauksen suhteen ja miettii miten vieraat pitäisi asettaa pöytään.
   </p>
 
   <p>
     Auta toteuttamasi ohjelman avulla kaveriasi ymmärtämään, ettei kaikkia mahdollisia plaseerausvaihtoehtoja kannata käydä läpi pohtia.
   </p>
-    
-  
+
+
   <p>
     Ohjelmaan on toteutettuna valmiiksi graafinen käyttöliittymä, mihin kaverisi voi syöttää vieraiden lukumäärän. Muuta ohjelman toimintaa siten, että ohjelma laskee plaseerausvaihtoehtojen lukumäärän, ja näyttää sen käyttäjälle. Hyödynnä tässä edellisessä tehtävässä tekemääsi kertomaa.
   </p>
@@ -1147,9 +1147,9 @@ Kertoma on 3628800
 
   <img src="/img/exercises/02-12-02.png" />
 
-  
+
   <p>&nbsp;</p>
-  
+
   <p>
     Huomaat todennäköisesti, että ohjelma toimii vain melko pienillä vieraslukumäärillä. Tämä liittyy siihen, minkäkokoisua lukuja muuttujamme voivat korkeintaan sisältää. Palaamme tähän myöhemmin kurssilla.
   </p>
@@ -1159,15 +1159,15 @@ Kertoma on 3628800
 
 
 <% partial 'partials/hint', locals: { name: 'Ohjelmien tekeminen pienissä paloissa' } do %>
-  
+
   <p>
     Kun teet ohjelmaa, oli se sitten harjoitustehtävä tai oma projektisi, mieti minkälaisia osia ohjelma tarvitsee toimiakseen, ja etene näitä pieniä osia yksitellen toteuttaen. Jokaisen osan toteuttamisen jälkeen kokeile tähänastisen ohjelmasi toimintaa.
   </p>
-  
+
   <p>
     Älä koskaan yritä ratkaista koko ongelmaa kerralla, sillä tällöin ohjelman suorittaminen ja testaaminen kesken ongelmanratkaisuprosessin on vaikeaa. Aloita jollain helpolla asialla jonka tiedät varmasti osaavasi. Kun yksi ohjelman osa on saatu toimimaan, voit siirtyä ratkaisemaan seuraavaa ongelmaa.
   </p>
-  
+
   <p>
     Osa kurssin tehtävistä on valmiiksi osiin pilkottuja. Usein osat pitää vielä pilkkoa ohjelmoinnin kannalta vieläkin pienempiin paloihin. Kannattaa tehdä siten, että suoritat ohjelman lähes jokaisen uuden koodirivin jälkeen. Tällöin varmistat, että ratkaisu on etenemässä haluttuun suuntaan.
   </p>
@@ -1175,7 +1175,7 @@ Kertoma on 3628800
 
 
 <% partial 'partials/exercise', locals: { name: 'Silmukat, lopetus ja muistaminen' } do %>
-  
+
   <p>
     Seuraavassa tehtävässä tehdään yksi ohjelma, mutta ohjelman rakentaminen tapahtuu hyvin pienissä paloissa. Tämä on ehdottoman suositeltava tapa aina kun ohjelmoit.
   </p>
@@ -1206,7 +1206,7 @@ Kiitos ja näkemiin!
 
 
   <h2>Lukujen summa</h2>
-  
+
   <p>Laajenna edellistä ohjelmaa siten, että ohjelma ilmoittaa käyttäjän syöttämien lukujen summan. (Lukua -1 ei lasketa mukaan.)</p>
 
   <% partial 'partials/sample_output' do %>
@@ -1238,7 +1238,7 @@ Lukuja: 3
   <h2>Lukujen keskiarvo</h2>
 
   <p>Muuta edellistä ohjelmaa siten, ohjelma ilmoittaa lukujen keskiarvon. (Lukua -1 ei lasketa mukaan.)</p>
-  
+
   <% partial 'partials/sample_output' do %>
 Syötä luvut:
 <font color="red">5</font>
@@ -1250,7 +1250,7 @@ Summa: 11
 Lukuja: 3
 Keskiarvo: 3.666666666666
   <% end %>
-  
+
   <h4 class="req">Parilliset ja parittomat</h4>
 
   <p>
@@ -1317,12 +1317,12 @@ Scanner lukija = new Scanner(System.in);
 
 System.out.print("Anna lukuja, negatiiviset luvut eivät kelpaa: ");
 int summa = 0;
-  
+
 while (true) {
     int luettu = Integer.parseInt(lukija.nextLine());
 
     if (luettu == 0) {
-        break;   
+        break;
     }
 
     if (luettu < 0) {
@@ -1332,7 +1332,7 @@ while (true) {
     summa += luettu;
 }
 
-System.out.println("Hyväksyttävien lukujen summa: " + summa);  
+System.out.println("Hyväksyttävien lukujen summa: " + summa);
 <% end %>
 
 <p>
@@ -1351,7 +1351,7 @@ while (true) {
     int luettu = Integer.parseInt(lukija.nextLine());
 
     if (luettu == 0) {
-        break;   
+        break;
     }
 
     if (luettu < 0) {
@@ -1360,12 +1360,12 @@ while (true) {
     }
 
     summa += luettu;
-    hyvaksytytLuvut++;  
+    hyvaksytytLuvut++;
 }
 
-System.out.println("Hyväksyttävien lukujen summa: " + summa);  
-System.out.println("Hyväksyttyjä lukuja: " + hyvaksytytLuvut);  
-System.out.println("Epäkelvot luvut: " + epakelvotLuvut);  
+System.out.println("Hyväksyttävien lukujen summa: " + summa);
+System.out.println("Hyväksyttyjä lukuja: " + hyvaksytytLuvut);
+System.out.println("Epäkelvot luvut: " + epakelvotLuvut);
 <% end %>
 
 
@@ -1379,7 +1379,7 @@ System.out.println("Epäkelvot luvut: " + epakelvotLuvut);
   <p>
     Jos käyttäjä syöttää luvun, joka on pienempi kuin -140 tai suurempi kuin 20, hänelle kerrotaan ettei syötetty luku ollut kelvollinen.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Syötä luku: <font color="red">5</font>
 Syötä luku: <font color="red">22</font>
@@ -1402,7 +1402,7 @@ Kelvollisia lukuja yhteensä: 4
   <p>
     Jos käyttäjä syöttää luvun, joka on pienempi kuin -140 tai suurempi kuin 20, hänelle kerrotaan ettei syötetty luku ollut kelvollinen.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Syötä luku: <font color="red">5</font>
 Syötä luku: <font color="red">22</font>
@@ -1426,7 +1426,7 @@ Kelvollisten lukujen summa: −164
   <p>
     Jos käyttäjä syöttää luvun, joka on pienempi kuin -140 tai suurempi kuin 20, lukua ei huomioida lämpötilan keskiarvon laskemisessa.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Syötä mittaus: <font color="red">-41</font>
 Syötä mittaus: <font color="red">-11</font>
@@ -1456,7 +1456,7 @@ Mittausten keskiarvo: -21.833333333333332
     Ohjelman tulee kertoa käyttäjälle käyttäjän tekemien arvausten määrä. Välille 1-10 osuvat arvaukset lasketaan, mukaan lukien oikea arvaus.
   </p>
 
-    
+
   <% partial 'partials/sample_output' do %>
 Minäpä tiedän luvun väliltä 1-10, jota sinä et tiedä!
 
@@ -1491,7 +1491,7 @@ Oikein! Arvauksia yhteensä: 3
     Ohjelman tulee kertoa käyttäjälle myös tehtyjen arvausten määrä.
   </p>
 
-  
+
   <% partial 'partials/sample_output' do %>
 Minäpä tiedän luvun väliltä 1-100, jota sinä et tiedä!
 
@@ -1508,7 +1508,7 @@ Lukuni on pienempi!
 Arvaa luku: <font color="red">40</font>
 Lukuni on isompi!
 Arvaa luku: <font color="red">42</font>
-    
+
 Oikein! Arvauksia yhteensä: 6
   <% end %>
 
@@ -1544,10 +1544,10 @@ while (true) {
     int luettu = Integer.parseInt(lukija.nextLine());
 
     if (luettu == 0) {
-        System.out.println("Hyväksyttävien lukujen summa: " + summa);  
-        System.out.println("Hyväksyttyjä lukuja: " + hyvaksytytLuvut);  
-        System.out.println("Epäkelvot luvut: " + epakelvotLuvut);  
-        break;   
+        System.out.println("Hyväksyttävien lukujen summa: " + summa);
+        System.out.println("Hyväksyttyjä lukuja: " + hyvaksytytLuvut);
+        System.out.println("Epäkelvot luvut: " + epakelvotLuvut);
+        break;
     }
 
     if (luettu < 0) {
@@ -1556,7 +1556,7 @@ while (true) {
     }
 
     summa += luettu;
-    hyvaksytytLuvut++;  
+    hyvaksytytLuvut++;
 }
 <% end %>
 
@@ -1572,7 +1572,7 @@ while (true) {
 Scanner lukija = new Scanner(System.in);
 
 // toistolauseessa tarvittavien muuttujien luominen
- 
+
 while (true) {
     // syötteen lukeminen
 
@@ -1589,7 +1589,7 @@ while (true) {
 
 
 <% partial 'partials/hint', locals: { name: 'Ikuinen debaatti: break' } do %>
-  
+
   <p>
     Opittavan ja käytettävän toistolauseen ominaisuuksia on tarkasteltu ohjelmoinnin opetukseen liittyvässä tutkimuksessa pitkään. Eräs debaatti liittyy <code>break</code>-komennon käyttöön. Jotkut ovat sitä mieltä, että sen käyttäminen on yleisesti ottaen hyvä käytäntö, toiset taas ovat sitä mieltä, että se toimii esimerkiksi toistolauseen käyttöön tutustumisessa. Jotkut taas eivät suosi sen käyttämistä lainkaan.
   </p>
@@ -1598,8 +1598,8 @@ while (true) {
     Tutustu tätä debaattia avaavaan populääriartikkeliin <a href="http://dl.acm.org/citation.cfm?id=2950065" target="_blank">Break Statement Considered</a>. Artikkelin PDF-version pitäisi olla ladattavissa edellämainitun sivun takana olevasta linkistä.
   </p>
 
-  
-  
+
+
 <% end %>
 
 
@@ -1641,7 +1641,7 @@ String sana10;
   Yhteen listaan lisätään aina samantyyppisiä arvoja.
 </p>
 
-<p> 
+<p>
   Seuraavassa esimerkissä esitellään merkkijonoja tallentava ArrayList, johon lisätään muutama merkkijono. Tämän jälkeen tulostetaan listan nollannessa kohdassa oleva arvo eli ensimmäinen merkkijono (ohjelmoijat aloittavat laskemisen aina nollasta, lue tarkemmin <a href="https://www.quora.com/Why-do-array-indexes-start-with-0-zero-in-many-programming-languages" target="_blank">täältä</a> -- kiitos herpsu!).
 </p>
 
@@ -1670,7 +1670,7 @@ Ensimmäinen
 <% partial 'partials/exercise', locals: { name: 'Tietyn arvon tulostaminen' } do %>
 
   <p>
-    Ohjelmaan on toteutettu valmiina pohja, joka lukee käyttäjältä syötteitä listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää tyhjän merkkijonon.   
+    Ohjelmaan on toteutettu valmiina pohja, joka lukee käyttäjältä syötteitä listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää tyhjän merkkijonon.
   </p>
 
   <p>
@@ -1683,7 +1683,7 @@ Ensimmäinen
 <font color="red">Aleksi</font>
 <font color="red">Mari</font>
 
-Aleksi    
+Aleksi
   <% end %>
 
 
@@ -1692,14 +1692,14 @@ Aleksi
 <font color="red">Aleksi</font>
 <font color="red">Mari</font>
 
-Mari    
+Mari
   <% end %>
 
 
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'IndexOutOfBoundsException' } do %>
-  
+
   <p>
     Lista on erittäin hyödyllinen kun halutaan tallentaa muuttujien arvoja myöhempää käsittelyä varten. Sillä on myös helpohko tehdä virheitä.
   </p>
@@ -1711,7 +1711,7 @@ Mari
   <p>
     Ohjelmassa näkyy myös toisenlainen tapa listan läpikäyntiin -- palaamme siihen myöhemmin kurssilla.
   </p>
-    
+
 <% end %>
 
 
@@ -1742,12 +1742,12 @@ public class ListaOhjelma {
   </p>
 
 
-  <p>Useamman apuvälineen käyttöönotto on helppoa. Käyttöön tuotavat apuvälineet listataan allekkain ohjelman ylälaitaan.</p>  
+  <p>Useamman apuvälineen käyttöönotto on helppoa. Käyttöön tuotavat apuvälineet listataan allekkain ohjelman ylälaitaan.</p>
 
   <% partial 'partials/code_highlight' do %>
 import java.util.ArrayList;
 import java.util.Scanner;
-    
+
 public class ListaOhjelma {
 
     public static void main(String[] args) {
@@ -1759,7 +1759,7 @@ public class ListaOhjelma {
     }
 }
   <% end %>
-  
+
 
 <% end %>
 
@@ -1835,21 +1835,21 @@ lista.add("Arvo");
 
 <p>
   Listan metodi <strong>size</strong> palauttaa listalla olevien arvojen lukumäärän. Lukumäärä on kokonaisluku ja sitä voidaan käyttää osana lauseketta tai se voidaan asettaa kokonaislukumuuttujaan myöhempää käyttöä varten.
-</p>  
+</p>
 
 <% partial 'partials/code_highlight' do %>
 ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-System.out.println("Listalla arvoja: " + lista.size());      
+System.out.println("Listalla arvoja: " + lista.size());
 
 lista.add("Eka");
-System.out.println("Listalla arvoja: " + lista.size());      
+System.out.println("Listalla arvoja: " + lista.size());
 
 int arvoja = lista.size();
 
 lista.add("Toka");
-System.out.println("Listalla arvoja: " + arvoja);      
+System.out.println("Listalla arvoja: " + arvoja);
 <% end %>
-    
+
 <% partial 'partials/sample_output' do %>
 Listalla arvoja: 0
 Listalla arvoja: 1
@@ -1887,7 +1887,7 @@ Yhteensä: 4
 
 Yhteensä: 11
   <% end %>
-  
+
 <% end %>
 
 
@@ -1906,10 +1906,10 @@ lista.add("Eka");
 lista.add("Toka");
 lista.add("Kolmas");
 
-System.out.println("Paikka 1 eli toinen paikka: " + lista.get(1));      
+System.out.println("Paikka 1 eli toinen paikka: " + lista.get(1));
 System.out.println("Paikka 0 eli ensimmäinen paikka: " + lista.get(0));
 <% end %>
-    
+
 <% partial 'partials/sample_output' do %>
 Toka
 Eka
@@ -1969,10 +1969,10 @@ lista.add("Kolmas");
 
 lista.remove(1);
 
-System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));      
+System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));
 System.out.println("Paikka 1 eli toinen: " + lista.get(1));
 <% end %>
-    
+
 <% partial 'partials/sample_output' do %>
 Eka
 Kolmas
@@ -1992,10 +1992,10 @@ lista.add("Kolmas");
 
 lista.remove("Eka");
 
-System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));      
+System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));
 System.out.println("Paikka 1 eli toinen: " + lista.get(1));
 <% end %>
-    
+
 <% partial 'partials/sample_output' do %>
 Toka
 Kolmas
@@ -2008,7 +2008,7 @@ Kolmas
 <% end  %>
 
 
-<p>  
+<p>
   Listan metodi <strong>contains</strong> kertoo löytyykö haettua arvoa listalta. Metodi saa haettavan arvon parametrina, ja se palauttaa totuustyyppisen arvon (boolean) <code>true</code> tai <code>false</code>.
 </p>
 
@@ -2019,13 +2019,13 @@ lista.add("Eka");
 lista.add("Toka");
 lista.add("Kolmas");
 
-System.out.println("Löytyykö eka? " + lista.contains("Eka"));      
+System.out.println("Löytyykö eka? " + lista.contains("Eka"));
 
 if (lista.contains("Toka")) {
     System.out.println("Toka löytyi");
 }
 <% end %>
-    
+
 <% partial 'partials/sample_output' do %>
 Löytyykö eka? true
 Toka löytyi
@@ -2035,7 +2035,7 @@ Toka löytyi
 <% partial 'partials/exercise', locals: { name: 'Löytyykö listalta' } do %>
 
   <p>
-    Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä syötteitä. Lisää ohjelmaan toiminnallisuus, missä syötteiden lukemisen jälkeen kysytään vielä yhtä merkkijonoa. Ohjelma kertoo tämän jälkeen löytyikö käyttäjän syöttämä merkkijono listalta vai ei. 
+    Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä syötteitä. Lisää ohjelmaan toiminnallisuus, missä syötteiden lukemisen jälkeen kysytään vielä yhtä merkkijonoa. Ohjelma kertoo tämän jälkeen löytyikö käyttäjän syöttämä merkkijono listalta vai ei.
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -2045,7 +2045,7 @@ Toka löytyi
 <font color="red">Mari</font>
 
 Ketä etsitään? <font color="red">Mari</font>
-Mari löytyi!    
+Mari löytyi!
   <% end %>
 
 
@@ -2056,14 +2056,14 @@ Mari löytyi!
 <font color="red">Mari</font>
 
 Ketä etsitään? <font color="red">Arto</font>
-Arto ei löytynyt!    
+Arto ei löytynyt!
   <% end %>
 <% end %>
 
 
 
 <% partial 'partials/hint', locals: { name: 'Listalla olevan arvon paikka eli indeksi' } do %>
-  
+
   <p>
     Listan paikkojen numerointi eli <em>indeksointi</em> alkaa aina nollasta. Listan ensimmäinen arvo on indeksissä 0, toinen arvo indeksissä 1, kolmas arvo indeksissä 2 ja niin edelleen.
   </p>
@@ -2161,7 +2161,7 @@ opettajat.add("Anne");
 opettajat.add("Anna");
 
 int paikka = 0;
-while (paikka &lt; opettajat.size()) {  
+while (paikka &lt; opettajat.size()) {
     System.out.println(opettajat.get(paikka));
     paikka++;
 }
@@ -2226,7 +2226,7 @@ while (paikka &lt; 4) {
 Nimi: Sami    Ikä 6
 Nimi: Samu    Ikä 11
 Nimi: Anne    Ikä 38
-Nimi: Anna    Ikä 14 
+Nimi: Anna    Ikä 14
 <% end %>
 
 
@@ -2286,7 +2286,7 @@ Summa: 93
     Lisää ohjelmaan toiminnallisuus, joka etsii listalta listan suurimman luvun ja tulostaa sen arvon. Ohjelman pitäisi toimia seuraavasti.
   </p>
 
-  
+
   <% partial 'partials/sample_output' do %>
 <font color="red">72</font>
 <font color="red">2</font>
@@ -2299,7 +2299,7 @@ Listan suurin luku: 93
   <% end %>
 
   <p>
-    Ota mallia allaolevasta pienintä lukua etsivästä lähdekoodista.  
+    Ota mallia allaolevasta pienintä lukua etsivästä lähdekoodista.
   </p>
 
 
@@ -2357,7 +2357,7 @@ Keskiarvo: 23.25
   </p>
 
   <p>
-    Lisää ohjelmaan toiminnallisuus, joka kysyy käyttäjältä lukua ja kertoo luvun indeksin. Jos lukua ei löydy, tulee siitä ilmoittaa erikseen (vihje: contains!). 
+    Lisää ohjelmaan toiminnallisuus, joka kysyy käyttäjältä lukua ja kertoo luvun indeksin. Jos lukua ei löydy, tulee siitä ilmoittaa erikseen (vihje: contains!).
   </p>
 
 
@@ -2442,7 +2442,7 @@ Pienin luku löytyy indeksistä 3
   <p>
     Fibonaccin lukujonon ajatuksena on laskea yhteen kaksi edellistä lukua, ja näin saada seuraavan luvun arvo. Lukujonon ensimmäiset kaksi lukua ovat 0 ja 1. Seuraavan luvun saa laskettua aina kahden edellisen luvun summana.
   </p>
-  
+
   <p>
     Toteuta ohjelma, joka ensin laskee Fibonaccin lukujonon ensimmäiset 40 lukua listalle. Ohjelma kysyy tämän jälkeen käyttäjältä halutun Fibonaccin luvun kohtaa. Kun käyttäjä syöttää luvun -- oleta, että luku on indeksi listalla -- ohjelma tulostaa halutun luvun.
   </p>
@@ -2469,7 +2469,7 @@ Kiitos!
 
 
 <% partial 'partials/exercise', locals: { name: 'Kivi, paperi ja sakset' } do %>
-  
+
   <p>
     <a href="https://fi.wikipedia.org/wiki/Kivi,_paperi_ja_sakset"  target="_blank">Kivi, paperi ja sakset</a> -- tuttavallisemmin KPS -- on kaksinpeli. Pelissä kumpikin pelaajista valitsee samaan aikaan siirron, joka voi olla "Kivi", "Paperi" tai "Sakset".
   </p>
@@ -2506,7 +2506,7 @@ Kiitos!
 	Kivi
       </td>
       <td>
-	Paperi 
+	Paperi
       </td>
       <td>
 	Pelaaja 2
@@ -2541,7 +2541,7 @@ Kiitos!
     </tr>
   </table>
 
-  
+
   <p>
     Tehtäväpohjan mukana on tullut sovellus, jossa on mukana kaksi erillistä tiedostoa. Toisen tiedoston nimi on <code>KiviPaperiSakset.java</code> ja toisen tiedoston nimi on <code>Aly.java</code>. Tiedosto Aly.java sisältää "älyn", jota käytetään pelaajaa vastaan pelaamisessa.
   </p>
@@ -2562,7 +2562,7 @@ Kiitos!
   <p>
     Tässä tehtävässä ei ole testejä, joten voit viritellä älyä niin paljon kuin haluat. Kun olet valmis, palauta tehtävä palvelimelle.
   </p>
-  
+
 <% end %>
 
 

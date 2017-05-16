@@ -4,9 +4,9 @@
   quiz_page: true
 ---
 
-
+<% if false %>
 <% partial 'partials/hint', locals: { name: 'Viides konekoe' } do %>
-  
+
   <p>
     Jos teet kurssia Ohjelmoinnin jatkokurssi tai aikataulutettua Ohjelmoinnin MOOCia, tässä kohtaa tulee tehdä Ohjelmoinnin perusteiden ja jatkokurssin jatkumon viides konekoe. Viidennen konekokeen tekemiseen on kokeen aloitushetkestä 180 minuuttia. Viides konekoe on Ohjelmoinnin jatkokurssin toinen konekoe, ja se vastaa viittätoista kurssipistettä Ohjelmoinnin jatkokurssista.
   </p>
@@ -22,20 +22,20 @@
   <p>
     Huom! Älä kuitenkaan aloita kokeen tekemistä ennen kuin olet kerrannut tähänastista materiaalia ja olet varma, että sinulla on aikaa tehdä koe. Konekoe käsittelee materiaalin osia 8-11. Konekokeessa oletetaan, että materiaalin osat 1-7 ovat myös muistissa. <strong>Viides konekoe tulee olla tehtynä keskiviikkoon 26.4. klo 23:59 mennessä.</strong>
   </p>
-  
-<% end %>
 
+<% end %>
+<% end %>
 
 <% partial 'partials/hint', locals: { name: 'Kahdennentoista osion tavoitteet' } do %>
 
   <p>
-    Kahdennessatoista osassa otamme ensiaskeleet graafisten käyttöliittymien luomiseen JavaFx:n avulla. Tutustumme tyypillisimpiin käyttöliittymäkomponentteihin, käyttöliittymäkomponenttien asetteluun sekä tapahtumien käsittelyyn. Tämän lisäksi otamme myös ensiaskeleet piirtämiseen. 
+    Kahdennessatoista osassa otamme ensiaskeleet graafisten käyttöliittymien luomiseen JavaFx:n avulla. Tutustumme tyypillisimpiin käyttöliittymäkomponentteihin, käyttöliittymäkomponenttien asetteluun sekä tapahtumien käsittelyyn. Tämän lisäksi otamme myös ensiaskeleet piirtämiseen.
   </p>
 
   <p>
     Tämän osan jälkeen osaat tehdä yksinkertaisia interaktiivisia graafisia käyttöliittymiä.
   </p>
-  
+
 <% end %>
 
 
@@ -86,9 +86,9 @@ public class JavaFxSovellus extends Application {
 <% partial 'partials/hint', locals: { name: 'Omien JavaFX-sovellusten laatiminen' } do %>
 
   <p>
-    Voit tehdä omia JavaFx-projekteja NetBeansissa valitsemalla File -&gt; New Project. Valitse tämän jälkeen projektilistauksesta JavaFx ja sieltä JavaFx Application. Tämän jälkeen edessäsi on projektien luomiseen käytetty näkymä, missä voit nimetä projektin. 
+    Voit tehdä omia JavaFx-projekteja NetBeansissa valitsemalla File -&gt; New Project. Valitse tämän jälkeen projektilistauksesta JavaFx ja sieltä JavaFx Application. Tämän jälkeen edessäsi on projektien luomiseen käytetty näkymä, missä voit nimetä projektin.
   </p>
-  
+
 <% end %>
 
 <p>
@@ -109,7 +109,7 @@ public class JavaFxSovellus extends Application {
   <p>
     Huom! Sekä tässä että tulevassa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
   </p>
-   
+
 <% end %>
 
 <% partial 'partials/material_sub_heading' do %>
@@ -121,7 +121,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Alla oleva ohjelma luo käyttöliittymän, jossa on yksittäinen nappi. 
+  Alla oleva ohjelma luo käyttöliittymän, jossa on yksittäinen nappi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -172,12 +172,12 @@ public class JavaFxSovellus extends Application {
   Käyttöliittymän rakenne on siis lyhyesti seuraava. Ikkuna sisältää Scene-olion. Scene-olio sisältää käyttöliittymäkomponenttien asettelusta vastaavan olion. Käyttöliittymäkomponenttien asettelusta vastaava olio voi sisältää sekä käyttöliitymäkomponentteja, että käyttöliittymäkomponenttien asettelusta vastaavia olioita.
 </p>
 
-<!-- 
+<!--
   TODO: kuva
 </p>
 
 stage
- | 
+ |
 scene
  |
 käyttöliittymäkomponenttien asettelusta vastaava olio
@@ -193,7 +193,7 @@ kälikomp
 <% end %>
 
 <p>
-  Graafisia käyttöliittymiä luodessa ohjelmoijat hyödyntävät tyypillisesti valmiiden käyttöliittymäkirjastojen tarjoamia osia sovellusten laatimiseen. Ohjelmoijan ei esimerkiksi kannata toteuttaa käyttöliittymän nappia tyhjästä (eli luoda luokka, joka piirtää napin sekä mahdollistaa siihen liittyvien toiminnallisuuksien käsittelyn), sillä vastaava työ on tehty muiden toimesta hyvin moneen kertaan.  Tutustutaan seuraavaksi muutamaan käyttöliittymäkomponenttiin. 
+  Graafisia käyttöliittymiä luodessa ohjelmoijat hyödyntävät tyypillisesti valmiiden käyttöliittymäkirjastojen tarjoamia osia sovellusten laatimiseen. Ohjelmoijan ei esimerkiksi kannata toteuttaa käyttöliittymän nappia tyhjästä (eli luoda luokka, joka piirtää napin sekä mahdollistaa siihen liittyvien toiminnallisuuksien käsittelyn), sillä vastaava työ on tehty muiden toimesta hyvin moneen kertaan.  Tutustutaan seuraavaksi muutamaan käyttöliittymäkomponenttiin.
 </p>
 
 <p>
@@ -335,15 +335,15 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Ainoa merkittävä ero käyttöliittymäkomponenttien lisäämisessä liittyy siihen, että mihin kohtaan käyttöliittymää komponentin haluaa lisätä. Tarkastellaan seuraavaksi käyttöliittymäkomponenttien asettelua. 
-</p>  
+  Ainoa merkittävä ero käyttöliittymäkomponenttien lisäämisessä liittyy siihen, että mihin kohtaan käyttöliittymää komponentin haluaa lisätä. Tarkastellaan seuraavaksi käyttöliittymäkomponenttien asettelua.
+</p>
 
 <% partial 'partials/exercise', locals: { name: 'Nappi ja tekstielementti' } do %>
 
   <p>
     Luo edellistä esimerkkiä seuraten tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on nappi (Button) ja tekstielementti (Label). Napin tulee olla tekstielementin vasemmalla puolella tai yläpuolella.
   </p>
-  
+
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikenttä' } do %>
@@ -351,7 +351,7 @@ public class JavaFxSovellus extends Application {
   <p>
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettu luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
   </p>
-  
+
 <% end %>
 
 
@@ -411,7 +411,7 @@ public class JavaFxSovellus extends Application {
     }
 }
 <% end %>
-      
+
 <img src="/img/material/gui-borderpane.png" alt="BorderPane-asettelua käyttävä käyttöliittymä, jossa jokaiseen pääkohtaan on asetettu tekstielementti."/>
 
 <p>
@@ -420,11 +420,11 @@ public class JavaFxSovellus extends Application {
 
 <% partial 'partials/exercise', locals: { name: 'BorderPane' } do %>
 
-  
+
   <p>
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, joka käyttää BorderPane-luokkaa elementtien asetteluun. Lisää ylälaitaan tekstielementti, jossa on teksti "NORTH", oikeaan laitaan tekstielementti, jossa on teksti "EAST", ja alalaitaan tekstielementti, jossa on teksti "SOUTH".
   </p>
-  
+
 <% end %>
 
 
@@ -440,13 +440,13 @@ public class JavaFxSovellus extends Application {
 @Override
 public void start(Stage ikkuna) {
     HBox asettelu = new HBox();
-    
+
     asettelu.getChildren().add(new Label("eka"));
     asettelu.getChildren().add(new Label("toka"));
     asettelu.getChildren().add(new Label("kolmas"));
-    
+
     Scene nakyma = new Scene(asettelu);
-    
+
     ikkuna.setScene(nakyma);
     ikkuna.show();
 }
@@ -467,13 +467,13 @@ public void start(Stage ikkuna) {
 public void start(Stage ikkuna) {
     HBox asettelu = new HBox();
     asettelu.setSpacing(10);
-    
+
     asettelu.getChildren().add(new Label("eka"));
     asettelu.getChildren().add(new Label("toka"));
     asettelu.getChildren().add(new Label("kolmas"));
-    
+
     Scene nakyma = new Scene(asettelu);
-    
+
     ikkuna.setScene(nakyma);
     ikkuna.show();
 }
@@ -501,22 +501,22 @@ public void start(Stage ikkuna) {
 <% end %>
 
 <p>
-  <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html" target="_blank">GridPane</a>-luokan avulla käyttöliittymäkomponentit asetellaan ruudukkoon. Alla olevassa esimerkissä luodaan 3x3-kokoinen ruudukko, jossa jokaisessa ruudussa on nappi. 
+  <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html" target="_blank">GridPane</a>-luokan avulla käyttöliittymäkomponentit asetellaan ruudukkoon. Alla olevassa esimerkissä luodaan 3x3-kokoinen ruudukko, jossa jokaisessa ruudussa on nappi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
 @Override
 public void start(Stage ikkuna) {
     GridPane asettelu = new GridPane();
-    
+
     for (int x = 1; x <= 3; x++) {
         for (int y = 1; y <= 3; y++) {
             asettelu.add(new Button("" + x + ", " + y), x, y);
         }
     }
-    
+
     Scene nakyma = new Scene(asettelu);
-    
+
     ikkuna.setScene(nakyma);
     ikkuna.show();
 }
@@ -555,26 +555,26 @@ public class JavaFxSovellus extends Application {
     @Override
     public void start(Stage ikkuna) {
 	BorderPane asettelu = new BorderPane();
-	
+
 	HBox napit = new HBox();
 	napit.setSpacing(10);
 	napit.getChildren().add(new Button("Eka"));
 	napit.getChildren().add(new Button("Toka"));
 	napit.getChildren().add(new Button("Kolmas"));
-	
+
 	VBox tekstit = new VBox();
 	tekstit.setSpacing(10);
 	tekstit.getChildren().add(new Label("Eka"));
 	tekstit.getChildren().add(new Label("Toka"));
 	tekstit.getChildren().add(new Label("Kolmas"));
-	
+
 	asettelu.setTop(napit);
 	asettelu.setLeft(tekstit);
-	
+
 	asettelu.setCenter(new TextArea(""));
-	
+
 	Scene nakyma = new Scene(asettelu);
-	
+
 	ikkuna.setScene(nakyma);
 	ikkuna.show();
     }
@@ -586,7 +586,7 @@ public class JavaFxSovellus extends Application {
 <% end %>
 
 <img src="/img/material/gui-useampi.png" alt="Samassa käyttöliittymässä käytetty useampaa asettelijaa. BorderPane luo rungon, ylälaidassa on HBox ja vasemmassa laidassa VBox. Keskellä olevaan tekstilaatikkoon on kirjoitettu tekstiä."/>
-  
+
 <p>
   &nbsp;
 </p>
@@ -598,7 +598,7 @@ public class JavaFxSovellus extends Application {
   <p>
     Luo tehtäväpohjassa olevaan luokkaan sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstielementtiä. Aseta alalaidan tekstielementit HBox-olion sisään. Ensimmäisessä tekstielementissä tulee olla teksti "Kirjaimia: 0". Toisessa tekstielementissä tulee olla teksti "Sanoja: 0". Kolmannessa tekstielementissä tulee olla teksti "Pisin sana on:".
   </p>
-  
+
 <% end %>
 
 
@@ -611,7 +611,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Nappien painaminen käsitellään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html" target="_blank">EventHandler</a>-rajapinnan toteuttavalla luokalla. Tapahtuman tyyppi on tällöin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html" target="_blank">ActionEvent</a>. Rajapinnan toteutukseen määritellään <em>mitä tehdään</em> silloin, kun käyttäjä painaa nappia. 
+  Nappien painaminen käsitellään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html" target="_blank">EventHandler</a>-rajapinnan toteuttavalla luokalla. Tapahtuman tyyppi on tällöin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html" target="_blank">ActionEvent</a>. Rajapinnan toteutukseen määritellään <em>mitä tehdään</em> silloin, kun käyttäjä painaa nappia.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -653,13 +653,13 @@ public void start(Stage ikkuna) {
     TextField vasenTeksti = new TextField();
     TextField oikeaTeksti = new TextField();
     Button nappi = new Button("Kopioi");
-    
+
     HBox komponenttiryhma = new HBox();
     komponenttiryhma.setSpacing(20);
     komponenttiryhma.getChildren().addAll(vasenTeksti, nappi, oikeaTeksti);
-    
+
     Scene nakyma = new Scene(komponenttiryhma);
-    
+
     ikkuna.setScene(nakyma);
     ikkuna.show();
 }
@@ -686,14 +686,14 @@ public void start(Stage ikkuna) {
 
     nappi.setOnAction((event) -&gt; {
         oikeaTeksti.setText(vasenTeksti.getText());
-    });  
+    });
 
     HBox komponenttiryhma = new HBox();
     komponenttiryhma.setSpacing(20);
     komponenttiryhma.getChildren().addAll(vasenTeksti, nappi, oikeaTeksti);
-    
+
     Scene nakyma = new Scene(komponenttiryhma);
-    
+
     ikkuna.setScene(nakyma);
     ikkuna.show();
 }
@@ -722,11 +722,11 @@ public void start(Stage ikkuna) {
   <p>
     Lisää tämän jälkeen sovellukseen toiminnallisuus, missä napin painaminen johtaa siihen, että tekstikentän teksti kopioituu tekstielementin arvoksi. Alla olevassa esimerkissä tekstikenttään on kirjoitettu teksti "hei mualima!", jonka jälkeen nappia on painettu.
   </p>
-  
+
   <img src="/img/material/gui-ilmoitin-2.png" alt="."/>
 
   <p>&nbsp;</p>
-  
+
 <% end %>
 
 
@@ -735,19 +735,19 @@ public void start(Stage ikkuna) {
   <p>
     Tässä tehtävässä toteutat 3x3-kokoisen ristinollapelin. Tehtävä on jaettu kolmeen osaan: ensin luodaan käyttöliittymän osat, sitten nappien toiminnallisuus, ja lopuksi mahdollisuus pelin loppuun pelaamiseen.
   </p>
-  
+
   <img src="/img/material/gui-ristinolla.png" alt="3x3 ristinolla."/>
-  
+
   <p>
     Huom! Saat nappien merkit pysymään saman kokoisina sopivalla fontilla. Kuvakaappauksessa nappien käyttämä fontti on asetettu seuraavalla tavalla:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 Button nappi = new Button(" ");
 nappi.setFont(Font.font("Monospaced", 40));
   <% end %>
-  
-  
+
+
   <h2>Käyttöliittymä</h2>
 
   <p>
@@ -756,7 +756,7 @@ nappi.setFont(Font.font("Monospaced", 40));
 
 
   <h2>Vuorojen vaihtaminen ja reilu peli</h2>
-  
+
   <p>
     Pelissä pelaavat X ja O. Pelin aloittaa aina X. Lisää peliin toiminnallisuus, missä nappia painamalla tilanne päivittyy siten, että nappiin asetetaan vuorossa olevan pelaajan merkki (jos on X:n vuoro, nappiin tulee teksti X). Tämän jälkeen vuoro siirtyy seuraavalle pelaajalle.
   </p>
@@ -779,12 +779,12 @@ nappi.setFont(Font.font("Monospaced", 40));
   <p>
     Lisää peliin toiminnallisuus, missä pelin voi pelata loppuun. Peli loppuu jos toinen pelaajista saa kolme samaa merkkiä riviin (pysty, vaaka, vino). Pelin loppuminen tulee ilmaista siten, että ylälaidassa on teksti "Loppu!". Tämän jälkeen pelin jatkaminen ei enää onnistu.
   </p>
-  
+
 <% end %>
 
 
 <p>
-  Käytettävä tapahtumankäsittelijä riippuu käyttöliittymäkomponentista, johon tapahtumankäsittelijä kytketään. Jos haluaisimme seurata tekstikenttään tapahtuvia muutoksia merkki merkiltä, käyttäisimme rajapintaa <a href="https://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html" target="_blank">ChangeListener</a>.  Alla olevassa esimerkissä vasempaan tekstikenttään on kytketty rajapinnan ChangeListener toteuttava olio, joka sekä tulostaa muutokset tekstikonsoliin että asettaa aina uuden arvon oikealla olevaan tekstikenttään. 
+  Käytettävä tapahtumankäsittelijä riippuu käyttöliittymäkomponentista, johon tapahtumankäsittelijä kytketään. Jos haluaisimme seurata tekstikenttään tapahtuvia muutoksia merkki merkiltä, käyttäisimme rajapintaa <a href="https://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html" target="_blank">ChangeListener</a>.  Alla olevassa esimerkissä vasempaan tekstikenttään on kytketty rajapinnan ChangeListener toteuttava olio, joka sekä tulostaa muutokset tekstikonsoliin että asettaa aina uuden arvon oikealla olevaan tekstikenttään.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -792,7 +792,7 @@ vasenTeksti.textProperty().addListener(new ChangeListener&lt;String&gt;() {
     @Override
     public void changed(ObservableValue&lt;? extends String&gt; muutos,
             String vanhaArvo, String uusiArvo) {
-  
+
         System.out.println(vanhaArvo + " -&gt; " + uusiArvo);
         oikeaTeksti.setText(uusiArvo);
     }
@@ -837,7 +837,7 @@ vasenTeksti.textProperty().addListener((muutos, vanhaArvo, uusiArvo) -&gt; {
   </p>
 
   <img src="/img/material/gui-tilastoja.gif" alt="Esimerkki tekstitilastointiin tarkoitetun ohjelman toiminnasta."/>
-  
+
 <% end %>
 
 
@@ -919,13 +919,13 @@ public void start(Stage ikkuna) {
 @Override
 public void start(Stage ikkuna) {
     // ...
-  
+
     lisaaNappi.setOnAction((event) -&gt; {
         henkilovarasto.talleta(new Henkilo(nimiTeksti.getText(), hetuTeksti.getText());
     });
     // ...
 }
-<% end %>  
+<% end %>
 
 <p>
   Mutta. Mistä saamme konkreettisen Henkilovarasto-olion? Se luodaan esimerkiksi esimerkiksi start-metodin alussa. Alla annettuna koko sovelluksen runko.
@@ -944,22 +944,22 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class HenkiloSovellus extends Application {
-    
+
     @Override
     public void start(Stage ikkuna) {
         Henkilovarasto henkilovarasto = new OmaHenkilovarasto();
-  
+
         Label nimiTeksti = new Label("Nimi: ");
         TextField nimiKentta = new TextField();
         Label hetuTeksti = new Label("Hetu: ");
         TextField hetuKentta = new TextField();
-        
+
         Button lisaaNappi = new Button("Lisää henkilö!");
         lisaaNappi.setOnAction((event) -&gt; {
             Henkilo lisattava = new Henkilo(nimiTeksti.getText(), hetuTeksti.getText());
             henkilovarasto.talleta(new Henkilo(lisattava);
         });
-        
+
         GridPane komponenttiryhma = new GridPane();
         komponenttiryhma.add(nimiTeksti, 0, 0);
         komponenttiryhma.add(nimiKentta, 1, 0);
@@ -971,13 +971,13 @@ public class HenkiloSovellus extends Application {
         komponenttiryhma.setHgap(10);
         komponenttiryhma.setVgap(10);
         komponenttiryhma.setPadding(new Insets(10, 10, 10, 10));
-        
+
         Scene nakyma = new Scene(komponenttiryhma);
-        
+
         ikkuna.setScene(nakyma);
         ikkuna.show();
     }
-    
+
     public static void main(String[] args) {
         launch(HenkiloSovellus.class);
     }
@@ -990,11 +990,11 @@ public class HenkiloSovellus extends Application {
 <% end %>
 
 <p>
-  JavaFX-käyttöliittymäkirjastossa piirtämiseen käytetään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html" target="_blank">Canvas</a>-oliota. Canvas-olio edustaa tyhjää taulua, johon voi piirtää. Piirtäminen tapahtuu Canvas-oliolta saatavalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html" target="_blank">GraphicsContext</a>-oliolla. 
+  JavaFX-käyttöliittymäkirjastossa piirtämiseen käytetään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html" target="_blank">Canvas</a>-oliota. Canvas-olio edustaa tyhjää taulua, johon voi piirtää. Piirtäminen tapahtuu Canvas-oliolta saatavalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html" target="_blank">GraphicsContext</a>-oliolla.
 </p>
 
 <p>
-  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun keskelle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä. 
+  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun keskelle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä.
 
 <% partial 'partials/code_highlight' do %>
 // pakkaus
@@ -1060,7 +1060,7 @@ public class MiniPaint extends Application {
 
 <% partial 'partials/code_highlight' do %>
 // pakkaus..
-  
+
 import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -1132,7 +1132,7 @@ public class AnimaationAlku extends Application {
 <% partial 'partials/exercise', locals: { name: 'Hymiö' } do %>
 
   <p>
-    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Lisää graafiseen käyttöliittymään Canvas-olio, ja piirrä käyttöliittymään Canvas-olioon liittyvän GraphicsContext-olion avulla hymiö. 
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Lisää graafiseen käyttöliittymään Canvas-olio, ja piirrä käyttöliittymään Canvas-olioon liittyvän GraphicsContext-olion avulla hymiö.
   </p>
 
   <p>
@@ -1140,14 +1140,14 @@ public class AnimaationAlku extends Application {
   </p>
 
   <img src="/img/material/gui-hymio.png" alt="Hymiö" />
-  
+
 <% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Hiekkaranta' } do %>
 
   <p>
-    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on esimerkiksi seuraavanlainen. 
+    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on esimerkiksi seuraavanlainen.
   </p>
 
   <img src="/img/material/gui-simulaatio.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
@@ -1168,18 +1168,18 @@ public class AnimaationAlku extends Application {
   <p>
     Huom3! Kun piirrät hiekkalaatikkoa, piirrä musta alue yhtenä isona suorakulmiona piirtämisen alussa. Näin jokaista yksittäistä mustaa pistettä ei tarvitse erikseen piirtää, ja voit keskittyä muiden pisteiden piirtämiseen.
   </p>
-  
-  
+
+
   <h2>Palaset kohdalleen</h2>
-    
+
   <p>
-    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Graafisen käyttöliittymän komponenttien asettelu tulee tehdä BorderPane-luokan avulla. Lisää BorderPane-luokan keskelle Canvas-olio, jota käytetään piirtämiseen. Aseta Canvas-olion leveydeksi ja korkeudeksi 200 pikseliä. Lisää BorderPane-luokan oikealle laidalle VBox-olio, joka sisältää kolme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/RadioButton.html" target="_blank">RadioButton</a>-oliota. Ensimmäiseen RadioButton-olioon tulee liittyä teksti "Metalli", toiseen teksti "Hiekka", ja kolmanteen teksti "Vesi". 
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Graafisen käyttöliittymän komponenttien asettelu tulee tehdä BorderPane-luokan avulla. Lisää BorderPane-luokan keskelle Canvas-olio, jota käytetään piirtämiseen. Aseta Canvas-olion leveydeksi ja korkeudeksi 200 pikseliä. Lisää BorderPane-luokan oikealle laidalle VBox-olio, joka sisältää kolme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/RadioButton.html" target="_blank">RadioButton</a>-oliota. Ensimmäiseen RadioButton-olioon tulee liittyä teksti "Metalli", toiseen teksti "Hiekka", ja kolmanteen teksti "Vesi".
   </p>
 
   <p>
     Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 1. Voit myös palauttaa tehtävän, niin saat siitä ensimmäisen pisteen.
   </p>
-  
+
 
   <h2>Simulaation alkupalat</h2>
 
@@ -1201,17 +1201,17 @@ public class AnimaationAlku extends Application {
       Metodi <code>public void paivita()</code> päivittää simulaatiota yhden askeleen. Päivitystoiminnallisuuden toteutus aloitetaan kohtapuoliin .
     </li>
   </ul>
-  
+
   <p>
     Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 2. Voit myös palauttaa tehtävän, niin saat siitä toisen pisteen.
   </p>
-  
 
-  
+
+
   <h2>Metallin lisääminen ja piirtäminen</h2>
 
   <p>
-    Lisää edellä toteuttamasi Simulaatio osaksi käyttöliittymää. Aseta simulaation leveydeksi 200 ja korkeudeksi 200 pikseliä (simulaation tulee toimia myös muun kokoisena). Lisää tämän jälkeen sovellukseen mahdollisuus metallin lisäämiseen. Metallia lisätään kun käyttäjä piirtää kuvaan sisältöä ja metalli on valittuna oikealla laidalla olevasta valikosta. 
+    Lisää edellä toteuttamasi Simulaatio osaksi käyttöliittymää. Aseta simulaation leveydeksi 200 ja korkeudeksi 200 pikseliä (simulaation tulee toimia myös muun kokoisena). Lisää tämän jälkeen sovellukseen mahdollisuus metallin lisäämiseen. Metallia lisätään kun käyttäjä piirtää kuvaan sisältöä ja metalli on valittuna oikealla laidalla olevasta valikosta.
   </p>
 
   <p>
@@ -1228,21 +1228,21 @@ public class AnimaationAlku extends Application {
     Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 3. Voit myös palauttaa tehtävän, niin saat kolmannen pisteen.
   </p>
 
-  
+
   <h2>Hiekan lisääminen ja toiminnallisuus</h2>
 
   <p>
-    Lisää tämän jälkeen toiminnallisuus hiekan lisäämiseen ja piirtämiseen. Hiekka tulee piirtää eri värillä kuin metalli. Google auttaa tarvittaessa piirtämisessä -- esimerkiksi haku "javafx how to draw on canvas using animationtimer" antaa linkkejä, joista on hyötyä. 
+    Lisää tämän jälkeen toiminnallisuus hiekan lisäämiseen ja piirtämiseen. Hiekka tulee piirtää eri värillä kuin metalli. Google auttaa tarvittaessa piirtämisessä -- esimerkiksi haku "javafx how to draw on canvas using animationtimer" antaa linkkejä, joista on hyötyä.
   </p>
 
   <p>
-    Kun onnistut myös hiekan lisäämiseen käyttöliittymässä (metallin lisäämisen tulee myös onnistua!), muokkaa tämän jälkeen Simulaatio-luokan metodia paivita. Metodin paivita tulee toimia siten, että se tarkistaa jokaiselle hiekkaa sisältävälle kohdalle kohdan alla olevat kolme vaihtoehtoa. Jos joku vaihtoehdoista on tyhjä, hiekka siirretään alaspäin tyhjään kohtaan. 
+    Kun onnistut myös hiekan lisäämiseen käyttöliittymässä (metallin lisäämisen tulee myös onnistua!), muokkaa tämän jälkeen Simulaatio-luokan metodia paivita. Metodin paivita tulee toimia siten, että se tarkistaa jokaiselle hiekkaa sisältävälle kohdalle kohdan alla olevat kolme vaihtoehtoa. Jos joku vaihtoehdoista on tyhjä, hiekka siirretään alaspäin tyhjään kohtaan.
   </p>
 
   <p>
-    Nyt sovelluksessa pitäisi tapahtua liikettä kun piirrät hiekkaa. Saat Random-luokan avulla sovellukseesi satunnaisuutta -- hiekan ei tarvitse toimia aina täsmälleen samalla tavalla. 
+    Nyt sovelluksessa pitäisi tapahtua liikettä kun piirrät hiekkaa. Saat Random-luokan avulla sovellukseesi satunnaisuutta -- hiekan ei tarvitse toimia aina täsmälleen samalla tavalla.
   </p>
-  
+
   <img src="/img/material/gui-simulaatio-metalli-ja-hiekka.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta. Kuvassa hiekka toimii metallin kanssa." />
 
   <p>
@@ -1253,7 +1253,7 @@ public class AnimaationAlku extends Application {
     Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 4. Voit myös palauttaa tehtävän, niin saat neljännen pisteen.
   </p>
 
-  
+
   <h2>Veden lisääminen</h2>
 
   <p>
@@ -1282,7 +1282,7 @@ public class AnimaationAlku extends Application {
     Palauta tehtävä viimeistään nyt. Voit tämän jälkeen lähteä toteuttamaan uusia toiminnallisuuksia. Miten toteuttaisit esimerkiksi laavan?
   </p>
 
-  
+
 <% end %>
 
 

@@ -4,15 +4,15 @@
   quiz_page: true
 ---
 
-
+<% if false %>
 <% partial 'partials/hint', locals: { name: 'Neljäs konekoe' } do %>
-  
+
   <p>
     Muistathan tehdä neljännen konekoneen. Neljäs konekoe tulee olla tehtynä ohjelmoinnin jatkokurssilla keskiviikkoon 5.4. klo 23:59 mennessä ja aikataulutetussa Ohjelmoinnin MOOCissa keskiviikkoon 12.4. klo 23:59 mennessä.
   </p>
-  
-<% end %>
 
+<% end %>
+<% end %>
 
 <% partial 'partials/hint', locals: { name: 'Yhdennentoista osion tavoitteet' } do %>
 
@@ -23,7 +23,7 @@
   <p>
     Tämän osan jälkeen ymmärrät mitä virtojen metodeille annetut "loitsut" ovat ja mitä ne tekevät. Osaat luoda säännöllisiä lausekkeita ja käyttää iteraattoria. Ymmärrät, että jokainen merkkijonon yhdistysoperaatio luo uuden merkkijonon, ja osaat käyttää StringBuilder-apuluokkaa tämän välttämiseen. Tunnet käsitteen geneerisyys ja tiedät miten kokoelmille kuten ArrayList määritellään kokoelman sisältämien olioiden tyyppi. Kehityt myös ohjelmoijana ohjelmointia harjoittelemalla.
   </p>
-  
+
 <% end %>
 
 
@@ -64,7 +64,7 @@ luvut.stream()
 <% end %>
 
 <p>
-  Olemme käyttäneet listoja useasti, mutta emme oikeastaan ole tarkemmin pohtineet <em>miksi</em> listan metodit toimivat kuten toimivat. Tutustutaan tähän seuraavaksi. 
+  Olemme käyttäneet listoja useasti, mutta emme oikeastaan ole tarkemmin pohtineet <em>miksi</em> listan metodit toimivat kuten toimivat. Tutustutaan tähän seuraavaksi.
 </p>
 
 
@@ -79,7 +79,7 @@ luvut.stream()
 </p>
 
 <p>
-  Ohjelmoija voi halutessaan luoda rajapinnasta olion <em>ilman</em> erillistä rajapinnan toteuttavaa luokkaa. Tarkastellaan seuraavaa rajapintaa Luettava.  
+  Ohjelmoija voi halutessaan luoda rajapinnasta olion <em>ilman</em> erillistä rajapinnan toteuttavaa luokkaa. Tarkastellaan seuraavaa rajapintaa Luettava.
 </p>
 
 
@@ -101,7 +101,7 @@ Luettava luettava = new Luettava() {
         return "Ok! -- Luettu!";
     };
 };
-  
+
 System.out.println(luettava.lue());
 <% end %>
 
@@ -114,7 +114,7 @@ Ok! -- Luettu!
 </p>
 
 <p>
-  Edellisessä esimerkissä nähty Luettava-olion luominen voidaan toteuttaa myös lyhyemmin. Rajapinnalla on vain yksi toteutettava metodi, joka ei saa parametreja ja palauttaa merkkijonon. 
+  Edellisessä esimerkissä nähty Luettava-olion luominen voidaan toteuttaa myös lyhyemmin. Rajapinnalla on vain yksi toteutettava metodi, joka ei saa parametreja ja palauttaa merkkijonon.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -173,7 +173,7 @@ tulostaja.tulosta("Hei maailma!");
 <% end %>
 
 <p>
-  Voimme myös jättää muuttujan tyypin sekä aaltosulut pois metodimäärittelystä. Aaltosulkujen poisjättäminen onnistuu, sillä metodissa tehdään vain yksi komento. 
+  Voimme myös jättää muuttujan tyypin sekä aaltosulut pois metodimäärittelystä. Aaltosulkujen poisjättäminen onnistuu, sillä metodissa tehdään vain yksi komento.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -253,7 +253,7 @@ luvut.stream()
 <% end %>
 
 <p>
-  Kun esimerkkejä tarkastelee, lienee selvää, että ensimmäinen esimerkeistä on ymmärrettävämpi. 
+  Kun esimerkkejä tarkastelee, lienee selvää, että ensimmäinen esimerkeistä on ymmärrettävämpi.
 </p>
 
 
@@ -262,7 +262,7 @@ luvut.stream()
   <p>
     Tässä tehtävässä teemme useita edellä nähdyn Predicate-rajapinnan toteuttavia luokkia, joiden avulla on mahdollista filtteröidä rivejä <a href="http://www.gutenberg.org/">Project Gutenbergin</a> sivuilta löytyvistä kirjoista. Seuraavassa esimerkkinä Dostojevskin <a href="http://www.gutenberg.org/cache/epub/52537/pg52537.txt" target="_blank">Kahden sydämen tarinat: Eriskummallinen kertomus</a>. Haluamme, että erilaisia filtteröintiehtoja on monelaisia ja että filtteröinti voi tapahtua myös eri ehtojen kombinaationa. Ohjelman rakenteen tulee myös mahdollistaa uusien ehtojen lisääminen myöhemmin.
   </p>
-  
+
   <p>
     Seuraavassa eräs rajapinnan Predicate toteuttava filtteriluokka. Luokka rajaa String-tyyppisiä olioita.
   </p>
@@ -293,7 +293,7 @@ public class SisaltaaSanan implements Predicate&lt;String&gt; {
 
   <% partial 'partials/code_highlight' do %>
 public class GutenbergLukija {
-    
+
     private List&lt;String&gt; sanat;
 
     public GutenbergLukija(String osoite) throws IllegalArgumentException {
@@ -324,7 +324,7 @@ kirja.rivitJoilleVoimassa(ehto).stream().forEach(rivi -&gt; {
 });
   <% end %>
 
-  
+
   <h2>Kaikki sanat</h2>
 
   <p>
@@ -375,7 +375,7 @@ if (nimi.charAt(0) == 'p') {
 }
   <% end %>
 
-  
+
   <h2>Pituus vähintään</h2>
 
   <p>
@@ -413,7 +413,7 @@ kirja.rivitJoilleVoimassa(ehto).stream().forEach(rivi -&gt; {
 });
   <% end %>
 
-  
+
   <h2>Negaatio</h2>
 
   <p>
@@ -423,7 +423,7 @@ kirja.rivitJoilleVoimassa(ehto).stream().forEach(rivi -&gt; {
   <p>
     Seuraavassa tulostetaan rivit, joiden pituus vähemmän kuin 10.
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 String osoite = "http://www.gutenberg.org/cache/epub/52537/pg52537.txt";
 GutenbergLukija kirja = new GutenbergLukija(osoite);
@@ -435,9 +435,9 @@ kirja.rivitJoilleVoimassa(ehto).stream().forEach(rivi -&gt; {
 });
   <% end %>
 
-  
+
   <h2>Vähintään yksi</h2>
-  
+
   <p>
     Tee rajapinnan <code>Predicate</code> toteuttava luokka <code>VahintaanYksi</code>. Luokan oliot saavat konstruktorin parametrina mielivaltaisen määrän rajapinnan <code>Predicate</code> toteuttavia olioita, konstruktorissa siis käytettävä vaihtuvanmittaista parametrilistaa. <code>VahintaanYksi</code>-oliot kelpuuttavat ne rivit, jotka ainakin yksi sen konstruktoriparametrina saamista ehdoista kelpuuttaa. Seuraavassa tulostetaan rivit, jotka sisältävät jonkun sanoista "jalokivi", "kulta" tai "hopea".
   </p>
@@ -475,13 +475,13 @@ Predicate&lt;String&gt; oikeaPituus = new Molemmat(
 
 Predicate halutut = new Molemmat(sanat, oikeaPituus);
   <% end %>
-  
+
 <% end %>
 
 
 
 <% partial 'partials/hint', locals: { name: 'Muutamia kertaus- ja pähkinätehtäviä' } do %>
-  
+
   <p>
     Seuraavassa on kertaus- ja pähkinätehtäviä, joissa tavoitteena on astua eräästä ohjelmointiin liittyvästä ajatusmallista ulos. Aloittelevat ohjelmoijat -- miksei hieman kokeneemmatkin -- kokevat usein, että ongelmaan on olemassa vain yksi ratkaisu. Seuraavissa tehtävissä jokaiseen tehtävään tulee kirjoittaa <strong>kaksi</strong> ratkaisua, missä ratkaiset ongelman eri tavoilla. Ratkaisutapa lasketaan erilaiseksi jos ainakin osa ohjelmakoodista on toteutettu eri tavalla. Muuttujien nimien muuttamista ei lasketa eri tavoiksi, mutta ratkaisun pilkkominen useammaksi metodiksi tai täysin erilainen ongelmanratkaisulogiikka (esim. virrat vs. toistolauseet) taas kelpaa.
   </p>
@@ -489,11 +489,11 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
   <p>
     Tehtävissä ei ole ohjelmointiprosessia tukevia automaattisia testejä. Mieti siis myös miten tarkistat, että ratkaisusi toimivat oikein.
   </p>
-  
+
   <p>
     Huomaathan, että juuri kerrattu virta ei ole ratkaisu kaikkiin seuraavassa esiteltyihin ongelmiin..
   </p>
-  
+
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Painoindeksi' } do %>
@@ -501,15 +501,15 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
   <p>
     <a href="https://fi.wikipedia.org/wiki/Painoindeksi" target="_blank">Painoindeksi</a> on mitta-arvo, jonka avulla voidaan arvioida ihmisen painon ja pituuden suhdetta. Painoindeksi lasketaan kaavalla:
   </p>
-  
+
   <p>
     <strong>Painoindeksi = paino / (pituus * pituus)</strong>
   </p>
-  
+
   <p>
     Painoindeksiä käytetään muunmuassa ali- ja ylipainon tunnistamisessa. Jos henkilön painoindeksi on alle 18.5 luokitellaan hänet alipainoiseksi ("alipaino"). Jos painoindeksi on vähintään 18.5 mutta alle 25, on luokittelu "normaali". Jos taas painoindeksi on vähintään 25 mutta alle 30, on luokittelu "ylipainoinen". Jos taas painoindeksi on vähintään 30, on luokittelu "merkittävästi ylipainoinen".
   </p>
-  
+
   <p>
     Luokissa <code>Raportinluoja1</code> ja <code>Raportinluoja2</code> on metodi <code>public PainoindeksiRaportti painoindeksiRaportti(List&lt;Henkilo&gt; henkilotiedot)</code>, joka saa parametrina listan henkilöitä ja palauttaa painoindeksiraportin -- kannattaa tutustua luokkiin <code>Painoindeksiraportti</code> ja <code>Henkilo</code>.
   </p>
@@ -530,7 +530,7 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
 
 
 <% partial 'partials/exercise', locals: { name: 'Mittausten tasoitus' } do %>
-  
+
   <p>
     Data-analytiikassa mittausten tasoittamisella tarkoitetaan liiallisen kohinan tai muiden häiriöiden poistamiseen datasta, jonka jälkeen oleellisten hahmojen tunnistamista datasta tulee mahdollisesti helpommaksi. Eräs suoraviivainen tekniikka mittausten tasoitukseen on muuttaa jokainen mittausarvo sen, sitä edeltävän mittausarvon ja sitä seuraavan mittausarvon mittausten keskiarvoksi. Jos oletamme, että poikkeukselliset arvot ovat häiriö mittadatassa, tämä keskiarvomenetelmä tasaa arvot potentiaalisesti luotettavimmiksi arvoiksi.
   </p>
@@ -560,7 +560,7 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
     <li>Arvo 98 muutettiin arvoon 96: (102 + 98 + 88) / 3</li>
     <li>Arvo 88 muutettiin arvoon 97: (98 + 88 + 105) / 3</li>
   </ul>
-  
+
   <p>
     Luokissa <code>MittaustenTasoittaja1</code> ja <code>MittaustenTasoittaja2</code> on metodi <code>public List&lt;Double&gt; tasoita(List&lt;Henkilo&gt; henkilotiedot)</code>, joka saa parametrina listan henkilö-olioita (henkilöiden nimillä ei ole väliä, oleellista on sykemittausdata -- muuttuja <code>syke</code>) ja palauttaa listan tasattuja sykemittauksia -- luokka <code>Henkilo</code> on tässä sama kuin edellisessä tehtävässä.
   </p>
@@ -580,7 +580,7 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
   <p>
     Luo luokkiin <code>YleisimmatSanat1</code> ja <code>YleisimmatSanat2</code> <em>erilaiset</em> toteutukset kolmen yleisimmän merkkijonon tunnistamiseen. Yleisimmät merkkijonot tulee tunnistaa metodille <code>yleisetSanat</code> syötteeksi annetusta listasta, ja metodin tulee palauttaa yleisimmät merkkijonot listassa. Palauttava lista tulee olla järjestettynä siten, että listan ensimmäisenä alkiona on yleisin merkkijono, toisena alkiona on toiseksi yleisin merkkijono, ja kolmantena alkiona on kolmanneksi yleisin merkkijono.
   </p>
-    
+
   <p>
     Jos merkkijonot ovat yhtä yleisiä, aseta lyhin sana (vähiten merkkejä) ennen pidempää sanaa. Voit olettaa, että syötteen kolme yleisintä sanaa ovat eri pituisia. Voit lisäksi olettaa, että syötteessä on vähintään kolme eri sanaa.
   </p>
@@ -620,12 +620,12 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
   <p>
     Suunnittele ja toteuta <em>kaksi erilaista</em> toteutusta metodille <code>paivittaisetMaksimit</code> ja toteuta ne luokkiin <code>MittausRaportoija1</code> ja <code>MittausRaportoija2</code>. Metodin tulee siis käsitellä lista Double-muotoisia syötteitä, joista löytyy sekä päivämääriä että mittausarvoja. Metodin tulee käsitellä vain parametrina annettuun kuukauteen liittyviä arvoja, ja syötteiden perusteella tulee tunnistaa jokaiselle parametrina annetulle kuukauden päivälle suurin päiväkohtainen arvo. Suurimmat päiväkohtaiset arvot asetetaan palautettavaan listaan <code>SuurinTaajuusRaportti</code>-muotoisina olioina, ja metodi palauttaa lopulta listan tulevaa käsittelyä varten.
   </p>
-  
+
   <p>
     Kuten edellisissä tehtävissä, testaa tässäkin toteutustasi ennen sen palautusta. Koska tehtävässä ei ole automaattisia testejä, mieti myös miten ja minkälaisilla syötteillä testaat sen toimintaa.
   </p>
-  
-<% end %> 
+
+<% end %>
 
 <p>
   Kun olet tehnyt neljä edellistä tehtävää (tai ainakin yrittänyt tehdä kaikkia neljää tehtävää), vastaa vielä osoitteessa <a href="http://goo.gl/forms/VZ2yyRNUVB" target="_blank">http://goo.gl/forms/VZ2yyRNUVB</a> olevaan kyselyyn.
@@ -770,7 +770,7 @@ if (merkkijono.matches("trolo(lo)*")) {
 Muoto on oikea.
     <% end %>
   </li>
-  
+
   <li>Merkintä <strong><code>+</code></strong> toisto 1... kertaa, esim<br/>
     <% partial 'partials/code_highlight' do %>
 String merkkijono = "trolololololo";
@@ -833,7 +833,7 @@ if (merkkijono.matches("(10){2}")) {
 Muoto on oikea.
     <% end %>
   </li>
-  
+
   <li>Merkintä <strong><code>{a,b}</code></strong> toisto <code>a</code> ... <code>b</code> kertaa, esim<br/>
     <% partial 'partials/code_highlight' do %>
 String merkkijono = "1";
@@ -883,12 +883,12 @@ Muoto on oikea.
 
 
 <% partial 'partials/exercise', locals: { name: 'Säännölliset lausekkeet' } do %>
-  
+
   <p>
     Harjoitellaan hieman säännöllisten lausekkeiden käyttöä. Tehtävissä haetut metodit tehdään luokkaan <code>Tarkistin</code>.
   </p>
 
-  
+
   <h2>Viikonpäivä</h2>
 
   <p>
@@ -909,7 +909,7 @@ Anna merkkijono: <font color="red">abc</font>
 Muoto ei ole oikea.
   <% end %>
 
-  
+
   <h2>Vokaalitarkistus</h2>
 
   <p>
@@ -930,7 +930,7 @@ Anna merkkijono: <font color="red">ane</font>
 Muoto ei ole oikea.
   <% end %>
 
-  
+
   <h2>Kellonaika</h2>
 
   <p>
@@ -1252,7 +1252,7 @@ Arto, FT
     <li><code>public void tulosta()</code> tulostaa kaikki työntekijät</li>
     <li><code>public void tulosta(Koulutus koulutus)</code> tulostaa työntekijät joiden koulutus on sama kuin parametrissa määritelty koulutus</li>
   </ul>
-  
+
   <p>
     <strong>HUOM:</strong> Luokan <code>Tyontekijat</code> <code>tulosta</code>-metodit on toteutettava iteraattoria käyttäen!
   </p>
@@ -1285,7 +1285,7 @@ System.out.println("==");
 
 yliopisto.tulosta();
   <% end %>
-  
+
   <p>
     Tulostuu:
   </p>
@@ -1341,17 +1341,17 @@ System.out.println(thomas + " suositus: " +
 System.out.println(mikke + " suositus: " +
         suosittelija.suositteleElokuva(mikke));
   <% end %>
-    
+
   <% partial 'partials/sample_output' do %>
 Thomas suositus: Hiljaiset sillat
 Mikke suositus: Tuulen viemää
   <% end %>
-  
+
   <p>
     Ohjelma osaa suositella elokuvia niiden yleisen arvion perusteella, sekä henkilökohtaisten henkilön antaminen arvioiden perusteella. Lähdetään rakentamaan ohjelmaa.
   </p>
 
-  
+
   <h2>Henkilo ja Elokuva</h2>
 
   <p>
@@ -1383,7 +1383,7 @@ Pekka ja Eraserhead
     </em>
   </p>
 
-  
+
   <h2>Arvio</h2>
 
   <p>
@@ -1399,7 +1399,7 @@ Pekka ja Eraserhead
     <tr><td>OK</td><td>3</td></tr>
     <tr><td>HYVA</td><td>5</td></tr>
   </table>
-  
+
   <p>
     Luokkaa voi käyttää seuraavasti:
   </p>
@@ -1422,7 +1422,7 @@ Arvio NEUTRAALI, arvo 1
   <p>
     Aloitetaan arvioiden varastointiin liittyvän palvelun toteutus.
   </p>
-  
+
   <p>
     Luo pakkaukseen <code>suosittelija</code> luokka <code>ArvioRekisteri</code>, jolla on konstruktori <code>public ArvioRekisteri()</code> sekä seuraavat metodit:
   </p>
@@ -1432,7 +1432,7 @@ Arvio NEUTRAALI, arvo 1
     <li><code>public List&lt;Arvio&gt; annaArviot(Elokuva elokuva)</code> palauttaa elokuvalle lisätyt arviot listana.</li>
     <li><code>public Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot()</code> palauttaa mapin, joka sisältää arvioidut elokuvat avaimina. Jokaiseen elokuvaan liittyy lista, joka sisältää elokuvaan lisatyt arviot.</li>
   </ul>
-  
+
   <p>
     Testaa metodien toimintaa seuraavalla lähdekoodilla:
   </p>
@@ -1458,7 +1458,7 @@ Kaikki arviot: {Hiljaiset sillat=[HYVA, OK], Eraserhead=[HUONO, HUONO, HYVA]}
 Arviot Eraserheadille: [HUONO, HUONO, HYVA]
   <% end %>
 
-  
+
   <h2>ArvioRekisteri, osa 2</h2>
 
   <p>
@@ -1474,7 +1474,7 @@ Arviot Eraserheadille: [HUONO, HUONO, HYVA]
     <li><code>public Arvio haeArvio(Henkilo henkilo, Elokuva elokuva)</code> palauttaa parametrina annetun henkilön tekemän arvion parametrina annetulle elokuvalle. Jos henkilö ei ole arvioinut kyseistä elokuvaa, palauta arvio <code>Arvio.EI_NAHNYT</code>.</li>
     <li><code>public Map&lt;Elokuva, Arvio&gt; annaHenkilonArviot(Henkilo henkilo)</code> palauttaa hajautustaulun, joka sisältää henkilön tekemät arviot. Hajautustaulun avaimena on arvioidut elokuvat, arvoina arvioituihin elokuviin liittyvät arviot. Jos henkilö ei ole arvioinut yhtään elokuvaa, palautetaan tyhjä hajautustaulu.</li>
     <li><code>public List&lt;Henkilo&gt; arvioijat()</code> palauttaa listan henkilöistä jotka ovat arvioineet elokuvia.</li></ul>
-  
+
   <p>
     Henkilöiden tekemät arviot kannattanee tallentaa hajautustauluun, jossa avaimena on henkilö. Arvona hajautustaulussa on toinen hajautustaulu, jossa avaimena on elokuva ja arvona arvio.
   </p>
@@ -1513,7 +1513,7 @@ Arvioijat: [Pekka, Matti]
     Luodaan seuraavaksi muutama apuluokka arviointien helpottamiseksi.
   </p>
 
-  
+
   <h2>HenkiloComparator</h2>
 
   <p>
@@ -1552,7 +1552,7 @@ Henkilöt ennen järjestämistä: [Matti, Pekka, Mikke, Thomas]
 Henkilöt järjestämisen jälkeen: [Pekka, Thomas, Matti, Mikke]
   <% end %>
 
-  
+
   <h2>ElokuvaComparator</h2>
 
   <p>
@@ -1596,13 +1596,13 @@ System.out.println("Elokuvat ennen järjestämistä: " + elokuvat);
 Collections.sort(elokuvat, new ElokuvaComparator(elokuvienArviot));
 System.out.println("Elokuvat järjestämisen jälkeen: " + elokuvat);
   <% end %>
-    
+
   <% partial 'partials/sample_output' do %>
 Elokuvat ennen järjestämistä: [Tuulen viemää, Hiljaiset sillat, Eraserhead]
 Elokuvat järjestämisen jälkeen: [Hiljaiset sillat, Tuulen viemää, Eraserhead]
   <% end %>
 
-  
+
   <h2>Suosittelija, osa 1</h2>
 
   <p>
@@ -1653,7 +1653,7 @@ Mikaelille suositeltu elokuva oli: Hiljaiset sillat
     Nyt tekemämme ensimmäinen vaihe toimii oikein ainoastaan henkilöille, jotka eivät ole vielä arvostelleet yhtään elokuvaa. Heidän elokuvamaustaanhan on mahdoton sanoa mitään ja paras arvaus on suositella heille keskimäärin parhaan arvosanan saanutta elokuvaa.
   </p>
 
-  
+
   <h2>Suosittelija, osa 2</h2>
 
   <p>
@@ -1679,7 +1679,7 @@ Mikaelille suositeltu elokuva oli: Hiljaiset sillat
     <tr><td>Mikael</td><td>-</td><td>-</td><td>HUONO (-5)</td><td>-</td></tr>
     <tr><td>Thomas</td><td>-</td><td>HYVA (5)</td><td>-</td><td>HYVA (5)</td></tr>
   </table>
-  
+
   <p>
     Kun haluamme hakea Mikaelille sopivaa elokuvaa, tutkimme Mikaelin samuutta kaikkien muiden arvioijien kesken. Samuus lasketaan arvioiden perusteella: samuus on kummankin katsomien elokuvien arvioiden tulojen summa. Esimerkiksi Mikaelin ja Thomasin samuus on 0, koska Mikael ja Thomas eivät ole katsoneet yhtäkään samaa elokuvaa.
   </p>
@@ -1699,7 +1699,7 @@ Mikaelille suositeltu elokuva oli: Hiljaiset sillat
   <% partial 'partials/sample_output' do %>
 -5 * 3 = -15
   <% end %>
-    
+
   <p>
     Näiden perusteella Mikaelille suositellaan elokuvia Pekan elokuvamaun mukaan: suosituksena on elokuva Tuulen viemää.
   </p>
@@ -1739,7 +1739,7 @@ Mikaelille suositeltu elokuva oli: Hiljaiset sillat
   <p>
     Voit testata ohjelmasi toimintaa seuraavalla lähdekoodilla:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 ArvioRekisteri arviot = new ArvioRekisteri();
 
@@ -1780,7 +1780,7 @@ Mikael suositus: Tuulen viemää
 Matti suositus: Blues Brothers
 Arto suositus: Hiljaiset sillat
   <% end %>
-  
+
   <p>
     Miljoona käsissä? Ei ehkä vielä. Kursseilla Johdatus tekoälyyn ja Johdatus koneoppimiseen opitaan lisää tekniikoita oppivien järjestelmien rakentamiseen.
   </p>
@@ -1853,7 +1853,7 @@ public static void main(String[] args) {
     new Muotoilija().muotoile(t));
 }
 
-  
+
 // Luokassa muotoilija luokassa
 public class Muotoilija {
     public String muotoile(int[] t) {
@@ -2000,23 +2000,23 @@ Map&lt;String, String&gt; avainArvoParit = new HashMap&lt;&gt;();<% end %>
 <% partial 'partials/hint', locals: { name: 'Hieman isompia ohjelmia' } do %>
   <p>
     Tehdään lopuksi vielä muutama hieman isompi ohjelma. Tehtävissä on sekä kertausta että hieman uutta -- esimerkiksi tehtävässä Tunteikkaat elokuva-arviot tutustutaan koneoppimisen perusaskeleisiin.
-  </p> 
+  </p>
 <% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Hirsipuu' } do %>
-  
+
   <p>
     Hirsipuu on peli, jossa käyttäjä yrittää arvata piilossa olevan sanan. Normaalissa hirsipuussa tietokone valitsee sanan, ja pitää sitä piilossa kun käyttäjä yrittää arvata sanaan liittyviä kirjaimia. Arvauskertoja on rajattu määrä: jos pelaaja arvaa kaikki sanaan liittyvän kirjaimet, hän voittaa pelin. Jos taas pelaaja ei arvaa sanoja, tietokone voittaa pelin.
   </p>
-  
+
   <p>
     Toteutetaan tässä palasia hieman ärsyttävämpään versioon hirsipuusta, missä tietokone pyrkii voittamaan pelin huijaamalla.
   </p>
 
   <p>
     Huijauksen ideana on se, että tietokone voi vaihtaa valitsemansa sanan tarvittaessa lennosta. Pelin lopullinen toiminnallisuus on seuraava:
-  </p> 
+  </p>
 
   <% partial 'partials/sample_output' do %>
 ...
@@ -2025,7 +2025,7 @@ Sinulla on 3 arvausta jäljellä.
 Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j]
 Sana: -a--a
 Arvaus: <font color="red">r</font>
-Ei r-kirjaimia. 
+Ei r-kirjaimia.
 
 Sinulla on 2 arvausta jäljellä.
 Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, r]
@@ -2037,7 +2037,7 @@ Sinulla on 2 arvausta jäljellä.
 Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, r, s]
 Sana: -as-a
 Arvaus: <font color="red">p</font>
-Ei p-kirjaimia. 
+Ei p-kirjaimia.
 
 Sinulla on 1 arvaus jäljellä.
 Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, p, r, s]
@@ -2049,7 +2049,7 @@ Sinulla on 1 arvaus jäljellä.
 Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, p, r, s, t]
 Sana: -asta
 Arvaus: <font color="red">v</font>
-Ei v-kirjaimia. 
+Ei v-kirjaimia.
 
 Parempaa onnea ensi kerralla!
 Sana oli: rasta
@@ -2072,7 +2072,7 @@ Sana oli: rasta
     <li><code>public Sanalista sanatJoissaMerkit(String merkkijono)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joissa on merkit parametrina annetun merkkijonon määräämissä kohdissa. Annettu merkkijono on muotoa <code>--d-</code>, missä viivat kuvaavat mitä tahansa merkkiä ja kirjaimet merkkejä, joiden täytyy olla sanassa juuri annetulla paikalla.</li>
     <li><code>public int koko()</code> - palauttaa sanalistan sisältämien sanojen määrän.</li>
   </ol>
-  
+
   <p>
     Toteuta edelliset metodit luokassa <code>Sanalista</code> oleviin metodirunkoihin.
   </p>
@@ -2094,12 +2094,12 @@ Sana oli: rasta
       <li><code>public String sana()</code> - kertoo arvattavan sanan siten, että kirjaimet, joita ei ole vielä arvattu, peitetään merkillä <code>-</code>.</li>
       <li><code>public String oikeaSana()</code> - kertoo arvattavan sanan ilman peittelyä.</li>
       <li><code>public boolean onLoppu()</code> - kertoo onko peli loppu. Peli on loppu jos kaikki arvattavan sanan merkit on arvattu.</li>
-  </ol> 
-  
+  </ol>
+
   <p>
     Toteuta edelliset metodit. Kun edelliset metodit on toteutettu, voit jo pelata hirsipuuta.
   </p>
-  
+
   <p>
     Tarkastele toteutuksen avuksi <code>Test Packages</code> -kansiossa sijaitsevaa luokkaa <code>BHirsipuuTest</code>. Voitko päätellä mitä luokassa olevat metodit tekevät?
   </p>
@@ -2135,7 +2135,7 @@ Sana oli: rasta
 
   <ul>
     <li><code>public void lisaa(String sana, String kaannos)</code></li>lisää sanan sanakirjaan. Jokaisella sanalla on vain yksi käännös ja jos sama sana lisätään uudelleen, ei tapahdu mitään.<br/>
-    
+
     <li><code>public String kaanna(String sana)</code></li> palauttaa käännöksen annetulle sanalle. Jos sanaa ei tunneta, palautetaan null.<br/>
   </ul>
 
@@ -2172,7 +2172,7 @@ banaani
     <b>Huom:</b> metodit <code>lisaa</code> ja <code>kaanna</code> eivät lue tiedostoa tai kirjoita tiedostoon! Myöskään konstruktori ei koske tiedostoon.
   </p>
 
-  
+
   <h2>Sanojen poistaminen</h2>
 
   <p>
@@ -2182,7 +2182,7 @@ banaani
   <p>
     Kannattanee kerrata aiemmilta viikoilta materiaalia, mikä liittyy olioiden poistamiseen ArrayListista.
   </p>
-  
+
   <p>
     <b>HUOM2:</b> metodi <code>poista</code> ei kirjoita tiedostoon.
   </p>
@@ -2344,7 +2344,7 @@ sanakirja.tallenna();
   <p>
     Käytössämme oleva data (kansiossa src oleva tiedosto arviot.txt) sisältää yli 8000 englanninkielistä elokuva-arviota, joihin on valmiiksi lisätty tunnearvio. Tunnearviot on annettu skaalalla nollasta neljään, missä arvot ovat seuraavat:
   </p>
-  
+
   <ol>
     <li>0 - negatiivinen</li>
     <li>1 - hieman negatiivinen</li>
@@ -2357,7 +2357,7 @@ sanakirja.tallenna();
     Teemme seuraavaksi ohjelman, joka pyrkii arvioimaan liittyykö tekstimuotoiseen elokuva-arvioon negatiivinen, positiivinen vai neutraali tunne.
   </p>
 
-  
+
   <h2>Sanojen lukumäärä</h2>
 
   <p>
@@ -2404,7 +2404,7 @@ System.out.println(arviot.sanojenLukumaara("mikkihiiri"));
     Huom! Käsittele pienellä ja isolla kirjoitetut sanat samoina sanoina!
   </p>
 
-  
+
   <h2>Yksittäisen sanan tunne</h2>
 
   <p>
@@ -2412,10 +2412,10 @@ System.out.println(arviot.sanojenLukumaara("mikkihiiri"));
   </p>
 
   <pre>
-1 Simply put , there should have been a more compelling excuse to pair Susan Sarandon and Goldie Hawn .	
-3 Definitely in the guilty pleasure B-movie category , Reign of Fire is so incredibly inane that it is laughingly enjoyable .	
-3 It 's an experience in understanding a unique culture that is presented with universal appeal .	
-0 The French director has turned out nearly 21\/2 hours of unfocused , excruciatingly tedious cinema that , half an hour in , starts making water torture seem appealing .	
+1 Simply put , there should have been a more compelling excuse to pair Susan Sarandon and Goldie Hawn .
+3 Definitely in the guilty pleasure B-movie category , Reign of Fire is so incredibly inane that it is laughingly enjoyable .
+3 It 's an experience in understanding a unique culture that is presented with universal appeal .
+0 The French director has turned out nearly 21\/2 hours of unfocused , excruciatingly tedious cinema that , half an hour in , starts making water torture seem appealing .
   </pre>
 
   <p>
@@ -2433,11 +2433,11 @@ System.out.println(arviot.sanojenLukumaara("mikkihiiri"));
   <p>
     Ylläolevassa esimerkissä sana "it" esiintyy kahdesti, kummassakin lauseessa arvio on 3. Sanan "it" keskimääräiseksi tunnearvoksi tulee siis (3+3) / 2 = 3. Vastaavasti sana "that" esiintyy kolmesti, ja tunnearvoksi tulee (3+3+0) / 3 = 2.
   </p>
-  
+
   <p>
     Voit kokeilla ohjelmasi toimintaa esimerkiksi seuraavalla koodilla:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 List&lt;String&gt; rivit = lueRivit("src/arviot.txt");
 TunteikkaatArviot arviot = new TunteikkaatArviot(rivit);
@@ -2480,7 +2480,7 @@ neutraali
 positiivinen
 positiivinen
 neutraali
-  <% end %>  
+  <% end %>
 
   <p>
     Huom! Käsittele pienellä ja isolla kirjoitetut sanat samoina sanoina! String-luokan metodeista toLowerCase ja toUpperCase on tässä hyötyä.
@@ -2531,7 +2531,7 @@ negatiivinen
   <p>
     Huom! Kuten edellä, käsittele pienellä ja isolla kirjoitetut sanat samoina sanoina!
   </p>
-  
+
 <% end %>
 
 <%= partial 'partials/quiz', locals: { id: '58d809b9860f420004a8f0e0' } %>

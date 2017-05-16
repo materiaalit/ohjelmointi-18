@@ -11,10 +11,12 @@
     Osan jälkeen osaat lukea merkkijonomuodossa olevaa tietoa tiedostoista ja verkosta. Osaat käsitellä yksi- ja useampiulotteisia taulukoita, ja ymmärrät miten taulukot käyttävät tilaa tietokoneen muistissa. Indeksien käyttö on myös tullut yhä tutummaksi, ja osaat muitakin toistolauseita kuin while-toistolauseen. Tunnet myös ainakin yhden järjestämisalgoritmin ja hakualgoritmin, sekä tiedät miten Javan omia järjestämiseen tarkoitettuja apuvälineitä käytetään.
   </p>
 
+  <% if false %>
   <p>
     Huom! Jos teet Helsingin yliopiston Ohjelmoinnin perusteet -kurssia tai aikataulutettua MOOCia, tee toinen konekoe ennen tämän osion aloittamista.
   </p>
-  
+  <% end %>
+
 <% end %>
 
 
@@ -71,7 +73,7 @@ while (true) {
 
 
 <p>
-  Tiedostot ovat tietokoneella sijaitsevia tietokokoelmia, jotka voivat sisältää vaikkapa tekstiä, kuvia, musiikkia tai niiden yhdistelmiä. Tiedoston tallennusmuoto määrittelee tiedoston sisällön sekä tavan tiedon lukemiseen. Esimerkiksi PDF-tiedostoja luetaan PDF-tiedostojen lukemiseen soveltuvalla ohjelmalla, ja musiikkitiedostoja luetaan musiikkitiedostojen lukemiseen soveltuvalla ohjelmalla. Jokainen näistä ohjelmista on ihmisen luoma, ja ohjelman luoja tai luojat -- eli ohjelmoijat -- ovat osana työtään myös määritelleet tiedoston tallennusmuodon. 
+  Tiedostot ovat tietokoneella sijaitsevia tietokokoelmia, jotka voivat sisältää vaikkapa tekstiä, kuvia, musiikkia tai niiden yhdistelmiä. Tiedoston tallennusmuoto määrittelee tiedoston sisällön sekä tavan tiedon lukemiseen. Esimerkiksi PDF-tiedostoja luetaan PDF-tiedostojen lukemiseen soveltuvalla ohjelmalla, ja musiikkitiedostoja luetaan musiikkitiedostojen lukemiseen soveltuvalla ohjelmalla. Jokainen näistä ohjelmista on ihmisen luoma, ja ohjelman luoja tai luojat -- eli ohjelmoijat -- ovat osana työtään myös määritelleet tiedoston tallennusmuodon.
 </p>
 
 <p>
@@ -139,35 +141,35 @@ try (Scanner lukija = new Scanner(new File("tiedosto.txt"))) {
   </p>
 
   <% partial 'partials/sample_output' do %>
-Minkä niminen tiedosto luetaan? 
+Minkä niminen tiedosto luetaan?
 <font color="red">nimet.txt</font>
 Mitä etsitään?
 <font color="red">Antti</font>
 Ei löytynyt.
-  <% end %>  
+  <% end %>
 
   <% partial 'partials/sample_output' do %>
-Minkä niminen tiedosto luetaan? 
+Minkä niminen tiedosto luetaan?
 <font color="red">nimet.txt</font>
 Mitä etsitään?
 <font color="red">ada</font>
 Löytyi!
-  <% end %>  
+  <% end %>
 
   <% partial 'partials/sample_output' do %>
-Minkä niminen tiedosto luetaan? 
+Minkä niminen tiedosto luetaan?
 <font color="red">olematon.txt</font>
 Mitä etsitään?
 <font color="red">testi</font>
 Tiedoston olematon.txt lukeminen epäonnistui.
-  <% end %>  
+  <% end %>
 
 <% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Vieraslista tiedostosta' } do %>
-    
-    
+
+
   <p>
     Tehtäväpohjassa on valmiina toiminnallisuus vieraslistaohjelmaan, missä käyttäjän syöttämien nimien olemassaolo tarkistetaan vieraslistalta.
   </p>
@@ -197,7 +199,7 @@ Kiitos!
   <p>
     Huom! Tehtäväpohjassa on mukana kaksi tiedostoa, <code>nimet.txt</code> ja <code>toiset-nimet.txt</code>, joiden sisällöt ovat seuravat. Älä muuta näiden tiedostojen sisältöä!
   </p>
-  
+
   <p>
     nimet.txt:
   </p>
@@ -227,7 +229,7 @@ alicia
   <p>
     Toteuta ohjelma, joka lukee käyttäjältä tiedoston nimen sekä hyväksyttävien lukujen ala- ja ylärajan. Tämän jälkeen ohjelma lukee tiedoston sisältämät luvut (jokainen luku on omalla rivillään) ja ottaa huomioon vain ne luvut, jotka ovat annetulla lukuvälillä. Lopulta ohjelma tulostaa annetulla lukuvälillä olleiden lukujen lukumäärän.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
 Tiedosto? <font color="red">mittaukset-1.txt</font>
 Alaraja? <font color="red">15</font>
@@ -295,7 +297,7 @@ ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
 try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").openStream())) {
 
   // luetaan osoitteesta http://www.cs.helsinki.fi/home/
-  // saatava vastaus 
+  // saatava vastaus
   while (lukija.hasNextLine()) {
     rivit.add(lukija.nextLine());
   }
@@ -323,7 +325,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   </p>
 
   <p>
-    Toteuta sovellus, joka tarjoaa kolme toimintoa. Jos käyttäjä kirjoittaa "lopeta", ohjelman suoritus lopetetaan. Jos käyttäjä kirjoittaa "satunnainen", ohjelma tulostaa icndb-palvelusta noudetun satunnaisen chuck norris vitsin. Jos käyttäjä kirjoittaa "vitsi <em>numero</em>", missä numero on kokonaisluku, ohjelma tulostaa icndb-palvelusta noudetun tietyn vitsin. 
+    Toteuta sovellus, joka tarjoaa kolme toimintoa. Jos käyttäjä kirjoittaa "lopeta", ohjelman suoritus lopetetaan. Jos käyttäjä kirjoittaa "satunnainen", ohjelma tulostaa icndb-palvelusta noudetun satunnaisen chuck norris vitsin. Jos käyttäjä kirjoittaa "vitsi <em>numero</em>", missä numero on kokonaisluku, ohjelma tulostaa icndb-palvelusta noudetun tietyn vitsin.
   </p>
 
   <p>
@@ -348,7 +350,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 </p>
 
 <p>
-  ArrayListin helppokäyttöisyydesta huolimatta ohjelmissa on joskus tarvetta ArrayListin esi-isälle eli <strong>taulukolle</strong>.  
+  ArrayListin helppokäyttöisyydesta huolimatta ohjelmissa on joskus tarvetta ArrayListin esi-isälle eli <strong>taulukolle</strong>.
 </p>
 
 <p>
@@ -394,11 +396,11 @@ System.out.println(luvut[2]);
 <iframe width="800" height="420" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=public%20class%20Esimerkki%20%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20luvut%20%3D%20new%20int%5B3%5D%3B%0A%20%20%20%20%20%20%20%20luvut%5B0%5D%20%3D%202%3B%0A%20%20%20%20%20%20%20%20luvut%5B2%5D%20%3D%205%3B%0A%0A%20%20%20%20%20%20%20%20System.out.println%28luvut%5B0%5D%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28luvut%5B2%5D%29%3B%0A%20%20%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 <p>
-  Yksittäisen arvon asettaminen taulukon tiettyyn paikkaan tapahtuu siis kuten arvon asetus tavalliseen muuttujaan, mutta taulukkoon asetettaessa kerrotaan indeksi. Indeksi kerrotaan hakasulkeiden sisällä. Huomaat todennäköisesti myös että ArrayListin metodi <code>get</code> käyttäytyy hyvin samalla tavalla kuin taulukon tietystä indeksistä haku. Taulukon kohdalla vain syntaksi, eli merkintätapa, on erilainen. 
+  Yksittäisen arvon asettaminen taulukon tiettyyn paikkaan tapahtuu siis kuten arvon asetus tavalliseen muuttujaan, mutta taulukkoon asetettaessa kerrotaan indeksi. Indeksi kerrotaan hakasulkeiden sisällä. Huomaat todennäköisesti myös että ArrayListin metodi <code>get</code> käyttäytyy hyvin samalla tavalla kuin taulukon tietystä indeksistä haku. Taulukon kohdalla vain syntaksi, eli merkintätapa, on erilainen.
 </p>
 
 <p>
-  Indeksi on kokonaisluku, jonka arvo on välillä [0, taulukon pituus - 1]. Esimerkiksi viiden alkion pituisessa taulukossa on indeksit 0, 1, 2, 3, ja 4. 
+  Indeksi on kokonaisluku, jonka arvo on välillä [0, taulukon pituus - 1]. Esimerkiksi viiden alkion pituisessa taulukossa on indeksit 0, 1, 2, 3, ja 4.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -421,7 +423,7 @@ System.out.println(luvut[indeksi]);
 <% partial 'partials/exercise', locals: { name: 'Alkioiden arvojen vaihtaminen' } do %>
 
   <p>
-    Tehtäväpohjaan on toteutettu valmiiksi ohjelma, missä luodaan taulukko sekä tulostetaan taulukon arvot kahteen kertaan. Muokkaa ohjelmaa siten, että sen jälkeen kun taulukon arvot on tulostettu ensimmäiseen kertaan, käyttäjältä kysytään kahta indeksiä, joiden osoittamat arvot vaihdetaan taulukossa päittäin. Tämän jälkeen alkiot tulee vaihtaa päittäin ja taulukon arvot tulostaa toiseen kertaan. 
+    Tehtäväpohjaan on toteutettu valmiiksi ohjelma, missä luodaan taulukko sekä tulostetaan taulukon arvot kahteen kertaan. Muokkaa ohjelmaa siten, että sen jälkeen kun taulukon arvot on tulostettu ensimmäiseen kertaan, käyttäjältä kysytään kahta indeksiä, joiden osoittamat arvot vaihdetaan taulukossa päittäin. Tämän jälkeen alkiot tulee vaihtaa päittäin ja taulukon arvot tulostaa toiseen kertaan.
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -464,7 +466,7 @@ Mitkä indeksit vaihdetaan?
   <p>
     Voit olettaa, että käyttäjän syöttämät indeksit löytyvät taulukosta.
   </p>
-  
+
 <% end %>
 
 
@@ -526,7 +528,7 @@ Luku 3 löytyy indeksistä 4.
 Mitä etsitään? <font color="red">7</font>
 Luku 7 löytyy indeksistä 7.
   <% end %>
-  
+
   <% partial 'partials/sample_output' do %>
 Mitä etsitään? <font color="red">22</font>
 Lukua 22 ei löydy.
@@ -557,8 +559,8 @@ while (indeksi &lt; luvut.length) {
     luvut[indeksi] = Integer.parseInt(lukija.nextLine());
     indeksi++;
 }
-  
-  
+
+
 System.out.println("Luvut uudestaan:");
 
 indeksi = 0;
@@ -629,27 +631,27 @@ approksimaatiot[0] = 3.14;
   </p>
 
   <% partial 'partials/sample_output' do %>
-<font color="red">tulosta</font>    
+<font color="red">tulosta</font>
 1 3 5 7 9
-<font color="red">siirra</font>    
-<font color="red">tulosta</font>    
-3 5 7 9 1
-<font color="red">siirra</font>    
 <font color="red">siirra</font>
-<font color="red">tulosta</font>    
+<font color="red">tulosta</font>
+3 5 7 9 1
+<font color="red">siirra</font>
+<font color="red">siirra</font>
+<font color="red">tulosta</font>
 7 9 1 3 5
-<font color="red">lopeta</font>    
+<font color="red">lopeta</font>
   <% end %>
-  
+
 <% end %>
 
 
 
 
 <% partial 'partials/hint', locals: { name: 'Indekseistä ja muistin rakenteesta' } do %>
-  
+
   <p>
-    Jokaisen ohjelmoijan on hyvä ymmärtää hieman tietokoneohjelman käytössä olevan muistin rakenteesta. Jokainen muuttuja -- on se sitten alkeistyyppinen tai viittaustyyppinen muuttuja -- tallennetaan muistiin. Jokaisella muuttujalla on myös koko, eli tietty määrä bittejä (nollia ja ykkösiä), jonka muuttuja vie muistista. Muuttujan arvo esitetään myös bitteinä. 
+    Jokaisen ohjelmoijan on hyvä ymmärtää hieman tietokoneohjelman käytössä olevan muistin rakenteesta. Jokainen muuttuja -- on se sitten alkeistyyppinen tai viittaustyyppinen muuttuja -- tallennetaan muistiin. Jokaisella muuttujalla on myös koko, eli tietty määrä bittejä (nollia ja ykkösiä), jonka muuttuja vie muistista. Muuttujan arvo esitetään myös bitteinä.
   </p>
 
   <p>
@@ -659,11 +661,11 @@ approksimaatiot[0] = 3.14;
   <p>
     Javassa int-tyyppinen muuttuja on 32-bitin kokoinen ja se voi esittää korkeintaan 2<sup>32</sup>-1 kokoista lukua. Kun luodaan int-taulukko, jossa on esimerkiksi 4 paikkaa, muistista varataan kokonaislukuja varten 4*32 bittiä. Sanomalla int-tyyppiselle taulukolle <code>taulukko[2]</code>, luetaan 32 bittiä alkaen kohdasta taulukon alku + 2 * 32 bittiä.
   </p>
-  
+
   <p>
     Osa ohjelmointikielistä pyrkii varmistamaan, ettei ohjelmoija mene "väärälle alueelle". Jos Java ei aiheuttaisi virhettä sanoessamme <code>taulukko[-1]</code>, saisimme tietoomme ohjelman muistissa juuri ennen taulukkoa olevan tiedon. Kukaan ei tällöin myöskään estäisi kirjoittamasta ohjelmaa, joka lukisi kaiken ohjelman muistissa olevan tiedon ja lähettäisi sen eteenpäin.
   </p>
-  
+
 <% end %>
 
 
@@ -783,7 +785,7 @@ public class Main {
   <p>
     Täydennä luokan TaulukonTulostaja metodia <code>public void tulostaTyylikkaasti(int[] taulukko)</code> siten, että metodi tulostaa parametrina saamansa taulukon luvut tyylikkäästi. Lukujen väliin tulee pilkku ja välilyönti. Viimeisen luvun jälkeen ei  pilkkua tule.
   </p>
-  
+
   <p>
     Voit kokeilla tulostusta esimerkiksi seuraavalla esimerkkikoodilla.
   </p>
@@ -818,7 +820,7 @@ public class Main {
   <p>
     Voit kokeilla kasvatusta esimerkiksi seuraavalla esimerkkikoodilla.
   </p>
-      
+
   <% partial 'partials/code_highlight' do %>
 import java.util.Arrays;
 
@@ -852,7 +854,7 @@ public class Main {
 
 <% partial 'partials/code_highlight' do %>
 public class Taulukkotehdas {
-  
+
     public String[] annaMerkkijonoTaulukko() {
         String[] opet = new String[3];
 
@@ -883,7 +885,7 @@ while (indeksi &lt; opettajat.length) {
   <p>
     Tee luokkaan Taulukot metodi <code>public int[] kopioi(int[] taulukko)</code> joka luo kopion parametrina saadusta taulukosta. <strong>Vihje:</strong> koska metodin on luotava taulukosta kopio, tulee metodin sisällä luoda uusi taulukko ja kopioida vanhan taulukon sisältö uudelle taulukolle alkio alkiolta.
   </p>
-  
+
   <p>
     Seuraavassa esimerkki metodin käytöstä (koodissa myös Arrays-luokan tarjoama kätevä apuväline taulukon sisällön tulostamiseen):
   </p>
@@ -916,7 +918,7 @@ kopio: [99, 2, 3, 4]
   <p>
     Tee luokkaan Taulukot metodi <code>public int[] kaanna(int[] taulukko)</code>, joka luo käänteisessä järjestyksessä olevan kopion parametrinaan saamastaan taulukosta.
   </p>
-  
+
   <p>
     Eli jos parametrina on taulukko jossa esim. luvut <em>5, 6, 7</em> palauttaa metodi <em>uuden taulukon</em> jonka sisältönä luvut <em>7, 6, 5</em>. Parametrina oleva taulukko ei saa muuttua.
   </p>
@@ -955,7 +957,7 @@ käännetty: [4, 3, 2, 1]
 <% end %>
 
 <p>
-  Luokka voi sisältää muiden muuttujien lisäksi myös taulukon tai taulukoita oliomuuttujina. Alla oleva esimerkki kuvaa lottoriviä, johon voidaan lisätä numeroita. Jokaisessa lottorivissä on täsmälleen 7 lukua, jotka ovat väliltä 1-40 ja luku ei saa esiintyä rivissä kahdesti. Luokalla on myös toiminnallisuus 
+  Luokka voi sisältää muiden muuttujien lisäksi myös taulukon tai taulukoita oliomuuttujina. Alla oleva esimerkki kuvaa lottoriviä, johon voidaan lisätä numeroita. Jokaisessa lottorivissä on täsmälleen 7 lukua, jotka ovat väliltä 1-40 ja luku ei saa esiintyä rivissä kahdesti. Luokalla on myös toiminnallisuus
 </p>
 
 
@@ -1013,7 +1015,7 @@ public class Lottorivi {
   <p>
     Pino-tietorakenne on lähes valmiiksi toteutettuna tehtäväpohjassa mukana tulevaan luokkaan Pino. Siinä on kuitenkin pieni pulma: pinon koko on rajattu. Muokkaa pinon metodia <code>public void kasvata()</code> siten, että sitä kutsuttaessa pinon kapasiteetti kasvaa viidellä. Tee siis niin, että luot uuden taulukon, jossa on 5 paikkaa enemmän kuin vanhassa ja kopioit vanhan taulukon arvot uuteen. Vaihda tämän jälkeen käytössä oleva taulukko kopioon.
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 Pino p = new Pino();
 p.lisaa("    *");
@@ -1028,7 +1030,7 @@ while (p.koko() &gt; 0) {
 }
   <% end %>
 
-  <% partial 'partials/code_highlight' do %> 
+  <% partial 'partials/code_highlight' do %>
     *
    ***
   *****
@@ -1106,7 +1108,7 @@ int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
 
 int y = 0;
 while (y &lt; kaksiulotteinenTaulukko.length) {
- 
+
     int x = 0;
     while (x &lt; kaksiulotteinenTaulukko[y].length) {
         int arvo = kaksiulotteinenTaulukko[y][x];
@@ -1119,7 +1121,7 @@ while (y &lt; kaksiulotteinenTaulukko.length) {
 <% end %>
 
 <p>
-  Ylläolevan ohjelman tulostus on seuraava. 
+  Ylläolevan ohjelman tulostus on seuraava.
 </p>
 
 <% partial 'partials/sample_output' do %>
@@ -1137,7 +1139,7 @@ arvo kohdassa (2, 1): 0
 
 <p>
   Voimme muuttaa taulukon arvoja kuten ennenkin. Alla asetamme kahteen kohtaan uudet arvot.
-</p> 
+</p>
 
 <% partial 'partials/code_highlight' do %>
 int rivit = 2;
@@ -1195,8 +1197,8 @@ arvo kohdassa (2, 1): 0
   </p>
 
   <img src="/img/exercises/06-14-piirturi-ok.png" />
-  
-  
+
+
 <% end %>
 
 
@@ -1219,7 +1221,7 @@ arvo kohdassa (2, 1): 0
   </p>
 
   <p>
-    Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin. 
+    Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
   </p>
 
   <h2>Elossa olevien naapurien lukumäärä</h2>
@@ -1242,7 +1244,7 @@ arvo kohdassa (2, 1): 0
 
   <% partial 'partials/code_highlight' do %>
 GameOfLife gol = new GameOfLife(3, 3);
-  
+
 int[][] taulukko = new int[3][3];
 taulukko[0][0] = 1;
 taulukko[0][1] = 1;
@@ -1253,11 +1255,11 @@ System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
 System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
 System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
 System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
-  <% end %>  
+  <% end %>
 
   <% partial 'partials/sample_output' do %>
 2
-3  
+3
 3
 1
   <% end %>
@@ -1279,8 +1281,8 @@ System.out.println(gol.elossaOleviaNaapureita(taulukko, 3, 3));
 5
 1
   <% end %>
-  
-  
+
+
   <h2>Kehittyminen</h2>
 
 
@@ -1311,7 +1313,7 @@ System.out.println(gol.elossaOleviaNaapureita(taulukko, 3, 3));
   <img src="/img/exercises/06-15-gameoflife.png" width="600"/>
 
 
-  
+
 <% end %>
 
 
@@ -1377,7 +1379,7 @@ Arrays.stream(kaksiulotteinenTaulukko)
 <% end %>
 
 
-  
+
 <% partial 'partials/material_sub_sub_heading' do %>
   For-toistolause
 <% end %>
@@ -1468,12 +1470,12 @@ for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
 
 
 <% partial 'partials/exercise', locals: { name: 'Kaikki PIN-koodit' } do %>
-  
+
   <p>
     Kirjoita ohjelma, joka tulostaa kaikki mahdolliset nelilukuiset PIN-koodit.
   </p>
 
-  
+
   <% partial 'partials/sample_output' do %>
 0000
 0001
@@ -1485,7 +1487,7 @@ for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
 9998
 9999
   <% end %>
-  
+
 <% end %>
 
 
@@ -1498,11 +1500,11 @@ for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
 </p>
 
 <p>
-  Laajemmin voidaan ajatella, että nopeasti tapahtuva tiedon hakeminen ja näyttäminen on oleellista oikeastaan lähes missä tahansa sovelluksessa. Tutustutaan seuraavaksi tiedon hakemiseen ja järjestämiseen liittyviin algoritmeihin. Vaikka esimerkit käyttävät taulukoita, algoritmit toimivat myös muilla tiedon tallentamiseen tarkoitetuilla tietorakenteilla kuten listoilla.  
+  Laajemmin voidaan ajatella, että nopeasti tapahtuva tiedon hakeminen ja näyttäminen on oleellista oikeastaan lähes missä tahansa sovelluksessa. Tutustutaan seuraavaksi tiedon hakemiseen ja järjestämiseen liittyviin algoritmeihin. Vaikka esimerkit käyttävät taulukoita, algoritmit toimivat myös muilla tiedon tallentamiseen tarkoitetuilla tietorakenteilla kuten listoilla.
 </p>
 
 <% partial 'partials/material_sub_heading' do %>
-  Peräkkäishaku 
+  Peräkkäishaku
 <% end %>
 
 <p>
@@ -1543,7 +1545,7 @@ public class Algoritmit {
 
 
 <% partial 'partials/exercise', locals: { name: 'Järjestäminen' } do %>
-  
+
   <h2>Pienimmän arvon etsiminen</h2>
 
   <p>
@@ -1627,7 +1629,7 @@ public int pienimmanIndeksiAlkaen(int[] taulukko, int aloitusIndeksi) {
 
   <% partial 'partials/code_highlight' do %>
 Valintajarjestaminen algoritmi = new Valintajarjestaminen();
-    
+
 // indeksit:    0  1  2  3   4
 int[] luvut = {-1, 6, 9, 8, 12};
 System.out.println(algoritmi.pienimmanIndeksiAlkaen(luvut, 0));
@@ -1688,18 +1690,18 @@ System.out.println(Arrays.toString(luvut));
   <p>
     Valintajärjestämisen idea on seuraava:
   </p>
-  
+
   <ul>
     <li> Siirretään taulukon pienin luku indeksiin 0.</li>
     <li> Siirretään taulukon toiseksi pienin luku indeksiin 1.</li>
     <li> Siirretään taulukon kolmanneksi pienin luku indeksiin 2.</li>
     <li> Jne.</li>
   </ul>
-    
+
   <p>
     Toisin sanoen:
   </p>
-  
+
   <ul>
     <li> Tarkastellaan taulukkoa indeksistä 0 alkaen. Vaihdetaan keskenään indeksissä 0 oleva luku sekä taulukon pienin luku indeksistä 0 alkaen.</li>
     <li> Tarkastellaan taulukkoa indeksistä 1 alkaen. Vaihdetaan keskenään indeksissä 1 oleva luku sekä taulukon pienin luku indeksistä 1 alkaen.</li>
@@ -1751,7 +1753,7 @@ new Valintajarjestaminen().jarjesta(luvut);
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
-  Puolitushaku (binäärihaku) 
+  Puolitushaku (binäärihaku)
 <% end %>
 
 <p>
@@ -1839,7 +1841,7 @@ new Valintajarjestaminen().jarjesta(luvut);
 
 <% partial 'partials/hint', locals: { name: 'Binäärihaku vs. Peräkkäishaku' } do %>
   <p>
-    Peräkkäishaun pahimmassa tapauksessa käydään kaikki taulukon arvot läpi. Miljoona alkiota sisältävässä taulukossa tämä tarkoittaa miljoonan alkion tarkastelua.  
+    Peräkkäishaun pahimmassa tapauksessa käydään kaikki taulukon arvot läpi. Miljoona alkiota sisältävässä taulukossa tämä tarkoittaa miljoonan alkion tarkastelua.
   </p>
 
   <p>
@@ -1861,7 +1863,7 @@ new Valintajarjestaminen().jarjesta(luvut);
   <p>
     Koska haettavien alkioiden määrä puolittuu binäärihaussa jokaisen tarkastelun yhteydessä, voi binäärihaun tehokkuutta tarkastella kaksikantaisen logaritmin avulla. Kaksikantainen logaritmi (<code>log<sub>2</sub></code>) annetusta luvusta kertoo kuinka monta kertaa luku voidaan puolittaa. Esimerkiksi kaksikantainen logaritmi luvusta 16777216 (<code>log<sub>2</sub> 16777216</code>) on 24, ja luvun 4294967296 kaksikantainen logaritmi, (<code>log<sub>2</sub> 4294967296</code>) on 32. Tämä tarkoittaa että 4294967296 eri arvoa sisältävästä järjestyksessä olevasta taulukosta hakeminen vaatisi binäärihaulta korkeintaan 32 eri alkion tarkastamista.
   </p>
-  
+
 <% end %>
 
 
@@ -2009,7 +2011,7 @@ Mary Coombs
   <p>
     Käytetään jälleen edellisessä osassa käytettyä UNESCOn avointa dataa lukutaidosta. Data sisältää tilastot eri maiden arvioiduista tai raportoiduista lukutaidoista viimeisen kahden vuoden ajalta. Tehtäväpohjassa mukana oleva tiedosto <code>lukutaito.csv</code> sisältää arviot sekä yli 15-vuotiaiden naisten että yli 15-vuotiaiden miesten lukutaidosta. Tiedoston lukutaito.csv yksittäisen rivin muoto on seuraava: teema, ikäryhmä, sukupuoli, maa, vuosi, lukutaitoprosentti. Alla on esimerkkinä tiedoston viisi ensimmäistä riviä.
   </p>
-  
+
   <pre>
 Adult literacy rate, population 15+ years, female (%),United Republic of Tanzania,2015,76.08978
 Adult literacy rate, population 15+ years, female (%),Zimbabwe,2015,85.28513
@@ -2033,12 +2035,12 @@ Central African Republic (2015), female, 24.35549
   <p>
     Tehtävä on kahden pisteen arvoinen.
   </p>
-  
+
 <% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Matkavalokuvat' } do %>
-  
+
   <p>
     Matkailijat tykkäävät ottaa valokuvia. Usein kuvissa sattuu kuitenkin olemaan ärsyttävä turisti, joka on esimerkiksi kuvatun kohteen edessä. Harmitus kasvaa erityisesti, jos samainen turisti esiintyy jokaisessa kuvassa.
   </p>
@@ -2054,7 +2056,7 @@ Central African Republic (2015), female, 24.35549
   <img src="/img/exercises/06-19-matkavalokuvat-2.png"/>
 
   <p>&nbsp;</p>
-  
+
   <p>
     Täydennetään ohjelmaa, mikä mahdollistaa kuvan katsomisen ilman turistia. Apunamme meillä on iso nippu samasta kohteesta otettuja kuvia (turisti on harmittavasti kylläkin jokaisessa niistä...)
   </p>
@@ -2062,7 +2064,7 @@ Central African Republic (2015), female, 24.35549
   <p>
     Tehtäväpohjassa on valmiina ohjelma, jolla voi tarkastella kuvia. Kun ohjelma on käynnissä, painamalla numeronäppäintä saat näkyville kuvalistan tietyssä indeksissä olevan kuvan. Kun painat näppäintä "v", näet kuvan muodossa, missä jokaisen kuvan jokaisesta pikselistä on valittu vaaleimmat pikseliarvot.
   </p>
-  
+
   <img src="/img/exercises/06-19-matkavalokuvat-vaalein.png"/>
 
   <p>&nbsp;</p>
@@ -2076,9 +2078,9 @@ Central African Republic (2015), female, 24.35549
   <p>
     Kun olet lisännyt tummennustoiminnallisuuden, tumman kuvan pitäisi näyttää kutakuinkin seuraavalta.
   </p>
-  
+
   <img src="/img/exercises/06-19-matkavalokuvat-tummin.png"/>
-  
+
   <p>&nbsp;</p>
 
   <h2>Värien mediaani</h2>
@@ -2088,7 +2090,7 @@ Central African Republic (2015), female, 24.35549
   <p>
     Muokkaa sovellusta siten, että kun käyttäjä painaa näppäintä "m", ohjelma näyttää kuvan, missä näkyy yhdistettävien kuvien väriarvojen mediaanit. Toteuta mediaanivärin valinta luokan Yhdistin metodiin <code>public WritableImage mediaani(final ArrayList&lt;Image&gt; kuvat)</code>.
   </p>
-  
+
   <p>
     Mediaani on järjestettyjen lukujen keskimmäinen arvo. Esimerkiksi, jos viiden kuvan sinisten värien arvot ovat <code>211, 123, 17, 155, 8</code>, on niiden mediaani <code>123</code>. Saat mediaanin selville järjestämällä arvot, ja valitsemalla listan keskimmäisen arvon.
   </p>
@@ -2099,7 +2101,7 @@ Central African Republic (2015), female, 24.35549
 
 
   <p><em>Tehtävän alkuperäinen versio: John Nicholson / Austin Peay State University</em></p>
-  
+
 <% end %>
 
 <%= partial 'partials/quiz', locals: { id: '58a4b681d452740004c55a56' } %>
