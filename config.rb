@@ -24,6 +24,7 @@ page '/paste.html', layout: false
 activate :directory_indexes
 
 activate :asset_hash
+activate :relative_assets
 
 activate :external_pipeline,
   name: :webpack,
