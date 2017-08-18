@@ -57,5 +57,5 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
-  set :site_url, "/ohjelmointi-s17"
+  set :http_prefix, '/ohjelmointi-s17'
 end
