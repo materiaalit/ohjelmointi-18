@@ -25,6 +25,7 @@ activate :directory_indexes
 
 activate :asset_hash
 activate :relative_assets
+set :relative_links, true
 
 activate :external_pipeline,
   name: :webpack,
@@ -57,5 +58,4 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
-  set :http_prefix, '/ohjelmointi-s17'
 end
