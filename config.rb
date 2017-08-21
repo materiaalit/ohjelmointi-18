@@ -58,4 +58,9 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
+  ready do
+    sitemap.resources.select { |resource| resource.data.title && resource.data.published == false }.each do |resource|
+      ignore resource.path
+    end
+  end
 end

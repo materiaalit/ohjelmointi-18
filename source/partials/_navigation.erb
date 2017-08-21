@@ -4,21 +4,11 @@
   </a>
 
   <ul class="nav navbar-nav hidden-md-down">
-    <%= partial 'partials/nav_item', locals: { title: 'Johdanto', url: 'index.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 1', url: 'part1.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 2', url: 'part2.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 3', url: 'part3.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 4', url: 'part4.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 5', url: 'part5.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 6', url: 'part6.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 7', url: 'part7.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 8', url: 'part8.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 9', url: 'part9.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 10', url: 'part10.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 11', url: 'part11.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 12', url: 'part12.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 13', url: 'part13.html' } %>
-    <%= partial 'partials/nav_item', locals: { title: 'Osa 14', url: 'part14.html' } %>
+    <% sitemap.resources.select{|resource| resource.data.title && resource.data.published != false }.sort_by {|resource| resource.data.title.split(/(\d+)/).map {|a| a =~ /\d+/ ? a.to_i : a }}.each do |resource| %>
+      <li class="nav-item <%= current_resource.destination_path == resource.destination_path ? 'active' : '' %>">
+        <%= nav_link_to resource.data.title, resource %>
+      </li>
+    <% end %>
   </ul>
 
   <div class="float-xs-right navbar__buttons">
