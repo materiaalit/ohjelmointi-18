@@ -33,7 +33,7 @@
 </p>
 
 <p>
-  Alla olevassa kuvassa on kuva sovelluksesta, joka mahdollistaa pyöräilijätilastojen tarkastelun. Käytetyt tilastot on noudettu osoitteessa <a href="https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat" target="_blank">https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat</a> olevasta Helsingin kaupunkisuunnitteluviraston tietoaineistosta (CC-BY).
+  Alla olevassa kuvassa on kuva sovelluksesta, joka mahdollistaa pyöräilijätilastojen tarkastelun. Käytetyt tilastot on noudettu osoitteessa <a href="https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat" target="_blank" rel="noopener">https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat</a> olevasta Helsingin kaupunkisuunnitteluviraston tietoaineistosta (CC-BY).
 </p>
 
 <img src="/img/material/visualisointi-pyorat.png" />
@@ -64,11 +64,11 @@ ke 1 tammi 2014 03:00;;2;;;;;;0;2;0;;7;;;5;3
 <% end %>
 
 <p>
-  Java tarjoaa paljon valmiita luokkia kaavioiden piirtämiseen. Osoitteessa <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html" target="_blank">https://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html</a> on linkkejä JavaFx:n erilaisiin kaaviotyyppeihin. Kaaviotyypit sisältävät muunmuassa aluekaavion, pylväskaavion, viivakaavion sekä piirakkakaavion.
+  Java tarjoaa paljon valmiita luokkia kaavioiden piirtämiseen. Osoitteessa <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html" target="_blank" rel="noopener">https://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html</a> on linkkejä JavaFx:n erilaisiin kaaviotyyppeihin. Kaaviotyypit sisältävät muunmuassa aluekaavion, pylväskaavion, viivakaavion sekä piirakkakaavion.
 </p>
 
 <p>
-  Tutustutaan tässä viivakaavion sekä pylväskaavion käyttöön. Kannattaa myös tutustua osoitteessa <a href="http://docs.oracle.com/javafx/2/charts/jfxpub-charts.htm" target="_blank">http://docs.oracle.com/javafx/2/charts/jfxpub-charts.htm</a> olevaan Oraclen oppaaseen aiheesta.
+  Tutustutaan tässä viivakaavion sekä pylväskaavion käyttöön. Kannattaa myös tutustua osoitteessa <a href="http://docs.oracle.com/javafx/2/charts/jfxpub-charts.htm" target="_blank" rel="noopener">http://docs.oracle.com/javafx/2/charts/jfxpub-charts.htm</a> olevaan Oraclen oppaaseen aiheesta.
 </p>
 
 <% partial 'partials/material_sub_sub_heading' do %>
@@ -80,7 +80,7 @@ ke 1 tammi 2014 03:00;;2;;;;;;0;2;0;;7;;;5;3
 </p>
 
 <p>
-  Viivakaaviota voi käyttää esimerkiksi Tilastokeskuksen tarjoaman puolueiden äänimääriä ja suhteellista kannatusta kunnallisvaaleissa vuosina 1968-2008 kuvaavan tiedon visualisointiin. Alkuperäinen data löytyy osoitteesta <a href="http://tilastokeskus.fi/til/kvaa/2008/kvaa_2008_2010-07-30_tau_002.html" target="_blank">http://tilastokeskus.fi/til/kvaa/2008/kvaa_2008_2010-07-30_tau_002.html</a>. Datasta on poimittu visualisointia varten muutama piste -- keskitymme tässä suhteelliseen kannatukseen. Käytössä oleva data on seuraavanlainen -- datan erottelussa on käytetty sarkainmerkkiä ('\t').
+  Viivakaaviota voi käyttää esimerkiksi Tilastokeskuksen tarjoaman puolueiden äänimääriä ja suhteellista kannatusta kunnallisvaaleissa vuosina 1968-2008 kuvaavan tiedon visualisointiin. Alkuperäinen data löytyy osoitteesta <a href="http://tilastokeskus.fi/til/kvaa/2008/kvaa_2008_2010-07-30_tau_002.html" target="_blank" rel="noopener">http://tilastokeskus.fi/til/kvaa/2008/kvaa_2008_2010-07-30_tau_002.html</a>. Datasta on poimittu visualisointia varten muutama piste -- keskitymme tässä suhteelliseen kannatukseen. Käytössä oleva data on seuraavanlainen -- datan erottelussa on käytetty sarkainmerkkiä ('\t').
 </p>
 
 <pre>
@@ -133,7 +133,7 @@ public void start(Stage ikkuna) {
 <% end %>
 
 <p>
-  Kun käynnistämme sovelluksen, huomaamme muutamia ongelmia (kokeile sovellusta ja katso miltä data näyttää). Koordinaatiston akseleiden luomiseen käytetty luokka <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/NumberAxis.html" target="_blank">NumberAxis</a> tarjoaa onneksemme myös toisenlaisen konstruktorin. NumberAxin-luokan konstruktorille voi määritellä myös ala- ja yläraja sekä välien määrän näytettyjen numeroiden välillä. Määritellään alarajaksi 1968, ylärajaksi 2008, ja välien määräksi 4.
+  Kun käynnistämme sovelluksen, huomaamme muutamia ongelmia (kokeile sovellusta ja katso miltä data näyttää). Koordinaatiston akseleiden luomiseen käytetty luokka <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/NumberAxis.html" target="_blank" rel="noopener">NumberAxis</a> tarjoaa onneksemme myös toisenlaisen konstruktorin. NumberAxin-luokan konstruktorille voi määritellä myös ala- ja yläraja sekä välien määrän näytettyjen numeroiden välillä. Määritellään alarajaksi 1968, ylärajaksi 2008, ja välien määräksi 4.
 </p>
 
 
@@ -257,7 +257,7 @@ arvot.keySet().stream().forEach(puolue -&gt; {
   <p>&nbsp;</p>
 
   <p>
-    Huom! Kuten edellisessä osassa, sekä tässä että tulevissa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
+    Huom! Kuten edellisessä osassa, sekä tässä että tulevissa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank" rel="noopener">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
   </p>
 
 <% end %>
@@ -321,7 +321,7 @@ KOK
 </p>
 
 <p>
-  Tarkastellaan pylväskaavion käyttöä pohjoismaiden asukaslukujen visualisointiin. Käytetty data on Wikipedian pohjoismaita kuvaavasta artikkelista osoitteesta <a href="https://fi.wikipedia.org/wiki/Pohjoismaat" target="_blank">https://fi.wikipedia.org/wiki/Pohjoismaat</a> (noudettu 10.4.2017, asukasluvut ovat vuoden 2015 arvioita).
+  Tarkastellaan pylväskaavion käyttöä pohjoismaiden asukaslukujen visualisointiin. Käytetty data on Wikipedian pohjoismaita kuvaavasta artikkelista osoitteesta <a href="https://fi.wikipedia.org/wiki/Pohjoismaat" target="_blank" rel="noopener">https://fi.wikipedia.org/wiki/Pohjoismaat</a> (noudettu 10.4.2017, asukasluvut ovat vuoden 2015 arvioita).
 </p>
 
 <pre>
@@ -333,7 +333,7 @@ Tanska, 5678348
 </pre>
 
 <p>
-  Pylväskaavio luodaan JavaFx:n luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/BarChart.html" target="_blank">BarChart</a> avulla. Kuten viivakaavion käyttö, myös pylväskaavion käyttö vaatii käytettävien koordinaatistojen määrittelyn sekä tiedon lisäämisen kaavioon. Toisin kuin viivakaavioesimerkissä, tässä käytämme x-akselin määrittelyssä kategorista kategorista <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/CategoryAxis.html" target="_blank">CategoryAxis</a>-luokkaa. Kun käytössä on CategoryAxis-luokka, kaavion akselin arvojen tyyppi on String, mikä tulee näkyä myös kaavioon lisättävässä datassa.
+  Pylväskaavio luodaan JavaFx:n luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/BarChart.html" target="_blank" rel="noopener">BarChart</a> avulla. Kuten viivakaavion käyttö, myös pylväskaavion käyttö vaatii käytettävien koordinaatistojen määrittelyn sekä tiedon lisäämisen kaavioon. Toisin kuin viivakaavioesimerkissä, tässä käytämme x-akselin määrittelyssä kategorista kategorista <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/CategoryAxis.html" target="_blank" rel="noopener">CategoryAxis</a>-luokkaa. Kun käytössä on CategoryAxis-luokka, kaavion akselin arvojen tyyppi on String, mikä tulee näkyä myös kaavioon lisättävässä datassa.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -419,11 +419,11 @@ public void start(Stage ikkuna) {
 </p>
 
 <p>
-  Aiemmin käyttämäämme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank">AnimationTimer</a>-luokkaa voidaan hyödyntää myös jatkuvasti muuttuvan tiedon visualisoinnissa. AnimationTimer-luokan avulla voidaan luoda sovellus, joka hakee tai luo uutta tietoa ajoittain sovellukseen.
+  Aiemmin käyttämäämme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank" rel="noopener">AnimationTimer</a>-luokkaa voidaan hyödyntää myös jatkuvasti muuttuvan tiedon visualisoinnissa. AnimationTimer-luokan avulla voidaan luoda sovellus, joka hakee tai luo uutta tietoa ajoittain sovellukseen.
 </p>
 
 <p>
-  Alla olevassa esimerkissä havainnollistetaan <a href="https://fi.wikipedia.org/wiki/Suurten_lukujen_laki" target="_blank">suurten lukujen lakia</a>. Suurten lukujen laki on todennäköisyyslaskentaan liittyvä ilmiö, joka kertoo, erttä satunnaismuuttujan keskiarvo lähestyy satunnaismuuttujan odotusarvoa kun toistojen määrä kasvaa. Käytännössä esimerkiksi kuusisivuisen nopan heittojen keskiarvo lähestyy heittojen lukumäärän kasvaessa lukua 3.5. Vastaavasti kolikkoa heitettäessä kruunien ja klaavojen suhde lähestyy "fifti-fifti"-jakoa kun kolikonheittojen määrä kasvaa.
+  Alla olevassa esimerkissä havainnollistetaan <a href="https://fi.wikipedia.org/wiki/Suurten_lukujen_laki" target="_blank" rel="noopener">suurten lukujen lakia</a>. Suurten lukujen laki on todennäköisyyslaskentaan liittyvä ilmiö, joka kertoo, erttä satunnaismuuttujan keskiarvo lähestyy satunnaismuuttujan odotusarvoa kun toistojen määrä kasvaa. Käytännössä esimerkiksi kuusisivuisen nopan heittojen keskiarvo lähestyy heittojen lukumäärän kasvaessa lukua 3.5. Vastaavasti kolikkoa heitettäessä kruunien ja klaavojen suhde lähestyy "fifti-fifti"-jakoa kun kolikonheittojen määrä kasvaa.
 </p>
 
 
@@ -493,7 +493,7 @@ public void start(Stage ikkuna) {
 </p>
 
 <p>
-  Kaaviot kuten LineChart ja BarChart käyttävät sisäisen tiedon säilömiseen <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html" target="_blank">ObservableList</a>-rajapinnan toteuttavaa tietorakennetta. ObservableList-rajapinnan toteuttavat kokoelmat tarjoavat mahdollisuuden kokoelmissa tapahtuvien muutosten kuunteluun. Kun listalle lisätään uusi tietue, esimerkiksi uusi keskiarvoa kuvaava piste, kertoo lista muutoksesta kaikille listan muutoksia kuunteleville olioille. Kaavioiden kuten LineChart ja BarChart sisäinen toteutus on tehty siten, että ne kuuntelevat muutoksia niiden näyttämään tietoon. Jos tieto muuttuu, päivittyy kaavio automaattisesti.
+  Kaaviot kuten LineChart ja BarChart käyttävät sisäisen tiedon säilömiseen <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html" target="_blank" rel="noopener">ObservableList</a>-rajapinnan toteuttavaa tietorakennetta. ObservableList-rajapinnan toteuttavat kokoelmat tarjoavat mahdollisuuden kokoelmissa tapahtuvien muutosten kuunteluun. Kun listalle lisätään uusi tietue, esimerkiksi uusi keskiarvoa kuvaava piste, kertoo lista muutoksesta kaikille listan muutoksia kuunteleville olioille. Kaavioiden kuten LineChart ja BarChart sisäinen toteutus on tehty siten, että ne kuuntelevat muutoksia niiden näyttämään tietoon. Jos tieto muuttuu, päivittyy kaavio automaattisesti.
 </p>
 
 <p>
@@ -515,11 +515,11 @@ if (keskiarvo.getData().size() &gt; 100) {
 <% partial 'partials/hint', locals: { name: 'Avointa dataa tarjoavat rajapinnat' } do %>
 
   <p>
-    Verkko on täynnä ilmaisia rajapintoja, eli tässä tapauksessa verkko-osoitteita, joista käyttäjä voi käydä hakemassa tietoa. Osoitteessa <a href="https://www.programmableweb.com/" target="_blank">https://www.programmableweb.com/</a> oleva palvelu tarjoaa palvelun avointen rajapintojen hakemiseen.
+    Verkko on täynnä ilmaisia rajapintoja, eli tässä tapauksessa verkko-osoitteita, joista käyttäjä voi käydä hakemassa tietoa. Osoitteessa <a href="https://www.programmableweb.com/" target="_blank" rel="noopener">https://www.programmableweb.com/</a> oleva palvelu tarjoaa palvelun avointen rajapintojen hakemiseen.
   </p>
 
   <p>
-    Ohjelmoija voisi halutessaan vaikkapa visualisoida maanjäristyksiä. Osoitteessa <a href="http://www.seismi.org/api/eqs/" target="_blank">http://www.seismi.org/api/eqs/</a> tarjotaan kerran tunnissa päivittyvä listaus maailmalla viimeksi tapahtuneista maanjäristyksistä (data on kuvattu <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>-muodossa). Vastaavasti ohjelmoija voisi tehdä <a href="http://dev.hsl.fi/" target="_blank">Helsingin seudun liikenteen</a> tarjoamista rajapinnoista sopivan palvelun.
+    Ohjelmoija voisi halutessaan vaikkapa visualisoida maanjäristyksiä. Osoitteessa <a href="http://www.seismi.org/api/eqs/" target="_blank" rel="noopener">http://www.seismi.org/api/eqs/</a> tarjotaan kerran tunnissa päivittyvä listaus maailmalla viimeksi tapahtuneista maanjäristyksistä (data on kuvattu <a href="https://en.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a>-muodossa). Vastaavasti ohjelmoija voisi tehdä <a href="http://dev.hsl.fi/" target="_blank" rel="noopener">Helsingin seudun liikenteen</a> tarjoamista rajapinnoista sopivan palvelun.
   </p>
 
 <% end %>
@@ -895,7 +895,7 @@ public class Sanakirja {
 <% end %>
 
 <p>
-  Luodaan seuraavaksi sanojen syöttämiseen tarvittava toiminnallisuus. Sanojen syöttämistä varten tarvitsemme viitteen sanakirja-olioon sekä tekstikentät sanalle ja käännökselle. GridPane-asettelu sopii hyvin kenttien asetteluun. Luodaan luokka Syottonakyma, joka tarjoaa metodin getNakyma, joka luo sanojen syöttämiseen tarvittavan näkymän. Metodi palauttaa viitteen <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html" target="_blank">Parent</a>-tyyppiseen olioon. Parent on muunmuassa asetteluun käytettävien luokkien yläluokka, joten mitä tahansa asetteluun käytettävää luokkaa voidaan esittää Parent-oliona.
+  Luodaan seuraavaksi sanojen syöttämiseen tarvittava toiminnallisuus. Sanojen syöttämistä varten tarvitsemme viitteen sanakirja-olioon sekä tekstikentät sanalle ja käännökselle. GridPane-asettelu sopii hyvin kenttien asetteluun. Luodaan luokka Syottonakyma, joka tarjoaa metodin getNakyma, joka luo sanojen syöttämiseen tarvittavan näkymän. Metodi palauttaa viitteen <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html" target="_blank" rel="noopener">Parent</a>-tyyppiseen olioon. Parent on muunmuassa asetteluun käytettävien luokkien yläluokka, joten mitä tahansa asetteluun käytettävää luokkaa voidaan esittää Parent-oliona.
 </p>
 
 <p>

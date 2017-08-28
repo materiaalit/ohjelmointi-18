@@ -36,7 +36,7 @@
 
 
 <p>
-  Olemme käyttäneet virran luomiseen kokoelmiin liittyvää <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#stream--" target="_blank">stream</a>-metodia. Kuten merkittävä osa muistakin Javassa käytetyistä apuvälineistä, virta on olio. Tarkemmin tarkastellen, virta on <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank">Stream</a>-rajapinnan toteuttava olio.
+  Olemme käyttäneet virran luomiseen kokoelmiin liittyvää <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#stream--" target="_blank" rel="noopener">stream</a>-metodia. Kuten merkittävä osa muistakin Javassa käytetyistä apuvälineistä, virta on olio. Tarkemmin tarkastellen, virta on <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank" rel="noopener">Stream</a>-rajapinnan toteuttava olio.
 </p>
 
 <p>
@@ -193,7 +193,7 @@ tulostaja.tulosta("Hei maailma!");
 <% end %>
 
 <p>
-  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank">Virran</a> metodit saavat parametrina rajapintoja toteuttavia olioita. Metodille filter annetaan parametrina <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html" target="_blank">Predicate</a>-rajapinnan toteuttava olio, ja metodille <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-" target="_blank">map</a> annetaan parametrina rajapinnan <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html" target="_blank">Function</a> toteuttava olio. Metodi <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#forEach-java.util.function.Consumer-" target="_blank">forEach</a> taas saa parametrinaan <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html" target="_blank">Consumer</a>-rajapinnan toteuttavan olion.
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank" rel="noopener">Virran</a> metodit saavat parametrina rajapintoja toteuttavia olioita. Metodille filter annetaan parametrina <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html" target="_blank" rel="noopener">Predicate</a>-rajapinnan toteuttava olio, ja metodille <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-" target="_blank" rel="noopener">map</a> annetaan parametrina rajapinnan <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html" target="_blank" rel="noopener">Function</a> toteuttava olio. Metodi <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#forEach-java.util.function.Consumer-" target="_blank" rel="noopener">forEach</a> taas saa parametrinaan <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html" target="_blank" rel="noopener">Consumer</a>-rajapinnan toteuttavan olion.
 </p>
 
 <p>
@@ -261,7 +261,7 @@ luvut.stream()
 <% partial 'partials/exercise', locals: { name: 'Joustavat hakuehdot' } do %>
 
   <p>
-    Tässä tehtävässä teemme useita edellä nähdyn Predicate-rajapinnan toteuttavia luokkia, joiden avulla on mahdollista filtteröidä rivejä <a href="http://www.gutenberg.org/">Project Gutenbergin</a> sivuilta löytyvistä kirjoista. Seuraavassa esimerkkinä Dostojevskin <a href="http://www.gutenberg.org/cache/epub/52537/pg52537.txt" target="_blank">Kahden sydämen tarinat: Eriskummallinen kertomus</a>. Haluamme, että erilaisia filtteröintiehtoja on monelaisia ja että filtteröinti voi tapahtua myös eri ehtojen kombinaationa. Ohjelman rakenteen tulee myös mahdollistaa uusien ehtojen lisääminen myöhemmin.
+    Tässä tehtävässä teemme useita edellä nähdyn Predicate-rajapinnan toteuttavia luokkia, joiden avulla on mahdollista filtteröidä rivejä <a href="http://www.gutenberg.org/">Project Gutenbergin</a> sivuilta löytyvistä kirjoista. Seuraavassa esimerkkinä Dostojevskin <a href="http://www.gutenberg.org/cache/epub/52537/pg52537.txt" target="_blank" rel="noopener">Kahden sydämen tarinat: Eriskummallinen kertomus</a>. Haluamme, että erilaisia filtteröintiehtoja on monelaisia ja että filtteröinti voi tapahtua myös eri ehtojen kombinaationa. Ohjelman rakenteen tulee myös mahdollistaa uusien ehtojen lisääminen myöhemmin.
   </p>
 
   <p>
@@ -500,7 +500,7 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
 <% partial 'partials/exercise', locals: { name: 'Painoindeksi' } do %>
 
   <p>
-    <a href="https://fi.wikipedia.org/wiki/Painoindeksi" target="_blank">Painoindeksi</a> on mitta-arvo, jonka avulla voidaan arvioida ihmisen painon ja pituuden suhdetta. Painoindeksi lasketaan kaavalla:
+    <a href="https://fi.wikipedia.org/wiki/Painoindeksi" target="_blank" rel="noopener">Painoindeksi</a> on mitta-arvo, jonka avulla voidaan arvioida ihmisen painon ja pituuden suhdetta. Painoindeksi lasketaan kaavalla:
   </p>
 
   <p>
@@ -629,7 +629,7 @@ Predicate halutut = new Molemmat(sanat, oikeaPituus);
 <% end %>
 
 <p>
-  Kun olet tehnyt neljä edellistä tehtävää (tai ainakin yrittänyt tehdä kaikkia neljää tehtävää), vastaa vielä osoitteessa <a href="http://goo.gl/forms/VZ2yyRNUVB" target="_blank">http://goo.gl/forms/VZ2yyRNUVB</a> olevaan kyselyyn.
+  Kun olet tehnyt neljä edellistä tehtävää (tai ainakin yrittänyt tehdä kaikkia neljää tehtävää), vastaa vielä osoitteessa <a href="http://goo.gl/forms/VZ2yyRNUVB" target="_blank" rel="noopener">http://goo.gl/forms/VZ2yyRNUVB</a> olevaan kyselyyn.
 </p>
 
 
@@ -964,7 +964,7 @@ Muoto ei ole oikea.
 <% end %>
 
 <p>
-  Nykyään lähes kaikista ohjelmointikielistä löytyy tuki säännöllisille lausekkeille. Säännöllisten lausekkeiden teoriaa tarkastellaan muunmuassa kurssilla <em>Laskennan mallit</em>. Lisää säännöllisistä lausekkeista löydät esim. googlaamalla hakusanalla <em>regular expressions java</em> -- kannattaa myös lukea Codinghorror-blogin lyhyt artikkeli <a href="https://blog.codinghorror.com/regex-use-vs-regex-abuse/" target="_blank">Regex use vs. Regex abuse</a>.
+  Nykyään lähes kaikista ohjelmointikielistä löytyy tuki säännöllisille lausekkeille. Säännöllisten lausekkeiden teoriaa tarkastellaan muunmuassa kurssilla <em>Laskennan mallit</em>. Lisää säännöllisistä lausekkeista löydät esim. googlaamalla hakusanalla <em>regular expressions java</em> -- kannattaa myös lukea Codinghorror-blogin lyhyt artikkeli <a href="https://blog.codinghorror.com/regex-use-vs-regex-abuse/" target="_blank" rel="noopener">Regex use vs. Regex abuse</a>.
 </p>
 
 
@@ -1043,7 +1043,7 @@ ei ole pata
 <% end %>
 
 <p>
-  Huomaamme, että enumin tunnukset tulostuvat mukavasti! Koska kortin maat ovat nyt tyyppiä <code>Maa</code> ei ylemmän esimerkin "järjenvastaiset" kummallisuudet, esim. "maan korottaminen toiseen potenssiin" onnistu. Oraclella on <code>enum</code>-tyyppiin liittyvä sivusto osoitteessa <a href="http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html" target="_blank">http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html</a>.
+  Huomaamme, että enumin tunnukset tulostuvat mukavasti! Koska kortin maat ovat nyt tyyppiä <code>Maa</code> ei ylemmän esimerkin "järjenvastaiset" kummallisuudet, esim. "maan korottaminen toiseen potenssiin" onnistu. Oraclella on <code>enum</code>-tyyppiin liittyvä sivusto osoitteessa <a href="http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html" target="_blank" rel="noopener">http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html</a>.
 </p>
 
 
@@ -1056,7 +1056,7 @@ ei ole pata
 </p>
 
 <p>
-  Seuraavassa lueteltu tyyppi <code>Vari</code>, joka sisältää vakioarvot PUNAINEN, VIHREA ja SININEN. Vakioille on määritelty <a href="https://www.w3schools.com/colors/colors_picker.asp" target="_blank">värikoodin</a> kertova oliomuuttuja:
+  Seuraavassa lueteltu tyyppi <code>Vari</code>, joka sisältää vakioarvot PUNAINEN, VIHREA ja SININEN. Vakioille on määritelty <a href="https://www.w3schools.com/colors/colors_picker.asp" target="_blank" rel="noopener">värikoodin</a> kertova oliomuuttuja:
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1306,7 +1306,7 @@ Arto, FT
 <% partial 'partials/exercise', locals: { name: 'Elokuvien suosittelija' } do %>
 
   <p>
-    Hiljattain Suomeen rantautunut <a href="https://signup.netflix.com/" target="_blank">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank">http://www.netflixprize.com/</a>).
+    Hiljattain Suomeen rantautunut <a href="https://signup.netflix.com/" target="_blank" rel="noopener">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank" rel="noopener">http://www.netflixprize.com/</a>).
   </p>
 
   <p>
@@ -2366,7 +2366,7 @@ sanakirja.tallenna();
   </p>
 
   <p>
-    Kannattanee tässä jo miettiä minkälainen tietorakenne olisi hyvä sanojen lukumäärän tallentamiseen. Saat merkkijonoon liittyvät yksittäiset sanat selville esimerkiksi String-luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-" target="_blank">split</a>-metodin avulla:
+    Kannattanee tässä jo miettiä minkälainen tietorakenne olisi hyvä sanojen lukumäärän tallentamiseen. Saat merkkijonoon liittyvät yksittäiset sanat selville esimerkiksi String-luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-" target="_blank" rel="noopener">split</a>-metodin avulla:
   </p>
 
   <% partial 'partials/code_highlight' do %>

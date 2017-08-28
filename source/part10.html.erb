@@ -13,11 +13,11 @@
   </p>
 
   <p>
-    Konekokeessa on kaksi tehtävää ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe04_01.Tehtava" ja "Konekoe04_02.Tehtava". Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen.
+    Konekokeessa on kaksi tehtävää ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe04_01.Tehtava" ja "Konekoe04_02.Tehtava". Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank" rel="noopener">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen.
   </p>
 
   <p>
-    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen.
+    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank" rel="noopener">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen.
   </p>
 
   <p>
@@ -122,11 +122,11 @@ puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
 <% end %>
 
 <p>
-  Rajapinta <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html" target="_blank">Set</a></code> kuvaa joukon toiminnallisuutta. Toisin kuin listalla, joukossa kutakin alkioita on korkeintaan yksi kappale, eli yhtään samanlaista oliota ei ole kahdesti. Olioiden samankaltaisuuden tarkistaminen toteutetaan <code>equals</code> ja <code>hashCode</code> -metodeja käyttämällä.
+  Rajapinta <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html" target="_blank" rel="noopener">Set</a></code> kuvaa joukon toiminnallisuutta. Toisin kuin listalla, joukossa kutakin alkioita on korkeintaan yksi kappale, eli yhtään samanlaista oliota ei ole kahdesti. Olioiden samankaltaisuuden tarkistaminen toteutetaan <code>equals</code> ja <code>hashCode</code> -metodeja käyttämällä.
 </p>
 
 <p>
-  Yksi rajapinnan <code>Set</code> toteuttava luokka on <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank">HashSet</a></code>. Toteutetaan sen avulla luokka <code>Tehtavakirjanpito</code>, joka tarjoaa mahdollisuuden tehtävien kirjanpitoon ja tehtyjen tehtävien tulostamiseen. Oletetaan että tehtävät ovat aina kokonaislukuja.
+  Yksi rajapinnan <code>Set</code> toteuttava luokka on <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank" rel="noopener">HashSet</a></code>. Toteutetaan sen avulla luokka <code>Tehtavakirjanpito</code>, joka tarjoaa mahdollisuuden tehtävien kirjanpitoon ja tehtyjen tehtävien tulostamiseen. Oletetaan että tehtävät ovat aina kokonaislukuja.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -693,7 +693,7 @@ tulostin.tulostaMonesti(sanat, 3);
 
 <pre>
   <strong>All Implemented Interfaces:</strong>
-  <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html" target="_blank">Serializable</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html" target="_blank">CharSequence</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank">Comparable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" target="_blank">String</a>&gt;
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html" target="_blank" rel="noopener">Serializable</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html" target="_blank" rel="noopener">CharSequence</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="noopener">Comparable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" target="_blank" rel="noopener">String</a>&gt;
 </pre>
 
 <p>
@@ -850,13 +850,13 @@ x: 19; y: 107
 </p>
 
 <p>
-  Luokan <code>Object</code> perimisen lisäksi myös muiden luokkien periminen on mahdollista. Javan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html" target="_blank">ArrayList</a></code>-luokan APIa tarkasteltaessa huomaamme että <code>ArrayList</code> perii luokan <code>AbstractList</code>. Luokka <code>AbstractList</code> perii luokan <code>AbstractCollection</code>, joka perii luokan <code>Object</code>.
+  Luokan <code>Object</code> perimisen lisäksi myös muiden luokkien periminen on mahdollista. Javan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html" target="_blank" rel="noopener">ArrayList</a></code>-luokan APIa tarkasteltaessa huomaamme että <code>ArrayList</code> perii luokan <code>AbstractList</code>. Luokka <code>AbstractList</code> perii luokan <code>AbstractCollection</code>, joka perii luokan <code>Object</code>.
 </p>
 
 <pre>
-  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" target="_blank">java.lang.Object</a>
-  <img src="/img/material/perinta.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/util/AbstractCollection.html" target="_blank">java.util.AbstractCollection</a>&lt;E&gt;
-    <img src="/img/material/perinta.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/AbstractList.html" target="_blank">java.util.AbstractList</a>&lt;E&gt;
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" target="_blank" rel="noopener">java.lang.Object</a>
+  <img src="/img/material/perinta.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/util/AbstractCollection.html" target="_blank" rel="noopener">java.util.AbstractCollection</a>&lt;E&gt;
+    <img src="/img/material/perinta.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/AbstractList.html" target="_blank" rel="noopener">java.util.AbstractList</a>&lt;E&gt;
       <img src="/img/material/perinta.gif" /><strong>java.util.ArrayList&lt;E&gt;</strong>
 </pre>
 
@@ -2044,7 +2044,7 @@ false
 <% partial 'partials/exercise', locals: { name: 'Asteroids' } do %>
 
   <p>
-    Tehtäväpohjassa on vuonna 1979 julkaistun <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)" target="_blank">Asteroids</a>-nimisen pelin hahmotelma. Peli käynnistyy kun suoritat pakkauksessa asteroids olevan luokan AsteroidsOhjelma main-metodin.
+    Tehtäväpohjassa on vuonna 1979 julkaistun <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)" target="_blank" rel="noopener">Asteroids</a>-nimisen pelin hahmotelma. Peli käynnistyy kun suoritat pakkauksessa asteroids olevan luokan AsteroidsOhjelma main-metodin.
   </p>
 
   <p>

@@ -13,11 +13,11 @@
   </p>
 
   <p>
-    Konekokeessa on kolme tehtävää ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe05_01.Tehtava", "Konekoe05_02.Tehtava" ja "Konekoe05_03.Tehtava". Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen.
+    Konekokeessa on kolme tehtävää ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe05_01.Tehtava", "Konekoe05_02.Tehtava" ja "Konekoe05_03.Tehtava". Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank" rel="noopener">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen.
   </p>
 
   <p>
-    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen.
+    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank" rel="noopener">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen.
   </p>
 
   <p>
@@ -53,7 +53,7 @@
 </p>
 
 <p>
-  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank">JavaFX</a> käyttöliittymäkirjastoa. Yksinkertaisen ikkunan luominen onnistuu JavaFX:n avulla seuraavanlaisella ohjelmalla.
+  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank" rel="noopener">JavaFX</a> käyttöliittymäkirjastoa. Yksinkertaisen ikkunan luominen onnistuu JavaFX:n avulla seuraavanlaisella ohjelmalla.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -93,11 +93,11 @@ public class JavaFxSovellus extends Application {
 <% end %>
 
 <p>
-  Mitä ohjelmassa oikein tapahtuu? Luokkamme JavaFxSovellus perii luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html" target="_blank">Application</a>, joka tarjoaa rungon graafisten käyttöliittymien luomiseen. Sovellus käynnistetään Application-luokalta perittävällä metodilla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch-java.lang.Class-java.lang.String...--" target="_blank">launch</a>, jolle annetaan parametrina käynnistettävän luokan nimi muodossa <em>LuokanNimi.class</em>.
+  Mitä ohjelmassa oikein tapahtuu? Luokkamme JavaFxSovellus perii luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html" target="_blank" rel="noopener">Application</a>, joka tarjoaa rungon graafisten käyttöliittymien luomiseen. Sovellus käynnistetään Application-luokalta perittävällä metodilla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch-java.lang.Class-java.lang.String...--" target="_blank" rel="noopener">launch</a>, jolle annetaan parametrina käynnistettävän luokan nimi muodossa <em>LuokanNimi.class</em>.
 </p>
 
 <p>
-  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init periytyy luokasta Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Jätimme sen tässä toteuttamatta, sillä ohjelmamme on melko yksinkertainen. Metodin init kutsumisen jälkeen kutsutaan start, jolle annetaan parametrina ikkunaa kuvaava <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank">Stage</a>-olio. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle stage-oliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen.
+  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init periytyy luokasta Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Jätimme sen tässä toteuttamatta, sillä ohjelmamme on melko yksinkertainen. Metodin init kutsumisen jälkeen kutsutaan start, jolle annetaan parametrina ikkunaa kuvaava <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank" rel="noopener">Stage</a>-olio. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle stage-oliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen.
 </p>
 
 
@@ -108,7 +108,7 @@ public class JavaFxSovellus extends Application {
   </p>
 
   <p>
-    Huom! Sekä tässä että tulevassa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
+    Huom! Sekä tässä että tulevassa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank" rel="noopener">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
   </p>
 
 <% end %>
@@ -118,7 +118,7 @@ public class JavaFxSovellus extends Application {
 <% end %>
 
 <p>
-  Graafiset käyttöliittymät koostuvat oleellisesti kolmesta osasta. Stage-olio toimii ohjelman ikkunana. Stage-oliolle asetetaan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html" target="_blank">Scene</a>-olio, joka kuvastaa ikkunassa olevaa näkymää. Scene-olio taas sisältää näkymään liittyvien komponenttien asettelusta vastaavan olion (esim. FlowPane), joka taas sisältää konkreettiset käyttöliittymäkomponentit.
+  Graafiset käyttöliittymät koostuvat oleellisesti kolmesta osasta. Stage-olio toimii ohjelman ikkunana. Stage-oliolle asetetaan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html" target="_blank" rel="noopener">Scene</a>-olio, joka kuvastaa ikkunassa olevaa näkymää. Scene-olio taas sisältää näkymään liittyvien komponenttien asettelusta vastaavan olion (esim. FlowPane), joka taas sisältää konkreettiset käyttöliittymäkomponentit.
 </p>
 
 <p>
@@ -198,7 +198,7 @@ kälikomp
 </p>
 
 <p>
-  Tekstin näyttäminen tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html" target="_blank">Label</a></code>-luokan avulla. Label tarjoaa käyttöliittymäkomponentin, jolle voi asettaa tekstiä ja jonka sisältämää tekstiä voi muokata metodien avulla. Teksti asetetaan joko konstruktorissa tai erillisellä <code>setText</code>-metodilla.
+  Tekstin näyttäminen tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html" target="_blank" rel="noopener">Label</a></code>-luokan avulla. Label tarjoaa käyttöliittymäkomponentin, jolle voi asettaa tekstiä ja jonka sisältämää tekstiä voi muokata metodien avulla. Teksti asetetaan joko konstruktorissa tai erillisellä <code>setText</code>-metodilla.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -238,7 +238,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Käyttöliittymään saa painikkeita <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html" target="_blank">Button</a>-luokan avulla. Napin lisääminen käyttöliittymään tapahtuu aivan kuten tekstielementin lisääminen.
+  Käyttöliittymään saa painikkeita <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html" target="_blank" rel="noopener">Button</a>-luokan avulla. Napin lisääminen käyttöliittymään tapahtuu aivan kuten tekstielementin lisääminen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -323,12 +323,12 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Osoitteessa <a href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/" target="_blank">https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/</a> on listattuna joukko valmiita käyttöliittymäkomponentteja. Sivu tarjoa myös esimerkkejä käyttöliittymäkomponenttien käytöstä.
+  Osoitteessa <a href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/</a> on listattuna joukko valmiita käyttöliittymäkomponentteja. Sivu tarjoa myös esimerkkejä käyttöliittymäkomponenttien käytöstä.
 </p>
 
 
 <p>
-  Käyttöliittymäkomponentteja on huomattava määrä. Niiden opiskeluun kannattaa käyttää verkossa olevia valmiita oppaita kuten edellä mainittua osoitetta <a href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/" target="_blank">https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/</a>. Käyttöliittymäkomponentteja kannattaa kokeilla aluksi erikseen siten, että kokeilee yhden komponentin lisäämistä ja tarkastelee sen toimintaa.
+  Käyttöliittymäkomponentteja on huomattava määrä. Niiden opiskeluun kannattaa käyttää verkossa olevia valmiita oppaita kuten edellä mainittua osoitetta <a href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/</a>. Käyttöliittymäkomponentteja kannattaa kokeilla aluksi erikseen siten, että kokeilee yhden komponentin lisäämistä ja tarkastelee sen toimintaa.
 </p>
 
 <p>
@@ -350,7 +350,7 @@ public class JavaFxSovellus extends Application {
 <% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikenttä' } do %>
 
   <p>
-    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettu luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettu luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank" rel="noopener">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
   </p>
 
 <% end %>
@@ -365,7 +365,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Edellisissä esimerkeissä käytimme käyttöliittymäkomponenttien asetteluun <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html" target="_blank">FlowPane</a>-nimistä luokkaa. FlowPanen avulla käyttöliittymään lisättävät komponentit tulevat vierekkäin. Jos ikkunan koko pienenee siten, että kaikki komponentit eivät mahdu vierekkäin, rivitetään komponentit automaattisesti. Alla olevassa kuvassa edellisen esimerkin tuottamaa sovellusta on kavennettu, jolloin elementit ovat rivittyneet automaattisesti.
+  Edellisissä esimerkeissä käytimme käyttöliittymäkomponenttien asetteluun <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html" target="_blank" rel="noopener">FlowPane</a>-nimistä luokkaa. FlowPanen avulla käyttöliittymään lisättävät komponentit tulevat vierekkäin. Jos ikkunan koko pienenee siten, että kaikki komponentit eivät mahdu vierekkäin, rivitetään komponentit automaattisesti. Alla olevassa kuvassa edellisen esimerkin tuottamaa sovellusta on kavennettu, jolloin elementit ovat rivittyneet automaattisesti.
 </p>
 
 <img src="/img/material/gui-nappi-ja-teksti-rivitetty.png" alt="Ikkuna, jossa on nappi sekä tekstielementti. Napissa on teksti 'Tämä on nappi' ja tekstielementti sisältää tekstin 'Tekstielementti'. Ikkunan leveys on niin pieni, että elementit ovat rivitetty omille riveilleen."/>
@@ -502,7 +502,7 @@ public void start(Stage ikkuna) {
 <% end %>
 
 <p>
-  <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html" target="_blank">GridPane</a>-luokan avulla käyttöliittymäkomponentit asetellaan ruudukkoon. Alla olevassa esimerkissä luodaan 3x3-kokoinen ruudukko, jossa jokaisessa ruudussa on nappi.
+  <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html" target="_blank" rel="noopener">GridPane</a>-luokan avulla käyttöliittymäkomponentit asetellaan ruudukkoon. Alla olevassa esimerkissä luodaan 3x3-kokoinen ruudukko, jossa jokaisessa ruudussa on nappi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -612,7 +612,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Nappien painaminen käsitellään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html" target="_blank">EventHandler</a>-rajapinnan toteuttavalla luokalla. Tapahtuman tyyppi on tällöin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html" target="_blank">ActionEvent</a>. Rajapinnan toteutukseen määritellään <em>mitä tehdään</em> silloin, kun käyttäjä painaa nappia.
+  Nappien painaminen käsitellään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html" target="_blank" rel="noopener">EventHandler</a>-rajapinnan toteuttavalla luokalla. Tapahtuman tyyppi on tällöin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html" target="_blank" rel="noopener">ActionEvent</a>. Rajapinnan toteutukseen määritellään <em>mitä tehdään</em> silloin, kun käyttäjä painaa nappia.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -785,7 +785,7 @@ nappi.setFont(Font.font("Monospaced", 40));
 
 
 <p>
-  Käytettävä tapahtumankäsittelijä riippuu käyttöliittymäkomponentista, johon tapahtumankäsittelijä kytketään. Jos haluaisimme seurata tekstikenttään tapahtuvia muutoksia merkki merkiltä, käyttäisimme rajapintaa <a href="https://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html" target="_blank">ChangeListener</a>.  Alla olevassa esimerkissä vasempaan tekstikenttään on kytketty rajapinnan ChangeListener toteuttava olio, joka sekä tulostaa muutokset tekstikonsoliin että asettaa aina uuden arvon oikealla olevaan tekstikenttään.
+  Käytettävä tapahtumankäsittelijä riippuu käyttöliittymäkomponentista, johon tapahtumankäsittelijä kytketään. Jos haluaisimme seurata tekstikenttään tapahtuvia muutoksia merkki merkiltä, käyttäisimme rajapintaa <a href="https://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html" target="_blank" rel="noopener">ChangeListener</a>.  Alla olevassa esimerkissä vasempaan tekstikenttään on kytketty rajapinnan ChangeListener toteuttava olio, joka sekä tulostaa muutokset tekstikonsoliin että asettaa aina uuden arvon oikealla olevaan tekstikenttään.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -991,11 +991,11 @@ public class HenkiloSovellus extends Application {
 <% end %>
 
 <p>
-  JavaFX-käyttöliittymäkirjastossa piirtämiseen käytetään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html" target="_blank">Canvas</a>-oliota. Canvas-olio edustaa tyhjää taulua, johon voi piirtää. Piirtäminen tapahtuu Canvas-oliolta saatavalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html" target="_blank">GraphicsContext</a>-oliolla.
+  JavaFX-käyttöliittymäkirjastossa piirtämiseen käytetään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html" target="_blank" rel="noopener">Canvas</a>-oliota. Canvas-olio edustaa tyhjää taulua, johon voi piirtää. Piirtäminen tapahtuu Canvas-oliolta saatavalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html" target="_blank" rel="noopener">GraphicsContext</a>-oliolla.
 </p>
 
 <p>
-  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun keskelle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä.
+  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank" rel="noopener">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun keskelle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä.
 
 <% partial 'partials/code_highlight' do %>
 // pakkaus
@@ -1052,7 +1052,7 @@ public class MiniPaint extends Application {
 </p>
 
 <p>
-  Canvas-luokan avulla voidaan myös luoda ohjelma, joka piirtää kuvaa jatkuvasti. Tämä tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank">AnimationTimer</a>-luokan avulla. AnimationTimer-luokka määrittelee metodin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html#handle-long-" target="_blank">handle</a>, joka luokkaa käyttävän ohjelmoijan tulee toteuttaa. Metodi handle saa parametrina nykyhetken nanosekunteina, jonka avulla voidaan vaikuttaa piirtovälien pituuteen.
+  Canvas-luokan avulla voidaan myös luoda ohjelma, joka piirtää kuvaa jatkuvasti. Tämä tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank" rel="noopener">AnimationTimer</a>-luokan avulla. AnimationTimer-luokka määrittelee metodin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html#handle-long-" target="_blank" rel="noopener">handle</a>, joka luokkaa käyttävän ohjelmoijan tulee toteuttaa. Metodi handle saa parametrina nykyhetken nanosekunteina, jonka avulla voidaan vaikuttaa piirtovälien pituuteen.
 </p>
 
 <p>
@@ -1148,7 +1148,7 @@ public class AnimaationAlku extends Application {
 <% partial 'partials/exercise', locals: { name: 'Hiekkaranta' } do %>
 
   <p>
-    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on esimerkiksi seuraavanlainen.
+    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank" rel="noopener">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on esimerkiksi seuraavanlainen.
   </p>
 
   <img src="/img/material/gui-simulaatio.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
@@ -1174,7 +1174,7 @@ public class AnimaationAlku extends Application {
   <h2>Palaset kohdalleen</h2>
 
   <p>
-    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Graafisen käyttöliittymän komponenttien asettelu tulee tehdä BorderPane-luokan avulla. Lisää BorderPane-luokan keskelle Canvas-olio, jota käytetään piirtämiseen. Aseta Canvas-olion leveydeksi ja korkeudeksi 200 pikseliä. Lisää BorderPane-luokan oikealle laidalle VBox-olio, joka sisältää kolme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/RadioButton.html" target="_blank">RadioButton</a>-oliota. Ensimmäiseen RadioButton-olioon tulee liittyä teksti "Metalli", toiseen teksti "Hiekka", ja kolmanteen teksti "Vesi".
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Graafisen käyttöliittymän komponenttien asettelu tulee tehdä BorderPane-luokan avulla. Lisää BorderPane-luokan keskelle Canvas-olio, jota käytetään piirtämiseen. Aseta Canvas-olion leveydeksi ja korkeudeksi 200 pikseliä. Lisää BorderPane-luokan oikealle laidalle VBox-olio, joka sisältää kolme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/RadioButton.html" target="_blank" rel="noopener">RadioButton</a>-oliota. Ensimmäiseen RadioButton-olioon tulee liittyä teksti "Metalli", toiseen teksti "Hiekka", ja kolmanteen teksti "Vesi".
   </p>
 
   <p>
