@@ -49,6 +49,24 @@ helpers do
     options[:onclick] = "ga('send', 'event', 'navigation_topic_link', 'click', '#{url}')"
     link_to(body, url, options)
   end
+
+  def _common_prepending_spaces_count(input)
+    non_empty_lines = input.lines.reject { |line| line.strip == '' }
+    prepending_spaces = non_empty_lines.map { |line| line.match(/^ +/).to_s.length }
+    prepending_spaces.min
+  end
+
+  def fix_pre(input)
+    pre_count = _common_prepending_spaces_count(input)
+    fixed = input.lines.map do |line|
+      if line.strip == ''
+        ''
+      else
+        line[(0 + pre_count)..-1]
+      end
+    end.join('')
+    fixed.strip
+  end
 end
 
 # Build-specific configuration
