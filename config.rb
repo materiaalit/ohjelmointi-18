@@ -59,13 +59,11 @@ helpers do
   def fix_pre(input)
     pre_count = _common_prepending_spaces_count(input)
     fixed = input.lines.map do |line|
-      if line.strip == ''
-        ''
-      else
-        line[(0 + pre_count)..-1]
-      end
-    end.join('')
-    fixed.strip
+      line.strip == '' ? '' : line[(0 + pre_count)..-1]
+    end
+    fixed[0] = nil if fixed[0] == ''
+    fixed[-1] = nil if fixed[-1] == ''
+    fixed.join('')
   end
 end
 
