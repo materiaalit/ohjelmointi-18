@@ -26,11 +26,6 @@
   Kursseilla opitaan perustaidot ohjelmoinnista Java-kielellä. Tutuksi tulevat muunmuassa syötteen lukeminen, tulostaminen, ehtolauseet, toistolauseet, listojen käsittely, oliot, ymym.
 </p>
 
-<p>
-  Ison pyörän myötä tapahtunut osaamistavoitteiden päivittynyt hahmotelma löytyy osoitteesta <a href="https://docs.google.com/spreadsheets/d/1BFDSh1voHsllzXWPba_JnE9U9uYMOSr-HCrIRDNGMkc/edit#gid=1747703721" target="_blank" rel="noopener">https://docs.google.com/spreadsheets/d/1BFDSh1voHsllzXWPba_JnE9U9uYMOSr-HCrIRDNGMkc/edit#gid=1747703721</a>. Dokumenttiin on toistaiseksi myös kommentointioikeudet.
-</p>
-
-
 <% partial 'partials/material_sub_sub_heading' do %>
   Ohjelmoinnin perusteet
 <% end %>
@@ -38,7 +33,7 @@
 <table class="table">
   <tr>
     <th>
-      Osa
+      Osa (Viikko)
     </th>
     <th>
       Osaamistavoitteet
@@ -49,7 +44,7 @@
       1
     </td>
     <td>
-
+      Tuntee ohjelmoinnin peruskäsitteistä muuttujat, ehtolauseet, toistolauseet. Ymmärtää ohjelman suoritusjärjestyksen. Osaa kirjoittaa ohjelmia, jotka lukee käyttäjältä syötettä ja tekevät laskentaa syötteen perusteella. 
     </td>
   </tr>
   <tr>
@@ -57,6 +52,7 @@
       2
     </td>
     <td>
+      Hahmottaa ja tunnistaa ohjelman käyttämien muuttujien tilan ohjelman eri suoritusvaiheessa. Osaa soveltaa toistolausetta ohjelmointiongelmissa. Tuntee käsitteet metodi ja parametri, ja osaa luoda parametrillisia metodeja.
     </td>
   </tr>
   <tr>
@@ -64,6 +60,7 @@
       3
     </td>
     <td>
+      Ymmärtää miten ohjelman suoritus etenee metodikutsun yhteydessä. Ymmärtää muuttujien näkyvyyden ja olemassaolon. Osaa luoda metodeja, jotka palauttavat arvon. Osaa käsitellä merkkijonoja. Tuntee käsitteen olio. Luo ainakin yhden oman luokan. Luo olioita tekemistään luokista. Ymmärtää staattisten ja ei-staattisten metodien erot.
     </td>
   </tr>
   <tr>
@@ -71,6 +68,7 @@
       4
     </td>
     <td>
+      Tuntee käsitteet olio, konstruktori ja olion metodit. Tietää olio-ohjelmoinnin perusperiaatteet ja luo omia luokkia, jotka kuvaavat annettua ongelma-aluetta. Osaa luoda olioita. Tuntee listarakenteen, osaa lisätä arvoja listalle, ja tuntee useamman menetelmän listan läpikäyntiin. Osaa hyödyntää Javan valmiita kirjastoja satunnaisten lukujen luomiseen. 
     </td>
   </tr>
   <tr>
@@ -78,6 +76,7 @@
       5
     </td>
     <td>
+      Ymmärtää alkeis- ja viittaustyyppisten muuttujien erot. Tietää, että viittaustyyppiseen muuttujaan voi olla viittaus useammasta muuttujasta. Ymmärtää miten alkeis- ja viittaustyyppisten muuttujien toiminta poikkeaa toisistaan metodien ja listojen yhteydessä. Osaa määritellä olioita, jotka sisältävät olioita. Ymmärtää automaattisen testaamisen periaatteet.
     </td>
   </tr>
   <tr>
@@ -85,6 +84,7 @@
       6
     </td>
     <td>
+      Tuntee käsitteen tiedosto. Osaa lukea tietoa erilaisista tietolähteistä (mm. tiedosto, verkko). Osaa käsitellä listassa olevaa tietoa virtana (stream-metodi) sekä tuntee muutamia virran perusoperaatioita (filter, map, collect). Osaa kirjoittaa automaattisia testejä annetun luokan metodeille. 
     </td>
   </tr>
   <tr>
@@ -92,9 +92,15 @@
       7
     </td>
     <td>
+      Osaa pilkkoa ohjelman useampaan osaan, missä yhden vastuulla on (tekstimuotoinen) käyttöliittymä, toinen vastuulla sovelluslogiikka. Tuntee käsitteen taulukko ja ymmärtää miten taulukot poikkeavat listoista. Osaa luoda yksi- ja useampiulotteisia taulukoita. Osaa luoda yksinkertaisia simulaatioita.
     </td>
   </tr>
 </table>
+
+<p>
+  Näitä voi tarkastella myös prosessin kannalta. Eräs koko kurssin kattava osaamistavoitehahmotelma löytyy osoitteesta <a href="https://docs.google.com/spreadsheets/d/1BFDSh1voHsllzXWPba_JnE9U9uYMOSr-HCrIRDNGMkc/edit#gid=1747703721" target="_blank" rel="noopener">https://docs.google.com/spreadsheets/d/1BFDSh1voHsllzXWPba_JnE9U9uYMOSr-HCrIRDNGMkc/edit#gid=1747703721</a>. Dokumenttiin on toistaiseksi myös kommentointioikeudet.
+</p>
+
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
@@ -121,17 +127,34 @@
 </p>
 
 <p>
-  Kurssilla järjestetään viikoittain ohjausta Kumpulan kampuksella Exactum-rakennuksen salissa BK107. Ohjausta järjestetään 5.9.-20.10. (Ohjelmoinnin perusteet) ja 13.3.-7.5. (Ohjelmoinnin jatkokurssi) myöhemmin ilmoitettavina aikoina. Ohjaustilaisuudet ovat kaikille avoimia... TODO: vapaaehtoinen osallistuminen -- sähköpostitse ohjausta kurssilla ei ole, eli apua pitää hakea tarvittaessa paikan päältä.
+  Kurssilla järjestetään viikoittain ohjausta Kumpulan kampuksella Exactum-rakennuksen salissa BK107. Ohjausta järjestetään 5.9.-20.10. (Ohjelmoinnin perusteet) ja 13.3.-7.5. (Ohjelmoinnin jatkokurssi) myöhemmin ilmoitettavina aikoina. Ohjaustilaisuudet ovat kaikille avoimia. Sähköpostitse tapahtuvaa ohjausta ei kurssilla ole. 
 </p>
 
 <p>
-  Yksittäisen osan viimeinen palautusaika on aina maanantaisin klo 23:59.
+  Yksittäisen osan viimeinen palautusaika on aina maanantaisin klo 23:59. 
 </p>
 
 <p>
   Kumpulan Exactumin mikroluokissa (BK107, B221) saa työskennellä myös ohjausaikojen ulkopuolella, jos siellä ei ole tuolloin muuta toimintaa.
 </p>
 
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Tukiväylät
+<% end %>
+
+<p>
+  Kurssien ensisijainen tukiväylä on Kumpulan kampuksella Exactumissa tapahtuva ohjaus. Ohjaustilaisuudet ovat avoimia tilaisuuksia, johon saa tulla vapaasti kysymään apua tehtäviin tai juttelemaan tehtävistä.
+</p>
+
+<p>
+  Verkon yli nopein tapa avun kysymiseen on kurssin keskustelukanava <code>#mooc.fi</code>, johon pääsee helpointen kanavan Matrix-huoneen kautta: <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org"  target="_blank" rel="noopener">https://riot.im/app/#/room/#mooc.fi:matrix.org</a>. Jos et pidä modernista teknologiasta, voit myös liityä huoneeseen Ircnetin kautta seuraamalla näitä ohjeita: <a href="http://mooc.fi/courses/general/ohjelmointi/tukikanavat/irc/ohjeet/" target="_blank" rel="noopener">http://mooc.fi/courses/general/ohjelmointi/tukikanavat/irc/ohjeet/</a>.
+</p>
+
+<p>
+  Huomaathan, että kanavan osallistujat ovat kanssaopiskelijoita ja kurssin aiemmin tehneitä opiskelijoita. Toiminta perustuu vapaaehtoisuuteen.
+</p>
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
@@ -162,11 +185,11 @@
 <% end %>
 
 <p>
-  Kurssin tehtävät on upotettu osaksi kurssimateriaalia. Kurssitehtävät sisältävät ohjelmointitehtäviä (20-30 osaa kohden), monivalintatehtäviä, selitystehtäviä (muutamia osaa kohden), selitystehtävien vertaisarviointia (muutamia osaa kohden), tehtävien keksimistehtäviä, sekä kaavioiden piirtotehtäviä.
+  Kurssin tehtävät on upotettu osaksi kurssimateriaalia. Kurssitehtävät sisältävät ohjelmointitehtäviä (20-30 osaa kohden), monivalintatehtäviä, selitystehtäviä (muutamia osaa kohden), selitystehtävien vertaisarviointia (muutamia osaa kohden), tehtävien keksimistehtäviä sekä kaavioiden piirtotehtäviä.
 </p>
 
 <p>
-  Ohjelmointitehtävät palautetaan kurssilla käytössä olevan Test My Code -ympäristön kautta. Monivalintatehtävät, selitystehtävät ja selitystehtäviin liittyvät vertaisarvioinnit palautetaan suoraan materiaalin kautta. Piirrustustehtävät palautetaan luennon lopuksi tai harjoitustapahtumissa.
+  Ohjelmointitehtävät palautetaan kurssilla käytössä olevan Test My Code -ympäristön kautta. Monivalintatehtävät, selitystehtävät ja selitystehtäviin liittyvät vertaisarvioinnit palautetaan suoraan materiaalin kautta. Piirrustustehtävät palautetaan luennon lopuksi tai ohjaustilaisuuksissa.
 </p>
 
 
@@ -188,38 +211,13 @@
 
 </em></p>
 
-<p>
-  Edellä mainittua sääntöä noudattamalla yhteistyön kautta kertynyt oppi on hyvää.
-<p>
-
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Tukiväylät
-<% end %>
-
-<p>
-  Kurssien ensisijainen tukiväylä on Kumpulan kampuksella Exactumissa tapahtuva ohjaus. Ohjaustilaisuudet ovat avoimia tilaisuuksia, johon saa tulla vapaasti kysymään apua tehtäviin tai juttelemaan tehtävistä.
-</p>
-
-<p>
-  Verkon yli nopein tapa avun kysymiseen on kurssin keskustelukanava <code>#mooc.fi</code>, johon pääsee helpointen kanavan Matrix-huoneen kautta: <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org"  target="_blank" rel="noopener">https://riot.im/app/#/room/#mooc.fi:matrix.org</a>. Jos et pidä modernista teknologiasta, voit myös liityä huoneeseen Ircnetin kautta seuraamalla näitä ohjeita: <a href="http://mooc.fi/courses/general/ohjelmointi/tukikanavat/irc/ohjeet/" target="_blank" rel="noopener">http://mooc.fi/courses/general/ohjelmointi/tukikanavat/irc/ohjeet/</a>.
-</p>
-
-<p>
-  Huomaathan, että kanavan osallistujat ovat kanssaopiskelijoita ja kurssin aiemmin tehneitä opiskelijoita. Toiminta perustuu vapaaehtoisuuteen.
-</p>
-
-<p>TODO: nettietiketti</p>
-
 
 <% partial 'partials/material_sub_heading' do %>
   Opintovilpistä
 <% end %>
 
 <p>
-  Kurssilla seurataan Helsingin yliopiston opintokäytäntöjä. Plagiarismi ja opintovilppi, eli esimerkiksi netissä olevien tai kaverilta saatujen vastausten kopiointi ja niiden palauttaminen omana työnä on kurssilla kiellettyä. Luonnollisesti myös kaikki yhteistyö ja avun kysyminen tai antaminen on kiellettyä konekokeen tehtäviin liittyen.
+  Kurssilla seurataan Helsingin yliopiston opintokäytäntöjä. Plagiarismi ja opintovilppi, eli esimerkiksi netissä olevien tai kaverilta saatujen vastausten kopiointi ja niiden palauttaminen omana työnä on kurssilla kiellettyä.
 </p>
 
 <p>
@@ -236,7 +234,7 @@
 
 
 <p>
-  Kurssien arvostelu perustuu kurssitehtäviin sekä kurssin lopulla järjestettävään kokeeseen. Kokonaisarvostelussa tehtävien painoarvo on 77% ja kokeen painoarvo on 23%. Käytössä on koeleikkuri, eli kurssin läpäisemiseksi kurssikokeesta tulee saada vähintään puolet pisteistä.
+  Kurssien arvostelu perustuu kurssitehtäviin ja koneella tehtäviin kokeisiin. Kokonaisarvostelussa tehtävien painoarvo on 70% ja kokeiden painoarvo on 30%. Käytössä on koeleikkuri, eli kurssin läpäisemiseksi kokeista tulee saada vähintään puolet pisteistä.
 </p>
 
 
@@ -281,34 +279,38 @@
       Maksimipisteet
     </th>
     <td>
-      11
+      10
     </td>
     <td>
-      11
+      10
     </td>
     <td>
-      11
+      10
     </td>
     <td>
-      11
+      10
     </td>
     <td>
-      11
+      10
     </td>
     <td>
-      11
+      10
     </td>
     <td>
-      11
+      10
     </td>
     <td>
-      77
+      70
     </td>
   </tr>
 </table>
 
 
 <p>&nbsp;</p>
+
+<p>
+  Kokeet järjestetään toisen viikon jälkeen sekä kurssin lopussa. Kokeet tehdään koneellisesti.
+</p>
 
 <p>
   Arvosanarajat:
@@ -381,11 +383,7 @@
 </p>
 
 <p>
-  <strong>Huom!</strong> Edellä kuvattu arvostelu olettaa, että hyväksyt analytiikkadatan keräämisen kurssin tehtävistä. Analytiikkadata sisältää ajoittain kerättäviä aikaleimattuja kopioita työstämästäsi tehtävästä sekä tietoa kurssimateriaalin käytöstä. Analytiikkadataa ei kerätä henkilökohtaisista projekteistasi tai muualta koneeltasi.
-</p>
-
-<p>
-  Materiaalin oikeassa alalaidassa mahdollisesti näkyvässä visualisaatiossa oleva työskentelypisteytys ei vaikuta kurssin arvosteluun. Siitä on toivottavasti kuitenkin hyötyä oman opiskelun rytmittämisessä.
+  <strong>Huom!</strong> Edellä kuvattu arvostelu olettaa, että hyväksyt analytiikkadatan keräämisen kurssin tehtävistä ja mahdollisesti koneella tehtävistä koetehtävistä. Analytiikkadata sisältää ajoittain kerättäviä aikaleimattuja kopioita työstämästäsi tehtävästä sekä tietoa kurssimateriaalin käytöstä. Analytiikkadataa ei kerätä henkilökohtaisista projekteistasi tai muualta koneeltasi.
 </p>
 
 
@@ -479,7 +477,7 @@ sudo apt-get install openjfx
     <strong>Helsingin yliopiston syksyn 2017 kurssi Ohjelmoinnin perusteet</strong> (kurssi <a href="https://courses.helsinki.fi/fi/TKT10002/119284736" target="_blank" rel="noopener">https://courses.helsinki.fi/fi/TKT10002/119284736</a>). Jos teet kurssia Helsingin yliopistolla, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <code>(julkaistaan myöhemmin)</code>. Kurssin nimi on tällöin <code>(julkaistaan myöhemmin)</code>.
   </li>
   <li>
-    <strong>Helsingin yliopiston syksyn 2017 kurssi Ohjelmoinnin jatkokurssi</strong> (kurssi <a href="https://courses.helsinki.fi/fi/TKT10003/119284733" target="_blank" rel="noopener">https://courses.helsinki.fi/fi/TKT10003/119284733</a>). Jos teet kurssia Helsingin yliopistolla, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <code>https://tmc.mooc.fi/org/hy/courses/208</code>. Kurssin nimi on tällöin <code>hy-ohja-k2017</code>.
+    <strong>Helsingin yliopiston syksyn 2017 kurssi Ohjelmoinnin jatkokurssi</strong> (kurssi <a href="https://courses.helsinki.fi/fi/TKT10003/119284733" target="_blank" rel="noopener">https://courses.helsinki.fi/fi/TKT10003/119284733</a>). Jos teet kurssia Helsingin yliopistolla, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <code>(julkaistaan myöhemmin)</code>. Kurssin nimi on tällöin <code>hy-ohja-k2017</code>.
   </li>
 </ul>
 
@@ -514,6 +512,50 @@ sudo apt-get install openjfx
 
 
 <% partial 'partials/material_sub_heading' do %>
+  Kurssilla tehtävästä tutkimuksesta
+<% end %>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Suostumus kurssin aikana kerätyn datan käyttöön tutkimuksessa
+<% end %>
+
+<p>
+  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita.
+</p>
+
+<p>
+  Tutkimusdatan hallinnasta vastaa Helsingin yliopiston tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi muut tutkijat. Voit myös pyytää milloin tahansa sinusta kerätyn datan poistamista lähettämällä sähköpostin osoitteeseen arto.hellas@cs.helsinki.fi
+</p>
+
+
+<%= partial 'partials/quiz', locals: { id: '5877e97fd095c40004e4b1a9' } %>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Osallistuminen satunnaistettuun kokeeseen
+<% end %>
+
+<p>
+  Kurssilla tehdään tutkimusta, joka voi vaikuttaa kurssikokemukseen (esim. kurssisisältö). Tutkimuksen tavoite on parantaa opetusta. Jos osallistut tutkimukseen, saatat saada esimerkiksi uusia ominaisuuksia materiaaliin. Jos et halua osallistua tutkimukseen, saat kurssin sisällöstä perusversion. Tutkimukseen osallistuminen ei vaikuta loppuarvosanaan.
+</p>
+
+<p>
+  TODO: widget -- Tottakai, osallistun tutkimukseen!
+</p>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Sitten materiaaliin...' } do %>
+
+  <p>
+    Löydät tämän sivun ylälaidasta linkin "Osa 1", jolla pääset ensimmäiseen osaan käsiksi. Siirtyminen onnistuu myös <%= link_to 'tästä', 'part1.html'%> painamalla. Ohjelmoinnin jatkokurssi alkaa materiaalin osasta 8.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
   Kurssimateriaalin tekijät ja lisenssi
 <% end %>
 
@@ -525,31 +567,6 @@ sudo apt-get install openjfx
   Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä, joten voit käyttää ja levittää sitä vapaasti, kunhan alkuperäisten tekijöiden nimiä ei poisteta. Jos teet muutoksia materiaaliin ja haluat levittää muunneltua versiota, se täytyy lisensoida samanlaisella vapaalla lisenssillä. Materiaalien käyttö kaupalliseen tarkoitukseen on ilman erillistä lupaa kielletty.
 </p>
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Kurssilla tehtävästä tutkimuksesta
-<% end %>
-
-
 <p>
-  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita.
+  Voit osallistua kurssimateriaalin parantamiseen myös itse. Jokaisen sivun alalaidassa on linkit, joilla pääset ehdottamaan muutoksia. Muutosten ehdottaminen vaatii <a href="https://github.com/" target="_blank">Github</a>-tunnuksen.
 </p>
-
-<p>
-  Tutkimusdatan hallinnasta vastaa Helsingin yliopiston tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi muut tutkijat.
-</p>
-
-
-<%= partial 'partials/quiz', locals: { id: '5877e97fd095c40004e4b1a9' } %>
-
-
-
-
-
-<% partial 'partials/hint', locals: { name: 'Sitten materiaaliin...' } do %>
-
-  <p>
-    Löydät tämän sivun ylälaidasta linkin "Osa 1", jolla pääset ensimmäiseen osaan käsiksi. Siirtyminen onnistuu myös <%= link_to 'tästä', 'part1.html'%> painamalla. Ohjelmoinnin jatkokurssi alkaa materiaalin osasta 8.
-  </p>
-
-<% end %>
