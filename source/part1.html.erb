@@ -1670,10 +1670,10 @@ if (luku &gt;= 1000) {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Ei ajankohtaista' } do %>
+<% partial 'partials/exercise', locals: { name: 'Wanha' } do %>
 
   <p>
-    Tee ohjelma, joka kysyy käyttäjältä vuosilukua. Jos käyttäjä ei syötä lukua 2017, ohjelma tulostaa merkkijonon "Ei ajankohtaista".
+    Tee ohjelma, joka kysyy käyttäjältä vuosilukua. Jos käyttäjä syöttää luvun, joka on pienempi kuin 2015, ohjelma tulostaa merkkijonon "Wanha!".
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -1682,9 +1682,9 @@ Anna vuosiluku: <font color="red">2017</font>
   <% end %>
 
   <% partial 'partials/sample_output' do %>
-Anna vuosiluku: <font color="red">2018</font>
+Anna vuosiluku: <font color="red">2013</font>
 
-Ei ajankohtaista.
+Wanha!
   <% end %>
 
 <% end %>
@@ -2125,7 +2125,6 @@ Luku 7 on pariton.
 <% end %>
 
 
-
 <% partial 'partials/exercise', locals: { name: 'Karkausvuosi' } do %>
 
 
@@ -2355,10 +2354,10 @@ Kuvaaja.lisaaNumero(arvo);
   <% partial 'partials/sample_output' do %>
     Syötä bruttopalkka: <font color="red">800</font>
     Työnantaja maksaa TyEL-maksuja: 144
-    Työntekijä maksaa työntekijälle vähintään: 944
+    Työntekijä maksaa työnantajalle vähintään: 944
 
     Työntekijä maksaa TyEL-maksuja: 48
-    Työntekijä palkka TyEL-maksun jälkeen: 752
+    Työntekijän palkka TyEL-maksun jälkeen: 752
 
     TyEL-kulut yhteensä: 192
   <% end %>
@@ -2367,27 +2366,49 @@ Kuvaaja.lisaaNumero(arvo);
   <% partial 'partials/sample_output' do %>
     Syötä bruttopalkka: <font color="red">1000</font>
     Työnantaja maksaa TyEL-maksuja: 180
-    Työntekijä maksaa työntekijälle vähintään: 1180
+    Työntekijä maksaa työnantajalle vähintään: 1180
 
     Työntekijä maksaa TyEL-maksuja: 60
-    Työntekijä palkka TyEL-maksun jälkeen: 940
+    Työntekijän palkka TyEL-maksun jälkeen: 940
 
     TyEL-kulut yhteensä: 240
   <% end %>
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'TODO: if, else if, else -ohjelma' } do %>
+
+<% partial 'partials/exercise', locals: { name: 'Reilut pitsabileet' } do %>
 
   <p>
-    muuttujan arvojen vertailu, eka pariohjelmointitehtävä (tunnistetaan paikkoja).
+    Nea ja Vilma järjestävät reiluja pitsabileitä. Reilut pitsabileet ovat kuin normaalit pitsabileet, mutta reiluissa pitsabileissä kaikki saavat täsmälleen saman määrän pitsapaloja. Tehtävänäsi on kirjoittaa ohjelma, joka laskee ylijäävien pitsan palojen määrän. 
   </p>
 
+  <% partial 'partials/sample_output' do %>
+    Montako osallistujaa? <font color="red">5</font>
+    Montako pitsaa? <font color="red">2</font>
+    Montako palaa per pitsa? <font color="red">6</font>
+    Paloja jää yli: 2
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Montako osallistujaa? <font color="red">14</font>
+    Montako pitsaa? <font color="red">2</font>
+    Montako palaa per pitsa? <font color="red">6</font>
+    Paloja jää yli: 12
+  <% end %>
+  
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'joku tehtävä' } do %>
+
+<% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
 
   <p>
-    muuttujan arvojen vertailu, eka pariohjelmointitehtävä (tunnistetaan paikkoja).
+    Tehtävänannossa tulee ohjelma, joka laskee käyttäjän syöttämien lukujen summan. Ohjelma kysyy lukuja kunnes käyttäjä syöttää negatiivisen luvun. Aina positiivisen luvun yhteydessä.... 
+  </p>
+
+  
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summan lisäksi syötettyjen lukujen keskiarvon.
   </p>
 
 <% end %>
