@@ -2379,7 +2379,7 @@ Kuvaaja.lisaaNumero(arvo);
 <% partial 'partials/exercise', locals: { name: 'Reilut pitsabileet' } do %>
 
   <p>
-    Nea ja Vilma järjestävät reiluja pitsabileitä. Reilut pitsabileet ovat kuin normaalit pitsabileet, mutta reiluissa pitsabileissä kaikki saavat täsmälleen saman määrän pitsapaloja. Tehtävänäsi on kirjoittaa ohjelma, joka laskee ylijäävien pitsan palojen määrän. 
+    Nea ja Vilma järjestävät reiluja pitsabileitä. Reilut pitsabileet ovat kuin normaalit pitsabileet, mutta reiluissa pitsabileissä kaikki saavat täsmälleen saman määrän pitsapaloja. Tehtävänäsi on kirjoittaa ohjelma, joka laskee ylijäävien pitsan palojen määrän.
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -2388,24 +2388,24 @@ Kuvaaja.lisaaNumero(arvo);
     Montako palaa per pitsa? <font color="red">6</font>
     Paloja jää yli: 2
   <% end %>
-  
+
   <% partial 'partials/sample_output' do %>
     Montako osallistujaa? <font color="red">14</font>
     Montako pitsaa? <font color="red">2</font>
     Montako palaa per pitsa? <font color="red">6</font>
     Paloja jää yli: 12
   <% end %>
-  
+
 <% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
 
   <p>
-    Tehtävänannossa tulee ohjelma, joka laskee käyttäjän syöttämien lukujen summan. Ohjelma kysyy lukuja kunnes käyttäjä syöttää negatiivisen luvun. Aina positiivisen luvun yhteydessä.... 
+    Tehtävänannossa tulee ohjelma, joka laskee käyttäjän syöttämien lukujen summan. Ohjelma kysyy lukuja kunnes käyttäjä syöttää negatiivisen luvun. Aina positiivisen luvun yhteydessä....
   </p>
 
-  
+
 
   <p>
     Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summan lisäksi syötettyjen lukujen keskiarvon.
@@ -2413,12 +2413,54 @@ Kuvaaja.lisaaNumero(arvo);
 
 <% end %>
 
-
 <% partial 'partials/exercise', locals: { name: 'Salapaikka ranskassa' } do %>
 
   <p>fofoofo</p>
-  
+
 <% end %>
 
+<% partial 'partials/material_sub_heading' do %>
+  Uusi paras ystäväsi: Crowdsorcerer
+<% end %>
+
+<p>
+  Ohjelmoidessa tarkkaa tehtävänantoa ei yleensä ole, vaan pikemminkin jonkinlainen haluttu lopputulos. Seuraavaksi onkin tarkoitus opetella kehittämään tehtävänantoja itse. Tehtävien luominen auttaa käsittämään prosessia koodaamisen taustalla: onko olennaista toteuttaa tehtävä vaikkapa ehtolauseita käyttäen, vai olisiko jokin muu lähestymistapa parempi. Näiden tehtävänantojen tekeminen auttaa myös kurssin sisältöjen omaksumisessa ja kokonaisuuksien hahmottamisessa.
+</p>
+
+<p>
+  Koodarit toimivat usein yhdessä, joten on hyödyllistä osata lukea toisten koodia. Myös omat ohjelmointitaidot paranevat, kun oppii huomaamaan ja välttämään yleisiä ohjelmointivirheitä. Ohjelman koodi on myös osa sen dokumentaatiota, eli koodia lukemalla oppii ymmärtämään erilaisten ohjelmien toimintaa.
+</p>
+
+<p>
+  Nyt sinulla on myös mahdollisuus saada kurssille juuri sinua kiinnostavia tehtäviä! Alla olevan vempaimen, Crowdsorcererin, avulla voit luoda tehtävänantoja malliratkaisuineen muille kurssilaisille.
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Crowdsorcererin käyttöohjeet' } do %>
+<p>
+  Keksi ohjetta vastaava tehtävä. Tehtävän aiheena voi olla vaikkapa syötteen tulostus tai toistolauseen käyttö. Kirjoita selkeä tehtävänanto, jossa kerrot lyhyesti toteutettavan ohjelman perusidean ja esimerkiksi käytettävät muuttujat. Halutessasi voit ottaa mallia kurssin tehtävänannoista. Tarkoituksena on kuvata ongelma tarpeeksi tarkasti, jotta tehtävän tekijä osaa koodata sille ratkaisun.
+</p>
+
+<p>
+  Kirjoita seuraavaksi tehtävällesi malliratkaisu. Kentässä on valmiiksi annettuna koodipohja, jossa harmaalla taustalla merkittynä ovat rivit, joita et voi muuttaa. Osa koodista, niin kutsuttu tehtäväpohja, tulee tehtävän tekijälle näkyviin. Painamalla rivinumeroiden vieressä olevia neliöitä voit merkitä osan tehtävästä malliratkaisuksi, jolloin nuo rivit eivät näy tehtävän tekijälle.
+</p>
+
+<p>
+  Järjestelmä generoi tekemääsi tehtävää varten automaattisesti testit. Kirjoita niitä varten ohjelmalle annettava syöte ja sen tuottama tuloste niille varattuihin kenttiin. Syöte-tuloste-pareja on oltava vähintään yksi, mutta voit halutessasi keksi useitakin.
+</p>
+
+<p>
+  Anna lopuksi tehtävälle kuvaavat tagit. Vempain ehdottaa usein käytettyjä tageja, mutta voit myös keksiä omasi.
+</p>
+
+<p>
+  Kun lähetät tehtävän, se välitetään palvelimelle, joka tarkastaa tehtävän ja malliratkaisun toimivuuden. Tämä prosessi vie hieman aikaa, joten odotathan kärsivällisesti! Mikäli tehtävässäsi on ongelmia, saat palautteena virheviestin korjaamisen avuksi. Voit lähettää tehtävän uudelleen niin monta kertaa kuin haluat, ja viimeisin hyväksytysti läpimennyt tehtävä annetaan muiden opiskelijoiden arvioitavaksi seuraavalla viikolla.
+</p>
+  <% end %>
+
+<p>
+  Apua en näy! Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä merkkijonosyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
+</p>
+
+<div class='crowdsorcerer-widget' data-assignment='2'></div>
 
 <%= partial 'partials/quiz', locals: { id: '587a99b46b66090004e96c08' } %>
