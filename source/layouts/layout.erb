@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="//2017-ohjelmointi.github.io/cdn/code-states-visualizer.css" />
     <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
 
     <% if build? %>
       <%= partial 'partials/analytics' %>
@@ -76,10 +77,12 @@
 
     <script src='//2017-ohjelmointi.github.io/cdn/code-states-visualizer.js'></script>
     <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         window.initCodeStatesVisualizer();
         window.initTyponator();
+        window.initCrowdsorcerer();
       });
     </script>
   </body>
