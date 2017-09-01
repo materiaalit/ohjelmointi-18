@@ -486,16 +486,42 @@ sudo apt-get install openjfx
 </p>
 
 
+
+<% partial 'partials/material_sub_heading' do %>
+  Analytiikkadatan keräämisestä ja kurssilla tehtävästä tutkimuksesta
+<% end %>
+
 <% partial 'partials/material_sub_sub_heading' do %>
   Analytiikkadatan kerääminen ja arvostelu
 <% end %>
+
+<p>
+  Kurssin aikana tehdyistä tehtävistä kerätään tietoa. Kerätty tieto sisältää materiaalissa olevia kyselyitä, ohjelmointitehtävien vastauksia, sekä kurssimateriaalin käyttöä. Jos et hyväksy tiedon keräämistä, kurssin pisteytyksessä ei voida ottaa näitä suorituksia huomioon. Tallennettu tieto sisältää henkilökohtaisen tunnisteen, jonka perusteella ei voida suoraan päätellä henkilöllisyyttäsi. Tieto ei esimerkiksi siis sisällä nimeäsi tai sähköpostiosoitettasi.
+</p>
 
 <p>
   Varmista että TMC:n asetuksissa (Valikko TMC -> Settings) kohdassa "Send snapshots of your progress for study" on ruksi.  MOOC-suorituksia tai Helsingin yliopiston avoimen yliopiston suorituksia ei arvostella ilman tätä. Jos olet opiskelijana Helsingin yliopistolla ja et halua että työstämistäsi tehtävistä kerätään ajoittaista dataa kurssiarvostelua varten, voit suorittaa kurssin Kumpulassa järjestettävällä erilliskokeella. Analytiikkadataa kerätään vain kurssiin liittyvistä harjoitustehtävistä, ei muista projekteistasi tai muualta koneeltasi.
 </p>
 
 
-<%= partial 'partials/quiz', locals: { id: '587bc4a71b527d0004a7971b' } %>
+<% partial 'partials/material_sub_sub_heading' do %>
+  Kurssilla tehtävästä tutkimuksesta
+<% end %>
+
+<p>
+  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita. Tutkimusdatan hallinnasta vastaa Helsingin yliopiston tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi muut tutkijat. Voit myös pyytää milloin tahansa sinusta kerätyn datan poistamista lähettämällä sähköpostin osoitteeseen arto.hellas@cs.helsinki.fi
+</p>
+
+<p>
+  Työskentelystä kerättyä tietoa käytetään tutkimuksessa jos sallit. Tutkimuksemme päätavoitteena on osaamisen kehittymisen arviointi tekemisen arvioinnin sijaan, mikä mahdollistaisi yksilöllistä osaamista parhaiten kehittävien vinkkien ja tehtävien tarjoamisen. Tutkimustuloksista ei pystytä tunnistamaan yksittäisiä opiskelijoita. Jos et salli kurssin aikana kerättyjen tietojen käyttämistä tutkimuksessa, siitä ei tule minkäänlaisia seuraamuksia.
+</p>
+
+<p>
+  Kurssilla tehdään lisäksi tutkimusta, joka voi vaikuttaa kurssikokemukseen (esim. kurssisisältö). Jos osallistut tutkimukseen, saatat saada esimerkiksi uusia ominaisuuksia materiaaliin. Jos et halua osallistua tutkimukseen, saat kurssin sisällöstä perusversion. Tutkimukseen osallistuminen ei vaikuta loppuarvosanaan.
+</p>
+
+
+<div class="quiznator-plugin" data-quiz-id="59a92ba68858e700042f839f"></div>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -508,42 +534,6 @@ sudo apt-get install openjfx
 </p>
 
 <iframe width="420" height="315" src="//www.youtube.com/embed/sQYq2LISMRU" frameborder="0" allowfullscreen=""></iframe>
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Kurssilla tehtävästä tutkimuksesta
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Suostumus kurssin aikana kerätyn datan käyttöön tutkimuksessa
-<% end %>
-
-<p>
-  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita.
-</p>
-
-<p>
-  Tutkimusdatan hallinnasta vastaa Helsingin yliopiston tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi muut tutkijat. Voit myös pyytää milloin tahansa sinusta kerätyn datan poistamista lähettämällä sähköpostin osoitteeseen arto.hellas@cs.helsinki.fi
-</p>
-
-
-<%= partial 'partials/quiz', locals: { id: '5877e97fd095c40004e4b1a9' } %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Osallistuminen satunnaistettuun kokeeseen
-<% end %>
-
-<p>
-  Kurssilla tehdään tutkimusta, joka voi vaikuttaa kurssikokemukseen (esim. kurssisisältö). Tutkimuksen tavoite on parantaa opetusta. Jos osallistut tutkimukseen, saatat saada esimerkiksi uusia ominaisuuksia materiaaliin. Jos et halua osallistua tutkimukseen, saat kurssin sisällöstä perusversion. Tutkimukseen osallistuminen ei vaikuta loppuarvosanaan.
-</p>
-
-
-<p>
-  TODO: Tähän tulee tutkimukseen osallistumisesta kysyvä elementti.
-</p>
 
 
 
