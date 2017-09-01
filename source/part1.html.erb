@@ -45,10 +45,6 @@
 </p>
 
 <p>
-  TODO: kuva
-</p>
-
-<p>
   Lähdekoodi koostuu lauseista (statement) ja lausekkeista (expression), joita Java-kielessä voidaan lukea rivi riviltä ylhäältä alaspäin ja vasemmalta oikealle. Esimerkiksi tekstin "Hei maailma" tulostuksessa käytetään Java-ohjelmointikielellä lausetta:
 </p>
 
@@ -674,11 +670,6 @@ System.out.println(pintaAla);
 
 <% end %>
 
-
-<p>
-  TODO: quiz, mitkä ovat kuvaavia muuttujan nimiä?
-</p>
-
 <p>
   Muuttujan nimeämistä rajoittavat tietyt ehdot.
 </p>
@@ -825,17 +816,7 @@ Vuodessa on X sekuntia.
 <% end %>
 
 
-<p>
-  TODO: quiz?
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  int eka = 10;
-  int toka = eka + 5;
-  eka = 20;
-
-  System.out.println(toka); // tulostaa 15
-<% end %>
+<div class="quiznator-plugin" data-quiz-id="59a93d858858e700042f83a7"></div>
 
 
 <% partial 'partials/hint', locals: { name: 'Lauseke ja lause' } do %>
@@ -2180,11 +2161,17 @@ if (luku % 4 != 0) {
 <% end %>
 
 <p>
-  toistolause..
+  Toistolause sisältää lausekkeen, jonka perusteella päätellään jatketaanko toistoa, sekä lohkon, joka sisältää toistettavan lähdekoodin. Toistolauseen muoto on seuraava.
 </p>
 
+<% partial 'partials/code_highlight' do %>
+while (lauseke) {
+    // lohkon sisältö
+}
+<% end %>
+
 <p>
-  Yksinkertaisin toiston muoto on ikuinen toisto. Seuraava ohjelma tulostaa merkkijonoa <em>osaan ohjelmoida!</em> ikuisesti eli "äärettömän monta kertaa":
+  Lausekkeen arvon tulee evaluoitua totuusarvoiseksi muuttujaksi. Jos lausekkeen arvoksi asettaa arvon <code>true</code>, toistoa jatketaan ikuisesti. Seuraava ohjelma tulostaa merkkijonoa <em>osaan ohjelmoida!</em> ikuisesti eli "äärettömän monta kertaa":
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2193,13 +2180,8 @@ while (true) {
 }
 <% end %>
 
-
 <p>
-  Komento <code>while (true)</code> saa sen aikaan, että siihen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja -- tässä <code>System.out.println("osaan ohjelmoida!");</code> -- suoritetaan äärettömän monta kertaa.
-</p>
-
-<p>
-  Huomaa, ettei ikuisen toiston sisältävä lause sammu itsestään. Ohjelman sammutus tapahtuu NetBeansissa tulostusikkunan vasemmalla puolella olevaa punaista nappia painamalla.
+  Ikuisen toiston sisältävä ohjelma ei sammu itsestään. Ohjelman sammutus tapahtuu NetBeansissa tulostusikkunan vasemmalla puolella olevaa punaista nappia painamalla.
 </p>
 
 
@@ -2229,7 +2211,7 @@ public class Esimerkki {
 <% end %>
 
 <p>
-  Toistolauseen saa päätettyä komennolla <code>break</code>. Kun tietokone suorittaa komennon <code>break</code>, siirtyy se toistolausetta seuraavan komennon suorittamiseen.
+  Toistolauseen saa päätettyä komennolla <code>break</code>. Kun tietokone suorittaa komennon <code>break</code>, siirtyy se toistolauseen lohkoa seuraavan komennon suorittamiseen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2243,8 +2225,9 @@ while (true) {
     if (komento &lt;= 0) {
         break;
     }
-}
+} // lohko päättyy
 
+// toistolauseen lohkoa seuraava komento
 System.out.println("kiitos ja kuulemiin.");
 <% end %>
 
@@ -2414,48 +2397,5 @@ kiitos ja kuulemiin.
   <p>fofoofo</p>
 
 <% end %>
-
-<% partial 'partials/material_sub_heading' do %>
-  Uusi paras ystäväsi: Crowdsorcerer
-<% end %>
-
-<p>
-  Ohjelmoidessa tarkkaa tehtävänantoa ei yleensä ole, vaan pikemminkin jonkinlainen haluttu lopputulos. Seuraavaksi onkin tarkoitus opetella kehittämään tehtävänantoja itse. Tehtävien luominen auttaa käsittämään prosessia koodaamisen taustalla: onko olennaista toteuttaa tehtävä vaikkapa ehtolauseita käyttäen, vai olisiko jokin muu lähestymistapa parempi. Näiden tehtävänantojen tekeminen auttaa myös kurssin sisältöjen omaksumisessa ja kokonaisuuksien hahmottamisessa.
-</p>
-
-<p>
-  Koodarit toimivat usein yhdessä, joten on hyödyllistä osata lukea toisten koodia. Myös omat ohjelmointitaidot paranevat, kun oppii huomaamaan ja välttämään yleisiä ohjelmointivirheitä. Ohjelman koodi on myös osa sen dokumentaatiota, eli koodia lukemalla oppii ymmärtämään erilaisten ohjelmien toimintaa.
-</p>
-
-<p>
-  Nyt sinulla on myös mahdollisuus saada kurssille juuri sinua kiinnostavia tehtäviä! Alla olevan vempaimen, Crowdsorcererin, avulla voit luoda tehtävänantoja malliratkaisuineen muille kurssilaisille.
-</p>
-
-<% partial 'partials/hint', locals: { name: 'Crowdsorcererin käyttö' } do %>
-<p>
-  Keksi ohjetta vastaava tehtävä. Tehtävän aiheena voi olla vaikkapa syötteen tulostus tai toistolauseen käyttö. Kirjoita selkeä tehtävänanto, jossa kerrot lyhyesti toteutettavan ohjelman perusidean ja esimerkiksi käytettävät muuttujat. Halutessasi voit ottaa mallia kurssin tehtävänannoista. Tarkoituksena on kuvata ongelma tarpeeksi tarkasti, jotta tehtävän tekijä osaa koodata sille ratkaisun.
-</p>
-
-<p>
-  Kirjoita seuraavaksi tehtävällesi malliratkaisu. Kentässä on valmiiksi annettuna koodipohja, jossa harmaalla taustalla merkittynä ovat rivit, joita et voi muuttaa. Osa koodista, niin kutsuttu tehtäväpohja, tulee tehtävän tekijälle näkyviin. Painamalla rivinumeroiden vieressä olevia neliöitä voit merkitä osan tehtävästä malliratkaisuksi, jolloin nuo rivit eivät näy tehtävän tekijälle.
-</p>
-
-<p>
-  Järjestelmä generoi tekemääsi tehtävää varten automaattisesti testit. Kirjoita niitä varten ohjelmalle annettava syöte ja sen tuottama tuloste niille varattuihin kenttiin. Syöte-tuloste-pareja on oltava vähintään yksi, mutta voit halutessasi keksi useitakin.
-</p>
-
-<p>
-  Anna lopuksi tehtävälle kuvaavat tagit. Vempain ehdottaa usein käytettyjä tageja, mutta voit myös keksiä omasi.
-</p>
-
-<p>
-  Kun lähetät tehtävän, se välitetään palvelimelle, joka tarkastaa tehtävän ja malliratkaisun toimivuuden. Tämä prosessi vie hieman aikaa, joten odotathan kärsivällisesti! Mikäli tehtävässäsi on ongelmia, saat palautteena virheviestin korjaamisen avuksi. Voit lähettää tehtävän uudelleen niin monta kertaa kuin haluat, ja viimeisin hyväksytysti läpimennyt tehtävä annetaan muiden opiskelijoiden arvioitavaksi seuraavalla viikolla.
-</p>
-  <% end %>
-
-<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: Ehtolause' } do %>
-  Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä merkkijonosyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
-<% end %>
-<div class='crowdsorcerer-widget' data-assignment='2'></div>
 
 <%= partial 'partials/quiz', locals: { id: '587a99b46b66090004e96c08' } %>
