@@ -2431,7 +2431,7 @@ kiitos ja kuulemiin.
   Nyt sinulla on myös mahdollisuus saada kurssille juuri sinua kiinnostavia tehtäviä! Alla olevan vempaimen, Crowdsorcererin, avulla voit luoda tehtävänantoja malliratkaisuineen muille kurssilaisille.
 </p>
 
-<% partial 'partials/hint', locals: { name: 'Crowdsorcererin käyttöohjeet' } do %>
+<% partial 'partials/hint', locals: { name: 'Crowdsorcererin käyttö' } do %>
 <p>
   Keksi ohjetta vastaava tehtävä. Tehtävän aiheena voi olla vaikkapa syötteen tulostus tai toistolauseen käyttö. Kirjoita selkeä tehtävänanto, jossa kerrot lyhyesti toteutettavan ohjelman perusidean ja esimerkiksi käytettävät muuttujat. Halutessasi voit ottaa mallia kurssin tehtävänannoista. Tarkoituksena on kuvata ongelma tarpeeksi tarkasti, jotta tehtävän tekijä osaa koodata sille ratkaisun.
 </p>
@@ -2453,10 +2453,9 @@ kiitos ja kuulemiin.
 </p>
   <% end %>
 
-<p>
-  Apua en näy! Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä merkkijonosyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
-</p>
-
+<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: Ehtolause' } do %>
+  Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä merkkijonosyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
+<% end %>
 <div class='crowdsorcerer-widget' data-assignment='2'></div>
 
 <%= partial 'partials/quiz', locals: { id: '587a99b46b66090004e96c08' } %>
