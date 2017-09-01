@@ -10,38 +10,26 @@
   Johdanto
 <% end %>
 
-- missä kaikkialla ohjelmointia tehdään
+<p>
+  Ohjelmointi on nykyajan käsityöläistaito ja ohjelmointia työkseen tai harrastuksekseen tekevien määrä on jatkuvasti kasvussa. Ohjelmistojen ja ohjelmien lähdekoodin tallentamispalvelua tarjoava <a href="https://github.com/" target="_blank" norel>GitHub</a> arvioi vuonna 2016 palvelun käyttäjien määräksi yli 20 miljoonaa, mutta -- koska kaikki ohjelmoijat eivät käytä kyseistä palvelua -- ohjelmoijia on todennäköisesti hyvin paljon enemmän. Tämän modernin käsityöläistaidon tarve työelämässä on akuutti -- esimerkiksi Tivi uutisoi 2016 aiheesta otsikolla "<a href="http://www.tivi.fi/Kaikki_uutiset/it-osaaja-paasee-toihin-vaikka-heti-6555159" target="_blank" norel>It-osaaja pääsee töihin vaikka heti</a>. Samalla tiede perustuu yhä enemmän datan analyysissä käytettäviin ohjelmistoihin sekä ohjelmistoalan innovaatioihin. Esimerkiksi meteorologit, fyysikot ja kemistit käyttävät ohjelmistoja ja ohjelmoivat työssään. Myös kasvatustiede ja opetusala yleisemmin hyödyntää yhä enemmän digitalisaation tuomia mahdollisuuksia. 
+</p>
 
-- mihin ohjelmistoja käytetään
+<p>
+  Ohjelmoinnin opettelua harkitseva tietää harvion mikä kaikki yhteiskunnassamme nojautuu ohjelmoijien tuottamiin ohjelmistoihin. Ilman ohjelmointia yhteydenpito, kaupankäynti, matkustaminen, terveydenhuolto ja niin edelleen olisivat yksinkertaisesti heikommalla tasolla. Puhelimet eivät toimisi, verkkopankkeja saatika pankki- ja luottokortteja ei olisi, matkojen varaaminen ja henkilöasiakirjojen käyttäminen ei onnistuisi verkon yli, lääketeollisuus ei pystyisi käymään suuria massoja dataa läpi parannuskeinoja etsimisessä, tiedon hakeminen tapahtuisi sana- ja tietokirjoista ja niin edelleen. <a href="https://en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)" target="_blank" norel>Margaret Hamilton</a> ei olisi myöskään koskaan kirjoittanut ohjelmaa, joka auttoi avaruuteen pääsemisessä ja kuulennossa. 
+</p>
 
-- historiaa
-
-- ketkä ohjelmoivat
-
-
+<p>
+  Tällä kurssilla otat ensiaskeleet ohjelmointiin. Opit kirjoittamaan ohjelmia ja ymmärtämään niiden toimintaa. Kurssin jälkeen katsot yhteiskunnan palveluita myös ohjelmoijan näkökulmasta ja tiedät, että palvelut toimivat (tai ovat rikki!) ohjelmistojen ansiosta.
+</p>
 
 <% partial 'partials/hint', locals: { name: 'Ensimmäisen osan tavoitteet' } do %>
 
-  <p>
-    Tutustumme neljää...
 
-    Muuttujat ja ongelman osa-alueiden sanoittaminen. Tiedon lukeminen. Vertaileminen. Toistaminen.
+  <p>
+    Ensimmäisessä osan jälkeen tunnet ohjelmoinnin peruskäsitteitä sekä niiden toimintaa. Tunnet muuttujat, ehtolauseet, sekä toistolauseet ja osaat kirjoittaa näitä käyttäviä ohjelmia. Ymmärrät ohjelman suoritusjärjestyksen, ja osaat kirjoittaa ohjelmia, jotka lukevat käyttäjältä syötettä. Osaat käsitellä käyttäjän kirjoittamaa syötettä ja tehdä sen perusteella laskentaa. 
   </p>
 
 <% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Ohjelmointi ja leipominen
-<% end %>
-
-<p>
-  Tietokoneohjelmia verrataan usein leipomiseen. Tietokone on aloitteleva leipuri, tietokone-ohjelma kokkikirjasta saatu resepti, ja tietokoneen resurssit -- esimerkiksi näyttö, tietokoneelle tallennettu tiedosto ja verkkokortti -- leipomiseen käytettäviä raaka-aineita. Tietokone noudattaa sille annettua reseptiä säntillisesti askel kerrallaan ilman ymmärrystä tai tietoa hamaan ikuisuuteen asti. Jos reseptissä on kirjoitusvirhe, ei tietokone tiedä miten sen tulee toimia. Tietokone ei myöskään osaa reagoida vaikkapa rikkinäiseen uuniin, ellei resepti kerro täsmällisesti miten rikkinäinen uuni tunnistetaan ja mitä uunin rikkoutuessa tulee tehdä.
-</p>
-
-<p>
-  Aloittelevalla leipurilla ja tietokoneella on kuitenkin todellisuudessa muutamia merkittäviä eroja. Tietokone pystyy suorittamaan miljoonia käskyjä sekunnissa, kun aloittelevalla leipurilla voi mennä yhteen reseptissä olevan käskyn noudattamiseen minuutteja. Toisaalta, aloitteleva leipuri oppii ja kehittyy leipoessaan. Hän voi luovasti kokeilla uusia raaka-aineita ja reseptejä, sekä kehitellä itselleen paremmin sopivia työskentelytapoja. Tietokoneella ei tällaista kehittymiskykyä ole, ellei sitä erikseen -- askel askeleelta -- ole sille annettuun reseptiin kirjoitettu. Tällä kurssilla opit kirjoittamaan tietokoneelle tarkoitettuja reseptejä.
-</p>
 
 
 <% partial 'partials/material_heading' do %>
@@ -2260,8 +2248,6 @@ while (true) {
 System.out.println("kiitos ja kuulemiin.");
 <% end %>
 
-<p>
-  </p>
 
 <p>
   Ylläolevassa esimerkissä toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä syöttää nollan tai negatiivisen luvun, suoritetaan komento <code>break</code>. Tällöin suoritus siirtyy toistolausetta seuraavaan komentoon, joka tulostaa merkkijonon <em>kiitos ja kuulemiin.</em>
@@ -2286,32 +2272,23 @@ kiitos ja kuulemiin.
   </p>
 
   <% partial 'partials/sample_output' do %>
-    syötä luku <font color="red">5</font>
-    syötä luku <font color="red">744</font>
-    syötä luku <font color="red">22</font>
-    syötä luku <font color="red">-1</font>
-    syötä luku <font color="red">4</font>
+    Syötä luku <font color="red">5</font>
+    Syötä luku <font color="red">744</font>
+    Syötä luku <font color="red">22</font>
+    Syötä luku <font color="red">-1</font>
+    Syötä luku <font color="red">4</font>
   <% end %>
 
 <% end %>
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Lämpötiloja' } do %>
-
+<% partial 'partials/exercise', locals: { name: 'Summaaja' } do %>
 
   <p>
-    Saat tehtäväpohjan mukana komponentin nimeltään <code>Kuvaaja</code>. <code>Kuvaaja</code> piirtää sille annetuista luvuista kuvaajan. Lukuja annetaan kuvaajalle näin:
+    Tehtäväpohjassa on toistolausetta käyttävä ohjelma, joka lukee käyttäjältä viisi lukua ja tulostaa niiden summan. Muokkaa ohjelmaa siten, että ohjelma voi lukea lähes rajattoman määrän lukuja: lukeminen tulee lopettaa vasta kun käyttäjä syöttää luvun 0.
   </p>
 
-  <pre class="sh_java">
-Kuvaaja.lisaaNumero(13);
-  </pre>
-
-  <pre class="sh_java">
-int arvo = 10;
-Kuvaaja.lisaaNumero(arvo);
-  </pre>
 <% end %>
 
 
@@ -2319,12 +2296,31 @@ Kuvaaja.lisaaNumero(arvo);
 
 
   <p>
-    Lue lukuja kunnes käyttäjä syöttää nollan tai negatiivisen luvun. Tämän jälkeen ohjelma tulostaa suurimman syötetyn luvun.
+    Toteuta tehtäväpohjassa olevaan ohjelmaan toiminnallisuus, joka lukee lukuja kunnes käyttäjä syöttää nollan. Ohjelma pitää kirjaa suurimmasta syötetystä luvusta, ja tulostaa sen kun lukujen lukeminen lopetetaan.
   </p>
 
+  <% partial 'partials/code_highlight' do %>
+    // kannattanee harkita seuraavanlaista runkoa:
+    // 1. Luodaan lukemiseen tarkoitettu Scanner-apuväline
+    // 2. Luodaan muuttuja, joka pitää kirjaa suurimmasta luvusta
+    // 3. Luodaan toistolause, jossa luetaan käyttäjältä lukuja.
+    // 3.1. Toistolauseesta poistutaan jos käyttäjä syöttää luvun 0.
+    // 3.2. Jos käyttäjän syöttämä luku on suurempi kuin suurimmasta luvusta
+    //      kirjaa pitävän muuttujan arvo, asetetaan luettu suurimmaksi
+    // 4. Tulostetaan lopuksi suurin luku 
+    Scanner lukija = new Scanner(System.in);
+    int suurin = 0;
+
+    // Toteuta tähän kohta 3 ja sen alikohdat
+
+    System.out.println("Suurin syötetty luku oli " + suurin);
+  <% end %>
+
+  <p>
+    Voit olettaa ohjelmaa tehdessäsi, että käyttäjä syöttää aina vähintään luvun 0.   
+  </p>
+  
 <% end %>
-
-
 
 
 
