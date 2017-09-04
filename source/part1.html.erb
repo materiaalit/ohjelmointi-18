@@ -2,7 +2,7 @@
   title: Osa 1
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -121,12 +121,44 @@ public class Esimerkki {
   Alla on kurssin ensimmäinen ohjelmointitehtävä. Ohjelmointitehtävät tehdään kurssilla käytössä olevassa Test My Code -ohjelmointiympäristössä, mutta tehtävänannot ovat kurssimateriaalissa. Saat tehtävänannon auki klikkaamalla alla olevaa otsikkoa "Ada Lovelace":
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Ada Lovelace' } do %>
+
+<% partial 'partials/hint', locals: { name: 'Ohjelmoinnin aloittaminen' } do %>
 
   <p>
-    TODO:
-    mitä piti tehdä, että TMC lataa tehtävät
+    Ohjelmoinnin aloittamiseen tarvitset seuraavat asiat.
   </p>
+
+  <ol>
+    <li>
+      Käyttäjätunnuksen kurssilla käytettyyn TMC-järjestelmään (käytä käyttäjätunnuksena opiskelijanumeroasi).
+    </li>
+    <li>
+      Javan (Java JDK).
+    </li>
+    <li>
+      NetBeans with TMC-ohjelmointiympäristön.
+    </li>
+  </ol>
+
+  <p>
+    Edellisten tekemiseen ja asentamiseen löytyy ohjeet kurssin Johdannosta.
+  </p>
+
+  <p>
+    Seuraavalla videolla näytetään miten tehtävien tekeminen ja palauttaminen NetBeansilla ja TMC:llä tapahtuu. Video perustuu hieman aiempaan kurssiin, joten tehtävä ei ole täysin identtinen nykyisen kurssin ensimmäisen tehtävän kanssa.
+  </p>
+
+  <p>
+    Toisin kuin videolla, tällä kurssilla palvelimen osoite on <code>https://tmc.mooc.fi/org/hy/courses/243</code> ja kurssin tunnus on <code>hy-ohpe-s17</code>.
+  </p>
+
+  <iframe width="420" height="315" src="//www.youtube.com/embed/sQYq2LISMRU" frameborder="0" allowfullscreen=""></iframe>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Ada Lovelace' } do %>
+
 
   <p>
     Tehtäväpohjassa on seuraavanlainen ohjelmarunko:
@@ -939,6 +971,41 @@ muuttujan x arvo on: 10
 y on 5 ja z on 6
 <% end %>
 
+<% partial 'partials/pattern', locals: { name: 'Ratkaisumalli :: Laskeminen' } do %>
+
+  <p>
+    Samankaltaiset ongelmat toistuvat ohjelmoinnissa. Tämän takia ohjelmoijan on hyvä opetella ratkaisumalleja, joita voi soveltaa ohjelmia luodessa. Ensimmäinen ratkaisumalli ohjelmaan, jonka tehtävänä on tehdä laskentaa muuttujilla on seuraavanlainen.
+  </p>
+
+  <ol>
+    <li>
+      Määrittele ohjelman syötteet ja luo niitä varten muuttujat. Ohjelman syötteitä ovat laskemisessa käytettävät arvot. Syötteet tunnistaa tyypillisesti ongelma-alueen kuvauksesta.
+    </li>
+    <li>
+      Selvitä tehtävä laskuoperaatio ja luo laskuoperaation tulokselle muuttuja. Tee ohjelman syötteiden perusteella lasku, jonka arvo asetetaan laskuoperaation tulokselle varattuun muuttujaan. Myös tehtävän laskuoperaation tunnistaa ongelma-alueen kuvauksesta.
+    </li>
+    <li>
+      Tulosta laskuoperaation tulos.
+    </li>
+  </ol>
+
+  <p>
+    Esimerkiksi tehtävän <em>Tee ohjelma, jonka avulla voidaan laskea kahden kokonaisluvun summa. Ohjelman alussa määritellään kaksi muuttujaa, jotka sisältävät summattavat luvut. Voit tarvittaessa käyttää myös muita muuttujia.</em> ratkaisumalli on seuraava.
+  </p>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    // 1. määritellään syötteet ja luodaan niitä varten muuttujat
+    int eka = 1;
+    int toka = 2;
+    
+    // 2. selvitetään laskuoperaatio ja luodaan laskuoperaation tulokselle muuttuja
+    int summa = eka + toka;
+
+    // 3. tulostetaan laskuoperaation tulos
+    System.out.println("Lukujen " + eka + " ja " + toka + " summa on " + summa);  <% end %>
+    
+<% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Yhteenlasku' } do %>
@@ -2315,6 +2382,12 @@ kiitos ja kuulemiin.
   Ohjelmoinnin perusteiden ensimmäinen osa käsitteli ohjelmoinnin ja tietokoneiden toiminnan kannalta oleellisia ydinasioita. Näitä ovat muuttujat ja tieto, laskeminen, syötteen käsittely ja lukeminen, vertailu ja päätösten tekeminen sekä toistaminen. Alla on vielä muutamia kertaustehtäviä aiheeseen liittyen.
 </p>
 
+<p>
+  <me>
+    Alla olevissa kertaustehtävissä ei ole automaattisia testejä, joilta saisit palautetta ohjelmasi toiminnasta. Kokeile aina ennen tehtävän palauttamista, että ohjelmasi toimii toivotusti.
+  </me>
+</p>
+
 
 <% partial 'partials/exercise', locals: { name: 'Työntekijän eläkevakuutus' } do %>
 
@@ -2365,6 +2438,7 @@ kiitos ja kuulemiin.
     Montako osallistujaa? <font color="red">5</font>
     Montako pitsaa? <font color="red">2</font>
     Montako palaa per pitsa? <font color="red">6</font>
+    
     Paloja jää yli: 2
   <% end %>
 
@@ -2372,6 +2446,7 @@ kiitos ja kuulemiin.
     Montako osallistujaa? <font color="red">14</font>
     Montako pitsaa? <font color="red">2</font>
     Montako palaa per pitsa? <font color="red">6</font>
+    
     Paloja jää yli: 12
   <% end %>
 
@@ -2381,21 +2456,34 @@ kiitos ja kuulemiin.
 <% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
 
   <p>
-    Tehtävänannossa tulee ohjelma, joka laskee käyttäjän syöttämien lukujen summan. Ohjelma kysyy lukuja kunnes käyttäjä syöttää negatiivisen luvun. Aina positiivisen luvun yhteydessä....
+    Tehtävänannossa tulee käyttäjän syöttämien lukujen summan laskeva ohjelma. Ohjelma kysyy lukuja kunnes käyttäjä syöttää nollan. Tämän jälkeen lukujen lukeminen loppuu, ja ohjelma tulostaa lukujen summan luvun.
   </p>
 
-
-
   <p>
-    Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summan lisäksi syötettyjen lukujen keskiarvon.
+    Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summa lisäksi syötettyjen lukujen keskiarvon.
   </p>
 
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Salapaikka ranskassa' } do %>
 
-  <p>fofoofo</p>
+  <p>
+    Kameralta kuvien kopioimiseen tarkoitetun ohjelmiston toteuttaja löysi ohjelmastaan virheen, jonka lopputulos näkyy tehtäväpohjassa olevan ohjelman näyttämässä kuvassa. Ohjelmiston toteuttaja kertoo seuraavaa.
+  </p>
+  
+  <p>
+    "Tämä virhe oli aika harmittava. Se muutti kaikki siniset ja vihreät väriarvot pelkäksi kohinaksi, joten niistä ei ole mitään iloa eikä niitä saa koskaan takaisin kuvaan. Lisäksi punaisen värin määrä jokaisessa pikselissä jakautui noin kymmenellä kopioinnin yhteydessä, joten kuvan punainen väri on aivan liian tumma."
+  </p>
+
+  <p>
+    Selvitä kopiointiohjelmiston mitä kuvassa näkyy ja mistä kuva on otettu. Tietokoneella kuvatiedostoja käsitellään yleensä <a href="https://fi.wikipedia.org/wiki/RGB-v%C3%A4rimalli" target="_blank" norel>RGB-värimallin</a> kautta. Tässä tapauksessa jokaisen värin arvo on välillä 0-1, ja jokainen väriarvo esitetään desimaalilukuna.
+  </p>
+    
 
 <% end %>
+
+
+
+<%= partial 'partials/quiz', locals: { id: '59ad9e2c98b5730004cda2af' } %>
 
 <%= partial 'partials/quiz', locals: { id: '587a99b46b66090004e96c08' } %>
