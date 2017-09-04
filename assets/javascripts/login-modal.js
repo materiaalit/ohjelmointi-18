@@ -35,8 +35,19 @@ class LoginModal {
 
     this.initPheromones();
     this.initLogger();
+
+    this.getUserGroup('typonator_study_ohpe_f17');
   }
 
+  getUserGroup(study) {
+    fetch('https://ab.testmycode.io/api/v0/ab/' + study + '/group')
+      .then(function(response) {
+        if(parseInt(response.text()) == 1) {
+	  window.initTyponator();
+	}
+      });
+  }
+    
   initPheromones(){
     const { username } = client.getUser();
 
