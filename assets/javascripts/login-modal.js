@@ -41,14 +41,12 @@ class LoginModal {
 
   getUserGroup() {
     const user = client.getUser();
+    console.log(user);  
 
-    fetch('https://ab-studio.testmycode.io/api/v0/ab_studies/typonator_s17_ohpe/group', {
-      headers: {
-        accessToken: user.accessToken
-      }
-    }).then(function(response) {
-      console.log(response);	      
-      if(parseInt(response.text()) == 1) {
+    fetch(`https://ab-studio.testmycode.io/api/v0/ab_studies/typonator_s17_ohpe/group?oauth_token=${user.accessToken}`).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      if(parseInt(data.group) == 1) {
         window.initTyponator();
       }
     });
