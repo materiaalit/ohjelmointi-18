@@ -7,30 +7,14 @@ function getCourseName() {
   return store.get('tmc.course');
 }
 
-function getOhpeOhjaKesa17Config() {
+function getOhpeSyksy17Config() {
   return {
-    courseId: '214',
-    courseName: 'Ohjelmoinnin perusteet ja jatkokurssi',
+    courseId: '243',
+    courseName: 'Ohjelmoinnin perusteet',
     exerciseGroups: {
-      'Osa 1': ['01.05.2017 16:00', '16.05.2017 23:59', 'osa01-']
+      'Osa 1': ['05.09.2017 16:00', '11.09.2017 23:59', 'osa01-']
     },
   }
-}
-
-function getOhjaConfig() {
-  return {
-    courseId: '208',
-    courseName: 'Ohjelmoinnin jatkokurssi',
-    exerciseGroups: {
-      'Osa 8': ['10.03.2017 05:00', '17.03.2017 12:05', 'osa08-'],
-      'Osa 9': ['13.03.2017 18:00', '24.03.2017 12:05', 'osa09-'],
-      'Osa 10': ['20.03.2017 18:00', '31.03.2017 12:05', 'osa10-'],
-      'Osa 11': ['27.03.2017 20:00', '07.04.2017 12:05', 'osa11-'],
-      'Osa 12': ['03.04.2017 22:00', '21.04.2017 12:05', 'osa12-'],
-      'Osa 13': ['11.04.2017 10:00', '28.04.2017 12:05', 'osa13-'],
-      'Osa 14': ['18.04.2017 10:00', '05.05.2017 12:05', 'osa14-']
-    }
-  };
 }
 
 function getHyConfig() {
@@ -76,20 +60,14 @@ function getConfig() {
   const courseName = getCourseName();
 
   switch(courseName) {
-    case 'k2017-ohpe':
-      return getHyConfig();
+    case 'hy-ohpe-s17':
+      return getOhpeSyksy17Config();
       break;
-    case '2017-ohjelmointi':
-      return getMoocConfig();
-      break;
-    case 'ohja-k2017':
-      return getOhjaConfig();
-      break;
-    case 'hy-ohpe-ja-ohja-kesa2017':
-      return getOhpeOhjaKesa17Config();
+    case 'hy-ohja-s17':
+      return getOhpeSyksy17Config();
       break;
     default:
-      return getMoocConfig();
+      return getOhpeSyksy17Config();
   }
 }
 
