@@ -41,7 +41,6 @@ class LoginModal {
 
   getUserGroup() {
     const user = client.getUser();
-    console.log(user);  
 
     fetch(`https://ab-studio.testmycode.io/api/v0/ab_studies/typonator_s17_ohpe/group?oauth_token=${user.accessToken}`).then(function(response) {
       return response.json();
