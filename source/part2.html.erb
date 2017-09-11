@@ -513,6 +513,52 @@ Summa: 9
 
 
 <% partial 'partials/material_heading' do %>
+  Uusi ystäväsi: Crowdsorcerer
+<% end %>
+
+<p>
+  Ohjelmoidessa tarkkaa tehtävänantoa ei yleensä ole, vaan pikemminkin jonkinlainen haluttu lopputulos. Seuraavaksi onkin tarkoitus opetella kehittämään tehtävänantoja itse. Tehtävien luominen auttaa käsittämään prosessia koodaamisen taustalla: onko olennaista toteuttaa tehtävä vaikkapa ehtolauseita käyttäen, vai olisiko jokin muu lähestymistapa parempi. Näiden tehtävänantojen tekeminen auttaa myös kurssin sisältöjen omaksumisessa ja kokonaisuuksien hahmottamisessa.
+</p>
+
+<p>
+  Koodarit toimivat usein yhdessä, joten on hyödyllistä osata lukea toisten koodia. Myös omat ohjelmointitaidot paranevat, kun oppii huomaamaan ja välttämään yleisiä ohjelmointivirheitä. Ohjelman koodi on myös osa sen dokumentaatiota, eli koodia lukemalla oppii ymmärtämään erilaisten ohjelmien toimintaa.
+</p>
+
+<p>
+  Nyt sinulla on myös mahdollisuus saada kurssille juuri sinua kiinnostavia tehtäviä! Alla olevan vempaimen, Crowdsorcererin, avulla voit luoda tehtävänantoja malliratkaisuineen muille kurssilaisille.
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Crowdsorcererin käyttö' } do %>
+  <p>
+    Keksi ohjetta vastaava tehtävä. Tehtävän aiheena voi olla vaikkapa syötteen tulostus tai toistolauseen käyttö. Kirjoita selkeä tehtävänanto, jossa kerrot lyhyesti toteutettavan ohjelman perusidean ja esimerkiksi käytettävät muuttujat. Halutessasi voit ottaa mallia kurssin tehtävänannoista. Tarkoituksena on kuvata ongelma tarpeeksi tarkasti, jotta tehtävän tekijä osaa koodata sille ratkaisun.
+  </p>
+
+  <p>
+    Kirjoita tämän jälkeen tehtävälle malliratkaisu. Lähdekoodikentässä on valmiiksi annettuna koodipohja, jossa harmaalla taustalla merkittynä ovat rivit, joita et voi muuttaa. Osa koodista, niin kutsuttu tehtäväpohja, tulee tehtävän tekijälle näkyviin. Painamalla rivinumeroiden vieressä olevia neliöitä voit merkitä osan tehtävästä malliratkaisuksi, jolloin nuo rivit eivät näy tehtävän tekijälle. Tehtäväpohjaksi tulee ne rivit, joita et merkitse siniseksi. Painamalla "Nollaa malliratkaisu" -nappia saat palautettua malliratkaisun sen alkuperäiseen tilaan.
+  </p>
+
+  <p>
+    Toteuttamasi malliratkaisun toimivuus tarkistetaan testien avulla. Sinä määrität, miten malliratkaisusi pitäisi toimia tietyssä tilanteessa, testit toteuttavat tämän tilanteen, ja kertovat, toimiko ohjelma kuten piti. Hyvin usein ohjelmat toimivat niin, että käyttäjältä pyydetään jotain tietoa, jota ohjelma prosessoi, minkä jälkeen ohjelma palauttaa käyttäjälle uutta tietoa. Tällöin syötteellä tarkoitetaan käyttäjältä pyydettyä tietoa, ja tuloksella ohjelman palauttamaa tietoa. Tehdessäsi tehtävää, kirjoita malliratkaisun testeille syöte ja odotettu tulos niille varattuihin kenttiin. Kun lähetät tehtävän, malliratkaisua testataan antamallasi syötteellä, ja ohjelman antamaa tulosta verrataan määrittämääsi tulokseen. Jos ohjelman tuloste ei sisällä määrittämääsi tulosta, kertoo Crowdsorcerer, miten tulokset erosivat toisistaan. Syöte-tuloste-pareja on oltava vähintään yksi, mutta kannattaa keksiä useampia.
+  </p>
+
+  <p>
+    Anna lopuksi tehtävälle kuvaavat tagit. Vempain ehdottaa usein käytettyjä tageja, mutta voit myös keksiä omasi.
+  </p>
+
+  <p>
+    Kun lähetät tehtävän, se välitetään palvelimelle, joka tarkastaa tehtävän ja malliratkaisun toimivuuden. Tämä prosessi vie hieman aikaa, joten odotathan kärsivällisesti! Mikäli tehtävässäsi on ongelmia, saat palautteena virheviestin korjaamisen avuksi. Voit lähettää tehtävän uudelleen niin monta kertaa kuin haluat, ja viimeisin hyväksytysti läpimennyt tehtävä annetaan muiden opiskelijoiden arvioitavaksi seuraavalla viikolla.
+  </p>
+<% end %>
+
+<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: Ehtolause' } do %>
+  Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä kokonaislukusyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
+<% end %>
+
+<div class='crowdsorcerer-widget' data-assignment='5'></div>
+
+
+
+<% partial 'partials/material_heading' do %>
   Toistolause
 <% end %>
 
@@ -2564,55 +2610,9 @@ Kiitos!
 
 <% end %>
 
-
-
 <p>
   Toinen osio päättyy tähän. Jos mietit minkälaisten pulmien kanssa painit viime osion alussa ja minkälaisia pulmia saat jo nyt ratkottua, huomaat hyvin todennäköisesti kehitystä. Ohjelmoinnin oppiminen on harjoittelua ja virheitä täynnä oleva tie, jonka ensimmäiset askeleet olet jo ottanut. Huumorimielessä joku voisi sanoa, että olet tehnyt myös varmasti jo ensimmäisen virheen, eli päättänyt aloittaa ohjelmoinnin opiskelun.
 </p>
-
-<% partial 'partials/material_heading' do %>
-  Uusi ystäväsi: Crowdsorcerer
-<% end %>
-
-<p>
-  Ohjelmoidessa tarkkaa tehtävänantoa ei yleensä ole, vaan pikemminkin jonkinlainen haluttu lopputulos. Seuraavaksi onkin tarkoitus opetella kehittämään tehtävänantoja itse. Tehtävien luominen auttaa käsittämään prosessia koodaamisen taustalla: onko olennaista toteuttaa tehtävä vaikkapa ehtolauseita käyttäen, vai olisiko jokin muu lähestymistapa parempi. Näiden tehtävänantojen tekeminen auttaa myös kurssin sisältöjen omaksumisessa ja kokonaisuuksien hahmottamisessa.
-</p>
-
-<p>
-  Koodarit toimivat usein yhdessä, joten on hyödyllistä osata lukea toisten koodia. Myös omat ohjelmointitaidot paranevat, kun oppii huomaamaan ja välttämään yleisiä ohjelmointivirheitä. Ohjelman koodi on myös osa sen dokumentaatiota, eli koodia lukemalla oppii ymmärtämään erilaisten ohjelmien toimintaa.
-</p>
-
-<p>
-  Nyt sinulla on myös mahdollisuus saada kurssille juuri sinua kiinnostavia tehtäviä! Alla olevan vempaimen, Crowdsorcererin, avulla voit luoda tehtävänantoja malliratkaisuineen muille kurssilaisille.
-</p>
-
-<% partial 'partials/hint', locals: { name: 'Crowdsorcererin käyttö' } do %>
-  <p>
-    Keksi ohjetta vastaava tehtävä. Tehtävän aiheena voi olla vaikkapa syötteen tulostus tai toistolauseen käyttö. Kirjoita selkeä tehtävänanto, jossa kerrot lyhyesti toteutettavan ohjelman perusidean ja esimerkiksi käytettävät muuttujat. Halutessasi voit ottaa mallia kurssin tehtävänannoista. Tarkoituksena on kuvata ongelma tarpeeksi tarkasti, jotta tehtävän tekijä osaa koodata sille ratkaisun.
-  </p>
-
-  <p>
-    Kirjoita tämän jälkeen tehtävälle malliratkaisu. Lähdekoodikentässä on valmiiksi annettuna koodipohja, jossa harmaalla taustalla merkittynä ovat rivit, joita et voi muuttaa. Osa koodista, niin kutsuttu tehtäväpohja, tulee tehtävän tekijälle näkyviin. Painamalla rivinumeroiden vieressä olevia neliöitä voit merkitä osan tehtävästä malliratkaisuksi, jolloin nuo rivit eivät näy tehtävän tekijälle. Tehtäväpohjaksi tulee ne rivit, joita et merkitse siniseksi. Painamalla "Nollaa malliratkaisu" -nappia saat palautettua malliratkaisun sen alkuperäiseen tilaan.
-  </p>
-
-  <p>
-    Toteuttamasi malliratkaisun toimivuus tarkistetaan testien avulla. Sinä määrität, miten malliratkaisusi pitäisi toimia tietyssä tilanteessa, testit toteuttavat tämän tilanteen, ja kertovat, toimiko ohjelma kuten piti. Hyvin usein ohjelmat toimivat niin, että käyttäjältä pyydetään jotain tietoa, jota ohjelma prosessoi, minkä jälkeen ohjelma palauttaa käyttäjälle uutta tietoa. Tällöin syötteellä tarkoitetaan käyttäjältä pyydettyä tietoa, ja tuloksella ohjelman palauttamaa tietoa. Tehdessäsi tehtävää, kirjoita malliratkaisun testeille syöte ja odotettu tulos niille varattuihin kenttiin. Kun lähetät tehtävän, malliratkaisua testataan antamallasi syötteellä, ja ohjelman antamaa tulosta verrataan määrittämääsi tulokseen. Jos ohjelman tuloste ei sisällä määrittämääsi tulosta, kertoo Crowdsorcerer, miten tulokset erosivat toisistaan. Syöte-tuloste-pareja on oltava vähintään yksi, mutta kannattaa keksiä useampia.
-  </p>
-
-  <p>
-    Anna lopuksi tehtävälle kuvaavat tagit. Vempain ehdottaa usein käytettyjä tageja, mutta voit myös keksiä omasi.
-  </p>
-
-  <p>
-    Kun lähetät tehtävän, se välitetään palvelimelle, joka tarkastaa tehtävän ja malliratkaisun toimivuuden. Tämä prosessi vie hieman aikaa, joten odotathan kärsivällisesti! Mikäli tehtävässäsi on ongelmia, saat palautteena virheviestin korjaamisen avuksi. Voit lähettää tehtävän uudelleen niin monta kertaa kuin haluat, ja viimeisin hyväksytysti läpimennyt tehtävä annetaan muiden opiskelijoiden arvioitavaksi seuraavalla viikolla.
-  </p>
-<% end %>
-
-<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: Ehtolause' } do %>
-  Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä merkkijonosyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
-<% end %>
-
-<div class='crowdsorcerer-widget' data-assignment='2'></div>
 
 
 
