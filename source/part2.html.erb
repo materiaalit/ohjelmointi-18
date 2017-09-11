@@ -18,7 +18,11 @@
 <% partial 'partials/hint', locals: { name: 'Toisen osan tavoitteet' } do %>
 
   <p>
-    Ymmärtää vuokaavioiden idean ja osaa piirtää vuokaavioita annetusta ohjelmasta. Hahmottaa ja tunnistaa ohjelman käyttämien muuttujien tilan ohjelman eri suoritusvaiheessa. Osaa soveltaa toistolausetta ohjelmointiongelmissa. Tuntee käsitteet metodi ja parametri ja osaa luoda parametrillisia metodeja. 
+    Ymmärtää vuokaavioiden idean ja osaa piirtää vuokaavioita annetusta ohjelmasta. Hahmottaa ja tunnistaa ohjelman käyttämien muuttujien tilan ohjelman eri suoritusvaiheessa. Osaa soveltaa toistolausetta ohjelmointiongelmissa. Tuntee käsitteet metodi, parametri ja kutsupino. Osaa luoda ja käyttää parametrillisia metodeja. 
+  </p>
+
+  <p>
+    Huomaa, että tästä lähtien tehtävissä saattaa olla useampia osia. Jokainen osa lasketaan yksittäiseksi tehtäväksi, eli esimerkiksi tehtävä 6 vastaa kahta yksiosaista tehtävää. Useampiosaiset tehtävät voi tyypillisesti palauttaa myös vaikka tehtävä ei olisi vielä valmis -- tällöin valmiista osista lisätään pisteet kirjanpitoon.
   </p>
   
 <% end %>
@@ -927,7 +931,7 @@ System.out.println("kiitos ja kuulemiin.");
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Mihin ja mistä?' } do %>
+<% partial 'partials/exercise', locals: { name: 'Mihin ja mistä? (2 osaa)' } do %>
 
   <p>
     Tämä tehtävä on ensimmäinen kaksiosainen tehtävä. Kun teet molemmat osat, saat tehtävästä kaksi tehtäväpistettä. Voit palauttaa tehtävän myös siten, että vain ensimmäinen osa on tehtynä.
@@ -992,46 +996,6 @@ System.out.println("kiitos ja kuulemiin.");
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Useamman luvun summa' } do %>
-
-  <p>
-    Tee ohjelma, joka lukee käyttäjältä lukuja ja tulostaa niiden summan. Ohjelma lopettaa kyselemisen kun syötetään luku 0. Käytä seuraavaa pohjaa, jonka saat myös palautusautomaatilta:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Scanner lukija = new Scanner(System.in);
-
-int summa = 0;
-System.out.print("Anna lukuja, nolla lopettaa: ");
-while (true) {
-    int luettu = Integer.parseInt(lukija.nextLine());
-    if (luettu == 0) {
-        break;
-    }
-
-    // TEE JOTAIN TÄÄLLÄ
-
-}
-
-System.out.println("Summa lopussa: " + summa);
-  <% end %>
-
-  <p>
-    Ohjelman tulee toimia seuraavasti:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna lukuja, nolla lopettaa:
-<font color="red">3</font>
-<font color="red">2</font>
-<font color="red">1</font>
-<font color="red">1</font>
-<font color="red">0</font>
-Summa: 7
-  <% end %>
-
-<% end %>
-
 
 <% partial 'partials/material_sub_heading' do %>
   Esimerkki: Laskin
@@ -1082,6 +1046,10 @@ System.out.println("kiitos ja kuulemiin.");
   </p>
 
   <p>
+    Tässä tehtävässä ei ole TMC:n puolelta testejä, joten pääset testaamaan sovellusta itse. Kun mietit minkälaisilla syötteillä ohjelma toimii toivotusti, erilaisia toimintoja on 3. Ohjelmaa tulee siis testata ainakin kolmella erilaisella syötteellä, jonka lisäksi lienee hyvä tarkastaa ohjelman toiminta hyvin pienillä (esim. -10000) ja hyvin suurilla syötteillä (10000).
+  </p>
+
+  <p>
     Alla vielä toivottu toiminnallisuus vuokaaviona.
   </p>
 
@@ -1104,6 +1072,46 @@ System.out.println("kiitos ja kuulemiin.");
   
 <% end %>
 
+
+<% partial 'partials/exercise', locals: { name: 'Useamman luvun summa' } do %>
+
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä lukuja ja tulostaa niiden summan. Ohjelma lopettaa kyselemisen kun syötetään luku 0. Käytä seuraavaa pohjaa, jonka saat myös palautusautomaatilta:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Scanner lukija = new Scanner(System.in);
+
+    int summa = 0;
+    System.out.print("Anna lukuja, nolla lopettaa: ");
+    while (true) {
+        int luettu = Integer.parseInt(lukija.nextLine());
+        if (luettu == 0) {
+            break;
+        }
+
+        // TEE JOTAIN TÄÄLLÄ
+
+    }
+
+    System.out.println("Summa lopussa: " + summa);
+  <% end %>
+
+  <p>
+    Ohjelman tulee toimia seuraavasti:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Anna lukuja, nolla lopettaa:
+    <font color="red">3</font>
+    <font color="red">2</font>
+    <font color="red">1</font>
+    <font color="red">1</font>
+    <font color="red">0</font>
+    Summa: 7
+  <% end %>
+
+<% end %>
 
 
 
@@ -1729,7 +1737,7 @@ System.out.println("kiitos ja kuulemiin.");
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Silmukat, lopetus ja muistaminen' } do %>
+<% partial 'partials/exercise', locals: { name: 'Silmukat, lopetus ja muistaminen (4 osaa)' } do %>
 
   <p>
     Seuraavassa tehtävässä tehdään yksi ohjelma, mutta ohjelman rakentaminen tapahtuu hyvin pienissä paloissa. Tämä on ehdottoman suositeltava tapa aina kun ohjelmoit.
@@ -2424,7 +2432,11 @@ public static void summa(int eka, int toka) {
 <% partial 'partials/exercise', locals: { name: 'Jakolasku' } do %>
 
   <p>
-    Kirjoita metodi <code>public static void jakolasku(int osoittaja, int nimittaja)</code>, joka tulostaa osoittajan ja nimittäjän jakolaskun tuloksen (<code>osoittaja / nimittaja</code>). Muistuta mieleen mitä omituisuuksia jakolaskuihin liittyi..
+    Kirjoita metodi <code>public static void jakolasku(int osoittaja, int nimittaja)</code>, joka tulostaa osoittajan ja nimittäjän jakolaskun tuloksen (<code>osoittaja / nimittaja</code>). Muistuta mieleen mitä omituisuuksia jakolaskuihin liittyi.
+  </p>
+
+  <p>
+    TMC:n mukana tulevat testit eivät testaa metodin toiminnan oikeellisuutta. Tässä -- kuten yleensäkin -- on hyvä testata metodin toimintaa itse. Ennen kuin testaat metodia, mieti minkälaisilla syötteillä pitäisi tulla minkälaisia tulostuksia ja kokeile ainakin kolmea erilaista vaihtoehtoa. Testaa myös, että "ei tasan" menevät jakolaskut toimivat oikein.
   </p>
 <% end %>
 
@@ -2530,13 +2542,19 @@ public static void summa(int eka, int toka) {
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Tulostelua' } do %>
+<% partial 'partials/exercise', locals: { name: 'Tulostelua (4 osaa)' } do %>
   
-    <h4 class="req">Tähtien tulostus</h4>
-    <p>Tee metodi <code>tulostaTahtia</code>,
-      joka tulostaa annetun määrän tähtiä ja rivinvaihdon.</p>
-    <p>Tee metodi seuraavaan runkoon:</p>
-    <% partial 'partials/code_highlight' do %>
+  <h2>Tähtien tulostus</h2>
+  
+  <p>
+    Tee metodi <code>tulostaTahtia</code>, joka tulostaa annetun määrän tähtiä ja rivinvaihdon.
+  </p>
+  
+  <p>
+    Tee metodi seuraavaan runkoon:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
 public static void tulostaTahtia(int maara) {
     // yhden tähden saat tulostettua komennolla
     // System.out.print("*");
@@ -2550,74 +2568,119 @@ public static void main(String[] args) {
     tulostaTahtia(3);
     tulostaTahtia(9);
 }
-    <% end %>
-    <p>Ohjelman tulostus:</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
 *****
 ***
 *********
-    <% end %>
-    <p><b>huom:</b> moniosaisen tehtävät voi palauttaa palvelimelle (painamalla testausnapin oikealla puolella olevaa nappia) vaikka kaikki osat eivät olisikaan tehty. Palvelin valittelee tällöin tekemättömien osien testeistä, tehdyt osat palvelin kirjaa. </p>
+  <% end %>
 
-    <h4>Neliön tulostus</h4>
-    <p>Tee metodi <code>tulostaNelio(int sivunpituus)</code> joka tulostaa neliön käyttäen <code>tulostaTahtia</code>-metodia. Siis esimerkiksi kutsu <code>tulostaNelio(4)</code> tulostaa seuraavaa:</p>
-    <% partial 'partials/sample_output' do %>
+  <p>
+    <b>huom:</b> moniosaisen tehtävät voi palauttaa palvelimelle (painamalla testausnapin oikealla puolella olevaa nappia) vaikka kaikki osat eivät olisikaan tehty. Palvelin valittelee tällöin tekemättömien osien testeistä, tehdyt osat palvelin kirjaa.
+  </p>
+
+  <h2>Neliön tulostus</h2>
+  
+  <p>
+    Tee metodi <code>tulostaNelio(int sivunpituus)</code> joka tulostaa neliön käyttäen <code>tulostaTahtia</code>-metodia. Siis esimerkiksi kutsu <code>tulostaNelio(4)</code> tulostaa seuraavaa:
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
 ****
 ****
 ****
 ****
-    <% end %>
-    <p><b>Huom: </b> tehtävässä ei riitä että tulostus näyttää oikealta, tulostaNelio-metodin sisällä neliön "rivien" tulostus tulee tehdä tulostaTahtia-metodia käyttäen.</p>
-    <p>Ohjelmaa tehdessäsi kannattaa varmistaa main:iin kirjoitetun testikoodin avulla että metodit toimivat vaaditulla tavalla.</p>
-    <h4>Suorakulmion tulostus</h4>
-    <p>Tee metodi <code>tulostaSuorakulmio(int leveys, int korkeus)</code> joka tulostaa suorakulmion käyttäen <code>tulostaTahtia</code>-metodia. Siis esimerkiksi kutsu <code>tulostaSuorakulmio(17,3)</code> tulostaa seuraavaa:</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+  
+  <p>
+    <b>Huom: </b> tehtävässä ei riitä että tulostus näyttää oikealta, tulostaNelio-metodin sisällä neliön "rivien" tulostus tulee tehdä tulostaTahtia-metodia käyttäen.
+  </p>
+  
+  <p>
+    Ohjelmaa tehdessäsi kannattaa varmistaa main:iin kirjoitetun testikoodin avulla että metodit toimivat vaaditulla tavalla.
+  </p>
+
+  <h2>Suorakulmion tulostus</h2>
+  
+  <p>
+    Tee metodi <code>tulostaSuorakulmio(int leveys, int korkeus)</code> joka tulostaa suorakulmion käyttäen <code>tulostaTahtia</code>-metodia. Siis esimerkiksi kutsu <code>tulostaSuorakulmio(17,3)</code> tulostaa seuraavaa:
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
 *****************
 *****************
 *****************
-    <% end %>
-    <h4>Vasemmalle nojaavan kolmion tulostus</h4>
-    <p>Tee metodi <code>tulostaKolmio(int koko)</code> joka tulostaa kolmion käyttäen <code>tulostaTahtia</code>-metodia. Siis esimerkiksi kutsu <code>tulostaKolmio(4)</code> tulostaa seuraavaa:</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+
+  <h2>Vasemmalle nojaavan kolmion tulostus</h2>
+  
+  <p>
+    Tee metodi <code>tulostaKolmio(int koko)</code> joka tulostaa kolmion käyttäen <code>tulostaTahtia</code>-metodia. Siis esimerkiksi kutsu <code>tulostaKolmio(4)</code> tulostaa seuraavaa:
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
 *
 **
 ***
 ****
-    <% end %>
+  <% end %>
 
 <% end %>
 
-<div>
-  <div class="self-explanation" data-key="q-metoditJaParametrit"></div>
-</div>
+<% partial 'partials/exercise', locals: { name: 'Tulostelua Like A Boss (3 osaa)' } do %>
 
-<% partial 'partials/exercise', locals: { name: 'Tulostelua Like A Boss' } do %>
+  <h2>Tähtirivin ja tyhjien tulostus</h2>
+  
+  <p>
+    Tee metodi <code>tulostaTyhjaa(int maara)</code> joka tulostaa <code>maara</code> kappaletta välilyöntejä. Metodi ei tulosta rivinvaihtoa.
+  </p>
 
-    <h4>Tähtirivin ja tyhjien tulostus</h4>
-    <p>Tee metodi <code>tulostaTyhjaa(int maara)</code> joka tulostaa <code>maara</code> kappaletta välilyöntejä. Metodi ei tulosta rivinvaihtoa. </p>
-    <p>Joudut myös joko kopioimaan edellisen tehtävän vastauksestasi metodin <code>tulostaTahtia</code> tai toteuttamaan sen uudelleen tämän tehtävän tehtäväpohjaan.</p>
-    <h4>Oikealle nojaavan kolmion tulostus</h4>
-    <p>Tee metodi <code>tulostaKolmio(int koko)</code> joka tulostaa kolmion käyttäen <code>tulostaTyhjaa</code>- ja <code>tulostaTahtia</code>-metodeja. Siis esimerkiksi kutsu <code>tulostaKolmio(4)</code> tulostaa seuraavaa:</p>
-    <% partial 'partials/sample_output' do %>
+  <p>
+    Joudut myös joko kopioimaan edellisen tehtävän vastauksestasi metodin <code>tulostaTahtia</code> tai toteuttamaan sen uudelleen tämän tehtävän tehtäväpohjaan.
+  </p>
+
+  <h2>Oikealle nojaavan kolmion tulostus</h2>
+  
+  <p>
+    Tee metodi <code>tulostaKolmio(int koko)</code> joka tulostaa kolmion käyttäen <code>tulostaTyhjaa</code>- ja <code>tulostaTahtia</code>-metodeja. Siis esimerkiksi kutsu <code>tulostaKolmio(4)</code> tulostaa seuraavaa:
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
    *
   **
  ***
 ****
-    <% end %>
-    <h4>Joulukuusen tulostus</h4>
-    <p>Tee metodi <code>jouluKuusi(int korkeus)</code> joka tulostaa joulukuusen. Joulukuusi koostuu annetun korkuisesta kolmiosta ja jalasta. Jalka on kaksi tähteä korkea ja kolme tähteä leveä ja se on keskellä kolmion pohjaa.
-      Kuusi tulee rakentaa käyttämällä tulostukseen metodeja <code>tulostaTyhjaa</code> ja <code>tulostaTahtia</code></p>
-    <p>Esimerkiksi kutsu <code>jouluKuusi(4)</code> tulostaa seuraavaa:</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+
+  <h2>Joulukuusen tulostus</h2>
+  
+  <p>
+    Tee metodi <code>jouluKuusi(int korkeus)</code> joka tulostaa joulukuusen. Joulukuusi koostuu annetun korkuisesta kolmiosta ja jalasta. Jalka on kaksi tähteä korkea ja kolme tähteä leveä ja se on keskellä kolmion pohjaa. Kuusi tulee rakentaa käyttämällä tulostukseen metodeja <code>tulostaTyhjaa</code> ja <code>tulostaTahtia</code>
+  </p>
+
+  <p>
+    Esimerkiksi kutsu <code>jouluKuusi(4)</code> tulostaa seuraavaa:
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
    *
   ***
  *****
 *******
   ***
   ***
-    <% end %>
-    <p>Kutsu <code>jouluKuusi(10)</code> tulostaa:</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+  
+  <p>
+    Kutsu <code>jouluKuusi(10)</code> tulostaa:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
          *
         ***
        *****
@@ -2630,15 +2693,21 @@ public static void main(String[] args) {
 *******************
         ***
         ***
-    <% end %>
-    <p><em>Huom:</em> Korkeuksien jotka ovat alle 3 ei tarvitse toimia!</p>
+  <% end %>
+
+  <p>
+    <em>Huom:</em> Korkeuksien jotka ovat alle 3 ei tarvitse toimia!
+  </p>
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Numerovisa' } do %>
+<% partial 'partials/exercise', locals: { name: 'Numerovisa (3 osaa)' } do %>
 
-    <p>Tässä tehtävässä luodaan seuraavanlainen numerovisa:</p>
-    <% partial 'partials/sample_output' do %>
+  <p>
+    Tässä tehtävässä luodaan seuraavanlainen numerovisa:
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
 Arvaa luku: <font color="red">73</font>
 Luku on pienempi, tehtyjä arvauksia: 1
 Arvaa luku: <font color="red">22</font>
@@ -2653,25 +2722,40 @@ Arvaa luku: <font color="red">71</font>
 Luku on pienempi, tehtyjä arvauksia: 6
 Arvaa luku: <font color="red">70</font>
 Onneksi olkoon, oikein arvattu!
-    <% end %>
-    <h4>Numeron arvaaminen</h4>
-    <p>Tehtävänannon mukana tulevassa ohjelmassa tulee mukana komento <code>arvoLuku</code>, joka arpoo luvun suljetulta väliltä [0, 100] (0 ja 100 ovat myös mahdollisia). Toteuta ohjelma jossa arvataan arvottua lukua kerran. Ohjelman tulee tulostaa joko "Luku on pienempi", "Luku on suurempi" tai "Onneksi olkoon, oikein arvattu!" riippuen käyttäjän antamasta luvusta.</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+
+  <h2>Numeron arvaaminen</h2>
+  
+  <p>
+    Tehtävänannon mukana tulevassa ohjelmassa tulee mukana komento <code>arvoLuku</code>, joka arpoo luvun suljetulta väliltä [0, 100] (0 ja 100 ovat myös mahdollisia). Toteuta ohjelma jossa arvataan arvottua lukua kerran. Ohjelman tulee tulostaa joko "Luku on pienempi", "Luku on suurempi" tai "Onneksi olkoon, oikein arvattu!" riippuen käyttäjän antamasta luvusta.
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
 Arvaa luku: <font color="red">12</font>
 Luku on suurempi
-    <% end %>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
 Arvaa luku: <font color="red">66</font>
 Luku on pienempi
-    <% end %>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
 Arvaa luku: <font color="red">42</font>
 Onneksi olkoon, oikein arvattu!
-    <% end %>
-    <h4>Toistuva arvaaminen</h4>
-    <p>Lisää ohjelmaan toiminnallisuus jossa arvausta tehdään toistuvasti kunnes käyttäjä syöttää oikean numeron. Huomaa, että sinun tulee arpoa numero komentoa <code>arvoLuku</code> <em>ennen toistolauseketta</em>. Miksi? Mitä tapahtuu, jos luku arvotaan toistolausekkeen sisällä?</p>
-    <p>Alla olevassa esimerkissä kutsu komentoon <code>arvoLuku</code> palautti arvon 83.</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+  
+  <h2>Toistuva arvaaminen</h2>
+  
+  <p>
+    Lisää ohjelmaan toiminnallisuus jossa arvausta tehdään toistuvasti kunnes käyttäjä syöttää oikean numeron. Huomaa, että sinun tulee arpoa numero komentoa <code>arvoLuku</code> <em>ennen toistolauseketta</em>. Miksi? Mitä tapahtuu, jos luku arvotaan toistolausekkeen sisällä?
+  </p>
+
+  <p>
+    Alla olevassa esimerkissä kutsu komentoon <code>arvoLuku</code> palautti arvon 83.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
 Arvaa luku: <font color="red">55</font>
 Luku on suurempi
 Arvaa luku: <font color="red">85</font>
@@ -2682,10 +2766,15 @@ Arvaa luku: <font color="red">81</font>
 Luku on suurempi
 Arvaa luku: <font color="red">83</font>
 Onneksi olkoon, oikein arvattu!
-    <% end %>
-    <h4>Arvauskertojen laskeminen</h4>
-    <p>Lisää ohjelmaan kokonaislukutyyppinen muuttuja, jonka avulla pidetään kirjaa tehtyjen arvausten määrästä. Tulosta arvausten määrä aina arvauksen yhteydessä.</p>
-    <% partial 'partials/sample_output' do %>
+  <% end %>
+
+  <h2>Arvauskertojen laskeminen</h2>
+  
+  <p>
+    Lisää ohjelmaan kokonaislukutyyppinen muuttuja, jonka avulla pidetään kirjaa tehtyjen arvausten määrästä. Tulosta arvausten määrä aina arvauksen yhteydessä.
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
 Arvaa luku: <font color="red">55</font>
 Luku on suurempi, tehtyjä arvauksia: 1
 Arvaa luku: <font color="red">85</font>
@@ -2696,15 +2785,12 @@ Arvaa luku: <font color="red">81</font>
 Luku on suurempi, tehtyjä arvauksia: 4
 Arvaa luku: <font color="red">83</font>
 Onneksi olkoon, oikein arvattu!
-    <% end %>
-
+  <% end %>
+  
 <% end %>
   
 
+<%= partial 'partials/quiz', locals: { id: '59b6e0b2b7ed150004307763' } %>
 
-
-<p>
-  TODO: tarkastele oppimistavoitteiden saavuttamista
-</p>
 
 <%= partial 'partials/quiz', locals: { id: '5883af992e0c4f0004e85f4e' } %>
