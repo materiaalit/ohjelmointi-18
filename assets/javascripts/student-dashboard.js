@@ -13,6 +13,7 @@ function getOhpeSyksy17Config() {
     courseName: 'Ohjelmoinnin perusteet',
     exerciseGroups: {
       'Osa 1': ['05.09.2017 16:00', '11.09.2017 23:59', 'osa01-']
+      'Osa 2': ['12.09.2017 16:00', '18.09.2017 23:59', 'osa02-']
     },
   }
 }
