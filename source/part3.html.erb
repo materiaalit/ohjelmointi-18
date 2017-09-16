@@ -6,37 +6,1479 @@
 ---
 
 
-<%= partial 'partials/quiz', locals: { id: '588b1bdfe1d67700046cbac7' } %>
-
 <% if false %>
-<% partial 'partials/hint', locals: { name: 'Ensimmäinen konekoe' } do %>
+<% partial 'partials/hint', locals: { name: 'Kurssi ensimmäinen koe' } do %>
 
   <p>
-    Jos teet kurssia Ohjelmoinnin perusteet tai aikataulutettua Ohjelmoinnin MOOCia, tässä kohtaa tulee tehdä kurssin ensimmäinen konekoe. Ensimmäisen konekokeen tekemiseen on kokeen aloitushetkestä 180 minuuttia. Ensimmäinen konekoe vastaa kymmentä kurssipistettä Ohjelmoinnin perusteet -kurssista.
+    Jos teet syksyn kurssia Ohjelmoinnin perusteet, tässä kohtaa tulee tehdä kurssin ensimmäinen konekoe. Ensimmäisen konekokeen tekemiseen on kokeen aloitushetkestä 240 minuuttia. Ensimmäinen konekoe vastaa kymmentä kurssipistettä Ohjelmoinnin perusteet -kurssista.
   </p>
 
   <p>
-    Konekokeessa on useampia tehtäviä ja ne tulee tehdä TMC:ssä tehtävien mukana tuleviin tehtäväpohjiin "Konekoe01_01.Tehtava", "Konekoe01_02.Tehtava" ja "Konekoe01_03.Tehtava" jne. Tehtävänannot saat osoitteessa <a href="https://myexams.herokuapp.com" target="_blank" rel="noopener">https://myexams.herokuapp.com</a> olevasta sovelluksesta. Edellämainitussa osoitteessa sekä tämän materiaalin johdanto-osiossa on myös lisätietoja kokeen suorittamiseen liittyen. Muistathan, että koe on yksilösuoritus.
+    TODO: tehtäväpohja, miten lähtee käyntiin..
   </p>
-
-  <p>
-    Osoitteessa <a href="https://myexams.herokuapp.com" target="_blank" rel="noopener">https://myexams.herokuapp.com</a> olevaan sovellukseen kirjaudutaan TMC-tunnuksilla (samat tunnukset kuin mitä käytät TMC:hen kirjautumiseen). Kun olet kirjautunut sovellukseen, valitse ylävalikosta "Kokeeni". Näet tämän jälkeen listauksen, missä näkyy tehtävänä olevat kokeet. Kun valitset kokeen, saat siihen liittyvät tiedot näkyville ja voit aloittaa halutessasi kokeen tekemisen.
-  </p>
-
-  <p>
-    Huom! Älä kuitenkaan aloita kokeen tekemistä ennenkuin olet kerrannut osat 1 ja 2, ja olet varma, että sinulla on aikaa tehdä koe. Konekoe tulee tehdä ennen neljännen osan aloittamista.
-  </p>
-
+  
 <% end %>
 <% end %>
 
-<% partial 'partials/hint', locals: { name: 'Kolmannen osion tavoitteet' } do %>
+
+<% partial 'partials/hint', locals: { name: 'Kolmannen osan tavoitteet' } do %>
 
   <p>
-    Kolmannessa osiossa otetaan ensimmäiset askeleet olio-ohjelmoinnin saloihin. Olio-ohjelmointi on tapa ohjelman jakamiseen pienempiin osiin, joilla jokaisella on oma vastuualueensa ohjelman toiminnassa. Tässä osiossa keskitymme ensisijaisesti ohjelmassa esiintyviin käsitteisiin sekä niiden mallintamiseen lähdekoodina.
+    Osaa luoda metodeja, jotka palauttavat arvon. Ymmärtää miten ohjelman suoritus etenee metodikutsun yhteydessä. Ymmärtää muuttujien näkyvyyden ja olemassaolon. Tuntee käsitteen merkkijono ja osaa käsitellä merkkijonoja (erit. vertailu). Tuntee käsitteet olio, konstruktori ja olion metodit. Luo ainakin yhden oman luokan. Luo olioita tekemistään luokista. Ymmärtää static-määreellä ja ilman static-määrettä olevien metodien eron.
   </p>
 
 <% end %>
+
+
+
+<% partial 'partials/material_heading' do %>
+  Metodit jatkuvat
+<% end %>
+
+<p>
+  Metodien avulla ohjelmia voi pilkkoa pienemmiksi osakokonaisuuksiksi. Jos metodit nimetään kuvaavasti, ohjelmoija pystyy seuraamaan sovelluksen toimintaa metodien nimien perusteella. Tämä helpottaa ohjelman ymmärrettävyyttä niin alkuperäisen ohjelmoijan kuin ohjelmaa myöhemmin mahdollisesti ylläpitävän ohjelmoijan tai ohjelmoijien osalta. Jatketaan metodeihin tutustumista.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Metodit ja muuttujien näkyvyys
+<% end %>
+
+
+<p>
+  Edellisessä osassa käsitellyt muuttujien olemassaoloon liittyvät säännöt pätevät myös metodien yhteydessä. Muuttujaa ei ole olemassa ennen sen esittelyä, ja muuttuja on olemassa vain niiden aaltosulkujen sisällä kuin missä se on esitelty. Metodien yhteydessä tämä tarkoittaa sitä, että metodeilla on pääsy vain niihin muuttujiin, jotka ovat määritelty metodien sisällä, tai jotka metodi saa parametrina. Alla oleva esimerkki konkretisoi tilanteen, missä <code>kasvataKolme</code>-metodin sisällä yritetään muuttaa <code>main</code>-metodissa määritellyn <code>luku</code>-muuttujan arvoa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+// pääohjelma
+public static void main(String[] args) {
+    int luku = 1;
+    kasvataKolmella();
+}
+
+// metodi
+public static void kasvataKolmella() {
+    luku = luku + 3;
+}
+<% end %>
+
+<p>
+  Yllä oleva ohjelma ei toimi, sillä metodi <code>kasvataKolmella</code> ei näe pääohjelman muuttujaa <code>luku</code>. Tarkemmin ottaen, metodi <code>kasvataKolmella</code> ei edes tiedä mistä muuttujasta <code>luku</code> on kyse, sillä muuttujaa ei ole määritelty metodissa <code>kasvataKolmella</code> tai sen parametreissa.
+</p>
+
+<p>
+  Yleisemmin voi todeta, että pääohjelman muuttujat eivät näy metodien sisälle, ja metodin muuttujat eivät näy muille metodeille tai pääohjelmalle. Ainoa keino viedä metodille tietoa metodin ulkopuolelta on parametrin avulla.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Metodille annettavat muuttujat kopioituvat
+<% end %>
+
+
+<p>
+  Muistellaan vielä edellisestä osasta erittäin oleellista metodien toimintaan liittyvää ominaisuutta: parametrien arvot kopioituvat. Käytännössä metodien parametrit ovat erillisiä muiden metodien muuttujista (tai parametreista), vaikka niillä olisikin sama luku. Kun metodikutsun yhteydessä metodille annetaan muuttuja, muuttujan arvo kopioituu kutsuttavan metodin metodimäärittelyssä olevan parametrimuuttujan arvoksi. Kahdessa eri metodissa olevat muuttujat ovat siis erillisiä toisistaan.
+</p>
+
+<p>
+  Tarkastellaan seuraavaa esimerkkiä, missä pääohjelmassa määritellään muuttuja <code>luku</code>. Muuttuja luku annetaan parametrina metodille <code>kasvataKolmella</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+// pääohjelma
+public static void main(String[] args) {
+    int luku = 1;
+    System.out.println("Pääohjelman muuttujan luku arvo: " + luku);
+    kasvataKolmella(luku);
+    System.out.println("Pääohjelman muuttujan luku arvo: " + luku);
+}
+
+// metodi
+public static void kasvataKolmella(int luku) {
+    System.out.println("Metodin parametrin luku arvo: " + luku);
+    luku = luku + 3;
+    System.out.println("Metodin parametrin luku arvo: " + luku);
+}
+<% end %>
+
+<p>
+  Ohjelman suoritus aiheuttaa seuraavanlaisen tulostuksen.
+</p>
+
+<% partial 'partials/sample_output' do %>
+Pääohjelman muuttujan luku arvo: 1
+Metodin parametrin luku arvo: 1
+Metodin parametrin luku arvo: 4
+Pääohjelman muuttujan luku arvo: 1
+<% end %>
+
+<p>
+  Kun metodin sisällä kasvatetaan muuttujan <code>luku</code> arvoa kolmella, se onnistuu. Tämä ei kuitenkaan näy pääohjelmassa olevassa muuttujassa <code>luku</code>. Pääohjelmassa oleva muuttuja <code>luku</code> on eri kuin metodissa oleva muuttuja <code>luku</code>.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n\n   public static void main(String[] args) {\n      int luku = 1;\n      System.out.println(\"Pääohjelman luvun arvo: \" + luku);\n      kasvataKolmella(luku);\n      System.out.println(\"Pääohjelman luvun arvo: \" + luku);\n   }\n\n   public static void kasvataKolmella(int luku) {\n      System.out.println(\"Metodin luvun arvo: \" + luku);\n      luku = luku + 3;\n      System.out.println(\"Metodin luvun arvo: \" + luku);\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\n","event":"call","line":11,"stack_to_render":[{"func_name":"kasvataKolmella:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"kasvataKolmella:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"kasvataKolmella:12","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kasvataKolmella:13","encoded_locals":{"luku":4},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"kasvataKolmella:14","encoded_locals":{"luku":4},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"39","frame_id":39},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"40","frame_id":40}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\n","event":"return","line":14,"stack_to_render":[{"func_name":"kasvataKolmella:14","encoded_locals":{"luku":4,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\nPääohjelman luvun arvo: 1\n","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"48","frame_id":48}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\nPääohjelman luvun arvo: 1\n","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"luku":1,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<p>
+  Parametri <code>luku</code> kopioidaan metodin käyttöön, eli metodia <code>kasvataKolmella</code> varten luodaan oma muuttuja nimeltä <code>luku</code>, johon pääohjelmassa olevan muuttujan <code>luku</code> arvo kopioidaan metodikutsun yhteydessä. Metodissa <code>kasvataKolmella</code> oleva muuttuja <code>luku</code> on olemassa vain metodin suorituksen ajan, eikä sillä ole yhteyttä pääohjelman samannimiseen muuttujaan.
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '59bcfce76ee1930004e5f912' } %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Metodin voi palauttaa arvon
+<% end %>
+
+<p>
+  Metodin määrittelyssä kerrotaan palauttaako metodi arvon. Jos metodi palauttaa arvon, tulee metodimäärittelyn yhteydessä kertoa palautettavan arvon tyyppi. Muulloin määrittelyssä käytetään avainsanaa <em>void</em>. Tähän mennessä tekemämme metodit eivät ole palauttaneet arvoa, ja on määritelty avainsanaa <em>void</em> käyttäen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void kasvataKolmella() {
+    ...
+}
+<% end %>
+
+<p>
+  Avainsana <code>void</code> tarkoittaa että metodi ei palauta mitään. Jos haluamme, että metodi palauttaa arvon, tulee avainsanan <code>void</code> paikalle asettaa palautettavan muuttujan tyyppi. Seuraavassa esimerkissä on määritelty metodi <code>palautetaanAinaKymppi</code>, joka palauttaa kokonaislukutyyppisen (<code>int</code>) muuttujan (tässä arvon 10). Konkreettinen arvon palautus tapahtuu aina komennolla <code>return</code>, jota seuraa palautettava arvo (tai muuttujan nimi, jonka arvo palautetaan).
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static int palautetaanAinaKymppi() {
+    return 10;
+}
+<% end %>
+
+<p>
+  Yllä määritelty metodi palauttaa sitä kutsuttaessa <code>int</code>-tyyppisen arvon <code>10</code>. Jotta metodin palauttamaa arvoa voisi käyttää, tulee se ottaa talteen muuttujaan. Tämä tapahtuu samalla tavalla kuin normaali muuttujan arvon asetus, eli yhtäsuuruusmerkillä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    int luku = palautetaanAinaKymppi();
+
+    System.out.println("metodi palautti luvun " + luku);
+}
+<% end %>
+
+<p>
+  Metodin paluuarvo sijoitetaan <code>int</code>-tyyppiseen muuttujaan aivan kuin mikä tahansa muukin int-arvo. Paluuarvo voi toimia myös osana mitä tahansa lauseketta.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+double luku = 4 * palautetaanAinaKymppi() + (palautetaanAinaKymppi() / 2) - 8;
+
+System.out.println("laskutoimituksen tulos " + luku);
+<% end %>
+
+<p>
+  Kaikki muuttujatyypit, mitä olemme tähän mennessä nähneet, voidaan palauttaa metodista.
+</p>
+
+<table class="table">
+  <tr>
+    <th>Palautettavan arvon tyyppi</th>
+    <th>Esimerkki</th>
+  </tr>
+  <tr>
+    <td>Metodi ei palauta arvoa</td>
+    <td>
+    <% partial 'partials/code_highlight' do %>
+public static void metodiJokaEiPalautaMitaan() {
+    // metodin runko
+}<% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Metodi palauttaa <code>int</code>-tyyppisen muuttujan</td>
+    <td>
+    <% partial 'partials/code_highlight' do %>
+public static int metodiJokaPalauttaaKokonaisLuvun() {
+    // metodin runko, tarvitsee return-komennon
+}<% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Metodi palauttaa <code>double</code>-tyyppisen muuttujan</td>
+    <td>
+    <% partial 'partials/code_highlight' do %>
+public static double metodiJokaPalauttaaLiukuluvun() {
+    // metodin runko, tarvitsee return-komennon
+}<% end %>
+    </td>
+  </tr>
+</table>
+
+<p>
+  Jos metodille määritellään paluuarvon tyyppi, on sen pakko palauttaa arvo. Esimerkiksi seuraava metodi on virheellinen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static int virheellinenMetodi() {
+    System.out.println("Väitän palauttavani kokonaisluvun, mutten palauta sitä.");
+}
+<% end %>
+
+<p>
+  Ylläolevassa metodissa tulee olla komento <code>return</code>, jota seuraa palautettavan arvon tyyppi.
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Komento return lopettaa metodin suorituksen' } do %>
+
+  <p>
+    Kun metodin suorituksessa päädytään komentoon <code>return</code>, metodin suoritus päättyy ja metodista palautetaan arvo sitä kutsuneelle metodille.
+  </p>
+
+  <p>
+    Ohjelmointikielen kääntäjä sekä käyttämämme ohjelmointiympäristö tietää, että return-komentoa seuraavia lähdekoodirivejä ei koskaan suoriteta. Jos ohjelmoija lisää lähdekoodia return-komennon jälkeen paikkaan, mitä ei metodin suorituksessa voida koskaan saavuttaa, ohjelmointiympäristö antaa virheviesti.
+  </p>
+
+  <p>
+    Seuraavanlainen metodi on virheellinen ohjelmointiympäristön näkökulmasta.
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    public static int virheellinenMetodi() {
+        return 10;
+        System.out.println("Väitän palauttavani kokonaisluvun, mutten palauta sitä.");
+    }
+  <% end %>
+  
+  <p>
+    Seuraava metodi taas toimii, sillä -- vaikka return-komennon alla on lähdekoodia -- jokainen metodin lause on mahdollista saavuttaa.
+  </p>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    public static int virheellinenMetodi(int parametri) {
+        if (parametri > 10) {
+            return 10;
+        }
+
+        System.out.println("Parametrina saatu luku on kymmenen tai pienempi.");
+
+        return parametri;
+    }
+  <% end %>
+  
+<% end %>
+
+  
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Metodi voi palauttaa lausekkeen evaluoinnin tuloksen
+<% end %>
+
+<p>
+  Palautettavan arvon ei tarvitse olla täysin ennalta määritelty, vaan se voidaan laskea. Metodista arvon palauttavalle return-komennolle voidaan antaa myös lauseke, joka evaluoituu ennen kuin arvo palautetaan.
+</p>
+
+<p>
+  Seuraavassa esimerkissä määritellään metodi summa, joka laskee kahden muuttujan arvon yhteen ja palauttaa summan. Yhteen laskettavien muuttujien <code>eka</code> ja <code>toka</code> arvot saadaan metodin parametrina.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static int summa(int eka, int toka) {
+    return eka + toka;
+}
+<% end %>
+
+<p>
+  Kun metodin suorituksessa päädytään lauseeseen <code>return eka + toka;</code>, evaluoidaan lauseke <code>eka + toka</code>, jonka arvo lopulta palautetaan.
+</p>
+
+<p>
+  Metodin kutsutaan seuraavasti. Alla metodia käytetään laskemaan luvut 2 ja 7 yhteen. Metodikutsusta saatava paluuarvo asetetaan muuttujaan <code>lukujenSumma</code>:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int lukujenSumma = summa(2, 7);
+// lukujenSumma on nyt 9
+<% end %>
+
+<p>
+  Laajennetaan edellistä esimerkkiä siten, että käyttäjä syöttää luvut.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+
+    System.out.print("Anna ensimmäinen luku: ");
+    int eka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Anna toinen luku: ");
+    int toka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Luvut ovat yhteensä: " + summa(eka, toka));
+}
+
+public static int summa(int eka, int toka) {
+    return eka + toka;
+}
+<% end %>
+
+<p>
+  Yllä olevassa esimerkissä metodin paluuarvoa ei aseteta muuttujaan, vaan sitä käytetään suoraan osana tulostusta. Tällöin tulostuskomennon suoritus tapahtuu siten, että tietokone selvittää ensin tulostettavan merkkijonon <code>"Luvut ovat yhteensä: " + summa(eka, toka)</code>. Ensin tietokone etsii muuttujat <code>eka</code> ja <code>toka</code>, ja kopioi niiden arvot metodin <code>summa</code> parametrien arvoiksi. Tämän jälkeen metodissa lasketaan parametrien arvot yhteen, jonka jälkeen summa palauttaa arvon. Tämä arvo asetetaan metodikutsun <code>summa</code> paikalle, jonka jälkeen summa liitetään merkkijonon <code>"Luvut ovat yhteensä: "</code> jatkeeksi.
+</p>
+
+<p>
+  Koska metodille annettavat arvot kopioidaan metodin parametreihin, metodin parametrien nimillä ja metodin kutsujan puolella määritellyillä muuttujien nimillä ei ole oikeastaan mitään tekemistä keskenään. Edellisessä esimerkissä sekä pääohjelman muuttujat että metodin parametrit olivat "sattumalta" nimetty samoin (eli <code>eka</code> ja <code>toka</code>). Seuraava toimii täysin samalla tavalla vaikka muuttujat ovatkin eri nimisiä:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+
+    System.out.print("Anna ensimmäinen luku: ");
+    int luku1 = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Anna toinen luku: ");
+    int luku2 = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Luvut ovat yhteensä: " + summa(luku1, luku2));
+}
+
+public static int summa(int eka, int toka) {
+    return eka + toka;
+}
+<% end %>
+
+<p>
+  Nyt pääohjelman muuttujan <code>luku1</code> arvo kopioituu metodin parametrin <code>eka</code> arvoksi ja pääohjelman muuttujan <code>luku2</code> arvo kopioituu metodin parametrin <code>toka</code> arvoksi.
+</p>
+
+<p>
+  Seuraavassa esimerkissä metodia summa kutsutaan kokonaisluvuilla, jotka saadaan <code>summa</code>-metodin paluuarvoina.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int eka = 3;
+int toka = 2;
+
+int monenLuvunSumma = summa(summa(1, 2), summa(eka, toka));
+// 1) suoritetaan sisemmät metodit:
+//    summa(1, 2) = 3   ja summa(eka, toka) = 5
+// 2) suoritetaan ulompi metodi:
+//    summa(3, 5) = 8
+// 3) muuttujan monenLuvunSumma arvoksi siis tulee 8
+
+<% end %>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n\n   public static void main(String[] args) {\n      int eka = 3;\n      int toka = 2;\n\n      int monenLuvunSumma = summa(summa(1, 2), summa(eka, toka));\n   }\n   \n   public static int summa(int eka, int toka) {\n      return eka + toka;\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"eka":3},"ordered_varnames":["eka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":1,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":1,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"14","frame_id":14}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":1,"toka":2,"__return__":3},"ordered_varnames":["eka","toka","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"23","frame_id":23},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"24","frame_id":24}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":2,"__return__":5},"ordered_varnames":["eka","toka","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"40","frame_id":40},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":5},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"44","frame_id":44}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":5},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"45","frame_id":45},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"46","frame_id":46}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":5,"__return__":8},"ordered_varnames":["eka","toka","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"55","frame_id":55},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"57","frame_id":57}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"eka":3,"toka":2,"monenLuvunSumma":8},"ordered_varnames":["eka","toka","monenLuvunSumma"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"58","frame_id":58}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"eka":3,"toka":2,"monenLuvunSumma":8,"__return__":["VOID"]},"ordered_varnames":["eka","toka","monenLuvunSumma","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<%= partial 'partials/quiz', locals: { id: '59bcfda76ee1930004e5f915' } %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Metodin omat muuttujat
+<% end %>
+
+<p>
+  Muuttujien määrittely metodissa tapahtuu tutulla tavalla. Seuraava metodi laskee parametrina saamiensa lukujen keskiarvon. Keskiarvon laskemisessa käytetään apumuuttujia <code>summa</code> ja <code>ka</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static double keskiarvo(int luku1, int luku2, int luku3) {
+
+    int summa = luku1 + luku2 + luku3;
+    double ka = summa / 3.0;
+
+    return ka;
+}
+<% end %>
+
+<p>
+  Metodin kutsu voi tapahtua esim seuraavasti
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+
+    System.out.print("Anna ensimmäinen luku: ");
+    int eka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Anna toinen luku: ");
+    int toka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("ja kolmas luku: ");
+    int kolmas = Integer.parseInt(lukija.nextLine());
+
+    double keskiarvonTulos = keskiarvo(eka, toka, kolmas);
+
+    System.out.print("Lukujen keskiarvo: " + keskiarvonTulos);
+}
+<% end %>
+
+<p>
+  Huomaa että metodin sisäiset muuttujat <code>summa</code> ja <code>ka</code> eivät näy pääohjelmaan. Tyypillinen ohjelmoinnin harjoittelussa eteen tuleva virhe on yrittää käyttää metodia seuraavasti.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    // annetaan arvot muuttujille eka, toka ja kolmas
+
+    keskiarvo(eka, toka, kolmas);
+
+    // yritetään käyttää metodin sisäistä muuttujaa, EI TOIMI!
+    System.out.print("Lukujen keskiarvo: " + ka);
+}
+<% end %>
+
+<p>
+  Myös seuraavanlaista virhettä näkee usein.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    // annetaan arvot muuttujille eka, toka ja kolmas
+
+    keskiarvo(eka, toka, kolmas);
+
+    // yritetään käyttää pelkkää metodin nimeä, EI TOIMI!
+    System.out.print("Lukujen keskiarvo: " + keskiarvo);
+}
+<% end %>
+
+<p>
+  Eli tässä yritettiin käyttää pelkkää metodin nimeä muuttujamaisesti. Toimiva tapa metodin tuloksen sijoittamisen apumuuttujaan lisäksi on suorittaa metodikutsu suoraan tulostuslauseen sisällä:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    int eka = 3;
+    int toka = 8;
+    int kolmas = 4;
+
+    // kutsutaan metodia tulostuslauseessa, TOIMII!
+    System.out.print("Lukujen keskiarvo: " + keskiarvo(eka, toka, kolmas));
+}
+<% end %>
+
+<p>
+  Tässä siis ensin tapahtuu metodikutsu joka palauttaa arvon 5.0 joka sitten tulostetaan tulostuskomennon avulla.
+</p>
+
+<p>
+  Screencast aiheesta:
+</p>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=zEHvycTo81c" height="300" class="youtube" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+
+<%= partial 'partials/quiz', locals: { id: '59bcff516ee1930004e5f920' } %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Lukujen summa' } do %>
+
+  <p>
+    Tee metodi <code>summa</code>, joka laskee parametrina olevien lukujen summan.
+  </p>
+
+  <p>
+    Tee metodi seuraavaan runkoon:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+public static int summa(int luku1, int luku2, int luku3, int luku4) {
+    // kirjoita koodia tähän
+    // muista että metodissa on oltava (lopussa) return!
+}
+
+public static void main(String[] args) {
+    int vastaus = summa(4, 3, 6, 1);
+    System.out.println("Summa: " + vastaus);
+}
+  <% end %>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Summa: 14
+  <% end %>
+
+  <p>
+    <b>Huom:</b> kun tehtävässä sanotaan että metodin pitää <em>palauttaa</em> jotain, tarkoittaa tämä sitä että metodissa tulee olla määritelty paluutyyppi ja <code>return</code>-komento jolla haluttu asia palautetaan. Metodi ei itse tulosta (eli käytä komentoa <code>System.out.println(..)</code>), tulostuksen hoitaa metodin kutsuja, eli tässä tapauksessa pääohjelma.
+  </p>
+  
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Pienin' } do %>
+
+  <p>
+    Tee metodi <code>pienin</code>, joka palauttaa parametrina saamistaan luvuista pienemmän arvon. Jos lukujen arvo on sama, voidaan palauttaa kumpi tahansa luvuista.
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+public static int pienin(int luku1, int luku2) {
+    // kirjoita koodia tähän
+    // älä tulosta metodin sisällä mitään
+
+    // lopussa oltava komento return
+}
+
+public static void main(String[] args) {
+    int vastaus =  pienin(2, 7);
+    System.out.println("Pienin: " + vastaus);
+}
+  <% end %>
+
+  <p>Ohjelman tulostus:</p>
+
+  <% partial 'partials/sample_output' do %>
+Pienin: 2
+  <% end %>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Suurin' } do %>
+
+  <p>
+    Tee metodi <code>suurin</code>, joka saa kolme lukua ja palauttaa niistä suurimman. Jos suurimpia arvoja on useita, riittää niistä jonkun palauttaminen. Tulostus tapahtuu pääohjelmassa.
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+public static int suurin(int luku1, int luku2, int luku3) {
+    // kirjoita koodia tähän
+}
+
+public static void main(String[] args) {
+    int vastaus =  suurin(2, 7, 3);
+    System.out.println("Suurin: " + vastaus);
+}
+  <% end %>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Suurin: 7
+  <% end %>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
+
+  <p>
+    Tee metodi <code>keskiarvo</code>, joka laskee parametrina olevien lukujen keskiarvon. Metodin sisällä tulee käyttää apuna edellä tehtyä metodia <code>summa</code>!
+  </p>
+
+  <p>
+    Tee metodi seuraavaan runkoon:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+public static int summa(int luku1, int luku2, int luku3, int luku4) {
+    // kopioi koodi tehtävästä 50
+}
+
+public static double keskiarvo(int luku1, int luku2, int luku3, int luku4) {
+    // kirjoita koodia tähän
+    // laske alkioiden summa kutsumalla metodia summa
+}
+
+public static void main(String[] args) {
+    double vastaus = keskiarvo(4, 3, 6, 1);
+    System.out.println("Keskiarvo: " + vastaus);
+}
+  <% end %>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Keskiarvo: 3.5
+  <% end %>
+
+  <p>
+    Muistathan miten kokonaisluku (<tt>int</tt>) muutetaan desimaaliluvuksi (<tt>double</tt>)!
+  </p>
+  
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Mitä metodia kutsuttaessa tapahtuu -- kutsupino
+<% end %>
+
+<p>
+  Kun metodia kutsutaan, <em>kutsuva metodi</em> jää odottamaan <em>kutsutun metodin</em> suorittamista. Tätä voidaan visualisoida <em>kutsupinon</em> avulla. Tarkastellaan seuraavaa ohjelmaa:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    System.out.println("Hei maailma!");
+    tulostaLuku();
+    System.out.println("Hei hei maailma!");
+}
+
+public static void tulostaLuku() {
+    System.out.println("Luku");
+}
+<% end %>
+
+<p>
+  Kun ohjelma käynnistetään, suoritus alkaa <code>main</code>-metodin ensimmäiseltä riviltä. Tällä rivillä olevalla komennolla tulostetaan teksti <code>"Heippa maailma!"</code>. Ohjelman kutsupino näyttää seuraavalta:
+</p>
+
+<% partial 'partials/sample_output' do %>
+main
+<% end %>
+
+<p>
+  Kun tulostuskomento on suoritettu, siirrytään seuraavaan komentoon, missä kutsutaan metodia<code>tulostaLuku</code>. Metodin <code>tulostaLuku</code> kutsuminen siirtää ohjelman suorituksen metodin <code>tulostaLuku</code> alkuun, jolloin <code>main</code>-metodi jää odottamaan metodin <code>tulostaLuku</code> suorituksen loppumista. Metodin <code>tulostaLuku</code> sisällä ollessa kutsupino näyttää seuraavalta.
+</p>
+
+<% partial 'partials/sample_output' do %>
+tulostaLuku
+main
+<% end %>
+
+<p>
+  Kun metodi <code>tulostaLuku</code> on suoritettu, palataan kutsupinossa metodia <code>tulostaLuku</code> yhtä alempana olevaan metodiin, eli metodiin <code>main</code>. Kutsupinosta poistetaan <code>tulostaLuku</code>, ja jatketaan <code>main</code>-metodin suoritusta <code>tulostaLuku</code>-metodikutsun jälkeiseltä riviltä. Kutsupino on nyt seuraavanlainen:
+</p> 
+
+<% partial 'partials/sample_output' do %>
+main
+<% end %>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Kutsupino ja metodin parametrit
+<% end %>
+
+
+<p>
+  Tarkastellaan kutsupinoa tilanteessa, missä metodille on määritelty parametreja.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    int alku = 1;
+    int loppu = 5;
+
+    tulostaTahtia(alku, loppu);
+}
+
+public static void tulostaTahtia(int alku, int loppu) {
+    while (alku &lt; loppu) {
+        System.out.print("*");
+        alku++;
+    }
+}
+<% end %>
+
+<p>
+  Ohjelman suoritus alkaa <code>main</code>-metodin ensimmäiseltä riviltä, jota seuraavilla riveillä luodaan muuttujat <code>alku</code> ja <code>loppu</code>, sekä asetetaan niihin arvot. Ohjelman tilanne ennen metodin <code>tulostaTahtia</code>-kutsumista:
+</p>
+
+<% partial 'partials/sample_output' do %>
+main
+  alku = 1
+  loppu = 5
+<% end %>
+
+<p>
+  Kun metodia <code>tulostaTahtia</code> kutsutaan, <code>main</code>-metodi jää odottamaan. Metodikutsun yhteydessä metodille <code>tulostaTahtia</code> luodaan uudet muuttujat <code>alku</code> ja <code>loppu</code>, joihin asetetaan parametreina annetut arvot. Nämä kopioidaan <code>main</code>-metodin muuttujista <code>alku</code> ja <code>loppu</code>. Metodin <code>tulostaTahtia</code> suorituksen ensimmäisellä rivillä ohjelman tilanne on seuraavanlainen.
+</p>
+
+<% partial 'partials/sample_output' do %>
+tulostaTahtia
+  alku = 1
+  loppu = 5
+main
+  alku = 1
+  loppu = 5
+<% end %>
+
+<p>
+  Kun toistolauseessa suoritetaan komento <code>alku++</code>, muuttuu tällä hetkellä suoritettavaan metodiin liittyvän <code>alku</code>-muuttujan arvo.
+</p>
+
+<% partial 'partials/sample_output' do %>
+tulostaTahtia
+  alku = 2
+  loppu = 5
+main
+  alku = 1
+  loppu = 5
+<% end %>
+
+<p>
+  Metodin <code>main</code> muuttujien arvot eivät siis muutu. Metodin <code>tulostaTahtia</code> suoritus jatkuisi tämän jälkeen jokusen hetken. Kun metodin <code>tulostaTahtia</code> suoritus loppuu, palataan takaisin <code>main</code>-metodin suoritukseen.
+</p>
+
+<% partial 'partials/sample_output' do %>
+main
+  alku = 1
+  loppu = 5
+<% end %>
+
+<p>
+  Tarkastellaan samaa ohjelman suorituksen askeleittaisella visualisoinnilla. Visualisointiin käyttämämme sovellus kasvattaa kutsupinoa alaspäin -- oikealla laidalla ylin on aina main-metodi, jonka alle tulee kutsuttavat metodit. 
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   \n   public static void main(String[] args) {\n      int alku = 1;\n      int loppu = 5;\n\n      tulostaTahtia(alku, loppu);\n   }\n\n   public static void tulostaTahtia(int alku, int loppu) {\n      while (alku < loppu) {\n         System.out.print(\"*\");\n         alku++;\n      }\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"alku":1},"ordered_varnames":["alku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"14","frame_id":14}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"32","frame_id":32}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"34","frame_id":34}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"50","frame_id":50}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"51","frame_id":51},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"52","frame_id":52}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"53","frame_id":53},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"61","frame_id":61},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"62","frame_id":62}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"69","frame_id":69},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"70","frame_id":70}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"71","frame_id":71},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"72","frame_id":72}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"73","frame_id":73},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"74","frame_id":74}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"81","frame_id":81},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"82","frame_id":82}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"89","frame_id":89},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"90","frame_id":90}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"91","frame_id":91},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"92","frame_id":92}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"93","frame_id":93},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"94","frame_id":94}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":15,"stack_to_render":[{"func_name":"tulostaTahtia:15","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"101","frame_id":101},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"102","frame_id":102}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"return","line":15,"stack_to_render":[{"func_name":"tulostaTahtia:15","encoded_locals":{"alku":5,"loppu":5,"__return__":["VOID"]},"ordered_varnames":["alku","loppu","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"105","frame_id":105},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"106","frame_id":106}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"****","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"alku":1,"loppu":5,"__return__":["VOID"]},"ordered_varnames":["alku","loppu","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"109","frame_id":109}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Kutsupino ja arvon palauttaminen metodista
+<% end %>
+
+<p>
+  Tarkastellaan vielä esimerkkiä, missä metodi palauttaa arvon. Ohjelman <code>main</code>-metodi kutsuu erillistä <code>kaynnista</code>-metodia, jossa luodaan kaksi muuttujaa, kutsutaan <code>summa</code>-metodia, ja tulostetaan <code>summa</code>-metodin palauttama arvo.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    kaynnista();
+}
+
+public static void kaynnista() {
+    int eka = 5;
+    int toka = 6;
+
+    int summa = summa(eka, toka);
+
+    System.out.println("Summa: " + summa);
+}
+
+public static int summa(int luku1, int luku2) {
+    return luku1 + luku2;
+}
+<% end %>
+
+<p>
+  Metodin <code>kaynnista</code> suorituksen alussa kutsupino näyttää seuraavalta, sillä siihen päädyttiin <code>main</code>-metodista. Metodilla <code>main</code> ei tässä esimerkissä ole omia muuttujia:
+</p>
+
+<% partial 'partials/sample_output' do %>
+kaynnista
+main
+<% end %>
+
+<p>
+  Kun <code>kaynnista</code>-metodissa on luotu muuttujat <code>eka</code> ja <code>toka</code>, eli sen ensimmäiset kaksi riviä on suoritettu, on tilanne seuraava:
+</p>
+
+<% partial 'partials/sample_output' do %>
+kaynnista
+  eka = 5
+  toka = 6
+main
+<% end %>
+
+<p>
+  Komento <code>int summa = summa(eka, toka);</code> luo metodiin <code>kaynnista</code> muuttujan <code>summa</code>, ja kutsuu metodia <code>summa</code>. Metodi <code>kaynnista</code> jää odottamaan. Koska metodissa <code>summa</code> on määritelty parametrit <code>luku1</code> ja <code>luku2</code>, luodaan ne heti metodin suorituksen alussa, ja niihin kopioidaan parametrina annettujen muuttujien arvot.
+</p>
+
+<% partial 'partials/sample_output' do %>
+summa
+  luku1 = 5
+  luku2 = 6
+kaynnista
+  eka = 5
+  toka = 6
+  summa // ei arvoa
+main
+<% end %>
+
+<p>
+  Metodin <code>summa</code> suoritus laskee muuttujien <code>luku1</code> ja <code>luku2</code> arvot yhteen. Komento <code>return</code> palauttaa lukujen summan kutsupinossa yhtä alemmalle metodille, eli metodille <code>kaynnista</code>. Palautettu arvo asetetaan muuttujan <code>summa</code> arvoksi.
+</p>
+
+<% partial 'partials/sample_output' do %>
+kaynnista
+  eka = 5
+  toka = 6
+  summa = 11
+main
+<% end %>
+
+<p>
+  Tämän jälkeen suoritetaan tulostuskomento, jonka jälkeen palataan <code>main</code>-metodiin. Kun suoritus on <code>main</code>-metodin lopussa, ohjelman suoritus loppuu.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   public static void main(String[] args) {\n      kaynnista();\n   }\n\n   public static void kaynnista() {\n      int eka = 5;\n      int toka = 6;\n\n      int summa = summa(eka, toka);\n\n      System.out.println(\"Summa: \" + summa);\n   }\n\n   public static int summa(int luku1, int luku2) {\n      return luku1 + luku2;\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":7,"stack_to_render":[{"func_name":"kaynnista:7","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"3","frame_id":3},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"kaynnista:7","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"5","frame_id":5},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"6","frame_id":6}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"kaynnista:8","encoded_locals":{"eka":5},"ordered_varnames":["eka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"call","line":16,"stack_to_render":[{"func_name":"summa:16","encoded_locals":{"luku1":5,"luku2":6},"ordered_varnames":["luku1","luku2"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25},{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"26","frame_id":26},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":16,"stack_to_render":[{"func_name":"summa:16","encoded_locals":{"luku1":5,"luku2":6},"ordered_varnames":["luku1","luku2"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28},{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":16,"stack_to_render":[{"func_name":"summa:16","encoded_locals":{"luku1":5,"luku2":6,"__return__":11},"ordered_varnames":["luku1","luku2","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43},{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"44","frame_id":44},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"45","frame_id":45}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"46","frame_id":46},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"47","frame_id":47}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"kaynnista:12","encoded_locals":{"eka":5,"toka":6,"summa":11},"ordered_varnames":["eka","toka","summa"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"48","frame_id":48},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"Summa: 11\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kaynnista:13","encoded_locals":{"eka":5,"toka":6,"summa":11},"ordered_varnames":["eka","toka","summa"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"55","frame_id":55}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"Summa: 11\n","event":"return","line":13,"stack_to_render":[{"func_name":"kaynnista:13","encoded_locals":{"eka":5,"toka":6,"summa":11,"__return__":["VOID"]},"ordered_varnames":["eka","toka","summa","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"57","frame_id":57}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"Summa: 11\n","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"58","frame_id":58}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Summa: 11\n","event":"return","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"__return__":["VOID"]},"ordered_varnames":["__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<% partial 'partials/material_heading' do %>
+  Merkkijonot
+<% end %>
+
+<p>
+  Tutustutaan seuraavaksi uuteen muuttujatyyppiin eli merkkijonoihin (<code>String</code>). Merkkijonomuuttuja määritellään kertomalla sen tyyppi (String) sekä nimi. Tätä seuraa muuttujan arvo, joka on hipsujen sisällä olevaa tekstiä. Alla luodaan merkkijonomuuttuja <code>taikasana</code>, joka sisältää arvon <code>"abrakadabra"</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String taikasana = "abrakadabra";
+<% end %>
+
+<p>
+  Merkkijonomuuttujan antaminen tulostuskomennolle (tai oikeastaan mille tahansa metodille) parametrina onnistuu tutulla tavalla. Alla määritellään merkkijono, joka tulostetaan.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String taikasana = "abrakadabra";
+  System.out.println(taikasana);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  abrakadabra
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonojen lukeminen ja tulostaminen
+<% end %>
+
+<p>
+  Merkkijonon lukeminen onnistuu tutun Scanner-apuvälineen tarjoamalla nextLine-metodilla. Alla oleva ohjelma lukee käyttäjän nimen ja tulostaa sen seuraavalla rivillä (esimerkissä käyttäjän syöttämä teksti on merkitty punaisella):</p>
+
+<% partial 'partials/code_highlight' do %>
+  Scanner lukija = new Scanner(System.in);
+  
+  System.out.print("Mikä on nimesi? ");
+  String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan se muuttujaan nimi
+
+  System.out.println(nimi);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Mikä on nimesi? <span class="red">Venla</span>
+  Venla
+<% end %>
+
+<p>
+  Merkkijonoja voi myös yhdistellä. Jos operaatiota <code>+</code> sovelletaan kahden merkkijonon välille, syntyy uusi merkkijono, jossa kaksi merkkijonoa on yhdistetty. Huomaa nokkela välilyönnin käyttö lauseen "muuttujien" osana!</p>
+
+<% partial 'partials/code_highlight' do %>
+  String tervehdys = "Hei ";
+  String nimi = "Lilja";
+  String hyvastely = " ja näkemiin!";
+
+  String lause = tervehdys + nimi + hyvastely;
+
+  System.out.println(lause);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei Lilja ja näkemiin!
+<% end %>
+
+<p>
+  Jos toinen operaation <code>+</code> kohteista on merkkijono, muutetaan myös toinen operaation kohteista merkkijonoksi. Alla olevassa esimerkissä kokonaisluku <code>2</code> on muutettu merkkijonoksi "2", ja siihen on yhdistetty merkkijono.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String teksti = "tuossa on kokonaisluku";
+  System.out.println(teksti + " --&gt; " + 2);
+  System.out.println(2 + " &lt;-- " + teksti);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  tuossa on kokonaisluku --&gt; 2
+  2 &lt;-- tuossa on kokonaisluku
+<% end %>
+
+<p>
+  Aiemmin tutuksi tulleet laskusäännöt sekä sulkeiden noudattaminen pätee myös merkkijonoja käsiteltäessä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String teksti = " oho!";
+  System.out.println("Neljä: " + (2 + 2) + teksti);
+  System.out.println("Mutta! kaksikymmentäkaksi: " + 2 + 2 + teksti);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Neljä: 4 oho!
+  Mutta! kaksikymmentäkaksi: 22 oho!
+<% end %>
+
+
+<p>
+  Seuraavassa on vielä käyttäjää tervehtivä ohjelma pääohjelmarungon kanssa.  Ohjelman nimi on <em>Tervehdys</em>.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.Scanner;
+  
+  public class Tervehdys {
+  
+      public static void main(String[] args) {
+          Scanner lukija = new Scanner(System.in);
+
+          System.out.print("Kenelle sanotaan hei: ");
+          String nimi = lukija.nextLine();
+
+          System.out.println("Hei " + nimi);
+      }
+  }
+<% end %>
+
+<p>
+  Kun yllä oleva ohjelma ajetaan, pääset kirjoittamaan syötteen.  NetBeansin tulostusvälilehti näyttää ajetun ohjelman jälkeen seuraavalta (käyttäjä syöttää nimen "Venla").
+</p>
+
+<div><img class="naytto" src="../img/material/netbeans-output-venla.png"/></div>
+
+
+<% partial 'partials/exercise', locals: { name: 'Tulostus kolmesti' } do %>
+
+  <p>
+    Tee ohjelma joka lukee käyttäjältä merkkijonon ja tulostaa merkkijonon kolmesti peräkkäin.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Mikä tulostetaan? <font color="red">kukka</font>
+
+kukkakukkakukka
+  <% end %>
+    
+  <p>
+    Esimerkissä punainen väri tarkoittaa käyttäjän kirjoittamaa tekstiä. Tätä käytäntöä noudatetaan jatkossa esimerkeissä.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Merkkijonojen ja lukujen lukeminen' } do %>
+
+  <p>
+    Käyttäjän kanssa keskustelevan ohjelman runko:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+import java.util.Scanner;
+
+public class OhjelmanNimi {
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // koodi tähän
+    }
+}
+  <% end %>
+
+  <p>
+    Merkkijonon lukeminen:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+String merkkijono = lukija.nextLine();
+  <% end %>
+
+  <p>
+    Kokonaisluvun lukeminen:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+int kokonaisluku = Integer.parseInt(lukija.nextLine());
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonojen vertailu ja equals
+<% end %>
+
+<p>
+  Merkkijonoja ei voi vertailla yhtäsuuri kuin (<em>==</em>) operaatiolla.  Merkkijonojen vertailuun käytetään erillistä <code>equals</code>-komentoa, joka liittyy aina verrattavaan merkkijonoon.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String teksti = "kurssi";
+
+if (teksti.equals("marsipaani")) {
+    System.out.println("Teksti-muuttujassa on teksti marsipaani.");
+} else {
+    System.out.println("Teksti-muuttujassa ei ole tekstiä marsipaani.");
+}
+<% end %>
+
+<p>
+  Komento <code>equals</code> liitetään aina siihen verrattavaan tekstimuuttujaan, "tekstimuuttuja piste equals teksti". Tekstimuuttujaa voidaan myös verrata toiseen tekstimuuttujaan.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String teksti = "kurssi";
+String toinenTeksti = "pursi";
+
+if (teksti.equals(toinenTeksti)) {
+    System.out.println("Samat tekstit!");
+} else {
+    System.out.println("Eri tekstit!");
+}
+<% end %>
+
+<p>
+  Merkkijonoja vertailtaessa on syytä varmistaa että verrattavalla tekstimuuttujalla on arvo. Jos muuttujalla ei ole arvoa, ohjelma tuottaa virheen <em>NullPointerException</em>, joka tarkoittaa ettei muuttujan arvoa ole asetettu tai se on tyhjä (<em>null</em>).
+</p>
+
+
+<p>
+  Seuraavassa käännetään <code>!</code>:n eli negaatio-operaation avulla ehdon arvo päinvastaiseksi:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+System.out.println("Eihän merkkijono ole 'maito'");
+String merkkijono = "piimä";
+
+if (!(merkkijono.equals("maito"))) {  // tosi jos ehto merkkijono.equals("maito") on epätosi
+    System.out.println("ei ollut!");
+} else {
+    System.out.println("oli");
+}
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+ei ollut!
+<% end %>
+
+
+<p>
+  Negaatio-operaatio, eli <code>!ehto</code>, kääntää siis totuusarvon ympäri.
+</p>
+  
+<% partial 'partials/code_highlight' do %>
+int eka = 1;
+int toka = 3;
+
+boolean onkoSuurempi = eka &gt; toka;
+
+if (!onkoSuurempi) {
+    System.out.println("1 ei ole suurempi kuin 3");
+}
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+1 ei ole suurempi kuin 3
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Onko totta' } do %>
+    
+  <p>
+    Tee ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Jos käyttäjä kirjoittaa merkkijonon "totta", tulostetaan merkkijono "Oikein meni!", muulloin tulostetaan merkkijono "Koitappa uudelleen!".
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Kirjoita merkkijono: <font color="red">totta</font>
+Oikein meni!
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Kirjoita merkkijono: <font color="red">tottapa</font>
+Koitappa uudelleen!
+  <% end %>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Käyttäjätunnukset' } do %>
+
+  <p>
+    Tee ohjelma, joka tunnistaa seuraavat käyttäjät:
+  </p>
+
+  <table class="table">
+    <tr>
+      <th>tunnus</th>
+      <th>salasana</th>
+    </tr>
+    <tr>
+      <td>aleksi</td>
+      <td>tappara</td>
+    </tr>
+    <tr>
+      <td>elina</td>
+      <td>kissa</td>
+    </tr>
+  </table>
+  
+  <p>
+    Ohjelma näyttää käyttäjälle henkilökohtaisen viestin tai ilmoittaa, jos tunnus tai salasana on väärin.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna tunnus: <font color="red">aleksi</font>
+Anna salasana: <font color="red">tappara</font>
+Olet kirjautunut järjestelmään
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna tunnus: <font color="red">elina</font>
+Anna salasana: <font color="red">kissa</font>
+Olet kirjautunut järjestelmään
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna tunnus: <font color="red">aleksi</font>
+Anna salasana: <font color="red">jokerit</font>
+Virheellinen tunnus tai salasana!
+  <% end %>
+
+  <p>
+    <strong>HUOM:</strong> muista, että merkkijonoja ei voi vertailla ==-operaatiolla!
+  </p>
+
+  <p>
+    <strong>HUOM:</strong> Todellisuudessa kirjautumistoiminnallisuutta ei tule toteuttaa, eikä yleensä toteutetakkaan näin. Kirjautumistoiminnallisuuden toteuttamiseen tutustutaan mm. tietokantojen perusteet -kurssilla.
+  </p>
+      
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Salasana (3 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä luodaan ohjelma joka kyselee käyttäjältä salasanaa. Jos salasana menee oikein, nähdään salainen viesti.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna salasana: <font color="red">nauris</font>
+Väärin!
+Anna salasana: <font color="red">lanttu</font>
+Väärin!
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+
+Salaisuus on: znvavbfgv grugl!
+  <% end %>
+
+  <p>
+    Toteutetaan ohjelma kolmessa askeleessa.
+  </p>
+
+  <h2>Salasanan kysyminen</h2>
+    
+  <p>Ohjelmarunkoon on määritelty muuttuja <code>String salasana</code>, jolle on asetettu arvoksi <code>porkkana</code> -- älä muuta tätä salasanaa. Toteuta lisätoiminnallisuus, jossa ohjelma kysyy käyttäjältä salasanaa ja vertailee sitä muuttujassa <code>salasana</code> olevaan arvoon. Muista mitä erityistä merkkijonojen vertailussa on!
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna salasana: <font color="red">nauris</font>
+Väärin!
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna salasana: <font color="red">bataatti</font>
+Väärin!
+  <% end %>
+
+  <h2>Salasanan kysyminen kunnes käyttäjä vastaa oikein</h2>
+
+  <p>
+    Muokkaa ohjelmaa siten, että se kysyy salasanaa kunnes käyttäjä syöttää oikean salasanan. Toteuta salasanan jatkuva kysyminen <code>while (true) { ... }</code> -toistolausekkeen avulla. Toistolausekkeesta pääsee pois, jos ja vain jos käyttäjän syöttämä salasana on sama kuin muuttujassa <code>salasana</code> oleva arvo.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna salasana: <font color="red">nauris</font>
+Väärin!
+Anna salasana: <font color="red">lanttu</font>
+Väärin!
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+  <% end %>
+
+  <h2>Salainen viesti</h2>
+
+  <p>
+    Lisää ohjelmaan oma salainen viestisi joka näytetään kun käyttäjä kirjoittaa salasanan oikein. Se voi olla mitä tahansa!
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna salasana: <font color="red">nauris</font>
+Väärin!
+Anna salasana: <font color="red">lanttu</font>
+Väärin!
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+
+Salaisuus on: znvavbfgv grugl!
+  <% end %>
+
+  <p>
+    Ylläoleva salaisuus on salattu käyttäen <a href="http://fi.wikipedia.org/wiki/Rot13" target="_blank">Rot13</a>-algoritmia.
+  </p>
+
+<% end %>
+
+
+<p>
+  Merkkijonoilta voi kysyä niiden pituutta kirjoittamalla merkkijonon perään <code>.length()</code> eli kutsumalla merkkijonolle sen pituuden kertovaa metodia.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String banaani = "banaani";
+String kurkku = "kurkku";
+String yhdessa = banaani + kurkku;
+
+System.out.println("Banaanin pituus on " + banaani.length());
+System.out.println("Kurkku pituus on " + kurkku.length());
+System.out.println("Sanan " + yhdessa + " pituus on " + yhdessa.length());
+<% end %>
+
+<p>
+  Edellä kutsutaan metodia <code>length()</code> kolmelle eri merkkijonolle. Kutsu <code>banaani.length()</code> kutsuu nimenomaan merkkijonon <code>banaani</code> pituuden kertovaa metodia, kun taas <code>kurkku.length()</code> on merkkijonon <code>kurkku</code> pituuden kertovan metodin kutsu. Pisteen vasemman puoleinen osa kertoo <em>kenen</em> metodia kutsutaan.
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Nimen pituus' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa, kuinka monta kirjainta siinä on. Toteuta merkkijonon pituuden selvittäminen erilliseen metodiin <code>public static int laskeKirjaimet(String merkkijono)</code>.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna nimi: <font color="red">Pekka</font>
+Kirjainmäärä: 5
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna nimi: <font color="red">Katariina</font>
+Kirjainmäärä: 9
+  <% end %>
+
+  <p>
+    <strong>Huom!</strong> Rakenna ohjelmasi niin että laitat pituuden laskemisen omaan metodiinsa: <code>public static int laskeKirjaimet(String merkkijono)</code>. Testit testaavat sekä metodia <code>laskeKirjaimet</code> että koko ohjelman toimintaa.
+  </p>
+
+<% end %>
+
+<% partial 'partials/material_sub_heading' do %>
+  Muita merkkijonojen metodeja
+<% end %>
+
+<p>
+  Merkkijonosta halutaan usein lukea jokin tietty osa. Tämä onnistuu mekkkijonojen eli String-luokan metodilla <code>substring</code>. Metodia <code>substring</code> voidaan käyttää kahdella tavalla: yksiparametrisenä palauttamaan merkkijonon loppuosa tai kaksiparametrisena palauttamaan parametrien määrittelemä osajono merkkijonosta:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String kirja = "Kalavale";
+
+System.out.println(kirja.substring(4));
+System.out.println(kirja.substring(2, 6));
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+vale
+lava
+<% end %>
+
+<p>
+  Koska <code>substring</code>-metodin <em>paluuarvo</em> on <code>String</code>-tyyppinen, voidaan metodin paluuarvo ottaa talteen String-tyyppiseen muuttujaan loppuosa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String kirja = "8 veljestä";
+
+String loppuosa = kirja.substring(2);
+System.out.println("7 " + loppuosa); // tulostaa: 7 veljestä
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+7 veljestä
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Alkuosa' } do %>
+  
+  <p>
+    Tee ohjelma, joka tulostaa sanan alkuosan. Ohjelma kysyy käyttäjältä sanan ja alkuosan pituuden. Käytä ohjelmassa metodia <code>substring</code>.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna sana: <font color="red">esimerkki</font>
+Alkuosan pituus: <font color="red">4</font>
+Tulos: esim
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna sana: <font color="red">esimerkki</font>
+Alkuosan pituus: <font color="red">7</font>
+Tulos: esimerk
+  <% end %>
+  
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Loppuosa' } do %>
+
+  <p>
+    Tee ohjelma, joka tulostaa sanan loppuosan. Ohjelma kysyy käyttäjältä sanan ja loppuosan pituuden. Käytä ohjelmassa merkkijonon metodia <code>substring</code>.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna sana: <font color="red">esimerkki</font>
+Loppuosan pituus: <font color="red">4</font>
+Tulos: rkki
+  <% end %>
+    
+  <% partial 'partials/sample_output' do %>
+Anna sana: <font color="red">esimerkki</font>
+Loppuosan pituus: <font color="red">7</font>
+Tulos: imerkki
+  <% end %>
+
+<% end %>
+
+<p>
+  String-luokan metodit tarjoavat myös mahdollisuuden etsiä tekstistä tiettyä sanaa. Esimerkiksi sana "erkki" sisältyy tekstiin "merkki". Metodi <code>indexOf()</code> etsii sille parametrina annettua sanaa merkkijonosta. Jos sana löytyy, metodi <code>indexOf()</code> palauttaa sanan ensimmäisen kirjaimen indeksin, eli paikan (muista että paikkanumerointi alkaa nollasta!). Jos taas sanaa ei merkkijonosta löydy, metodi palauttaa arvon -1.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String sana = "merkkijono";
+
+int indeksi = sana.indexOf("erkki"); //indeksin arvoksi tulee 1
+System.out.println(sana.substring(indeksi)); //tulostetaan "erkkijono"
+
+indeksi = sana.indexOf("jono"); //indeksin arvoksi tulee 6
+System.out.println(sana.substring(indeksi)); //tulostetaan "jono"
+
+indeksi = sana.indexOf("kirja"); //sana "kirja" ei sisälly sanaan "merkkijono"
+System.out.println(indeksi); // tulostetaan -1
+System.out.println(sana.substring(indeksi)); // virhe!
+<% end %>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   public static void main(String[] args) {\n      String sana = \"merkkijono\";\n\n      int indeksi = sana.indexOf(\"erkki\");\n      System.out.println(sana.substring(indeksi));\n\n      indeksi = sana.indexOf(\"jono\");\n      System.out.println(sana.substring(indeksi));\n\n      indeksi = sana.indexOf(\"kirja\");\n      System.out.println(indeksi);\n      System.out.println(sana.substring(indeksi));\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"sana":"merkkijono"},"ordered_varnames":["sana"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\n","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\n","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"19","frame_id":19}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"sana":"merkkijono","indeksi":-1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n-1\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"sana":"merkkijono","indeksi":-1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n-1\n","event":"exception","exception_msg":"java.lang.StringIndexOutOfBoundsException: String index out of range: -1","stack_to_render":[],"globals":{},"ordered_globals":[],"func_name":"runMain","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<% partial 'partials/exercise', locals: { name: 'Sana sanassa' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kaksi sanaa. Tämän jälkeen ohjelma kertoo onko toinen sana ensimmäisen sanan osana. Käytä ohjelmassa merkkijonon metodia <code>indexOf</code>.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Anna 1. sana: <font color="red">suppilovahvero</font>
+Anna 2. sana: <font color="red">ilo</font>
+Sana 'ilo' on sanan 'suppilovahvero' osana.
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Anna 1. sana: <font color="red">suppilovahvero</font>
+Anna 2. sana: <font color="red">suru</font>
+Sana 'suru' ei ole sanan 'suppilovahvero' osana.
+  <% end %>
+
+  <p>
+    <strong>Huom:</strong> toteuta ohjelmasi tulostus täsmälleen samassa muodossa kuin esimerkin tulostus!
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonon... metodit?
+<% end %>
+
+<p>
+  Merkkijonot poikkeavat luonteeltaan hieman esimerkiksi kokonaisluvuista. Kokonaisluvut ovat "pelkkiä arvoja", niiden avulla voi laskea ja niitä voi tulostella ruudulle:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+int x = 1;
+int y = 3;
+
+y = 3 * x + 2;
+
+System.out.println("y:n arvo nyt: " + y);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+y:n arvo nyt: 5
+<% end %>
+
+<p>
+  Merkkijonot taas ovat hieman "älykkäämpiä" ja tietävät esimerkiksi pituutensa:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String sana1 = "Ohjelmointi";
+String sana2 = "Java";
+
+System.out.println("merkkijonon " + sana1 + " pituus: " + sana1.length());
+System.out.println("merkkijonon " + sana2 + " pituus: " + sana2.length());
+<% end %>
+
+<p>
+  Tulostuu:
+</p>
+
+<% partial 'partials/sample_output' do %>
+merkkijonon Ohjelmointi pituus on 11
+merkkijonon Java pituus on 4
+<% end %>
+
+<p>
+  Pituus saadaan selville kutsumalla merkkijonon metodia <code>length()</code>. Merkkijonoilla on joukko muitakin metodeja. Kokonaisluvuilla eli <code>int</code>:eillä ei ole metodeja ollenkaan, ne eivät itsessään "osaa" mitään. Mistä tässä oikein on kyse?
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Olioihin liittyy sekä metodeja että arvoja
+<% end %>
+
+<p>
+  Merkkijonot ovat <em>olioita</em>, joihin liittyy sekä merkkijonon teksti että metodeja, joilla tekstiä voi käsitellä. Kun puhumme olioista, tarkoitamme tietynlaista muuttujaa. Jatkossa tulemme näkemään hyvin paljon muitakin olioita kuin merkkijonoja.
+</p>
+
+<p>
+  Oliomuuttujan metodia kutsutaan lisäämällä muuttujan nimen perään piste ja metodin nimi. Näiden lisäksi tulee sulut sekä mahdolliset parametrit:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String sana1 = "Ohjelmointi";
+  String sana2 = "Java";
+
+  sana1.length();    // kutsutaan merkkijono-olion sana1 metodia length()
+  sana2.length();    // kutsutaan merkkijono-olion sana2 metodia length()
+<% end %>
+
+<p>
+  Metodikutsu kohdistuu nimenomaan sihen olioon, mille metodia kutsutaan. Yllä kutsumme ensin <code>sana1</code>-nimisen merkkijonon <code>length()</code>-metodia, sitten merkkijonon <code>sana2</code> metodia <code>length()</code>.</p>
+
+<p>
+  Vanha tuttumme <code>lukija</code> on myös olio:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+Scanner lukija = new Scanner(System.in);
+<% end %>
+
+<p>
+  Lukijat ja merkkijonot ovat molemmat oliota, mutta ne ovat kuitenkin varsin erilaisia. Lukijoilla on mm. metodi <code>nextLine()</code> jota merkkijonoilla ei ole. Javassa oliot "synnytetään" eli luodaan melkein aina komennolla <code>new</code>, merkkijonot muodostavat tässä suhteessa poikkeuksen! -- Merkkijonoja voi luoda kahdella tavalla:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+String banaani = new String("Banaani");
+String porkkana = "porkkana";
+<% end %>
+
+<p>
+  Kumpikin ylläolevista riveistä luo uuden merkkijono-olion. Merkkijonojen luonnissa <code>new</code>-komentoa käytetään hyvin harvoin.
+</p>
+
+<p>
+  Olion "tyypistä" puhuttaessa puhutaan usein <em>luokista</em>. Merkkijonojen luokka on <code>String</code>, lukijoiden luokka taas on <code>Scanner</code>. Opimme jatkossa luokista ja olioista paljon lisää.
+</p>
 
 
 <% partial 'partials/material_heading' do %>
@@ -44,18 +1486,17 @@
 <% end %>
 
 <p>
-  Olio-ohjelmoinnissa on kyse ratkaistavassa ongelmassa esiintyvien käsitteiden eristämisestä omiksi kokonaisuuksikseen sekä näiden kokonaisuuksien käyttämistä ongelman ratkaisemisessa. Kun ongelmaan liittyvät käsitteet on tunnistettu, niistä voidaan myös keskustella. Toisin ajatellen muodostamme ratkaistavasta ongelmasta abstraktioita, joiden avulla ongelmaa on helpompi käsitellä.
+  <strong>Olio-ohjelmoinnissa</strong> on kyse ratkaistavassa ongelmassa esiintyvien <strong>käsitteiden eristämisestä omiksi kokonaisuuksikseen</strong> sekä näiden <strong>kokonaisuuksien käyttämistä ongelman ratkaisemisessa</strong>. Kun ongelmaan liittyvät käsitteet on tunnistettu, niistä voidaan myös keskustella. Toisin ajatellen muodostamme ratkaistavasta ongelmasta abstraktioita, joiden avulla ongelmaa on helpompi käsitellä.
 </p>
 
 <p>
-  Kun ongelmasta tunnistetaan käsitteitä, voidaan niitä vastaavia rakenteita luoda myös ohjelmaan. Näitä rakenteita ja niistä luotavia yksittäisiä ilmentymiä eli olioita käytetään ongelman ratkaisemisessa. Nyt ehkä käsittämättömältä tuntuva lausahdus <em>ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista</em> alkaa hiljalleen kurssin edetessä tuntua järkeenkäyvältä ja jopa itsestäänselvältä.
+  Kun ongelmasta tunnistetaan käsitteitä, voidaan niitä vastaavia rakenteita luoda myös ohjelmaan. Näitä rakenteita ja niistä luotavia yksittäisiä ilmentymiä eli olioita käytetään ongelman ratkaisemisessa. Nyt ehkä käsittämättömältä tuntuva lausahdus <strong>ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista</strong> alkaa hiljalleen kurssin edetessä tuntua järkeenkäyvältä ja jopa itsestäänselvältä.
 </p>
 
 
 <% partial 'partials/material_sub_heading' do %>
   Luokka ja Olio
 <% end %>
-
 
 <p>
   Olemme käyttäneet jo luokkia ja olioita, joita Java tarjoaa. <strong>Luokka</strong> määrittelee olioiden ominaisuudet eli niihin liittyvät tiedot eli oliomuuttujat, jotka määrittelevät yksittäisen olion sisäisen tilan, ja niiden tarjoamat komennot eli metodit. <strong>Olio</strong> luodaan luokkaan kirjoitetun määrittelyn perusteella. Samasta luokasta voidaan luoda useampia olioita, joilla jokaisella on eri tila eli jokaisella on omat oliomuuttujien arvot. Jokaisella oliolla on myös metodit, jotka olion luomiseen käytetyssä luokassa on määritelty.
@@ -66,15 +1507,13 @@
 </p>
 
 <p>
-  Esimerkiksi <code>Scanner</code> ja <code>ArrayList</code> ovat Javan tarjoamia luokkia, joista olemme jo tehneet olioita ohjelmiemme käyttöön. Allaolevassa ohjelmassa luodaan ensin Scanner-olio nimeltä <code>lukija</code>, jota käytetään kokonaislukumuuttujien lukemiseen ArrayList-olioon, jonka nimeksi on annettu <code>luvut</code>.
+  Esimerkiksi <code>Scanner</code> on Javan tarjoama luokka, josta luotuja olioita olemme hyödyntäneet ohjelmissamme. Alla ohjelmassa luodaan Scanner-olio nimeltä <code>lukija</code>, jota käytetään kokonaislukumuuttujien lukemiseen.
 </p>
 
 
 <% partial 'partials/code_highlight' do %>
 // luodaan Scanner-luokasta olio, jonka nimeksi tulee lukija
 Scanner lukija = new Scanner(System.in);
-// luodaan ArrayList-luokasta olio, jonka nimeksi tulee lista
-ArrayList&lt;Integer&gt; luvut = ArrayList&lt;&gt;();
 
 while (true) {
     int luku = Integer.parseInt(lukija.nextLine());
@@ -83,7 +1522,7 @@ while (true) {
         break;
     }
 
-    luvut.add(luku);
+    System.out.println("Luettu " + luku);
 }
 <% end %>
 
@@ -91,15 +1530,6 @@ while (true) {
 <p>
   Luokasta luodaan olio aina kutsumalla olion luovaa metodia eli <strong>konstruktoria</strong> komennon <code>new</code> avulla. Esimerkiksi <code>Scanner</code>-luokasta luodaan uusi ilmentymä eli olio kun kutsutaan <code>new Scanner(..)</code>. Konstruktorit saavat parametreja kuten muutkin metodit.
 </p>
-
-<p>
-  Ylläolevassa esimerkissä näemme myös metodien käyttöä. ArrayList-luokalla on yllä nähty metodi <code>add</code>, jota käytetään arvon lisäämiseen listalle. Scanner-luokalla taas on metodi <code>nextLine</code>, jota käytetään käyttäjän syöttämän syötteen noutamiseen.
-</p>
-
-<p>
-  Olioon liittyvää metodikutsua tehdessä (esimerkiksi <code>luvut.add(luku);</code>) pisteen vasemmalle puolelle tulee sen olion nimi, johon liittyen metodia kutsutaan, oikealle metodin nimi. Kun kysytään montako lukua listalla <code>lista</code> on, kutsu on muotoa <code>lista.size()</code> -- kutsumme siis <code>lista</code> oliolle sen metodia <code>size</code>. Metodin palauttama tulos riippuu olion <code>lista</code> tilasta, eli muut ohjelmassa käytetyt oliot eivät vaikuta metodin suoritukseen millään tavalla.
-</p>
-
 
 <% partial 'partials/hint', locals: { name: 'Luokan ja olion suhde' } do %>
 
@@ -117,6 +1547,19 @@ while (true) {
 
   <p>
     <img src="/img/rintamamiestalo.jpg" height=250 />
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Visuaalinen johdanto oliohin' } do %>
+
+  <p>
+    Osoitteessa <a href="https://emo-2014.herokuapp.com" target="_blank" norel">https://emo-2014.herokuapp.com</a> o visuaalinen johdanto olio-ohjelmointiin. Johdannon läpikäynti vie korkeintaan 15 minuuttia -- katso kyseinen johdanto nyt.
+  </p>
+
+  <p>
+    Johdanto sijaitsee pilvipalvelussa, jonka käynnistyminen voi viedä hetken. Johdannon katsominen ja siihen liittyviin kysymyksiin vastaaminen lasketaan yhdeksi tehtäväksi.
   </p>
 
 <% end %>
@@ -149,6 +1592,7 @@ System.out.println(artonSveitsilainenTili);
   <p>
     Tee ohjelma, joka luo tilin jonka saldo on 100.0, panee tilille 20.0 ja tulostaa tilin. <strong>Huom!</strong> tee kaikki nämä operaatiot täsmälleen tässä järjestyksessä.
   </p>
+
 <% end %>
 
 
@@ -157,7 +1601,7 @@ System.out.println(artonSveitsilainenTili);
   <p>
     Tässäkin tehtävässä on käytössä edellisessä tehtävässä mukana ollut luokka <code>Tili</code>.
   </p>
-
+  
   <p>
     Tee ohjelma joka:
   </p>
@@ -169,7 +1613,7 @@ System.out.println(artonSveitsilainenTili);
     <li>Panee omalle tilille 100.0</li>
     <li>Tulostaa molemmat tilit</li>
   </ol>
-
+  
 <% end %>
 
 <% partial 'partials/material_sub_heading' do %>
@@ -178,7 +1622,7 @@ System.out.println(artonSveitsilainenTili);
 
 
 <p>
-  <strong>Luokka määrittelee</strong> minkälaisia luokan oliot ovat:
+  <strong>Luokka määrittelee</strong> minkälaisia luokasta luotavat oliot ovat:
 </p>
 
 <ul>
@@ -199,7 +1643,6 @@ System.out.println(artonSveitsilainenTili);
   Aloitetaan. Oletetaan että meillä on projektirunko jossa on tyhjä pääohjelma:
 </p>
 
-
 <% partial 'partials/code_highlight' do %>
 public class Main {
 
@@ -219,6 +1662,13 @@ public class Main {
 
   <p>
     Kuten muuttujien ja metodien nimien, myös luokan nimen on aina oltava mahdollisimman kuvaava. Usein ohjelmoinnin edetessä luokka elää ja muuttaa muotoaan, joten on myös mahdollista että luokka nimetään uudelleen.
+  </p>
+
+
+  <p>
+    <em>
+      Luokkien, muuttujien ja metodien nimissä ei tyypillisesti käytetä ääkkösiä. Vältä niiden käyttöä myös tässä.
+    </em>
   </p>
 
 <% end %>
@@ -386,7 +1836,6 @@ public class Henkilo {
   Metodien määrittely
 <% end %>
 
-
 <p>
   Alkaa olla korkea aika päästä käyttämään Henkilo-luokasta luotuja olioita. Osaamme luoda olion ja alustaa olion muuttujat. Järkevään toimintaan pystyäkseen olioilla on oltava myös metodeja. <strong>Metodi</strong> on luokkaan kirjoitettu lähdekoodista koostuva kokonaisuus, jolle on annettu nimi, ja jota voidaan kutsua. Metodi liittyy aina tiettyyn luokkaan, ja sitä käytetään usein luokasta tehdyn olion sisäisen tilan muokkaamiseen.
 </p>
@@ -415,6 +1864,18 @@ public class Henkilo {
 <p>
   Metodi kirjoitetaan luokan sisälle konstruktorin alapuolelle. Metodin nimen eteen tulee <code>public void</code> sillä metodin on tarkoitus näkyä ulkomaailmalle ("public") ja metodi ei palauta arvoa ("void").
 </p>
+
+<% partial 'partials/hint', locals: { name: 'Oliot ja määre static' } do %>
+
+  <p>
+    Aiemmin toteuttamissamme metodeissa on ollut käytössä määre <code>static</code>. Määre <code>static</code> viittaa siihen, että metodi ei liity olioon ja sen avulla ei voi käsitellä oliolle määriteltyjä muuttujia.
+  </p>
+
+  <p>
+    Metodeistamme puuttuu jatkossa määre <code>static</code> jos ne käsittelevät olioiden tietoa. Jos taas metodit eivät käsittele olioihin liittyvää tietoa, niissä voidaan käyttää määrettä static.
+  </p>
+
+<% end %>
 
 <p>
   Luokkakaavioon on merkitty luokan nimen, oliomuuttujien ja konstruktorin lisäksi nyt myös metodi <code>tulostaHenkilo</code>. Koska metodilla on public-määre, tulee sille alkuun plus, jota seuraa metodin nimi. Metodille ei ole määritelty parametreja, joten ei myöskään piirretä metodin sulkujen sisälle. Metodille merkitään myös tieto siitä, että se ei palauta arvoa, tässä "void".
@@ -528,11 +1989,18 @@ Who's there?
 
 <% partial 'partials/exercise', locals: { name: 'Tuote' } do %>
 
-  <p>Luo luokka <code>Tuote</code> joka esittää kaupan tuotetta jolla on hinta, lukumäärä ja nimi.</p>
+  <p>
+    Luo luokka <code>Tuote</code> joka esittää kaupan tuotetta jolla on hinta, lukumäärä ja nimi.
+  </p>
 
-  <p> Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Tuote</code>. </p>
+  <p>
+    Uuden luokan saa lisättyä seuraavasti: Ruudun vasemmalla reunalla on projektilistaus. Paina projektin nimen kohdalla hiiren oikeaa nappia. Valitse avautuvasta valikosta <em>New</em> ja <em>Java Class</em>. Anna luokan nimeksi (Class Name) <code>Tuote</code>.
+  </p>
 
-  <p>Luokalla tulee olla:</p>
+  <p>
+    Luokalla tulee olla:
+  </p>
+
   <ul>
     <li>Konstruktori <code>public Tuote(String nimiAlussa, double hintaAlussa, int maaraAlussa)</code></li>
     <li>Metodi <code>public void tulostaTuote()</code> joka tulostaa tuotteen tiedot tässä muodossa:
@@ -542,9 +2010,11 @@ Banaani, hinta 1.1, 13 kpl
     </li>
   </ul>
 
-  <p>Piirrä myös luokkaan liittyvä luokkakaavio itsellesi!</p>
-<% end %>
+  <p>
+    Piirrä myös luokkaan liittyvä luokkakaavio itsellesi!
+  </p>
 
+<% end %>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -620,7 +2090,7 @@ Antti, ikä 0 vuotta
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Vähenevä laskuri' } do %>
+<% partial 'partials/exercise', locals: { name: 'Vähenevä laskuri (4 osaa)' } do %>
 
   <p>
     Tässä tehtävässä on useampi osa. Jokainen osa vastaa yhtä tehtäväpistettä.
@@ -682,15 +2152,22 @@ arvo: 8
   <% end %>
 
   <p>
-    <code>VahenevaLaskuri</code>-luokan konstruktorille annetaan parametrina alkuarvo. Esimerkin oliota <code>laskuri</code> luodessa laskurille välitetään parametrina arvo <code>10</code>. Esimerkin <code>laskuri</code>-olioon liittyvään oliomuuttujaan <code>arvo</code> asetetaan siis aluksi arvo <code>10</code>. Laskurin arvon voi tulostaa metodilla <code>tulostaArvo()</code>. Laskurilla tulee myös olla metodi <code>vahene()</code> joka vähentää laskurin arvoa yhdellä.</p>
+    <code>VahenevaLaskuri</code>-luokan konstruktorille annetaan parametrina alkuarvo. Esimerkin oliota <code>laskuri</code> luodessa laskurille välitetään parametrina arvo <code>10</code>. Esimerkin <code>laskuri</code>-olioon liittyvään oliomuuttujaan <code>arvo</code> asetetaan siis aluksi arvo <code>10</code>. Laskurin arvon voi tulostaa metodilla <code>tulostaArvo()</code>. Laskurilla tulee myös olla metodi <code>vahene()</code> joka vähentää laskurin arvoa yhdellä.
+  </p>
+
 
   <h2>Metodin vahene() toteutus</h2>
 
-  <p>Täydennä luokan runkoon metodin <code>vahene()</code> toteutus sellaiseksi, että se vähentää kutsuttavan olion oliomuuttujan <code>arvo</code> arvoa yhdellä. Kun olet toteuttanut metodin <code>vahene()</code>, edellisen esimerkin pääohjelman tulee toimia esimerkkitulosteen mukaan.</p>
+  <p>
+    Täydennä luokan runkoon metodin <code>vahene()</code> toteutus sellaiseksi, että se vähentää kutsuttavan olion oliomuuttujan <code>arvo</code> arvoa yhdellä. Kun olet toteuttanut metodin <code>vahene()</code>, edellisen esimerkin pääohjelman tulee toimia esimerkkitulosteen mukaan.
+</p>
+
 
   <h2>Laskurin arvo ei saa olla negatiivinen</h2>
 
-  <p>Täydennä metodin <code>vahene()</code> toteutus sellaiseksi, ettei laskurin arvo mene koskaan negatiiviseksi. Eli jos laskurin arvo on jo 0, ei vähennys sitä enää vähennä. Ehtolause auttaa tässä.</p>
+  <p>
+    Täydennä metodin <code>vahene()</code> toteutus sellaiseksi, ettei laskurin arvo mene koskaan negatiiviseksi. Eli jos laskurin arvo on jo 0, ei vähennys sitä enää vähennä. Ehtolause auttaa tässä.
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -711,8 +2188,9 @@ public class Paaohjelma {
 }
   <% end %>
 
-
-  <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
   <% partial 'partials/sample_output' do %>
 arvo: 2
@@ -724,7 +2202,9 @@ arvo: 0
 
   <h2>Laskurin arvon nollaus</h2>
 
-  <p>Tee laskurille metodi <code>public void nollaa()</code> joka nollaa laskurin arvon, esim:</p>
+  <p>
+    Tee laskurille metodi <code>public void nollaa()</code> joka nollaa laskurin arvon, esim:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -742,7 +2222,9 @@ public class Paaohjelma {
 }
   <% end %>
 
-  <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
   <% partial 'partials/sample_output' do %>
 arvo: 100
@@ -753,7 +2235,10 @@ arvo: 0
 
   <h2>Laskurin arvon palautus</h2>
 
-  <p>Tee laskurille metodi <code>public void palautaAlkuarvo()</code>, joka palauttaa laskurille arvon joka sillä oli alussa:</p>
+
+  <p>
+    Tee laskurille metodi <code>public void palautaAlkuarvo()</code>, joka palauttaa laskurille arvon joka sillä oli alussa:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -777,7 +2262,9 @@ public class Paaohjelma {
 }
   <% end %>
 
-  <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
   <% partial 'partials/sample_output' do %>
 arvo: 100
@@ -788,7 +2275,9 @@ arvo: 100
   <% end %>
 
 
-  <p><strong>Vihje</strong> jotta alkuarvon voi palauttaa, se täytyy "muistaa" toisen oliomuuttujan avulla! Joudut siis lisäämään ohjelmaan oliomuuttujan johon talletetaan laskurin alussa saama arvo.</p>
+  <p>
+    <strong>Vihje</strong> jotta alkuarvon voi palauttaa, se täytyy "muistaa" toisen oliomuuttujan avulla! Joudut siis lisäämään ohjelmaan oliomuuttujan johon talletetaan laskurin alussa saama arvo.
+  </p>
 
 <% end %>
 
@@ -797,16 +2286,18 @@ arvo: 100
   <p>
     Luo luokka <code>Velka</code>, jolla on double-tyyppiset oliomuuttujat <code>saldo</code> ja <code>korkokerroin</code>. Saldo ja korkokerroin annetaan konstruktorin parametrina <code>public Velka(double saldoAlussa, double korkokerroinAlussa)</code>.
   </p>
-
+  
   <p>
     Luo luokalle myös metodit <code>public void tulostaSaldo()</code> sekä <code>public void odotaVuosi()</code>. Metodi tulostaSaldo tulostaa tämän hetkisen saldon, ja metodi odotaVuosi kasvattaa velan määrää.
   </p>
-
+  
   <p>
     Velan määrän kasvattaminen tapahtuu kertomalla saldo korkokertoimella.
   </p>
 
-  <p>Luokan tulee toimia seuraavasti:</p>
+  <p>
+    Luokan tulee toimia seuraavasti:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -845,10 +2336,8 @@ public class Paaohjelma {
   <p>
     Kun saat ohjelman toimimaan, tarkastele edelläolevaa esimerkkiä myös 1990-luvun alkupuolen laman korkokertoimilla. Tällöin korko oli jopa 15-20 prosenttia -- muuta yllä olevan esimerkin korkokertoimeksi <code>1.20</code> ja katso miten käy.
   </p>
+
 <% end %>
-
-
-
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -857,7 +2346,7 @@ public class Paaohjelma {
 
 
 <p>
-  Metodi voi palauttaa arvon. Tähän mennessä näkemissämme esimerkeissä ja tehtävissä luomamme metodit eivät palauttaneet mitään. Tämä on merkitty kirjoittamalla metodin määrittelyyn avainsana <em>void</em>.
+  Metodi voi palauttaa arvon. Tähän mennessä olioihin luomamme metodit eivät palauttaneet mitään. Tämä on merkitty kirjoittamalla metodin määrittelyyn avainsana <em>void</em>.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1006,12 +2495,12 @@ Pekka ja Antti yhteensä 3 vuotta
 <% end %>
 
 
-<div class="parqu-exercise" data-id="2" data-name="Luokkalaskin"></div>
+<%= partial 'partials/quiz', locals: { id: '59bd00596ee1930004e5f921' } %>
 
-
+<%= partial 'partials/quiz', locals: { id: '59bd01756ee1930004e5f922' } %>
 
 <% partial 'partials/exercise', locals: { name: 'Henkilön toteutus' } do %>
-
+  
   <p>
     Seuraa materiaalin tähänastista esimerkkiä ja luo luokka Henkilo. Henkilön tulee sisältää seuraavan luokkakaavion määrittelemät ominaisuudet edellä mainittujen esimerkkien mukaisesti.
   </p>
@@ -1070,30 +2559,6 @@ Kappaleen In The Garden pituus on 10910 sekuntia.
   <% end %>
 
 <% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Puhelinluettelo' } do %>
-
-  <p>
-    Tehtäväpohjassa tulee mukana ohjelma, jota käytetään henkilöiden lisäämiseen puhelinluetteloon. Ohjelma ei kuitenkaan toimi ihan halutusti, sillä "tyhjien" henkilöiden lisääminen onnistuu listaan vaikkei kenttiin ole syötetty minkäänlaisia arvoja.
-  </p>
-
-  <img src="/img/exercises/03-12-rivit.png" />
-
-  <p>
-    Yllä olevassa esimerkissä puhelinluetteloon on lisätty ensin neljä "tyhjää" henkilöä, jonka jälkeen luetteloon on lisätty yhden henkilön tiedot.
-  </p>
-
-  <p>
-    Muokkaa sovellusta siten, että jos lisättävällä henkilöllä on tyhjä nimi, puhelinnumero tai katuosoite, ei henkilöä lisätä listalle.
-  </p>
-
-  <p>
-    Tehtävässä ei tule mukana automaattisia testejä -- palauta se kun olet saanut sovelluksen toimimaan halutusti.
-  </p>
-
-<% end %>
-
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1168,7 +2633,6 @@ alaikäinen: Antti, ikä 1 vuotta
 täysi-ikäinen: Pekka, ikä 30 vuotta
 <% end %>
 
-
 <p>
   Viritellään ratkaisua vielä hiukan. Nyt henkilön pystyy "tulostamaan" ainoastaan siten, että nimen lisäksi tulostuu ikä. On tilanteita, joissa haluamme tietoon pelkän olion nimen. Eli tehdään tarkoitusta varten oma metodi:
 </p>
@@ -1186,7 +2650,6 @@ public class Henkilo {
 <p>
   Metodi <code>getNimi</code> palauttaa oliomuuttujan <code>nimi</code> kutsujalle. Metodin nimi on hieman erikoinen. Javassa on usein tapana nimetä oliomuuttujan palauttava metodi juuri näin, eli <code>getMuuttujanNimi</code>. Tälläisiä metodeja kutsutaan usein "gettereiksi".
 </p>
-
 
 <p>
   Luokka kokonaisuudessaan:
@@ -1272,7 +2735,6 @@ Saat katsoa elokuvan Alvin and the Chipmunks: The Squeakquel
   <% end %>
 
 <% end %>
-
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1397,7 +2859,7 @@ My name is Bond, Ionic Bond
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Maksukortti' } do %>
+<% partial 'partials/exercise', locals: { name: 'Maksukortti (6 osaa)' } do %>
 
   <p>
     Helsingin Yliopiston opiskelijaruokaloissa eli Unicafeissa opiskelijat maksavat lounaansa käyttäen maksukorttia. Lopullinen Maksukortti tulee näyttämään luokkakaaviona seuraavalta:
@@ -1715,12 +3177,6 @@ Matti: Kortilla on rahaa 72.8 euroa
 
 
 
-
-<p>
-  <em></em>
-</p>
-
-
 <% partial 'partials/material_sub_heading' do %>
   Metodin parametrit
 <% end %>
@@ -1790,10 +3246,6 @@ Matti, painoindeksisi on 26.54320987654321
 Juhana, painoindeksisi on 20.897959183673468
 <% end %>
 
-
-<div class="parqu-exercise" data-id="16" data-name="Oliomuuttujan muuttaminen"></div>
-
-<div class="parqu-exercise" data-id="17" data-name="Metodin parametrit"></div>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1883,13 +3335,17 @@ public void setPituus(int pituus) {
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Kello laskurin avulla' } do %>
+<% partial 'partials/exercise', locals: { name: 'Kello laskurin avulla (4 osaa)' } do %>
 
-  <p>Tässä tehtävässä tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code> ja sovelletaan sitä kellon tekemiseen.</p>
+  <p>
+    Tässä tehtävässä tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code> ja sovelletaan sitä kellon tekemiseen.
+  </p>
 
   <h2>Rajoitettu laskuri</h2>
 
-  <p>Tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code>. Luokan olioilla on seuraava toiminnallisuus:</p>
+  <p>
+    Tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code>. Luokan olioilla on seuraava toiminnallisuus:
+  </p>
 
   <ul>
     <li>Laskurilla on oliomuuttuja, joka muistaa laskurin arvon. Laskurin arvo on luku väliltä 0...yläraja.</li>
@@ -1899,9 +3355,13 @@ public void setPituus(int pituus) {
     <li> Metodi <code>toString</code> palauttaa laskurin arvon merkkijonona.</li>
   </ul>
 
-  <p>Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin Maksukortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.</p>
+  <p>
+    Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin Maksukortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.
+  </p>
 
-  <p>Luokan rungoksi tulee seuraava:</p>
+  <p>
+    Luokan rungoksi tulee seuraava:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class YlhaaltaRajoitettuLaskuri {
@@ -1922,9 +3382,13 @@ public class YlhaaltaRajoitettuLaskuri {
 }
   <% end %>
 
-  <p><b>Vihje</b>: et voi palauttaa toStringissä suoraan kokonaislukutyyppisen oliomuuttujan <code>laskuri</code> arvoa. Kokonaislukumuuttujasta <code>arvo</code> saa merkkijonomuodon esim. lisäämällä sen eteen tyhjän merkkijonon eli kirjoittamalla <code>"" + arvo</code>.</p>
+  <p>
+    <b>Vihje</b>: et voi palauttaa toStringissä suoraan kokonaislukutyyppisen oliomuuttujan <code>laskuri</code> arvoa. Kokonaislukumuuttujasta <code>arvo</code> saa merkkijonomuodon esim. lisäämällä sen eteen tyhjän merkkijonon eli kirjoittamalla <code>"" + arvo</code>.
+  </p>
 
-  <p>Seuraavassa on pääohjelma, joka käyttää laskuria:</p>
+  <p>
+    Seuraavassa on pääohjelma, joka käyttää laskuria:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -1942,9 +3406,13 @@ public class Paaohjelma {
 }
   <% end %>
 
-  <p>Laskurille asetetaan konstruktorissa ylärajaksi 4, joten laskurin arvo on luku 0:n ja 4:n väliltä. Huomaa, miten metodi <code>seuraava</code> vie laskurin arvoa eteenpäin, kunnes se pyörähtää 4:n jälkeen 0:aan:</p>
+  <p>
+    Laskurille asetetaan konstruktorissa ylärajaksi 4, joten laskurin arvo on luku 0:n ja 4:n väliltä. Huomaa, miten metodi <code>seuraava</code> vie laskurin arvoa eteenpäin, kunnes se pyörähtää 4:n jälkeen 0:aan:
+  </p>
 
-  <p>Ohjelman tulostuksen tulisi olla seuraava:</p>
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
 
   <% partial 'partials/sample_output' do %>
 arvo alussa: 0
@@ -1963,9 +3431,13 @@ arvo: 0
 
   <h2>Etunolla tulostukseen</h2>
 
-  <p>Tee <code>toString</code>-metodista sellainen, että se lisää arvon merkkijonoesitykseen etunollan, jos laskurin arvo on vähemmän kuin 10. Eli jos laskurin arvo on esim. 3, palautetaan merkkijono "03", jos arvo taas on esim. 12, palautetaan normaaliin tapaan merkkijono "12".</p>
+  <p>
+    Tee <code>toString</code>-metodista sellainen, että se lisää arvon merkkijonoesitykseen etunollan, jos laskurin arvo on vähemmän kuin 10. Eli jos laskurin arvo on esim. 3, palautetaan merkkijono "03", jos arvo taas on esim. 12, palautetaan normaaliin tapaan merkkijono "12".
+  </p>
 
-  <p>Muuta pääohjelma seuraavaan muotoon ja varmista, että tulos on haluttu.</p>
+  <p>
+    Muuta pääohjelma seuraavaan muotoon ja varmista, että tulos on haluttu.
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -2006,9 +3478,13 @@ arvo: 01
 
   <h2>Kello, ensimmäinen versio</h2>
 
-  <p>Käyttämällä kahta laskuria voimme muodostaa kellon. Tuntimäärä on laskuri, jonka yläraja on 23, ja minuuttimäärä on laskuri jonka yläraja on 59. Kuten kaikki tietävät, kello toimii siten, että aina kun minuuttimäärä pyörähtää nollaan, tuntimäärä kasvaa yhdellä. </p>
+  <p>
+    Käyttämällä kahta laskuria voimme muodostaa kellon. Tuntimäärä on laskuri, jonka yläraja on 23, ja minuuttimäärä on laskuri jonka yläraja on 59. Kuten kaikki tietävät, kello toimii siten, että aina kun minuuttimäärä pyörähtää nollaan, tuntimäärä kasvaa yhdellä.
+  </p>
 
-  <p>Tee ensin laskurille metodi <code>arvo</code>, joka palauttaa laskurin arvon:</p>
+  <p>
+    Tee ensin laskurille metodi <code>arvo</code>, joka palauttaa laskurin arvon:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public int arvo() {
@@ -2016,7 +3492,9 @@ public int arvo() {
 }
   <% end %>
 
-  <p>Tee sitten kello täydentämällä seuraava pääohjelmarunko (kopioi tämä pääohjelmaksesi sekä täydennä tarvittavilta osin kommenttien ohjaamalla tavalla):</p>
+  <p>
+    Tee sitten kello täydentämällä seuraava pääohjelmarunko (kopioi tämä pääohjelmaksesi sekä täydennä tarvittavilta osin kommenttien ohjaamalla tavalla):
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -2036,7 +3514,9 @@ public class Paaohjelma {
 }
   <% end %>
 
-  <p>Jos kellosi toimii oikein, sen tulostus näyttää suunnilleen seuraavalta:</p>
+  <p>
+    Jos kellosi toimii oikein, sen tulostus näyttää suunnilleen seuraavalta:
+  </p>
 
   <% partial 'partials/sample_output' do %>
 00:00
@@ -2054,13 +3534,21 @@ public class Paaohjelma {
 
   <h2>Kello, toinen versio</h2>
 
-  <p>Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon -- jos et ole ihan varma mitä tässä pitäisi tehdä, kertaa materiaalista kohta missä puhutaan "settereistä".</p>
+  <p>
+    Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon -- jos et ole ihan varma mitä tässä pitäisi tehdä, kertaa materiaalista kohta missä puhutaan "settereistä".
+  </p>
 
-  <p>Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.</p>
+  <p>
+    Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.
+  </p>
 
-  <p>Tämän metodin avulla voit muuttaa kellon ajan heti ohjelman alussa haluamaksesi.</p>
+  <p>
+    Tämän metodin avulla voit muuttaa kellon ajan heti ohjelman alussa haluamaksesi.
+  </p>
 
-  <p>Voit testata kellon toimintaa seuraavalla ohjelmalla</p>
+  <p>
+    Voit testata kellon toimintaa seuraavalla ohjelmalla
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 import java.util.Scanner;
@@ -2094,13 +3582,21 @@ public class Paaohjelma {
   <% end %>
 
 
-  <p>Kokeile laittaa kellosi alkamaan ajasta <i>23:59:50</i> ja varmista, että vuorokauden vaihteessa kello toimii odotetusti!</p>
+  <p>
+    Kokeile laittaa kellosi alkamaan ajasta <i>23:59:50</i> ja varmista, että vuorokauden vaihteessa kello toimii odotetusti!
+  </p>
 
-  <p><strong>Bonus-tehtävä: ikuisesti käyvä kello (tehtävää ei palauteta!)</strong></p>
+  <p>
+    <strong>Bonus-tehtävä: ikuisesti käyvä kello (tehtävää ei palauteta!)</strong>
+  </p>
 
-  <p>Ennen kuin alat tekemään tätä tehtävää, palauta jo tekemäsi kello!</p>
+  <p>
+    Ennen kuin alat tekemään tätä tehtävää, palauta jo tekemäsi kello!
+  </p>
 
-  <p>Muuta pääohjelmasi seuraavaan muotoon:</p>
+  <p>
+    Muuta pääohjelmasi seuraavaan muotoon:
+  </p>
 
   <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -2122,16 +3618,15 @@ public class Paaohjelma {
 }
   <% end %>
 
-  <p>Nyt kello käy ikuisesti ja kasvattaa arvoaan sekunnin välein. Sekunnin odotus tapahtuu komennolla <code>Thread.sleep(1000);</code>, komennon parametri kertoo nukuttavan ajan millisekunteina. Jotta komento toimisi, pitää main:in esittelyriville tehdä pieni lisäys: <code>public static void main(String[] args) <b>throws Exception</b> {</code>, eli tummennettuna oleva <code>throws Exception</code>.</p>
+  <p>
+    Nyt kello käy ikuisesti ja kasvattaa arvoaan sekunnin välein. Sekunnin odotus tapahtuu komennolla <code>Thread.sleep(1000);</code>, komennon parametri kertoo nukuttavan ajan millisekunteina. Jotta komento toimisi, pitää main:in esittelyriville tehdä pieni lisäys: <code>public static void main(String[] args) <b>throws Exception</b> {</code>, eli tummennettuna oleva <code>throws Exception</code>.
+  </p>
 
-  <p>Saat ohjelman lopetettua painamalla NetBeans-konsolin (eli sen osan johon kello tulostaa arvonsa) vasemmalla laidalla olevasta punaisesta laatikosta.</p>
+  <p>
+    Saat ohjelman lopetettua painamalla NetBeans-konsolin (eli sen osan johon kello tulostaa arvonsa) vasemmalla laidalla olevasta punaisesta laatikosta.
+  </p>
 
 <% end %>
-
-
-<div class="parqu-exercise" data-id="18" data-name="Olio ja lista"></div>
-
-<div class="self-explanation" data-key="q-olioTermistoa"></div>
 
 
 
@@ -2139,7 +3634,9 @@ public class Paaohjelma {
   Oman metodin kutsu
 <% end %>
 
-<p>Olio voi kutsua myös omia metodeitaan. Jos esim. halutaan, että toString-metodin palauttama merkkijonoesitys kertoisi myös henkilön painoindeksin, kannattaa <code>toString</code>:istä kutsua olion omaa metodia <code>painoIndeksi</code>:</p>
+<p>
+  Olio voi kutsua myös omia metodeitaan. Jos esim. halutaan, että toString-metodin palauttama merkkijonoesitys kertoisi myös henkilön painoindeksin, kannattaa <code>toString</code>:istä kutsua olion omaa metodia <code>painoIndeksi</code>:
+</p>
 
 <% partial 'partials/code_highlight' do %>
 public String toString() {
@@ -2147,7 +3644,9 @@ public String toString() {
 }
 <% end %>
 
-<p>Eli kun olio kutsuu omaa metodiaan, riittää etuliite this ja pelkkä metodin nimi. Vaihtoehtoinen tapa on tehdä oman metodin kutsu muodossa <code>painoIndeksi()</code> jolloin ei korosteta, että kutsutaan "olion itsensä" metodia painoindeksi:</p>
+<p>
+  Eli kun olio kutsuu omaa metodiaan, riittää etuliite this ja pelkkä metodin nimi. Vaihtoehtoinen tapa on tehdä oman metodin kutsu muodossa <code>painoIndeksi()</code> jolloin ei korosteta, että kutsutaan "olion itsensä" metodia painoindeksi:
+</p>
 
 <% partial 'partials/code_highlight' do %>
 public String toString() {
@@ -2155,7 +3654,9 @@ public String toString() {
 }
 <% end %>
 
-<p>Olioscreencastin kolmas osa:</p>
+<p>
+  Olioscreencastin kolmas osa:
+</p>
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YKwzIGuCLn8" class="youtube" height="300" target="_blank" rel="noopener"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
@@ -2163,21 +3664,30 @@ public String toString() {
      <p><iframe allowfullscreen="" frameborder="0" height="450" width="700" src="http://www.youtube.com/embed/owhvYkDTX2g"></iframe></p>
    -->
 
-<p>&nbsp;</p>
+<p>
+  &nbsp;
+</p>
 
-<% partial 'partials/exercise', locals: { name: 'Lukutilasto' } do %>
+<% partial 'partials/exercise', locals: { name: 'Lukutilasto (4 osaa)' } do %>
 
     <h2>Lukujen määrä</h2>
 
-    <p>Tee luokka <code>Lukutilasto</code> (tiedosto luomaasi luokkaa varten on tehtäväpohjassa valmiina), joka tuntee seuraavat toiminnot :</p>
+    <p>
+      Tee luokka <code>Lukutilasto</code> (tiedosto luomaasi luokkaa varten on tehtäväpohjassa valmiina), joka tuntee seuraavat toiminnot:
+    </p>
+
     <ul>
-      <li> metodi <code>lisaaLuku</code> lisää uuden luvun tilastoon
-	<li> metodi <code>haeLukujenMaara</code> kertoo lisättyjen lukujen määrän
+      <li> metodi <code>lisaaLuku</code> lisää uuden luvun tilastoon</li>
+      <li> metodi <code>haeLukujenMaara</code> kertoo lisättyjen lukujen määrän</li>
     </ul>
 
-    <p>Luokan ei tarvitse tallentaa mihinkään lisättyjä lukuja, vaan riittää muistaa niiden määrä. Metodin <code>lisaaLuku</code> ei tässä vaiheessa tarvitse edes ottaa huomioon, mikä luku lisätään tilastoon, koska ainoa tallennettava asia on lukujen määrä.</p>
+    <p>
+      Luokan ei tarvitse tallentaa mihinkään lisättyjä lukuja, vaan riittää muistaa niiden määrä. Metodin <code>lisaaLuku</code> ei tässä vaiheessa tarvitse edes ottaa huomioon, mikä luku lisätään tilastoon, koska ainoa tallennettava asia on lukujen määrä.
+    </p>
 
-    <p>Luokan runko on seuraava:</p>
+    <p>
+      Luokan runko on seuraava:
+    </p>
 
     <% partial 'partials/code_highlight' do %>
 public class Lukutilasto {
@@ -2197,7 +3707,9 @@ public class Lukutilasto {
 }
     <% end %>
 
-    <p>Seuraava ohjelma esittelee luokan käyttöä:</p>
+    <p>
+      Seuraava ohjelma esittelee luokan käyttöä:
+    </p>
 
     <% partial 'partials/code_highlight' do %>
 public class Paaohjelma {
@@ -2212,23 +3724,29 @@ public class Paaohjelma {
 }
     <% end %>
 
-    <p>Ohjelman tulostus on seuraava:</p>
+    <p>
+      Ohjelman tulostus on seuraava:
+    </p>
 
     <% partial 'partials/sample_output' do %>
 Määrä: 4
-        <% end %>
-
-
+    <% end %>
+    
+    
     <h2>Summa ja keskiarvo</h2>
-
-    <p>Laajenna luokkaa seuraavilla toiminnoilla:</p>
+    
+    <p>
+      Laajenna luokkaa seuraavilla toiminnoilla:
+    </p>
 
     <ul>
-      <li> metodi <code>summa</code> kertoo lisättyjen lukujen summan (tyhjän lukutilaston summa on 0)
-	<li> metodi <code>keskiarvo</code> kertoo lisättyjen lukujen keskiarvon (tyhjän lukutilaston keskiarvo on 0)
+      <li> metodi <code>summa</code> kertoo lisättyjen lukujen summan (tyhjän lukutilaston summa on 0)</li>
+      <li> metodi <code>keskiarvo</code> kertoo lisättyjen lukujen keskiarvon (tyhjän lukutilaston keskiarvo on 0)</li>
     </ul>
 
-    <p>Luokan runko on seuraava:</p>
+    <p>
+      Luokan runko on seuraava:
+    </p>
 
     <% partial 'partials/code_highlight' do %>
 public class Lukutilasto {
@@ -2257,7 +3775,9 @@ public class Lukutilasto {
 }
     <% end %>
 
-    <p>Seuraava ohjelma esittelee luokan käyttöä:</p>
+    <p>
+      Seuraava ohjelma esittelee luokan käyttöä:
+    </p>
 
     <% partial 'partials/code_highlight' do %>
 public class Main {
@@ -2274,7 +3794,9 @@ public class Main {
 }
     <% end %>
 
-    <p>Ohjelman tulostus on seuraava:</p>
+    <p>
+      Ohjelman tulostus on seuraava:
+    </p>
 
     <% partial 'partials/sample_output' do %>
 Määrä: 4
@@ -2285,11 +3807,17 @@ Keskiarvo: 2.75
 
     <h2>Summa käyttäjältä</h2>
 
-    <p>Tee ohjelma, joka kysyy lukuja käyttäjältä, kunnes käyttäjä antaa luvun -1. Sitten ohjelma ilmoittaa lukujen summan.</p>
+    <p>
+      Tee ohjelma, joka kysyy lukuja käyttäjältä, kunnes käyttäjä antaa luvun -1. Sitten ohjelma ilmoittaa lukujen summan.
+    </p>
 
-    <p>Ohjelmassa tulee käyttää <code>Lukutilasto</code>-olioa summan laskemiseen.</p>
+    <p>
+      Ohjelmassa tulee käyttää <code>Lukutilasto</code>-olioa summan laskemiseen.
+    </p>
 
-    <p><strong>HUOM: </strong> älä muuta Lukutilasto-luokaa millään tavalla!</p>
+    <p>
+      <strong>HUOM: </strong> älä muuta Lukutilasto-luokkaa millään tavalla!
+    </p>
 
     <% partial 'partials/sample_output' do %>
 Anna lukuja:
@@ -2299,20 +3827,30 @@ Anna lukuja:
       <font color="red">4</font>
       <font color="red">-1</font>
 Summa: 15
-        <% end %>
+    <% end %>
 
-
+    
     <h2>Monta summaa</h2>
+    
+    <p>
+      Muuta edellistä ohjelmaa niin, että ohjelma laskee myös parillisten ja parittomien lukujen summaa.
+    </p>
 
-    <p>Muuta edellistä ohjelmaa niin, että ohjelma laskee myös parillisten ja parittomien lukujen summaa.</p>
+    <p>
+      <b>HUOM</b>: Määrittele ohjelmassa <i>kolme</i> Lukutilasto-olioa ja laske ensimmäisen avulla kaikkien lukujen summa, toisen avulla parillisten lukujen summa ja kolmannen avulla parittomien lukujen summa.
+    </p>
 
-    <p><b>HUOM</b>: Määrittele ohjelmassa <i>kolme</i> Lukutilasto-olioa ja laske ensimmäisen avulla kaikkien lukujen summa, toisen avulla parillisten lukujen summa ja kolmannen avulla parittomien lukujen summa.</p>
+    <p>
+      <b>Jotta testi toimisi, on oliot luotava pääohjelmassa edellä mainitussa järjestyksessä (eli ensin kaikkien summan laskeva olio, toisena parillisten summan laskeva ja viimeisenä parittomien summan laskeva olio)!</b>
+    </p>
 
-    <p><b>Jotta testi toimisi, on oliot luotava pääohjelmassa edellä mainitussa järjestyksessä (eli ensin kaikkien summan laskeva olio, toisena parillisten summan laskeva ja viimeisenä parittomien summan laskeva olio)!</b></p>
+    <p>
+      <strong>HUOM: </strong> älä muuta Lukutilasto-luokaa millään tavalla!
+    </p>
 
-    <p><strong>HUOM: </strong> älä muuta Lukutilasto-luokaa millään tavalla!</p>
-
-    <p>Ohjelman tulee toimia seuraavasti:</p>
+    <p>
+      Ohjelman tulee toimia seuraavasti:
+    </p>
 
     <% partial 'partials/sample_output' do %>
 Anna lukuja:
@@ -2324,8 +3862,7 @@ Anna lukuja:
 Summa: 13
 Parillisten summa: 8
 Parittomien summa: 5
-        <% end %>
-
+    <% end %>
 
 <% end %>
 
@@ -2333,7 +3870,7 @@ Parittomien summa: 5
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Mistä olio-ohjelmoinnissa oikein on kyse: katsaus viikkoon
+  Mistä olio-ohjelmoinnissa oikein on kyse: katsaus taaksepäin
 <% end %>
 
 <p>
@@ -2350,44 +3887,8 @@ Parittomien summa: 5
 
 <p>
   Lausahdus <em>ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista</em> tulee toistumaan kurssilla.
- </p>
+</p>
 
 
 
- <% partial 'partials/exercise', locals: { name: 'Ongelman luokat' } do %>
-
-   <p>
-     Olemme tähän mennessä määritelleet ohjelmassa tarvittavat luokat sekä niihin liittyvät oliomuuttujat melko tarkkaan. Osion viimeisessä tehtävässä pohdit minkälainen luokka tai minkälaiset luokat sopisivat annetun ongelman ratkaisupaloiksi. Tehtävään ei ole olemassa yhtä vastausta, eikä siihen myöskään ole testejä.
-   </p>
-
-   <p>
-     Ongelma on seuraava:
-   </p>
-
-   <p>
-     <em>
-       Järjestän salaseuratapaamisia. Salaseuratapaamisissa käy henkilöitä, joista tiedän vain etunimen ja henkilökohtaisen salaseurakoodin. Olemme kävijöiden kanssa miettineet jonkinlaista järjestelmää aktiivisimpien jäsenten palkitsemiseen, jonka takia tarvitsisin jonkinlaisen tavan henkilökohtaisten vierailujen seuraamiseen. Tarvitsisin siis oikeastaan tavan henkilöiden vierailujen laskemiseen. Tämän lisäksi, jottei samoja henkilöitä palkittaisi yhä uudestaan ja uudestaan, tarvitsisin myös jonkinlaisen tavan annettujen palkintojen lukumäärän ylläpitoon.
-     </em>
-   </p>
-
-   <p>
-     <em>
-       Kuulin, että sinusta voisi olla apua. Minkälaista ratkaisua ehdottaisit edellämainittuun ongelmaani?
-     </em>
-   </p>
-
-
-   <p>
-     Pohdi minkälaisia käsitteitä ongelmaan liittyy ja toteuta niihin liittyvät luokat. Voit halutessasi myös rakentaa ohjelman, joka demonstroi näiden luokkien käyttöä, tai jopa yrittää luoda ohjelman, joka ratkaisee edellämainitun ongelman.
-   </p>
-
-   <p>
-     Kun olet saanut mielestäsi sopivat luokat luotua, palauta ohjelma.
-   </p>
-
- <% end %>
-
-
-
-
-<%= partial 'partials/quiz', locals: { id: '588b224ed8c1550004361764' } %>
+<%= partial 'partials/quiz', locals: { id: '59bd025e6ee1930004e5f92d' } %>
