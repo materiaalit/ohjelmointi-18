@@ -6,29 +6,319 @@
 ---
 
 
-<% if false %>
 <% partial 'partials/hint', locals: { name: 'Kurssi ensimmäinen koe' } do %>
 
   <p>
-    Jos teet syksyn kurssia Ohjelmoinnin perusteet, tässä kohtaa tulee tehdä kurssin ensimmäinen konekoe. Ensimmäisen konekokeen tekemiseen on kokeen aloitushetkestä 240 minuuttia. Ensimmäinen konekoe vastaa kymmentä kurssipistettä Ohjelmoinnin perusteet -kurssista.
+    Tässä kohtaa tulee tehdä syksyn Ohjelmoinnin perusteiden ensimmäinen konekoe. Ensimmäisen konekokeen tekemiseen on kokeen aloitushetkestä yksi päivä (24 tuntia). Ensimmäisessä konekokeessa on kaksi ohjelmointitehtävää, joissa käsitellään ja sovelletaan kurssin ensimmäisen kahden osan asioita. Ensimmäinen konekoe vastaa kymmentä kurssipistettä Ohjelmoinnin perusteet -kurssista. Ensimmäisestä konekokeesta ei ole pakkoa saada yhtäkään pistettä; kurssia voi jatkaa riippumatta miten konekokeessa pärjää.
   </p>
 
   <p>
-    TODO: tehtäväpohja, miten lähtee käyntiin..
+    Konekokeen saa käyttöönsä seuraavasti:
+  </p>
+
+  <ul>
+    <li>
+      Aseta TMC:n asetuksissa palvelimen osoitteeksi <code>https://tmc.mooc.fi/org/hy/courses/250</code> ja valitse kurssiksi <code>hy-ohpe-s17-konekoe1</code>
+    </li>
+    <li>
+      Lataa tehtävä KonekoeOhjeet
+    </li>
+    <li>
+      Muuta tehtävää KonekoeOhjeet siten, että siinä toteutettava ohjelma tulostaa tekstin "aloita" ja palauta tehtävä
+    </li>
+    <li>
+      TMC tarkastaa tehtävän ja ehdottaa hetken päästä uusien tehtävien lataamista. Jos tehtävien lataamista ei ehdoteta vähään aikaan, voit valita TMC -&gt; Download / update exercises
+    </li>
+    <li>
+      TMC ehdottaa kahta tehtävää ladattavaksi. Lataa tehtävät "KonekoeTehtava1" ja "KonekoeTehtava2"
+    </li>
+  </ul>
+
+  <p>
+    Nyt konekokeen tehtävät on ladattu ja voit alkaa tekemään tehtäviä.
+  </p>
+
+  <ul>
+    <li>
+      Ensimmäisen tehtävän tehtävänanto on tehtäväpohjan KonekoeTehtava1 kansiossa "Source Packages" -&gt; default package nimellä "tehtava1-kuvaus.txt".
+    </li>
+    <li>
+      Toisen tehtävän tehtävänanto on tehtäväpohjan KonekoeTehtava2 kansiossa "Source Packages" -&gt; default package nimellä "tehtava2-kuvaus.txt".
+    </li>
+  </ul>
+  
+  <p>
+    Palauta tehtäviä sitä mukaa kun etenet niissä. Tehtävän saa palauttaa niin monta kertaa kuin haluaa annetun aikarajan sisällä.
   </p>
   
-<% end %>
+  <p>
+    Konekoe tulee aloittaa viimeistään keskiviikkona 27.9. Todellisuudessa se kannattaa tehdä kuitenkin aiemmin, sillä kolmannessa ja sitä seuraavissa osissa siirrymme hiljalleen olio-ohjelmoinnin harjoitteluun, jota ensimmäisessä konekokeessa ei tarvita. Jos et ole varma käytössä olevan tietokoneesi toiminnasta, konekoe kannattaa tehdä Kumpulan pajoissa (BK107, B221) olevilla koneilla.
+  </p>
+  
+  <p>
+    Muistathan, että <strong>konekoe on yksilösuoritus</strong>. Et saa pyytää, saada tai antaa apua konekokeen tekemiseen. Älä myöskään jaa koetehtäviä tai mitään muuta kokeeseen liittyvää materiaalia muille.
+  </p>
+
+  <p>
+    Konekokeen tulokset julkaistaan (arviolta) 2.10.
+  </p>
+
+  <p>
+    Kun olet tehnyt konekokeen, kurssille pääsee takaisin valitsemalla TMC:n asetuksista palvelimen osoitteeksi <code>https://tmc.mooc.fi/org/hy/courses/243</code> sekä kurssiksi kurssin <code>hy-ohpe-s17</code>.
+  </p>
+  
 <% end %>
 
 
 <% partial 'partials/hint', locals: { name: 'Kolmannen osan tavoitteet' } do %>
 
   <p>
-    Osaa luoda metodeja, jotka palauttavat arvon. Ymmärtää miten ohjelman suoritus etenee metodikutsun yhteydessä. Ymmärtää muuttujien näkyvyyden ja olemassaolon. Tuntee käsitteen merkkijono ja osaa käsitellä merkkijonoja (erit. vertailu). Tuntee käsitteet olio, konstruktori ja olion metodit. Luo ainakin yhden oman luokan. Luo olioita tekemistään luokista. Ymmärtää static-määreellä ja ilman static-määrettä olevien metodien eron.
+    Tuntee loogiset operaatiot ja ja tai. Osaa luoda metodeja, jotka palauttavat arvon. Ymmärtää miten ohjelman suoritus etenee metodikutsun yhteydessä. Ymmärtää muuttujien näkyvyyden ja olemassaolon. Tuntee käsitteen merkkijono ja osaa käsitellä merkkijonoja (erit. vertailu). Tuntee käsitteet olio, konstruktori ja olion metodit. Luo ainakin yhden oman luokan. Luo olioita tekemistään luokista. Ymmärtää static-määreellä ja ilman static-määrettä olevien metodien eron.
   </p>
 
 <% end %>
 
+
+<% partial 'partials/material_heading' do %>
+  Loogiset operaatiot
+<% end %>
+
+<p>
+  Materiaalin esimerkeissä ja tehtävissä käytetyt ehto- ja toistolauseet ovat tähän mennessä käyttäneet yksinkertaisia lausekkeita, joilla on tarkasteltu ehtolauseeseen ja toistolauseeseen liittyvän lähdekoodin suorittamista. Esim.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  if (<em>lauseke</em>) {
+      System.out.println("Suoritetaan jos lausekkeen arvo on true");
+  }
+
+  while (<em>lauseke</em>) {
+      System.out.println("Suoritetaan jos lausekkeen arvo on true");
+  }
+<% end %>
+
+<% partial 'partials/code_highlight' do %>
+  int luku = 2;
+  
+  if (luku % 2 == 0) {
+      System.out.println("Luku on parillinen");
+  }
+
+  while (luku &gt; 0) {
+      System.out.println("Pienennetään..");
+      luku--;
+      System.out.println("Luku nyt " + luku);
+  }
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Luku on parillinen
+  Pienennetään
+  Luku nyt 1
+  Pienennetään
+  Luku nyt 0
+<% end %>
+
+<p>
+  Ehtolauseen lauseke voi koostua myös useammasta osasta, joissa käytetään loogisia operaatioita ja <code>&amp;&amp;</code> ja tai <code>||</code>. Kaksi ehtoa sisältävä lauseke, jossa on ja-operaatio on totta jos ja vain jos kummatkin ehdoista ovat tosia. Toisaalta, kaksi ehtoa sisältävä lauseke, jossa on tai-operaatio on totta jos jompi kumpi tai molemmat ehdoista ovat tosia.
+</p>
+
+<p>
+  Seuraavassa yhdistetään <code>&amp;&amp;</code>:lla eli ja-operaatiolla kaksi yksittäistä ehtoa. Koodilla tarkistetaan, onko muuttujassa oleva luku suurempi kuin 4 ja pienempi kuin 11, eli siis välillä 5-10:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  System.out.println("Onkohan luku väliltä 5-10: ");
+  int luku = 7;
+
+  if (luku &gt; 4 &amp;&amp; luku &lt; 11) {
+      System.out.println("On! :)");
+  } else {
+      System.out.println("Ei ollut :(")
+  }
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Onkohan luku väliltä 5-10:
+  On! :)
+<% end %>
+
+<p>
+  Seuraavassa annetaan <code>||</code>:n eli tai-operaation avulla kaksi vaihtoehtoa, onko luku pienempi kuin 0 tai suurempi kuin 100. Ehto toteutuu jos luku täyttää jomman kumman ehdon:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  System.out.println("Onkohan luku pienempi kuin 0 tai suurempi kuin 100");
+  int luku = 145;
+
+  if (luku &lt; 0 || luku &gt; 100) {
+      System.out.println("On! :)");
+  } else {
+      System.out.println("Ei ollut :(")
+  }
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Onkohan luku pienempi kuin 0 tai suurempi kuin 100
+  On! :)
+<% end %>
+
+
+<ul>
+  <li>Looginen operaatio ja: <code>lauseke1 &amp;&amp; lauseke2</code> lausekkeen arvo on tosi kun molemmat ehdoista ovat tosia</li>
+  <li>Looginen operaatio tai: <code>lauseke1 || lauseke2</code> lausekkeen arvo on tosi jos jompi kumpi tai molemmat ehdoista tosia</li>
+</ul>
+
+
+<% partial 'partials/exercise', locals: { name: 'Iän tarkistus' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy käyttäjän iän ja tarkistaa, että se on mahdollinen (ainakin 0 ja korkeintaan 120).
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Kuinka vanha olet? <font color="red">10</font>
+    OK
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Kuinka vanha olet? <font color="red">55</font>
+    OK
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Kuinka vanha olet? <font color="red">-3</font>
+    Mahdotonta!
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Kuinka vanha olet? <font color="red">150</font>
+    Mahdotonta!
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ongelman ratkaiseminen osa kerrallaan
+<% end %>
+
+<p>
+  Tutustutaan klassiseen ohjelmointiongelmaan:
+</p>
+
+<p>
+  <em>
+    'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.
+  </em>
+</p>
+
+<p>
+  Ohjelmoija lähtee ratkaisemaan tehtävää lukemalla ongelmakuvauksen, ja luomalla ohjelmakoodia ongelmakuvausta seuraten. Koska ohjelman suoritusehdot esitellään ongelmassa annetussa järjestyksessä, muodostuu ohjelman rakenne järjestyksen perusteella. Ohjelman rakenne muodostuu seuraavien askelten perusteella:
+</p>
+
+<ol>
+  <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
+  <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+  <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+  <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+</ol>
+
+<p>
+  Jos-tyyppiset ehdot on helppo toteuttaa <code>if - else if - else</code> -valintakäskyjen avulla. Alla oleva koodi on toteutettu ylläolevien askelten perusteella, mutta se ei kuitenkaan toimi oikein. Kokeile!
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Scanner lukija = new Scanner(System.in);
+
+  int luku = Integer.parseInt(lukija.nextLine());
+
+  if (luku % 3 == 0) {
+      System.out.println("Fizz");
+  } else if (luku % 5 == 0) {
+      System.out.println("Buzz");
+  } else if (luku % 3 == 0 && luku % 5 == 0) {
+      System.out.println("FizzBuzz");
+  } else {
+      System.out.println(luku);
+  }
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Valintakäskyjen suoritusjärjestyksestä
+<% end %>
+
+<p>
+  Edellisessä lähestymistavassa ongelmana on se, että <em>valintakäskyjen läpikäynti lopetetaan ensimmäiseen ehtoon, jonka arvo on totta</em>. Esimerkiksi luvulla 15 tulostetaan merkkijono "Fizz", sillä luku on kolmella jaollinen (15 % 3 == 0).
+</p>
+
+<p>
+  Yksi lähestymistapa ylläolevan ajatusketjun kehittämiseen on ensin etsiä <em>vaativin ehto</em> ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.
+</p>
+
+<ol>
+  <li>Tee ohjelma, joka lukee luvun käyttäjältä ja tulostaa sen.</li>
+  <li>Jos luku on jaollinen kolmella ja viidellä, tulosta luvun sijan merkkijono "FizzBuzz".</li>
+  <li>Jos luku on jaollinen kolmella, tulosta luvun sijaan merkkijono "Fizz".</li>
+  <li>Jos luku on jaollinen viidellä, tulosta luvun sijaan merkkijono "Buzz".</li>
+</ol>
+
+<p>Nyt ongelmakin tuntuu ratkeavan.</p>
+
+<% partial 'partials/code_highlight' do %>
+  Scanner lukija = new Scanner(System.in);
+
+  int luku = Integer.parseInt(lukija.nextLine());
+
+  if (luku % 3 == 0 && luku % 5 == 0) {
+      System.out.println("FizzBuzz");
+  } else if (luku % 3 == 0) {
+      System.out.println("Fizz");
+  } else if (luku % 5 == 0) {
+      System.out.println("Buzz");
+  } else {
+      System.out.println(luku);
+  }
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Karkausvuosi' } do %>
+
+
+  <p>
+    Tehdään ensimmäisessä osassa nähty tehtävä Karkausvuosi tässä kohtaa uudestaan. Mieti miten saisit hyödynnettyä edellä nähtyjä loogisia operaatioita sekä ajatusta siitä, että ehdoista kannattaa etsiä vaativin ensin.
+  </p>
+
+  <p>
+    Karkausvuoden määritelmä on seuraava: Vuosi on karkausvuosi, jos se on jaollinen 4:llä. Kuitenkin jos vuosi on jaollinen 100:lla, se on karkausvuosi vain silloin, kun se on jaollinen myös 400:lla.
+  </p>
+
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä vuosiluvun, ja tarkistaa, onko vuosi karkausvuosi.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Anna vuosi: <font color="red">2011</font>
+    Vuosi ei ole karkausvuosi.
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Anna vuosi: <font color="red">2012</font>
+    Vuosi on karkausvuosi.
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Anna vuosi: <font color="red">1800</font>
+    Vuosi ei ole karkausvuosi.
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Anna vuosi: <font color="red">2000</font>
+    Vuosi on karkausvuosi.
+  <% end %>
+
+<% end %>
 
 
 <% partial 'partials/material_heading' do %>
@@ -3335,300 +3625,6 @@ public void setPituus(int pituus) {
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Kello laskurin avulla (4 osaa)' } do %>
-
-  <p>
-    Tässä tehtävässä tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code> ja sovelletaan sitä kellon tekemiseen.
-  </p>
-
-  <h2>Rajoitettu laskuri</h2>
-
-  <p>
-    Tehdään luokka <code>YlhaaltaRajoitettuLaskuri</code>. Luokan olioilla on seuraava toiminnallisuus:
-  </p>
-
-  <ul>
-    <li>Laskurilla on oliomuuttuja, joka muistaa laskurin arvon. Laskurin arvo on luku väliltä 0...yläraja.</li>
-    <li>Aluksi laskurin arvo on 0.</li>
-    <li>Olion konstruktori määrittää laskurin ylärajan.</li>
-    <li>Metodi <code>seuraava</code> kasvattaa laskurin arvoa. Mutta jos laskurin arvo ylittää ylärajan, sen arvoksi tulee 0.</li>
-    <li> Metodi <code>toString</code> palauttaa laskurin arvon merkkijonona.</li>
-  </ul>
-
-  <p>
-    Tehtäväpohjassa on valmiina pääohjelmaa varten tiedosto <code>Paaohjelma</code>. Aloita tekemällä luokka <code>YlhaaltaRajoitettuLaskuri</code> vastaavasti kuin Maksukortti-tehtävässä. Näin tehdään myös tulevissa tehtäväsarjoissa.
-  </p>
-
-  <p>
-    Luokan rungoksi tulee seuraava:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-public class YlhaaltaRajoitettuLaskuri {
-    private int arvo;
-    private int ylaraja;
-
-    public YlhaaltaRajoitettuLaskuri(int ylarajanAlkuarvo) {
-        // kirjoita koodia tähän
-    }
-
-    public void seuraava() {
-        // kirjoita koodia tähän
-    }
-
-    public String toString() {
-        // kirjoita koodia tähän
-    }
-}
-  <% end %>
-
-  <p>
-    <b>Vihje</b>: et voi palauttaa toStringissä suoraan kokonaislukutyyppisen oliomuuttujan <code>laskuri</code> arvoa. Kokonaislukumuuttujasta <code>arvo</code> saa merkkijonomuodon esim. lisäämällä sen eteen tyhjän merkkijonon eli kirjoittamalla <code>"" + arvo</code>.
-  </p>
-
-  <p>
-    Seuraavassa on pääohjelma, joka käyttää laskuria:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-public class Paaohjelma {
-    public static void main(String[] args) {
-        YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(4);
-        System.out.println("arvo alussa: " + laskuri);
-
-        int i = 0;
-        while (i &lt; 10) {
-            laskuri.seuraava();
-            System.out.println("arvo: " + laskuri);
-            i++;
-        }
-    }
-}
-  <% end %>
-
-  <p>
-    Laskurille asetetaan konstruktorissa ylärajaksi 4, joten laskurin arvo on luku 0:n ja 4:n väliltä. Huomaa, miten metodi <code>seuraava</code> vie laskurin arvoa eteenpäin, kunnes se pyörähtää 4:n jälkeen 0:aan:
-  </p>
-
-  <p>
-    Ohjelman tulostuksen tulisi olla seuraava:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-arvo alussa: 0
-arvo: 1
-arvo: 2
-arvo: 3
-arvo: 4
-arvo: 0
-arvo: 1
-arvo: 2
-arvo: 3
-arvo: 4
-arvo: 0
-  <% end %>
-
-
-  <h2>Etunolla tulostukseen</h2>
-
-  <p>
-    Tee <code>toString</code>-metodista sellainen, että se lisää arvon merkkijonoesitykseen etunollan, jos laskurin arvo on vähemmän kuin 10. Eli jos laskurin arvo on esim. 3, palautetaan merkkijono "03", jos arvo taas on esim. 12, palautetaan normaaliin tapaan merkkijono "12".
-  </p>
-
-  <p>
-    Muuta pääohjelma seuraavaan muotoon ja varmista, että tulos on haluttu.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-public class Paaohjelma {
-    public static void main(String[] args) {
-        YlhaaltaRajoitettuLaskuri laskuri = new YlhaaltaRajoitettuLaskuri(14);
-        System.out.println("arvo alussa: " + laskuri);
-
-        int i = 0;
-        while (i &lt; 16) {
-            laskuri.seuraava();
-            System.out.println("arvo: " + laskuri);
-            i++;
-        }
-    }
-}
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-arvo alussa: 00
-arvo: 01
-arvo: 02
-arvo: 03
-arvo: 04
-arvo: 05
-arvo: 06
-arvo: 07
-arvo: 08
-arvo: 09
-arvo: 10
-arvo: 11
-arvo: 12
-arvo: 13
-arvo: 14
-arvo: 00
-arvo: 01
-  <% end %>
-
-
-  <h2>Kello, ensimmäinen versio</h2>
-
-  <p>
-    Käyttämällä kahta laskuria voimme muodostaa kellon. Tuntimäärä on laskuri, jonka yläraja on 23, ja minuuttimäärä on laskuri jonka yläraja on 59. Kuten kaikki tietävät, kello toimii siten, että aina kun minuuttimäärä pyörähtää nollaan, tuntimäärä kasvaa yhdellä.
-  </p>
-
-  <p>
-    Tee ensin laskurille metodi <code>arvo</code>, joka palauttaa laskurin arvon:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-public int arvo() {
-    // kirjoita koodia tähän
-}
-  <% end %>
-
-  <p>
-    Tee sitten kello täydentämällä seuraava pääohjelmarunko (kopioi tämä pääohjelmaksesi sekä täydennä tarvittavilta osin kommenttien ohjaamalla tavalla):
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-public class Paaohjelma {
-    public static void main(String[] args) {
-        YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
-        YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
-
-        int i = 0;
-        while (i &lt; 121) {
-            System.out.println(tunnit + ":" + minuutit);   // tulostetaan nykyinen aika
-            // minuuttimäärä kasvaa
-            // jos minuuttimäärä menee nollaan, tuntimäärä kasvaa
-
-            i++;
-        }
-    }
-}
-  <% end %>
-
-  <p>
-    Jos kellosi toimii oikein, sen tulostus näyttää suunnilleen seuraavalta:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-00:00
-00:01
-...
-00:59
-01:00
-01:01
-01:02
-...
-01:59
-02:00
-  <% end %>
-
-
-  <h2>Kello, toinen versio</h2>
-
-  <p>
-    Laajenna kelloasi myös sekuntiviisarilla. Tee lisäksi luokalle <code>YlhaaltaRajoitettuLaskuri</code> metodi <code>asetaArvo</code>, jolla laskurille pystyy asettamaan halutun arvon -- jos et ole ihan varma mitä tässä pitäisi tehdä, kertaa materiaalista kohta missä puhutaan "settereistä".
-  </p>
-
-  <p>
-    Jos laskurille yritetään asettaa kelvoton arvo eli negatiivinen luku tai ylärajaa suurempi luku, ei laskurin arvo muutu.
-  </p>
-
-  <p>
-    Tämän metodin avulla voit muuttaa kellon ajan heti ohjelman alussa haluamaksesi.
-  </p>
-
-  <p>
-    Voit testata kellon toimintaa seuraavalla ohjelmalla
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-import java.util.Scanner;
-
-public class Paaohjelma {
-    public static void main(String[] args)  {
-        Scanner lukija = new Scanner(System.in);
-        YlhaaltaRajoitettuLaskuri sekunnit = new YlhaaltaRajoitettuLaskuri(59);
-        YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
-        YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
-
-        System.out.print("sekunnit: ");
-        int sek = // kysy sekuntien alkuarvo käyttäjältä
-        System.out.print("minuutit: ");
-        int min = // kysy minuuttien alkuarvo käyttäjältä
-        System.out.print("tunnit: ");
-        int tun = // kysy tuntien alkuarvo käyttäjältä
-
-        sekunnit.asetaArvo(sek);
-        minuutit.asetaArvo(min);
-        tunnit.asetaArvo(tun);
-
-        int i = 0;
-        while (i &lt; 121) {
-            // lisää edelliseen myös sekuntiviisari
-            i++;
-        }
-
-    }
-}
-  <% end %>
-
-
-  <p>
-    Kokeile laittaa kellosi alkamaan ajasta <i>23:59:50</i> ja varmista, että vuorokauden vaihteessa kello toimii odotetusti!
-  </p>
-
-  <p>
-    <strong>Bonus-tehtävä: ikuisesti käyvä kello (tehtävää ei palauteta!)</strong>
-  </p>
-
-  <p>
-    Ennen kuin alat tekemään tätä tehtävää, palauta jo tekemäsi kello!
-  </p>
-
-  <p>
-    Muuta pääohjelmasi seuraavaan muotoon:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-public class Paaohjelma {
-    public static void main(String[] args) throws Exception {
-        YlhaaltaRajoitettuLaskuri sekunnit = new YlhaaltaRajoitettuLaskuri(59);
-        YlhaaltaRajoitettuLaskuri minuutit = new YlhaaltaRajoitettuLaskuri(59);
-        YlhaaltaRajoitettuLaskuri tunnit = new YlhaaltaRajoitettuLaskuri(23);
-
-        sekunnit.asetaArvo(50);
-        minuutit.asetaArvo(59);
-        tunnit.asetaArvo(23);
-
-        while (true) {
-            System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
-            Thread.sleep(1000);
-            // lisää kellon aikaa sekunnilla eteenpäin
-        }
-    }
-}
-  <% end %>
-
-  <p>
-    Nyt kello käy ikuisesti ja kasvattaa arvoaan sekunnin välein. Sekunnin odotus tapahtuu komennolla <code>Thread.sleep(1000);</code>, komennon parametri kertoo nukuttavan ajan millisekunteina. Jotta komento toimisi, pitää main:in esittelyriville tehdä pieni lisäys: <code>public static void main(String[] args) <b>throws Exception</b> {</code>, eli tummennettuna oleva <code>throws Exception</code>.
-  </p>
-
-  <p>
-    Saat ohjelman lopetettua painamalla NetBeans-konsolin (eli sen osan johon kello tulostaa arvonsa) vasemmalla laidalla olevasta punaisesta laatikosta.
-  </p>
-
-<% end %>
-
-
 
 <% partial 'partials/material_sub_heading' do %>
   Oman metodin kutsu
@@ -3660,9 +3656,6 @@ public String toString() {
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YKwzIGuCLn8" class="youtube" height="300" target="_blank" rel="noopener"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
-<!--
-     <p><iframe allowfullscreen="" frameborder="0" height="450" width="700" src="http://www.youtube.com/embed/owhvYkDTX2g"></iframe></p>
-   -->
 
 <p>
   &nbsp;
