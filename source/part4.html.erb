@@ -344,17 +344,6 @@ J. K. Rowling, Harry Potter ja viisasten kivi, 223 sivua
 
 
 
-<% partial 'partials/material_sub_heading' do %>
-  Esimerkki abstrahoinnista ja kapseloinnista
-<% end %>
-
-
-
-<p>
-  TODO: konkreettinen esimerkki, missä on ongelma-alueen kuvaus. Tunnistetaan ongelma-alueesta luokat sekä niiden oliomuuttujat.
-</p>
-
-
 
 <% partial 'partials/exercise', locals: { name: 'Kello laskurin avulla (4 osaa)' } do %>
 
@@ -1171,20 +1160,25 @@ public class Main {
 <% partial 'partials/hint', locals: { name: 'Algoritmi -- al-Khwarizmi' } do %>
 
   <p>
-    TODO: pidempi juttu tähän
-  </p>
-  
-  <p>
-    Tietojenkäsittelytieteen ytimessä ovat algoritmit eli yksityiskohtaiset kuvaukset ongelman ratkaisuun tarvittavista askelista.
+    Ensimmäiset korkeakulttuurit syntyivät (laajemman) lähi-idän alueelle, mikä nopeutti siellä myös henkistä kasvua. Lähi-idässä oltiin merkittävästi muuta maailmaa edellä muunmuassa matematiikassa ja tähtitieteessä -- esimerkiksi Euroopassa 1500-luvulla tapahtunut murros tähtitieteessä (maa kiertääkin aurinkoa eikä toisin päin), tapahtui laajemman lähi-idän vaikutuspiirissä olleessa kreikassa jo noin 300 vuotta ennen ajanlaskumme alkua.
   </p>
 
   <p>
-    Termi algoritmi juontaa juurensa keski-aasialaisen tieteilijän <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank" rel="noopener">Muhammad ibn Musa al-Khwarizmin</a> nimeen. Hän kehitti muun muassa menetelmiä ensimmäisen ja toisen asteen matemaattisten yhtälöiden ratkaisemiseksi.
+    Nimi al-Khwarizmi viittaa oikeastaan alueeseen, tai hieman laajemmin, etuosa al- viittaa usein henkilön synty- tai kotipaikkaan. <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank" rel="noopener">Muhammad ibn Musa al-Khwarizmi</a> -- tai hänen isänsä tai esi-isänsä -- tulivat keskiaasiasta alueelta, joka tunnetaan nykyään suomen kielessä nimellä Harezm. Nykyään käytetty termi algoritmi on siis sekä hatunnosto Muhammad ibn Musa al-Khwarizmille, että laajemmin hänen syntyperälleen.
   </p>
 
   <p>
-    Yllä olevassa esimerkissä esiintynyt Blaise Pascal oli myös merkittävä tietojenkäsittelytieteen alaa edistänyt henkilö. Vaikka hänet tunnetaan yleensä matematiikasta (mm. Binomikertoimen arvot helposti kertova <a href="https://en.wikipedia.org/wiki/Pascal%27s_triangle" target="_blank" rel="noopener">Pascalin kolmio</a>), hän kehitti myös <a href="https://en.wikipedia.org/wiki/Pascal%27s_calculator" target="_blank" rel="noopener">mekaanisen laskimen</a>.
+    Merkittävä osa al-Khwarizmin työstä tapahtui Baghdadissa sijaitsevassa Viisauden talossa, joka paikallisen hallinnon tukemana keräsi tiedemiehiä eri puolilta maailmaa yhteen. Tavoitteena oli "pienimuotoisesti" kerätä kaikki maailman tieto yhteen paikkaan ja kääntää se arabian kielelle, jota sitten jaettiin eteenpäin. Tätä kautta tietoa valui myös eurooppaan: esimerkiksi al-Khwarizmin kirja intialaisilla numeroilla laskemisesta (latinaksi "Algoritmi de numero Indorum") toi arabialaisten numeroiden käytön eurooppaan.
   </p>
+
+  <p>
+    Tämä terminologia näkyy yhä esimerkikiksi espanjan kielessä. Espanjankielinen sana guarismo -- eli suomeksi luku -- tulee ilmeisesti juurikin al-Khwarizmin nimestä.
+  </p>
+
+  <p>
+    Vaikka Muhammad ibn Musa al-Khwarizmi kytketään nykyään -- ainakin tietojenkäsittelytieteilijöiden parissa -- ensisijaisesti algoritmeihin, on hän ennen kaikkea vaikuttanut merkittävästi algebran kehitykseen. Hänen työnsä tuolla alueella kontribuoi mm. ensimmäisen ja toisen asteen yhtälöiden ratkaisemiseen. Työn keskiössä olivat konkreettiset esimerkit sekä selkokieliset askeleittaiset ratkaisut  -- numeroita tuossa työssä ei esiintynyt.
+  </p>
+
 
 <% end %>
 
@@ -3550,6 +3544,10 @@ System.out.println(c);  // 0.00e
   <img src="/img/pong-screenshot.png"/>
 
   <p>
+    Pelin saa käynnistettyä valitsemalla luokan PongApplication ja suorittamalla sen. Vasenta mailaa voi ohjata napeilla w ja s, oikeaa mailaa nuolinäppäimillä.
+  </p>
+  
+  <p>
     Pohjasta puuttuu kuitenkin merkittävä osa pelin toiminnallisuudesta. Tässä tehtävässä tavoitteenasi on tutustua olemassaolevaan ohjelmaan ja täydentää peliä sopivasti. Tässä muutamia täydennysehdotuksia:
   </p>
 
@@ -3572,7 +3570,7 @@ System.out.println(c);  // 0.00e
     <li>
       ...
     </li>
-  </p>
+  </ol>
 
   <p>
     Tehtävässä ei ole testejä ja sen tekemisestä saa yhden pisteen. Saat itse käytännössä määritellä mitä tehtävän tekeminen tarkoittaa, eli voit vapaasti tehdä pelistä hyvinkin monimuotoisen, jota ehkäpä päädyt jopa demoamaan jollekin.
