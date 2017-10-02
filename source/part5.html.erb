@@ -2,7 +2,7 @@
   title: Osa 5
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -10,27 +10,377 @@
 <% partial 'partials/hint', locals: { name: 'Viidennen osan tavoitteet' } do %>
 
   <p>
-    Ymmärtää alkeis- ja viittaustyyppisten muuttujien erot. Tietää, että viittaustyyppiseen muuttujaan voi olla viittaus useammasta muuttujasta. Ymmärtää miten alkeis- ja viittaustyyppisten muuttujien toiminta poikkeaa toisistaan metodien ja listojen yhteydessä. Ymmärtää automaattisen testaamisen periaatteet ja muokkaa olemassaolevia automaattisia testejä.  Ymmärtää luokkakaavioiden idean ja osaa piirtää ongelma-aluetta kuvaavia luokkakaavioita.
+    Ymmärtää alkeis- ja viittaustyyppisten muuttujien erot. Osaa käsitellä olioita listarakenteessa sekä käyttää listaa oliomuuttujana. Ymmärtää automaattisen testaamisen periaatteet ja osaa luoda yksinkertaisen luokan toimintaa testaavia automaattisia testejä. 
   </p>
 
 <% end %>
 
 
 
+<% partial 'partials/material_heading' do %>
+  Alkeis- ja viittaustyyppiset muuttujat
+<% end %>
 
+<p>
+  Javan muuttujat voi jakaa alkeis- ja viittaustyyppisiin muuttujiin. Alkeistyyppisten muuttujien sisältämä tieto on tallennettu muuttujan arvoksi, kun taas viittaustyyppisten muuttujien arvona on viite muuttujaan liittyvään tietoon. Tarkastellaan näitä muuttujatyyppejä kahden esimerkin kautta.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  int arvo = 10;
+  System.out.println(arvo);  
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  10
+<% end %>
+
+
+<% partial 'partials/code_highlight' do %>
+  Nimi leevi = new Nimi("Leevi");
+  System.out.println(leevi);
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  Nimi@4aa298b7
+<% end %>
+
+<p>
+  Ensimmäisessä esimerkissä luodaan alkeistyyppinen <code>int</code>-muuttuja, jonka arvoksi kopioidaan luku 10. Kun muuttuja annetaan System.out.println-metodille tulostettavaksi, tulostuu arvo 10. Toisessa esimerkissä taas luodaan viittaustyyppinen Nimi-muuttuja, jonka arvoksi kopioidaan Nimi-luokassa määritellyn konstruktorin kutsun palauttama viite olioon. Kun muuttuja annetaan System.out.println-metodille tulostettavaksi, tulostuu merkkijono Nimi@4aa298b7. Mistä tässä oikein on kyse?
+</p>
+
+<p>
+  Metodikutsu System.out.println tulostaa muuttujan arvon. Alkeistyyppiset muuttujat sisältävät konkreettisen arvon, joka tulostuu tulostuskutsun yhteydessä. Myös viittaustyyppiset muuttujat sisältävät konkreettisen arvon, mutta viittaustyyppisten muuttujien arvo on viite paikkaan, missä olion tiedot ovat. Voidaan ajatella, että merkkijono <code>Nimi@4aa298b7</code> kertoo, että kyse on <code>Nimi</code>-tyyppisestä muuttujasta paikassa <code>4aa298b7</code>.
+</p>
+
+<p>
+  Tutustutaan näihin muuttujatyyppeihin tarkemmin.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Alkeistyyppiset muuttujat
+<% end %>
+
+<p>
+  Javassa on yhteensä kahdeksan erilaista alkeistyyppistä muuttujaa. Nämä ovat <code>boolean</code> (totuusarvo), <code>byte</code> (8 bittiä sisältävä tavu), <code>char</code> (yhtä merkkiä kuvaava 16-bittiä sisältävä kirjainarvo), <code>short</code> (pientä lukua kuvaava 16 bittiä sisältävä arvo), <code>int</code> (keskikokoista lukua kuvaava 32 bittiä sisältävä arvo), <code>long</code> (isohkoa lukua kuvaava 64 bittiä sisältävä arvo), <code>float</code> (32-bittiä sisältävä liukuluku) ja <code>double</code> (64-bittiä sisältävä liukuluku).
+</p>
+
+<p>
+  Olemme käyttäneet näistä ensisijaisesti totuusarvomuuttujia (<code>boolean</code>), kokonaislukumuuttujia (<code>int</code>), ja liukulukumuuttujia (<code>double</code>).
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  boolean totuusarvo = false;
+  int kokonaisluku = 42;
+  double liukuluku = 4.2;
+
+  System.out.println(totuusarvo);
+  System.out.println(kokonaisluku);
+  System.out.println(liukuluku);
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  false
+  42
+  4.2
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Bitit ja binääriluvut' } do %>
+
+  <p>
+    Tietokoneen muisti on käytännössä taulukko, missä jokainen taulukon lokero sisältää joko luvun 0 tai 1. Näitä yksittäisiä lukuja kutsutaan biteiksi (lyhenne sanasta binary digit). Koneen käyttämät luvut kuvataan bittien avulla binäärilukuna: esimerkiksi <code>short</code>-tyyppinen muuttuja sisältää 16 bittiä ja <code>int</code>-tyyppinen muuttuja 32 bittiä.
+  </p>
+
+  <p>
+    Tarkastellaan miten binääriluvut toimivat. Alla on kuvattuna 8 bittiä pitkä alue tietokoneen muistista, missä jokainen bitin arvo on 0. 
+  </p>
+
+  <table border="1">
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+
+  <br/>
+  
+  <p>
+    Binäärilukukujen avulla jokainen luku voidaan esittää luvun 2 potensseina. Esimerkiksi yllä olevan kahdeksan bitin luvun arvo kymmenjärjestelmässä on: 0 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + ... + 0 * 2<sup>7</sup>. Laskeminen aloitetaan tyypillisesti luvun oikeasta laidasta. Alla on kuvattuna toinen esimerkki.
+  </p>
+  
+  <table border="1">
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </table>
+
+  <br/>
+  
+  <p>
+    Yllä kuvattu binääriluku on kymmenjärjestelmässä: 1 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + 1 * 2<sup>2</sup> + 0 * 2<sup>3</sup> + ... + 0 * 2<sup>7</sup> = 5. 
+  </p>
+
+  <p>
+    Vastaavasti toiseen suuntaan siirryttäessä luku 3 voidaan ilmaista binäärilukuna "11", ja esimerkiksi luku 256 binäärilukuna "100000000". Binäärilukujen avulla kuvataan lukujen lisäksi käytännössä kaikki tietokoneen tallentama tieto. Tähän teemaan tutustutaan tarkemmin kurssilla Tietokoneen toiminta (TKT-10005). 
+  </p>
+
+<% end %>
+
+<p>
+  Alkeistyyppisillä muuttujilla muuttujan esittely varaa muistipaikan, johon kopioidaan arvo. Alla olevassa esimerkissä luodaan kolme muuttujaa. Jokaisella muuttujalla on erillinen muistipaikka, johon asetettava arvo kopioidaan.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  int eka = 10;
+  int toka = eka;
+  int kolmas = toka;
+  System.out.println(eka + " " + toka + " " + kolmas);
+  toka = 5;
+  System.out.println(eka + " " + toka + " " + kolmas);
+<% end %>
+
+
+<% partial 'partials/code_highlight' do %>
+  10 10 10
+  10 5 10
+<% end %>
+
+
+<p>
+  Muuttujan arvon asetus yhtäsuuruusmerkillä aiheuttaa muuttujan arvon kopioimisen. Esimerkiksi lause <code>int eka = 10</code> luo int-tyyppisen muuttujan nimeltä eka, jonka arvoksi kopioidaan luku 10. Vastaavasti lause <code>int toka = eka;</code> luo int-tyyppisen muuttujan nimeltä toka, jonka arvoksi kopioidaan muuttujan eka arvo.
+</p>
+
+<p>
+  Muuttujien arvot kopioituvat myös metodikutsujen yhteydessä. Käytännössä tämä tarkoittaa sitä, että metodikutsun yhteydessä metodin parametriksi annetun muuttujan arvo ei muutu metodia kutsuvassa metodissa. Alla olevassa esimerkissä main-metodissa esitellään muuttuja luku, jonka arvo kopioidaan metodin kutsu parametriksi. Metodissa kutsu parametrina saatu arvo tulostetaan, jonka jälkeen arvoa kasvatetaan yhdellä, jonka jälkeen arvo tulostetaan vielä kerran. Lopulta metodin kutsu suoritus loppuu, ja palataan main-metodiin, missä luku-muuttujan arvo ei ole muuttunut. 
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int luku = 1;\n        kutsu(luku);\n       \n        System.out.println(\"Luku vieläkin: \" + luku);\n    }\n   \n    public static void kutsu(int luku) {\n        System.out.println(\"Luku aluksi: \" + luku);\n        luku++;\n        System.out.println(\"Luku lopuksi: \" + luku);\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"kutsu:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"16","frame_id":16}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"kutsu:12","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"return","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"36","frame_id":36}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"return","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"37","frame_id":37}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Viittaustyyppiset muuttujat
+<% end %>
+
+<p>
+  Lähes kaikki Javan muuttujat ovat viittaustyyppisiä, ja ohjelmoija voi luoda Javaan myös uusia viittaustyypin muuttujatyyppejä. Käytännössä jokainen annetusta luokasta luotu olio on viittaustyyppinen muuttuja.
+</p>
+
+<p>
+  Tarkastellaan alussa ollutta esimerkkiä, missä luotiin Nimi-tyyppinen muuttuja leevi.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Nimi leevi = new Nimi("Leevi");
+<% end %>
+
+<p>
+  Kutsun osat ovat seuravat:
+</p>
+
+<ul>
+
+  <li>
+    Mitä tahansa uutta muuttujaa esiteltäessä tulee ensin kertoa esiteltävän muuttujan tyyppi. Alla esitellään muuttuja, jonka tyyppi on <code>Nimi</code>. Jotta ohjelman suorittaminen onnistuu, tulee ohjelmassa olla luokka nimeltä <code>Nimi</code>.
+    
+    <% partial 'partials/code_highlight' do %>
+      <strong>Nimi</strong> leevi = new Nimi("Leevi");
+    <% end %>
+    
+  </li>
+
+  <li>
+
+    Muuttujan esittelyn yhteydessä kerrotaan myös muuttujan nimi. Muuttujan arvoon voi myöhemmin viitata muuttujan nimen perusteella. Alla muuttujan nimeksi tulee leevi.
+    
+    <% partial 'partials/code_highlight' do %>
+      Nimi <strong>leevi</strong> = new Nimi("Leevi");
+    <% end %>
+    
+  </li>
+
+  <li>
+
+    Muuttujaan halutaan asettaa arvo. Luokista luodaan olioita kutsumalla niiden konstruktoria, joka määrittelee luotavan olion muuttujiin asetettavat arvot. Alla oletetaan, että luokassa <code>Nimi</code> on konstruktori, joka saa parametrikseen merkkijonon.
+    
+    <% partial 'partials/code_highlight' do %>
+      Nimi leevi = <strong>new Nimi("Leevi");</strong>
+    <% end %>
+    
+  </li>
+
+  <li>
+
+    Konstruktorikutsu palauttaa arvon, joka on viite luotuun olioon. Yhtäsuuruusmerkki kertoo ohjelmalle, että yhtäsuuruusmerkin oikealla puolella olevan lausekkeen arvo tulee kopioida yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi.
+    
+    <% partial 'partials/code_highlight' do %>
+      Nimi leevi <strong>=</strong> new Nimi("Leevi");
+    <% end %>
+
+  </li>
+</ul>
+
+<p>
+  On mahdollista, että Nimi-luokalle on määritelty metodeja, joiden avulla Nimi-luokasta tehtyjen olioiden sisäistä tilaa voidaan muuttaa.
+</p>
+
+<p>
+  Suurin ero alkeis- ja viittaustyyppisten muuttujien välillä on se, että alkeistyyppiset muuttujat (jotka ovat lähes poikkeuksetta numeroita) ovat muuttumattomia, kun taas viittaustyyppiset muuttujat voivat muuttua. Tämä ilmiö liittyy siihen, että alkeistyyppisten muuttujien arvo on tallennettu suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo on viite muuttujan tietoihin.
+</p>
+
+<p>
+  Alkeistyyppisille muuttujille löytyy laskuoperaatioita kuten plus, miinus, kerto jne -- nämä operaatiot eivät muuta alkuperäisten muuttujien arvoja. Laskuoperaatioiden avulla voidaan luodaan uusia arvoja, jotka varastoidaan muuttujiin tarvittaessa. Toisaalta, viittaustyyppisten muuttujien arvoa ei voi muuttaa plus, miinus, kerto ym. laskuoperaatioiden avulla.
+</p>
+
+<p>
+  Viittaustyyppisen muuttujan arvo -- eli viite -- osoittaa paikkaan muistissa, mistä löytyy viittaustyyppiseen muuttujaan liittyvät tiedot. Oletetaan, että käytössä on luokka Henkilo, jossa on määritelty oliomuuttujaksi ika. Jos luokasta on luotu henkilöolio, voi henkilöolion viitettä seuraamalla päästä käsiksi muuttujaan ika, jonka arvoa voi tarvittaessa muuttaa. 
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujat ja tietokoneen muisti
+<% end %>
+
+<p>
+  Totesimme aiemmin, että alkeistyyppisten muuttujien arvo on tallennettuna suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo sisältää viitteen olioon. Totesimme myös, että muuttujan arvon asettaminen yhtäsuuruusmerkillä kopioi oikealla olevan (muuttujan) arvon vasemmalla olevan muuttujan arvoksi. Vastaava toiminnallisuus on myös metodikutsujen yhteydessä -- metodikutsun yhteydessä parametrina annettava arvo kopioidaan metodin käyttöön.
+</p>
+
+<p>
+  Tarkastellaan tätä käytännössä. Oletetaan, että käytössämme on seuraava luokka <code>Henkilo</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Henkilo {
+      private String nimi;
+      private int syntymavuosi;
+
+      public Henkilo(String nimi) {
+          this.nimi = nimi;
+          this.syntymavuosi = 1970;
+      }
+
+      public int getSyntymavuosi() {
+          return this.syntymavuosi;
+      }
+  
+      public void setSyntymavuosi(int syntymavuosi) {
+          this.syntymavuosi = syntymavuosi;
+      }
+
+      public String toString() {
+          return this.nimi + " (" + this.syntymavuosi + ")";
+      }
+  }
+<% end %>
+
+<p>
+  Tarkastellaan seuraavan ohjelman toimintaa askeleittain.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Esimerkki {
+      public static void main(String[] args) {
+          Henkilo eka = new Henkilo("Eka");
+  
+          System.out.println(eka);
+          nuorenna(eka);
+          System.out.println(eka);
+  
+          Henkilo toka = eka;
+          nuorenna(toka);
+  
+          System.out.println(eka);
+      }
+  
+      public static void nuorenna(Henkilo henkilo) {
+          henkilo.setSyntymavuosi(henkilo.getSyntymavuosi() + 1);
+      }
+  }
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Eka (1970)
+  Eka (1971)
+  Eka (1972)
+<% end %>
+
+<p>
+  Ohjelman suoritus alkaa main-metodin ensimmäiseltä riviltä. Main-metodin ensimmäisellä rivillä esitellään Henkilo-tyyppinen muuttuja eka, johon kopioidaan Henkilo-luokan konstruktorin palauttama arvo. Konstruktorissa luodaan olio, jonka syntymävuodeksi asetetaan 1970 ja jonka nimeksi asetetaan parametrina saatu arvo. Konstruktori palauttaa viitteen. Rivin suorituksen jälkeen ohjelman tilanne on seuraava -- ohjelman muistiin on luotu Henkilo-olio, johon on viittaus main-metodissa määritellystä eka-muuttujasta.
+</p>
+
+
+<img src="/img/drawings/eka-1.png"/>
+
+<p>
+  Main-metodin kolmannella rivillä tulostetaan muuttujan eka arvo. Metodikutsu System.out.println etsii sille parametrina annetulta viittaustyyppiseltä muuttujalta toString-metodia. Henkilo-luokalla on metodi toString, joten metodia kutsutaan eka-muuttujan osoittamalle oliolle. Oliossa olevan muuttujan nimi arvo on "Eka" ja syntymävuoden arvo on 1970. Tulostukseksi tulee "Eka (1970)".
+</p>
+
+<p>
+  Neljännellä rivillä kutsutaan nuorenna-metodia, jolle annetaan parametriksi muuttuja eka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin parametriksi. Koska muuttuja eka on viittaustyyppinen, kopioituu metodin käyttöön aiemmin luotu viite. Metodin suorituksen lopussa tilanne on seuraava -- metodi kasvattaa parametrina saamansa olion syntymävuotta yhdellä.
+</p>
+
+<img src="/img/drawings/eka-2.png"/>
+
+<p>
+  Kun metodin nuorenna suoritus loppuu, palataan takaisin main-metodiin. Nuorenna-metodin suoritukseen liittyvät tiedot katoavat kutsupinosta. 
+</p>
+
+<img src="/img/drawings/eka-3.png"/>
+
+<p>
+  Metodikutsusta palaamisen jälkeen suoritetaan taas muuttujan eka arvon tulostaminen. Tällä kertaa muuttujan eka osoittama olio on muuttunut hieman -- edellisen metodikutsun yhteydessä viitatun olion syntymäpäivä-muuttujaa kasvatettiin yhdellä. Tulostukseksi tulee lopulta "Eka (1971)".
+</p>
+
+<p>
+  Tämän jälkeen ohjelmassa esitellään uusi Henkilo-tyyppinen muuttuja toka. Muuttujaan toka kopioidaan muuttujan eka arvo, eli muuttujan toka arvoksi tulee viite jo olemassaolevaan Henkilo-olioon.
+</p>
+
+<img src="/img/drawings/eka-4.png"/>
+
+<p>
+  Tämän jälkeen kutsutaan metodia nuorenna, jolle annetaan parametriksi muuttuja toka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin arvoksi. Metodi saa siis käyttöönsä muuttujan toka sisältämän viitteen. Metodin suorituksen lopuksi metodin viittaaman olion syntymävuosi on kasvanut yhdellä.
+</p>
+
+<img src="/img/drawings/eka-5.png"/>
+
+<p>
+  Lopulta metodin suoritus päättyy, ja ohjelman suoritus palaa takaisin main-metodiin. Main-metodissa tulostetaan vielä kerran muuttujan eka arvo. Tulostukseksi tulee lopulta "Eka (1972)".
+</p>
+
+
+<%= partial 'partials/quiz', locals: { id: '59d2aa2945370b0004080777' } %>
+
+
+
+<%= partial 'partials/quiz', locals: { id: '59d2ab9045370b000408077b' } %>
 
 
 
 <% partial 'partials/material_heading' do %>
-  Luokkia ja olioita
+  Listat ja oliot
 <% end %>
 
 <p>
-  Tarkastellaan seuraavaksi listojen käyttöä.
-</p>
-
-<p>
-  Lista on olio, johon pystyy lisäämään arvoja. Listalle lisättyjä arvoja voidaan tarkastella indeksin perusteella, ja listalla olevia arvoja voidaan etsiä ja poistaa. Kaikkia listan tarjoamia toimintoja käytetään sen metodien kautta.
+  Edellisessä osassa tutuksi tulleet listat ovat olioita, joihin pystyy lisäämään arvoja. Listalle lisättyjä arvoja voidaan tarkastella indeksin perusteella, ja listalla olevia arvoja voidaan etsiä ja poistaa. Kaikkia listan tarjoamia toimintoja käytetään listan tarjoamien metodien kautta.
 </p>
 
 <p>
@@ -60,8 +410,8 @@
   // listan alkioiden läpikäynti onnistuu toistolauseen avulla
   int indeksi = 0;
   while (indeksi &lt; nimet.size()) {
-  System.out.println(nimet.get(indeksi));
-  indeksi++;
+      System.out.println(nimet.get(indeksi));
+      indeksi++;
   }
 <% end %>
 
@@ -80,7 +430,7 @@
 <% end %>
 
 <p>
-  Merkkijonokin on olio, joten olemme käsitelleet olioita listalla jo useampaan otteeseen. Tarkastellaan seuraavaksi olioiden lisäämistä listalle tarkemmin.
+  Edellisessä osassa lisäsimme listalle muunmuassa merkkijonoja. Merkkijonot ovat olioita, joten ei liene yllätys että listalla voi olla olioita. Tarkastellaan seuraavaksi listan ja olioiden yhteistoimintaa tarkemmin.
 </p>
 
 <p>
@@ -88,55 +438,52 @@
 </p>
 
 
-
-
-
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
 
-  private String nimi;
-  private int ika;
-  private int paino;
-  private int pituus;
+      private String nimi;
+      private int ika;
+      private int paino;
+      private int pituus;
 
-  public Henkilo(String nimi) {
-  this.nimi = nimi;
-  this.ika = 0;
-  this.paino = 0;
-  this.pituus = 0;
-  }
+      public Henkilo(String nimi) {
+          this.nimi = nimi;
+          this.ika = 0;
+          this.paino = 0;
+          this.pituus = 0;
+      }
 
-  // muita konstruktoreja ja metodeja
+      // muita konstruktoreja ja metodeja
 
-  public String getNimi() {
-  return this.nimi;
-  }
+      public String getNimi() {
+          return this.nimi;
+      }
 
-  public int getIka() {
-  return this.ika;
-  }
+      public int getIka() {
+          return this.ika;
+      }
 
-  public void vanhene() {
-  this.ika++;
-  }
+      public void vanhene() {
+          this.ika++;
+      }
 
-  public void setPituus(int uusiPituus) {
-  this.pituus = uusiPituus;
-  }
+      public void setPituus(int uusiPituus) {
+          this.pituus = uusiPituus;
+      }
 
-  public void setPaino(int uusiPaino) {
-  this.paino = uusiPaino;
-  }
+      public void setPaino(int uusiPaino) {
+          this.paino = uusiPaino;
+      }
 
-  public double painoIndeksi() {
-  double pituusPerSata = this.pituus / 100.0;
-  return this.paino / (pituusPerSata * pituusPerSata);
-  }
+      public double painoIndeksi() {
+          double pituusPerSata = this.pituus / 100.0;
+          return this.paino / (pituusPerSata * pituusPerSata);
+      }
 
-  @Override
-  public String toString() {
-  return this.nimi + ", ikä " + this.ika + " vuotta";
-  }
+      @Override
+      public String toString() {
+          return this.nimi + ", ikä " + this.ika + " vuotta";
+      }
   }
 <% end %>
 
@@ -163,8 +510,8 @@
 
   int indeksi = 0;
   while (indeksi &lt; henkilot.size()) {
-  System.out.println(henkilot.get(indeksi));
-  indeksi++;
+      System.out.println(henkilot.get(indeksi));
+      indeksi++;
   }
 <% end %>
 
@@ -183,13 +530,13 @@
   ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
   while (true) {
-  System.out.print("Kirjoita nimi, tyhjä lopettaa: ");
-  String nimi = lukija.nextLine();
-  if (nimi.isEmpty()) {
-  break;
-  }
+      System.out.print("Kirjoita nimi, tyhjä lopettaa: ");
+      String nimi = lukija.nextLine();
+      if (nimi.isEmpty()) {
+          break;
+      }
 
-  henkilot.add(new Henkilo(nimi));
+      henkilot.add(new Henkilo(nimi));
   }
 
   System.out.println();
@@ -198,31 +545,29 @@
 
   int indeksi = 0;
   while (indeksi &lt; henkilot.size()) {
-  Henkilo henkilo = henkilot.get(indeksi);
-  System.out.println(henkilo);
-  // tai: System.out.println(henkilot.get(indeksi));
+      Henkilo henkilo = henkilot.get(indeksi);
+      System.out.println(henkilo);
+      // tai: System.out.println(henkilot.get(indeksi));
 
-  indeksi++;
+      indeksi++;
   }
 <% end %>
 
-
-
 <p>
-  Läpikäytäviä olioita voidaan myös tarkastella. Alla olevassa esimerkissä tulostetaan vain täysi-ikäiset henkilöt.
+  Listalla olevia olioita voidaan myös tarkastella listan läpikäynnin yhteydessä. Alla olevassa esimerkissä tulostetaan vain täysi-ikäiset henkilöt.
 </p>
 
 <% partial 'partials/code_highlight' do %>
   // ..
   int indeksi = 0;
   while (indeksi &lt; henkilot.size()) {
-  Henkilo henkilo = henkilot.get(indeksi);
+      Henkilo henkilo = henkilot.get(indeksi);
 
-  if (henkilo.getIka() &gt;= 18) {
-  System.out.println(henkilo);
-  }
+      if (henkilo.getIka() &gt;= 18) {
+          System.out.println(henkilo);
+      }
 
-  indeksi++;
+      indeksi++;
   }
 <% end %>
 
@@ -237,13 +582,13 @@
 
   int indeksi = 0;
   while (indeksi &lt; henkilot.size()) {
-  Henkilo henkilo = henkilot.get(indeksi);
+      Henkilo henkilo = henkilot.get(indeksi);
 
-  if (henkilo.getIka() &gt;= ikaraja) {
-  System.out.println(henkilo);
-  }
+      if (henkilo.getIka() &gt;= ikaraja) {
+          System.out.println(henkilo);
+      }
 
-  indeksi++;
+      indeksi++;
   }
 <% end %>
 
@@ -281,8 +626,7 @@
 <% end %>
 
 
-
-<% partial 'partials/exercise', locals: { name: 'Kirjat' } do %>
+<% partial 'partials/exercise', locals: { name: 'Kirjat (2 osaa)' } do %>
 
   <p>
     Toteuta ohjelma, joka ensin lukee kirjojen tietoja käyttäjältä. Jokaisesta kirjasta tulee lukea kirjan nimi, sivujen lukumäärä sekä kirjoitusvuosi. Kirjojen lukeminen lopetetaan kun käyttäjä syöttää tyhjän kirjan nimen.
@@ -293,7 +637,7 @@
   </p>
 
   <p>
-    Ohjelmaa varten kannattanee toteuttaa Kirjaa kuvaava luokka. Tehtävä on kahden tehtäväpisteen arvoinen.
+    Ohjelmaa varten kannattanee toteuttaa Kirjaa kuvaava luokka. Vaikka tehtävässä on todellisuudessa vain yksi osa, on se kahden osan arvoinen.
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -340,21 +684,14 @@
 <% end %>
 
 
----
 
 
-
-<% partial 'partials/material_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Listakin sisältää viitteitä
 <% end %>
 
-
 <p>
-  TODO: olioita listalla ja equals -- viite!!
-</p>
-
-<p>
-  Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei siis luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon.
+  Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon.
 </p>
 
 <p>
@@ -377,20 +714,20 @@
   // jokainen listalla oleva henkilöolio vanhenee vuoden
   int indeksi = 0;
   while (indeksi &lt; henkilot.size()) {
-  Henkilo henkilo = henkilot.get(indeksi);
-  henkilo.vanhene();
-  indeksi++;
+      Henkilo henkilo = henkilot.get(indeksi);
+      henkilo.vanhene();
+      indeksi++;
   }
 
   // tulostetaan henkilöt
   indeksi = 0;
   while (indeksi &lt; henkilot.size()) {
-  Henkilo henkilo = henkilot.get(indeksi);
-  System.out.println(henkilo);
+      Henkilo henkilo = henkilot.get(indeksi);
+      System.out.println(henkilo);
 
-  // tai: System.out.println(henkilot.get(indeksi));
+      // tai: System.out.println(henkilot.get(indeksi));
 
-  indeksi++;
+      indeksi++;
   }
 <% end %>
 
@@ -406,7 +743,9 @@
 
 <img src="/img/drawings/henkilot-ja-juhana.png"/>
 
-<p>&nbsp;</p>
+<p>
+  &nbsp;
+</p>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -425,40 +764,50 @@
   // importit
 
   public class Soittolista {
-  private ArrayList&lt;String&gt; kappaleet;
+      private ArrayList&lt;String&gt; kappaleet;
 
-  public Soittolista() {
-  this.kappaleet = new ArrayList&lt;&gt;();
-  }
+      public Soittolista() {
+          this.kappaleet = new ArrayList&lt;&gt;();
+      }
 
-  public void lisaaKappale(String kappale) {
-  this.kappaleet.add(kappale);
-  }
+      public void lisaaKappale(String kappale) {
+          this.kappaleet.add(kappale);
+      }
 
-  public void poistaKappale(String kappale) {
-  this.kappaleet.remove(kappale);
-  }
+      public void poistaKappale(String kappale) {
+          this.kappaleet.remove(kappale);
+      }
 
-  public void tulostaKappaleet() {
-  int indeksi = 0;
-  while (indeksi &lt; this.kappaleet.size()) {
-  String kappale = this.kappaleet.get(indeksi);
-  System.out.println(kappale);
+      public void tulostaKappaleet() {
+          int indeksi = 0;
+          while (indeksi &lt; this.kappaleet.size()) {
+              String kappale = this.kappaleet.get(indeksi);
+              System.out.println(kappale);
 
-  indeksi++;
-  }
-  }
+              indeksi++;
+          }
+      }
   }
 <% end %>
 
-<p><img src="/img/diagrams/luokkakaavio-soittolista.png"></p>
-
 <p>
-  Kokeile yllä olevan soittolistan käyttöä hiekkalaatikossa!
+  Soittolistojen luominen on edellisen luokan avulla helppoa.
 </p>
 
+<% partial 'partials/code_highlight' do %>
+  Soittolista lista = new Soittolista();
+  lista.lisaaKappale("Sorateiden kuningas");
+  lista.lisaaKappale("Teuvo, maanteiden kuningas");
+  lista.tulostaKappaleet();
+<% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Ruokalista' } do %>
+<% partial 'partials/sample_output' do %>
+  Sorateiden kuningas
+  Teuvo, maanteiden kuningas
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Ruokalista (3 osaa)' } do %>
 
   <p>
     Kumpulan kampuksella Helsingissä toimivaan Unicafe-nimiseen gourmet-ravintolaan tarvitaan uusi ruokalista. Keittiömestari tietää ohjelmoinnista, ja haluaa listan hallinnointiin tietokonejärjestelmän. Toteutetaan tässä tehtävässä järjestelmän sydän, luokka Ruokalista.
@@ -473,31 +822,37 @@
 
     public class Ruokalista {
 
-    private ArrayList&lt;String&gt; ateriat;
+        private ArrayList&lt;String&gt; ateriat;
 
-    public Ruokalista() {
-    this.ateriat = new ArrayList&lt;&gt;();
-    }
+        public Ruokalista() {
+            this.ateriat = new ArrayList&lt;&gt;();
+        }
 
-    // toteuta tänne tarvittavat metodit
+        // toteuta tänne tarvittavat metodit
     }
   <% end %>
 
   <p>
-    Ruokalistaoliolla on oliomuuttujana ArrayList, jonka on tarkoitus tallentaa ruokalistalla olevien ruokalajien nimet.
+    Ruokalistaoliolla on oliomuuttujana ArrayList, jonka on tarkoitus tallentaa ruokalistalla olevien ruokalajien nimet. Ruokalistan tulee tarjota seuraavat metodit:
   </p>
 
-  <p>
-    Ruokalistan tulee tarjota metodit <code>public void lisaaAteria(String ateria)</code>, <code>public void tulostaAteriat()</code>, ja <code>public void tyhjennaRuokalista()</code> -- luokkakaaviona lopullinen toteutus näyttää seuraavalta.
-  </p>
-
-  <p><img src="/img/diagrams/luokkakaavio-teht-ruokalista.png"></p>
+  <ul>
+    <li>
+      <code>public void lisaaAteria(String ateria)</code> lisää aterian ruokalistalle.
+    </li>
+    <li>
+      <code>public void tulostaAteriat()</code> tulostaa ateriat.
+    </li>
+    <li>
+      <code>public void tyhjennaRuokalista()</code> tyhjentää ruokalistan.
+    </li>    
+  </ul>
 
 
   <h2>Aterian lisääminen</h2>
 
   <p>
-    Toteuta metodi <code>public void lisaaAteria(String ateria)</code>, joka lisää uuden aterian listalle <code>ateriat</code>. Jos lisättävä ateria on jo listalla, sitä ei lisätä uudelleen.
+    Toteuta metodi <code>public void lisaaAteria(String ateria)</code>, joka lisää uuden aterian listalle <code>ateriat</code>. Jos lisättävä ateria on jo listalla, sitä ei tule lisätä uudelleen. Jos et muista miten listalla olemassaoloa tarkastellaan, lue edellisestä osasta kohta "Onko listalla".
   </p>
 
 
@@ -524,22 +879,22 @@
 
 
 <p>
-  Oliomuuttujana oleva lista voi sisältää myös muunlaisia olioita. Laajennetaan luokkaa <code>PainonvartijaYhdistys</code> siten, että yhdistys lisää kaikki jäsenensä listalle. Laajennetussa versiossa konstruktorille annetaan alimman painoindeksin lisäksi myös nimi:
+  Oliomuuttujana oleva lista voi sisältää myös muunlaisia olioita. Laajennetaan neljännessä osassa hahmoteltua luokkaa <code>PainonvartijaYhdistys</code> siten, että yhdistys lisää kaikki jäsenensä listalle. Laajennetussa versiossa konstruktorille annetaan alimman painoindeksin lisäksi myös nimi:
 </p>
 
 <% partial 'partials/code_highlight' do %>
   public class PainonvartijaYhdistys {
-  private double alinPainoindeksi;
-  private String nimi;
-  private ArrayList&lt;Henkilo&gt; jasenet;
+      private double alinPainoindeksi;
+      private String nimi;
+      private ArrayList&lt;Henkilo&gt; jasenet;
 
-  public PainonvartijaYhdistys(String nimi, double alinPainoindeksi) {
-  this.alinPainoindeksi = alinPainoindeksi;
-  this.nimi = nimi;
-  this.jasenet = new ArrayList&lt;&gt;();
-  }
+      public PainonvartijaYhdistys(String nimi, double alinPainoindeksi) {
+          this.alinPainoindeksi = alinPainoindeksi;
+          this.nimi = nimi;
+          this.jasenet = new ArrayList&lt;&gt;();
+      }
 
-  //..
+      //..
   }
 <% end %>
 
@@ -549,39 +904,39 @@
 
 <% partial 'partials/code_highlight' do %>
   public class PainonvartijaYhdistys {
-  // ...
+      // ...
 
-  public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
-  if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
-  return false;
-  }
+      public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
+          if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
+              return false;
+          }
 
-  return true;
-  }
+          return true;
+      }
 
-  public void lisaaJaseneksi(Henkilo henkilo) {
-  // sama kuin hyvaksytaanJaseneksi(henkilo) == false
-  if (!hyvaksytaanJaseneksi(henkilo)) {
-  // void-tyyppisistä metodeista voi palata
-  // return-kutsulla
-  return;
-  }
+      public void lisaaJaseneksi(Henkilo henkilo) {
+          // sama kuin hyvaksytaanJaseneksi(henkilo) == false
+          if (!hyvaksytaanJaseneksi(henkilo)) {
+              // void-tyyppisistä metodeista voi palata
+              // return-kutsulla
+              return;
+          }
 
-  this.jasenet.add(henkilo);
-  }
+          this.jasenet.add(henkilo);
+      }
 
-  public String toString() {
-  String jasenetMerkkijonona = "";
+      public String toString() {
+          String jasenetMerkkijonona = "";
 
-  int indeksi = 0;
-  while (indeksi &lt; this.jasenet.size()) {
-  Henkilo jasen = this.jasenet.get(indeksi);
-  jasenetMerkkijonona += "  " + jasen.getNimi() + "\n";
-  indeksi++;
-  }
+          int indeksi = 0;
+          while (indeksi &lt; this.jasenet.size()) {
+              Henkilo jasen = this.jasenet.get(indeksi);
+              jasenetMerkkijonona += "  " + jasen.getNimi() + "\n";
+              indeksi++;
+          }
 
-  return "Painonvartijayhdistys " + this.nimi + " jäsenet: \n" + jasenetMerkkijonona;
-  }
+          return "Painonvartijayhdistys " + this.nimi + " jäsenet: \n" + jasenetMerkkijonona;
+      }
   }
 <% end %>
 
@@ -644,28 +999,28 @@
 
 <% partial 'partials/code_highlight' do %>
   public class PainonvartijaYhdistys {
-  // ...
+      // ...
 
-  public Henkilo suurinPainoindeksinen() {
-  // jos jasenlista on tyhjä, palautetaan null-viite
-  if (this.jasenet.isEmpty()) {
-  return null;
-  }
+      public Henkilo suurinPainoindeksinen() {
+          // jos jasenlista on tyhjä, palautetaan null-viite
+          if (this.jasenet.isEmpty()) {
+              return null;
+          }
 
-  Henkilo painavinTahanAsti = this.jasenet.get(0);
+          Henkilo painavinTahanAsti = this.jasenet.get(0);
 
-  int indeksi = 0;
-  while (indeksi < this.jasenet.size()) {
-  Henkilo henkilo = this.jasenet.get(indeksi);
-  if (henkilo.painoIndeksi() &gt; painavinTahanAsti.painoIndeksi()) {
-  painavinTahanAsti = henkilo;
-  }
+          int indeksi = 0;
+          while (indeksi < this.jasenet.size()) {
+              Henkilo henkilo = this.jasenet.get(indeksi);
+              if (henkilo.painoIndeksi() &gt; painavinTahanAsti.painoIndeksi()) {
+                  painavinTahanAsti = henkilo;
+              }
 
-  indeksi++;
-  }
+              indeksi++;
+          }
 
-  return painavinTahanAsti;
-  }
+          return painavinTahanAsti;
+      }
   }
 <% end %>
 
@@ -691,7 +1046,7 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Puhelinmuistio' } do %>
+<% partial 'partials/exercise', locals: { name: 'Puhelinmuistio (3 osaa)' } do %>
 
   <p>
     Tehtävässä tehdään puhelinmuistio.
@@ -700,14 +1055,14 @@
   <h2>Henkilö</h2>
 
   <p>
-    Tee ensin luokka <code>Henkilo</code>. Luokan pitää toimia seuraavan esimerkin osoittamalla tavalla:
+    Tee ensin luokka <code>Henkilo</code>. Luokan tulee toimia seuraavan esimerkin osoittamalla tavalla:
   </p>
 
   <% partial 'partials/code_highlight' do %>
     Henkilo pekka = new Henkilo("Pekka Mikkola", "040-123123");
 
-    System.out.println(pekka.haeNimi());
-    System.out.println(pekka.haeNumero());
+    System.out.println(pekka.getNimi());
+    System.out.println(pekka.getNumero());
 
     System.out.println(pekka);
 
@@ -733,13 +1088,13 @@
   <ul>
     <li> metodi <code>public String toString()</code>, joka palauttaa henkilön merkkijonoesityksen (yo. esimerkin tapaan muotoiltuna)</li>
     <li> konstruktori, jolla asetetaan henkilölle nimi ja puhelinnumero</li>
-    <li> <code>public String haeNimi()</code>, joka palauttaa nimen</li>
-    <li> <code>public String haeNumero()</code>, joka palauttaa puhelinnumeron</li>
+    <li> <code>public String getNimi()</code>, joka palauttaa nimen</li>
+    <li> <code>public String getNumero()</code>, joka palauttaa puhelinnumeron</li>
     <li> metodi <code>public void vaihdaNumeroa(String uusiNumero)</code>, joka muuttaa henkilön puhelinnumeroa</li>
   </ul>
 
+  
   <h2>Henkilöiden lisäys puhelinmuistioon</h2>
-
 
   <p>
     Tee luokka <code>Puhelinmuistio</code> joka tallettaa sisällään olevaan ArrayListiin <code>Henkilo</code>-olioita. Tässä vaiheessa luokalle tehdään seuraavat metodit:
@@ -774,6 +1129,7 @@
     Juhana Laurinharju  puh: 050-222333
   <% end %>
 
+  
   <h2>Numerojen haku muistiosta</h2>
 
   <p>
@@ -801,10 +1157,15 @@
     040-123123
     numero ei tiedossa
   <% end %>
+  
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Joukkueet ja pelaajat' } do %>
+<% partial 'partials/exercise', locals: { name: 'Joukkueet ja pelaajat (5 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä tehdään joukkueiden ja joukkueen pelaajien ylläpitoon tarkoitettuun ohjelmistoon tarvittavat ydinluokat.
+  </p>
 
   <h2>Joukkue</h2>
 
@@ -814,7 +1175,7 @@
 
   <ul>
     <li> konstruktori, jolle annetaan joukkueen nimi</li>
-    <li> <code>haeNimi</code>, joka palauttaa joukkueen nimen</li>
+    <li> <code>getNimi</code>, joka palauttaa joukkueen nimen</li>
   </ul>
 
   <p>
@@ -823,10 +1184,10 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Main {
-    public static void main(String[] args) {
-    Joukkue tapiiri = new Joukkue("FC Tapiiri");
-    System.out.println("Joukkue: " + tapiiri.haeNimi());
-    }
+        public static void main(String[] args) {
+            Joukkue tapiiri = new Joukkue("FC Tapiiri");
+            System.out.println("Joukkue: " + tapiiri.haeNimi());
+        } 
     }
   <% end %>
 
@@ -845,23 +1206,23 @@
   </p>
 
   <ul>
-    <li> <code>haeNimi</code>, joka palauttaa pelaajan nimen</li>
-    <li> <code>maalit</code>, joka palauttaa tehtyjen maalien määrän</li>
+    <li> <code>getNimi</code>, joka palauttaa pelaajan nimen</li>
+    <li> <code>getMaalit</code>, joka palauttaa tehtyjen maalien määrän</li>
     <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
   </ul>
 
   <% partial 'partials/code_highlight' do %>
     public class Main {
-    public static void main(String[] args) {
-    Joukkue tapiiri = new Joukkue("FC Tapiiri");
-    System.out.println("Joukkue: " + tapiiri.haeNimi());
+        public static void main(String[] args) {
+            Joukkue tapiiri = new Joukkue("FC Tapiiri");
+            System.out.println("Joukkue: " + tapiiri.getNimi());
 
-    Pelaaja matti = new Pelaaja("Matti");
-    System.out.println("Pelaaja: " + matti);
+            Pelaaja matti = new Pelaaja("Matti");
+            System.out.println("Pelaaja: " + matti);
 
-    Pelaaja pekka = new Pelaaja("Pekka", 39);
-    System.out.println("Pelaaja: " + pekka);
-    }
+            Pelaaja pekka = new Pelaaja("Pekka", 39);
+            System.out.println("Pelaaja: " + pekka);
+        }
     }
   <% end %>
 
@@ -871,6 +1232,7 @@
     Pelaaja: Pekka, maaleja 39
   <% end %>
 
+  
   <h2>Pelaajat joukkueisiin</h2>
 
   <p>
@@ -892,18 +1254,18 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Main {
-    public static void main(String[] args) {
-    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+        public static void main(String[] args) {
+            Joukkue tapiiri = new Joukkue("FC Tapiiri");
 
-    Pelaaja matti = new Pelaaja("Matti");
-    Pelaaja pekka = new Pelaaja("Pekka", 39);
+            Pelaaja matti = new Pelaaja("Matti");
+            Pelaaja pekka = new Pelaaja("Pekka", 39);
 
-    tapiiri.lisaaPelaaja(matti);
-    tapiiri.lisaaPelaaja(pekka);
-    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+            tapiiri.lisaaPelaaja(matti);
+            tapiiri.lisaaPelaaja(pekka);
+            tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
 
-    tapiiri.tulostaPelaajat();
-    }
+            tapiiri.tulostaPelaajat();
+        }
     }
   <% end %>
 
@@ -917,6 +1279,7 @@
     Mikael, maaleja 1
   <% end %>
 
+  
   <h2>Joukkueen maksimikoko ja nykyinen koko</h2>
 
   <p>
@@ -924,12 +1287,12 @@
   </p>
 
   <ul>
-    <li> <code>asetaMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
-    <li> <code>koko</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
+    <li> <code>setMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
+    <li> <code>getPelaajienLukumaara</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
   </ul>
 
   <p>
-    Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16. Metodin <code>asetaMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.
+    Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16 (lisää tämä luokan oliomuuttujaksi ja alusta muuttujan arvo konstruktorissa). Metodin <code>setMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta edellisessä osassa tehtyä metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.
   </p>
 
   <p>
@@ -942,18 +1305,18 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Main {
-    public static void main(String[] args) {
-    Joukkue tapiiri = new Joukkue("FC Tapiiri");
-    tapiiri.asetaMaksimikoko(1);
+        public static void main(String[] args) {
+            Joukkue tapiiri = new Joukkue("FC Tapiiri");
+            tapiiri.setMaksimikoko(1);
 
-    Pelaaja matti = new Pelaaja("Matti");
-    Pelaaja pekka = new Pelaaja("Pekka", 39);
-    tapiiri.lisaaPelaaja(matti);
-    tapiiri.lisaaPelaaja(pekka);
-    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+            Pelaaja matti = new Pelaaja("Matti");
+            Pelaaja pekka = new Pelaaja("Pekka", 39);
+            tapiiri.lisaaPelaaja(matti);
+            tapiiri.lisaaPelaaja(pekka);
+            tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
 
-    System.out.println("Pelaajia yhteensä: " + tapiiri.koko());
-    }
+            System.out.println("Pelaajia yhteensä: " + tapiiri.getPelaajienLukumaara());
+        }
     }
   <% end %>
 
@@ -961,6 +1324,7 @@
     Pelaajia yhteensä: 1
   <% end %>
 
+  
   <h2>Joukkueen maalit</h2>
 
   <p>
@@ -968,7 +1332,7 @@
   </p>
 
   <ul>
-    <li> <code>maalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
+    <li> <code>yhteismaalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
   </ul>
 
   <p>
@@ -977,17 +1341,17 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Main {
-    public static void main(String[] args) {
-    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+        public static void main(String[] args) {
+            Joukkue tapiiri = new Joukkue("FC Tapiiri");
 
-    Pelaaja matti = new Pelaaja("Matti");
-    Pelaaja pekka = new Pelaaja("Pekka", 39);
-    tapiiri.lisaaPelaaja(matti);
-    tapiiri.lisaaPelaaja(pekka);
-    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+            Pelaaja matti = new Pelaaja("Matti");
+            Pelaaja pekka = new Pelaaja("Pekka", 39);
+            tapiiri.lisaaPelaaja(matti);
+            tapiiri.lisaaPelaaja(pekka);
+            tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
 
-    System.out.println("Maaleja yhteensä: " + tapiiri.maalit());
-    }
+            System.out.println("Maaleja yhteensä: " + tapiiri.yhteismaalit());
+        }
     }
   <% end %>
 
@@ -996,6 +1360,823 @@
   <% end %>
 
 <% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Lahjapakkaamo (2 osaa)' } do %>
+
+
+  <p>
+    Tässä tehtävässä harjoitellaan lahjojen pakkaamista. Tehdään luokat <code>Lahja</code> ja <code>Pakkaus</code>. Lahjalla on nimi ja paino, ja Pakkaus sisältää lahjoja.
+  </p>
+
+  <h2>Lahja-luokka</h2>
+
+  <p>
+    Tee luokka <code>Lahja</code>, josta muodostetut oliot kuvaavat erilaisia lahjoja. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>Konstruktori, jolle annetaan parametrina lahjan nimi ja paino</li>
+    <li>Metodi <code>public String getNimi()</code>, joka palauttaa lahjan nimen</li>
+    <li>Metodi <code>public int getPaino()</code>, joka palauttaa lahjan painon</li>
+    <li>Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "nimi (paino kg)"</li>
+  </ul>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Lahja kirja = new Lahja("Aapiskukko", 2);
+
+            System.out.println("Lahjan nimi: " + kirja.getNimi());
+            System.out.println("Lahjan paino: " + kirja.getPaino());
+
+            System.out.println("Lahja: " + kirja);
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Lahjan nimi: Aapiskukko
+    Lahjan paino: 2
+    Lahja: Aapiskukko (2 kg)<% end %>
+
+
+  <h2>Pakkaus-luokka</h2>
+
+  <p>
+    Tee luokka <code>Pakkaus</code>. Pakkaus voi sisältää äärettömän määrän lahjoja, jonka lisäksi se tarjoaa metodin lahjojen yhteispainon laskemiseen.
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> Parametriton konstruktori</li>
+    <li> Metodi <code>public void lisaaLahja(Lahja lahja)</code>, joka lisää parametrina annettavan lahjan pakkaukseen. Metodi ei palauta mitään arvoa.</li>
+  </ul>
+
+  <p>
+    Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArrayList&lt;Lahja&gt; lahjat = new ArrayList&lt;&gt;();
+  <% end %>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Lahja kirja = new Lahja("Aapiskukko", 2);
+
+            Pakkaus paketti = new Pakkaus();
+            paketti.lisaaLahja(kirja);
+            System.out.println(paketti.getPaino());
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    2
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Tavara, Matkalaukku ja Lastiruuma (8 osaa)' } do %>
+
+  <p>
+    Tässä tehtäväsarjassa tehdään luokat <code>Tavara</code>, <code>Matkalaukku</code> ja <code>Lastiruuma</code>, joiden avulla harjoitellaan lisää olioita, jotka sisältävät toisia olioita.
+  </p>
+
+  <h2>Tavara-luokka</h2>
+
+  <p>
+    Tee luokka <code>Tavara</code>, josta muodostetut oliot vastaavat erilaisia tavaroita. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>Konstruktori, jolle annetaan parametrina tavaran nimi ja paino</li>
+    <li>Metodi <code>public String getNimi()</code>, joka palauttaa tavaran nimen</li>
+    <li>Metodi <code>public int getPaino()</code>, joka palauttaa tavaran painon</li>
+    <li>Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "nimi (paino kg)"</li>
+  </ul>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Tavara kirja = new Tavara("Aapiskukko", 2);
+            Tavara puhelin = new Tavara("Nokia 3210", 1);
+
+            System.out.println("Kirjan nimi: " + kirja.getNimi());
+            System.out.println("Kirjan paino: " + kirja.getPaino());
+
+            System.out.println("Kirja: " + kirja);
+            System.out.println("Puhelin: " + puhelin);
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Kirjan nimi: Aapiskukko
+    Kirjan paino: 2
+    Kirja: Aapiskukko (2 kg)
+    Puhelin: Nokia 3210 (1 kg)<% end %>
+
+
+  <h2>Matkalaukku-luokka</h2>
+
+  <p>
+    Tee luokka <code>Matkalaukku</code>. Matkalaukkuun liittyy tavaroita ja maksimipaino, joka määrittelee tavaroiden suurimman mahdollisen yhteispainon.
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> Konstruktori, jolle annetaan maksimipaino</li>
+    <li> Metodi <code>public void lisaaTavara(Tavara tavara)</code>, joka lisää parametrina annettavan tavaran matkalaukkuun. Metodi ei palauta mitään arvoa.</li>
+    <li> Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "x tavaraa (y kg)"</li>
+  </ul>
+
+  <p>
+    Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArrayList&lt;Tavara&gt; tavarat = new ArrayList&lt;&gt;();
+  <% end %>
+
+  <p>
+    Luokan <code>Matkalaukku</code> tulee valvoa, että sen sisältämien tavaroiden yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi lisättävän tavaran vuoksi, metodi <code>lisaaTavara</code> ei saa lisätä uutta tavaraa laukkuun.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Tavara kirja = new Tavara("Aapiskukko", 2);
+            Tavara puhelin = new Tavara("Nokia 3210", 1);
+            Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+            Matkalaukku matkalaukku = new Matkalaukku(5);
+            System.out.println(matkalaukku);
+
+            matkalaukku.lisaaTavara(kirja);
+            System.out.println(matkalaukku);
+
+            matkalaukku.lisaaTavara(puhelin);
+            System.out.println(matkalaukku);
+
+            matkalaukku.lisaaTavara(tiiliskivi);
+            System.out.println(matkalaukku);
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    0 tavaraa (0 kg)
+    1 tavaraa (2 kg)
+    2 tavaraa (3 kg)
+    2 tavaraa (3 kg)
+  <% end %>
+
+
+  <h2>Kielenhuoltoa</h2>
+
+  <p>
+    Ilmoitukset "0 tavaraa" ja "1 tavaraa" eivät ole kovin hyvää suomea &ndash; paremmat muodot olisivat "ei tavaroita" ja "1 tavara". Tee tämä muutos luokassa <code>Matkalaukku</code> sijaitsevaan toString-metodiin.
+  </p>
+
+  <p>
+    Nyt edellisen ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    ei tavaroita (0 kg)
+    1 tavara (2 kg)
+    2 tavaraa (3 kg)
+    2 tavaraa (3 kg)
+  <% end %>
+
+
+  <h2>Kaikki tavarat</h2>
+
+  <p>
+    Lisää luokkaan <code>Matkalaukku</code> seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> metodi <code>tulostaTavarat</code>, joka tulostaa kaikki matkalaukussa olevat tavarat</li>
+    <li> metodi <code>yhteispaino</code>, joka palauttaa tavaroiden yhteispainon</li>
+  </ul>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Tavara kirja = new Tavara("Aapiskukko", 2);
+            Tavara puhelin = new Tavara("Nokia 3210", 1);
+            Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+            Matkalaukku matkalaukku = new Matkalaukku(10);
+            matkalaukku.lisaaTavara(kirja);
+            matkalaukku.lisaaTavara(puhelin);
+            matkalaukku.lisaaTavara(tiiliskivi);
+
+            System.out.println("Matkalaukussa on seuraavat tavarat:");
+            matkalaukku.tulostaTavarat();
+            System.out.println("Yhteispaino: " + matkalaukku.yhteispaino() + " kg");
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Matkalaukussa on seuraavat tavarat:
+    Aapiskukko (2 kg)
+    Nokia 3210 (1 kg)
+    Tiiliskivi (4 kg)
+    Yhteispaino: 7 kg
+  <% end %>
+
+  <p>
+    Muokkaa myös luokkaasi siten, että käytät vain kahta oliomuuttujaa. Toinen sisältää maksimipainon, toinen on lista laukussa olevista tavaroista.
+  </p>
+
+
+  <h2>Raskain tavara</h2>
+
+  <p>
+    Lisää vielä luokkaan <code>Matkalaukku</code> metodi <code>raskainTavara</code>, joka palauttaa painoltaan suurimman tavaran. Jos yhtä raskaita tavaroita on useita, metodi voi palauttaa minkä tahansa niistä. Metodin tulee palauttaa olioviite. Jos laukku on tyhjä, palauta arvo <em>null</em>.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Tavara kirja = new Tavara("Aapiskukko", 2);
+            Tavara puhelin = new Tavara("Nokia 3210", 1);
+            Tavara tiiliskivi = new Tavara("Tiiliskivi", 4);
+
+            Matkalaukku matkalaukku = new Matkalaukku(10);
+            matkalaukku.lisaaTavara(kirja);
+            matkalaukku.lisaaTavara(puhelin);
+            matkalaukku.lisaaTavara(tiiliskivi);
+
+            Tavara raskain = matkalaukku.raskainTavara();
+            System.out.println("Raskain tavara: " + raskain);
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Raskain tavara: Tiiliskivi (4 kg)<% end %>
+
+
+  <h2>Lastiruuma-luokka</h2>
+
+  <p>
+    Tee luokka <code>Lastiruuma</code>, johon liittyvät seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> konstruktori, jolle annetaan maksimipaino</li>
+    <li> metodi <code>public void lisaaMatkalaukku(Matkalaukku laukku)</code>, joka lisää parametrina annetun matkalaukun lastiruumaan</li>
+    <li> metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "x matkalaukkua (y kg)"</li>
+  </ul>
+
+  <p>
+    Tallenna matkalaukut sopivaan <code>ArrayList</code>-rakenteeseen.
+  </p>
+
+  <p>
+    Luokan <code>Lastiruuma</code> tulee valvoa, että sen sisältämien matkalaukkujen yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi uuden matkalaukun vuoksi, metodi <code>lisaaMatkalaukku</code> ei saa lisätä uutta matkalaukkua.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Tavara kirja = new Tavara("Aapiskukko", 2);
+            Tavara puhelin = new Tavara("Nokia 3210", 1);
+            Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+            Matkalaukku adanLaukku = new Matkalaukku(10);
+            adanLaukku.lisaaTavara(kirja);
+            adanLaukku.lisaaTavara(puhelin);
+
+            Matkalaukku pekanLaukku = new Matkalaukku(10);
+            pekanLaukku.lisaaTavara(tiiliskivi);
+
+            Lastiruuma lastiruuma = new Lastiruuma(1000);
+            lastiruuma.lisaaMatkalaukku(adanLaukku);
+            lastiruuma.lisaaMatkalaukku(pekanLaukku);
+
+            System.out.println(lastiruuma);
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    2 matkalaukkua (7 kg)
+  <% end %>
+
+
+  <h2>Lastiruuman sisältö</h2>
+
+  <p>
+    Lisää luokkaan <code>Lastiruuma</code> metodi <code>public void tulostaTavarat()</code>, joka tulostaa kaikki lastiruuman matkalaukuissa olevat tavarat.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+        public static void main(String[] args) {
+            Tavara kirja = new Tavara("Aapiskukko", 2);
+            Tavara puhelin = new Tavara("Nokia 3210", 1);
+            Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+            Matkalaukku adanLaukku = new Matkalaukku(10);
+            adanLaukku.lisaaTavara(kirja);
+            adanLaukku.lisaaTavara(puhelin);
+
+            Matkalaukku pekanLaukku = new Matkalaukku(10);
+            pekanLaukku.lisaaTavara(tiiliskivi);
+
+            Lastiruuma lastiruuma = new Lastiruuma(1000);
+            lastiruuma.lisaaMatkalaukku(adanLaukku);
+            lastiruuma.lisaaMatkalaukku(pekanLaukku);
+
+            System.out.println("Ruuman matkalaukuissa on seuraavat tavarat:");
+            lastiruuma.tulostaTavarat();
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Ruuman matkalaukuissa on seuraavat tavarat:
+    Aapiskukko (2 kg)
+    Nokia 3210 (1 kg)
+    tiiliskivi (4 kg)
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Ensiaskeleet automaattiseen testaamiseen
+<% end %>
+
+<p>
+  Otetaan seuraavaksi ensiaskeleet ohjelmien testaamiseen.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan
+<% end %>
+
+<p>
+  Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle. Joskus toisaalta virheet voivat johtaa hyvinkin vakaviin seurauksiin. Varmaa on joka tapauksessa se, että ohjelmoimaan opetteleva ihminen tekee paljon virheitä.
+</p>
+
+<p>
+  Virheitä ei kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä.
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Ohjelmistovirhe' } do %>
+
+  <p>
+    Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman sekä ohjelmistovirheen.
+  </p>
+
+  <p>
+    Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.
+  </p>
+
+  <p>
+    Satelliitti tuhoutui.
+  </p>
+
+<% end %>
+
+
+<p>
+  Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Debuggerin käyttöä on esitelty kurssimateriaaliin upotetuilla videoilla; alla oleva video esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.
+</p>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+<% partial 'partials/material_sub_heading' do %>
+  Stack trace
+<% end %>
+
+<p>
+  Kun ohjelmassa tapahtuu virhe, ohjelma tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Exception in thread "main" ...
+      at Ohjelma.main(Ohjelma.java:15)
+<% end %>
+
+<p>
+  Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.
+</p>
+
+<% partial 'partials/sample_output' do %>
+      at Ohjelma.main(Ohjelma.java:15)
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muistilista virheenselvitykseen
+<% end %>
+
+<p>
+  Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.
+</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Tarkista ovatko käytetyt muuttujat oikean nimisiä.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Testisyötteen antaminen Scannerille
+<% end %>
+
+<p>
+  Ohjelman testaaminen käsin on usein työlästä. Syötteen antaminen on mahdollista automatisoida esimerkiksi syöttämällä Scanner-oliolle luettava merkkijono. Alla on annettu esimerkki siitä, miten ohjelmaa voi testata automaattisesti. Ohjelmassa syötetään ensin viisi merkkijonoa, jonka jälkeen syötetään aiemmin nähty merkkijono. Tämän jälkeen yritetään syöttää vielä uusi merkkijono. Merkkijonoa "kuusi" ei pitäisi esiintyä sanajoukossa.
+</p>
+
+<p>
+  Testisyötteen voi antaa merkkijonona Scanner-oliolle konstruktorissa. Jokainen testisyötteessä annettava rivinvaihto merkitään merkkijonoon kenoviivan ja n-merkin yhdistelmänä "\n".
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String syote = "yksi\n" + "kaksi\n"  +
+      "kolme\n" + "nelja\n" +
+      "viisi\n" + "yksi\n"  +
+      "kuusi\n";
+
+  Scanner lukija = new Scanner(syote);
+
+  ArrayList&lt;String&gt; luetut = new ArrayList&lt;&gt;();
+  while (true) {
+      System.out.println("Anna syote: ");
+      String rivi = lukija.nextLine();
+      if (luetut.contains(rivi)) {
+          break;
+      }
+
+      luettu.add(rivi);
+  }
+
+  System.out.println("Kiitos!");
+
+  if (luetut.sisaltaa("kuusi")) {
+      System.out.println("Joukkoon lisättiin arvo, jota sinne ei olisi pitänyt lisätä.");
+  }
+<% end %>
+
+<p>
+  Ohjelma tulostus näyttää vain ohjelman antaman tulostuksen, ei käyttäjän tekemiä komentoja.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Kiitos!
+<% end %>
+
+<p>
+  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa yhtä nextLine()-komentoon annettua syötettä.
+</p>
+
+<p>
+  Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion konstruktorin parametriksi <code>System.in</code>, eli järjestelmän syötevirta. Voit toisaalta halutessasi myös vaihtaa testisyötettä, sillä kyse on merkkijonosta.
+</p>
+
+<p>
+  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa.
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Debuggailua' } do %>
+
+  <p>
+    Ohjelmassa on yritetty luoda sovellus, joka kysyy käyttäjältä merkkijonoa ja lukua. Sovelluksen pitäisi toimia esimerkiksi seuraavasti:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Sana:
+    <font color="red">testi</font>
+    Luku:
+    <font color="red">3</font>
+    t
+     e
+      s
+    t
+     i
+  <% end %>
+
+  <p>
+    Esimerkki 2:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Sana:
+    <font color="red">esim</font>
+    Luku:
+    <font color="red">2</font>
+    e
+     s
+    i
+     m
+  <% end %>
+
+  <p>
+    Tällä hetkellä ohjelma ei kuitenkaan toimi halutusti. Ota selvää miksi ja korjaa ohjelma. Huomaat myös, että ohjelmassa käytetään paljon omituisia asioita, jotka eivät ole tulleet vielä kurssilla tutuksi. Kannattaakin tehdä niin, että kokeilee myös näitä uusia asioita erikseen.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Yksikkötestaus
+<% end %>
+
+<p>
+  Edellä esitetty menetelmä automaattiseen testaamiseen missä ohjelmalle syötetyt syötteet muutetaan on varsin kätevä, mutta kuitenkin melko rajoittunut. Isompien ohjelmien testaaminen edellä kuvatulla tavalla on haastavaa. Eräs ratkaisu tähän on yksikkötestaus, missä ohjelman pieniä osia testataan erikseen.
+</p>
+
+<p>
+  Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien kuten luokkien ja niiden tarjoamien metodien testaamista.  Luokkien ja metodien rakenteen suunnittelussa käytettävän ohjesäännön -- jokaisella metodilla ja luokalla tulee olla yksi selkeä vastuu -- noudattamisen tai siitä poikkeamisen huomaa testejä kirjoittaessa. Mitä useampi vastuu metodilla on, sitä monimutkaisempi testi on. Jos laaja sovellus on kirjoitettu yksittäiseen metodiin, on testien kirjoittaminen sitä varten erittäin haastavaa ellei jopa mahdotonta. Vastaavasti, jos sovellus on pilkottu selkeisiin luokkiin ja metodeihin, on testienkin kirjoittaminen suoraviivaista.
+</p>
+
+<p>
+  Testien kirjoittamisessa hyödynnetään tyypillisesti valmiita yksikkötestauskirjastoja, jotka tarjoavat metodeja ja apuluokkia testien kirjoittamiseen. Javassa käytetyin yksikkötestauskirjasto on <a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a>, johon löytyy myös tuki lähes kaikista ohjelmointiympäristöistä. Esimerkiksi NetBeans osaa automaattisesti etsiä JUnit-testejä projektista -- jos testejä löytyy, ne näytetään projektin alla Test Packages -kansiossa.
+</p>
+
+<p>
+  Tarkastellaan yksikkötestien kirjoittamista esimerkin kautta. Oletetaan, että käytössämme on seuraava luokka Laskin, ja haluamme kirjoittaa sitä varten automaattisia testejä.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class Laskin {
+
+      private int arvo;
+
+      public Laskin() {
+          this.arvo = 0;
+      }
+
+      public void summa(int luku) {
+          this.arvo += luku;
+      }
+
+      public void erotus(int luku) {
+          this.arvo += luku;
+      }
+
+      public int getArvo() {
+          return this.arvo;
+      }
+  }
+<% end %>
+
+<p>
+  Laskimen toiminta perustuu siihen, että se muistaa aina edellisen laskuoperaation tuottaman tuloksen. Seuraavat laskuoperaatiot lisätään aina edelliseen lopputulokseen. Yllä olevaan laskimeen on jäänyt myös pieni copy-paste -ohjelmoinnista johtuva virhe. Metodin erotus pitäisi vähentää arvosta, mutta nyt se lisää arvoon.
+</p>
+
+<p>
+  Yksikkötestien kirjoittaminen aloitetaan testiluokan luomisella. Testiluokka luodaan Test Packages -kansion alle. Kun testaamme luokkaa <code>Laskin</code>, testiluokan nimeksi tulee <code>LaskinTest</code>. Nimen lopussa oleva merkkijono <code>Test</code> kertoo ohjelmointiympäristölle, että kyseessä on testiluokka. Ilman merkkijonoa Test luokassa olevia testejä ei suoriteta. (Huom! Testit luodaan NetBeansissa Test Packages -kansion alle.)
+</p>
+
+<p>
+  Testiluokka LaskinTest on aluksi tyhjä.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class LaskinTest {
+
+  }
+<% end %>
+
+<p>
+  Testit ovat testiluokassa olevia metodeja ja jokainen testi testaa yksittäistä asiaa. Aloitetaan luokan Laskin testaaminen -- luodaan ensin testimetodi, jossa varmistetaan, että juuri luodun laskimen sisältämä arvo on 0.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+
+  import static org.junit.Assert.assertEquals;
+  import org.junit.Test;
+
+  public class LaskinTest {
+
+      @Test
+      public void laskimenArvoAlussaNolla() {
+          Laskin laskin = new Laskin();
+          assertEquals(0, laskin.getArvo());
+      }
+  }
+<% end %>
+
+<p>
+  Yllä olevassa metodissa laskimenArvoAlussaNolla luodaan ensin laskinolio. Tämän jälkeen käytetään JUnit-testikehyksen tarjoamaa assertEquals-metodia arvon tarkistamiseen. Metodi tuodaan luokasta Assert komennolla import static, ja sille annetaan parametrina odotettu arvo -- tässä 0 -- sekä laskimen palauttama arvo. Jos metodin assertEquals arvot poikkeavat toisistaan, testin suoritus ei pääty hyväksytysti. Jokaisella testimetodilla tulee olla <em>annotaatio</em> @Test -- tämä kertoo JUnit-testikehykselle, että kyseessä on suoritettava testimetodi.
+</p>
+
+<p>
+  Testien suorittaminen onnistuu valitsemalla projekti oikealla hiirennapilla ja klikkaamalla vaihtoehtoa Test.
+</p>
+
+<p>
+  Testien suorittaminen luo output-välilehdelle (tyypillisesti NetBeansin alalaidassa) tulosteen, jossa on testiluokkakohtaiset tilastot. Alla olevassa esimerkissä on suoritettu pakkauksessa laskin olevan testiluokan LaskinTest testit. Testejä suoritettiin 1, joista yksikään ei epäonnistunut -- epäonnistuminen tarkoittaa tässä sitä, että testin testaama toiminnallisuus ei toiminut oletetusti.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: LaskinTest
+  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
+
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+<p>
+  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package laskin;
+
+  import static org.junit.Assert.assertEquals;
+  import org.junit.Test;
+
+  public class LaskinTest {
+
+      @Test
+      public void laskimenArvoAlussaNolla() {
+          Laskin laskin = new Laskin();
+          assertEquals(0, laskin.getArvo());
+      }
+
+      @Test
+      public void arvoViisiKunSummataanViisi() {
+          Laskin laskin = new Laskin();
+          laskin.summa(5);
+          assertEquals(5, laskin.getArvo());
+      }
+
+      @Test
+      public void arvoMiinusKaksiKunErotetaanKaksi() {
+          Laskin laskin = new Laskin();
+          laskin.erotus(2);
+          assertEquals(-2, laskin.getArvo());
+      }
+  }
+<% end %>
+
+<p>
+  Testien suorittaminen antaa seuraavanlaisen tulostuksen.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: LaskinTest
+  Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
+
+  Testcase: arvoMiinusKaksiKunErotetaanKaksi(LaskinTest):	FAILED
+  expected:<-2> but was:<2>
+  junit.framework.AssertionFailedError: expected:<-2> but was:<2>
+      at LaskinTest.arvoMiinusKaksiKunErotetaanKaksi(LaskinTest.java:25)
+
+
+  Test LaskinTest FAILED
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+<p>
+  Tulostus kertoo, että kolme testiä suoritettiin. Yksi niistä päätyi virheeseen. Testitulostuksessa on tieto myös testin rivistä, jossa virhe tapahtui (25) sekä tieto odotetusta (-2) ja saadusta arvosta (2). Kun testien suoritus päättyy virheeseen, NetBeans näyttää testien suoritukseen liitttyvän virhetilanteen myös visuaalisena.
+</p>
+
+<p>
+  Edellisillä testeillä kaksi testeistä menee läpi, mutta yhdessä on tapahtunut virhe. Korjataan luokkaan Laskin jäänyt virhe.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // ...
+  public void erotus(int luku) {
+      this.arvo -= luku;
+  }
+  // ...
+<% end %>
+
+<p>
+  Kun testit suoritetaan uudestaan, testit menevät läpi.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: LaskinTest
+  Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
+
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Laskimen testailua' } do %>
+
+  <p>
+    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo laskimelle esimerkissä näytetyt testit. Kokeile testien toimintaa, ja palauta lopulta tehtävä Test My Code-palvelimelle.
+  </p>
+
+<% end %>
+
 
 
 <% partial 'partials/exercise', locals: { name: 'Breakout' } do %>
@@ -1025,2124 +2206,10 @@
   </ol>
 
   <p>
-    Tehtävässä ei ole automaattisia testejä ja se on yhden pisteen arvoinen. Voit palauttaa tehtävän jo kun saat ensimmäisen parannusehdotuksen tehtyä, mutta peliä saa toki viilata ikuisuuksiin asti.
+    Tehtävässä ei ole automaattisia testejä ja se on yhden pisteen arvoinen. Voit palauttaa tehtävän jo kun saat ensimmäisen parannusehdotuksen tehtyä mutta peliä saa toki viilata enemmänkin.
   </p>
 
 <% end %>
 
 
-
-
-
-
-
-
-
-<% partial 'partials/material_heading' do %>
-  Lohkoista ja sisäkkäisistä toistolauseista
-<% end %>
-
-<p>
-  Aaltosululla <code>{</code> alkavaa ja aaltosululla <code>}</code> päättyvää aluetta, joka sisältää nollasta rajattomaan määrään lauseita kutsutaan <em>lohkoksi</em>.  Kuten olemme aiemmin nähneet, lohkoja käytetään luokkaan kuuluvan alueen rajaamisessa, metodille kuuluvan alueen rajaamisessa sekä ehto- ja toistolauseiden alueen rajaamisessa. Avautuvalle aaltosululle tulee aina löytyä vastaava sulkeva pari.
-</p>
-
-<p>
-  Eräs tärkeä, liian pieneen rooliin jäänyt aaltosulkuihin ja lohkoihin liittyvä tieto on se, että lohkon sisällä määritellyt muuttujat ovat olemassa vain kyseisen lohkon sisällä.
-</p>
-
-<p>
-  Alla olevassa esimerkissä määritellään ehtolauseeseen liittyvän lohkon sisällä tekstimuuttuja <code>teksti</code>, joka on olemassa vain lohkon sisällä. Lohkossa esitellyn muuttujan tulostus lohkon ulkopuolella ei toimi!
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int luku = 5;
-
-if (luku == 5) {
-    String teksti = "Oho!";
-}
-
-// muuttujaa teksti ei ole olemassa täällä:
-// se määriteltiin edelläolevan lohkon sisällä
-System.out.println(teksti);
-<% end %>
-
-<p>
-  Lohkossa voidaan käyttää ja muuttaa sen ulkopuolella määriteltyjä muuttujia, kunhan ne on määritelty ennen lohkoa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int luku = 5;
-
-if (luku == 5) {
-    luku = 6;
-}
-
-System.out.println(luku); // tulostaa luvun 6
-<% end %>
-
-
-<% partial 'partials/code_highlight' do %>
-String teksti = "Jee!";
-int luku = 5;
-
-if (luku == 5) {
-    teksti = "Oho!";
-}
-
-System.out.println(teksti); // tulostaa "Oho!"
-<% end %>
-
-
-<p>
-  Lohkon sisällä voi olla lähes mitä tahansa koodia. Esimerkiksi while-toistolauseen määrittelemän lohkon sisällä voi olla toinen while-toistolauseke. Tarkastellaan seuraavaa ohjelmaa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int rivinumero = 0;
-
-while (rivinumero &lt; 3) {
-    System.out.print(rivinumero + ": ");
-
-    int luku = 0;
-    while (luku &lt; 3) {
-        System.out.print(luku + " ");
-        luku++;
-    }
-
-    System.out.println();
-    rivinumero++;
-}
-<% end %>
-
-<p>
-  Ohjelman tulostus on seuraava:
-</p>
-
-<% partial 'partials/sample_output' do %>
-0: 0 1 2
-1: 0 1 2
-2: 0 1 2
-<% end %>
-
-<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int rivinumero = 0;\n\n        while (rivinumero < 3) {\n            System.out.print(rivinumero + \": \");\n\n            int luku = 0;\n            while (luku < 3) {\n                System.out.print(luku + \" \");\n                luku++;\n            }\n    \n            System.out.println();\n            rivinumero++;\n        }\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":0},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"rivinumero":0},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: ","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivinumero":0},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":0,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":0,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":0,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"23","frame_id":23}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"24","frame_id":24}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"34","frame_id":34}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"35","frame_id":35}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"39","frame_id":39}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"44","frame_id":44}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"45","frame_id":45}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"46","frame_id":46}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 ","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"50","frame_id":50}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"luku":3,"rivinumero":0},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"53","frame_id":53}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: ","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivinumero":1},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"65","frame_id":65}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":0,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"67","frame_id":67}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":0,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"71","frame_id":71}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":0,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"76","frame_id":76}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"77","frame_id":77}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"78","frame_id":78}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"82","frame_id":82}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"87","frame_id":87}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"88","frame_id":88}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"89","frame_id":89}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"93","frame_id":93}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"98","frame_id":98}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"99","frame_id":99}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"100","frame_id":100}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 ","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"104","frame_id":104}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"luku":3,"rivinumero":1},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"108","frame_id":108}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"110","frame_id":110}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"114","frame_id":114}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: ","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivinumero":2},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"119","frame_id":119}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":0,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"121","frame_id":121}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":0,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"125","frame_id":125}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":0,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"130","frame_id":130}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"131","frame_id":131}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"132","frame_id":132}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"136","frame_id":136}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":1,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"141","frame_id":141}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"142","frame_id":142}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"143","frame_id":143}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 ","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"147","frame_id":147}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":2,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"152","frame_id":152}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"153","frame_id":153}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"154","frame_id":154}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 ","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"158","frame_id":158}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"luku":3,"rivinumero":2},"ordered_varnames":["rivinumero","luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"161","frame_id":161}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"rivinumero":3},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"162","frame_id":162}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivinumero":3},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"164","frame_id":164}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"step_line","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivinumero":3},"ordered_varnames":["rivinumero"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"168","frame_id":168}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"0: 0 1 2 \n1: 0 1 2 \n2: 0 1 2 \n","event":"return","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivinumero":3,"__return__":["VOID"]},"ordered_varnames":["rivinumero","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"170","frame_id":170}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
-
-<p>
-  Eli mitä ohjelmassa tapahtuukaan? Jos ajatellaan pelkkää ulommaista while-lohkoa, on toiminnallisuus helppo ymmärtää.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int rivinumero = 0;
-
-while (rivinumero &lt; 3) {
-    System.out.print(rivinumero + ": ");
-
-    // sisempi while
-
-    System.out.println();
-    rivinumero++;
-}
-<% end %>
-
-<p>
-  Ensin <code>rivinumero=0</code> ja tulostuu <code>0:</code> ja rivinvaihto. Tämän jälkeen rivinumero kasvaa ja tulostuu ykkönen, jne., eli ulompi while saa aikaan seuraavan:
-</p>
-
-<% partial 'partials/sample_output' do %>
-0:
-1:
-2:
-<% end %>
-
-<p>
-  Myös sisempi while on helppo ymmärtää erillään. Se saa aina aikaan tulosteen <code>0 1 2</code>. Kun yhdistämme nämä kaksi, huomaamme, että sisempi while-toistolause suorittaa tulosteensa aina juuri ennen ulomman while-toistolauseen tulostamaa rivinvaihtoa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int luku = 0;
-while (luku &lt; 3) {
-    System.out.print(luku + " ");
-    luku++;
-}
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-0 1 2
-<% end %>
-
-
-
-<% partial 'partials/hint', locals: { name: 'Toiminnallisuuden yhdistäminen vai pilkkominen' } do %>
-
-  <p>
-    Edellä kuvasimme lohkojen toimintaa esimerkillä, missä yhdistimme kaksi erillistä toistolausetta yhteen. Samalla ohjelmasta kuitenkin muodostui hieman monimutkaisempi: mitä enemmän palasia lisäämme yhteen, sitä enemmän kokonaisuuden hallinta vie keskittymisestä.
-  </p>
-
-  <p>
-    Jos ohjelmaa haluttaisiin jatkokehittää, voisikin olla näppärä toteuttaa se osissa metodeina. Tällöin yhden metodin vastuulla voisi olla esimerkiksi sisempi toistolause, ja toisen metodin vastuulla ulompi toistolause.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Toisen muuttujan käyttö toiston ehtona
-<% end %>
-
-<p>
-  Tutkitaan seuraavaa muunnosta edelliseen esimerkkiin:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int rivinumero = 0;
-
-while (rivinumero &lt; 3) {
-    System.out.print(rivinumero + ": ");
-
-    int luku = 0;
-    while (luku &lt;= rivinumero) {
-        System.out.print(luku + " ");
-        luku++;
-    }
-
-    System.out.println();
-    rivinumero++;
-}
-<% end %>
-
-<p>
-  Sisemmän toistolausekkeen toistojen määrä riippuukin nyt ulommassa toistolausekkeessa käytettävän muuttujan <code>rivinumero</code> arvosta. Eli kun <code>rivinumero=0</code>, tulostaa sisempi toistolause luvun 0, kun <code>rivinumero=1</code>, tulostaa sisempi toistolauseke "0 1 ", jne. Koko ohjelman tulostus on seuraava:
-</p>
-
-<% partial 'partials/sample_output' do %>
-0: 0
-1: 0 1
-2: 0 1 2
-<% end %>
-
-<p>
-  Seuraava ohjelma tulostaa lukujen 1..10 kertotaulun.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int rivinumero = 1;
-
-while (rivinumero &lt;= 10) {
-    int sarake = 1;
-
-    while (sarake &lt;= 10) {
-        System.out.print(rivinumero * sarake + " ");
-        sarake++;
-    }
-
-    System.out.println();
-    rivinumero++;
-}
-<% end %>
-
-<p>
-  Tulostus näyttää seuraavalta:
-</p>
-
-<% partial 'partials/sample_output' do %>
-1 2 3 4 5 6 7 8 9 10
-2 4 6 8 10 12 14 16 18 20
-3 6 9 12 15 18 21 24 27 30
-4 8 12 16 20 24 28 32 36 40
-5 10 15 20 25 30 35 40 45 50
-6 12 18 24 30 36 42 48 54 60
-7 14 21 28 35 42 49 56 63 70
-8 16 24 32 40 48 56 64 72 80
-9 18 27 36 45 54 63 72 81 90
-10 20 30 40 50 60 70 80 90 100
-<% end %>
-
-<p>
-  Ylimmällä rivillä on luvun 1 kertotaulu. Alussa <code>rivinumero=1</code> ja sisemmän toistolauseen muuttuja <code>sarake</code> saa arvot 1...10. Jokaisella <code>rivinumero, sarake</code> -arvoparilla tulostetaan niiden tulo. Eli alussa <code>rivinumero=1, sarake=1</code>, sitten <code>rivinumero=1, sarake=2</code>, ..., <code>rivinumero=1, sarake=10</code> seuraavaksi <code>rivinumero=2, sarake=1</code>, jne.
-</p>
-
-<p>
-  Kertotaulu-ohjelman voi pilkkoa pienempiin osiin. Voimme määritellä metodit <code>public void tulostaKertotaulunRivi(int kerroin, int montakokertaa)</code> ja <code>public void tulostaKertotaulu(int mihinAsti)</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public class Kertotaulu {
-
-    public void tulosta(int mihinAsti) {
-        int rivinumero = 1;
-
-        while (rivinumero &lt;= mihinAsti) {
-            tulostaKertotaulunRivi(rivinumero, mihinAsti);
-
-            System.out.println();
-            rivinumero++;
-        }
-    }
-
-
-    public void tulostaKertotaulunRivi(int rivi, int lukuja) {
-        int sarake = 1;
-
-        while (sarake &lt;= lukuja) {
-            System.out.print(rivi * sarake + " ");
-            sarake++;
-        }
-    }
-}
-<% end %>
-
-<p>
-  Nyt kutsu <code>new Kertotaulu().tulosta(5);</code> tulostaa allaolevan kertotaulun.
-</p>
-
-<% partial 'partials/sample_output' do %>
-1 2 3 4 5
-2 4 6 8 10
-3 6 9 12 15
-4 8 12 16 20
-5 10 15 20 25
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Lukutulostin' } do %>
-
-  <p>
-    Luo luokka <code>Lukutulostin</code> ja tee sille seuraavat toiminnallisuudet.
-  </p>
-
-  <h2>Lukuporras</h2>
-
-  <p>
-    Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void lukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.lukuporras(2);
-System.out.println();
-tulostin.lukuporras(3);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-1
-1 2
-
-1
-1 2
-1 2 3
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.lukuporras(5);
-System.out.println();
-tulostin.lukuporras(2);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-1
-1 2
-1 2 3
-1 2 3 4
-1 2 3 4 5
-
-1
-1 2
-  <% end %>
-
-
-  <h2>Jatkuva lukuporras</h2>
-
-  <p>
-    Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void jatkuvaLukuporras(int luku)</code>. Metodin tulee toimia seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.jatkuvaLukuporras(2);
-System.out.println();
-tulostin.jatkuvaLukuporras(3);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-1
-2 3
-
-1
-2 3
-4 5 6
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.jatkuvaLukuporras(5);
-System.out.println();
-tulostin.jatkuvaLukuporras(2);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-1
-2 3
-4 5 6
-7 8 9 10
-11 12 13 14 15
-
-1
-2 3
-  <% end %>
-
-  <h2>Kertokolmio</h2>
-
-  <p>
-    Toteuta luokalle <code>Lukutulostin</code> metodi <code>public void kertokolmio(int luku)</code>. Kertokolmio-metodin tulee toimia seuraavien esimerkkien mukaisesti.
-  </p>
-
-
-  <% partial 'partials/code_highlight' do %>
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.kertokolmio(2);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-1
-2 4
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-Lukutulostin tulostin = new Lukutulostin();
-tulostin.kertokolmio(5);
-System.out.println();
-tulostin.kertokolmio(3);
-  <% end %>
-
-
-  <% partial 'partials/sample_output' do %>
-1
-2 4
-3 6 9
-4 8 12 16
-5 10 15 20 25
-
-1
-2 4
-3 6 9
-  <% end %>
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Lohkot ja luokat
-<% end %>
-
-<p>
-  Luokan määrittely alkaa luokan nimellä, jota seuraa lohko.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-// luokan Esimerkki määrittely
-public class Esimerkki {
-
-}
-<% end %>
-
-<p>
-  Tämän lohkon sisälle tulee oliomuuttujat, eli ne muuttujat, joita luokasta tehtävät oliot saavat omakseen.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-// luokan Esimerkki määrittely
-public class Esimerkki {
-  // oliomuuttujat
-}
-<% end %>
-
-<p>
-  Oliomuuttujien lisäksi luokan määrittelyyn käytettävä lohko sisältää konstruktoreja ja metodeja.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-// luokan Esimerkki määrittely
-public class Esimerkki {
-  // oliomuuttujat
-
-  // konstruktorit
-
-  // metodit
-}
-<% end %>
-
-
-<p>
-  Jokainen konstruktori ja metodi myös määrittelee oman lohkonsa, jonka sisällä olevat lauseet suoritetaan konstruktoria tai metodia kutsuttaessa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-// luokan Esimerkki määrittely
-public class Esimerkki {
-  // oliomuuttujat
-
-  // konstruktorit
-  public Esimerkki() {
-    // konstruktorin oma lohko
-  }
-
-  // metodit
-  public void tulostaLuku() {
-    // metodin tulostaLuku oma lohko
-  }
-}
-<% end %>
-
-<p>
-  Konstruktoreissa ja metodeissa voi olla myös sisäisiä lohkoja.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-// luokan Esimerkki määrittely
-public class Esimerkki {
-  // oliomuuttujat
-
-  // konstruktorit
-  public Esimerkki() {
-    // konstruktorin oma lohko
-  }
-
-  // metodit
-  public void tulostaLuku() {
-    // metodin tulostaLuku oma lohko
-    int luku = 5;
-    if (luku > 4) {
-      // lisää lohkoja!
-    }
-  }
-}
-<% end %>
-
-
-
-<% partial 'partials/material_heading' do %>
-  Merkkijonot
-<% end %>
-
-
-<p>
-  Tutustumme seuraavaksi merkkijonoihin hieman tarkemmin. Olemme käyttäneet merkkijonoja jo aiemmin sekä oppineet vertailemaan niitä toisiinsa merkkijonon <code>equals</code>-metodilla. Merkkijonot ovat String-tyyppisiä olioita, joilla on käytössä kaikki String-luokkaan liittyvät metodit. Toisin kuin käytännössä lähes kaikkien muiden olioiden tapauksessa, String-olioiden tapauksessa luomiseen ei tarvitse <code>new</code>-kutsua.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String elain = "Koira";
-
-if (elain.equals("Koira")) {
-    System.out.println(elain + " sanoo vuh vuh");
-} else if (elain.equals("Kissa")) {
-    System.out.println(elain + " sanoo miau miau");
-}
-<% end %>
-
-<p>
-  Lause <code>String elain = "Koira";</code> on Javan tarjoama lyhennys lauseesta <code>String elain = new String("Koira");</code>. Yllä oleva lähdekoodi on siis käytännössä sama seuraavan kanssa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String elain = new String("Koira");
-
-if (elain.equals("Koira")) {
-    System.out.println(elain + " sanoo vuh vuh");
-} else if (elain.equals("Kissa")) {
-    System.out.println(elain + " sanoo miau miau");
-}
-<% end %>
-
-<p>
-  String on Javan mukana tuleva luokka, jota ohjelmoija voi käyttää merkkijonojen käsittelyyn.
-</p>
-
-
-
-<% partial 'partials/hint', locals: { name: 'Javan API ja dokumentaatio' } do %>
-
-  <p>
-    Ohjelmointikielet tarjoavat tyypillisesti merkittävän määrän valmiita apuvälineitä ohjelmoijan käyttöön. Javassa nämä apuvälineet ovat listattuna Javan tarjoamassa APIssa. Javan API sisältää dokumentaation jokaisesta Javan mukana tulevasta luokasta.
-  </p>
-
-  <p>
-    Javan APIa voi tarkastella osoitteessa <a href="https://docs.oracle.com/javase/8/docs/api/index.html?overview-summary.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/index.html?overview-summary.html</a>. Kun avaat sivun, voit käydä vasemmassa alalaidassa olevaa listaa läpi, ja etsiä sieltä String-luokan. Kun klikkaat String-luokan linkkiä, pääset sivulle <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/java/lang/String.html</a>. Sivu sisältää kaikki String-luokan tarjoamat metodit.
-  </p>
-
-  <p>
-    Ohjelmoijana kehittymiseen liittyy valmiiden dokumentaatioiden lukeminen. Otamme tällä kurssilla pieniä askeleita tähän liittyen. Vaikka edellä mainittu Javan API voi tuntua tällä hetkellä hyvin monimutkaiselta ja jopa pelottavalta, älä huoli. Sitä ei tarvitse missään nimessä opetella ulkoa. Sen lukeminen ja tiedon etsiminen sieltä tulee kurssin aikana hiljalleen tutuksi.
-  </p>
-
-<% end %>
-
-
-<%= partial 'partials/quiz', locals: { id: '5899e1003e373c0004e73ae9' } %>
-
-
-<p>
-  Tutustutaan seuraavaksi muutamaan yleiskäyttöiseen String-luokan tarjoamaan metodiin. Metodit ovat (1) merkkijonon pituuden selvittämiseen käytettävä <code>length()</code>, (2) yksittäisen merkin hakemiseen käytetty <code>charAt(int indeksi)</code>, (3) merkkijonon osajonon ottamiseen käytetty <code>substring(int alku, int loppu)</code> ja sen variantti <code>substring(int alku)</code>, (4) merkkijonosta etsimiseen käytetty <code>indexOf(String etsittava)</code>, sekä (5) merkkijonon osiin jakamiseen tarkoitettu <code>split(String jakaja)</code>.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Merkkijonon pituus
-<% end %>
-
-
-<p>
-  Metodi <code>length()</code> palauttaa merkkijono-olion pituuden kokonaislukuna.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String banaani = "banaani";
-String kurkku = "kurkku";
-String yhdessa = banaani + kurkku;
-
-System.out.println("Banaanin pituus on " + banaani.length());
-System.out.println("Kurkku pituus on " + kurkku.length());
-System.out.println("Sanan " + yhdessa + " pituus on " + yhdessa.length());
-<% end %>
-
-<p>
-  Yllä metodia <code>length()</code> kutsutaan kolmelle eri merkkijono-oliolle. Kutsu <code>banaani.length()</code> kutsuu metodia <code>length()</code> oliolle <code>banaani</code>, ja kutsu <code>kurkku.length()</code> kutsuu metodia <code>length()</code> oliolle <code>kurkku</code>. Tässä vaiheessa tiedämme jo, että pisteen vasemman puoleinen osa kertoo minkä olion metodia kutsutaan.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Nimen pituus' } do %>
-
-  <p>
-    Toteuta ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa, kuinka monta kirjainta käyttäjän syöttämässä nimessä on.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Pekka</font>
-Kirjainmäärä: 5
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Katariina</font>
-Kirjainmäärä: 9
-  <% end %>
-
-<% end %>
-
-<% partial 'partials/material_sub_heading' do %>
-  Yksittäinen merkki merkkijonosta
-<% end %>
-
-
-<p>
-  Javassa on erillinen <code>char</code>-tietotyyppi yksittäisiä merkkejä varten. Yksittäiseen <code>char</code>-muuttujaan voi tallentaa yhden merkin. Merkin asetus char-tyyppiseen muuttujaan tapahtuu asetuslausekkeella -- toisin kuin merkkijonomuuttuja, joka aloitetaan ja lopetetaan lainausmerkillä <code>"merkkijono"</code>, yksittäinen merkki aloitetaan ja lopetetaan puolilainausmerkillä <code>'a'</code>. Merkin tulostaminen onnistuu tutulla tulostuskomennolla:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-char merkki = 'a';
-System.out.println(merkki);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-a
-<% end %>
-
-<p>
-  Merkkijonolta voidaan pyytää yksittäisiä merkkejä niiden indeksin perusteella. Tämä onnistuu metodilla <code>charAt(int indeksi)</code>, joka saa parametrina halutun merkin indeksin merkkijonossa. Kuten yleensä, indeksin laskeminen alkaa nollasta, eli esimerkiksi neljäs merkki on indeksissä kolme.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String kirja = "Kalavale";
-
-char merkki = kirja.charAt(3);
-System.out.println("Merkkijonon " + kirja + " neljäs merkki on on " + merkki);
-System.out.println("Merkkijonon " + kirja + " ensimmäinen merkki on " + kirja.charAt(0));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-Merkkijonon Kalavale neljäs merkki on a
-Merkkijonon Kalavale ensimmäinen merkki on K
-<% end %>
-
-<p>
-  Koska merkkijonon merkkien indeksointi alkaa paikasta 0, on viimeisen merkin indeksi "merkkijonon pituus miinus yksi", eli esimerkiksi <code>kirja.charAt(kirja.length() - 1)</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String elain = "Kissa";
-
-char viimeinen = elain.charAt(elain.length() - 1);
-System.out.println("Kissa-merkkijonon viimeinen merkki on " + viimeinen);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-Kissa-merkkijonon viimeinen merkki on a
-<% end %>
-
-<p>
-  Merkin hakeminen olemattomasta paikasta, eli vaikkapa indeksistä -1 tai metodin <code>length()</code> palauttaman arvon määrittelemästä kohdasta aiheuttaa virhetilanteen, ja kaataa ohjelman. Alla olevassa esimerkissä yritämme hakea kirjainta kohdasta jota ei ole olemassa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public class Main {
-
-    public static void main(String[] args) {
-        String merkkijono = "Olipa kerran..";
-        System.out.println(merkkijono.charAt(merkkijono.length()));
-    }
-}
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-<font color="red">Exception in thread "main" java.lang.StringIndexOutOfBoundsException:
-    String index out of range: 14
-        at java.lang.String.charAt(String.java:658)
-        at Main.main(Main.java:5)</font>
-<% end %>
-
-<p>
-  Ylläoleva virheviesti kertoo että yritimme hakea merkkiä indeksistä 14, joka on merkkijonon ulkopuolella. Virheellinen tapahtuma alkoi kun suoritettiin Main-luokan rivillä 5 olevaa lausetta. Lauseessa kutsutaan luokan String metodia charAt, ja virhe tapahtuu String-luokan rivillä 658. Kuten huomaat, virheet kertovat myös Javan tarjoamien luokkien omasta toiminnallisuudesta. Olemme kuitenkin enemmän kiinnostuneita Main-luokasta sekä muista toteuttamistamme luokista, sillä ne ovat hyvin paljon todennäköisempiä lähteitä virhetilanteille.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Ensimmäinen kirjain' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa nimen ensimmäisen merkin.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Pekka</font>
-Ensimmäinen kirjain: P
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Katariina</font>
-Ensimmäinen kirjain: K
-  <% end %>
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Viimeinen kirjain' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa nimen viimeisen merkin.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Pekka</font>
-Viimeinen kirjain: a
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Katariina</font>
-Viimeinen kirjain: a
-  <% end %>
-
-<% end %>
-
-<p>
-  Merkkijonojen yhteydessä voi käyttää toistolausetta aivan kuten muissakin ohjelmissa. Alla olevassa esimerkissä tulostetaan syötetystä merkkijonosta kaikki merkit paitsi ensimmäinen ja viimeinen.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-Scanner lukija = new Scanner(System.in);
-
-String luettu = lukija.nextLine();
-System.out.println("Tarkastellaan merkkijonoa " + luettu);
-
-int indeksi = 1;
-while (indeksi &lt; luettu.length() - 2) {
-    System.out.println("Indeksissä " + indeksi + " on " + luettu.charAt(indeksi));
-    indeksi++;
-}
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-<font color="red">Saippuakauppias</font>
-Tarkastellaan merkkijonoa Saippuakauppias
-Indeksissä 1 on a
-Indeksissä 2 on i
-Indeksissä 3 on p
-Indeksissä 4 on p
-Indeksissä 5 on u
-Indeksissä 6 on a
-Indeksissä 7 on k
-Indeksissä 8 on a
-Indeksissä 9 on u
-Indeksissä 10 on p
-Indeksissä 11 on p
-Indeksissä 12 on i
-Indeksissä 13 on a
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Kolme ensimmäistä kirjainta' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa sen kolme ensimmäistä merkkiä, jokaisen merkin erikseen. Jos käyttäjän syöttämän merkkijonon pituus on alle kolme merkkiä, ei ohjelma tulosta mitään.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Pekka</font>
-1. kirjain: P
-2. kirjain: e
-3. kirjain: k
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">me</font>
-  <% end %>
-
-  <p>
-    <strong>Huom:</strong> ole tässä ja seuraavassa tehtävässä erityisen tarkka tulostusasun suhteen! Tulostuksessa tulee olla yksi välilyönti sekä pisteen että kaksoispisteen jälkeen!
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Kirjaimet erikseen' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa sen merkit erikseen.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Pekka</font>
-1. kirjain: P
-2. kirjain: e
-3. kirjain: k
-4. kirjain: k
-5. kirjain: a
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Katariina</font>
-1. kirjain: K
-2. kirjain: a
-3. kirjain: t
-4. kirjain: a
-5. kirjain: r
-6. kirjain: i
-7. kirjain: i
-8. kirjain: n
-9. kirjain: a
-  <% end %>
-
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Nimen kääntäminen' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjän nimen ja tulostaa sen väärinpäin.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Pekka</font>
-Väärinpäin: akkeP
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna nimi: <font color="red">Katariina</font>
-Väärinpäin: aniirataK
-  <% end %>
-
-  <p>
-    <strong>Vihje</strong>: Yksittäisen merkin (ilman rivinvaihtoa) saa tulostettua komennolla <code>System.out.print()</code>.
-  </p>
-
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Sanatulostin' } do %>
-
-  <p>
-    Toteuta luokka <code>Sanatulostin</code>, jossa on seuraavat toiminnallisuudet.
-  </p>
-
-  <h2>Sanaporras</h2>
-
-  <p>
-    Toteuta luokalle <code>Sanatulostin</code> merkkijonon vastaanottava konstruktori sekä metodi <code>public void sanaporras(int luku)</code>, joka toimii seuraavasti:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Sanatulostin tulostin = new Sanatulostin("Ananas");
-tulostin.sanaporras(2);
-System.out.println();
-tulostin.sanaporras(4);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-A
-na
-
-A
-na
-nas
-Anan
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-Sanatulostin tulostin = new Sanatulostin("Sauna");
-tulostin.sanaporras(3);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-S
-au
-naS
-  <% end %>
-
-
-  <h2>Laskeva sanaporras</h2>
-
-  <p>
-    Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void laskevaSanaporras(int luku)</code> joka toimii seuraavasti:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Sanatulostin tulostin = new Sanatulostin("Ananas");
-tulostin.laskevaSanaporras(2);
-System.out.println();
-tulostin.laskevaSanaporras(3);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-An
-a
-
-Ana
-na
-s
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-Sanatulostin tulostin = new Sanatulostin("Sauna");
-tulostin.laskevaSanaporras(4);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Saun
-aSa
-un
-a
-  <% end %>
-
-
-  <h2>Sanapyramidi</h2>
-
-  <p>
-    Toteuta luokalle <code>Sanatulostin</code> metodi <code>public void sanapyramidi(int luku)</code>, joka toimii seuraavasti:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Sanatulostin tulostin = new Sanatulostin("Nauris");
-tulostin.sanapyramidi(3);
-System.out.println();
-tulostin.sanapyramidi(1);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-N
-au
-ris
-Na
-u
-
-N
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-Sanatulostin tulostin = new Sanatulostin("Saippuakauppias");
-tulostin.sanapyramidi(4);
-System.out.println();
-tulostin.sanapyramidi(2);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-S
-ai
-ppu
-akau
-ppi
-as
-S
-
-S
-ai
-p
-  <% end %>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Merkkijonon osajono
-<% end %>
-
-
-<p>
-  Merkkijonosta halutaan usein lukea jokin tietty osa. Tämä onnistuu metodilla <code>substring</code>. Sitä voidaan käyttää kahdella tavalla: yksiparametrisenä palauttamaan merkkijonon loppuosa tai kaksiparametrisena palauttamaan parametrien määrittelemä osajono merkkijonosta:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String kirja = "Kalavale";
-
-System.out.println(kirja.substring(4));
-System.out.println(kirja.substring(2, 6));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-vale
-lava
-<% end %>
-
-<p>
-  Koska <code>substring</code>-metodin paluuarvo on tyyppiä <code>String</code>, voidaan metodin paluuarvo ottaa talteen String-tyyppiseen muuttujaan loppuosa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String kirja = "8 veljestä";
-
-String loppuosa = kirja.substring(2);
-System.out.println("7 " + loppuosa);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-7 veljestä
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Alkuosa' } do %>
-
-  <p>
-    Tee ohjelma, joka tulostaa sanan alkuosan. Ohjelma kysyy käyttäjältä sanan ja alkuosan pituuden. Käytä ohjelmassa metodia <code>substring</code>.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna sana: <font color="red">esimerkki</font>
-Alkuosan pituus: <font color="red">4</font>
-Tulos: esim
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna sana: <font color="red">esimerkki</font>
-Alkuosan pituus: <font color="red">7</font>
-Tulos: esimerk
-  <% end %>
-
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Loppuosa' } do %>
-
-  <p>
-    Tee ohjelma, joka tulostaa sanan loppuosan. Ohjelma kysyy käyttäjältä sanan ja loppuosan pituuden. Käytä ohjelmassa merkkijonon metodia <code>substring</code>.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna sana: <font color="red">esimerkki</font>
-Loppuosan pituus: <font color="red">4</font>
-Tulos: rkki
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna sana: <font color="red">esimerkki</font>
-Loppuosan pituus: <font color="red">7</font>
-Tulos: imerkki
-  <% end %>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Merkkijonon sijainnin etsiminen
-<% end %>
-
-
-<p>
-  String-luokan metodit tarjoavat myös mahdollisuuden etsiä merkkijonosta annettua merkkijonoa. Esimerkiksi merkkijono "erkki" löytyy merkkijonosta "merkki" alkaen indeksistä 1. Metodi <code>indexOf(String etsitty)</code> etsii merkkijono-oliosta metodille parametrina annettua merkkijonoa. Jos etsitty merkkijono löytyy, metodi <code>indexOf(String etsittava)</code> palauttaa merkkijono-olion indeksin, josta etsittävä merkkijono alkaa. Jos taas merkkijonoa ei löydy, metodi palauttaa arvon -1.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String sana = "merkkijono";
-
-int indeksi = sana.indexOf("erkki");
-System.out.println(indeksi);
-System.out.println(sana.substring(indeksi));
-
-indeksi = sana.indexOf("jono");
-System.out.println(indeksi);
-System.out.println(sana.substring(indeksi));
-
-indeksi = sana.indexOf("kirja");
-System.out.println(indeksi);
-System.out.println(sana.substring(indeksi));
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-1
-erkkijono
-6
-jono
--1
-<font color="red">Exception in thread "main" java.lang.StringIndexOutOfBoundsException:
-  String index out of range: -1
-  at ...</font>
-<% end %>
-
-<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        String sana = \"merkkijono\";\n\n        int indeksi = sana.indexOf(\"erkki\");\n        System.out.println(indeksi);\n        System.out.println(sana.substring(indeksi));\n\n        indeksi = sana.indexOf(\"jono\");\n        System.out.println(indeksi);\n        System.out.println(sana.substring(indeksi));\n\n        indeksi = sana.indexOf(\"kirja\");\n        System.out.println(indeksi);\n        System.out.println(sana.substring(indeksi));\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"sana":"merkkijono"},"ordered_varnames":["sana"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n6\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n6\njono\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n6\njono\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"sana":"merkkijono","indeksi":-1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n6\njono\n-1\n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"sana":"merkkijono","indeksi":-1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"1\nerkkijono\n6\njono\n-1\n","event":"exception","exception_msg":"java.lang.StringIndexOutOfBoundsException: String index out of range: -1","stack_to_render":[],"globals":{},"ordered_globals":[],"func_name":"runMain","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
-
-<p>
-  Screencast aiheesta:
-</p>
-
-<p>
-  <a href="http://www.youtube.com/watch?feature=player_embedded&v=Ax2bhnJxS4Y" height="300" target="_blank" rel="noopener"><img src="https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-</p>
-
-<% partial 'partials/exercise', locals: { name: 'Sana sanassa' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjältä kaksi sanaa. Tämän jälkeen ohjelma kertoo onko toinen sana ensimmäisen sanan osana. Käytä ohjelmassa merkkijonon metodia <code>indexOf</code>.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-Anna 1. sana: <font color="red">suppilovahvero</font>
-Anna 2. sana: <font color="red">ilo</font>
-Sana 'ilo' on sanan 'suppilovahvero' osana.
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Anna 1. sana: <font color="red">suppilovahvero</font>
-Anna 2. sana: <font color="red">suru</font>
-Sana 'suru' ei ole sanan 'suppilovahvero' osana.
-  <% end %>
-
-  <p>
-    <strong>Huom:</strong> toteuta ohjelmasi tulostus täsmälleen samassa muodossa kuin esimerkin tulostus!
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Merkkijonon jakaminen osiin
-<% end %>
-
-
-<p>
-  Merkkijonon jakaminen osiin tapahtuu metodilla <code>split(String jakaja)</code>, jolle annetaan parametrina merkkijono, minkä perusteella jakaminen tapahtuu. Metodi <code>split(String jakaja)</code> palauttaa <strong>merkkijonotaulukon</strong>, eli eräänlaisen listan merkkijonoja.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String pilkottava = "Olipa kerran elämä";
-String[] palat = pilkottava.split(" ");
-
-int indeksi = 0;
-while(indeksi &lt; palat.length) {
-    String pala = palat[indeksi];
-    System.out.println(pala);
-    indeksi++;
-}
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-Olipa
-kerran
-elämä
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Taulukko
-<% end %>
-
-
-<p>
-  Taulukko on useamman arvon säilömiseen tarkoitettu olio. Toisin kuin listat, sen sisältämien arvojen lukumäärä on määrätty taulukon luonnin yhteydessä, eikä taulukon perään voi lisätä uusia arvoja. Taulukko-olio esitellään lauseella <code><em>tyyppi</em>[] taulukko = new <em>tyyppi</em>[<em>koko</em>];</code>, missä <em>tyyppi</em> on taulukon sisältämien arvojen tyyppi ja <em>koko</em> on taulukon arvojen lukumäärä.
-</p>
-
-<p>
-  Alla olevassa esimerkissä luodaan merkkijonoja sisältävä taulukko, jossa on kolme paikkaa. Tämän jälkeen paikkaan 0 asetetaan arvo "Hei" ja paikkaan 1 asetetaan arvo "maailma". Tämän jälkeen taulukon sisältö tulostetaan.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String[] taulukko = new String[3];
-taulukko[0] = "Hei";
-taulukko[1] = "maailma";
-
-int indeksi = 0;
-while(indeksi &lt; taulukko.length) {
-    String arvo = taulukko[indeksi];
-    System.out.println(arvo);
-    indeksi++;
-}
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-Hei
-maailma
-null
-<% end %>
-
-
-<p>
-  Taulukon pituuden saa selville siihen liittyvän kaikille näkyvän kokonaislukutyyppisen muuttujan <code>length</code> avulla. Esimerkiksi <code>taulukko.length</code>. Tiettyyn taulukon kohtaan viitataan hakasulkujen avulla. Alla olevassa esimerkissä vaihdetaan taulukon indeksien 1 ja 2 sisältö päittäin.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-String[] taulukko = new String[3];
-taulukko[0] = "Hei";
-taulukko[1] = "maailma";
-
-String apu = taulukko[1];
-taulukko[1] = taulukko[2];
-taulukko[2] = apu;
-
-int indeksi = 0;
-while(indeksi &lt; taulukko.length) {
-    String arvo = taulukko[indeksi];
-    System.out.println(arvo);
-    indeksi++;
-}
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-Hei
-null
-maailma
-<% end %>
-
-
-<p>
-  Jos indeksillä osoitetaan taulukon ohi, eli alkioon jota ei ole olemassa, niin saadaan virheilmoitus ArrayIndexOutOfBoundsException. Virhe kertoo ettei haluttua indeksiä ole olemassa kyseisessä taulukossa.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Merkkijonon palat' } do %>
-
-  <p>
-    Tee ohjelma, joka kysyy käyttäjältä merkkijonoa. Ohjelma pilkkoo tämän jälkeen merkkijonon osiin välilyöntien perusteella ja tulostaa osat yksitellen.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">Mikä lause?</font>
-Mikä
-lause?
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">Talo on punainen</font>
-Talo
-on
-punainen
-  <% end %>
-
-<% end %>
-
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Peltipoliisit' } do %>
-
-  <p>
-    Peltipoliisit ovat <a href="https://www.youtube.com/watch?v=uvYxXBMqEOM" target="_blank" rel="noopener">tien varrella sijaitsevia valvontakameroita</a>. Peltipoliisit sekä mittaavat autoilijan nopeuden että ottavat tarvittaessa autosta valokuvan. Kuvista tunnistetaan tämän jälkeen rekisterinumero, ja tieto rekisterinumerosta ja nopeudesta lähetetään käsittelyyn.
-  </p>
-
-  <p>
-    Käsiteltävä tieto tulee ohjelmaan aina merkkijonona, joka sisältää rekisterinumeron ja mitatun nopeuden. Syötetty tieto on muodossa <em>rekisterinumero;nopeus</em>.
-  </p>
-
-  <p>
-    Tehtävänäsi on toteuttaa ohjelma, joka lukee ylläolevassa muodossa olevia syötteitä käyttäjältä. Lukeminen lopetetaan kun käyttäjä syöttää tyhjän merkkijonon. Ohjelman tulee tämän jälkeen kertoa (1) suurin mittaus sekä siihen liittynyt rekisterinumero, (2) pienin mittaus sekä siihen liittynyt rekisterinumero, sekä (3) mitattujen nopeuksien keskiarvo. Voit olettaa, että syötteitä on aina vähintään yksi. Tehtävä on kahden tehtäväpisteen arvoinen.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">SUT-11;102
-REP-11;122
-PON-1;62
-HA-LOL;622</font>
-
-Suurin: HA-LOL, 622
-Pienin: PON-1, 62
-Keskiarvo: 227.0
-  <% end %>
-
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">HA-LOL;622</font>
-
-Suurin: HA-LOL, 622
-Pienin: HA-LOL, 622
-Keskiarvo: 622.0
-  <% end %>
-
-<% end %>
-
-
-
-
-
-
-<% partial 'partials/material_heading' do %>
-  Listan käsittely arvojen virtana
-<% end %>
-
-<p>
-  Olemme tähän mennessä käyttäneet while-toistolausetta oikeastaan kaikkeen toistamista vaativaan toimintaan. Tarkastellaan seuraavaksi menetelmiä, jotka on tarkoitettu erityisesti listojen käsittelyyn. Käytämme esimerkkidatana <a href="https://www.avoindata.fi/data/fi/dataset" target="_blank" rel="noopener">Avoindata.fi</a>-palvelussa olevia tietoaineistoja.
-</p>
-
-<p>
-  Tarkastellaan Helsingin pyöräilijämääriä tunneittain vuoden 2014 alusta alkaen (löytyy osoitteesta <a href="https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat" target="_blank" rel="noopener">https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat</a>). Tiedoston sarakkeet sisältävät mittauspisteet (ensimmäinen sarake on päivämäärä ja tunti), rivit tuntikohtaiset mittaukset mittauspisteille. Sarakkeiden arvot ovat eritelty puolipisteillä. Alla esimerkissä tiedoston ensimmäiset 11 riviä, otsakeriviä on leikattu materiaalin luettavuuden takia.
-</p>
-
-<pre>
-Päivämäärä;Huopalahti (asema);Kaisaniemi;Kulosaaren silta et.;....
-ke 1 tammi 2014 00:00;;1;;;;;;2;5;3;;11;;;7;8
-ke 1 tammi 2014 01:00;;3;;;;;;6;5;1;;8;;;5;4
-ke 1 tammi 2014 02:00;;3;;;;;;1;1;1;;14;;;2;11
-ke 1 tammi 2014 03:00;;2;;;;;;0;2;0;;7;;;5;3
-ke 1 tammi 2014 04:00;;4;;;;;;1;1;1;;9;;;1;4
-ke 1 tammi 2014 05:00;;2;;;;;;0;1;1;;7;;;1;2
-ke 1 tammi 2014 06:00;;3;;;;;;6;2;2;;0;;;1;3
-ke 1 tammi 2014 07:00;;1;;;;;;5;7;3;;3;;;3;5
-ke 1 tammi 2014 08:00;;2;;;;;;1;1;0;;2;;;3;9
-ke 1 tammi 2014 09:00;;2;;;;;;1;6;0;;4;;;0;8
-</pre>
-
-<p>
-  Yllä olevassa datassa on tammikuun ensimmäisen päivän ensimmäisen 10 tunnin tiedot. Huopalahden asemalta ei ole vielä yhtäkään mittausta (asemalla ei vielä mittauspistettä). Kaisaniemen mittauspisteen ohi kulkee 1 pyöräilijä puolenyön ja yhden välillä, 3 pyöräilijää yhden ja kahden välillä, 3 pyöräilijää kahden ja kolmen välillä jne.
-</p>
-
-<p>
-  Kun datan lukee merkkijonomuodossa listalle siten, että jokainen rivi vastaa yhtä merkkijonoa, on sen käsittely merkkijonojen tarjoamien metodien avulla melko suoraviivaista. Seuraavissa aliluvuissa oletetaan, että käytössämme on ArrayList-tyyppinen lista merkkijonoja, joista jokainen merkkijono vastaa yhtä pyöräilymäärätilaston riviä.
-
-</p>
-
-<% partial 'partials/material_sub_heading' do %>
-  Lista ja while-toistolause
-<% end %>
-
-<p>
-  Kun ohjelmoija käyttää while-toistolausetta, hän käy listan arvoja läpi listan indeksi kerrallaan. Ohjelmoijan tulee tehdä toistolauseelle lopetusehto, jonka lisäksi indeksimuuttujaa tyypillisesti päivitetään toistolauseen lohkossa. Alla olevassa esimerkissä käsitellään pyöräilydataa ja etsitään kaisaniemen vuoden 2014 keskimääräinen tuntikohtainen ja päiväkohtainen pyöräilijämäärä voidaan laskea seuraavasti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; pyorailijat = new ArrayList&lt;&gt;();
-
-// listalle on luettu koko tilastodata
-
-int tunteja = 0;
-int pyorailijoita = 0;
-
-int indeksi = 1;
-while (indeksi < pyorailijat.size()) {
-    String rivi = pyorailijat.get(indeksi);
-    indeksi++;
-
-    String[] palat = rivi.split(";");
-
-    if (!palat[0].contains("2014")) {
-        continue;
-    }
-
-    tunteja++;
-
-    if(!palat[2].isEmpty()) {
-        pyorailijoita += Integer.parseInt(palat[2]);
-    }
-}
-
-System.out.println();
-System.out.println("Pyöräilijöitä keskimäärin tunnissa: " + (1.0 * pyorailijoita / tunteja));
-System.out.println("Pyöräilijöitä keskimäärin päivässä: " + (24.0 * pyorailijoita / tunteja));
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Fillarointia Baanalla, osa 1' } do %>
-
-  <p>
-    Tehtäväpohjassa on valmiiksi toteutettuna luokka <code>TiedostonLukija</code>, jota käytetään tiedoston sisällön lukemiseen. Luokan metodi <code>lueTiedosto(String tiedosto)</code> palauttaa ArrayList-tyyppisen merkkijonoja sisältävän listan, missä on kaikki luetussa tiedostossa olevat rivit.
-  </p>
-
-  <p>
-    Tehtäväpohjassa tulee mukana myös edellisessä esimerkissä nähty pyöräilijädata.
-  </p>
-
-  <p>
-    Muokkaa tehtäväpohjassa olevaa edellisestä esimerkistä kopioitua ohjelmaa siten, että se kysyy käyttäjältä vuotta ja kuukautta, ja laskee Baanan tunti- ja päiväkohtaisen keskimääräisen käyttäjämäärän annetulle vuodelle ja kuukaudelle. Baana löytyy tilaston viimeisestä sarakkeesta; voit olettaa, että käyttäjä syöttää kuukauden sopivassa muodossa (esim "tammi").
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">2014</font>
-<font color="red">tammi</font>
-
-Pyöräilijöitä keskimäärin tunnissa: 22.38978494623656
-Pyöräilijöitä keskimäärin päivässä: 537.3548387096774
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">2015</font>
-<font color="red">touko</font>
-
-Pyöräilijöitä keskimäärin tunnissa: 117.77553763440861
-Pyöräilijöitä keskimäärin päivässä: 2826.6129032258063
-  <% end %>
-
-  <p>
-    Tehtäväpohjan mukana tuleva tiedosto "helsingin-pyorailijamaarat.csv" on osoitteessa <a href="https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat" target="_blank" rel="noopener">https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat</a> olevasta Helsingin kaupunkisuunnitteluviraston tietoaineistosta muokattu versio. Alkuperäinen tietoaineisto on julkaistu avoimella Creative Commons (CC BY 4.0) -lisenssillä.
-  </p>
-
-<% end %>
-
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Lista ja arvojen virta
-<% end %>
-
-
-<p>
-  Tutustutaan listan läpikäyntiin listan arvojen virtana (stream). Kun listan arvoja käsitellään virtana, ohjelmoija kertoo mitä kullekin listan arvolle tulee tehdä, mutta ei esimerkiksi erikseen pidä kirjaa indeksistä tai kullakin hetkellä käsiteltävästä muuttujasta.
-</p>
-
-<p>
-  Alla olevassa esimerkissä luomme ensin listasta virran metodilla <code>stream()</code>. Tämän jälkeen muunnamme arvot toiseen muotoon virran metodilla <code>map</code> -- muunto toteutetaan String-luokan metodilla <code>split</code>. Seuraavaksi rajaamme metodilla <code>filter</code> tarkastelusta pois ne rivit, joiden päivämäärässä ei ole merkkijonoa "2014". Lopulta keräämme arvot uudelle listalle metodilla <code>collect</code>.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; pyorailijat = new ArrayList&lt;&gt;();
-
-// listalle on luettu koko tilastodata
-
-ArrayList&lt;String[]gt; rajatut =
-    pyorailijat.stream()
-               .map(merkkijono -&gt; merkkijono.split(";"))
-               .filter(taulukko -&gt; taulukko[0].contains("2014"))
-               .collect(Collectors.toCollection(ArrayList::new));
-
-
-// .. tehdään vielä laskentaa
-<% end %>
-
-<p>
-  Haluamme tietää pyöräilijöiden keskimääräisen lukumäärän tunti- ja päiväkohtaisesti. Rajataan seuraavaksi edellä kerätyt arvot siten, että käsittelemme vain merkkijonoja, joissa kaisaniemeen liittyy arvoja. Tämän jälkeen muunnetaan jäljellä olevat arvot kokonaislukuvirraksi metodilla <code>mapToInt</code>. Kokonaislukuvirralla on valmiina metodi <code>average</code>, joka laskee virrassa olevien kokonaislukujen keskiarvon -- keskiarvo saadaan lopulta metodilla <code>getAsDouble</code>.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; pyorailijat = new ArrayList&lt;&gt;();
-
-// listalle on luettu koko tilastodata
-
-ArrayList&lt;String[]&gt; rajatut =
-    pyorailijat.stream()
-               .map(merkkijono -&gt; merkkijono.split(";"))
-               .filter(taulukko -&gt; taulukko[0].contains("2014"))
-               .collect(Collectors.toCollection(ArrayList::new));
-
-double keskiarvo = rajatut.stream()
-                          .filter(taulukko -&gt; !taulukko[2].isEmpty())
-                          .mapToInt(taulukko -&gt; Integer.parseInt(taulukko[2]))
-                          .average()
-                          .getAsDouble();
-
-System.out.println("Pyöräilijöitä keskimäärin tunnissa: " + keskiarvo);
-System.out.println("Pyöräilijöitä keskimäärin päivässä: " + (24.0 * keskiarvo));
-<% end %>
-
-<p>
-  Koko keskiarvon laskemisen voi myös tehdä yhtenä virran käsittelynä. Alla jokainen rivi on erikseen kommentoitu.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; pyorailijat = new ArrayList&lt;&gt;();
-
-// listalle on luettu koko tilastodata
-
-double keskiarvo =
-    // luodaan virta listasta pyorailijat
-    pyorailijat.stream()
-               // muunnetaan listan merkkijonot merkkijonotaulukoiksi
-               // muunnos tapahtuu merkkijonon metodilla split
-               .map(merkkijono -&gt; merkkijono.split(";"))
-               // nyt virta sisältää merkkijonotaulukkoja
-               // huomioidaan vain ne merkkijonotaulukot, joissa ensimmäisessä
-               // indeksissä (pvm) merkkijono "2014"
-               .filter(taulukko -&gt; taulukko[0].contains("2014"))
-               // taulukon indeksissä 2 on kaisaniemen pyöräilijätilastot
-               // varmistetaan, että otamme huomioon vain ne rivit, joissa
-               // kaisaniemeen liittyen dataa
-               .filter(taulukko -&gt; !taulukko[2].isEmpty())
-               // muunnetaan kaisaniemen pyöräilijöiden lukumäärä
-               // kokonaisluvuksi, ja tehdään virrasta lukuvirta
-               .mapToInt(taulukko -&gt; Integer.parseInt(taulukko[2]))
-               // kutsutaan lukuvirralle average-metodia. metodi kerää kaikki
-               // jäljellä olevat luvut yhteen ja laskee niiden keskiarvon
-               .average()
-               // double-tyyppinen keskiarvo saadaan lopulta keskiarvon
-               // metodilla getAsDouble
-               .getAsDouble();
-
-System.out.println("Pyöräilijöitä keskimäärin tunnissa: " + keskiarvo);
-System.out.println("Pyöräilijöitä keskimäärin päivässä: " + (24.0 * keskiarvo));
-<% end %>
-
-<p>
-  Tehdään lämmittelytehtävä ja tutustutaan sen jälkeen tarkemmin yllä juuri tapahtuneeseen.
-</p>
-
-<% partial 'partials/exercise', locals: { name: 'Fillarointia Baanalla, osa 2' } do %>
-
-  <p>
-    Tehtäväpohjassa on valmiiksi toteutettuna luokka <code>TiedostonLukija</code>, jota käytetään tiedoston sisällön lukemiseen. Luokan metodi <code>lueTiedosto(String tiedosto)</code> palauttaa ArrayList-tyyppisen merkkijonoja sisältävän listan, missä on kaikki luetussa tiedostossa olevat rivit.
-  </p>
-
-  <p>
-    Tehtäväpohjassa tulee mukana myös tuttu pyöräilijädata.
-  </p>
-
-  <p>
-    Muokkaa tehtäväpohjassa olevaa edellisestä esimerkistä kopioitua ohjelmaa siten, että se kysyy käyttäjältä vuotta ja kuukautta, ja laskee Baanan tunti- ja päiväkohtaisen keskimääräisen käyttäjämäärän annetulle vuodelle ja kuukaudelle. Baana löytyy tilaston viimeisestä sarakkeesta; voit olettaa, että käyttäjä syöttää kuukauden sopivassa muodossa (esim "tammi").
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">2014</font>
-<font color="red">tammi</font>
-
-Pyöräilijöitä keskimäärin tunnissa: 22.38978494623656
-Pyöräilijöitä keskimäärin päivässä: 537.3548387096774
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">2015</font>
-<font color="red">touko</font>
-
-Pyöräilijöitä keskimäärin tunnissa: 117.77553763440861
-Pyöräilijöitä keskimäärin päivässä: 2826.6129032258063
-  <% end %>
-
-  <p>
-    Tehtäväpohjan mukana tuleva tiedosto "helsingin-pyorailijamaarat.csv" on osoitteessa <a href="https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat" target="_blank" rel="noopener">https://www.avoindata.fi/data/fi/dataset/helsingin-pyorailijamaarat</a> olevasta Helsingin kaupunkisuunnitteluviraston tietoaineistosta muokattu versio. Alkuperäinen tietoaineisto on julkaistu avoimella Creative Commons (CC BY 4.0) -lisenssillä.
-  </p>
-
-<% end %>
-
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Virta (stream)
-<% end %>
-
-<p>
-  Listan muuntaminen arvojen virraksi luo tilanteen, missä ohjelmoijan vastuulla on kertoa mitä yksittäisille arvoille tulee tehdä. Arvoja voidaan rajata (filter) ja muuntaa (map), ja ne voidaan lopuksi kerätä (collect) tai jokaiselle arvolle (forEach) voidaan suorittaa jonkinlainen muu toiminto.
-</p>
-
-<p>
-  Alla olevassa kuvassa on kuvattu virran toimintaa. Lähtötilanteena (1) on lista, jossa on arvoja. Kun listalle kutsutaan <code>stream()</code>-metodia, (2) luodaan virta listan arvoista. Arvoja käsitellään tämän jälkeen yksitellen. Virran arvoja voidaan (3) rajata metodilla <code>filter</code>. Tämä poistaa virrasta ne arvot, jotka ovat rajauksen ulkopuolella. Virran metodilla <code>map</code> voidaan (4) muuntaa virrassa olevia arvoja muodosta toiseen. Metodi <code>collect</code> (5) kerää virrassa olevat arvot arvot sille annettuun kokoelmaan, esim. listalle.
-</p>
-
-
-<img src="/img/drawings/stream.png" alt="Yllä tekstuaalisesti kuvattu virran toiminta kuvana." />
-
-<p>&nbsp;</p>
-
-<p>
-  Jos arvot haluaisi ottaa talteen, tulee ne asettaa esimerkiksi listamuuttujaan. Listan käsittely virtana ei muuta alkuperäistä listaa. Alla vielä edellinen kuva lähdekoodina siten, että kerätyt arvot asetetaan uuteen listamuuttujaan. Lopulta arvot tulostetaan.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-lista.add(3);
-lista.add(7);
-lista.add(4);
-lista.add(2);
-lista.add(6);
-
-ArrayList&lt;Integer&gt; uusi =
-    lista.stream()
-         .filter(luku -&gt; luku &gt; 5)
-         .map(luku -&gt; luku * 2)
-         .collect(Collectors.toCollection(ArrayList::new));
-
-uusi.stream().forEach(luku -&gt; {
-    System.out.println(luku);
-});
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-12
-14
-<% end %>
-
-
-<p>
-  Lisää virran metodeista löytyy Javan Stream APIsta osoitteesta <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html</a>. Kuten aiemmin on todettu, kaikkea tätä ei tarvitse opetella heti ulkoa. Sen kyllä oppii tehdessä.
-</p>
-
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Yksittäisten arvojen käsittely - forEach
-<% end %>
-
-<p>
-  Virta voidaan päättää yksittäisten arvojen käsittelyyn <code>forEach</code>-metodilla tai listan arvot voidaan kerätä toiselle listalle. Tarkastellaan ensin listan arvojen käsittelyä. Virran metodille <code>forEach</code> määritellään lohko, joka suoritetaan jokaiselle virran arvolle. Alla olevassa esimerkissä listalle lisätään kolme arvoa, jonka jälkeen listasta luodaan virta, jonka arvot tulostetaan.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-lista.add("eka");
-lista.add("toka");
-lista.add("kolmas");
-
-lista.stream().forEach(arvo -&gt; {
-    System.out.println(arvo);
-});
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-eka
-toka
-kolmas
-<% end %>
-
-<p>
-  Tarkastellaan metodia <code>forEach</code> hieman tarkemmin. Metodille annetaan parametrina tieto siitä, miten kutakin arvoa tulee käsitellä (<code>arvo -&gt; toiminallisuus</code>). Määrittelyssä on käytössä arvoa kuvaava muuttuja, joka määritellään nuolen vasemmalla puolella (yllä <code>arvo</code>). Nuolen oikealle puolelle kirjoitetaan lauseet, jotka arvolle tulee suorittaa. Jos lauseita on vain yksi, voidaan lohkon sijaan kirjoittaa vain komento -- jos lauseita on useampi, määritellään aaltosuluilla rajattu lohko sekä sen sisälle suoritettavat lauseet.
-</p>
-
-<p>
-  Alla on toinen esimerkki, missä tulostetaan vain ne merkkijonot, jotka sisältävät merkin "o".
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-lista.add("eka");
-lista.add("toka");
-lista.add("kolmas");
-
-lista.stream().forEach(arvo -&gt; {
-    if (arvo.contains("o")) {
-        System.out.println(arvo);
-    }
-});
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-toka
-kolmas
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Luettujen arvojen tulostaminen' } do %>
-
-  <p>
-    Kirjoita ohjelma, joka lukee käyttäjältä merkkijonoja. Lukeminen tulee lopettaa kun käyttäjä syöttää tyhjän merkkijonon. Tulosta tämän jälkeen käyttäjän syöttämät merkkijonot.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">eka</font>
-<font color="red">toka</font>
-<font color="red">kolmas</font>
-eka
-toka
-kolmas
-  <% end %>
-
-<% end %>
-
-
-
-
-<% partial 'partials/hint', locals: { name: 'Mikä ihmeen <code>x -&gt; ???</code>' } do %>
-
-  <p>
-    Virran arvoja käsitellään virtaan liittyvillä metodeilla. Metodeille voidaan antaa parametrina funktio, joka määrää mitä arvolle tulee tehdä. Rajaamiseen käytetylle metodille <code>filter</code> annetaan funktio, joka palauttaa arvon <code>true</code> tai <code>false</code>; muuntamiseen käytetylle metodille <code>map</code> annetaan funktio, joka muuntaa arvon johonkin toiseen muotoon.
-  </p>
-
-  <p>
-    Tarkastellaan edellisessä esimerkissä olleita funktioita hieman tarkemmin. Funktio <code>luku -&gt; luku &gt; 5</code> sisältää sekä arvon määrittelyn että lausekkeen, mikä tulee evaluoida. Saman voi kirjoittaa useammassa muodossa, kts. alla.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-// alkuperäinen
-.filter(luku -&gt; luku &gt; 5)
-
-// on sama kuin
-.filter(luku -&gt; {
-    return luku &gt; 5;
-})
-
-// on sama kuin
-.filter(luku -&gt; {
-    if (luku &gt; 5) {
-        return true;
-    }
-
-    return false;
-})
-  <% end %>
-
-
-
-  <p>
-    Vastaavasti funktio <code>luku -&gt; luku * 2</code> sisältää myös arvon määrittelyn että lausekkeen, mikä tulee evaluoida. Tämänkin voi kirjoittaa useammassa muodossa.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-// alkuperäinen
-.map(luku -&gt; luku * 2)
-
-// on sama kuin
-.map(luku -&gt; {
-    return luku * 2;
-})
-  <% end %>
-
-
-<% end %>
-
-
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Arvojen rajaaminen - filter
-<% end %>
-
-
-<p>
-  Käsiteltäviä arvoja voidaan rajata <code>filter</code>-metodin avulla. Metodille annetaan parametrina lause tai lohko, jonka paluuarvona on totuusarvoinen muuttuja. Paluuarvon perusteella päätetään rajataanko käsiteltävä arvo pois jatkokäsittelystä. Aiemmin näkemämme esimerkin, missä tulostetaan vain ne merkkijonot, joissa esiintyy merkkijono "o" voi toteuttaa myös seuraavasti.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-lista.add("eka");
-lista.add("toka");
-lista.add("kolmas");
-
-lista.stream().filter(arvo -&gt arvo.contains("o")).forEach(arvo -&gt; {
-    System.out.println(arvo);
-});
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-toka
-kolmas
-<% end %>
-
-
-<p>
-  Metodia voi käyttää myös muiden arvojen kuten lukujen rajaamiseen. Alla olevassa esimerkissä näytetään miten metodi <code>filter</code> toimii kun rajauksia halutaan tehdä useampia. Esimerkissä otetaan huomioon vain kymmentä pieneemmät luvut, jotka ovat jaollisia kahdella.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-lista.add(8);
-lista.add(-4);
-lista.add(13);
-lista.add(47);
-lista.add(5003);
-
-lista.stream().filter(luku -&gt {
-    if(luku &lt; 10) {
-         return true;
-    }
-
-    if(luku % 2 == 0) {
-        return true;
-    }
-
-    return false;
-}).forEach(arvo -&gt; {
-    System.out.println(arvo);
-});
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-8
--4
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Rajatut luvut' } do %>
-
-  <p>
-    Kirjoita ohjelma, joka lukee käyttäjältä lukuja. Kun käyttäjä syöttää negatiivisen luvun, lukeminen lopetetaan. Tulosta tämän jälkeen ne luvut, jotka ovat välillä 1-5.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-<font color="red">7</font>
-<font color="red">14</font>
-<font color="red">4</font>
-<font color="red">5</font>
-<font color="red">4</font>
-<font color="red">-1</font>
-4
-5
-4
-  <% end %>
-
-<% end %>
-
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Arvojen muuntaminen - map
-<% end %>
-
-<p>
-  Käsittelemäämme dataa tulee usein muuntaa muodosta toiseen. Oletetaan, että käytössämme on seuraava luokka <code>Piste</code>, ja että käytössämme on listallinen <code>"x,y"</code>-muodossa olevia pisteitä.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public class Piste {
-    int x;
-    int y;
-
-    public Piste(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    // muita metodeja
-
-    public String toString() {
-        return "(" + this.x + ", " + this.y + ")";
-    }
-}
-<% end %>
-
-
-<p>
-  Virta tarjoaa metodin <code>map</code>, joka mahdollistaa arvojen muuntamiseen muodosta toiseen. Metodille määritellään arvokohtainen toiminnallisuus, joka palauttaa jonkun toisen tyyppisen muuttujan. Esimerkiksi alla metodi pilkkoo merkkijonon paloiksi ja käyttää näitä paloja Piste-olioiden luomiseen.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-lista.add("32,5");
-lista.add("16,3");
-lista.add("31,6");
-
-lista.stream().map(arvo -&gt; {
-    String[] palat = arvo.split(",");
-    return new Piste(Integer.parseInt(palat[0]), Integer.parseInt(palat[1]));
-}).forEach(piste -&gt System.out.println(piste));
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-(32, 5)
-(16, 3)
-(31, 6)
-<% end %>
-
-
-
-<p>
-  Kuten muiden virran metodien tapauksessa, myös <code>map</code>-metodin tapauksessa toteutuksen voi tehdä ilman aaltosulkuja. Seuraavassa esimerkissä käydään kokonaislukuja sisältävä lista läpi, valitaan sieltä positiiviset luvut, joiden arvo on alle 50, ja kerrotaan arvot lopulta kahdella.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-lista.add(8);
-lista.add(-4);
-lista.add(13);
-lista.add(47);
-lista.add(5003);
-
-lista.stream().filter(luku -&gt luku &gt; 0 && luku &lt; 50)
-              .map(luku -&gt; luku * 2)
-              .forEach(luku -&gt; {
-                  System.out.println(luku);
-              });
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-16
-26
-94
-<% end %>
-
-<p>
-  Metodi <code>map</code> on hyödyllinen esimerkiksi olioita läpikäytäessä, sillä sen avulla voidaan rajata tarkasteluun vain tietty osa olioiden arvoista. Seuraavassa esimerkissä tarkastellaan Henkilo-olioiden nimiä.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-List&lt;Henkilo&gt; lista = new ArrayList&lt;&gt;();
-// lisätään listalle henkilot
-
-lista.stream().map(h -&gt; h.getNimi()).forEach(n -&gt System.out.println(n));
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Virran muunnos toisenlaiseen muotoon
-<% end %>
-
-<p>
-  Oletuksena käyttöön tuleva virta tarjoaa toiminnallisuuksia arvojen rajaamiseen, muuntamiseen sekä keräämiseen. Virran voi muuntaa myös kokonaislukuvirraksi, jolla on erityisiä kokonaislukuihin liittyviä toiminnallisuuksia.
-</p>
-
-<p>
-  Alla oleva esimerkki laskee kaikkien listalla olevien alkioiden keskiarvon ja tulostaa sen.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-lista.add(1);
-lista.add(3);
-lista.add(5);
-lista.add(7);
-
-double keskiarvo = lista.stream().mapToInt(i -&gt; i).average().getAsDouble();
-System.out.println(keskiarvo);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-3.5
-<% end %>
-
-
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Arvojen kerääminen - collect
-<% end %>
-
-<p>
-  Virralla on myös metodi <code>collect</code>, jonka avulla virran arvot voidaan kerätä annettuun kokoelmaan. Olemme toistaiseksi käyttäneet kurssilla vain listoja, joten pysytään niissä vielä toistaiseksi.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
-lista.add("eka");
-lista.add("toka");
-lista.add("kolmas");
-
-ArrayList&lt;String&gt; toinen = lista.stream().collect(Collectors.toCollection(ArrayList::new));
-toinen.stream().forEach(arvo -&gt; {
-    System.out.println(arvo);
-});
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-eka
-toka
-kolmas
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Lukutaito' } do %>
-
-  <p>
-    <a href="https://en.wikipedia.org/wiki/UNESCO" target="_blank" rel="noopener">UNESCO</a> määrittelee lukutaidon seuraavasti: "<em>ability to identify, understand, interpret, create, communicate and compute, using printed and written materials associated with varying contexts. Literacy involves a continuum of learning in enabling individuals to achieve their goals, to develop their knowledge and potential, and to participate fully in their community and wider society"</em>.
-  </p>
-
-  <p>
-    Tehtäväpohjassa on mukana UNESCOn <a href="http://data.uis.unesco.org/Index.aspx" target="_blank" rel="noopener">avoimen datan tietopankista</a> kerätty tilasto eri maiden arvioiduista tai raportoiduista lukutaidoista viimeisen kahden vuoden ajalta. Tiedosto sisältää arviot sekä yli 15-vuotiaiden naisten että yli 15-vuotiaiden miesten lukutaidosta. Tiedoston <code>lukutaito.csv</code> yksittäisen rivin muoto on seuraava: teema, ikäryhmä, sukupuoli, maa, vuosi, lukutaitoprosentti. Alla on esimerkkinä tiedoston viisi ensimmäistä riviä.
-  </p>
-
-  <pre>
-Adult literacy rate, population 15+ years, female (%),United Republic of Tanzania,2015,76.08978
-Adult literacy rate, population 15+ years, female (%),Zimbabwe,2015,85.28513
-Adult literacy rate, population 15+ years, male (%),Honduras,2014,87.39595
-Adult literacy rate, population 15+ years, male (%),Honduras,2015,88.32135
-Adult literacy rate, population 15+ years, male (%),Angola,2014,82.15105
-  </pre>
-
-  <p>
-    Tehtävänäsi on luoda ohjelma, joka arvioi annetun datan pohjalta (1) miesten keskimääräistä lukutaitoa, (2) naisten keskimääräistä lukutaitoa, ja (3) tunnistaa maan, jossa on korkein raportoitu tai arvioitu lukutaito. Käsitellä jokainen rivi täysin erillisenä maana. Merkkijonomuodossa olevan liukuluvun saa muunnettua doubleksi komennolla <code>Double.parseDouble(String luku);</code>, esim. <code>double arvo = Double.parseDouble("76.08978");</code> -- myös virran metodi <code>mapToDouble</code> saattaa olla hyödyllinen.
-  </p>
-
-  <p>
-    Ohjelman mukana tulee myös aiemmista tehtävistä tuttu tiedostonlukija. Tulostuksen tulee olla seuraavankaltainen:
-  </p>
-
-
-  <% partial 'partials/sample_output' do %>
-Miesten lukutaidon keskiarvo: ?8.1??84?65116279
-Naisten lukutaidon keskiarvo: 8?.?????32??81???
-Korkein lukutaito on maassa: ???
-  <% end %>
-
-  <p>
-    Tulostukseen tulevat arvot tulee luonnollisesti laskea ohjelman toimesta. Ylläolevaan tulostusesimerkkiin on annettu muutamia arvoja omien tulosten vertailuun miesten ja naisten lukutaidon keskiarvoihin.
-  </p>
-
-<% end %>
-
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Hirsipuu' } do %>
-
-  <p>
-    Olemme tässä osiossa keskittyneet merkkijonoihin sekä menetelmiin listan läpikäyntiin. Nyt on hyvä astua askel taaksepäin ja miettiä koko kurssin tähänastista sisältöä. Osion viimeisessä tehtävässä tehtävänäsi on toteuttaa tekstimuotoinen <a href="https://fi.wikipedia.org/wiki/Hirsipuu" target="_blank" rel="noopener">Hirsipuu</a>-peli.
-  </p>
-
-  <p>
-    Alla vaatimuksia peliltä:
-  </p>
-
-  <ul>
-    <li>
-      Pelissä tulee olla 9 mahdollisuutta väärän kirjaimen valintaan.
-    </li>
-    <li>
-      Pelissä arvattava sana tulee kysyä käyttäjältä ennen pelin alkua.
-    </li>
-    <li>
-      Pelin tulee näyttää arvattava sana siten, että tuntemattomat osat on piilotettuna.
-    </li>
-    <li>
-      Pelaajan arvauksen tulee olla täsmälleen 1 merkin mittainen, ja pelaajaa ei rokoteta jos hän arvaa samaa merkkiä uudelleen.
-    </li>
-    <li>
-      Peli loppuu kun pelaaja on tehnyt 9 väärää arvausta tai kun hän saa arvattua koko sanan. Jos pelaaja voittaa, hän näkee lopuksi merkkijonon "Voitit!". Jos pelaaja häviää, hän näkee lopuksi merkkijonon "Hävisit!".
-    </li>
-  </ul>
-
-  <p>
-    Ohjelmassa on vain muutama testi, jotka tarkastelevat syötteitä ja tulosteita. Saat päättää ohjelman rakenteen täysin itse.
-  </p>
-
-  <p>
-    Alla esimerkkipelin kulku. Huomaa, että alla olevassa esimerkissä myös välilyönnin käyttö on ollut hyväksyttävää.
-  </p>
-
-
-<% partial 'partials/sample_output' do %>
-  Mitä merkkijonoa arvataan? <font color="red">turingin kone</font>
-  Sana: _ _ _ _ _ _ _ _ _ _ _ _ _
-  Arvauksia jäljellä: 9
-  Arvatut:
-  Arvaus: <font color="red">s</font>
-
-  Sana: _ _ _ _ _ _ _ _ _ _ _ _ _
-  Arvauksia jäljellä: 8
-  Arvatut: s
-  Arvaus: <font color="red">a</font>
-
-  Sana: _ _ _ _ _ _ _ _ _ _ _ _ _
-  Arvauksia jäljellä: 7
-  Arvatut: s a
-  Arvaus: <font color="red">i</font>
-
-  Sana: _ _ _ i _ _ i _ _ _ _ _ _
-  Arvauksia jäljellä: 7
-  Arvatut: s a i
-  Arvaus: <font color="red">p</font>
-
-  Sana: _ _ _ i _ _ i _ _ _ _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p
-  Arvaus: <font color="red">p</font>
-
-  Olet arvannut jo kyseisen merkin!
-
-  Sana: _ _ _ i _ _ i _ _ _ _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p
-  Arvaus: <font color="red">u</font>
-
-  Sana: _ u _ i _ _ i _ _ _ _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u
-  Arvaus: <font color="red">a</font>
-
-  Olet arvannut jo kyseisen merkin!
-
-  Sana: _ u _ i _ _ i _ _ _ _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u
-  Arvaus: <font color="red">k</font>
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u k
-  Arvaus: <font color="red">a</font>
-
-  Olet arvannut jo kyseisen merkin!
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u k
-  Arvaus: <font color="red">u</font>
-
-  Olet arvannut jo kyseisen merkin!
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u k
-  Arvaus: <font color="red">p</font>
-
-  Olet arvannut jo kyseisen merkin!
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u k
-  Arvaus: <font color="red">p</font>
-
-  Olet arvannut jo kyseisen merkin!
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 6
-  Arvatut: s a i p u k
-  Arvaus: <font color="red">z</font>
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 5
-  Arvatut: s a i p u k z
-  Arvaus: <font color="red">x</font>
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 4
-  Arvatut: s a i p u k z x
-  Arvaus: <font color="red">c</font>
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 3
-  Arvatut: s a i p u k z x c
-  Arvaus: <font color="red">v</font>
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 2
-  Arvatut: s a i p u k z x c v
-  Arvaus: <font color="red">b</font>
-
-  Sana: _ u _ i _ _ i _ _ k _ _ _
-  Arvauksia jäljellä: 1
-  Arvatut: s a i p u k z x c v b
-  Arvaus: <font color="red">n</font>
-
-  Sana: _ u _ i n _ i n _ k _ n _
-  Arvauksia jäljellä: 1
-  Arvatut: s a i p u k z x c v b n
-  Arvaus: <font color="red">m</font>
-
-  Hävisit!
-<% end %>
-
-<% end %>
-
-
-
-
-<%= partial 'partials/quiz', locals: { id: '5899e08b3e373c0004e73ae8' } %>
+<%= partial 'partials/quiz', locals: { id: '59d2acc145370b000408077c' } %>
