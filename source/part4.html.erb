@@ -2160,7 +2160,7 @@ public class Henkilo {
 <% partial 'partials/exercise', locals: { name: 'Henkilön vertailu' } do %>
   
   <p>
-    Tehtäväpohjassa on luokka <code>Henkilo</code>, johon liittyy <code>Paivays</code>-olio. Lisää luokalle Henkilo metodi <code>public boolean equals(Object verrattava</code>, jonka avulla voidaan verrata henkilöiden samuutta. Vertailussa tulee verrata kaikkien henkilön muuttujien yhtäsuuruutta (ml. syntymäpäivä).
+    Tehtäväpohjassa on luokka <code>Henkilo</code>, johon liittyy <code>Paivays</code>-olio. Lisää luokalle Henkilo metodi <code>public boolean equals(Object verrattava)</code>, jonka avulla voidaan verrata henkilöiden samuutta. Vertailussa tulee verrata kaikkien henkilön muuttujien yhtäsuuruutta (ml. syntymäpäivä).
   </p>
 
   <p>
@@ -2169,10 +2169,10 @@ public class Henkilo {
 
   <% partial 'partials/code_highlight' do %>
     Paivays pvm = new Paivays(24, 2, 2017);
-    Paivays pvm = new Paivays(23, 7, 2017);
+    Paivays pvm2 = new Paivays(23, 7, 2017);
 
     Henkilo leevi = new Henkilo("Leevi", pvm, 62, 9);
-    Henkilo lilja = new Henkilo("Lilja", pvm, 65, 8);
+    Henkilo lilja = new Henkilo("Lilja", pvm2, 65, 8);
 
     if (leevi.equals(lilja)) {
         System.out.println("Mekiköhän nyt ihan oikein?");
