@@ -56,7 +56,7 @@
   // selvitetään kolmella jaollisten lukumaara
   long kolmellaJaollistenLukumaara = syotteet.stream()
                                              .mapToInt(s -&gt; Integer.parseInt(s))
-                                             .filter(luku -&gt; luku % 3)
+                                             .filter(luku -&gt; luku % 3 == 0)
                                              .count();
 
   // selvitetään keskiarvo
@@ -78,7 +78,7 @@
   // selvitetään kolmella jaollisten lukumaara
   long kolmellaJaollistenLukumaara = syotteet.stream()
                                              .mapToInt(s -&gt; Integer.parseInt(s))
-                                             .filter(luku -&gt; luku % 3)
+                                             .filter(luku -&gt; luku % 3 == 0)
                                              .count();
 <% end %>
 
@@ -372,7 +372,7 @@
   luvut.add(8);
 
   luvut.stream()
-       .filter(luku -&gt; luku % 2)
+       .filter(luku -&gt; luku % 2 == 0)
        .forEach(luku -&gt; System.out.println(luku));
 <% end %>
 
