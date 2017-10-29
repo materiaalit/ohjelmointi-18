@@ -2,731 +2,69 @@
   title: Osa 8
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
-<% partial 'partials/hint', locals: { name: 'Kahdeksannen osion tavoitteet' } do %>
+<p>
+  <strong>
+    <em>
+      <p>
+	Kahdeksas osa aloittaa Ohjelmoinnin jatkokurssin. Jos tulet tässä kohtaa mukaan, kannattaa käydä läpi edellisten osien materiaali. Jos teet kurssia Helsingin yliopistolla, joudut vaihtamaan kurssia TMC:stä. Katso ohjeet materiaalin Johdantosivulta.
+      </p>
+    </em>
+  </strong>
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Kahdeksannen osan tavoitteet' } do %>
 
   <p>
-    Kahdeksas osa aloittaa Ohjelmoinnin jatkokurssin. Jos tulet tässä kohtaa mukaan, kannattaa lukaista edellisten osien materiaali. Erityisesti listojen käsittely arvojen virtana on todennäköisesti täysin uutta. Tästä löytyy lisätietoa viidennen osan puolivälistä lähtien. Jos taas haluat lopettaa ohjelmointiin tutustumisen toistaiseksi kurssiin Ohjelmoinnin perusteet, kiitoksia osallistumisesta ja tervetuloa takaisin joskus hamassa tulevaisuudessa! :)
-  </p>
-
-  <p>
-    Jos teet kurssia Helsingin yliopistolla, joudut vaihtamaan tässä kohtaa kurssia TMC:stä. Kurssin nimeksi tulee valita <code>hy-ohja-k2017</code>. Jos teet kurssia MOOCissa, ei sinun tarvitse tehdä yhtään mitään. Ohjelmoinnin jatkokurssille mukaan hyppääminen onnistuu valitsemalla TMC:stä aikataulutetun Ohjelmoinnin MOOC (lisätietoja kurssin pääsivulta osoitteesta <a href="https://2017-ohjelmointi.github.io/" target="_blank" rel="noopener">https://2017-ohjelmointi.github.io/</a>).
-  </p>
-
-  <p>
-    Tässä osassa tutustumme kolmeen uuteen asiaan. Hajautustaulu mahdollistaa tehokkaan avain-arvo -parien käsittelyn, luokka Object selventää muun muassa miksi metodia toString voi kutsua vaikkei sitä ole luokassa määritelty, ja rajapinnat tarjoavat mahdollisuuksia samankaltaisten mutta erilaisten luokkien käsittelyyn.
-  </p>
-
-  <p>
-    Tämän osion jälkeen osaat käyttää hajautustauluja. Osaat toteuttaa olioiden vertailussa oleelliset metodit <code>equals</code> ja <code>hashCode</code> sekä ymmärrät niiden tehtävän. Ymmärrät, että jokainen luokka perii Javan valmiissa Object-luokassa olevat metodit, jotka ohjelmoija voi korvata omalla luokkaan lisättävällä toteutuksella. Tiedät miksi ArrayListin ja HashMapin (hajautustaulun) tyyppiparametrit ovat aina viittaustyyppisiä muuttujia, ja osaat käyttää valmiita rajapintoja kuten List, Map, Set ja Collection.
+    Tuntee käsitteen object ja ymmärtää miksi jokaisella oliolla on metodi toString ja hashCode. Tietää joitakin käyttökohteita em. metodeille. Tuntee käsitteen rajapinta ja osaa luoda luokan, joka toteuttaa annetun rajapinnan. Osaa määritellä rajapinnan ja tietää, että eri luokista luodut oliot voivat toteuttaa saman rajapinnan. Ymmärtää käsitteen pakkaus ja osaa hyödyntää pakkauksia ohjelman rakenteen pilkkomisessa.
   </p>
 
 <% end %>
 
-
-<% partial 'partials/hint', locals: { name: 'Valumaa ohpesta' } do %>
-
-  <p>
-    testaaminen
-  </p>
-
-  <p>
-    luokkakaaviot
-  </p>
-
-  <p>
-    ...
-  </p>
-  
-<% end %>
 
 <% partial 'partials/material_heading' do %>
-  Hajautustaulu (HashMap)
-<% end %>
-
-
-<p>
-  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">Hajautustaulu</a> on eräs ohjelmoinnissa paljon käytetyistä tietorakenteista. Hajautustaulua käytetään kun halutaan käsitellä tietoa avain-arvo -pareina, missä avaimen perusteella voidaan lisätä, hakea ja poistaa avaimeen liittyvä arvo.
-</p>
-
-<p>
-  Alla olevassa esimerkissä on luotu HashMap-olio kaupunkien hakemiseen postinumeron perusteella, jonka jälkeen HashMap-olioon on lisätty neljä postinumero-kaupunki -paria. Sekä postinumero että kaupunki on esitetty merkkijonona.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-HashMap&lt;String, String&gt; postinumerot = new HashMap&lt;&gt;();
-postinumerot.put("00710", "Helsinki");
-postinumerot.put("90014", "Oulu");
-postinumerot.put("33720", "Tampere");
-postinumerot.put("33014", "Tampere");
-<% end %>
-
-<img src="/img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
-
-<p>
-  Hajautustaulua luodessa tarvitaan kaksi tyyppiparametria, avainmuuttujan tyyppi ja lisättävän arvon tyyppi. Kuten yllä, myös seuraavassa esimerkissä sekä avainmuuttujan että lisättävän arvon tyyppi on String.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-HashMap&lt;String, String&gt; numerot = new HashMap&lt;&gt;();
-numerot.put("Yksi", "Uno");
-numerot.put("Kaksi", "Dos");
-
-String kaannos = numerot.get("Yksi");
-System.out.println(kaannos);
-
-System.out.println(numerot.get("Kaksi"));
-System.out.println(numerot.get("Kolme"));
-System.out.println(numerot.get("Uno"));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-Uno
-Dos
-null
-null
-<% end %>
-
-
-<p>
-  Yllä olevassa esimerkissä luodaan hajatustaulu, jonka avaimena ja tallennettavana oliona on merkkijono. Hajautustauluun lisätään tietoa kaksiparametrisella metodilla <code>put</code>, jolle annetaan parametrina sekä avain- että arvomuuttuja. Yksiparametrinen metodi <code>get</code> palauttaa parametrina annettuun avaimeen liittyvän viitteen tai <code>null</code>-viitteen jos avaimella ei löydy viitettä.
-</p>
-
-<p>
-  Hajautustaulussa on jokaista avainta kohden korkeintaan yksi arvo. Jos hajautustauluun lisätään uusi avain-arvo -pari, missä avain on jo aiemmin liittynyt toiseen hajautustauluun tallennettuun arvoon, vanha arvo katoaa hajautustaulusta.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-HashMap&lt;String, String&gt; numerot = new HashMap&lt;&gt;();
-numerot.put("Uno", "Yksi");
-numerot.put("Dos", "Zwei");
-numerot.put("Uno", "Ein");
-
-String kaannos = numerot.get("Uno");
-System.out.println(kaannos);
-
-System.out.println(numerot.get("Dos"));
-System.out.println(numerot.get("Tres"));
-System.out.println(numerot.get("Uno"));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-Ein
-Zwei
-null
-Ein
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Lempinimet' } do %>
-
-  <p>
-    Luo <code>main</code>-metodissa uusi <code>HashMap&lt;String,String&gt;</code>-olio. Tallenna luomaasi olioon seuraavien henkilöiden nimet ja lempinimet niin, että nimi on avain ja lempinimi on arvo. Käytä pelkkiä pieniä kirjaimia.
-  </p>
-
-  <ul>
-    <li>matin lempinimi on mage</li>
-    <li>mikaelin lempinimi on mixu</li>
-    <li>arton lempinimi on arppa</li>
-  </ul>
-
-  <p>
-    Tämän jälkeen hae HashMapistä mikaelin lempinimi ja tulosta se.
-  </p>
-
-  <p>
-    Testit edellyttävät että kirjoitat nimet pienellä alkukirjaimella.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Viittaustyyppinen muuttuja hajautustaulun arvona
+  Tehtäväpohjien rakenne ja Maven
 <% end %>
 
 <p>
-  Tutkitaan hajautustaulun toimintaa kirjastoesimerkin avulla. Kirjastosta voi hakea kirjoja kirjan nimen perusteella. Jos haetulla nimellä löytyy kirja, palauttaa kirjasto kirjan viitteen. Luodaan ensin esimerkkiluokka <code>Kirja</code>, jolla on oliomuuttujina nimi, kirjaan liittyvä sisältö sekä kirjan julkaisuvuosi.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public class Kirja {
-    private String nimi;
-    private String sisalto;
-    private int julkaisuvuosi;
-
-    public Kirja(String nimi, int julkaisuvuosi, String sisalto) {
-        this.nimi = nimi;
-        this.julkaisuvuosi = julkaisuvuosi;
-        this.sisalto = sisalto;
-    }
-
-    public String getNimi() {
-        return this.nimi;
-    }
-
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public int getJulkaisuvuosi() {
-        return this.julkaisuvuosi;
-    }
-
-    public void setJulkaisuvuosi(int julkaisuvuosi) {
-        this.julkaisuvuosi = julkaisuvuosi;
-    }
-
-    public String getSisalto() {
-        return this.sisalto;
-    }
-
-    public void setSisalto(String sisalto) {
-        this.sisalto = sisalto;
-    }
-
-    public String toString() {
-        return "Nimi: " + this.nimi + " (" + this.julkaisuvuosi + ")\n"
-                + "Sisältö: " + this.sisalto;
-    }
-}<% end %>
-
-<p>
-  Luodaan seuraavaksi hajautustaulu, joka käyttää avaimena kirjan nimeä eli String-tyyppistä oliota, ja arvona edellä luomaamme kirjaa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-HashMap&lt;String, Kirja&gt; hakemisto = new HashMap&lt;&gt;();
-<% end %>
-
-<p>
-  Yllä oleva hajautustaulu käyttää avaimena <code>String</code>-oliota. Laajennetaan esimerkkiä siten, että hakemistoon lisätään kaksi kirjaa, <code>"Järki ja tunteet"</code> ja <code>"Ylpeys ja ennakkoluulo"</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811, "...");
-Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813, "....");
-
-HashMap&lt;String, Kirja&gt; hakemisto = new HashMap&lt;&gt;();
-hakemisto.put(jarkiJaTunteet.getNimi(), jarkiJaTunteet);
-hakemisto.put(ylpeysJaEnnakkoluulo.getNimi(), ylpeysJaEnnakkoluulo);
-<% end %>
-
-<p>
-  Hakemistosta voi hakea kirjoja kirjan nimellä. Haku kirjalla <code>"Viisasteleva sydän"</code> ei tuota osumaa, jolloin hajautustaulu palauttaa <code>null</code>-viitteen. Kirja "Ylpeys ja ennakkoluulo" kuitenkin löytyy.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-Kirja kirja = hakemisto.get("Viisasteleva sydän");
-System.out.println(kirja);
-System.out.println();
-kirja = hakemisto.get("Ylpeys ja ennakkoluulo");
-System.out.println(kirja);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-null
-
-Nimi: Ylpeys ja ennakkoluulo (1813)
-Sisältö: ...
-<% end %>
-
-<p>
-  Hajautustauluun lisättäessä avain-arvo -parin arvo voi olla käytännössä mitä tahansa. Arvo voi olla kokonaisluku, lista, tai vaikkapa toinen hajautustaulu.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Hajautustaulu oliomuuttujana
-<% end %>
-
-<p>
-  Edellä kuvatun esimerkin ongelma on se, että kirjan kirjoitusmuoto tulee muistaa täsmälleen oikein. Joku saattaa etsiä kirjaa pienellä alkukirjaimella ja joku toinen saattaa vaikkapa painaa välilyöntiä nimen kirjoituksen aluksi. Tarkastellaan seuraavaksi erästä tapaa hieman sallivampaan kirjan nimen perusteella tapahtuvaan hakemiseen.
+  Ohjelmoinnin jatkokurssista lähtien kurssin tehtäväpohjat käyttävät <a href="https://maven.apache.org/" target="_blank" norel>Maven</a>-nimistä projektinhallintatyövälinettä. Kyseinen työväline helpottaa kurssin tehtävien mukana tuotavien kirjastojen hallintaa. Tehtäviin tämä vaikuttaa siten, että niiden kansiorakenne muuttuu hieman. 
 </p>
 
 <p>
-  Hyödynnämme hakemisessa String-luokan tarjoamia välineitä merkkijonojen käsittelyyn. Metodi <code>toLowerCase()</code> luo merkkijonosta uuden merkkijonon, jonka kaikki kirjaimet on muunnettu pieniksi. Metodi <code>trim()</code> taas luo merkkijonosta uuden merkkijonon, jonka alusta ja lopusta on poistettu tyhjät merkit kuten välilyönnit.
+  Jatkossa tehtävän juurikansiossa on tiedosto pom.xml, joka kuvaa tehtäväpohjan rakenteen. Kansio <code>src</code> sisältää kansiot <code>main</code> ja <code>test</code>, jotka sisältävät lähdekooditiedostot sekä testitiedostot.
+
 </p>
 
-<% partial 'partials/code_highlight' do %>
-String teksti = "Ylpeys ja ennakkoluulo ";
-teksti = teksti.toLowerCase(); // teksti nyt "ylpeys ja ennakkoluulo "
-teksti = teksti.trim() // teksti nyt "ylpeys ja ennakkoluulo"
-<% end %>
+<pre>
+$/Osa08_01.SamaPaivays$ tree
+.
+├── pom.xml
+└── src
+    ├── main
+    │   └── java
+    │       ├── Paaohjelma.java
+    │       └── Paivays.java
+    └── test
+        └── java
+            └── PaivaysTest.java
 
-<p>
-  Jos mietit "<em>kuka kirjoittaisi välilyöntejä ja miksi?</em>", etsi ja lue kirja <a href="https://en.wikipedia.org/wiki/Ender's_Game" target="_blank" rel="noopener">Ender's Game</a> (suom. Ender).
-</p>
-
-<p>
-  Luodaan luokka <code>Kirjasto</code>, joka kapseloi kirjat sisältävän hajautustaulun ja mahdollistaa kirjoitusasusta riippumattoman kirjojen haun. Lisätään luokalle <code>Kirjasto</code> metodit lisäämiseen, hakemiseen ja poistamiseen. Jokainen näistä tapahtuu siistityn nimen perusteella -- siistiminen sisältää nimen muuntamisen pienellä kirjoitetuksi sekä ylimääräisten alussa ja lopussa olevien välilyöntien poistamisen.
-</p>
-
-<p>
-  Huomaamme jo nyt että merkkijonon siistimiseen liittyvää koodia tarvitsisi jokaisessa kirjaa käsittelevässä metodissa, joten siitä on hyvä tehdä erillinen metodi.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public class Kirjasto {
-    private HashMap&lt;String, Kirja&gt; hakemisto;
-
-    public Kirjasto() {
-        this.hakemisto = new HashMap&lt;&gt;();
-    }
-
-    public void lisaaKirja(Kirja kirja) {
-        String nimi = siistiMerkkijono(kirja.getNimi());
-
-        if (this.hakemisto.containsKey(nimi)) {
-            System.out.println("Kirja on jo kirjastossa!");
-        } else {
-            hakemisto.put(nimi, kirja);
-        }
-    }
-
-    public Kirja haeKirja(String kirjanNimi) {
-        kirjanNimi = siistiMerkkijono(kirjanNimi);
-        return this.hakemisto.get(kirjanNimi);
-    }
-
-    public void poistaKirja(String kirjanNimi) {
-        kirjanNimi = siistiMerkkijono(kirjanNimi);
-
-        if (this.hakemisto.containsKey(kirjanNimi)) {
-            this.hakemisto.remove(kirjanNimi);
-        } else {
-            System.out.println("Kirjaa ei löydy, ei voida poistaa!");
-        }
-    }
-
-    public String siistiMerkkijono(String merkkijono) {
-        if (merkkijono == null) {
-            return "";
-        }
-
-        merkkijono = merkkijono.toLowerCase();
-        return merkkijono.trim();
-    }
-}
-<% end %>
+</pre>
 
 
 <p>
-  Yllä käytetään hajautustaulun tarjoamaa metodia <code>containsKey</code> avaimen olemassaolon tarkastamiseen. Metodi palauttaa arvon <code>true</code>, jos hajautustauluun on lisätty haetulla avaimella mikä tahansa arvo, muulloin metodi palauttaa arvon <code>false</code>.
+  Ohjelmien toiminta ei käytännössä juurikaan muutu. Toisin kuin ennen, ohjelmien tarvitsemat kirjastot eivät kuitenkaan tule tehtäväpohjan mukana, vaan Mavenilta tulee pyytää tarvittaessa niiden lataamista. Tämä onnistuu klikkaamalla tehtäväpohjan Dependencies-kuvaketta Projects-välilehdellä ja valitsemalla "Download declared dependencies."
 </p>
+
+<img src="/img/maven-1.png"/>
+
+<br/>
 
 <p>
-  Edeltävässä esimerkissä noudatimme ns. DRY-periaatetta (Don't Repeat Yourself), jonka tarkoituksena on saman koodin toistumisen välttäminen. Merkkijonon siistiminen eli pienellä kirjoitetuksi muuttaminen sekä <em>trimmaus</em>, eli tyhjien merkkien poisto alusta ja lopusta, olisi toistunut useasti kirjastoluokassamme ilman metodia <code>siistiMerkkijono</code>. Toistuvaa koodia ei usein huomaa ennen kuin sitä on jo kirjoittanut, jolloin sitä päätyy koodiin lähes pakosti. Tässä ei ole mitään pahaa -- tärkeintä on että siistit koodiasi sitä mukaa kun huomaat siistimistä vaativia tilanteita.
+  Riippuen tietokoneesi käyttöjärjestelmästä, on mahdollista, että joudut lisäämään Maven-ohjelmaan ajo-oikeudet kun sitä käytetään ensimmäistä kertaa. Windowsille ohjeita löytyy yleisesti ottaen googlettamalla ja mm. täältä: <a href="https://www.online-tech-tips.com/computer-tips/set-file-folder-permissions-windows/" target="_blank" norel>https://www.online-tech-tips.com/computer-tips/set-file-folder-permissions-windows/</a> -- myös pajassa neuvotaan tähän liittyen. 
 </p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Hajautustaulun kaikkien avain-arvo -parien läpikäynti
-<% end %>
-
-<p>
-  Hajautustaululla on kolme hyödyllistä metodia hajautustauluun lisättyjen avain-arvo -parien läpikäyntiin. Metodi <code>keySet()</code> palauttaa hajautustauluun lisättyjen avainten joukon, metodi <code>values()</code> palauttaa hajautustauluun lisättyjen arvojen kokoelman, ja metodi <code>entrySet()</code> palauttaa hajautustaulussa olevat avain-arvo -parit.
-</p>
-
-<p>
-  Jokaisen edellämainitun metodin palauttamasta joukosta voidaan luoda virta (stream), jota voidaan käsitellä. Tarkastellaan tätä kirjastoesimerkin kautta.
-</p>
-
-<p>
-  Haluamme joskus etsiä kirjaa nimen osan perusteella. Hajautustaulun metodi <code>get</code> ei tähän sovellu, sillä sitä käytetään tietyllä avaimella etsimiseen. Toinen vaihtoehto on kaikkien avainten läpikäynti yksitellen, jolloin tarkastelemme jokaista avainta erikseen.
-</p>
-
-<p>
-  Alla olevassa esimerkissä haetaan kaikki ne kirjat, joiden nimessä esiintyy annettu merkkijono.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public ArrayList&lt;Kirja&gt; haeKirjaNimenOsalla(String nimenOsa) {
-    nimenOsa = siistiMerkkijono(nimenOsa);
-
-    // haetaan kaikki ne kirjan nimet, joissa esiintyy nimen osa,
-    // ja noudetaan niihin liittyvät kirjat
-
-    return this.hakemisto.keySet().stream()
-        .filter(avain -&gt; avain.contains(nimenOsa))
-        .map(avain -&gt; this.hakemisto.get(avain))
-        .collect(Collectors.toCollection(ArrayList::new));
-}
-<% end %>
-
-
-<p>
-  Tällä tavalla etsiessä menetämme kuitenkin hajautustauluun liittyvän nopeusedun. Hajautustaulu on toteutettu siten, että avaimen perusteella hakeminen on tyypillisesti binäärihakuakin tehokkaampaa. Yllä olevassa esimerkissä käydään kaikkien kirjojen nimet läpi, kun tietyllä avaimella etsittäessä tarkasteltaisiin tasan yhden kirjan olemassaoloa.
-</p>
-
-<p>
-  Vastaavasti kaikki nimi-kirja -parit saataisiin selville metodin <code>entrySet</code> avulla. Metodi palauttaa joukon (Set) avain-arvo -pareja, jonka läpikäynti onnistuu virran avulla.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public ArrayList&lt;Kirja&gt; haeKirjaNimenOsalla(String nimenOsa) {
-    nimenOsa = siistiMerkkijono(nimenOsa);
-
-    // haetaan kaikki ne kirjan nimet, joissa esiintyy nimen osa,
-    // ja noudetaan niihin liittyvät kirjat
-
-    return this.hakemisto.entrySet().stream()
-        .filter(entry -&gt; entry.getKey().contains(nimenOsa))
-        .map(entry -&gt; entry.getValue())
-        .collect(Collectors.toCollection(ArrayList::new));
-}
-<% end %>
-
-<p>
-  Metodin <code>entrySet</code> palauttama joukon sisältämät alkiot ovat avain-arvo -pareja. Jokaisella alkiolla on metodi <code>getKey()</code>, jolla saa selville avaimen, ja metodi <code>getValue()</code>, jolla saa selville arvon. Yllä avaimena on kirjan nimi ja arvona kirja -- kirjan nimen perusteella tapahtuva rajaaminen onnistuu filter-metodilla, jonka jälkeen jäljelle jääneistä alkioista otetaan arvo (eli kirja) metodin getValue avulla.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Alkeistyyppiset muuttujat hajautustaulussa
-<% end %>
-
-<p>
-  HashMap olettaa, että siihen lisätään viittaustyyppisiä muuttujia (samoin kuin ArrayList). Java muuntaa alkeistyyppiset muuttujat viittaustyyppisiksi käytännössä kaikkia Javan valmiita tietorakenteita (kuten ArrayList ja HashMap) käytettäessä. Vaikka luku <code>1</code> voidaan esittää alkeistyyppisen muuttujan <code>int</code> arvona, tulee sen tyypiksi määritellä <code>Integer</code> ArrayListissä ja HashMapissa.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-HashMap&lt;Integer, String&gt; taulu = new HashMap&lt;&gt;(); // toimii
-taulu.put(1, "Ole!");
-HashMap&lt;int, String&gt; taulu2 = new HashMap&lt;&gt;(); // ei toimi
-<% end %>
-
-<p>
-  Hajautustaulun avain ja tallennettava olio ovat aina viittaustyyppisiä muuttujia. Jos haluat käyttää alkeistyyppisiä muuttujia avaimena tai tallennettavana arvona, on niille olemassa viittaustyyppiset vastineet. Alla on esitelty muutama.
-</p>
-
-<table class="table">
-  <tr><th>Alkeistyyppi</th><th>Viittaustyyppinen vastine</th></tr>
-  <tr><td>int</td><td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html" target="_blank" rel="noopener">Integer</a></td></tr>
-  <tr><td>double</td><td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" target="_blank" rel="noopener">Double</a></td></tr>
-  <tr><td>char</td><td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html" target="_blank" rel="noopener">Character</a></td></tr>
-</table>
-
-
-<p>
-  Java muuntaa alkeistyyppiset muuttujat automaattisesti viittaustyyppisiksi kun niitä lisätään HashMapiin tai ArrayListiin. Tätä automaattista muunnosta viittaustyyppisiksi kutsutaan Javassa <em>auto-boxingiksi</em>, eli automaattiseksi "laatikkoon" asettamiseksi. Automaattinen muunnos onnistuu myös toiseen suuntaan.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-int avain = 2;
-HashMap&lt;Integer, Integer&gt; taulu = new HashMap&lt;&gt;();
-taulu.put(avain, 10);
-int arvo = taulu.get(avain);
-System.out.println(arvo);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-10
-<% end %>
-
-<p>
-  Seuraava esimerkki kuvaa rekisterinumeroiden bongausten laskemiseen käytettävää luokkaa. Metodeissa metodeissa <code>lisaaBongaus</code> ja <code>montakoKertaaBongattu</code> tapahtuu automaattinen tyyppimuunnos.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-public class Rekisteribongauslaskuri {
-    private HashMap&lt;String, Integer&gt; bongatut;
-
-    public Rekisteribongauslaskuri() {
-        this.bongatut = new HashMap&lt;&gt;();
-    }
-
-    public void lisaaBongaus(String bongattu) {
-        if (!this.bongatut.containsKey(bongattu)) {
-            this.bongatut.put(bongattu, 0);
-        }
-
-        int montakobongausta = this.bongatut.get(bongattu);
-        montakobongausta++;
-        this.bongatut.put(bongattu, montakobongausta);
-    }
-
-    public int montakoKertaaBongattu(String bongattu) {
-        this.bongatut.get(bongattu);
-    }
-}<% end %>
-
-<p>
-  Tyyppimuunnoksissa piilee kuitenkin vaara. Jos yritämme muuntaa null-viitettä -- eli esimerkiksi bongausta, jota ei ole HashMapissa -- kokonaisluvuksi, näemme virheen <em>java.lang.reflect.InvocationTargetException</em>. Kun teemme automaattista muunnosta, tulee varmistaa että muunnettava arvo ei ole null. Yllä olevassa ohjelmassa oleva <code>montakoKertaaBongattu</code>-metodi tulee korjata esimerkiksi seuraavasti.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-public int montakoKertaaBongattu(String bongattu) {
-    return this.bongatut.getOrDefault(bongattu, 0);
-}
-<% end %>
-
-<p>
-  HashMapin metodi <code>getOrDefault</code> hakee sille ensimmäisenä parametrina annettua avainta HashMapista. Jos avainta ei löydy, palauttaa se toisena parametrina annetun arvon. Metodin toiminta vastaa seuraavaa metodia.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-public int montakoKertaaBongattu(String bongattu) {
-    if(this.bongatut.containsKey(bongattu) {
-        return this.bongatut.get(bongattu);
-    }
-
-    return 0;
-}
-<% end %>
-
-<p>
-  Siistitään vielä lisaaBongaus-metodia hieman. Alkuperäisessä versiossa metodin alussa lisätään hajautustauluun bongausten lukumääräksi arvo 0, jos bongattua ei löydy. Tämän jälkeen bongausten määrä haetaan, sitä kasvatetaan yhdellä, ja vanha bongausten lukumäärä korvataan lisäämällä arvo uudestaan hajautustauluun. Osan tästäkin toiminnallisuudesta voi korvata metodilla getOrDefault.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-public class Rekisteribongauslaskuri {
-    private HashMap&lt;String, Integer&gt; bongatut;
-
-    public Rekisteribongauslaskuri() {
-        this.bongatut = new HashMap&lt;&gt;();
-    }
-
-    public void lisaaBongaus(String bongattu) {
-        int montakobongausta = this.bongatut.getOrDefault(bongattu, 0);
-        montakobongausta++;
-        this.bongatut.put(bongattu, montakobongausta);
-    }
-
-    public int montakoKertaaBongattu(String bongattu) {
-        return this.bongatut.getOrDefault(bongattu, 0);
-    }
-}
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Velkakirja' } do %>
-
-  <p>
-    Luo luokka <code>Velkakirja</code>, jolla on seuraavat toiminnot:
-  </p>
-
-  <ul>
-    <li>konstruktori <code>public Velkakirja()</code> luo uuden velkakirjan</li>
-    <li>metodi <code>public void asetaLaina(String kenelle, double maara)</code> tallettaa velkakirjaan merkinnän lainasta tietylle henkilölle.</li>
-    <li>metodi <code>public double paljonkoVelkaa(String kuka)</code> palauttaa velan määrän annetun henkilön nimen perusteella. Jos henkilöä ei löydy, palautetaan 0.</li>
-  </ul>
-
-  <p>Luokkaa käytetään seuraavalla tavalla:</p>
-
-  <% partial 'partials/code_highlight' do %>
-Velkakirja matinVelkakirja = new Velkakirja();
-matinVelkakirja.asetaLaina("Arto", 51.5);
-matinVelkakirja.asetaLaina("Mikael", 30);
-
-System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
-System.out.println(matinVelkakirja.paljonkoVelkaa("Joel"));
-  <% end %>
-
-  <p>Yllä oleva esimerkki tulostaisi:</p>
-
-  <% partial 'partials/sample_output' do %>
-51.5
-0.0
-  <% end %>
-
-  <p>
-    Ole tarkkana tilanteessa, jossa kysytään velattoman ihmisen velkaa.
-  </p>
-
-  <p>
-    Huom! Velkakirjan ei tarvitse huomioida vanhoja lainoja. Kun asetat uuden velan henkilölle jolla on vanha velka, vanha velka unohtuu.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Velkakirja matinVelkakirja = new Velkakirja();
-matinVelkakirja.asetaLaina("Arto", 51.5);
-matinVelkakirja.asetaLaina("Arto", 10.5);
-
-System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-10.5
-  <% end %>
-
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Sanakirja' } do %>
-
-  <p>
-    Tässä tehtäväsarjassa toteutetaan sanakirja, josta voi hakea suomen kielen sanoille englanninkielisiä käännöksiä. Sanakirjan tekemisessä käytetään <code>HashMap</code>-tietorakennetta.
-  </p>
-
-
-  <h2>Luokka Sanakirja</h2>
-
-  <p>
-    Toteuta luokka nimeltä <code>Sanakirja</code>. Luokalla on aluksi seuraavat metodit:
-  </p>
-
-  <ul>
-    <li> <code>public String kaanna(String sana)</code> metodi palauttaa parametrinsa käännöksen. Jos sanaa ei tunneta, palautetaan <em>null</em>.</li>
-    <li> <code>public void lisaa(String sana, String kaannos)</code> metodi lisää sanakirjaan uuden käännöksen</li>
-  </ul>
-
-  <p>
-    Toteuta luokka Sanakirja siten, että sen ainoa oliomuuttuja on <code>HashMap</code>-tietorakenne.
-  </p>
-
-  <p>
-    Testaa sanakirjasi toimintaa:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Sanakirja sanakirja = new Sanakirja();
-sanakirja.lisaa("apina", "monkey");
-sanakirja.lisaa("banaani", "banana");
-sanakirja.lisaa("cembalo", "harpsichord");
-
-System.out.println(sanakirja.kaanna("apina"));
-System.out.println(sanakirja.kaanna("porkkana"));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-monkey
-null
-  <% end %>
-
-
-  <h2>Sanojen lukumäärä</h2>
-
-  <p>
-    Lisää sanakirjaan metodi <code>public int sanojenLukumaara()</code>, joka palauttaa sanakirjassa olevien sanojen lukumäärän.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Sanakirja sanakirja = new Sanakirja();
-sanakirja.lisaa("apina", "monkey");
-sanakirja.lisaa("banaani", "banana");
-System.out.println(sanakirja.sanojenLukumaara());
-
-sanakirja.lisaa("cembalo", "harpsichord");
-System.out.println(sanakirja.sanojenLukumaara());
-  <% end %>
-
-
-  <% partial 'partials/sample_output' do %>
-2
-3
-  <% end %>
-
-  <p>
-    Tässä osassa kannattaa tutkiskella HashMapin valmiiksi tarjoamia metodeja...
-  </p>
-
-
-  <h2>Kaikkien sanojen listaaminen</h2>
-
-  <p>
-    Lisää sanakirjaan metodi <code>public ArrayList&lt;String&gt; kaannoksetListana()</code> joka palauttaa sanakirjan sisällön listana <i>avain = arvo</i> muotoisia merkkijonoja.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Sanakirja sanakirja = new Sanakirja();
-sanakirja.lisaa("apina", "monkey");
-sanakirja.lisaa("banaani", "banana");
-sanakirja.lisaa("cembalo", "harpsichord");
-
-ArrayList&lt;String&gt; kaannokset = sanakirja.kaannoksetListana();
-kaannokset.stream().forEach(k -&gt; System.out.println(k));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-banaani = banana
-apina = monkey
-cembalo = harpsichord
-  <% end %>
-
-
-  <h2>Tekstikäyttöliittymän alku</h2>
-
-  <p>
-    Harjoitellaan tässäkin tehtävässä erillisen tekstikäyttöliittymän tekemistä. Luo luokka <code>Tekstikayttoliittyma</code>, jolla on seuraavat metodit:
-  </p>
-
-  <ul>
-    <li> konstruktori <code>public Tekstikayttoliittyma(Scanner lukija, Sanakirja sanakirja)</code></li>
-    <li> metodi <code>public void kaynnista()</code>, joka käynnistää tekstikäyttöliittymän.</li>
-  </ul>
-
-  <p>
-    Tekstikäyttöliittymä tallettaa konstruktorin parametrina saamansa lukijan ja sanakirjan oliomuuttujiin. Muita oliomuuttujia ei tarvita. <strong>Käyttäjän syötteen lukeminen tulee hoitaa konstruktorin parametrina saatua lukija-olioa käyttäen! Myös kaikki käännökset on talletettava  konstruktorin parametrina saatuun sanakirja-olioon. Tekstikäyttöliittymä ei saa luoda olioita itse!</strong>
-  </p>
-
-  <p>
-    <strong>HUOM:</strong> vielä uudelleen edellinen, eli <strong>Tekstikäyttöliittymä ei saa luoda itse skanneria</strong> vaan sen on käytettävä parametrina saamaansa skanneria syötteiden lukemiseen!
-  </p>
-
-  <p>
-    Tekstikäyttöliittymässä tulee aluksi olla vain komento <code>lopeta</code>, joka poistuu tekstikäyttöliittymästä. Jos käyttäjä syöttää jotain muuta, käyttäjälle sanotaan "Tuntematon komento".
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Scanner lukija = new Scanner(System.in);
-Sanakirja sanakirja = new Sanakirja();
-
-Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
-kayttoliittyma.kaynnista();
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Komennot:
-  lopeta - poistuu käyttöliittymästä
-
-Komento: <font color="red">apua</font>
-Tuntematon komento.
-
-Komento: <font color="red">lopeta</font>
-Hei hei!
-  <% end %>
-
-  <h2>Sanojen lisääminen ja kääntäminen</h2>
-
-  <p>
-    Lisää tekstikäyttöliittymälle komennot <code>lisaa</code> ja <code>kaanna</code>. Komento <code>lisaa</code> lisää kysyy käyttäjältä sanaparin ja lisää sen sanakirjaan. Komento <code>kaanna</code> kysyy käyttäjältä sanaa ja tulostaa sen käännöksen.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Scanner lukija = new Scanner(System.in);
-Sanakirja sanakirja = new Sanakirja();
-
-Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
-kayttoliittyma.kaynnista();
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Komennot:
-  lisaa - lisää sanaparin sanakirjaan
-  kaanna - kysyy sanan ja tulostaa sen käännöksen
-  lopeta - poistuu käyttöliittymästä
-
-Komento: <font color="red">lisaa</font>
-Suomeksi: <font color="red">porkkana</font>
-Käännös: <font color="red">carrot</font>
-
-Komento: <font color="red">kaanna</font>
-Anna sana: <font color="red">porkkana</font>
-Käännös: carrot
-
-Komento: <font color="red">lopeta</font>
-Hei hei!
-  <% end %>
-
-<% end %>
 
 
 <% partial 'partials/material_heading' do %>
@@ -1111,6 +449,7 @@ if (!kirjat.contains(olioKirja)) {
   Tämä oletusmetodeihin kuten <code>equals</code> tukeutuminen on oikeastaan syy sille, miksi Java haluaa, että ArrayListiin lisättävät muuttujat ovat viittaustyyppisiä. Koska jokaisella luokalla on Object-luokasta periytyvä equals-metodi, ei luokan ArrayList sisäistä toteutusta tarvitse muuttaa lainkaan erilaisia muuttujia lisättäessä. Alkeistyyppisillä muuttujilla tällaisia metodeja ei ole, jolloin ArrayList ei löydä niihin liittyvää equals-metodia.
 </p>
 
+
 <% partial 'partials/material_sub_heading' do %>
   Hajautusarvo "hashCode"
 <% end %>
@@ -1309,7 +648,7 @@ Arto
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Autorekisterikeskus' } do %>
+<% partial 'partials/exercise', locals: { name: 'Autorekisterikeskus (3 osaa)' } do %>
 
 
   <h2>Rekisterinumeron equals ja hashCode</h2>
@@ -1548,8 +887,51 @@ Ohjelmoi aina ensin pieni osa, jolla ratkaiset osan ongelmasta.
 Harjoittelu tekee mestarin. Keksi ja tee omia kokeiluja ja projekteja.
 <% end %>
 
+<% partial 'partials/hint', locals: { name: 'Mikä ihmeen for (int i = 0; ...?' } do %>
 
-<% partial 'partials/exercise', locals: { name: 'Palvelusvelvollinen' } do %>
+  <p>
+    Yllä olevassa esimerkissä käytettiin toisenlaista toistolausetta alkioiden läpikäyntiin. Olemme tottuneet seuraavanlaiseen toistolauseeseen while-toistolauseeseen.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArrayList&lt;String&gt; sivut = new ArrayList&lt;&gt;();
+    sivut.add("Pilko metodisi lyhyiksi luettaviksi kokonaisuuksiksi.");
+    sivut.add("Erota käyttöliittymälogiikka sovelluksen logiikasta.");
+    sivut.add("Ohjelmoi aina ensin pieni osa, jolla ratkaiset osan ongelmasta.");
+    sivut.add("Harjoittelu tekee mestarin. Keksi ja tee omia kokeiluja ja projekteja.");
+
+    Sahkokirja kirja = new Sahkokirja("Vinkkejä ohjelmointiin.", sivut);
+
+    int sivu = 0;
+    while (sivu &lt; kirja.sivuja()) {
+        System.out.println(kirja.lue());
+        sivu++;
+    }
+  <% end %>
+
+  <p>
+    Saman voi kirjoittaa myös for-toistolauseella seuraavasti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArrayList&lt;String&gt; sivut = new ArrayList&lt;&gt;();
+    sivut.add("Pilko metodisi lyhyiksi luettaviksi kokonaisuuksiksi.");
+    sivut.add("Erota käyttöliittymälogiikka sovelluksen logiikasta.");
+    sivut.add("Ohjelmoi aina ensin pieni osa, jolla ratkaiset osan ongelmasta.");
+    sivut.add("Harjoittelu tekee mestarin. Keksi ja tee omia kokeiluja ja projekteja.");
+
+    Sahkokirja kirja = new Sahkokirja("Vinkkejä ohjelmointiin.", sivut);
+    for (int sivu = 0; sivu &lt; kirja.sivuja(); sivu++) {
+        System.out.println(kirja.lue());
+    }
+  <% end %>
+
+  
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Palvelusvelvollinen (2 osaa)' } do %>
 
   <p>
     Tehtäväpohjassa on valmiina rajapinta <code>Palvelusvelvollinen</code>, jossa on seuraavat toiminnot:
@@ -1854,7 +1236,7 @@ Neljäs
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Tavaroita ja laatikoita' } do %>
+<% partial 'partials/exercise', locals: { name: 'Tavaroita ja laatikoita (4 osaa)' } do %>
 
   <h2>Talletettavia</h2>
 
@@ -2354,7 +1736,7 @@ tsemppiä
   Seuraavassa tehtävässä rakennetaan verkkokauppaan liittyvää toiminnallisuutta ja harjoitellaan luokkien käyttämistä niiden tarjoamien rajapintojen kautta.
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Verkkokauppa' } do %>
+<% partial 'partials/exercise', locals: { name: 'Verkkokauppa (8 osaa)' } do %>
 
   <p>
     Teemme tehtävässä muutamia verkkokaupan hallinnointiin soveltuvia ohjelmakomponentteja.
@@ -2719,7 +2101,7 @@ kauppa.asioi("Pekka");
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Maatilasimulaattori' } do %>
+<% partial 'partials/exercise', locals: { name: 'Maatilasimulaattori (5 osaa)' } do %>
 
   <p>
     Maatiloilla on lypsäviä eläimiä, jotka tuottavat maitoa.  Maatilat eivät itse käsittele maitoa, vaan se kuljetetaan Maitoautoilla meijereille.  Meijerit ovat yleisiä maitotuotteita tuottavia rakennuksia.  Jokainen meijeri erikoistuu yhteen tuotetyyppiin, esimerkiksi Juustomeijeri tuottaa Juustoa, Voimeijeri tuottaa voita ja Maitomeijeri tuottaa maitoa.
@@ -3115,4 +2497,410 @@ Lehmät:
 
 <% end %>
 
-<%= partial 'partials/quiz', locals: { id: '58bd804d9b384e0004d83546' } %>
+
+
+
+<% partial 'partials/material_heading' do %>
+  Ohjelman rakenne ja pakkaukset
+<% end %>
+
+
+<p>
+  Ohjelmaa varten toteutettujen luokkien määrän kasvaessa niiden toiminnallisuuksien ja metodien muistaminen vaikeutuu. Muistamista helpottaa luokkien järkevä nimentä sekä luokkien suunnittelu siten, että jokaisella luokalla on yksi selkeä vastuu. Tämän lisäksi luokat kannattaa jakaa toiminnallisuutta, käyttötarkoitusta tai jotain muuta loogista kokonaisuutta kuvaaviin pakkauksiin.
+</p>
+
+<p>
+  Pakkaukset (<em>package</em>) ovat käytännössä hakemistoja (directory, puhekielessä myös kansio), joihin lähdekooditiedostot organisoidaan.
+</p>
+
+<p>
+  Ohjelmointiympäristöt tarjoavat valmiit työkalut pakkausten hallintaan. Olemme tähän mennessä luoneet luokkia ja rajapintoja vain projektiin liittyvän lähdekoodipakkaukset-osion (<em>Source Packages</em>) oletuspakkaukseen (<em>default package</em>). Uuden pakkauksen voi luoda NetBeansissa projektin pakkauksiin liittyvässä Source Packages -osiossa oikeaa hiirennappia painamalla ja valitsemalla <em>New -&gt; Java Package...</em>.
+</p>
+
+<p>
+  Pakkauksen sisälle voidaan luoda luokkia aivan kuten oletuspakkaukseenkin (<code>default package</code>). Alla luodaan juuri luotuun pakkaukseen <code>kirjasto</code> luokka <code>Sovellus</code>.
+</p>
+
+<p>
+  Luokan pakkaus -- eli pakkaus, jossa luokka sijaitsee -- ilmaistaan lähdekooditiedoston alussa lauseella <code>package <em>pakkaus</em>;</code>. Alla oleva luokka <code>Sovellus</code> sijaitsee pakkauksessa <code>kirjasto</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto;
+
+  public class Sovellus {
+
+      public static void main(String[] args) {
+          System.out.println("Hello packageworld!");
+      }
+  }
+<% end %>
+
+<p>
+  Jokainen pakkaus -- myös oletuspakkaus eli default package -- voi sisältää useampia pakkauksia. Esimerkiksi pakkausmäärittelyssä <code>package kirjasto.domain</code> pakkaus <code>domain</code> on pakkauksen <code>kirjasto</code> sisällä. Edellä käytettyä nimeä <code>domain</code> käytetään usein kuvaamaan sovellusalueen käsitteisiin liittyvien luokkien säilytyspaikkaa. Esimerkiksi luokka <code>Kirja</code> voisi hyvin olla pakkauksen <code>kirjasto.domain</code> sisällä, sillä se kuvaa kirjastosovellukseen liittyvää käsitettä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto.domain;
+
+  public class Kirja {
+      private String nimi;
+
+      public Kirja(String nimi) {
+          this.nimi = nimi;
+      }
+
+      public String getNimi() {
+          return this.nimi;
+      }
+  }
+<% end %>
+
+<p>
+  Pakkauksissa olevia luokkia tuodaan luokan käyttöön <code>import</code>-lauseen avulla. Pakkauksessa <code>kirjasto.domain</code> oleva luokka <code>Kirja</code> tuodaan käyttöön puolipisteeseen päättyvällä lauseella <code>import kirjasto.domain.Kirja</code>. Luokkien tuomiseen käytetyt import-lauseet asetetaan lähdekooditiedostoon pakkausmäärittelyn jälkeen.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto;
+
+  import kirjasto.domain.Kirja;
+
+  public class Sovellus {
+
+      public static void main(String[] args) {
+          Kirja kirja = new Kirja("pakkausten ABC!");
+          System.out.println("Hello packageworld: " + kirja.getNimi());
+      }
+  }
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hello packageworld: pakkausten ABC!
+<% end %>
+
+
+<p>
+  Jatkossa <em>kaikissa</em> tehtävissämme käytetään pakkauksia. Luodaan seuraavaksi ensimmäiset pakkaukset itse.
+</p>
+
+<% partial 'partials/exercise', locals: { name: 'Ensimmäisiä pakkauksia (3 osaa)' } do %>
+
+
+  <h2>Käyttöliittymä-rajapinta</h2>
+
+  <p>
+    Luo projektipohjaan pakkaus <code>mooc</code>. Rakennetaan tämän pakkauksen sisälle sovelluksen toiminta. Lisää pakkaukseen mooc pakkaus <code>ui</code> (tämän jälkeen käytössä pitäisi olla pakkaus <code>mooc.ui</code>), ja lisää sinne rajapinta <code>Kayttoliittyma</code>.
+  </p>
+
+  <p>
+    Rajapinnan <code>Kayttoliittyma</code> tulee määritellä metodi <code>void paivita()</code>.
+  </p>
+
+
+  <h2>Tekstikäyttöliittymä</h2>
+
+  <p>
+    Luo samaan pakkaukseen luokka <code>Tekstikayttoliittyma</code>, joka toteuttaa rajapinnan <code>Kayttoliittyma</code>. Toteuta luokassa <code>Tekstikayttoliittyma</code> rajapinnan <code>Kayttoliittyma</code> vaatima metodi <code>public void paivita()</code> siten, että sen ainut tehtävä on merkkijonon "<code>Päivitetään käyttöliittymää</code>"-tulostaminen <code>System.out.println</code>-metodikutsulla.
+  </p>
+
+
+  <h2>Sovelluslogiikka</h2>
+
+  <p>
+    Luo tämän jälkeen pakkaus <code>mooc.logiikka</code>, ja lisää sinne luokka <code>Sovelluslogiikka</code>. Sovelluslogiikan tarjoaman toiminnallisuuden tulee olla seuraavanlainen.
+  </p>
+
+  <ul>
+    <li>
+      <code>public Sovelluslogiikka(Kayttoliittyma kayttoliittyma)</code><br/>Sovelluslogiikka-luokan konstruktori. Saa parametrina Kayttoliittyma-rajapinnan toteuttavan luokan. Huom: jotta sovelluslogiikka näkisi rajapinnan, on sen "importoitava" se, eli tarvitset tiedoston alkuun rivin <code>import mooc.ui.Kayttoliittyma;</code>
+    </li>
+    
+    <li>
+      <code>public void suorita(int montaKertaa)</code><br/>Tulostaa <code>montaKertaa</code>-muuttujan määrittelemän määrän merkkijonoa "Sovelluslogiikka toimii". Jokaisen "Sovelluslogiikka toimii"-tulostuksen jälkeen tulee kutsua konstruktorin parametrina saadun rajapinnan <code>Kayttoliittyma</code>-toteuttaman olion määrittelemää <code>paivita()</code>-metodia.
+    </li>
+  </ul>
+
+  <p>
+    Voit testata sovelluksen toimintaa seuraavalla pääohjelmaluokalla.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    import mooc.logiikka.Sovelluslogiikka;
+    import mooc.ui.Kayttoliittyma;
+    import mooc.ui.Tekstikayttoliittyma;
+
+    public class Main {
+
+        public static void main(String[] args) {
+            Kayttoliittyma kayttoliittyma = new Tekstikayttoliittyma();
+            new Sovelluslogiikka(kayttoliittyma).suorita(3);
+        }
+    }
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Sovelluslogiikka toimii
+    Päivitetään käyttöliittymää
+    Sovelluslogiikka toimii
+    Päivitetään käyttöliittymää
+    Sovelluslogiikka toimii
+    Päivitetään käyttöliittymää
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Hakemistorakenne tiedostojärjestelmässä
+<% end %>
+
+<p>
+  Kaikki NetBeansissa näkyvät projektit ovat tietokoneesi <em><a href="http://fi.wikipedia.org/wiki/Tiedostoj%C3%A4rjestelm%C3%A4" target="_blank" rel="noopener">tiedostojärjestelmässä</a></em> tai jollain keskitetyllä levypalvelimella. Jokaiselle projektille on olemassa oma hakemisto, jonka sisällä on projektiin liittyvät tiedostot ja hakemistot.
+</p>
+
+<p>
+  Projektin hakemistossa <code>src</code> on ohjelmaan liittyvät lähdekoodit. Jos luokan pakkauksena on kirjasto, sijaitsee se projektin lähdekoodihakemiston <code>src</code> sisällä olevassa hakemistossa <code>kirjasto</code>. NetBeansissa voi käydä katsomassa projektien konkreettista rakennetta <em>Files</em>-välilehdeltä joka on normaalisti <em>Projects</em>-välilehden vieressä. Jos et näe välilehteä <em>Files</em>, saa sen näkyville valitsemalla vaihtoehdon <em>Files</em> valikosta <em>Window</em>.
+</p>
+
+<p>
+  Sovelluskehitystä tehdään normaalisti <em>Projects</em>-välilehdeltä, jossa NetBeans on piilottanut projektiin liittyviä tiedostoja joista ohjelmoijan ei tarvitse välittää.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Pakkaukset ja näkyvyysmääreet
+<% end %>
+
+<p>
+  Olemme tähän mennessä käyttäneet kahta näkyvyysmäärettä. Näkyvyysmääreellä <code>private</code> määritellään muuttujia (ja metodeja), jotka ovat näkyvissä vain sen luokan sisällä joka määrittelee ne. Niitä ei voi käyttää luokan ulkopuolelta. Näkyvyysmääreellä <code>public</code> varustetut metodit ja muuttujat ovat taas kaikkien käytettävissä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto.ui;
+
+  public class Kayttoliittyma {
+      private Scanner lukija;
+
+      public Kayttoliittyma(Scanner lukija) {
+          this.lukija = lukija;
+      }
+
+      public void kaynnista() {
+          tulostaOtsikko();
+
+          // muu toiminnallisuus
+      }
+
+      private void tulostaOtsikko() {
+          System.out.println("************");
+          System.out.println("* KIRJASTO *");
+          System.out.println("************");
+      }
+  }
+<% end %>
+
+<p>
+  Yllä olevasta <code>Kayttoliittyma</code>-luokasta tehdyn olion konstruktori ja <code>kaynnista</code>-metodi on kutsuttavissa mistä tahansa ohjelmasta. Metodi <code>tulostaOtsikko</code> ja <code>lukija</code>-muuttuja on käytössä vain luokan sisällä.
+</p>
+
+<p>
+  Jos näkyvyysmäärettä ei määritellä, metodit ja muuttujat ovat näkyvillä saman pakkauksen sisällä. Tätä kutsutaan oletus- tai pakkausnäkyvyydeksi. Muutetaan yllä olevaa esimerkkiä siten, että metodilla <code>tulostaOtsikko</code> on pakkausnäkyvyys.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto.ui;
+
+  public class Kayttoliittyma {
+      private Scanner lukija;
+
+      public Kayttoliittyma(Scanner lukija) {
+          this.lukija = lukija;
+      }
+
+      public void kaynnista() {
+          tulostaOtsikko();
+
+          // muu toiminnallisuus
+      }
+
+      void tulostaOtsikko() {
+          System.out.println("************");
+          System.out.println("* KIRJASTO *");
+          System.out.println("************");
+      }
+  }
+<% end %>
+
+<p>
+  Nyt saman pakkauksen sisällä olevat luokat -- eli luokat, jotka sijaitsevat pakkauksessa <code>kirjasto.ui</code> voivat käyttää metodia <code>tulostaOtsikko</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto.ui;
+
+  import java.util.Scanner;
+
+  public class Main {
+
+      public static void main(String[] args) {
+          Scanner lukija = new Scanner(System.in);
+          Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+
+          kayttoliittyma.tulostaOtsikko(); // onnistuu!
+      }
+  }
+<% end %>
+
+<p>
+  Jos luokka on eri pakkauksessa, ei metodia <code>tulostaOtsikko</code> pysty käyttämään. Alla olevassa esimerkissä luokka Main on pakkauksessa <code>kirjasto</code>, jolloin pakkauksessa <code>kirjasto.ui</code> pakkausnäkyvyydellä määriteltyyn metodiin <code>tulostaOtsikko</code> ei pääse käsiksi.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package kirjasto;
+
+  import java.util.Scanner;
+  import kirjasto.ui.Kayttoliittyma;
+
+  public class Main {
+
+      public static void main(String[] args) {
+          Scanner lukija = new Scanner(System.in);
+          Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+
+          kayttoliittyma.tulostaOtsikko(); // ei onnistu!
+      }
+  }
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Lentokenttä (3 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä pääset suunnittelemaan vapaasti ohjelman rakenteen. Käyttöliittymän ulkomuoto sekä vaaditut komennot on määritelty ennalta. Tehtävä on kolmen yksittäisen tehtäväpisteen arvoinen.
+  </p>
+
+  <p>
+    <strong>Huom: jotta testit toimisivat, saat luoda ohjelmassasi vain yhden Scanner-olion käyttäjän syötteen lukemiseen.</strong>
+  </p>
+
+  <p>
+    Lentokenttä-tehtävässä toteutetaan lentokentän hallintasovellus. Lentokentän hallintasovelluksessa hallinnoidaan lentokoneita ja lentoja. Lentokoneista tiedetään aina tunnus ja kapasiteetti. Lennoista tiedetään lennon lentokone, lähtöpaikan tunnus (esim. <a href="http://en.wikipedia.org/wiki/Helsinki_Airport" target="_blank" rel="noopener">HEL</a>) ja kohdepaikan tunnus (esim. <a href="http://en.wikipedia.org/wiki/Batman_Airport" target="_blank" rel="noopener">BAL</a>).
+  </p>
+
+  <p>
+    Sekä lentokoneita että lentoja voi olla useita. Samalla lentokoneella voidaan myös lentää useita eri lentoja.
+  </p>
+
+  <p>
+    Sovelluksen tulee toimia kahdessa vaiheessa: ensin syötetään lentokoneiden ja lentojen tietoja hallintakäyttöliittymässä, jonka jälkeen siirrytään lentopalvelun käyttöön. Lentopalvelussa on kolme toimintoa; lentokoneiden tulostaminen, lentojen tulostaminen, ja lentokoneen tietojen tulostaminen. Tämän lisäksi käyttäjä voi poistua ohjelmasta valitsemalla vaihtoehdon <code>x</code>. Jos käyttäjä syöttää epäkelvon komennon, kysytään komentoa uudestaan.
+  </p>
+
+
+  <% partial 'partials/sample_output' do %>
+    Lentokentän hallinta
+    --------------------
+
+    Valitse toiminto:
+    [1] Lisää lentokone
+    [2] Lisää lento
+    [x] Poistu hallintamoodista
+    &gt; <font color="red">1</font>
+    Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+    Anna lentokoneen kapasiteetti: <font color="red">42</font>
+    Valitse toiminto:
+    [1] Lisää lentokone
+    [2] Lisää lento
+    [x] Poistu hallintamoodista
+    &gt; <font color="red">1</font>
+    Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
+    Anna lentokoneen kapasiteetti: <font color="red">101</font>
+    Valitse toiminto:
+    [1] Lisää lentokone
+    [2] Lisää lento
+    [x] Poistu hallintamoodista
+    &gt; <font color="red">2</font>
+    Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+    Anna lähtöpaikan tunnus: <font color="red">HEL</font>
+    Anna kohdepaikan tunnus: <font color="red">BAL</font>
+    Valitse toiminto:
+    [1] Lisää lentokone
+    [2] Lisää lento
+    [x] Poistu hallintamoodista
+    &gt; <font color="red">2</font>
+    Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
+    Anna lähtöpaikan tunnus: <font color="red">JFK</font>
+    Anna kohdepaikan tunnus: <font color="red">BAL</font>
+    Valitse toiminto:
+    [1] Lisää lentokone
+    [2] Lisää lento
+    [x] Poistu hallintamoodista
+    &gt; <font color="red">2</font>
+    Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+    Anna lähtöpaikan tunnus: <font color="red">BAL</font>
+    Anna kohdepaikan tunnus: <font color="red">HEL</font>
+    Valitse toiminto:
+    [1] Lisää lentokone
+    [2] Lisää lento
+    [x] Poistu hallintamoodista
+    &gt; <font color="red">x</font>
+
+    Lentopalvelu
+    ------------
+
+    Valitse toiminto:
+    [1] Tulosta lentokoneet
+    [2] Tulosta lennot
+    [3] Tulosta lentokoneen tiedot
+    [x] Lopeta
+    &gt; <font color="red">1</font>
+    G-OWAC (101 henkilöä)
+    HA-LOL (42 henkilöä)
+    Valitse toiminto:
+    [1] Tulosta lentokoneet
+    [2] Tulosta lennot
+    [3] Tulosta lentokoneen tiedot
+    [x] Lopeta
+    &gt; <font color="red">2</font>
+    HA-LOL (42 henkilöä) (HEL-BAL)
+    HA-LOL (42 henkilöä) (BAL-HEL)
+    G-OWAC (101 henkilöä) (JFK-BAL)
+
+    Valitse toiminto:
+    [1] Tulosta lentokoneet
+    [2] Tulosta lennot
+    [3] Tulosta lentokoneen tiedot
+    [x] Lopeta
+    &gt; <font color="red">3</font>
+    Mikä kone: <font color="red">G-OWAC</font>
+    G-OWAC (101 henkilöä)
+
+    Valitse toiminto:
+    [1] Tulosta lentokoneet
+    [2] Tulosta lennot
+    [3] Tulosta lentokoneen tiedot
+    [x] Lopeta
+    &gt; <font color="red">x</font>
+  <% end %>
+
+  <p>
+    <strong>Huom1:</strong> Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii <strong>täsmälleen</strong> kuten yllä kuvattu. Ohjelman tulostamat vaihtoehdot kannattanee copypasteta tästä ohjelmakoodiin. Testit eivät oleta, että ohjelmasi on varautunut epäkelpoihin syötteisiin.
+  </p>
+
+  <p>
+    <strong>Huom2:</strong> älä käytä luokkein nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin!
+  </p>
+
+  <p>
+    <em>
+      <strong>Ohjelman tulee käynnistyä kun pakkauksessa lentokentta olevan luokan Main metodi main suoritetaan.</strong>
+    </em>
+  </p>
+
+<% end %>
+
+
+
+
+<%= partial 'partials/quiz', locals: { id: '59f5f23a271b380004a262e2' } %>

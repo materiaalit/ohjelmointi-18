@@ -23,20 +23,14 @@ function getOhpeSyksy17Config() {
   }
 }
 
-function getHyConfig() {
+function getOhjaSyksy17Config() {
   return {
-    courseId: '198',
-    courseName: 'Ohjelmoinnin perusteet',
+    courseId: '264',
+    courseName: 'Ohjelmoinnin jatkokurssi',
     exerciseGroups: {
-      'Osa 1': ['16.01.2017 01:00', '22.01.2017 20:05', 'osa01-'],
-      'Osa 2': ['22.01.2017 07:00', '27.01.2017 12:05', 'osa02-'],
-      'Osa 3': ['29.01.2017 07:00', '03.02.2017 12:05', 'osa03-'],
-      'Osa 4': ['04.02.2017 07:00', '10.02.2017 12:05', 'osa04-'],
-      'Osa 5': ['10.02.2017 07:00', '17.02.2017 12:05', 'osa05-'],
-      'Osa 6': ['17.02.2017 07:00', '24.02.2017 12:05', 'osa06-'],
-      'Osa 7': ['23.02.2017 16:00', '03.03.2017 12:05', 'osa07-']
-    }
-  };
+      'Osa 8': ['31.10.2017 12:00', '06.11.2017 23:59', 'osa08-']
+    },
+  }
 }
 
 function getMoocConfig() {
@@ -70,10 +64,10 @@ function getConfig() {
       return getOhpeSyksy17Config();
       break;
     case 'hy-ohja-s17':
-      return getOhpeSyksy17Config();
+      return getOhjaSyksy17Config();
       break;
     default:
-      return getOhpeSyksy17Config();
+      return getOhjaSyksy17Config();
   }
 }
 
