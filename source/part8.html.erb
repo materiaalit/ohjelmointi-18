@@ -67,6 +67,82 @@ $/Osa08_01.SamaPaivays$ tree
 </p>
 
 
+<% partial 'partials/material_sub_heading' do %>
+  Ongelmia ja ratkaisuja
+<% end %>
+
+<p>
+  Mavenin käyttöönottoon on liittynyt kurssilla ongelmia. Tässä lyhyt ongelmanratkaisuopas.
+</p>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Linux ja Mac
+<% end %>
+
+<p>
+  Ongelma: Maven-binäärin suoritusoikeudet puuttuvat. Mavenin virhe on (esimerkiksi) muotoa.
+</p>
+
+<pre>
+Cannot run program
+  /Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven/bin/mvn"
+  (in directory "/Users/[nimi]/NetBeansProjects/hy-[kurssi]/[tehtava]"):
+  error=13,
+  Permission denied
+</pre>
+
+<p>
+  Ratkaisu: lisää maven-binäärille suoritusoikeudet. Suorita terminaalissa (pääte) komento.
+</p>
+
+<pre>
+chmod +x /Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven/bin/mvn
+</pre>
+
+<p>
+  Huomaa, että edellä polku on sama kuin virheviestin "Cannot run program"-polku.
+</p>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Windows
+<% end %>
+
+<p>
+  Ongelma: Ympäristömuuttuja <code>JAVA_HOME</code> ei ole asetettu. Käytännössä Maven yrittää etsiä Javaa, mutta ei löydä sitä.
+</p>
+
+<p>
+  Ratkaisu: Lisää Windowsiin JAVA_HOME ympäristömuuttuja (esim.) osoitteessa <a href="https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html" target="_blank" norel>https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html</a> olevia ohjeita seuraamalla. Huomaa, että kansion tulee olla jdk, ei jre.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Tietojenkäsittelytieteen laitoksen koneet
+<% end %>
+
+<p>
+  Ongelma: Riippuvuuksien lataaminen ei onnistu tai ne eivät toimi. Tässä syynä on joko loppunut levytila tai verkkoyhteysongelma. Levytilan tilanteen saa selvitettyä komennolla "quota".
+</p>
+
+<p>
+  Ratkaisu:
+</p>
+
+<ol>
+  <li>
+    Poista vanhat ohjelmoinnin perusteiden (ja mahdollisesti muiden TMCtä käyttävien kurssien) tehtäväpohjat. Nämä löytyvät kotikansiosta kansion NetBeansProjects alta. Kannattanee harkita myös muiden turhien tiedostojen poistamista sekä esimerkiksi selaimen välimuistin tyhjentämistä ajoittain.
+  </li>
+
+  <li>
+    Poista kotikansiossa olevan .m2-kansion sisältö. Tämä tehdään sillä Maven luo ladattavista riippuvuuksista (eli kirjastoista) vahingossa tyhjät tiedostot mikäli levytila on loppunut.
+  </li>
+
+  <li>
+    (Jatkuva) Kun saat tehtäviä lähetettyä TMC:lle, klikkaa tehtäväpohjaa ja valitse "clean". Tämä poistaa tehtäväpohjasta käännetyt tiedostot.
+  </li>
+</ol>
+
+
 <% partial 'partials/material_heading' do %>
   Object
 <% end %>
