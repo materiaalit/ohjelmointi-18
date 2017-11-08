@@ -9,13 +9,9 @@
 <% partial 'partials/hint', locals: { name: 'Kymmenennen osan tavoitteet' } do %>
 
   <p>
-    Kymmenennessä osassa käsitellään tiedon ryhmittelyä hajautustaulun avulla, jolloin yhteen hajautustaulun avaimeen voi liittyä useampia arvoja. Tämän lisäksi tutustutaan olioiden monimuotoisuuteen sekä perintään.
+    Tutustuu perintään ja syventyy Javan luokkarakenteeseen. Tuntee Javan perintähierarkian ja osaa luoda luokkia, jotka perivät toisten luokkien muuttujia ja metodeja. Ymmärtää perinnän hyödyt. Osaa esittää tapauksia, joihin perintä ei sovi. Tuntee abstraktin luokan käsitteen. Tutustuu säännöllisiin lausekkeisiin, lueteltuihin tyyppeihin sekä iteraattoriin.
   </p>
-
-  <p>
-    Tämän osan jälkeen osaat ryhmitellä tietoa hajautustaulun avulla, sekä tiedät mistä perinnässä on kyse. Ymmärrät Javan perintähierarkian ja osaat luoda luokkia, jotka perivät toisen luokan muuttujia ja metodeja. Tiedät myös miten näkyvyysmääreet vaikuttavat perittäviin muuttujiin ja metodeihin. Tunnet lisäksi abstraktin luokan käsitteen, ja olet harjoitellut refaktorointia, eli ohjelma rakenteen muuttamista ilman ohjelman toiminnallisuuden muuttamista.
-  </p>
-
+  
 <% end %>
 
 
@@ -561,6 +557,13 @@ public class Piste3D extends Piste {
 <p>
   Metodikutsun aikaansaama toimintoketju siis on monivaiheinen. Periaate on kuitenkin selkeä: suoritettavan metodin määrittelyä etsitään ensin olion todellisen tyypin määrittelystä ja jos sitä ei löydy edetään yliluokkaan. Ja jos yliluokastakaan ei löydy metodin toteutusta siirrytään etsimään yliluokan yliluokasta jne...
 </p>
+
+
+<%= partial 'partials/quiz', locals: { id: '5a02e0b8fb43ca000414c183' } %>
+
+<%= partial 'partials/quiz', locals: { id: '5a02e190fb43ca000414c18b' } %>
+
+
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1230,9 +1233,58 @@ false
 
 
 <p>
-  todo
+  Perintä merkitään luokkakaavioon kolmion muotoisella nuolella. Kolmio on perittävän luokan päädyssä. Alla olevassa esimerkissä luokka Moottori perii luokan Osa.
 </p>
 
+<img src="/img/diagrams/luokkakaavio-moottori-perii-osan.png" alt="[Osa|-tunnus:String;-valmistaja:String;-kuvaus:String]
+								   [Moottori|-moottorityyppi:String]
+								   [Osa]^-[Moottori]" />
+
+<p>&nbsp;</p>
+
+<p>
+  Alla olevaan esimerkkiin on kirjoitettu auki muistavaa tuotevarastoa käsittelevän tehtävän luokkakaavio. Muistava tuotevarasto perii tuotevaraston, joka taas perii varaston. Muutoshistoria on erillinen luokka, jonka muistava tuotevarasto sisältää. Muistava tuotevarasto tietää muutoshistorian, mutta muutoshistoria ei tiedä muistavasta tuotevarastosta. 
+</p>
+
+<img src="/img/diagrams/luokkakaavio-muistava-tuotevarasto.png" alt="[Varasto|-tilavuus:double;-saldo:double|+Varasto(tilavuus:double);+getSaldo():double;+getTilavuus():double;+paljonkoMahtuu():double;+lisaaVarastoon(maara:double):void;+otaVarastosta(maara:double):double;+toString():String]
+								     [Tuotevarasto|-nimi:String|+Tuotevarasto(nimi:String، tilavuus:double);+getNimi():String;+setNimi(nimi:String):String;+toString():String]
+								     [Muutoshistoria|-tilanteet:ArrayList|+Muutoshistoria();+lisaa(tilanne:double);+nollaa():void;...]
+								     [MuistavaTuotevarasto||+MuistavaTuotevarasto(nimi:String، tilavuus:double،alkusaldo:double);+historia():String;+tulostaAnalyysi():void;+lisaaVarastoon(maara:double);+otaVarastosta(maara:double):double]
+
+								     [Varasto]^-[Tuotevarasto]
+								     [Tuotevarasto]^-[MuistavaTuotevarasto]
+								     [Muutoshistoria]<-[MuistavaTuotevarasto]" />
+
+<p>&nbsp;</p>
+
+<p>
+  Abstraktien luokkien perintä toimii lähes samalla tavalla. Abstraktit luokat kuitenkin merkitään luokkakaavioon siten, että luokan nimen yläpuolella lukee <code>&lt;&lt;abstract&gt;&gt;</code>. Tämän lisäksi luokan nimi ja luokassa määritellyt abstraktit metodit kuvataan kursiivilla.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on tehtävän erilaisia laatikoita ensimmäistä kahta osaa kuvaava luokkaakaavio.
+</p>
+
+
+<img src="/img/diagrams/luokkakaavio-abstraktit.png" />
+
+
+
+<% partial 'partials/hint', locals: { name: 'Miten näitä kannattaa piirtää?' } do %>
+
+  <p>
+    Luokkakaaviot ovat erinomainen tapa kuvata ongelma-aluetta ja ongelman muotoa muille. Niiden käyttö on erittäin hyödyllistä myös silloin, kun ohjelmoija suunnittelee useammasta luokasta koostuvan ohjelman rakennetta.
+  </p>
+
+  <p>
+    Luokkakaavioita piirretään suunnitteluvaiheessa usein esimerkiksi valkotaulua tai isompaa paperiarkkia käyttäen. Luokkakaaviot kannattaa ajatella poisheitettävinä tuotoksina, jotka auttavat ohjelman rakennuksessa. Kaavion piirtämiseen -- eli tyylin oikeellisuuteen ja yksityiskohtiin -- ei kannata käyttää liian pitkään aikaa. Vastaavasti kaavio kannattaa piirtää sopivalla abstraktiotasolla. Esimerkiksi kymmeniä luokkia sisältävään luokkakaavioon ei todennäköisesti kannata merkitä jokaisen luokan jokaista metodia ja muuttujaa.
+  </p>
+
+  <p>
+    Materiaalissa käytetyt luokkakaaviot on piirretty sekä <a href="https://yuml.me/" target="_blank" norel>yUML</a> että <a href="https://creately.com" target="_blank" norel>Creately</a>n avulla. Myös NetBeansiin löytyy välineitä luokkakaavioiden luomiseen -- esimerkiksi <a href="http://plugins.netbeans.org/plugin/55435/easyuml" target="_blank" norel>easyUML</a> mahdollistaa luokkakaavioiden luomisen suoraan projektin koodista.
+  </p>
+  
+<% end %>
 
 
 <% partial 'partials/material_heading' do %>
@@ -1482,6 +1534,9 @@ false
 </p>
 
 
+<%= partial 'partials/quiz', locals: { id: '5a02e242fb43ca000414c18f' } %>
+
+
 <% partial 'partials/exercise', locals: { name: 'Säännölliset lausekkeet (3 osaa)' } do %>
 
   <p>
@@ -1651,8 +1706,33 @@ false
 <% partial 'partials/hint', locals: { name: 'Enumien vertailu' } do %>
 
   <p>
-    miksi == on ok?
+    Ylläolevassa esimerkissä kahta enumia verrattiin yhtäsuuruusmerkkien avulla. Miksi tämä on ok?
   </p>
+
+  <p>
+    Jokainen lueteltu arvo saa oman uniikin numerotunnuksen, ja niiden vertailu keskenään yhtäsuuruusmerkillä on ok. Kuten muutkin Javan luokat, myös luetellut arvot perivät Object-luokan ja sen equals-metodin. Luetelluilla luokilla myös equals-metodi vertailee tätä numerotunnusta.
+  </p>
+
+  <p>
+    Luetellun arvon numeraalisen tunnuksen saa selville metodille <code>ordinal()</code>. Metodi palauttaa käytännössä järjestysnumeron -- jos lueteltu arvo on esitelty ensimmäisenä, on sen järjestysnumero 0. Jos toisena, järjestysnumero on 1, jne.
+  </p>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    public enum Maa {
+        RUUTU, PATA, RISTI, HERTTA
+    }
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    System.out.println(Maa.RUUTU.ordinal());
+    System.out.println(Maa.HERTTA.ordinal());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    0
+    3
+  <% end %>
   
 <% end %>
 
@@ -1918,227 +1998,275 @@ false
 <% partial 'partials/exercise', locals: { name: 'Kortit ojennukseen (6 osaa)' } do %>
 
   <p>
-    Tehtäväpohjan mukana on luokka, jonka oliot kuvaavat pelikortteja. Kortilla on arvo ja maa. Kortin arvo on <em>2, 3, ..., 10, J, Q, K </em> tai <em>A</em> ja maa <em>Risti, Ruutu, Hertta</em> tai <em>Pata</em>. Arvo ja maa kuitenkin esitetään olioiden sisällä kokonaislukuina. Kortilla on myös metodi toString, jota käyttäen kortin arvo ja maa tulostuvat "ihmisystävällisesti".
+    Tehtäväpohjan mukana on luokka, jonka oliot kuvaavat pelikortteja. Kortilla on arvo ja maa. Kortin arvo on esitetään numerona <em>2, 3, ..., 14</em> ja maa <em>Risti, Ruutu, Hertta</em> tai <em>Pata</em>. Ässä on siis arvo 14. Arvo esitetään kokonaislukuna ja maa enum-tyyppisenä oliona. Kortilla on myös metodi toString, jota käyttäen kortin arvo ja maa tulostuvat "ihmisystävällisesti".
   </p>
 
   <p>
-    Jotta korttien käyttäjän ei tarvitsisi käsitellä korttien maita numeroina, on luokkaan määritelty neljä <strong>vakioa</strong> eli <code>public static final</code> -muuttujaa.
+    Korttien luominen tapahtuu seuraavasti. 
   </p>
 
-  <pre class="sh_java">
-public class Kortti {
-    public static final int RISTI  = 0;
-    public static final int RUUTU  = 1;
-    public static final int HERTTA = 2;
-    public static final int PATA   = 3;
-
-    // ...
-}
-  </pre>
-
-  <p>Nyt ohjelmassa voidaan luvun 1 sijaan käyttää vakioa <code>Kortti.RUUTU</code>. Seuraavassa esimerkissä luodaan kolme korttia ja tulostetaan ne:</p>
-
-  <pre class="sh_java">
-Kortti eka = new Kortti(2, Kortti.RUUTU);
-Kortti toka = new Kortti(14, Kortti.PATA);
-Kortti kolmas = new Kortti(12, Kortti.HERTTA);
+  <% partial 'partials/code_highlight' do %>
+Kortti eka = new Kortti(2, Maa.RUUTU);
+Kortti toka = new Kortti(14, Maa.PATA);
+Kortti kolmas = new Kortti(12, Maa.HERTTA);
 
 System.out.println(eka);
 System.out.println(toka);
-System.out.println(kolmas);</pre>
+System.out.println(kolmas);
+  <% end %>
 
-  <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
-  <pre>
-Ruutu 2
-Pata A
-Hertta Q</pre>
+  <% partial 'partials/sample_output' do %>
+RUUTU 2
+PATA A
+HERTTA Q
+  <% end %>
 
-  <p><b>HUOM:</b> vakioiden käyttö ylläolevaan tapaan ei ole tyylikkäin tapa asian hoitamiseen. Myöhemmin kurssilla opimme oikeaoppisen tyylin maan esittämiseen!</p>
+  
+  <h2>Kortti-luokasta Comparable</h2>
 
-  <h4>Kortti-luokasta Comparable</h4>
+  <p>
+    Tee Kortti-luokasta Comparable. Toteuta <code>compareTo</code>-metodi niin, että korttien järjestys on arvon mukaan nouseva. Jos verrattavien Korttien arvot ovat samat, verrataan niitä maan perusteella nousevassa järjestyksessä: <em>risti ensin, ruutu toiseksi, hertta kolmanneksi, pata viimeiseksi.</em>
+  </p>
 
-  <p>Tee Kortti-luokasta Comparable. Toteuta <code>compareTo</code>-metodi niin, että korttien järjestys on arvon mukaan nouseva. Jos verrattavien Korttien arvot ovat samat, verrataan niitä maan perusteella nousevassa järjestyksessä: <em>risti ensin, ruutu toiseksi, hertta kolmanneksi, pata viimeiseksi.</em> </p>
+  <p>
+    Maiden järjestämisessä apua löytynee <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html#ordinal--"  target="_blank" norel>Enum-luokan ordinal-metodista</a>.
+  </p>
 
-  <p>Järjestyksessä pienin kortti siis olisi risti kakkonen ja suurin pataässä.</p>
+  <p>
+    Järjestyksessä pienin kortti siis olisi risti kakkonen ja suurin pataässä.
+  </p>
 
-  <h4>Käsi</h4>
+  
+  <h2>Käsi</h2>
 
-  <p>Tehdään seuraavaksi luokka <code>Kasi</code> joka edustaa pelaajan kädessään pitämää korttien joukkoa. Tee kädelle seuraavat metodit:</p>
+  <p>
+    Tee seuraavaksi luokka <code>Kasi</code> joka edustaa pelaajan kädessään pitämää korttien joukkoa. Tee kädelle seuraavat metodit:
+  </p>
 
   <ul>
     <li><code>public void lisaa(Kortti kortti)</code> lisää käteen kortin</li>
     <li><code>public void tulosta()</code> tulostaa kädessä olevat kortit alla olevan esimerkin tyylillä</li>
   </ul>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 Kasi kasi = new Kasi();
 
-kasi.lisaa(new Kortti(2, Kortti.RUUTU));
-kasi.lisaa(new Kortti(14, Kortti.PATA));
-kasi.lisaa(new Kortti(12, Kortti.HERTTA));
-kasi.lisaa(new Kortti(2, Kortti.PATA));
+kasi.lisaa(new Kortti(2, Maa.RUUTU));
+kasi.lisaa(new Kortti(14, Maa.PATA));
+kasi.lisaa(new Kortti(12, Maa.HERTTA));
+kasi.lisaa(new Kortti(2, Maa.PATA));
 
-kasi.tulosta();</pre>
+kasi.tulosta();
+  <% end %>
 
-  <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
-  <pre>
-Ruutu 2
-Pata A
-Hertta Q
-Pata 2</pre>
+  <% partial 'partials/sample_output' do %>
+RUUTU 2
+PATA A
+HERTTA Q
+PATA 2
+  <% end %>
 
-  <p>Talleta käden sisällä olevat kortit ArrayListiin.</p>
+  <p>
+    Käytä ArrayListiä korttien tallentamiseen.
+  </p>
 
-  <h4>Käden järjestäminen</h4>
 
-  <p>Tee kädelle metodi <code>public void jarjesta()</code> jota kutsumalla käden sisällä olevat kortit menevät suuruusjärjestykseen. Järjestämisen jälkeen kortit tulostuvat järjestyksessä:</p>
+  <h2>Käden järjestäminen</h2>
 
-  <pre class="sh_java">
+  <p>
+    Tee kädelle metodi <code>public void jarjesta()</code> jota kutsumalla käden sisällä olevat kortit menevät suuruusjärjestykseen. Järjestämisen jälkeen kortit tulostuvat järjestyksessä:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
 Kasi kasi = new Kasi();
 
-kasi.lisaa(new Kortti(2, Kortti.RUUTU));
-kasi.lisaa(new Kortti(14, Kortti.PATA));
-kasi.lisaa(new Kortti(12, Kortti.HERTTA));
-kasi.lisaa(new Kortti(2, Kortti.PATA));
+kasi.lisaa(new Kortti(2, Maa.RUUTU));
+kasi.lisaa(new Kortti(14, Maa.PATA));
+kasi.lisaa(new Kortti(12, Maa.HERTTA));
+kasi.lisaa(new Kortti(2, Maa.PATA));
 
 kasi.jarjesta();
 
-kasi.tulosta();</pre>
+kasi.tulosta();
+  <% end %>
 
-  <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
-  <pre>
-Ruutu 2
-Pata 2
-Hertta Q
-Pata A</pre>
+  <% partial 'partials/sample_output' do %>
+RUUTU 2
+PATA 2
+HERTTA Q
+PATA A
+  <% end %>
 
-  <h4>Käsien vertailu</h4>
+  
+  <h2>Käsien vertailu</h2>
 
-  <p>Eräässä korttipelissä kahdesta korttikädestä arvokkaampi on se, jonka sisältämien korttien arvon summa on suurempi. Tee luokasta <code>Kasi</code> vertailtava tämän kriteerin mukaan, eli laita luokka toteuttamaan rajapinta <code>Comparable&lt;Kasi&gt;</code>.</p>
+  <p>
+    Eräässä korttipelissä kahdesta korttikädestä arvokkaampi on se, jonka sisältämien korttien arvon summa on suurempi. Tee luokasta <code>Kasi</code> vertailtava tämän kriteerin mukaan, eli laita luokka toteuttamaan rajapinta <code>Comparable&lt;Kasi&gt;</code>.
+  </p>
 
-  <p>Esimerkkiohjelma, jossa vertaillaan käsiä:</p>
+  <p>
+    Esimerkkiohjelma, jossa vertaillaan käsiä:
+  </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 Kasi kasi1 = new Kasi();
 
-kasi1.lisaa(new Kortti(2, Kortti.RUUTU));
-kasi1.lisaa(new Kortti(14, Kortti.PATA));
-kasi1.lisaa(new Kortti(12, Kortti.HERTTA));
-kasi1.lisaa(new Kortti(2, Kortti.PATA));
+kasi1.lisaa(new Kortti(2, Maa.RUUTU));
+kasi1.lisaa(new Kortti(14, Maa.PATA));
+kasi1.lisaa(new Kortti(12, Maa.HERTTA));
+kasi1.lisaa(new Kortti(2, Maa.PATA));
 
 Kasi kasi2 = new Kasi();
 
-kasi2.lisaa(new Kortti(11, Kortti.RUUTU));
-kasi2.lisaa(new Kortti(11, Kortti.PATA));
-kasi2.lisaa(new Kortti(11, Kortti.HERTTA));
+kasi2.lisaa(new Kortti(11, Maa.RUUTU));
+kasi2.lisaa(new Kortti(11, Maa.PATA));
+kasi2.lisaa(new Kortti(11, Maa.HERTTA));
 
 int vertailu = kasi1.compareTo(kasi2);
 
 if (vertailu &lt; 0) {
-  System.out.println("arvokkaampi käsi sisältää kortit");
-  kasi2.tulosta();
+    System.out.println("arvokkaampi käsi sisältää kortit");
+    kasi2.tulosta();
 } else if (vertailu &gt; 0){
-  System.out.println("arvokkaampi käsi sisältää kortit");
-  kasi1.tulosta();
+    System.out.println("arvokkaampi käsi sisältää kortit");
+    kasi1.tulosta();
 } else {
-  System.out.println("kädet yhtä arvokkaat");
-}</pre>
+    System.out.println("kädet yhtä arvokkaat");
+}
+  <% end %>
 
   <p>Tulostuu</p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 arvokkaampi käsi sisältää kortit
-Ruutu J
-Pata J
-Hertta J</pre>
+RUUTU J
+PATA J
+HERTTA J
+  <% end %>
 
-  <h4>Korttien järjestäminen eri kriteerein</h4>
+  
+  <h2>Korttien järjestäminen eri kriteerein</h2>
 
-  <p>Entä jos haluaisimme välillä järjestää kortit hieman eri tavalla, esim. kaikki saman maan kortit peräkkäin?
-    Luokalla voi olla vain yksi compareTo-metodi, joten joudumme muunlaisia järjestyksiä saadaksemme turvautumaan muihin keinoihin.</p>
+  <p>
+    Entä jos haluaisimme välillä järjestää kortit hieman eri tavalla, esim. kaikki saman maan kortit peräkkäin? Luokalla voi olla vain yksi compareTo-metodi, joten joudumme muunlaisia järjestyksiä saadaksemme turvautumaan muihin keinoihin.
+  </p>
 
-  <p>Vaihtoehtoiset järjestämistavat toteutetaan erillisten vertailun suorittavien luokkien avulla. Korttien vaihtoehtoisten järjestyksen määräävän luokkien tulee toteuttaa <code>Comparator&lt;Kortti&gt;</code>-rajapinta. Järjestyksen määräävän luokan olio vertailee kahta parametrina saamaansa korttia. Metodeja on ainoastaan yksi compare(Kortti k1, Kortti k2), jonka tulee palauttaa negatiivinen arvo, jos kortti k1 on järjestyksessä ennen korttia k2, positiivinen arvo jos k2 on järjestyksessä ennen k1:stä ja 0 muuten.
+  <p>
+    Vaihtoehtoiset järjestämistavat toteutetaan erillisten vertailun suorittavien luokkien avulla. Korttien vaihtoehtoisten järjestyksen määräävän luokkien tulee toteuttaa <code>Comparator&lt;Kortti&gt;</code>-rajapinta. Järjestyksen määräävän luokan olio vertailee kahta parametrina saamaansa korttia. Metodeja on ainoastaan yksi compare(Kortti k1, Kortti k2), jonka tulee palauttaa negatiivinen arvo, jos kortti k1 on järjestyksessä ennen korttia k2, positiivinen arvo jos k2 on järjestyksessä ennen k1:stä ja 0 muuten.
+  </p>
 
-    <p>Periaatteena on luoda jokaista järjestämistapaa varten oma vertailuluokka, esim. saman maan kortit vierekkäin vievän järjestyksen määrittelevä luokka:</p>
+  <p>
+    Periaatteena on luoda jokaista järjestämistapaa varten oma vertailuluokka, esim. saman maan kortit vierekkäin vievän järjestyksen määrittelevä luokka:
+  </p>
 
-    <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 import java.util.Comparator;
 
 public class SamatMaatVierekkain implements Comparator&lt;Kortti&gt; {
     public int compare(Kortti k1, Kortti k2) {
-        return k1.getMaa() - k2.getMaa();
+        return k1.getMaa().ordinal() - k2.getMaa().ordinal();
     }
-}</pre>
+}
+  <% end %>
 
-    <p>Maittainen järjestys on sama kuin kortin metodin <code>compareTo</code> maille määrittelemä järjestys eli <em>ristit ensin, ruudut toiseksi, hertat kolmanneksi, padat viimeiseksi.</em></p>
+  <p>
+    Maittainen järjestys on sama kuin kortin metodin <code>compareTo</code> maille määrittelemä järjestys eli <em>ristit ensin, ruudut toiseksi, hertat kolmanneksi, padat viimeiseksi.</em>
+  </p>
 
-    <p>Järjestäminen tapahtuu edelleen luokan Collections metodin sort avulla. Metodi saa nyt toiseksi parametrikseen järjestyksen määräävän luokan olion:</p>
-
-    <pre class="sh_java">
+  <p>
+    Järjestäminen tapahtuu edelleen luokan Collections metodin sort avulla. Metodi saa nyt toiseksi parametrikseen järjestyksen määräävän luokan olion:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
 ArrayList&lt;Kortti&gt; kortit = new ArrayList&lt;&gt;();
 
-kortit.add(new Kortti(3, Kortti.PATA));
-kortit.add(new Kortti(2, Kortti.RUUTU));
-kortit.add(new Kortti(14, Kortti.PATA));
-kortit.add(new Kortti(12, Kortti.HERTTA));
-kortit.add(new Kortti(2, Kortti.PATA));
+kortit.add(new Kortti(3, Maa.PATA));
+kortit.add(new Kortti(2, Maa.RUUTU));
+kortit.add(new Kortti(14, Maa.PATA));
+kortit.add(new Kortti(12, Maa.HERTTA));
+kortit.add(new Kortti(2, Maa.PATA));
 
 SamatMaatVierekkain samatMaatVierekkainJarjestaja = new SamatMaatVierekkain();
 Collections.sort(kortit, samatMaatVierekkainJarjestaja);
 
-for (Kortti k : kortit) {
-    System.out.println(k);
-}</pre>
+kortit.stream().forEach(k -&gt; System.out.println(k));
+  <% end %>
 
-    <p>Tulostuu:</p>
+  <p>
+    Tulostuu:
+  </p>
 
-    <pre>
-Ruutu 2
-Hertta Q
-Pata 3
-Pata A
-Pata 2</pre>
+  <% partial 'partials/sample_output' do %>
+RUUTU 2
+HERTTA Q
+PATA 3
+PATA A
+PATA 2
+  <% end %>
 
-    <p>Järjestyksen määrittelevä olio voidaan myös luoda suoraan sort-kutsun yhteydessä:</p>
+  <p>
+    Järjestyksen määrittelevä olio voidaan myös luoda suoraan sort-kutsun yhteydessä:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+Collections.sort(kortit, new SamatMaatVierekkain());
+  <% end %>
 
-    <pre class="sh_java">
-Collections.sort(kortit, new SamatMaatVierekkain());</pre>
+
+  <p>
+    Tarkempia ohjeita vertailuluokkien tekemiseen <a href="http://leepoint.net/data/collections/comparators.html">täällä</a>
+  </p>
+
+  <p>
+    Tee nyt luokka Comparator-rajapinnan toteuttava luokka <code>SamatMaatVierekkainArvojarjestykseen</code> jonka avulla saat kortit muuten samanlaiseen järjestykseen kuin edellisessä esimerkissä paitsi, että saman maan kortit järjestyvät arvon mukaisesti.
+  </p>
 
 
-    <p>Tarkempia ohjeita vertailuluokkien tekemiseen <a href="http://leepoint.net/data/collections/comparators.html">täällä</a></p>
+  <h2>Käden järjestäminen maittain</h2>
 
-    <p>Tee nyt luokka Comparator-rajapinnan toteuttava luokka <code>SamatMaatVierekkainArvojarjestykseen</code> jonka avulla saat kortit muuten samanlaiseen järjestykseen kuin edellisessä esimerkissä paitsi, että saman maan kortit järjestyvät arvon mukaisesti.</p>
+  <p>
+    Lisää luokalle <code>Kasi</code> metodi <code>public void jarjestaMaittain()</code> jota kutsumalla käden sisällä olevat kortit menevät edellisen tehtävän vertailijan määrittelemään järjestykseen. Järjestämisen jälkeen kortit tulostuvat järjestyksessä:
+  </p>
 
-    <h4>Käden järjestäminen maittain</h4>
-
-    <p>Lisää luokalle <code>Kasi</code> metodi <code>public void jarjestaMaittain()</code> jota kutsumalla käden sisällä olevat kortit menevät edellisen tehtävän vertailijan määrittelemään järjestykseen. Järjestämisen jälkeen kortit tulostuvat järjestyksessä:</p>
-
-    <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 Kasi kasi = new Kasi();
 
-kasi.lisaa(new Kortti(12, Kortti.HERTTA));
-kasi.lisaa(new Kortti(4, Kortti.PATA));
-kasi.lisaa(new Kortti(2, Kortti.RUUTU));
-kasi.lisaa(new Kortti(14, Kortti.PATA));
-kasi.lisaa(new Kortti(7, Kortti.HERTTA));
-kasi.lisaa(new Kortti(2, Kortti.PATA));
+kasi.lisaa(new Kortti(12, Maa.HERTTA));
+kasi.lisaa(new Kortti(4, Maa.PATA));
+kasi.lisaa(new Kortti(2, Maa.RUUTU));
+kasi.lisaa(new Kortti(14, Maa.PATA));
+kasi.lisaa(new Kortti(7, Maa.HERTTA));
+kasi.lisaa(new Kortti(2, Maa.PATA));
 
 kasi.jarjestaMaittain();
 
-kasi.tulosta();</pre>
+kasi.tulosta();
+  <% end %>
+  
+  <p>
+    Tulostuu:
+  </p>
 
-    <p>Tulostuu:</p>
-
-    <pre>
-Ruutu 2
-Hertta 7
-Hertta Q
-Pata 2
-Pata 4
-Pata A</pre>
+  <% partial 'partials/sample_output' do %>
+RUUTU 2
+HERTTA 7
+HERTTA Q
+PATA 2
+PATA 4
+PATA A
+  <% end %>
 
 
 <% end %>
@@ -2148,7 +2276,7 @@ Pata A</pre>
 <% partial 'partials/exercise', locals: { name: 'Elokuvien suosittelija (8 osaa)' } do %>
 
   <p>
-    Hiljattain Suomeen rantautunut <a href="https://signup.netflix.com/" target="_blank" rel="noopener">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank" rel="noopener">http://www.netflixprize.com/</a>).
+    <a href="https://signup.netflix.com/" target="_blank" rel="noopener">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank" rel="noopener">http://www.netflixprize.com/</a>).
   </p>
 
   <p>
@@ -2179,10 +2307,8 @@ Pata A</pre>
 
 
     Suosittelija suosittelija = new Suosittelija(arviot);
-    System.out.println(thomas + " suositus: " +
-    suosittelija.suositteleElokuva(thomas));
-    System.out.println(mikke + " suositus: " +
-    suosittelija.suositteleElokuva(mikke));
+    System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
+    System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
   <% end %>
 
   <% partial 'partials/sample_output' do %>
@@ -2217,7 +2343,7 @@ Pata A</pre>
   </p>
 
   <p>
-    Korvaa <code>equals</code> siten että samuusvertailu tapahtuu oliomuuttujan <code>nimi</code> perusteella. Katso mallia luvusta 45.1. Luvussa 45.2. on ohje metodin <code>hashCode</code> korvaamiselle. Ainakin HashCode kannattaa generoida automaattisesti luvun lopussa olevan ohjeen mukaan:
+    Korvaa <code>equals</code> siten että samuusvertailu tapahtuu oliomuuttujan <code>nimi</code> perusteella. Metodi hashCode kannattaa generoida automaattisesti seuraavan ohjeen mukaan:
   </p>
 
   <p>
@@ -2500,7 +2626,9 @@ Pata A</pre>
   <h2>Suosittelija, osa 2</h2>
 
   <p>
-    <em>Huom! Tehtävä on haastava. Kannattaa tehdä ensin muut tehtävät ja palata tähän myöhemmin. Voit palauttaa tehtäväsarjan TMC:hen vaikket saakaan tätä tehtävää tehdyksi, aivan kuten lähes kaikkien muidenkin tehtävien kohdalla.</em>
+    <em>
+      Huom! Tehtävä on haastava. Kannattaa tehdä ensin muut tehtävät ja palata tähän myöhemmin. Voit palauttaa tehtäväsarjan TMC:hen vaikket saakaan tätä tehtävää tehdyksi, aivan kuten lähes kaikkien muidenkin tehtävien kohdalla.
+    </em>
   </p>
 
   <p>
@@ -2576,7 +2704,7 @@ Pata A</pre>
   </p>
 
   <p>
-    Älä suosittele elokuvia, jonka henkilö on jo nähnyt.
+    Älä suosittele elokuvia, jotka henkilö on jo nähnyt.
   </p>
 
   <p>
@@ -2625,16 +2753,11 @@ Pata A</pre>
   <% end %>
 
   <p>
-    Miljoona käsissä? Ei ehkä vielä. Kursseilla Johdatus tekoälyyn ja Johdatus koneoppimiseen opitaan lisää tekniikoita oppivien järjestelmien rakentamiseen.
+    Miljoona käsissä? Ei ehkä vielä. Tietojenkäsittelytieteen tekoäly- ja koneoppimiskursseilla opitaan lisää tekniikoita oppivien järjestelmien rakentamiseen.
   </p>
 
 <% end %>
 
 
 
-
-<p>
-  TODO: vaihda kysymykset
-</p>
-
-<%= partial 'partials/quiz', locals: { id: '58cfafff28a0e60004775155' } %>
+<%= partial 'partials/quiz', locals: { id: '5a02d846fb43ca000414c15a' } %>
