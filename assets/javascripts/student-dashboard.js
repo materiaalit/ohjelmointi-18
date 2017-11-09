@@ -28,7 +28,9 @@ function getOhjaSyksy17Config() {
     courseId: '264',
     courseName: 'Ohjelmoinnin jatkokurssi',
     exerciseGroups: {
-      'Osa 8': ['31.10.2017 12:00', '06.11.2017 23:59', 'osa08-']
+      'Osa 8': ['31.10.2017 12:00', '06.11.2017 23:59', 'osa08-'],
+      'Osa 9': ['06.11.2017 12:00', '13.11.2017 23:59', 'osa09-'],
+      'Osa 10': ['13.11.2017 12:00', '20.11.2017 23:59', 'osa10-']
     },
   }
 }
