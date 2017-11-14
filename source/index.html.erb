@@ -346,7 +346,7 @@
 
 
 <p>
-  Kurssien arvostelu perustuu kurssitehtäviin ja koneella tehtäviin kokeisiin. Kokonaisarvostelussa tehtävien painoarvo on 70% ja kokeiden painoarvo on 30%. Käytössä on koeleikkuri, eli kurssin läpäisemiseksi kokeista tulee saada vähintään puolet pisteistä.
+  Kurssien arvostelu perustuu kurssitehtäviin ja koneella tehtäviin kokeisiin. Kokonaisarvostelussa tehtävien painoarvo on 70% ja kokeiden painoarvo on 30%. Toisessa (kurssin lopulla) järjestettävässä kokeessa on käytössä koeleikkuri, eli kurssin läpäisemiseksi kokeesta tulee saada vähintään puolet pisteistä.
 </p>
 
 
@@ -557,8 +557,37 @@
 <% end %>
 
 <p>
-  Kurssilla on kaksi koetta. Ensimmäinen koe tehdään kotona kurssin toisen viikon loppupuolella.
+  Kurssilla on kaksi koetta. Ensimmäinen koe tehdään kotona kurssin toisen osan jälkeen ja toinen kurssin lopussa.
 </p>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Ensimmäinen koe
+<% end %>
+
+<p>
+  Ensimmäinen koe käsittelee kurssin osien 8 ja 9 sisältöä (sekä luonnollisesti myös osien 1-7 sisältöä). Kokeen voi tehdä missä tahansa haluamassaan sijainnissa. Koe on yksilösuoritus, eli sen tekemiseen ei saa pyytää apua, eikä toisia saa auttaa sen tekemisessä.
+</p>
+
+<p>
+  Kokeen tekemiseen on sen aloitushetkestä aikaa 48 tuntia. Koe tulee aloittaa 21.11. klo 23:59 mennessä.
+</p>
+
+<p>
+  Kokeen aloittaminen tapahtuu asettamalla NetBeansissa TMC:n osoitteeksi (server address) <code>https://tmc.mooc.fi/org/hy/courses/268</code> ja valitsemalla kurssilistasta kurssi <code>hy-ohja-s17-konekoe1</code>. Tämän jälkeen TMC lataa tehtäväpohjan "KonekoeOhjaOhjeet".
+</p>
+
+<p>
+  Tämän jälkeen tehtäväpohjassa olevaa koodia tulee muokata muotoon, missä tehtävä tulostaa merkkijonon "aloita". Kun tehtävän palauttaa ja se läpäisee palvelimella olevat testit (testit tarkastavat, että tulostus on "aloita"), TMC tarjoaa ladattavaksi konekokeen tehtäviä. Samalla konekokeen aika alkaa. Konekokeen tehtävänannot löytyvät TMCn ladattavaksi tarjoamista tehtäväpohjista.
+</p>
+
+<p>
+  Muistathan palauttaa tehtävät kun saat ne valmiiksi. tehtävät niitä tehdessäsi sekä tehtävien tekemisen
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Toinen koe
+<% end %>
 
 <p>
   Kurssin toinen koe järjestetään koeviikon aikana Kumpulan kampuksella, missä koe tehdään mikroluokissa. Kumpulan kampuksella järjestettävä koe kestää kaksi ja puoli tuntia, ja sen voi tehdä joko omalla koneella tai Kumpulan kampuksen koneella. Koetilanteessa valvojat osaavat neuvoa Kumpulan kampuksen koneisiin liittyvissä pulmissa -- tukea oman koneen käyttöön koetilanteessa ei ole.
