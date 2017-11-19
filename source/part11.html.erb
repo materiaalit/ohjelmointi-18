@@ -2,7 +2,7 @@
   title: Osa 11
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 <% partial 'partials/hint', locals: { name: 'Yhdennentoista osan tavoitteet' } do %>
@@ -12,10 +12,6 @@
   </p>
 
 <% end %>
-
-<p>
-  TODO: download declared dependencies
-</p>
 
 <% partial 'partials/material_heading' do %>
   Graafiset käyttöliittymät
@@ -30,7 +26,27 @@
 </p>
 
 <p>
-  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank" rel="noopener">JavaFX</a> käyttöliittymäkirjastoa. Yksinkertaisen ikkunan luominen onnistuu JavaFX:n avulla seuraavanlaisella ohjelmalla.
+  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank" rel="noopener">JavaFX</a> käyttöliittymäkirjastoa.
+</p>
+
+<% partial 'partials/hint', locals: { name: 'JavaFx ja Maven' } do %>
+
+  <p>
+    Yhdennessätoista osassa käytetään JavaFx-nimistä kirjastoa. Linux-koneilla joudut -- riippuen Javan asennuksesta -- asentamaan myös openjfx-kirjaston. Tämän asentaminen onnistuu Ubuntussa (komentoriviltä) komennolla:
+  </p>
+
+  <pre>
+  sudo apt-get install openjfx
+  </pre>
+
+  <p>
+    Tehtäväpohjissa käytetään JavaFx-ohjelmien testaamiseen <a href="https://github.com/TestFX/TestFX/wiki" target="_blank" norel>TestFX</a>-nimistä apukirjastoa. Kun aloitat tehtävien tekemisen, joutunet valitsemaan NetBeansissa tehtäväpohjan kohdalla "Download declared dependencies."
+  </p>
+  
+<% end %>
+
+<p>
+  Yksinkertaisen ikkunan luominen onnistuu JavaFX:n avulla seuraavanlaisella ohjelmalla.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -52,6 +68,8 @@ public class JavaFxSovellus extends Application {
     }
 }
 <% end %>
+
+
 
 <p>
   Kun ohjelman käynnistää, sovellus näyttää seuraavalta.
@@ -1264,11 +1282,4 @@ public class AnimaationAlku extends Application {
 <% end %>
 
 
-
-<p>
-  TODO: osaamistavoitteiden lisääminen
-</p>
-
-
-
-<%= partial 'partials/quiz', locals: { id: '58de612b05122400044b0e2a' } %>
+<%= partial 'partials/quiz', locals: { id: '5a11fb7f23571900049f64ed' } %>
