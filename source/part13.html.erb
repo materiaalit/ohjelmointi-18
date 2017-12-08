@@ -600,8 +600,10 @@ public class AudioClipApplication extends Application {
           Polygon alus = new Polygon(-5, -5, 10, 0, -5, 5);
           alus.setTranslateX(300);
           alus.setTranslateY(200);
+          
+          ruutu.getChildren().add(alus);
   
-          Scene scene = new Scene(alus);
+          Scene scene = new Scene(ruutu);
           stage.setTitle("Asteroids!");
           stage.setScene(scene);
           stage.show();
