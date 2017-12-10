@@ -19,6 +19,7 @@
     Tässä tehtäväsarjassa tehdään luokat <code>Tavara</code>, <code>Matkalaukku</code> ja <code>Lastiruuma</code>, joiden avulla harjoitellaan olioita, jotka sisältävät toisia olioita.
   </p>
 
+  
   <h2>Tavara-luokka</h2>
 
   <p>
@@ -48,7 +49,7 @@
     Seuraavassa on luokan käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -61,18 +62,18 @@ public class Main {
         System.out.println("Puhelin: " + puhelin);
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Kirjan nimi: Aapiskukko
 Kirjan paino: 2
 Kirja: Aapiskukko (2 kg)
 Puhelin: Nokia 3210 (1 kg)
-  </pre>
+  <% end %>
 
   
   <h2>Matkalaukku-luokka</h2>
@@ -101,9 +102,9 @@ Puhelin: Nokia 3210 (1 kg)
     Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 ArrayList&lt;Tavara&gt; tavarat = new ArrayList&lt;Tavara&gt;();
-  </pre>
+  <% end %>
 
   <p>
     Luokan <code>Matkalaukku</code> tulee valvoa, että sen sisältämien tavaroiden yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi lisättävän tavaran vuoksi, metodi <code>lisaaTavara</code> ei saa lisätä uutta tavaraa laukkuun.
@@ -113,7 +114,7 @@ ArrayList&lt;Tavara&gt; tavarat = new ArrayList&lt;Tavara&gt;();
     Seuraavassa on luokan käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -133,18 +134,18 @@ public class Main {
         System.out.println(matkalaukku);
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 0 tavaraa (0 kg)
 1 tavaraa (2 kg)
 2 tavaraa (3 kg)
 2 tavaraa (3 kg)
-  </pre>
+  <% end %>
 
 
   <h2>Kielenhuoltoa</h2>
@@ -157,12 +158,12 @@ public class Main {
     Nyt edellisen ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 ei tavaroita (0 kg)
 1 tavara (2 kg)
 2 tavaraa (3 kg)
 2 tavaraa (3 kg)
-  </pre>
+  <% end %>
 
   <h2>Kaikki tavarat</h2>
 
@@ -183,7 +184,7 @@ ei tavaroita (0 kg)
     Seuraavassa on luokan käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -200,19 +201,19 @@ public class Main {
         System.out.println("Yhteispaino: " + matkalaukku.yhteispaino() + " kg");
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Matkalaukussa on seuraavat tavarat:
 Aapiskukko (2 kg)
 Nokia 3210 (1 kg)
 Tiiliskivi (4 kg)
 Yhteispaino: 7 kg
-  </pre>
+  <% end %>
 
   <p>
     Muokkaa myös luokkaasi siten, että käytät vain kahta oliomuuttujaa. Toinen sisältää maksimipainon, toinen on lista laukussa olevista tavaroista.
@@ -229,7 +230,7 @@ Yhteispaino: 7 kg
     Seuraavassa on luokan käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -245,15 +246,15 @@ public class Main {
         System.out.println("Raskain tavara: " + raskain);
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Raskain tavara: Tiiliskivi (4 kg)
-  </pre>
+  <% end %>
 
   
   <h2>
@@ -288,7 +289,7 @@ Raskain tavara: Tiiliskivi (4 kg)
     Seuraavassa on luokan käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -309,15 +310,15 @@ public class Main {
         System.out.println(lastiruuma);
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 2 matkalaukkua (7 kg)
-  </pre>
+  <% end %>
 
   
   <h2>Lastiruuman sisältö</h2>
@@ -330,7 +331,7 @@ public class Main {
     Seuraavassa on luokan käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Tavara kirja = new Tavara("Aapiskukko", 2);
@@ -352,18 +353,18 @@ public class Main {
         lastiruuma.tulostaTavarat();
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostuksen tulisi olla seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Ruuman matkalaukuissa on seuraavat tavarat:
 Aapiskukko (2 kg)
 Nokia 3210 (1 kg)
 tiiliskivi (4 kg)
-  </pre>
+  <% end %>
 
   
   <h2>Paljon tiiliskiviä</h2>
@@ -376,7 +377,7 @@ tiiliskivi (4 kg)
     Ohjelman runko on seuraava:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Main {
     public static void main(String[] args) {
         Lastiruuma lastiruuma = new Lastiruuma(1000);
@@ -388,15 +389,15 @@ public class Main {
         // 100 matkalaukun lisääminen, jokaiseen tulee tiiliskivi
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman tulostus on seuraava:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 44 matkalaukkua (990 kg)
-  </pre>
+  <% end %>
 
 <% end %>
 
@@ -440,11 +441,11 @@ public class Main {
     Muuton yhteydessa tarvitaan muuttolaatikoita. Laatikoihin talletetaan erilaisia esineitä. Kaikkien laatikoihin talletettavien esineiden on toteutettava seuraava rajapinta:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public interface Talletettava {
     double paino();
 }
-  </pre>
+  <% end %>
 
   <p>
     Lisää rajapinta ohjelmaasi. Rajapinta lisätään melkein samalla tavalla kuin luokka, <i>new Java class</i> sijaan valitaan <em>new Java interface</em>.
@@ -458,7 +459,7 @@ public interface Talletettava {
     Muista toteuttaa luokilla myös rajapinta <code>Talletettava</code>. Luokkien tulee toimia seuraavasti:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
     public static void main(String[] args) {
         Kirja kirja1 = new Kirja("Fedor Dostojevski", "Rikos ja Rangaistus", 2);
         Kirja kirja2 = new Kirja("Robert Martin", "Clean Code", 1);
@@ -475,20 +476,20 @@ public interface Talletettava {
         System.out.println(cd2);
         System.out.println(cd3);
     }
-  </pre>
+  <% end %>
 
   <p>
     Tulostus:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Fedor Dostojevski: Rikos ja Rangaistus
 Robert Martin: Clean Code
 Kent Beck: Test Driven Development
 Pink Floyd: Dark Side of the Moon (1973)
 Wigwam: Nuclear Nightclub (1975)
 Rendezvous Park: Closer to Being Here (2012)
-  </pre>
+  <% end %>
 
   <p>
     Huom! Painoa ei ilmoiteta tulostuksessa.
@@ -505,7 +506,7 @@ Rendezvous Park: Closer to Being Here (2012)
     Seuraavassa esimerkki laatikon käytöstä:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
     public static void main(String[] args) {
         Laatikko laatikko = new Laatikko(10);
 
@@ -519,15 +520,15 @@ Rendezvous Park: Closer to Being Here (2012)
 
         System.out.println( laatikko );
     }
-  </pre>
+  <% end %>
 
   <p>
     Tulostuu
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Laatikko: 6 esinettä, paino yhteensä 4.0 kiloa
-  </pre>
+  <% end %>
 
   <p>
     Huom: koska painot esitetään doubleina, saattaa laskutoimituksissa tulla pieniä pyöristysvirheitä. Tehtävässä ei tarvitse välittää niistä.
@@ -540,7 +541,7 @@ Laatikko: 6 esinettä, paino yhteensä 4.0 kiloa
     Jos teit laatikon sisälle oliomuuttujan <code>double paino</code>, joka muistaa laatikossa olevien esineiden painon, korvaa se metodilla, joka laskee painon:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public class Laatikko {
     //...
 
@@ -550,7 +551,7 @@ public class Laatikko {
         return paino;
     }
 }
-  </pre>
+  <% end %>
 
   <p>
     Kun tarvitset laatikon sisällä painoa esim. uuden tavaran lisäyksen yhteydessä, riittää siis kutsua laatikon painon laskevaa metodia.
@@ -615,20 +616,20 @@ public class Laatikko {
     Kokeile luokan <code>Elio</code> toimintaa seuraavalla esimerkkikoodilla.
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
      Elio elio = new Elio(20, 30);
      System.out.println(elio);
      elio.siirra(-10, 5);
      System.out.println(elio);
      elio.siirra(50, 20);
      System.out.println(elio);
-  </pre>
+  <% end %>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 x: 20; y: 30
 x: 10; y: 35
 x: 60; y: 55
-  </pre>
+  <% end %>
 
   
   <h2>Lauman toteutus</h2>
@@ -657,21 +658,21 @@ x: 60; y: 55
     Kokeile ohjelmasi toimintaa alla olevalla esimerkkikoodilla.
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
     Lauma lauma = new Lauma();
     lauma.lisaaLaumaan(new Elio(73, 56));
     lauma.lisaaLaumaan(new Elio(57, 66));
     lauma.lisaaLaumaan(new Elio(46, 52));
     lauma.lisaaLaumaan(new Elio(19, 107));
     System.out.println(lauma);
-  </pre>
+  <% end %>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 x: 73; y: 56
 x: 57; y: 66
 x: 46; y: 52
 x: 19; y: 107
-  </pre>
+  <% end %>
 
 <% end %>
 
@@ -687,7 +688,7 @@ x: 19; y: 107
     Käytössämme on seuraava rajapinta:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public interface Sensori {
     boolean onPaalla();  // palauttaa true jos sensori on päällä
     void paalle();       // käynnistä sensorin
@@ -695,7 +696,7 @@ public interface Sensori {
     int mittaa();        // palauttaa sensorin lukeman jos sensori on päällä
                          // jos sensori ei päällä heittää poikkeuksen IllegalStateException
 }
-  </pre>
+  <% end %>
 
   
   <h2>Vakiosensori</h2>
@@ -712,7 +713,7 @@ public interface Sensori {
     Esimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public static void main(String[] args) {
   Vakiosensori kymppi = new Vakiosensori(10);
   Vakiosensori miinusViis = new Vakiosensori(-5);
@@ -724,18 +725,18 @@ public static void main(String[] args) {
   kymppi.poisPaalta();
   System.out.println( kymppi.onPaalla() );
 }
-  </pre>
+  <% end %>
 
   <p>
     Tulostuu:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 10
 -5
 true
 true
-  </pre>
+  <% end %>
 
   
   <h2>Lampomittari</h2>
@@ -771,7 +772,7 @@ true
     Seuraavassa sensoreja käyttävä esimerkkiohjelma (huomaa, että sekä Lämpömittarin että Keskiarvosensorin konstruktorit ovat parametrittomia):
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public static void main(String[] args) {
     Sensori kumpula = new Lampomittari();         
     kumpula.paalle();
@@ -788,16 +789,16 @@ public static void main(String[] args) {
     paakaupunki.paalle();
     System.out.println("lämpötila Pääkaupunkiseudulla "+paakaupunki.mittaa() + " astetta");     
 }
-  </pre>
+  <% end %>
 
   <p>
     tulostuu (tulostetut lukuarvot riippuvat tietenkin arvotuista lämpötiloista):
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 lämpötila Kumpulassa -7 astetta
 lämpötila Pääkaupunkiseudulla -10 astetta
-  </pre>
+  <% end %>
 
   <p>
     <b>Huom:</b> kannattaa käyttää Vakiosensori-oliota keskiarvosensorin testaamiseen!
@@ -810,7 +811,7 @@ lämpötila Pääkaupunkiseudulla -10 astetta
     Lisää luokalle Keskiarvosensori metodi <code>public List&lt;Integer&gt; mittaukset()</code>, joka palauttaa listana kaikkien keskiarvosensorin avulla suoritettujen mittausten tulokset. Seuraavassa esimerkki metodin toiminnasta:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 public static void main(String[] args) {
     Sensori kumpula = new Lampomittari();         
     Sensori kaisaniemi = new Lampomittari();        
@@ -828,19 +829,19 @@ public static void main(String[] args) {
 
     System.out.println("mittaukset: "+paakaupunki.mittaukset());
 }
-  </pre>
+  <% end %>
 
   <p>
     tulostuu (tulostetut lukuarvot riippuvat jälleen arvotuista lämpötiloista):
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 lämpötila Pääkaupunkiseudulla -10 astetta
 lämpötila Pääkaupunkiseudulla -4 astetta
 lämpötila Pääkaupunkiseudulla 5 astetta
 
 mittaukset: [-10, -4, 5]
-  </pre>
+  <% end %>
 
 <% end %>
 
@@ -886,27 +887,27 @@ mittaukset: [-10, -4, 5]
     Projektisi testipakkauksessa on testausta varten tiedosto <em>testitiedosto.txt</em>. Ohjelmasta avatessa tiedoston nimeksi tulee antaa <code>test/testitiedosto.txt</code>. Tiedoston sisältö on seuraava:
   </p> 
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 rivejä tässä on 3 ja merkkejä 
 koska rivinvaihdotkin ovat
 merkkejä
-  </pre>
+  <% end %>
 
   <p>
     Ohjelman toiminta testaustiedostolla:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
     File tiedosto = new File("src/testitiedosto.txt");
     Analyysi analyysi = new Analyysi(tiedosto);
     System.out.println("Rivejä: " + analyysi.rivimaara());
     System.out.println("Merkkejä: " + analyysi.merkkeja());
-  </pre>
+  <% end %>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Rivejä: 3
 Merkkejä: 67
-  </pre>
+  <% end %>
 
 <% end %>
 
@@ -975,18 +976,18 @@ Merkkejä: 67
     Käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
         Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
         mehu.lisaaVarastoon(1000.0);
         mehu.otaVarastosta(11.3);
         System.out.println(mehu.getNimi()); // Juice
         System.out.println(mehu);           // saldo = 988.7, tilaa 11.3
-  </pre>
+  <% end %>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Juice
 saldo = 988.7, vielä tilaa 11.3
-  </pre>
+  <% end %>
 
 
   <h2>Tuotevarasto, vaihe 2</h2>
@@ -1017,19 +1018,19 @@ saldo = 988.7, vielä tilaa 11.3
     Käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
         Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
         mehu.lisaaVarastoon(1000.0);
         mehu.otaVarastosta(11.3);
         System.out.println(mehu.getNimi()); // Juice
         mehu.lisaaVarastoon(1.0);
         System.out.println(mehu);           // Juice: saldo = 989.7, tilaa 10.299999999999955
-  </pre>
+  <% end %>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Juice
 Juice: saldo = 989.7, tilaa 10.299999999999955
-  </pre>
+  <% end %>
 
 
   <h2>Muutoshistoria</h2>
@@ -1141,7 +1142,7 @@ Juice: saldo = 989.7, tilaa 10.299999999999955
     Käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 // tuttuun tapaan:
 MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
 mehu.otaVarastosta(11.3);
@@ -1153,17 +1154,17 @@ System.out.println(mehu);           // Juice: saldo = 989.7, vielä tilaa 10.3
 System.out.println(mehu.historia()); // [1000.0]
    // saadaan siis vasta konstruktorin asettama historian alkupiste...
 ...
-  </pre>
+  <% end %>
 
   <p>
     Tulostus siis:
   </p>
   
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Juice
 Juice: saldo = 989.7, vielä tilaa 10.299999999999955
 [1000.0]
-  </pre>
+  <% end %>
 
 
   <h2>MuistavaTuotevarasto, vaihe 2</h2>
@@ -1185,7 +1186,7 @@ Juice: saldo = 989.7, vielä tilaa 10.299999999999955
     Käyttöesimerkki:
   </p>
 
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 // tuttuun tapaan:
 MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
 mehu.otaVarastosta(11.3);
@@ -1196,17 +1197,17 @@ System.out.println(mehu);           // Juice: saldo = 989.7, vielä tilaa 10.3
 // mutta nyt on historiaakin:
 System.out.println(mehu.historia()); // [1000.0, 988.7, 989.7]
 ...
-  </pre>
+  <% end %>
 
   <p>
     Tulostus siis:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Juice
 Juice: saldo = 989.7, vielä tilaa 10.299999999999955
 [1000.0, 988.7, 989.7]
-  </pre>
+  <% end %>
 
   <p>
     <i>Muista miten korvaava metodi voi käyttää hyväkseen korvattua metodia!</i>
@@ -1228,26 +1229,26 @@ Juice: saldo = 989.7, vielä tilaa 10.299999999999955
     Käyttöesimerkki:
   </p>
   
-  <pre class="sh_java">
+  <% partial 'partials/code_highlight' do %>
 MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
 mehu.otaVarastosta(11.3);
 mehu.lisaaVarastoon(1.0);
 //System.out.println(mehu.historia()); // [1000.0, 988.7, 989.7]
 
 mehu.tulostaAnalyysi();
-  </pre>
+  <% end %>
   
   <p>
     Metodi <i>tulostaAnalyysi</i> kirjoittaa ilmoituksen tyyliin:
   </p>
 
-  <pre>
+  <% partial 'partials/sample_output' do %>
 Tuote: Juice
 Historia: [1000.0, 988.7, 989.7]
 Suurin tuotemäärä: 1000.0
 Pienin tuotemäärä: 988.7
 Keskiarvo: 992.8
-  </pre>
+  <% end %>
 
 
   <h2>MuistavaTuotevarasto, vaihe 4</h2>
