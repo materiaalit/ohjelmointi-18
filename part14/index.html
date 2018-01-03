@@ -1,0 +1,4007 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, syksy 2017 | Osa 14</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-d08f7ac6.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part8/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part8.html&gt;')">Osa 8</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part9/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part9.html&gt;')">Osa 9</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part10/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part10.html&gt;')">Osa 10</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part11/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part11.html&gt;')">Osa 11</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part12/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part12.html&gt;')">Osa 12</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part13/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part13.html&gt;')">Osa 13</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part14.html&gt;')">Osa 14</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../partX/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=partX.html&gt;')">Osa X</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          <div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Neljännentoista osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+      
+  <p>
+    Osaa käyttää yksi- ja kaksiulotteisia taulukoita. Tuntee joitakin järjestys- ja hakualgoritmeja. Tietää miten paljon käytetyt ArrayList ja HashMap toimivat. Tietää aikaan perustuvan tavan tietorakenteiden toiminnallisuuden vertailuun. Tuntee testivetoisen ohjelmistokehityksen perusajatuksen. Tietää ohjelmoinnin jatkokurssin jälkeen otettavia kursseja.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Taulukko
+
+</h1>
+
+<p>
+  ArrayList tarjoaa paljon ohjelmoijan elämää helpottavia valmiita metodeja ja toiminnallisuuksia. Näistä ehkäpä tärkein liittyy arvon lisäämiseen listalle: ohjelmoijan näkökulmasta listan koko ei ole rajoitettu. Todellisuudessa listat ovat olioita siinä missä muutkin oliot, ja listaa -- kuten muitakin olioita -- luodessa sille varataan rajattu tila muistista. Listan metodit ovat toteutettu siten, että rajatun tilan loppuessa metodi varaa suuremman tilan listan käyttöön.
+</p>
+
+<p>
+  ArrayListin helppokäyttöisyydesta huolimatta ohjelmissa on joskus tarvetta ArrayListin esi-isälle eli <strong>taulukolle</strong>.
+</p>
+
+<p>
+  Taulukko on olio, joka sisältää rajatun määrän numeroituja paikkoja arvoille. Taulukon pituus (tai koko) on siinä olevien paikkojen lukumäärä, eli kuinka monta arvoa taulukkoon voi laittaa. Taulukon arvoja kutsutaan taulukon <strong>alkioiksi</strong>.
+</p>
+
+<p>
+  Taulukon voi luoda kahdella eri tavalla. Tutustutaan ensin tapaan, jossa taulukon koko määritellään eksplisiittisesti taulukon luonnin yhteydessä. Kolme kokonaislukualkiota sisältävä taulukko-olio määritellään seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = new int[3];
+</code></pre>
+
+<p>
+  Taulukkotyyppi määritellään hakasuluilla, jotka tulevat taulukon sisältämien alkioiden tyypin jälkeen (alkioidentyyppi[]). Olion luominen tapahtuu <code>new</code>-kutsulla, jota seuraa taulukon alkioiden tyyppi, hakasulut, sekä hakasulkujen sisään taulukon alkioiden lukumäärä.
+</p>
+
+
+
+<h2 class="material-heading">
+    Taulukon alkioon viittaus ja arvon asetus
+
+</h2>
+
+<p>
+  Taulukon alkioihin viitataan taulukon indeksien perusteella. Alla olevassa esimerkissä luodaan kolmepaikkainen kokonaislukutaulukko, jonka jälkeen taulukon indekseihin 0 ja 2 asetetaan arvot. Tämän jälkeen arvot tulostetaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = new int[3];
+luvut[0] = 2;
+luvut[2] = 5;
+
+System.out.println(luvut[0]);
+System.out.println(luvut[2]);
+</code></pre>
+
+<pre class="sample-output">2
+5
+</pre>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int[] luvut = new int[3];\n        luvut[0] = 2;\n        luvut[2] = 5;\n\n        System.out.println(luvut[0]);\n        System.out.println(luvut[2]);\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"5","frame_id":5}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",0,0,0]}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",2,0,0]}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",2,0,5]}},{"stdout":"2\n","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",2,0,5]}},{"stdout":"2\n5\n","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"26","frame_id":26}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",2,0,5]}},{"stdout":"2\n5\n","event":"return","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luvut":["REF",143],"__return__":["VOID"]},"ordered_varnames":["luvut","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",2,0,5]}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+<p>
+  Yksittäisen arvon asettaminen taulukon tiettyyn paikkaan tapahtuu siis kuten arvon asetus tavalliseen muuttujaan, mutta taulukkoon asetettaessa kerrotaan indeksi. Indeksi kerrotaan hakasulkeiden sisällä. Huomaat todennäköisesti myös että ArrayListin metodi <code>get</code> käyttäytyy hyvin samalla tavalla kuin taulukon tietystä indeksistä haku. Taulukon kohdalla vain syntaksi, eli merkintätapa, on erilainen.
+</p>
+
+<p>
+  Indeksi on kokonaisluku, jonka arvo on välillä [0, taulukon pituus - 1]. Esimerkiksi viiden alkion pituisessa taulukossa on indeksit 0, 1, 2, 3, ja 4.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+int[] luvut = new int[5];
+luvut[0] = 42;
+luvut[1] = 13;
+luvut[2] = 12;
+luvut[3] = 7;
+luvut[4] = 1;
+
+System.out.println("Mistä indeksistä haetaan? ");
+int indeksi = Integer.parseInt(lukija.nextLine());
+
+System.out.println(luvut[indeksi]);
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Alkioiden arvojen vaihtaminen</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjaan on toteutettu valmiiksi ohjelma, missä luodaan taulukko sekä tulostetaan taulukon arvot kahteen kertaan. Muokkaa ohjelmaa siten, että sen jälkeen kun taulukon arvot on tulostettu ensimmäiseen kertaan, käyttäjältä kysytään kahta indeksiä, joiden osoittamat arvot vaihdetaan taulukossa päittäin. Tämän jälkeen alkiot tulee vaihtaa päittäin ja taulukon arvot tulostaa toiseen kertaan.
+  </p>
+
+<pre class="sample-output">1
+3
+5
+7
+9
+
+Mitkä indeksit vaihdetaan?
+<font color="red">2</font>
+<font color="red">4</font>
+
+1
+3
+9
+7
+5
+</pre>
+
+
+<pre class="sample-output">1
+3
+5
+7
+9
+
+Mitkä indeksit vaihdetaan?
+<font color="red">0</font>
+<font color="red">1</font>
+
+3
+1
+5
+7
+9
+</pre>
+
+  <p>
+    Voit olettaa, että käyttäjän syöttämät indeksit löytyvät taulukosta.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Taulukon koko ja läpikäynti
+
+</h2>
+
+<p>
+  Taulukko-olion koon saa selville taulukko-olioon liittyvän julkisen oliomuuttujan <code>length</code> avulla. Julkiseen oliomuuttujaan pääsee käsiksi kirjoittamalla olion nimi piste muuttujan nimi, eli esimerkiksi <code>taulukko.length</code>. Huomaa, että kyseessä ei ole metodikutsu, eli <code>taulukko.length()</code> ei toimi.
+</p>
+
+<p>
+  Taulukon alkioiden läpikäynti voidaan toteuttaa while-toistolauseen avulla.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = new int[4];
+luvut[0] = 42;
+luvut[1] = 13;
+luvut[2] = 12;
+luvut[3] = 7;
+
+System.out.println("Taulukossa on " + luvut.length + " alkiota.");
+
+int indeksi = 0;
+while (indeksi &lt; luvut.length) {
+    System.out.println(luvut[indeksi]);
+    indeksi++;
+}
+</code></pre>
+
+
+<pre class="sample-output">Taulukossa on 4 alkiota.
+42
+13
+12
+7
+</pre>
+
+<p>
+  Yllä olevassa esimerkissä käydään indeksimuuttujan avulla läpi indeksit 0, 1, 2 ja 3, ja tulostetaan taulukon kussakin indeksissä olevan muuttujan arvo. Ensin siis tulostuu <code>luvut[0]</code>, sitten <code>luvut[1]</code> jne. Taulukon läpikäynti loppuu kun muuttujan toistolauseen ehtolause <code>indeksi &lt luvut.length</code> on totta, eli kun indeksimuuttujan arvo on suurempi tai yhtäsuuri kuin taulukon pituus.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int[] luvut = new int[4];\n        luvut[0] = 42;\n        luvut[1] = 13;\n        luvut[2] = 12;\n        luvut[3] = 7;\n\n        System.out.println(\"Taulukossa on \" + luvut.length + \" alkiota.\");\n\n        int indeksi = 0;\n        while (indeksi < luvut.length) {\n            System.out.println(luvut[indeksi]);\n            indeksi++;\n        }\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"5","frame_id":5}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",0,["ELIDE",2],0]}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,0,0,0]}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,0,0]}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"20","frame_id":20}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,0]}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"luvut":["REF",143]},"ordered_varnames":["luvut"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"luvut":["REF",143],"indeksi":0},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"luvut":["REF",143],"indeksi":0},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"35","frame_id":35}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":0},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":1},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"luvut":["REF",143],"indeksi":1},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"luvut":["REF",143],"indeksi":1},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"48","frame_id":48}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":1},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":2},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"55","frame_id":55}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"luvut":["REF",143],"indeksi":2},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"luvut":["REF",143],"indeksi":2},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"61","frame_id":61}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":2},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"67","frame_id":67}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":3},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"68","frame_id":68}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"luvut":["REF",143],"indeksi":3},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"69","frame_id":69}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"luvut":["REF",143],"indeksi":3},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"74","frame_id":74}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n7\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":3},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"80","frame_id":80}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n7\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luvut":["REF",143],"indeksi":4},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"81","frame_id":81}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n7\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"luvut":["REF",143],"indeksi":4},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"82","frame_id":82}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n7\n","event":"step_line","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"luvut":["REF",143],"indeksi":4},"ordered_varnames":["luvut","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"87","frame_id":87}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}},{"stdout":"Taulukossa on 4 alkiota.\n42\n13\n12\n7\n","event":"return","line":16,"stack_to_render":[{"func_name":"main:16","encoded_locals":{"luvut":["REF",143],"indeksi":4,"__return__":["VOID"]},"ordered_varnames":["luvut","indeksi","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"89","frame_id":89}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",42,13,12,7]}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Etsityn alkion indeksi</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on valmiina taulukko, joka sisältää lukuja. Täydennä ohjelmaa siten, että käyttäjältä kysyttyä lukua etsitään taulukosta. Jos luku löytyy taulukosta, ohjelma kertoo luvun indeksin. Jos lukua taas ei löydy taulukosta, ohjelma kertoo ettei lukua löydy.
+  </p>
+
+<pre class="sample-output">Mitä etsitään? <font color="red">3</font>
+Luku 3 löytyy indeksistä 4.
+</pre>
+
+<pre class="sample-output">Mitä etsitään? <font color="red">7</font>
+Luku 7 löytyy indeksistä 7.
+</pre>
+
+<pre class="sample-output">Mitä etsitään? <font color="red">22</font>
+Lukua 22 ei löydy.
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Jos indeksillä osoitetaan taulukon ohi, eli alkioon jota ei ole olemassa, niin saadaan virheilmoitus <strong>ArrayIndexOutOfBoundsException</strong>. Virhe ArrayIndexOutOfBoundsException kertoo että taulukossa ei ole haluttua indeksiä. Taulukon ohi, eli indeksiin joka on pienempi kuin 0 tai suurempi tai yhtäsuuri kuin taulukon koko ei saa viitata.
+</p>
+
+
+
+<p>
+  Seuraavassa esimerkissä on ohjelma, joka kysyy käyttäjältä lukujen määrän ja joukon lukuja. Tämän jälkeen ohjelma tulostaa luvut uudestaan samassa järjestyksessä. Käyttäjän antamat luvut tallennetaan taulukkoon.
+</p>
+
+<pre class="sh_java code-highlight"><code>System.out.print("Kuinka monta lukua? ");
+int lukuja = Integer.parseInt(lukija.nextLine());
+
+int[] luvut = new int[lukuja];
+
+System.out.println("Anna luvut:");
+
+int indeksi = 0;
+while (indeksi &lt; luvut.length) {
+    luvut[indeksi] = Integer.parseInt(lukija.nextLine());
+    indeksi++;
+}
+
+
+System.out.println("Luvut uudestaan:");
+
+indeksi = 0;
+while (indeksi &lt; luvut.length) {
+    System.out.println(luvut[indeksi]);
+    indeksi++;
+}
+</code></pre>
+
+<p>Eräs ohjelman suorituskerta voisi olla seuraavanlainen:</p>
+
+<pre class="sample-output">Kuinka monta lukua? <span class="red">4</span>
+Anna luvut:
+<span class="red">4</span>
+<span class="red">8</span>
+<span class="red">2</span>
+<span class="red">1</span>
+Luvut uudestaan:
+4
+8
+2
+1
+</pre>
+
+
+
+
+<h2 class="material-heading">
+    Taulukon alkioiden tyyppi
+
+</h2>
+
+<p>
+  Taulukko-olion esittely tapahtuu kertomalla ensin taulukko-olion sisältämien alkioiden tyyppi, jota seuraa hakasulut (alkiontyyppi[]). Taulukko-olion alkiot voivat siis olla käytännössä minkä tahansa tyyppisiä. Alla muutamia esimerkkejä:
+</p>
+
+<pre class="sh_java code-highlight"><code>String[] kuukaudet = new String[12];
+Henkilo[] ministerit = new Henkilo[14];
+double[] approksimaatiot = new double[100];
+
+kuukaudet[0] = "Tammikuu";
+ministerit[0] = new Henkilo("Miina Sillanpää");
+approksimaatiot[0] = 3.14;
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Round-robin</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tietokoneella voi olla samaan aikaan käynnissä useita ohjelmia, mutta todellisuudessa kaikkien käynnissä olevien ohjelmien lähdekoodia ei suoriteta samaan aikaan. Tietokoneen käyttöjärjestelmä vaihtaa suoritettavaa ohjelmaa jatkuvasti, minkä kautta käyttäjälle tulee illuusio siitä, että ohjelmat olisivat samaan aikaan käynnissä.
+  </p>
+
+  <p>
+    <a href="https://en.wikipedia.org/wiki/Round-robin_scheduling" target="_blank" rel="noopener">Round-robin -algoritmia</a> käytetään tietokoneen ohjelmien aikatauluttamiseen.
+  </p>
+
+  <p>
+    Algoritmin toimintaperiaate on yksinkertainen. Ohjelmista luodaan jono, ja ensimmäisenä jonossa olevaa ohjelmaa suoritetaan hetki, jonka jälkeen suoritettavana ollut ohjelma siirretään jonon perälle. Tämän jälkeen seuraava jonossa ollut ohjelma -- nyt jonon ensimmäinen -- päätyy suoritettavaksi, jonka jälkeen se siirretään jonon perälle jne.
+  </p>
+
+  <p>
+    Tehtäväpohjassa on viisi lukua sisältävä taulukko sekä ohjelmarunko niiden käsittelyyn. Ohjelmarunko tuntee tällä hetkellä kaksi komentoa: "lopeta" lopettaa ohjelman suorituksen ja "tulosta" tulostaa taulukon arvot.
+  </p>
+
+  <p>
+    Lisää ohjelmaan komento "siirra", joka siirtää ensimmäisenä taulukossa olevan arvon taulukon perälle sekä kaikkia muita taulukon arvoja yhden paikan eteenpäin.
+  </p>
+
+<pre class="sample-output"><font color="red">tulosta</font>
+1 3 5 7 9
+<font color="red">siirra</font>
+<font color="red">tulosta</font>
+3 5 7 9 1
+<font color="red">siirra</font>
+<font color="red">siirra</font>
+<font color="red">tulosta</font>
+7 9 1 3 5
+<font color="red">lopeta</font>
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Indekseistä ja muistin rakenteesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Jokaisen ohjelmoijan on hyvä ymmärtää hieman tietokoneohjelman käytössä olevan muistin rakenteesta. Jokainen muuttuja -- on se sitten alkeistyyppinen tai viittaustyyppinen muuttuja -- tallennetaan muistiin. Jokaisella muuttujalla on myös koko, eli tietty määrä bittejä (nollia ja ykkösiä), jonka muuttuja vie muistista. Muuttujan arvo esitetään myös bitteinä.
+  </p>
+
+  <p>
+    Taulukko-olion arvo on viite eli oikeastaan tieto muistipaikasta, missä olion tiedot ovat. Sanomalla <code>taulukko[0]</code> viitataan taulukon ensimmäiseen alkioon. Lausekkeen <code>taulukko[0]</code> voi lukea muodossa "mene taulukon alkuun ja siirry eteenpäin 0 kertaa taulukon sisältämän muuttujan koko -- anna siitä kohdasta eteenpäin muuttujan koon verran tietoa". Vastaavasti <code>taulukko[2]</code> voidaan lukea muodossa "mene taulukon alkuun ja siirry eteenpäin 2 kertaa taulukon sisältämän muuttujan koko -- anna siitä kohdasta eteenpäin muuttujan koon verran tietoa".
+  </p>
+
+  <p>
+    Javassa int-tyyppinen muuttuja on 32-bitin kokoinen ja se voi esittää korkeintaan 2<sup>32</sup>-1 kokoista lukua. Kun luodaan int-taulukko, jossa on esimerkiksi 4 paikkaa, muistista varataan kokonaislukuja varten 4*32 bittiä. Sanomalla int-tyyppiselle taulukolle <code>taulukko[2]</code>, luetaan 32 bittiä alkaen kohdasta taulukon alku + 2 * 32 bittiä.
+  </p>
+
+  <p>
+    Osa ohjelmointikielistä pyrkii varmistamaan, ettei ohjelmoija mene "väärälle alueelle". Jos Java ei aiheuttaisi virhettä sanoessamme <code>taulukko[-1]</code>, saisimme tietoomme ohjelman muistissa juuri ennen taulukkoa olevan tiedon. Kukaan ei tällöin myöskään estäisi kirjoittamasta ohjelmaa, joka lukisi kaiken ohjelman muistissa olevan tiedon ja lähettäisi sen eteenpäin.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Taulukko metodin parametrina
+
+</h2>
+
+<p>
+  Taulukkoja voidaan käyttää metodin parametrina aivan kuten kaikkia muitakin muuttujia. Koska taulukko on olio -- toisinsanoen viittaustyyppinen muuttuja -- taulukon arvo on viite taulukkoon liittyviin tietoihin. Kun taulukkoa käytetään metodin parametrina, metodin käyttöön kopioidaan viite taulukkoon.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Tulostaja {
+    public static void listaaAlkiot(int[] kokonaislukuTaulukko) {
+        System.out.println("taulukon alkiot ovat: ");
+
+        int indeksi = 0;
+        while (indeksi &lt; kokonaislukuTaulukko.length) {
+            int luku = kokonaislukuTaulukko[indeksi]
+            System.out.print(luku + " ");
+            indeksi++;
+        }
+
+        System.out.println("");
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = new int[3];
+luvut[0] = 1;
+luvut[1] = 2;
+luvut[2] = 3;
+
+new Tulostaja().listaaAlkiot(luvut);
+</code></pre>
+
+
+<pre class="sample-output">1
+2
+3
+</pre>
+
+<p>
+  Kuten olemme aiemmin jo huomanneet, parametrin nimi metodin sisällä voi olla aivan vapaasti valittu, nimen ei tarvitse missään tapauksessa olla sama kuin kutsuvassa. Edellä taulukkoa kutsutaan metodin sisällä nimellä <code>kokonaislukuTaulukko</code>, metodin kutsuja taas näkee saman taulukon <code>luvut</code>-nimisenä.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Taulukon lukujen summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Täydennä luokassa Summaaja olevaa metodia <code>public int laskeTaulukonLukujenSumma(int[] taulukko)</code> siten, että se laskee ja palauttaa sille parametrina annetussa taulukossa olevien lukujen summan.
+  </p>
+
+  <p>
+    Voit kokeilla lukujen summan laskemista esimerkiksi seuraavalla esimerkkikoodilla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        // Tässä voit testata metodia
+        int[] taulukko = {5, 1, 3, 4, 2};
+        System.out.println(new Summaaja().laskeTaulukonLukujenSumma(taulukko));
+    }
+}
+</code></pre>
+
+<pre class="sample-output">15
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Taulukko tähtinä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Täydennä luokassa Tulostin olevaa metodia <code>public void tulostaTaulukkoTahtina(int[] taulukko)</code>, siten, että se tulostaa jokaista taulukossa olevaa lukua vastaavan pituisen rivin tähtiä.
+  </p>
+
+  <p>
+    Voit kokeilla tulostusta esimerkiksi seuraavalla esimerkkikoodilla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        // Tässä voit testata metodia
+        int[] taulukko = {5, 1, 3, 4, 2};
+        new Tulostin().tulostaTaulukkoTahtina(taulukko);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">*****
+*
+***
+****
+**
+</pre>
+
+  <p>
+    Eli koska taulukon nollannessa paikassa on luku 5, tulee ensimmäiselle riville 5 tähteä. Seuraavalla 1 tähti jne.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tyylikäs tulostus</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+
+  <p>
+    Täydennä luokan TaulukonTulostaja metodia <code>public void tulostaTyylikkaasti(int[] taulukko)</code> siten, että metodi tulostaa parametrina saamansa taulukon luvut tyylikkäästi. Lukujen väliin tulee pilkku ja välilyönti. Viimeisen luvun jälkeen ei  pilkkua tule.
+  </p>
+
+  <p>
+    Voit kokeilla tulostusta esimerkiksi seuraavalla esimerkkikoodilla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        // Tässä voit testata metodia
+        int[] taulukko = {5, 1, 3, 4, 2};
+        new TaulukonTulostaja().tulostaTyylikkaasti(taulukko);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">5, 1, 3, 4, 2
+</pre>
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Koska metodin käyttöön kopioidaan viite taulukkoon, kaikki metodissa tapahtuvat taulukon sisältöön vaikuttavat muutokset ovat olemassa myös metodin suorituksen jälkeen.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Kasvattaja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Täydennä luokassa LukujenKasvattaja olevaa metodia <code>public void kasvata(int[] taulukko, int paljonko)</code> siten, että se kasvatta jokaista parametrina saadun taulukon alkiota toisena parametrina saadun luvun arvolla.
+  </p>
+
+  <p>
+    Voit kokeilla kasvatusta esimerkiksi seuraavalla esimerkkikoodilla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Arrays;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // Tässä voit testata metodia
+        int[] taulukko = {5, 1, 3, 4, 2};
+        System.out.println(Arrays.toString(taulukko));
+        new LukujenKasvattaja().kasvata(taulukko, 3);
+        System.out.println(Arrays.toString(taulukko));
+    }
+}
+</code></pre>
+
+<pre class="sample-output">[5, 1, 3, 4, 2]
+[8, 4, 6, 7, 5]
+</pre>
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Taulukko metodin paluuarvona
+
+</h2>
+
+<p>
+  Koska metodit voivat palauttaa olioita, voivat ne palauttaa myös taulukkoja. Eräs merkkijonotaulukon palauttava metodi on seuraavannäköinen -- huomaa että taulukkoihin voi aivan hyvin siis laittaa myös olioita.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Taulukkotehdas {
+
+    public String[] annaMerkkijonoTaulukko() {
+        String[] opet = new String[3];
+
+        opet[0] = "Bonus";
+        opet[1] = "Ihq";
+        opet[2] = "Lennon";
+
+        return opet;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>String[] opettajat = new Taulukkotehdas().annaMerkkijonoTaulukko();
+
+int indeksi = 0;
+while (indeksi &lt; opettajat.length) {
+    System.out.println(opettajat[indeksi]);
+    indeksi++;
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Kopiointi ja kääntäminen (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <h2>Kopiointi</h2>
+
+  <p>
+    Tee luokkaan Taulukot metodi <code>public int[] kopioi(int[] taulukko)</code> joka luo kopion parametrina saadusta taulukosta. <strong>Vihje:</strong> koska metodin on luotava taulukosta kopio, tulee metodin sisällä luoda uusi taulukko ja kopioida vanhan taulukon sisältö uudelle taulukolle alkio alkiolta.
+  </p>
+
+  <p>
+    Seuraavassa esimerkki metodin käytöstä (koodissa myös Arrays-luokan tarjoama kätevä apuväline taulukon sisällön tulostamiseen):
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int[] alkuperainen = {1, 2, 3, 4};
+    int[] kopio = new Taulukot().kopioi(alkuperainen);
+
+    // muutetaan kopioa
+    kopio[0] = 99;
+
+    // tulostetaan molemmat
+    System.out.println("alkup: " + Arrays.toString(alkuperainen));
+    System.out.println("kopio: " + Arrays.toString(kopio));
+}
+</code></pre>
+
+  <p>
+    Kuten tulostuksesta huomaa, ei kopioon tehty muutos vaikuta alkuperäiseen:
+  </p>
+
+<pre class="sample-output">alkup: [1, 2, 3, 4]
+kopio: [99, 2, 3, 4]
+</pre>
+
+  <h2>Kääntäminen</h2>
+
+  <p>
+    Tee luokkaan Taulukot metodi <code>public int[] kaanna(int[] taulukko)</code>, joka luo käänteisessä järjestyksessä olevan kopion parametrinaan saamastaan taulukosta.
+  </p>
+
+  <p>
+    Eli jos parametrina on taulukko jossa esim. luvut <em>5, 6, 7</em> palauttaa metodi <em>uuden taulukon</em> jonka sisältönä luvut <em>7, 6, 5</em>. Parametrina oleva taulukko ei saa muuttua.
+  </p>
+
+  <p>
+    Seuraavassa esimerkki metodin käytöstä:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int[] alkuperainen = {1, 2, 3, 4};
+    int[] kaannetty = new Taulukot().kaanna(alkuperainen);
+
+    // tulostetaan molemmat
+    System.out.println("alkup: " +Arrays.toString(alkuperainen));
+    System.out.println("käännetty: " +Arrays.toString(kaannetty));
+}
+</code></pre>
+
+  <p>
+    Tulostuksesta pitäisi selvitä, että alkuperäinen taulukko on muuttumaton:
+  </p>
+
+<pre class="sample-output">alkup: [1, 2, 3, 4]
+käännetty: [4, 3, 2, 1]
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<h2 class="material-heading">
+    Taulukko oliomuuttujana
+
+</h2>
+
+<p>
+  Luokka voi sisältää muiden muuttujien lisäksi myös taulukon tai taulukoita oliomuuttujina. Alla oleva esimerkki kuvaa lottoriviä, johon voidaan lisätä numeroita. Jokaisessa lottorivissä on täsmälleen 7 lukua, jotka ovat väliltä 1-40 ja luku ei saa esiintyä rivissä kahdesti. Luokalla on myös toiminnallisuus
+</p>
+
+
+<pre class="sh_java code-highlight"><code>import java.util.Arrays;
+
+public class Lottorivi {
+    private int[] numerot;
+    private int numeroita;
+
+    public Lottorivi() {
+        this.numerot = new int[7];
+        this.numeroita = 0;
+    }
+
+    public void lisaa(int numero) {
+        if (this.numeroita &gt;= this.numerot.length) {
+            System.out.println("Lottorivi on jo täysi!");
+            return;
+        }
+
+        if (this.sisaltaa(numero)) {
+            System.out.println("Numero on jo lottorivissä");
+            return;
+        }
+
+        this.numerot[this.numeroita] = numero;
+        this.numeroita++;
+    }
+
+    public boolean sisaltaa(int numero) {
+        int indeksi = 0;
+        while(indeksi &lt; this.numeroita) {
+            if (this.numerot[indeksi] == numero) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public String toString() {
+        return Arrays.toString(this.numerot);
+    }
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Pino</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Pino on tietorakenne, joka tarjoaa oleellisesti kaksi toimintoa. Pinoon voidaan lisätä tietoa ja siitä voidaan ottaa tietoa. Pinoon lisääminen lisää alkion aina pinon päälle, ja ottaminen poistaa ja palauttaa pinon päällimmäisen arvon.
+  </p>
+
+  <p>
+    Pino-tietorakenne on lähes valmiiksi toteutettuna tehtäväpohjassa mukana tulevaan luokkaan Pino. Siinä on kuitenkin pieni pulma: pinon koko on rajattu. Muokkaa pinon metodia <code>public void kasvata()</code> siten, että sitä kutsuttaessa pinon kapasiteetti kasvaa viidellä. Tee siis niin, että luot uuden taulukon, jossa on 5 paikkaa enemmän kuin vanhassa ja kopioit vanhan taulukon arvot uuteen. Vaihda tämän jälkeen käytössä oleva taulukko kopioon.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Pino p = new Pino();
+p.lisaa("    *");
+p.lisaa("*********");
+p.lisaa(" *******");
+p.lisaa("  *****");
+p.lisaa("   ***");
+p.lisaa("    *");
+
+while (p.koko() &gt; 0) {
+    System.out.println(p.poista());
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>    *
+   ***
+  *****
+ *******
+*********
+    *
+</code></pre>
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Lyhyempi merkintätapa taulukon luomiseen
+
+</h2>
+
+<p>
+  Merkkijono-olioiden lisäksi taulukko-olioiden luomiseen löytyy lyhyempi merkintätapa. Alla olevassa esimerkissä luodaan kolmepaikkainen kokonaislukutaulukko, johon asetetaan arvot 100, 1 ja 42.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {100, 1, 42};
+</code></pre>
+
+<p>
+  Taulukko-olio voidaan siis aiemmin näkemämme new-kutsun lisäksi alustaa myös lohkolla, jossa taulukkoon asetettavat arvot esitellään pilkulla eriteltyinä. Tämä toimii kaikille muuttujatyypeille: alla on esitelty ensin merkkijonoja sisältävä taulukko, jonka jälkeen esitellään liukulukuja sisältävä taulukko.
+</p>
+
+<pre class="sh_java code-highlight"><code>String[] merkkijonotaulukko = {"Matti L.", "Matti P.", "Matti V."};
+double[] liukulukutaulukko = {1.20, 3.14, 100.0, 0.6666666667};
+</code></pre>
+
+
+<p>
+  Lohkoalustusta käytettäessä taulukon koko on aina täsmälleen lohkossa määriteltyjen arvojen määrä. Lohkossa määritellyt arvot asetetaan taulukkoon järjestestyksessä siten, että ensimmäinen arvo asetetaan nollanteen indeksiin, toinen arvo ensimmäiseen indeksiin jne.
+</p>
+
+<pre class="sh_java code-highlight"><code>// indeksi       0   1    2    3   4   5     6     7
+int[] luvut = {100,  1,  42,  23,  1,  1, 3200, 3201};
+
+System.out.println(luvut[0]);  // tulostaa luvun taulukon indeksistä 0, eli luvun 100
+System.out.println(luvut[2]);  // tulostaa luvun taulukon indeksistä 2, eli luvun 42
+</code></pre>
+
+
+<h2 class="material-heading">
+    Kaksiulotteinen taulukko
+
+</h2>
+
+<p>
+  Aiemmat taulukkoesimerkkimme ovat käsitelleet yksiulotteisia taulukoita, missä indeksi kertoo sijainnin yhdessä ulottuvuudessa. Taulukon voi luoda myös useampiulotteisena, jolloin taulukossa olevaa tietoa voi tarkastella useamman indeksin avulla. Tämä on kätevää esimerkiksi silloin, jos tieto on useampiulotteista kuten esimerkiksi koordinaatistossa.
+</p>
+
+<p>
+  Kaksiulotteinen taulukko, jossa on kaksi riviä ja kolme saraketta, luodaan seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+</code></pre>
+
+<p>
+  Yllä luomme taulukon, jonka jokainen rivi viittaa taulukkoon, jossa on tietty määrä sarakkeita. Kaksiulotteisen taulukon läpikäynti onnistuu kahden sisäkkäisen while-toistolauseen avulla seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+int y = 0;
+while (y &lt; kaksiulotteinenTaulukko.length) {
+
+    int x = 0;
+    while (x &lt; kaksiulotteinenTaulukko[y].length) {
+        int arvo = kaksiulotteinenTaulukko[y][x];
+        System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+        x++;
+    }
+
+    y++;
+}
+</code></pre>
+
+<p>
+  Ylläolevan ohjelman tulostus on seuraava.
+</p>
+
+<pre class="sample-output">arvo kohdassa (0, 0): 0
+arvo kohdassa (1, 0): 0
+arvo kohdassa (2, 0): 0
+arvo kohdassa (0, 1): 0
+arvo kohdassa (1, 1): 0
+arvo kohdassa (2, 1): 0
+</pre>
+
+<p>
+  Saatoit yllättyä. Selityksenä tulostukselle on se, että int-tyyppisten muuttujien oletusarvo on 0.
+</p>
+
+<p>
+  Voimme muuttaa taulukon arvoja kuten ennenkin. Alla asetamme kahteen kohtaan uudet arvot.
+</p>
+
+<pre class="sh_java code-highlight"><code>int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+kaksiulotteinenTaulukko[0][1] = 4;
+kaksiulotteinenTaulukko[1][1] = 1;
+kaksiulotteinenTaulukko[1][0] = 8;
+
+
+int y = 0;
+while (y &lt; kaksiulotteinenTaulukko.length) {
+
+    int x = 0;
+    while (x &lt; kaksiulotteinenTaulukko[y].length) {
+        int arvo = kaksiulotteinenTaulukko[y][x];
+        System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+        x++;
+    }
+
+    y++;
+}
+</code></pre>
+
+<p>
+  Nyt tulostus näyttää seuraavalta:
+</p>
+
+<pre class="sample-output">arvo kohdassa (0, 0): 0
+arvo kohdassa (1, 0): 4
+arvo kohdassa (2, 0): 0
+arvo kohdassa (0, 1): 8
+arvo kohdassa (1, 1): 1
+arvo kohdassa (2, 1): 0
+</pre>
+
+<p>
+  Kaksiulotteinen taulukko on oikeastaan <a href="https://fi.wikipedia.org/wiki/Matriisi" target="_blank" rel="noopener">matriisi</a>.  Matriiseja käytetään muunmuassa tietokonegrafiikassa, missä yksittäiset pikselit esitetään matriisin avulla.</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Piirto-ohjelma</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjaan on toteutettu graafinen sovellus, mikä sisältää kaksiulotteisen taulukon. Tehtävänäsi on muuttaa sovelluksen toimintaa siten, että kun käyttäjä painaa hiirtä sovelluksessa tai liikuttaa hiirtä kun nappi on pohjassa, ikkunaan piirretään.
+  </p>
+
+  <p>
+    Tee tätä varten kaksi asiaa: (1) muuta sovelluksessa olevan taulukon "piirrettava" arvoja sopivasti kun käyttäjä käyttää hiirtä, ja (2) piirrä komentoa <code>piirturi(x, y, 2, 2)</code> käyttäen ne alkiot, joiden arvo on 1. Käytä koordinaatteina x, y taulukon indeksejä.
+  </p>
+
+  <p>
+    Kun sovellus toimii, voit käyttää sitä vaikkapa seuraavanlaisen taideteoksen tekemiseen. Tehtävässä ei ole testejä.
+  </p>
+
+  <img src="../img/exercises/06-14-piirturi-ok-c83b2ab7.png" />
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<h2 class="material-heading">
+    Muita menetelmiä taulukon tulostamiseen
+
+</h2>
+
+<p>
+  Käytimme esimerkeissä while-toistolausetta taulukon arvojen. Tulostamiseen voi käyttää myös edelliseltä viikolta tuttua virtaa sekä kohta tutuksi tulevaa for-toistolausetta.
+</p>
+
+
+<h3 class="material-heading">
+    Virta
+
+</h3>
+
+<p>
+  Javan luokka <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html" target="_blank" rel="noopener">Arrays</a> tarjoaa metodin taulukon käsittelyyn virtana. Kutsumalla luokan metodia <code>stream(<em>taulukko</em>)</code>, joka saa parametrinaan taulukon, luodaan käsiteltävä virta.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {1, 8, 10, 3, 5};
+Arrays.stream(luvut).forEach(luku -&gt; System.out.println(luku));
+</code></pre>
+
+<pre class="sample-output">1
+8
+10
+3
+5
+</pre>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {1, 8, 10, 3, 5};
+Arrays.stream(luvut)
+    .filter(luku -&gt; luku &lt;= 5)
+    .forEach(luku -&gt; System.out.println(luku));
+</code></pre>
+
+<pre class="sample-output">1
+3
+5
+</pre>
+
+<p>
+  Sama onnistuu myös kaksi- ja useampiulotteisessa taulukossa. Tällöin ensimmäinen stream-kutsu luo yksiulotteisia taulukoita sisältävän syötevirran. Jokainen yksiulotteinen taulukko voidaan myös muuntaa arvoja sisältäväksi syötevirraksi.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+Arrays.stream(kaksiulotteinenTaulukko)
+    .forEach(taulukko -&gt; {
+        Arrays.stream(taulukko).forEach(alkio -&gt; System.out.print(alkio + " "));
+        System.out.println();
+});
+</code></pre>
+
+
+
+<h3 class="material-heading">
+    For-toistolause
+
+</h3>
+
+
+<p>
+  Olemme toistaiseksi käyttäneet while-toistolausetta sekä virran forEach-komentoa. Ohjelmointikielistä löytyy yleensä myös for-toistolause, joka on kätevä erityisesti indeksoitavien joukkojen kuten taulukoiden käsittelyn yhteydessä. Seuraavassa tulostetaan for-toistolauseen avulla luvut 0, 1 ja 2:
+</p>
+
+<pre class="sh_java code-highlight"><code>for (int i = 0; i &lt; 3; i++) {
+    System.out.println(i);
+}
+</code></pre>
+
+<p>
+  Yllä oleva esimerkki toimii lähes samalla tavalla kuin alla oleva esimerkki. Ainoa ero on se, että alla muuttuja <code>i</code> on olemassa myös toistolauseen jälkeen.
+</p>
+
+<pre class="sh_java code-highlight"><code>int i = 0;  // toistossa käytettävän muuttujan alustus
+while (i &lt; 3) {  // toistoehto
+    System.out.println(i);
+    i++;   // toistossa käytettävän muuttujan päivitys
+}
+</code></pre>
+
+<p>
+  Toistolause for, kuten yllä esitelty <code>for (int i = 0; i &lt; 3; i++)</code> sisältää kolme osaa: (1) muuttujien alustus; (2) toistoehto; ja (3) muuttujien päivitys.
+</p>
+
+<ul>
+  <li>
+    Ensimmäisessä osassa luodaan toistolauseessa käytettävät muuttujat. Yllä olevassa esimerkissä luodaan muuttuja <code>i</code> lauseella <code>int i = 0</code>. Ensimmäinen osa suoritetaan vain kerran, for-lauseen alussa.
+  </li>
+
+  <li>
+    Toisessa osassa määritellään toistoehto, joka määrittelee mihin asti toistolauseen yhteydessä olevassa koodilohkossa olevaa koodia suoritetaan. Esimerkissämme toistoehto oli <code>i &lt; 3</code>. Toistoehdon voimassaolo tarkastetaan <em>ennen jokaista toistokertaa</em>. Toistoehto toimii täsmälleen samoin kuin while-toistolauseen toistoehto.
+  </li>
+
+  <li>
+    Kolmas osa, joka esimerkissämme on <code>i++</code> suoritetaan kerran jokaisen koodilohkon suorituksen jälkeen.
+  </li>
+
+</ul>
+
+<p>
+  Toistolause for on hieman while-toistolausetta selkeämpi tapa toteuttaa toistoja, joissa toistojen määrä perustuu esimerkiksi laskurin kasvatukseen. Taulukkojen läpikäynnissä tilanne on yleensä juuri tämä. Seuraavassa tulostetaan taulukon <code>luvut</code> sisältö for-toistolauseella.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {1, 3, 5, 9, 17, 31, 57, 105};
+
+for(int i = 3; i &lt; 7; i++) {
+    System.out.println(luvut[i]);
+}
+</code></pre>
+
+<p>
+  Toistolauseen muuttuja voi saada arvokseen muutakin kuin nollan, ja läpikäynti voi edetä esimerkiksi "ylhäältä alas". Taulukon indekseissä 6, 5, 4, ja 3 olevat alkiot voidaan tulostaa seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {1, 3, 5, 9, 17, 31, 57, 105};
+
+for(int i = 6; i &gt; 2; i--) {
+    System.out.println(luvut[i]);
+}
+</code></pre>
+
+<p>
+  Toistolause for toimii myös kaksi- ja useampiulotteisilla taulukoilla.
+</p>
+
+<pre class="sh_java code-highlight"><code>int rivit = 2;
+int sarakkeet = 3;
+int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+kaksiulotteinenTaulukko[0][1] = 4;
+kaksiulotteinenTaulukko[1][1] = 1;
+kaksiulotteinenTaulukko[1][0] = 8;
+
+for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
+    for (int x = 0; x &lt; kaksiulotteinenTaulukko[y].length; x++) {
+        int arvo = kaksiulotteinenTaulukko[y][x];
+        System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+    }
+}
+</code></pre>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int rivit = 2;\n        int sarakkeet = 3;\n        int[][] taulukko = new int[rivit][sarakkeet];\n\n        taulukko[0][1] = 4;\n        taulukko[1][1] = 1;\n        taulukko[1][0] = 8;\n\n        for (int y = 0; y < taulukko.length; y++) {\n            for (int x = 0; x < taulukko[y].length; x++) {\n                int arvo = taulukko[y][x];\n                System.out.println(\"(\" + x + \", \" + y + \"): \" + arvo);\n            }\n        }\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"rivit":2},"ordered_varnames":["rivit"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivit":2,"sarakkeet":3},"ordered_varnames":["rivit","sarakkeet"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,0,0],"146":["LIST",0,0,0]}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"19","frame_id":19}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",0,0,0]}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"26","frame_id":26}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",0,1,0]}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"36","frame_id":36}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"40","frame_id":40}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":0,"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"59","frame_id":59}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"67","frame_id":67}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":4,"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"74","frame_id":74}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"79","frame_id":79}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"80","frame_id":80}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"87","frame_id":87}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":0,"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"94","frame_id":94}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"99","frame_id":99}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":3,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"100","frame_id":100}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"109","frame_id":109}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"114","frame_id":114}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"117","frame_id":117}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"123","frame_id":123}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":8,"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"130","frame_id":130}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"135","frame_id":135}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"136","frame_id":136}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"143","frame_id":143}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":1,"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"150","frame_id":150}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"155","frame_id":155}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"156","frame_id":156}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"163","frame_id":163}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":0,"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"170","frame_id":170}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"175","frame_id":175}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":3,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"176","frame_id":176}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"183","frame_id":183}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":2,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"185","frame_id":185}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"190","frame_id":190}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"return","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143],"__return__":["VOID"]},"ordered_varnames":["rivit","sarakkeet","taulukko","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"192","frame_id":192}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<h1 class="material-heading">
+    Tiedon hakeminen ja järjestäminen
+
+</h1>
+
+<p>
+  Tiedon nopea hakeminen ja näyttäminen on oleellinen osa ohjelmistojen käytettävyyttä. Jos ohjelman käyttäjä joutuu odottamaan kymmeniä sekunteja kun ohjelma etsii käyttäjän haluamaa tietoa, saattaa ohjelman käyttäjä lopettaa ohjelman käyttämisen kokonaan. Vastaavasti televisio-ohjelmistoja selaava käyttäjä ei hyödy televisio-ohjelman tiedoista mitään jos tiedot latautuvat vasta ohjelman katsomisen jälkeen.
+</p>
+
+<p>
+  Laajemmin voidaan ajatella, että nopeasti tapahtuva tiedon hakeminen ja näyttäminen on oleellista oikeastaan lähes missä tahansa sovelluksessa. Tutustutaan seuraavaksi tiedon hakemiseen ja järjestämiseen liittyviin algoritmeihin. Vaikka esimerkit käyttävät taulukoita, algoritmit toimivat myös muilla tiedon tallentamiseen tarkoitetuilla tietorakenteilla kuten listoilla.
+</p>
+
+<h2 class="material-heading">
+    Peräkkäishaku
+
+</h2>
+
+<p>
+  Peräkkäishaku on hakualgoritmi, joka etsii tietoa taulukosta käymällä taulukkoa läpi alkio alkiolta. Heti kun haettu alkio löytyy, sen indeksi palautetaan. Jos alkiota ei löydy, palautetaan tieto siitä ettei haettavaa alkiota löytynyt -- tämä kerrotaan tyypillisesti palauttamalla indeksin sijaan arvo <code>-1</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Algoritmit {
+
+    public int perakkaishaku(int[] taulukko, int haettava) {
+        for (int i = 0; i &lt; taulukko.length; i++) {
+            if (taulukko[i] == haettava) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
+</code></pre>
+
+<p>
+  Pahimmassa tapauksessa, eli tilanteessa missä alkiota ei lödy, algoritmi tekee taulukon koon verran vertailuja. Vaikkapa 10 miljoonaa arvoa sisältävässä taulukossa tämä tarkoittaa kymmentä miljoonaa vertailua. Jos tietoa haetaan useampia kertoja, kannattaa tehokkuutta yrittää parantaa.
+</p>
+
+
+<h2 class="material-heading">
+    Valintajärjestäminen
+
+</h2>
+
+<p>
+  Jos tieto ei noudata minkäänlaista järjestystä tai sääntöä, on tiedon hakeminen tyypillisesti työlästä. Tarvitsemme siis järjestystä!
+</p>
+
+<p>
+  Ohjelmoijan yleissivistykseen kuuluu ainakin yhden järjestämisalgoritmin (eli tavan järjestää taulukko) tuntemus. Tutustutaan erääseen "klassiseen" järjestämisalgoritmiin, valintajärjestämiseen. Tutustuminen tapahtuu harjoitustehtävien avulla.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Järjestäminen (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  
+  <h2>Pienimmän arvon etsiminen</h2>
+
+  <p>
+    Tee luokkaan <code>Valintajarjestaminen</code> metodi <code>pienin</code>, joka palauttaa metodille parametrina annetun kokonaislukutaulukon pienimmän luvun.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public int pienin(int[] taulukko) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>Seuraava esimerkki esittelee metodin toimintaa:</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {6, 5, 8, 7, 11};
+System.out.println("Pienin: " + new Valintajarjestaminen().pienin(luvut));
+</code></pre>
+
+<pre class="sample-output">Pienin: 5
+</pre>
+
+  
+  <h2>Pienimmän arvon indeksi</h2>
+
+  <p>
+    Tee luokkaan Valintajarjestaminen metodi <code>pienimmanIndeksi</code>, joka palauttaa sille parametrina annetun taulukon pienimmän luvun indeksin.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public int pienimmanIndeksi(int[] taulukko) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>
+    Seuraava koodi esittelee metodin toimintaa:
+  </p>
+
+<pre class="sh_java code-highlight"><code>// indeksit:   0  1  2  3  4
+int[] luvut = {6, 5, 8, 7, 11};
+System.out.println("Pienimmän indeksi: " + new Valintajarjestaminen().pienimmanIndeksi(luvut));
+</code></pre>
+
+<pre class="sample-output">Pienimmän indeksi: 1
+</pre>
+
+  <p>
+    Taulukon pienin luku on 5, ja sen indeksi eli sijaintipaikka taulukossa on 1. Muistathan, että taulukon numerointi alkaa 0:sta.
+  </p>
+
+  
+  <h2>Pienimmän arvon indeksi taulukon loppuosassa</h2>
+
+  <p>
+    Tee luokkaan Valintajarjestaminen metodi <code>pienimmanIndeksiAlkaen</code>, joka toimii samalla tavalla kuin edellisen tehtävän metodi, mutta ottaa huomioon vain taulukon loppuosan jostain indeksistä alkaen. Metodille annetaan parametrina taulukon lisäksi aloitusindeksi, josta lähtien pienintä lukua etsitään.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public int pienimmanIndeksiAlkaen(int[] taulukko, int aloitusIndeksi) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>
+    Seuraava koodi esittelee metodin toimintaa:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Valintajarjestaminen algoritmi = new Valintajarjestaminen();
+
+// indeksit:    0  1  2  3   4
+int[] luvut = {-1, 6, 9, 8, 12};
+System.out.println(algoritmi.pienimmanIndeksiAlkaen(luvut, 0));
+System.out.println(algoritmi.pienimmanIndeksiAlkaen(luvut, 1));
+System.out.println(algoritmi.pienimmanIndeksiAlkaen(luvut, 2));
+</code></pre>
+
+<pre class="sample-output">0
+1
+3
+</pre>
+
+  <p>
+    Esimerkissä ensimmäinen metodikutsu etsii pienimmän luvun indeksin aloittaen indeksistä 0. Indeksistä 0 alkaen pienin luku on -1, ja sen indeksi on 0. Toinen metodikutsu etsii pienimmän luvun indeksiä indeksistä 1 aloittaen. Tällöin pienin luku on 6, ja sen indeksi on 1. Kolmas kutsu etsii pienimmän luvun indeksiä aloittaen indeksistä 2. Indeksistä 2 alkaen pienin luku on 8, ja sen indeksi on 3.
+  </p>
+
+  
+  <h2>Lukujen vaihtaminen</h2>
+
+  <p>Tee luokkaan Valintajarjestaminen metodi <code>vaihda</code>, jolle annetaan taulukko ja kaksi sen indeksiä. Metodi vaihtaa indekseissä olevat luvut keskenään.</p>
+
+  <p>Metodin runko on seuraava:</p>
+
+<pre class="sh_java code-highlight"><code>public void vaihda(int[] taulukko, int indeksi1, int indeksi2) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>
+    Seuraavassa estellään metodin toimintaa. Taulukon tulostamisessa käytetään apuna taulukon merkkijonoksi muotoilevaa Arrays.toString-metodia:
+  </p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {3, 2, 5, 4, 8};
+
+System.out.println(Arrays.toString(luvut));
+
+vaihda(luvut, 1, 0);
+System.out.println(Arrays.toString(luvut));
+
+vaihda(luvut, 0, 3);
+System.out.println(Arrays.toString(luvut));
+</code></pre>
+
+<pre class="sample-output">[3, 2, 5, 4, 8]
+[2, 3, 5, 4, 8]
+[4, 3, 5, 2, 8]
+</pre>
+
+  
+  <h2>Järjestäminen</h2>
+
+  <p>
+    Nyt koossa on joukko hyödyllisiä metodeja, joiden avulla voimme toteuttaa järjestämisalgoritmin nimeltä valintajärjestäminen.
+  </p>
+
+  <p>
+    Valintajärjestämisen idea on seuraava:
+  </p>
+
+  <ul>
+    <li>
+      Siirretään taulukon pienin luku indeksiin 0.
+    </li>
+    <li>
+      Siirretään taulukon toiseksi pienin luku indeksiin 1.
+    </li>
+    <li>
+      Siirretään taulukon kolmanneksi pienin luku indeksiin 2.
+    </li>
+    <li>
+      Jne.
+    </li>
+  </ul>
+
+  <p>
+    Toisin sanoen:
+  </p>
+
+  <ul>
+    <li>
+      Tarkastellaan taulukkoa indeksistä 0 alkaen. Vaihdetaan keskenään indeksissä 0 oleva luku sekä taulukon pienin luku indeksistä 0 alkaen.
+    </li>
+    <li>
+      Tarkastellaan taulukkoa indeksistä 1 alkaen. Vaihdetaan keskenään indeksissä 1 oleva luku sekä taulukon pienin luku indeksistä 1 alkaen.
+    </li>
+    <li>
+      Tarkastellaan taulukkoa indeksistä 2 alkaen. Vaihdetaan keskenään indeksissä 2 oleva luku sekä taulukon pienin luku indeksistä 2 alkaen.
+    </li>
+    <li>
+      Jne.
+    </li>
+  </ul>
+
+  <p>
+    Toteuta metodi <code>jarjesta</code>, joka perustuu yllä olevaan ideaan. Metodissa on syytä olla silmukka, joka käy läpi taulukon indeksejä. Metodeista <code>pieninIndeksiAlkaen</code> ja <code>vaihda</code> on varmasti hyötyä. Tulosta myös taulukon sisältö ennen järjestämistä ja jokaisen kierroksen jälkeen, jotta voit varmistaa algoritmin toimivan oikein.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public void jarjesta(int[] taulukko) {
+    
+}
+</code></pre>
+
+  <p>
+    Testaa metodin toimintaa ainakin seuraavalla esimerkillä:
+  </p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {8, 3, 7, 9, 1, 2, 4};
+new Valintajarjestaminen().jarjesta(luvut);
+</code></pre>
+
+  <p>
+    Ohjelman tulosteen tulisi olla seuraavanlainen. Huomaa että sinun tulee tulostaa taulukon sisältö jokaisen vaihtamisen jälkeen!
+  </p>
+
+<pre class="sample-output">[8, 3, 7, 9, 1, 2, 4]
+[1, 3, 7, 9, 8, 2, 4]
+[1, 2, 7, 9, 8, 3, 4]
+[1, 2, 3, 9, 8, 7, 4]
+[1, 2, 3, 4, 8, 7, 9]
+[1, 2, 3, 4, 7, 8, 9]
+[1, 2, 3, 4, 7, 8, 9]
+</pre>
+
+  <p>
+    Huomaat, miten taulukko tulee pikkuhiljaa järjestykseen alkaen alusta ja edeten loppua kohti.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Puolitushaku (binäärihaku)
+
+</h3>
+
+<p>
+  Kun tieto on järjestyksessä, hakeminen onnistuu paljon tehokkaammin.
+</p>
+
+<p>
+  Tutkitaan binäärihaun ideaa seuraavan järjestyksessä olevan taulukon avulla.
+</p>
+
+<pre class="sample-output">// indeksit   0   1   2   3    4   5    6   7   8   9  10
+// luvut     -7  -3   3   7   11  15   17  21  24  28  30
+</pre>
+
+<p>
+  Oletetaan että haluamme löytää luvun 17 indeksin. Hyödynnetään tietoa siitä että taulukon arvot ovat järjestyksessä. Sen sijaan, että kävisimme taulukon lukuja läpi taulukon alusta lähtien, tarkastelemme arvoa taulukon puolivälissä. Taulukon puolivälissä olevan alkion indeksi on isoin indeksi 10 jaettuna kahdella eli 5. Keskimmäinen alkio on merkattu seuraavaan tähdellä:
+</p>
+
+<pre class="sample-output">                                   *
+// indeksit   0   1   2   3    4   5    6   7   8   9  10
+// luvut     -7  -3   3   7   11  15   17  21  24  28  30
+</pre>
+
+<p>
+  Puolessa välissä on luku 15, joka ei ollut hakemamme luku (eli luku 17). Koska taulukko on järjestyksessä (tässä suuruusjärjestyksessä), ei etsitty luku voi missään tapauksessa olla luvun 15 vasemmalla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat pienempiä tai yhtäsuuria kuin 5, eivät missään nimessä sisällä hakemaamme arvoa.
+</p>
+
+<p>
+  Alue, jolta etsimme haettavaa lukua voidaan nyt rajata lukuihin, jotka sijaitsevat indeksin 5 oikealla puolella, eli indekseihin välillä [6, 10] (6, 7, 8, 9, 10). Seuraavassa on merkitty harmaalla se osa taulukkoa jossa etsitty ei voi olla:
+</p>
+
+<pre class="sample-output">// indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7   8   9  10
+// luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  24  28  30
+</pre>
+
+<p>
+  Tutkitaan seuraavaksi jäljellä olevan etsintäalueen, eli indeksien 6-10 keskimmäistä indeksiä. Keskimmäinen indeksi löytyy laskemalla etsintäalueen pienimmän ja suurimman indeksin summan ja jakamalla se kahdella, eli (6+10)/2 = 16/2 = 8. Indeksi 8 on merkitty alle tähdellä.
+</p>
+
+<pre class="sample-output">                                                 *
+// indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7   8   9  10
+// luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  24  28  30
+</pre>
+
+<p>
+  Indeksissä 8 oleva luku on 24, joka ei ollut hakemamme luku. Koska luvut taulukossa ovat suuruusjärjestyksessä, ei etsittävä luku voi missään nimessä olla luvun 24 oikealla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat suurempia tai yhtäsuuria kuin 8, eivät missään nimessä sisällä hakemaamme arvoa. Etsintäalue rajautuu taas, harmaat alueet on käsitelty:
+</p>
+
+<pre class="sample-output">// indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7  <font color="lightgrey"> 8   9  10</font>
+// luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  <font color="lightgrey">24  28  30</font>
+</pre>
+
+<p>
+  Etsintä jatkuu. Tutkitaan jäljellä olevan etsintäalueen, eli indeksien 6-7, keskimmäistä indeksiä. Keskimmäinen indeksi löytyy taas ottamalla etsintäalueen pienimmän ja suurimman indeksin summa ja jakamalla se kahdella, eli (6+7)/2 = 6,5, joka pyöristyy alaspäin luvuksi 6. Kohta on merkitty alle tähdellä.
+</p>
+
+<pre class="sample-output">                                         *
+// indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7  <font color="lightgrey"> 8   9  10</font>
+// luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  <font color="lightgrey">24  28  30</font>
+</pre>
+
+<p>
+  Indeksissä 6 on luku 17, joka on sama kuin hakemamme luku. Voimme lopettaa haun ja ilmoittaa että etsitty luku on taulukossa. Jos luku ei olisi ollut taulukossa -- esimerkiksi jos haettava luku olisi ollut 16, etsintäalue olisi jäänyt lopulta tyhjäksi.
+</p>
+
+<pre class="sample-output">                                         *
+// indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    <font color="red">6</font>   7  <font color="lightgrey"> 8   9  10</font>
+// luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   <font color="red">17</font>  21  <font color="lightgrey">24  28  30</font>
+</pre>
+
+<p>
+  Jotta binäärihaun idea tulee sinulle tutuksi, simuloi kynällä ja paperilla miten binäärihaku toimii kun taulukkona on alla oleva taulukko ja haet lukua 33. Kokeile tämän jälkeen binäärihakua vielä siten, että etsit lukua 1. 
+</p>
+
+<pre class="sample-output">// indeksit   0   1   2   3   4   5   6   7   8   9  10  11  12  13
+// luvut     -5  -2   3   5   8  11  14  20  22  26  29  33  38  41
+</pre>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Binäärihaku vs. Peräkkäishaku
+  </div>
+
+  <div class="hint__body">
+      <p>
+    Peräkkäishaun pahimmassa tapauksessa -- eli kun haettavaa ei löydy -- käydään kaikki taulukon arvot läpi. Miljoona alkiota sisältävässä taulukossa tämä tarkoittaa miljoonan alkion tarkastelua.
+  </p>
+
+  <p>
+    Binäärihaun pahimmassa tapauksessa tutkittava alue jaetaan kahteen osaan kunnes osan koko on yksi. Alkioita tarkastellaan huomattavasti vähemmän kuin peräkkäishaussa. Tarkastellaan tätä hieman tarkemmin.
+  </p>
+
+  <p>
+    Taulukko, jossa on 16 alkiota, voidaan jakaa kahteen osaan korkeintaan 4 kertaa, eli 16 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1.
+  </p>
+
+  <p>
+    Toisaalta, taulukko, jossa on miljoona alkiota voidaan jakaa kahteen osaan korkeintaa 20 kertaa, eli 1000000 -&gt; 500000 -&gt; 250000 -&gt; 125000 -&gt; 62500 -&gt; 31250 -&gt; 15625 -&gt; ~7813 -&gt; ~3907 -&gt; 1954 -&gt; ~977 -&gt; ~489 -&gt; ~245 -&gt; ~123 -&gt; ~62 -&gt; ~31 -&gt; ~16 -&gt; ~8 -&gt; ~4 -&gt; ~2 -&gt; ~1.
+  </p>
+
+  <p>
+    Mitä tämä tarkoittaa? Binäärihakua käyttäen miljoona alkiota sisältävästä taulukosta tulee pahimmassa tapauksessa tarkastella noin kahtakymmentä alkiota, kun peräkkäishaussa tarkasteltavia alkioita on miljoona.
+  </p>
+
+  <p>
+    Koska haettavien alkioiden määrä puolittuu binäärihaussa jokaisen tarkastelun yhteydessä, voi binäärihaun tehokkuutta tarkastella kaksikantaisen logaritmin avulla. Kaksikantainen logaritmi (<code>log<sub>2</sub></code>) annetusta luvusta kertoo kuinka monta kertaa luku voidaan puolittaa. Esimerkiksi kaksikantainen logaritmi luvusta 16777216 (<code>log<sub>2</sub> 16777216</code>) on 24, ja luvun 4294967296 kaksikantainen logaritmi, (<code>log<sub>2</sub> 4294967296</code>) on 32. Tämä tarkoittaa että 4294967296 eri arvoa sisältävästä järjestyksessä olevasta taulukosta hakeminen vaatisi binäärihaulta korkeintaan 32 eri alkion tarkastamista.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Valmiiden järjestämisalgoritmien hyödyntäminen
+
+</h2>
+
+
+<p>
+  Java tarjoaa merkittävän määrän valmiita järjestysalgoritmeja. Taulukot voi järjestää (luonnolliseen järjestykseen) luokan Arrays tarjoamalla metodilla sort, ja listat voi järjestää (luonnolliseen järjestykseen) luokan Collections tarjoamalla metodilla sort.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {8, 3, 7, 9, 1, 2, 4};
+System.out.println(Arrays.toString(luvut));
+Arrays.sort(luvut);
+System.out.println(Arrays.toString(luvut));
+</code></pre>
+
+<pre class="sample-output">[8, 3, 7, 9, 1, 2, 4]
+[1, 2, 3, 4, 7, 8, 9]
+</pre>
+
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(8);
+luvut.add(3);
+luvut.add(7);
+System.out.println(luvut);
+Collections.sort(luvut);
+System.out.println(luvut);
+</code></pre>
+
+<pre class="sample-output">[8, 3, 7]
+[3, 7, 8]
+</pre>
+
+<p>
+  Valmiit järjestämisalgoritmit toimivat sekä alkeistyyppisille muuttujille, että joillekin viittaustyyppisille muuttujille kuten String. Omien luokkiemme järjestämistä varten joudumme antamaan Javalle hieman lisävinkkejä, sillä luokat eivät sisällä tietoa siitä, miten niistä luodut oliot pitäisi järjestää.
+</p>
+
+<h3 class="material-heading">
+    Omien olioiden järjestäminen
+
+</h3>
+
+<p>
+  Omien olioiden järjestäminen onnistuu näppärästi virtojen avulla. Oletetaan, että käytössämme on seuraava luokka Henkilo.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+
+    private int syntymavuosi;
+    private String nimi;
+
+    public Henkilo(int syntymavuosi, String nimi) {
+        this.syntymavuosi = syntymavuosi;
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public int getSyntymavuosi() {
+        return syntymavuosi;
+    }
+}
+</code></pre>
+
+<p>
+  Listalle asetettujen henkilöiden järjestäminen onnistuu näppärästi virran tarjoaman metodin <code>sorted</code> avulla. Metodille määritellään miten mitä tahansa kahta listalla olevaa oliota tulee vertailla keskenään. Vertailun tulee palauttaa kokonaisluku -- negatiivinen kokonaisluku kertoo, että ensimmäinen vertailtavista tulee ennen toista vertailtavaa ja positiivinen kokonaisluku kertoo että toinen vertailtavista tulee ennen ensimmäistä vertailtavaa. Jos palautettava kokonaisluku on nolla, olioiden järjestys on sama.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+henkilot.add(new Henkilo("Ada Lovelace", 1815));
+henkilot.add(new Henkilo("Irma Wyman", 1928));
+henkilot.add(new Henkilo("Grace Hopper", 1906));
+henkilot.add(new Henkilo("Mary Coombs", 1929));
+
+henkilot.stream().sorted((h1, h2) -&gt; {
+    return h1.getSyntymavuosi() - h2.getSyntymavuosi();
+}).forEach(h -&gt; System.out.println(h.getNimi()));
+</code></pre>
+
+<pre class="sample-output">Ada Lovelace
+Grace Hopper
+Irma Wyman
+Mary Coombs
+</pre>
+
+<p>
+  Yllä oleva vertailu vastaa järjestämisen tekevät algoritmin näkökulmasta seuraavaa vertailua. Palautettavan arvon suuruudella ei ole väliä.
+</p>
+
+<pre class="sh_java code-highlight"><code>// ...
+henkilot.stream().sorted((h1, h2) -&gt; {
+    if (h1.getSyntymavuosi() &gt; h2.getSyntymavuosi()) {
+        return 1;
+    }
+
+    if (h1.getSyntymavuosi() &lt; h2.getSyntymavuosi()) {
+        return -1;
+    }
+
+    return 0;
+}).forEach(h -&gt; System.out.println(h.getNimi()));
+</code></pre>
+
+
+
+<p>
+  Merkkijonoja vertailtaessa voimme käyttää String-luokan valmista <code>compareTo</code>-metodia. Metodi palauttaa sille annetun parametrina annetun merkkijonon sekä metodia kutsuvan merkkijonon järjestykstä kuvaavan kokonaisluvun.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+henkilot.add(new Henkilo("Ada Lovelace", 1815));
+henkilot.add(new Henkilo("Irma Wyman", 1928));
+henkilot.add(new Henkilo("Grace Hopper", 1906));
+henkilot.add(new Henkilo("Mary Coombs", 1929));
+
+henkilot.stream().sorted((h1, h2) -&gt; {
+    return h1.getNimi().compareTo(h2.getNimi());
+}).forEach(h -&gt; System.out.println(h.getNimi()));
+</code></pre>
+
+<pre class="sample-output">Ada Lovelace
+Grace Hopper
+Irma Wyman
+Mary Coombs
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lukutaitovertailu (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Käytetään jälleen edellisessä osassa käytettyä UNESCOn avointa dataa lukutaidosta. Data sisältää tilastot eri maiden arvioiduista tai raportoiduista lukutaidoista viimeisen kahden vuoden ajalta. Tehtäväpohjassa mukana oleva tiedosto <code>lukutaito.csv</code> sisältää arviot sekä yli 15-vuotiaiden naisten että yli 15-vuotiaiden miesten lukutaidosta. Tiedoston lukutaito.csv yksittäisen rivin muoto on seuraava: teema, ikäryhmä, sukupuoli, maa, vuosi, lukutaitoprosentti. Alla on esimerkkinä tiedoston viisi ensimmäistä riviä.
+  </p>
+
+  <pre>
+Adult literacy rate, population 15+ years, female (%),United Republic of Tanzania,2015,76.08978
+Adult literacy rate, population 15+ years, female (%),Zimbabwe,2015,85.28513
+Adult literacy rate, population 15+ years, male (%),Honduras,2014,87.39595
+Adult literacy rate, population 15+ years, male (%),Honduras,2015,88.32135
+Adult literacy rate, population 15+ years, male (%),Angola,2014,82.15105
+  </pre>
+
+  <p>
+    Kirjoita ohjelma, joka lukee tiedoston <code>lukutaito.csv</code> ja tulostaa tiedoston sisällön pienimmästä lukutaidosta suurimpaan. Tulostus tulee muotoilla seuraavan esimerkin näyttämään muotoon. Esimerkki näyttää tulostuksen ensimmäiset 5 odotettua riviä.
+  </p>
+
+<pre class="sample-output">Niger (2015), female, 11.01572
+Mali (2015), female, 22.19578
+Guinea (2015), female, 22.87104
+Afghanistan (2015), female, 23.87385
+Central African Republic (2015), female, 24.35549
+</pre>
+
+  <p>
+    Tehtävä on kahden pisteen arvoinen.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    ArrayList ja Hajautustaulu
+
+</h1>
+
+<p>
+  ArrayList ja Hajautustaulu ovat ohjemoinnissa hyvin yleisesti käytettyjä tietorakenteita. Tarkastellaan tässä niiden todellista toteutusta -- alla rakennetaan askeleittain ensin ArrayListiä imitoiva tietorakenne <code>Lista</code>, jota hyödynnetään sitten tietorakenteen <code>Hajautustaulu</code> tekemisessä.
+</p>
+
+<h2 class="material-heading">
+    Geneerinen tyyppi
+
+</h2>
+
+
+<p>
+  Olemme listoihin tutustumisesta lähtien kertoneet erilaisille tietorakenteille niiden sisältämän arvon tyypin. Esimerkiksi String-tyyppisiä olioita sisältävä lista on esitelty muodossa <code>ArrayList&lt;String&gt;</code>. Tässä on kuitenkin ihmetyttänyt se, että miten ihmeessä listat ja muutkin tietorakenteet voivat sisältää erityyppisiä oliota.
+</p>
+
+<p>
+  Geneerisyys (<em>generics</em>) liittyy olioita säilövien luokkien tapaan säilöä vapaavalintaisen tyyppisiä olioita. Vapaavalintaisuus perustuu luokkien määrittelyssä käytettyyn geneeriseen tyyppiparametriin, jonka avulla voidaan määritellä <em>olion luontivaiheessa</em> valittavia tyyppejä. Luokan geneerisyys määritellään antamalla luokan nimen jälkeen haluttu määrä luokan tyyppiparametreja pienempi kuin ja suurempi kuin -merkkien väliin. Toteutetaan oma geneerinen luokka <code>Lokero</code>, johon voi asettaa yhden minkälaisen tahansa olion.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Lokero&lt;T&gt; {
+    private T alkio;
+
+    public void asetaArvo(T alkio) {
+        this.alkio = alkio;
+    }
+
+    public T haeArvo() {
+        return alkio;
+    }
+}
+</code></pre>
+
+<p>
+  Määrittely <code>public class Lokero&lt;T&gt;</code> kertoo että luokalle <code>Lokero</code> tulee antaa konstruktorissa tyyppiparametri. Konstruktorikutsun jälkeen kaikki olion sisäiset muuttujat tulevat olemaan kutsun yhteydessä annettua tyyppiä. Luodaan merkkijonon tallentava lokero.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lokero&lt;String&gt; merkkijono = new Lokero&lt;&gt;();
+merkkijono.asetaArvo(":)");
+
+System.out.println(merkkijono.haeArvo());</code></pre>
+
+
+<pre class="sample-output">:)
+</pre>
+
+<p>
+  Yllä olevalla ohjelmalla merkkijono-nimisen <code>Lokero</code>-olion <em>ajonaikainen</em> toteutus on seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Lokero&lt;String&gt; {
+    private String alkio;
+
+    public void asetaArvo(String alkio) {
+        this.alkio = alkio;
+    }
+
+    public String haeArvo() {
+        return alkio;
+    }
+}
+</code></pre>
+
+<p>
+  Tyyppiparametria vaihtamalla voidaan luoda myös muuntyyppisiä olioita tallentavia <code>Lokero</code>-olioita. Esimerkiksi kokonaisluvun saa tallennettua seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lokero&lt;Integer&gt; luku = new Lokero&lt;&gt;();
+luku.asetaArvo(5);
+
+System.out.println(luku.haeArvo());</code></pre>
+
+
+
+<pre class="sample-output">5
+</pre>
+
+<p>
+  Yllä olevalla esimerkillä <code>luku</code>-nimisen Lokeron toteutus olisi ajonaikaisesti taas seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Lokero&lt;Integer&gt; {
+    private Integer alkio;
+
+    public void asetaArvo(Integer alkio) {
+        this.alkio = alkio;
+    }
+
+    public Integer haeArvo() {
+        return alkio;
+    }
+}
+</code></pre>
+
+<p>
+  Samalla tavalla ohjelmoija voisi toteuttaa esimerkiksi luokan <code>Pari</code>, mihin voi laittaa kaksi halutun tyyppistä oliota.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Pari&lt;T, K&gt; {
+    private T eka;
+    private K toka;
+
+    public void asetaArvot(T eka, K toka) {
+        this.eka = eka;
+        this.toka = toka;
+    }
+
+    public T haeEka() {
+        return this.eka;
+    }
+
+    public K haeToka() {
+        return this.toka;
+    }
+}
+</code></pre>
+
+
+<p>
+  Huomattava osa Javan tietorakenteista mahdollistaa eri tyyppisten muuttujien käytön. Esimerkiksi ArrayList saa yhden tyyppiparametrin, HashMap kaksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;String&gt; merkkijonot = new ArrayList&lt;&gt;();
+Map&lt;String, String&gt; avainArvoParit = new HashMap&lt;&gt;();
+</code></pre>
+
+<p>
+  Jatkossa kun näet esimerkiksi tyypin <code>ArrayList&lt;String&gt;</code> tiedät että sen sisäisessä rakenteessa on käytetty geneeristä tyyppiparametria. Sama periaate löytyy esimerkiksi rajapinnassa Comparable.
+</p>
+
+
+<h2 class="material-heading">
+    Listarakenne
+
+</h2>
+
+<p>
+  Tarkastellaan erästä tapaa Javan tarjoaman ArrayList-tietorakenteen toteuttamiseen. Javan ArrayList hyödyntää sisäisesti taulukkoa, mikä on määritelty generisen tyyppiseksi -- tämän takia listalle saa lisätä käytännössä minkä tyyppisiä arvoja tahansa. Lista tarjoaa useita metodeja, joista tämän esimerkin kannalta oleellisia ovat <code>add</code> eli lisääminen, <code>contains</code> eli olemassaolon tarkastaminen, <code>remove</code> eli poistaminen sekä <code>get</code>, eli tietystä indeksistä hakeminen.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; merkkijonot = new ArrayList&lt;&gt;();
+System.out.println(merkkijonot.contains("Hei!"));
+merkkijonot.add("Hei!");
+System.out.println(merkkijonot.contains("Hei!"));
+merkkijonot.remove("Hei!");
+System.out.println(merkkijonot.contains("Hei!"));
+</code></pre>
+
+<pre class="sample-output">false
+true
+false
+</pre>
+
+<h3 class="material-heading">
+    Listan luominen
+
+</h3>
+
+<p>
+  Luodaan luokka <code>Lista</code>. Listarakenne sisältää geneerisen taulukon -- eli taulukon, jonka alkioiden tyyppi määräytyy ajonaikaisesti tyyppiparametreista. Asetetaan taulukon alkukooksi <code>10</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Lista&lt;T&gt; {
+    private T[] arvot;
+
+    public Lista() {
+        this.arvot = (T[]) new Object[10];
+    }
+}
+</code></pre>
+
+<p>
+  Lista kapseloi taulukon. Alkutilanteessa jokainen taulukon indeksi sisältää <code>null</code>-viitteen.
+</p>
+
+<h3 class="material-heading">
+    Arvojen lisääminen listalle
+
+</h3>
+
+<p>
+  Lisätään luokalle metodi <code>public void lisaa(T arvo)</code>, mikä mahdollistaa arvojen lisäämisen listalle. Luodaan luokalle tätä varten erillinen kokonaislukumuuttuja, joka pitää kirjaa taulukon ensimmäisestä tyhjästä paikasta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Lista&lt;T&gt; {
+
+    private T[] arvot;
+    private int arvoja;
+
+    public Lista() {
+        this.arvot = (T[]) new Object[10];
+        this.arvoja = 0;
+    }
+
+    public void lisaa(T arvo) {
+        this.arvot[this.arvoja] = arvo;
+        this.arvoja++;
+    }
+}
+</code></pre>
+
+<p>
+  Nyt arvojen lisääminen listalle onnistuu -- tai, ainakin listan luominen ja metodin kutsuminen onnistuu -- emme vielä voi testata ovatko arvot todellisuudessa listalla.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+lista.lisaa("hei");
+lista.lisaa("maailma");
+</code></pre>
+
+<h3 class="material-heading">
+    Arvojen lisääminen listalle, osa 2
+
+</h3>
+
+<p>
+  Edellä kuvatussa <code>lisaa</code>-metodissa on pieni ongelma. Ongelma ilmenee kun seuraava ohjelmakoodi suoritetaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+for (int i = 0; i &lt; 11; i++) {
+    lista.lisaa("hei");
+}
+</code></pre>
+
+<pre class="sample-output">Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 10
+	at tietorakenteita.Lista.lisaa(Lista.java:14)
+	at tietorakenteita.Ohjelma.main(Ohjelma.java:8)
+</pre>
+
+<p>
+  Listan koko ei kasva. Eräs ArrayList-luokan oleellisimmista toiminnallisuuksista on se, että sen koko kasvaa aina tarvittaessa -- ohjelmoijan ei siis tarvitse varoa listan täyttymistä.
+</p>
+
+<p>
+  Lisätään ohjelmaan listan koon kasvattamiseen liittyvä toiminnallisuus. Listan kokoa kasvatetaan aina jos täyteen listaan yritetään lisätä arvo. Kasvattaminen toteutetaan käytännössä siten, että luomme uuden taulukon, mihin vanhan taulukon arvot kopioidaan. Tämän jälkeen vanha taulukko jätetään heitteille, ja uudesta taulukosta tulee olion käyttämä taulukko.
+</p>
+
+<p>
+  Javan kuudennessa versiossa uuden taulukon koko lasketaan kaavalla <code>vanhakoko * 3 / 2 + 1</code>. Hyödynnetään samaa kaavaa omassa toteutuksessamme. Luodaan kasvattamista varten erillinen metodi <code>kasvata</code>, joka on vain luokan omien metodien käytössä (eli sillä on <code>private</code>-näkyvyys).
+</p>
+
+<pre class="sh_java code-highlight"><code>private void kasvata() {
+    T[] uusi = (T[]) new Object[this.arvot.length * 3 / 2 + 1];
+    for (int i = 0; i &lt; this.arvot.length; i++) {
+        uusi[i] = this.arvot[i];
+    }
+  
+    this.arvot = uusi;
+}
+</code></pre>
+
+<p>
+  Toteutus luo uuden taulukon, jonka koko on noin 1.5-kertainen vanhaan taulukkoon verrattuna. Tämän jälkeen kaikki vanhan taulukon alkiot kopioidaan uuteen taulukkoon ja lopulta olion <code>arvot</code>-muuttujan -- eli taulukon -- arvoksi asetetaan uusi taulukko.
+</p>
+
+<p>
+  Muokataan vielä metodia <code>lisaa</code> siten, että taulukon kokoa kasvatetaan tarvittaessa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void lisaa(T arvo) {
+    if(this.arvoja == this.arvot.length) {
+        kasvata();
+    }
+        
+    this.arvot[this.arvoja] = arvo;
+    this.arvoja++;
+}
+</code></pre>
+
+<p>
+  Nyt arvoja voi lisätä listalle lähes rajattomasti.
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Edellä kuvatun kasvatusmenetelmän tehokkuudesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Edellä kuvattu menetelmä kopioi kasvatuksen yhteydessä jokaisen vanhan taulukon arvon uuteen taulukkoon. Jos taulukossa on esimerkiksi kaksi miljoonaa alkiota, kopiointi käy kaksi miljoonaa alkiota läpi.
+  </p>
+
+  <p>
+    Menetelmän tehokkuuteen -- ja parannusehdotuksiin -- paneudutaan muunmuassa kursseilla Tietorakenteet sekä Algoritmien suunnittelu ja analyysi.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Arvon olemassaolon tarkastaminen
+
+</h3>
+
+<p>
+  Luodaan listalle seuraavaksi metodi <code>public boolean sisaltaa(T arvo)</code>, minkä avulla voidaan tarkistaa onko alkio listalla. Hyödynnetään tässä tietoa siitä, että jokainen Javan olio -- riippumatta sen tyypistä -- perii Object-luokan (tai on Object-tyyppinen). Tämän takia jokaisella oliolla on metodi <code>public boolean equals(Object object)</code>, jota voidaan käyttää yhtäsuuruuden tarkasteluun.
+</p>
+
+<p>
+  Luokan <code>Lista</code> muuttuja <code>arvoja</code> sisältää tiedon arvojen tämän hetkisestä lukumäärästä. Voimme siis toteuttaa <code>sisaltaa</code>-metodin siten, että tarkastelemme vain ne listan indeksit, joissa on arvoja.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean sisaltaa(T arvo) {
+    for (int i = 0; i &lt; this.arvoja; i++) {
+        if (this.arvot[i].equals(arvo)) {
+            return true;
+        }
+    }
+  
+    return false;
+}
+</code></pre>
+
+<p>
+  Edellä esitetty menetelmä olettaa, että käyttäjä ei lisää listalle <code>null</code>-viitettä. Jos haluamme, että käyttäjä saa lisätä listalle <code>null</code>-viitteen (ja <code>null</code>-viitteen olemassaoloa saa myös hakea), tulee ohjelmaa muokata hieman. Tällöin <code>sisaltaa</code>-metodin eräs mahdollinen toteutus olisi seuraava.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean sisaltaa(T arvo) {
+    for (int i = 0; i &lt; this.arvoja; i++) {
+        if (arvo == this.arvot[i] || this.arvot[i].equals(arvo)) {
+            return true;
+        }
+    }
+  
+    return false;
+}
+</code></pre>
+
+<p>
+  <em>Yllä oleva esimerkki ei kuitenkaan toimi. Pohdi miksei ja mieti minkälaisella ratkaisulla saisit <code>null</code>-viitteiden käsittelyn toimimaan.
+  </em>
+</p>
+
+<p>
+  Ohjelmassa on nyt mahdollisuus listalla olevien alkioiden olemassaolon tarkasteluun.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+System.out.println(lista.sisaltaa("hei"));
+lista.lisaa("hei");
+System.out.println(lista.sisaltaa("hei"));
+</code></pre>
+
+
+<pre class="sample-output">false
+true
+</pre>
+
+
+<h3 class="material-heading">
+    Arvon poistaminen
+
+</h3>
+
+<p>
+  Toteuttamallemme listalle voi nyt lisätä arvoja, jonka lisäksi arvon olemassaolon voi tarkastaa. Toteutetaan vielä arvon poistaminen. Toteutetaan metodi <code>public void poista(T arvo)</code>, joka poistaa listalta <em>yhden</em> <code>arvo</code>-arvoisen alkion.
+</p>
+
+<p>
+  Yksinkertainen toteutus olisi seuraava.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public void poista(T arvo) {
+    for (int i = 0; i &lt; this.arvoja; i++) {
+        if (arvo == this.arvot[i] || this.arvot[i].equals(arvo)) {
+            this.arvot[i] = null;
+            this.arvoja--;
+            return true;
+        }
+    }
+  
+    return false;
+}
+</code></pre>
+
+<p>
+  Yllä oleva lähestymistapa on kuitenkin ongelmallinen, sillä se jättää listalle "tyhjiä" kohtia -- olettaen, että uudet arvot lisätään aina listan loppuun.
+</p>
+
+<p>
+  Ongelman voi ratkaista useammalla tavalla, joista yksi on siirtää jokaista poistettua arvoa seuraavaa arvoa vasemmalle. Lisätään tämä toiminnallisuus ohjelmaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void poista(T arvo) {
+    boolean loytyi = false;
+    for (int i = 0; i &lt; this.arvoja; i++) {
+        if (loytyi) {
+            this.arvot[i - 1] = this.arvot[i];
+        } else if (arvo == this.arvot[i] || this.arvot[i].equals(arvo)) {
+            this.arvoja--;
+            loytyi = true;
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Emme ole kovin tyytyväisiä edelliseen ratkaisuun, sillä siinä tehdään monta asiaa samaan aikaan. Metodissa sekä etsitään alkiota että siirretään alkioita. Pilkotaan toiminnallisuus kahteen erilliseen metodiin: <code>private int arvonIndeksi(T arvo)</code>, joka etsii parametrina annetun arvon indeksin, sekä <code>private void siirraVasemmalle(int indeksista)</code>, joka siirtää annetusta indeksistä lähtien alkioita yhden vasemmalle.
+</p>
+
+<p>
+  Toteutetaan ensin metodi <code>private int arvonIndeksi(T arvo)</code>, joka etsii annetun arvon indeksin. Metodi palauttaa negatiivisen luvun mikäli arvoa ei löydy.
+</p>
+
+<pre class="sh_java code-highlight"><code>private int arvonIndeksi(T arvo) {
+    for (int i = 0; i &lt; this.arvoja; i++) {
+        if (arvo == this.arvot[i] || this.arvot[i].equals(arvo)) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+</code></pre>
+
+<p>
+  Toteutetaan tämän jälkeen metodi <code>private void siirraVasemmalle(int indeksistaLahtien)</code>, joka siirtää arvoja annetusta indeksistä lähtien vasemmalle.
+</p>
+
+<pre class="sh_java code-highlight"><code>private void siirraVasemmalle(int indeksistaLahtien) {
+    for (int i = indeksistaLahtien; i &lt; this.arvoja - 1; i++) {
+        this.arvot[i] = this.arvot[i + 1];
+    }
+}
+</code></pre>
+
+<p>
+  Nyt metodi <code>poista</code> voidaan toteuttaa edellisten avulla hieman selkokielisemmäksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void poista(T arvo) {
+    int arvonIndeksi = arvonIndeksi(arvo);
+    if (arvonIndeksi &lt; 0) {
+        return; // ei löydy
+    }
+
+    siirraVasemmalle(arvonIndeksi);
+    this.arvoja--;
+}
+</code></pre>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Edellä kuvatun poistomenetelmän tehokkuudesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Edellä kuvattu menetelmä kopioi poiston yhteydessä jokaisen poistettua alkiota seuraavan alkion vasemmalle. Pohdi toteutuksen tehokkuutta tilanteessa, missä listaa käytetään jonona.
+  </p>
+
+  <p>
+    Tämänkin menetelmän tehokkuuteen -- ja parannusehdotuksiin -- paneudutaan muunmuassa kursseilla Tietorakenteet sekä Algoritmien suunnittelu ja analyysi.
+  </p>
+
+
+  </div>
+</div>
+
+<p>
+  Luokassa lista on vieläkin vähän toistoa. Metodi <code>sisaltaa</code> on hyvin samankaltainen metodin <code>arvonIndeksi</code> kanssa. Muokataan vielä metodia <code>sisaltaa</code> siten, että se toteutetaan metodin <code>arvonIndeksi</code> avulla.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean sisaltaa(T arvo) {
+    return arvonIndeksi(arvo) &gt;= 0;
+}
+</code></pre>
+
+<p>
+  Nyt käytössämme on lista, joka tarjoaa metodit <code>lisaa</code>, <code>sisaltaa</code>, ja <code>poista</code>. Lista myös kasvaa tarvittaessa. Listan toteutusta voisi toki vielä kehittää esimerkiksi lisäämällä toiminnallisuuden, mikä pienentää listan kokoa jos arvojen määrä pienenee hyvin pieneksi.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+System.out.println(lista.sisaltaa("hei"));
+lista.lisaa("hei");
+System.out.println(lista.sisaltaa("hei"));
+lista.poista("hei");
+System.out.println(lista.sisaltaa("hei"));
+</code></pre>
+
+<pre class="sample-output">false
+true
+false
+</pre>
+
+
+
+<h3 class="material-heading">
+    Kohdasta hakeminen
+
+</h3>
+
+<p>
+  Lisätään listalle vielä metodi <code>public T arvo(int indeksi)</code>, joka palauttaa listan tietyssä indeksissä sijaitsevan arvon. Mikäli ohjelmoija hakee arvoa listan ulkopuolelta, heitetään virhe <code>IndexOutOfBoundsException</code>. 
+</p>
+
+<pre class="sh_java code-highlight"><code>public T arvo(int indeksi) {
+    if (indeksi &lt; 0 || indeksi &gt;= this.arvoja) {
+        throw new ArrayIndexOutOfBoundsException("Indeksi " + indeksi + " alueen [0, " + this.arvoja + "[ ulkopuolella.");
+    }
+
+    return this.arvot[indeksi];
+}
+</code></pre>
+
+<p>
+  Metodi ei ole sellaisenaan kovin hyödyllinen, sillä ohjelmoijalla ei ole tietoa arvojen indekseistä. Muutetaan vielä metodi <code>arvonIndeksi(T arvo)</code> kaikkien käytettäväksi, eli vaihdetaan sen näkyvyysmääre <code>private</code> muotoon <code>public</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public int arvonIndeksi(T arvo) {
+    for (int i = 0; i &lt; this.arvoja; i++) {
+        if (arvo == this.arvot[i] || this.arvot[i].equals(arvo)) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+System.out.println(lista.sisaltaa("hei"));
+lista.lisaa("hei");
+System.out.println(lista.sisaltaa("hei"));
+int indeksi = lista.arvonIndeksi("hei");
+System.out.println(indeksi);
+System.out.println(lista.arvo(indeksi));
+lista.poista("hei");
+System.out.println(lista.sisaltaa("hei"));
+</code></pre>
+
+<pre class="sample-output">false
+true
+0
+hei
+false
+</pre>
+
+<h3 class="material-heading">
+    Listan koko
+
+</h3>
+
+<p>
+  Lisätään listalle vielä metodi listan koon tarkastamiseen. Listan koon saa selville muuttujasta <code>arvoja</code>. 
+</p> 
+
+<pre class="sh_java code-highlight"><code>public int koko() {
+    return this.arvoja;
+}
+</code></pre>
+
+<p>
+  Nyt listan alkioiden läpikäynti onnistuu mm. for-lauseella.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+lista.lisaa("hei");
+lista.lisaa("maailma");
+
+for(int i = 0; i &lt; lista.koko(); i++) {
+    System.out.println(lista.arvo(i)); 
+}
+</code></pre>
+
+<pre class="sample-output">hei
+maailma
+</pre>
+
+
+<h2 class="material-heading">
+    Hajautustaulu
+
+</h2>
+
+<p>
+  Hajautustaulu on toteutettu taulukkona, missä jokainen alkio sisältää listan. Listalle tallennetaan (avain,arvo)-pareja. Käyttäjä voi hakea hajautustaulusta arvoja avaimen perusteella, ja toisaalta käyttäjä voi lisätä hajautustauluun avain-arvo -pareja. Kukin avain voi esiintyä hajautustaulussa korkeintaan kerran.
+</p>
+
+<p>
+  Hajautustaulun toiminta perustuu avaimen hajautusarvoon. Kun hajautustauluun lisätään (avain,arvo)-pari, lasketaan avaimeen liittyvä hajautusarvo. Hajautusarvo määrää hajautustaulun sisäisen taulukon indeksin, missä olevaan listaan (avain,arvo)-pari lisätään.
+</p>
+
+<p>
+  Hahmotellaan hajautustaulun toimintaa.
+</p>
+
+
+<h3 class="material-heading">
+    Avain-arvo -pari
+
+</h3>
+
+<p>
+  Luodaan ensin avain-arvo -paria kuvaava luokka <code>Pari</code>. Haluamme tehdä hajautustaulusta mahdollisimman yleiskäyttöisen, joten avaimen ja arvon tyyppi määrätään ajonaikaisesti. Pari sisältää avaimen ja arvon sekä niihin liittyvät get- ja set-metodit.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Pari&lt;K, V&gt; {
+
+    private K avain;
+    private V arvo;
+
+    public Pari(K avain, V arvo) {
+        this.avain = avain;
+        this.arvo = arvo;
+    }
+
+    public K getAvain() {
+        return avain;
+    }
+
+    public void setAvain(K avain) {
+        this.avain = avain;
+    }
+
+    public V getArvo() {
+        return arvo;
+    }
+
+    public void setArvo(V arvo) {
+        this.arvo = arvo;
+    }
+
+}
+</code></pre>
+
+<p>
+  Avain-arvo -parien luominen on suoraviivaista.
+</p>
+
+<pre class="sh_java code-highlight"><code>Pari&lt;String, Integer&gt; pari = new Pari&lt;&gt;("yksi", 1);
+System.out.println(pari.getAvain() + " -&gt; " + pari.getArvo());
+</code></pre>
+
+
+<pre class="sample-output">yksi -&gt; 1
+</pre>
+
+
+<h3 class="material-heading">
+    Hajautustaulun luominen
+
+</h3>
+
+<p>
+  Hajautustaulu sisältää taulukon listoja. Jokainen listan arvo on edellä kuvattu pari, joka sisältää avain-arvo -parin. Hajautustaululla on lisäksi tieto arvojen lukumäärästä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Hajautustaulu&lt;K, V&gt; {
+
+    private Lista&lt;Pari&lt;K, V&gt;&gt;[] arvot;
+    private int arvoja;
+
+    public Hajautustaulu() {
+        this.arvot = new Lista[32];
+        this.arvoja = 0;
+    }
+}
+</code></pre>
+
+
+<h3 class="material-heading">
+    Arvon hakeminen
+
+</h3>
+
+<p>
+  Toteutetaan ensin metodi <code>public V hae(K avain)</code>, jota käytetään arvon hakemiseen avaimen perusteella. Metodissa lasketaan ensin avaimen hajautusarvo ja päätellään sen perusteella hajautustaulun sisäisen taulukon indeksi, mistä arvoja haetaan. Mikäli kyseisessä indeksissä ei ole listaa, ei indeksiin ole lisätty vielä yhtäkään avain-arvo -paria, eikä avaimelle ole tallennettu arvoa. Tällöin palautetaan null. Muussa tapauksessa taulukon indeksissä oleva lista käydään läpi, ja avaimen yhtäsuuruutta vertaillaan jokaiseen listan avain-arvo -parin avaimeen. Mikäli joku listalla olevista avaimista vastaa avainta, jonka perusteella arvoa haetaan, palautetaan kyseinen arvo. Muulloin avainta (ja siihen liittyvää arvoa) ei löydy, ja palautetaan arvo null.
+</p>
+
+<pre class="sh_java code-highlight"><code>public V hae(K avain) {
+    int hajautusArvo = Math.abs(avain.hashCode() % this.arvot.length);
+    if (this.arvot[hajautusArvo] == null) {
+        return null;
+    }
+        
+    Lista&lt;Pari&lt;K, V&gt;&gt; arvotIndeksissa = this.arvot[hajautusArvo];
+
+    for (int i = 0; i &lt; arvotIndeksissa.koko(); i++) {
+        if (arvotIndeksissa.arvo(i).getAvain().equals(avain)) {
+            return arvotIndeksissa.arvo(i).getArvo();
+        }
+    }
+  
+    return null;
+}
+</code></pre>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Miksei hajautustaulua toteuteta listana?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Hajautustaulun toimintaperiaate perustuu siihen, että avain-arvo -parit jaetaan hajautusarvon perusteella pieniin joukkoihin. Tällöin avaimen perusteella haettaessa käydään läpi vain hyvin pieni joukko avain-arvo -pareja -- olettaen toki, että hajautusarvo on järkevä.
+  </p>
+
+  <p>
+    Jos hajautusarvo on aina sama -- esimerkiksi 1 -- vastaa hajautustaulun sisäinen toteutus listaa -- kaikki arvot ovat samalla listalla. Jos taas hajautusarvo on hyvin satunnainen, arvot hajautetaan mahdollisimman tasaisesti taulukon eri listoille.
+  </p>
+
+  <p>
+    Hajautustaulu toimii lisäksi siten, että hajautustaulun käyttämää taulukkoa kasvatetaan mikäli arvojen määrä on tarpeeksi iso (tyypillisesti noin 75% taulukon koosta). Tyypillisesti miljoonia avain-arvo -pareja sisältävän hajautustaulun taulukon yhdessä indeksissä on vain muutama avain-arvo -pari. Tämä tarkoittaa käytännössä sitä, että avain-arvo -parin olemassaolon selvittämiseen tarvitaan vain hajautusarvon laskeminen sekä muutaman olion tarkastelu -- tämä on paljon nopeampaa kuin listan läpikäynti.
+  </p>
+  
+
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Hajautustauluun lisääminen, osa 1
+
+</h3>
+
+<p>
+  Toteutetaan hajautustauluun lisäämisen käytettävän metodin <code>public void lisaa(K avain, V arvo)</code> ensimmäinen versio. Ensimmäisessä versiossa hajautustaulun sisältämän taulukon kokoa ei kasvateta lisäyksen yhteydessä.
+</p>
+
+<p>
+  Metodi laskee ensin avaimelle hajautusarvon ja päättelee hajautusarvon perusteella hajautustaulun sisäisen taulukon indeksin. Jos taulukon kyseisessä indeksissä ei ole arvoa, taulukon indeksiin lisätään lista. Tämän jälkeen taulukon indeksissä oleva lista käydään läpi ja sieltä etsitään avain-arvo -paria, jonka avain vastaa lisättävän avain-arvo -parin avainta. Mikäli vastaava avain löytyy, päivitetään olemassaolevan avain-arvo -parin arvo vastaamaan uutta avainta. Muulloin listaan lisätään uusi avain-arvo -pari -- tällöin myös hajautustaulussa olevien arvojen lukumäärää kasvatetaan yhdellä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void lisaa(K avain, V arvo) {
+    int hajautusArvo = Math.abs(avain.hashCode() % arvot.length);
+    if (arvot[hajautusArvo] == null) {
+        arvot[hajautusArvo] = new Lista<>();
+    }
+
+    Lista&lt;Pari&lt;K, V&gt;&gt; arvotIndeksissa = arvot[hajautusArvo];
+
+    int indeksi = -1;
+    for (int i = 0; i &lt; arvotIndeksissa.koko(); i++) {
+        if (arvotIndeksissa.arvo(i).getAvain().equals(avain)) {
+            indeksi = i;
+            break;
+        }
+    }
+
+    if (indeksi &lt; 0) {
+        arvotIndeksissa.lisaa(new Pari&lt;&gt;(avain, arvo));
+        this.arvoja++;
+    } else {
+        arvotIndeksissa.arvo(indeksi).setArvo(arvo);
+    }
+}
+</code></pre>
+
+<p>
+  Metodi on melko monimutkainen. Pilkotaan se pienempiin osiin -- ensimmäisen osan vastuulla on avaimeen liittyvän listan hakeminen ja toisen osan vastuulla on avaimen indeksin etsiminen listalta.
+</p>
+
+<pre class="sh_java code-highlight"><code>private Lista&lt;Pari&lt;K, V&gt;&gt; haeAvaimeenLittyvaLista(K avain) {
+    int hajautusArvo = Math.abs(avain.hashCode() % arvot.length);
+    if (arvot[hajautusArvo] == null) {
+        arvot[hajautusArvo] = new Lista&lt;&gt;();
+    }
+
+    return arvot[hajautusArvo];
+}
+  
+private int haeAvaimenIndeksi(Lista&lt;Pari&lt;K, V&gt;&gt; lista, K avain) {
+    for (int i = 0; i &lt; lista.koko(); i++) {
+        if (lista.arvo(i).getAvain().equals(avain)) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+</code></pre>
+
+<p>
+  Nyt metodi <code>public void lisaa(K avain, V arvo)</code> voidaan toteuttaa hieman selkeämmin.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void lisaa(K avain, V arvo) {
+    Lista&lt;Pari&lt;K, V&gt;&gt; arvotIndeksissa = haeAvaimeenLittyvaLista(avain);
+    int indeksi = haeAvaimenIndeksi(arvotIndeksissa, avain);
+
+    if (indeksi &lt; 0) {
+        arvotIndeksissa.lisaa(new Pari&lt;&gt;(avain, arvo));
+        this.arvoja++;
+    } else {
+        arvotIndeksissa.arvo(indeksi).setArvo(arvo);
+    }
+}
+</code></pre>
+
+
+<h3 class="material-heading">
+    Hajautustauluun lisääminen, osa 2
+
+</h3>
+
+<p>
+  Edellä kuvattu hajautustauluun lisääminen toimii osittain. Toiminnallisuuden suurin puute on se, että taulukon kokoa ei kasvateta kun arvojen määrä kasvaa liian suureksi. Lisätään ohjelmaan kasvatustoiminnallisuus, mikä tuplaa hajautustaulun sisäisen taulukon koon. Kasvatustoiminnallisuuden tulee myös sijoittaa jokainen hajautustaulussa olevan taulukon arvo uuteen taulukkoon.
+</p>
+
+<p>
+  Hahmotellaan kasvatustoiminnallisuuden alku. Kasvatustoiminnallisuudessa luodaan uusi taulukko, jonka koko on edelliseen verrattuna kaksinkertainen. Tämän jälkeen alkuperäinen taulukko käydään indeksi indeksiltä läpi ja olemassaolevat avain-arvo -parit kopioidaan uuteen taulukkoon. Lopulta alkuperäinen taulukko korvataan uudella taulukolla.
+</p>
+
+<p>
+  Alla on hahmoteltu metodin toimintaa. Kopiointia ei ole vielä toteutettu.
+</p>
+
+<pre class="sh_java code-highlight"><code>private void kasvata() {
+    // luodaan uusi taulukko
+    Lista&lt;Pari&lt;K, V&gt;&gt;[] uusi = new Lista[this.arvot.length * 2];
+
+    for (int i = 0; i &lt; this.arvot.length; i++) {
+        // kopioidaan vanhan taulukon arvot uuteen
+
+    }
+
+    // korvataan vanha taulukko uudella
+    this.arvot = uusi;
+</code></pre>
+
+<p>
+  Hahmotellaan seuraavaksi metodia, joka kopioi alkuperäisen taulukon yhden indeksin sisältämän listan arvot uuteen taulukkoon. Kopioinnin yhteydessä jokaisen kopioitavan avain-arvo -parin sijainti taulukossa lasketaan uudelleen -- tämä tehdään, sillä taustalla olevan taulukon koko kasvaa ja avain-arvot -parit halutaan sijoittaa taulukkoon mahdollisimman tasaisesti.
+</p>
+
+<pre class="sh_java code-highlight"><code>private void kopioi(Lista&lt;Pari&lt;K, V&gt;&gt;[] uusi, int indeksista) {
+    for (int i = 0; i &lt; this.arvot[indeksista].koko(); i++) {
+        Pari&lt;K, V&gt; arvo = this.arvot[indeksista].arvo(i);
+  
+        int hajautusarvo = Math.abs(arvo.getAvain().hashCode() % uusi.length);
+        if(uusi[hajautusarvo] == null) {
+            uusi[hajautusarvo] = new Lista&lt;&gt;();
+        }
+  
+        uusi[hajautusarvo].lisaa(arvo);
+    }
+}
+</code></pre>
+
+<p>
+  Nyt kopioi-metodia voidaan kutsua kasvata-metodista.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>private void kasvata() {
+    // luodaan uusi taulukko
+    Lista&lt;Pari&lt;K, V&gt;&gt;[] uusi = new Lista[this.arvot.length * 2];
+
+    for (int i = 0; i &lt; this.arvot.length; i++) {
+        // kopioidaan vanhan taulukon arvot uuteen
+        kasvata(uusi, indeksista);
+    }
+
+    // korvataan vanha taulukko uudella
+    this.arvot = uusi;
+</code></pre>
+
+<p>
+  <em>
+    Metodissa on pieni virhe. Selvitä mistä virheessä on kyse ja korjaa se.
+  </em>
+</p>
+
+<p>
+  Lisätään lopuksi kasvatustoiminnallisuus osaksi lisäystoiminnallisuutta. Hajautustaulun kokoa kasvatetaan aina jos hajautustaulussa olevien avain-arvo -parien määrä on yli 75% taulukon koosta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void lisaa(K avain, V arvo) {
+    Lista&lt;Pari&lt;K, V&gt;&gt; arvotIndeksissa = haeAvaimeenLittyvaLista(avain);
+    int indeksi = haeAvaimenIndeksi(arvotIndeksissa, avain);
+
+    if (indeksi &lt; 0) {
+        arvotIndeksissa.lisaa(new Pari&lt;&gt;(avain, arvo));
+        this.arvoja++;
+    } else {
+        arvotIndeksissa.arvo(indeksi).setArvo(arvo);
+    }
+
+    if (1.0 * this.arvoja / this.arvot.length &gt; 0.75) {
+        kasvata();
+    }
+}
+</code></pre>
+
+
+
+<h3 class="material-heading">
+    Poistaminen
+
+</h3>
+
+<p>
+  Lisätään hajautustauluun vielä toiminnallisuus avain-arvo -parin poistamiseen avaimen perusteella. Poistotoiminnallisuus palauttaa null-arvon mikäli arvoa ei löydy, muuten metodi palauttaa poistettavaan avaimeen liittyvän arvon.
+</p>
+
+<p>
+  Voimme hyödyntää valmiiksi toteuttamiamme metodeja poistotoiminnallisuudessa. Selitä itsellesi (ääneen) alla olevan metodin konkreettinen toiminta.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public V poista(K avain) {
+    Lista&Lt;Pari&lt;K, V&gt;&gt; arvotIndeksissa = haeAvaimeenLittyvaLista(avain);
+    if (arvotIndeksissa == null || arvotIndeksissa.koko() == 0) {
+        return null;
+    }
+
+    int indeksi = haeAvaimenIndeksi(arvotIndeksissa, avain);
+    if (indeksi &lt; 0) {
+        return null;
+    }
+
+    Pari&lt;K, V&gt; pari = arvotIndeksissa.arvo(indeksi);
+    arvotIndeksissa.poista(pari);
+    return pari.getArvo();
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Hakemisen tehokkuudesta
+
+</h2>
+
+<p>
+  Tarkastellaan vielä hakemisen tehokkuutta listasta ja hajautustaulusta. Tehokkuusmittauksia voi tehdä metodin <code>System.nanotime()</code> palauttaman nanosekunteja kuvaavan arvon avulla. Ohjelma luo ensin miljoona alkiota hajautustauluun ja listaan, jonka jälkeen hajautustaulusta ja listasta etsitään tuhatta satunnaista arvoa. Noin 50% arvoista löytyy listalta ja hajautustaulusta.
+</p>
+
+<pre class="sh_java code-highlight"><code>Lista&lt;String&gt; lista = new Lista&lt;&gt;();
+Hajautustaulu&lt;String, String&gt; taulu = new Hajautustaulu&lt;&gt;();
+
+for (int i = 0; i &lt; 1000000; i++) {
+    lista.lisaa("" + i);
+    taulu.lisaa("" + i, "" + i);
+}
+
+Lista&lt;String&gt; haettavat = new Lista&lt;&gt;();
+Random arpoja = new Random();
+for (int i = 0; i &lt; 1000; i++) {
+    haettavat.lisaa("" + arpoja.nextInt(2000000));
+}
+
+long listanHakuAloitus = System.nanoTime();
+for (int i = 0; i &lt; haettavat.koko(); i++) {
+    lista.sisaltaa(haettavat.arvo(i));            
+}
+long listanHakuLopetus = System.nanoTime();
+  
+long hajautustaulunHakuAloitus = System.nanoTime();
+for (int i = 0; i &lt; haettavat.koko(); i++) {
+    taulu.hae(haettavat.arvo(i));            
+}
+long hajautustaulunHakuLopetus = System.nanoTime();
+
+  
+long listanHaku = listanHakuLopetus - listanHakuAloitus;
+System.out.println("Lista: haku kesti noin " + listanHaku / 1000000 + " millisekuntia (" +
+    listanHaku + " nanosekuntia.)");
+  
+long hajautustaulunHaku = hajautustaulunHakuLopetus - hajautustaulunHakuAloitus;
+System.out.println("Hajautustaulu: haku kesti noin " + hajautustaulunHaku / 1000000 +
+    " millisekuntia (" + hajautustaulunHaku + " nanosekuntia.)");
+</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>Lista: haku kesti noin 6284 millisekuntia (6284420580 nanosekuntia.)
+Hajautustaulu: haku kesti noin 0 millisekuntia (805106 nanosekuntia.)
+</code></pre>
+
+<p>
+  <em>
+    Edellä kuvatut ja kursseilla käyttämämme listat ja hajautustaulut poikkeavat toki sisäiseltä toteutukselta hieman toisistaan. Ohjelmointikielten tarjoamissa tietorakenteissa on hieman enemmän erilaisia optimointeja -- näihinkin palataan myöhemmillä kursseilla. Tämän kurssin puitteissa riittää em. tietorakenteiden käyttöosaaminen sekä jonkintasoinen ymmärrys niiden tehokkuuseroista sekä käyttötapauksista.
+  </em>
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lista ja hajautustaulu (11 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta edellistä esimerkkiä noudattaen luokat Lista ja Hajautustaulu pakkaukseen <code>tietorakenteita</code>. Kohdat on pisteytetty askeleittain, jotka ovat seuraavat:
+  </p>
+
+  <ol>
+    <li>
+      Listan luominen
+    </li>
+    <li>
+      Arvojen lisääminen listalle (osat 1 ja 2)
+    </li>
+    <li>
+      Listalla olevan arvon olemassaolon tarkastaminen
+    </li>
+    <li>
+      Listalla olevan arvon poistaminen
+    </li>
+    <li>
+      Listan indeksistä hakeminen ja listan koko
+    </li>
+    <li>
+      Avain-arvo -paria kuvaavan luokan toteutus
+    </li>
+    <li>
+      Hajautustaulun luominen
+    </li>
+    <li>
+      Arvon hakeminen hajautustaulusta
+    </li>
+    <li>
+      Hajautustauluun lisääminen (ei kasvatusta)
+    </li>
+    <li>
+      Hajautustaulun koon kasvattaminen tarvittaessa
+    </li>
+    <li>
+      Hajautustaulusta poistaminen
+    </li>
+  </ol>
+  
+  <p>
+    Sitä mukaa kun kehität listaa ja hajautustaulua, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
+  </p>
+
+  <p>
+    Esimerkiksi, kun olet saanut listan luomisen, arvojen lisäämisen ja arvon poistamisen toimimaan, olet vaiheessa 3, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>3</code>.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Testivetoinen ohjelmistokehitys
+
+</h1>
+
+<p>
+  Testivetoinen ohjelmistokehitys (<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank" rel="noopener">Test-driven development</a>) on ohjelmistokehitysprosessi, joka perustuu ohjelman rakentamiseen pienissä osissa. Testivetoisessa ohjelmistokehityksessä ohjelmoija kirjoittaa aina ensin testin. Testi ei mene läpi, sillä testin täyttävä toiminnallisuus puuttuu. Kun testi on kirjoitettu, ohjelmaan lisätään toiminnallisuus, joka täyttää testin vaatimukset. Testit suoritetaan uudestaan, jonka jälkeen -- jos kaikki testit menevät läpi -- lisätään uusi testi tai vaihtoehtoisesti -- jos testit eivät mene läpi -- korjataan aiemmin kirjoitettua ohjelmaa. Ohjelman sisäistä rakennetta korjataan eli refaktoroidaan tarvittaessa siten, että ohjelman toiminnallisuus pysyy samana mutta rakenne selkiytyy.
+</p>
+
+<p>
+  Rakenne koostuu viidestä askeleesta, joita toistetaan kunnes ohjelman toiminnallisuus on valmis.
+</p>
+
+<ul>
+  <li>
+    Kirjoita testi. Ohjelmoija päättää, mitä ohjelman toiminnallisuutta testataan, ja kirjoittaa toiminnallisuutta varten testin.
+  </li>
+  <li>
+    Suorita testit ja tarkista menevätkö testit läpi. Kun uusi testi on kirjoitettu, testit suoritetaan. Jos testin suoritus päättyy hyväksyttyyn tilaan, testissä on todennäköisesti virhe ja se tulee korjata -- testin pitäisi testata vain toiminnallisuutta, jota ei ole vielä toteutettu.
+  </li>
+  <li>
+    Kirjoita toiminnallisuus, joka täyttää testin vaatimukset. Ohjelmoija toteuttaa toiminnallisuuden, joka täyttää vain testin vaatimukset. Huomaa, että tässä ei toteuteta asioita, joita testi ei vaadi -- toiminnallisuutta lisätään vain vähän kerrallaan.
+  </li>
+  <li>
+    Suorita testit. Jos testit eivät pääty hyväksyttyyn tilaan, kirjoitetussa toiminnallisuudessa on todennäköisesti virhe. Korjaa toiminnallisuus -- tai, jos toiminnallisuudessa ei ole virhettä -- korjaa viimeksi toteutettu testi.
+  </li>
+  <li>
+    Korjaa ohjelman sisäistä rakennetta. Kun ohjelman koko kasvaa, sen sisäistä rakennetta korjataan tarvittaessa. Liian pitkät metodit pilkotaan useampaan osaan ja ohjelmasta eriytetään käsitteisiin liittyviä luokkia. Testejä ei muuteta, vaan niitä hyödynnetään ohjelman sisäiseen rakenteeseen tehtyjen muutosten oikeellisuuden varmistamisessa -- jos ohjelman rakenteeseen tehty muutos muuttaa ohjelman toiminnallisuutta, testit varoittavat siitä, ja ohjelmoija voi korjata tilanteen.
+  </li>
+</ul>
+
+
+<h2 class="material-heading">
+    Testiluokka ja ensimmäinen testi
+
+</h2>
+
+<p>
+  Tarkastellaan tätä prosessia tehtävien hallintaan tarkoitetun sovelluksen kannalta. Tehtävien hallintasovellukseen halutaan mahdollisuus tehtävien listaamiseen, lisäämiseen, tehdyksi merkkaamiseen sekä poistamiseen. Aloitetaan sovelluksen kehitys luomalla tyhjä testiluokka. Asetetaan testiluokan nimeksi TehtavienHallintaTest, ja lisätään se pakkaukseen tehtavat. Tällä hetkellä sovelluksessa ei ole vielä lainkaan toiminnallisuutta.
+</p>
+
+<img src="../img/material/tehtavienhallinta-testiluokka-837dcf93.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Luodaan ensimmäinen testi. Testissä määritellään luokka Tehtavienhallinta, ja oletetaan, että luokalla on metodi tehtavalista, joka palauttaa tehtävälistan. Testi tarkastaa, että alussa tehtävälista on tyhjä.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        assertEquals(0, hallinta.tehtavalista().size());
+    }
+}
+</code></pre>
+
+<p>
+  Testin suorittaminen epäonnistuu, koska luokkaa Tehtavienhallinta ei ole määritelty.
+</p>
+
+
+<h2 class="material-heading">
+    Ensimmäisen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Toteutetaan seuraavaksi toiminnallisuus, joka täyttää testin. Luodaan luokka Tehtavienhallinta ja lisätään luokalle toiminnallisuus, joka täyttää testin vaatimukset. Luokka luodaan NetBeansissa kansioon Source Packages. Nyt projekti näyttää seuraavalta.
+</p>
+
+
+<img src="../img/material/tehtavienhallinta-luokat-f1dff2f7.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Toiminnallisuus on yksinkertainen. Luokalla Tehtavienhallinta on metodi tehtavalista, joka palauttaa tyhjän listan.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tehtavienhallinta {
+
+    public List&lt;String&gt; tehtavalista() {
+        return new ArrayList&lt;&gt;();
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät läpi. Luokan Tehtavienhallinta sisäinen rakenne on vielä niin pieni, ettei siinä ole juurikaan korjattavaa.
+</p>
+
+
+<h2 class="material-heading">
+    Toinen testi
+
+</h2>
+
+<p>
+  Aloitamme testivetoiseen kehitykseen liittyvän syklin uudestaan. Seuraavaksi luomme uuden testin, jossa tarkastellaan tehtävien lisäämiseen liittyvää toiminnallisuutta. Testissä määritellään luokalle Tehtavienhallinta metodi lisää, joka lisää tehtävälistalle uuden tehtävän. Tehtävän lisäämisen onnistuminen tarkastetaan tehtavalista-metodin koon kasvamisen kautta.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        assertEquals(0, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        hallinta.lisaa("Kirjoita testi");
+        assertEquals(1, hallinta.tehtavalista().size());
+    }
+}
+</code></pre>
+
+<p>
+  Testit toimi lainkaan, sillä luokasta Tehtavienhallinta puuttuu lisaa-metodi.
+</p>
+
+<h2 class="material-heading">
+    Toisen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Lisätään luokkaan Tehtavienhallinta metodi <code>lisaa</code>, ja suoritetaan testit.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tehtavienhallinta {
+
+    public List&lt;String&gt; tehtavalista() {
+        return new ArrayList&lt;&gt;();
+    }
+
+    public void lisaa(String tehtava) {
+
+    }
+}
+</code></pre>
+
+<p>
+  Nyt testien ajamisesta saadaan seuraava ilmoitus.
+</p>
+
+<pre class="sample-output">Testsuite: tehtavat.TehtavienhallintaTest
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec
+
+Testcase: tehtavanLisaaminenKasvattaaListanKokoaYhdella(tehtavat.TehtavienhallintaTest):	FAILED
+expected:<1> but was:<0>
+junit.framework.AssertionFailedError: expected:<1> but was:<0>
+    at tehtavat.TehtavienhallintaTest.tehtavanLisaaminenKasvattaa...(TehtavienhallintaTest.java:18)
+</pre>
+
+<p>
+  Testit eivät siis mene vieläkään läpi. Muokataan luokan tehtävänhallinta toiminnallisuutta siten, että luokalle luodaan oliomuuttujaksi tehtävät sisältävä lista. Muokataan metodin lisaa-toiminnallisuutta vain niin, että se läpäisee testin, mutta ei tee todellisuudessa haluttua asiaa.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tehtavienhallinta {
+
+    private List&lt;String&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+	this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+	return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+	this.tehtavat.add("Uusi");
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät läpi, joten olemme tyytyväisiä ja voimme siirtyä seuraavaan askeleeseen.
+</p>
+
+<pre class="sample-output">Testsuite: tehtavat.TehtavienhallintaTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
+
+test-report:
+test:
+BUILD SUCCESSFUL (total time: 0 seconds)
+</pre>
+
+
+<h2 class="material-heading">
+    Kolmas testi
+
+</h2>
+
+<p>
+  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi assertTrue vaatii, että metodin palauttama arvo on true.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+	Tehtavienhallinta hallinta = new Tehtavienhallinta();
+	assertEquals(0, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+	Tehtavienhallinta hallinta = new Tehtavienhallinta();
+	hallinta.lisaa("Kirjoita testi");
+	assertEquals(1, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void lisattyTehtavaLoytyyTehtavalistalta() {
+	Tehtavienhallinta hallinta = new Tehtavienhallinta();
+	hallinta.lisaa("Kirjoita testi");
+	assertTrue(hallinta.tehtavalista().contains("Kirjoita testi"));
+    }
+}
+</code></pre>
+
+<p>
+  Testit eivät mene taaskaan läpi ja ohjelman toiminnallisuutta tulee muokata.
+</p>
+
+
+<h2 class="material-heading">
+    Kolmannen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Noheva ohjelmoija muokkaisi luokan Tehtavienhallinta toimintaa siten, että metodissa lisaa lisättäisiin listalle aina merkkijono "Kirjoita testi". Tämä johtaisi tilanteeseen, missä testit menisivät läpi, mutta toiminnallisuus sovellus ei vieläkään tarjoaisi toimivaa tehtävien lisäämistoiminnallisuutta. Muokataan luokkaa Tehtavienhallinta siten, että lisättävä tehtävä lisätään tehtävälistalle.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tehtavienhallinta {
+
+    private List&lt;String&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+	this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+	return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+	this.tehtavat.add(tehtava);
+    }
+}
+</code></pre>
+
+<p>
+  Nyt testit menevät taas läpi.
+</p>
+
+
+<h2 class="material-heading">
+    Testien refaktorointi
+
+</h2>
+
+<p>
+  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    private Tehtavienhallinta hallinta;
+
+    @Before
+    public void alusta() {
+	hallinta = new Tehtavienhallinta();
+    }
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+	assertEquals(0, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+	hallinta.lisaa("Kirjoita testi");
+	assertEquals(1, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void lisattyTehtavaLoytyyTehtavalistalta() {
+	hallinta.lisaa("Kirjoita testi");
+	assertTrue(hallinta.tehtavalista().contains("Kirjoita testi"));
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Neljäs testi
+
+</h2>
+
+<p>
+  Lisätään seuraavaksi mahdollisuus tehtävän tehdyksi merkkaamiseen. Mutta! Mitä tarkoittaa tehdyksi merkkaaminen? Alunperin tavoitteena oli luoda ohjelma, joka mahdollistaa tehtävien listaamisen, listaamisen, tehdyksi merkkaamisen sekä poistamisen. Miten tarkastamme onko tehtävä tehty? Jos emme voi tietää onko tehtävä tehty vai ei, voisimme periaatteessa jättää koko toiminnallisuuden huomiotta. Voimme toisaalta päättää miten tehtän tehdyksi määrittely tapahtuu.
+</p>
+
+<p>
+  Määritellään ensin testi, joka mahdollistaa tehtävän tehdyksi merkkaamiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>// ...
+@Test
+public void tehtavanVoiMerkataTehdyksi() {
+    hallinta.lisaa("Satunnainen tehtava");
+    hallinta.merkkaaTehdyksi("Satunnainen tehtava");
+}
+// ..
+</code></pre>
+
+<h2 class="material-heading">
+    Neljännen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Tehtavienhallintaan lisätään seuraavaksi metodi merkkaaTehdyksi. Metodin toiminnallisuus voi olla aluksi tyhjä, sillä testi vaatii vain kyseisen metodin olemassaolon.
+</p>
+
+<h2 class="material-heading">
+    Viides testi
+
+</h2>
+
+<p>
+  Lisätään tämän jälkeen testi, jonka tehtävänä on tarkistaa onko parametrina annettu tehtävä tehty.
+</p>
+
+<pre class="sh_java code-highlight"><code>// ...
+@Test
+public void tehdyksiMerkattuOnTehty() {
+    hallinta.lisaa("Uusi tehtava");
+    hallinta.merkkaaTehdyksi("Uusi tehtava");
+    assertTrue(hallinta.onTehty("Uusi tehtava"));
+}
+// ..
+</code></pre>
+
+
+<h2 class="material-heading">
+    Viidennen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Nyt toiminnallisuutta varten tulee toteuttaa uusi metodi onTehty. Metodi voi aluksi palauttaa aina arvon true. Kokko luokan Tehtavienhallinta sisältö on nyt seuraava.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tehtavienhallinta {
+
+    private List&lt;String&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+	this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+	return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+	this.tehtavat.add(tehtava);
+    }
+
+    public void merkkaaTehdyksi(String tehtava) {
+
+    }
+
+    public boolean onTehty(String tehtava) {
+	return true;
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät taas läpi.
+</p>
+
+
+<h2 class="material-heading">
+    Kuudes testi
+
+</h2>
+
+<p>
+  Seuraavaksi toteutettava testi on oleellinen tehtävän toiminnan kannalta. Olemme tähän mennessä tarkistaneet, että haluttu toiminnallisuus on olemassa, mutta emme ole juurikaan tarkastaneet epätoivotun toiminnan poissaoloa. Jos testejä kirjoitettaessa keskitytään halutun toiminnallisuuden olemassaoloon, testit saattavat jäädä ohjelman toiminnallisuutta hyvin vähän tarkastelevaksi.
+</p>
+
+<p>
+  Kirjoitetaan seuraavaksi testi, joka tarkastaa, että tekemättömäksi merkkaamaton testi ei ole tehty.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>    // ...
+    @Test
+    public void tehdyksiMerkkaamatonEiOleTehty() {
+	hallinta.lisaa("Uusi tehtava");
+	hallinta.merkkaaTehdyksi("Uusi tehtava");
+	assertFalse(hallinta.onTehty("Joku tehtava"));
+    }
+    // ..
+</code></pre>
+
+
+<h2 class="material-heading">
+    Kuudennen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Joudumme nyt muokkaamaan luokan Tehtavienhallinta toiminnallisuutta hieman enemmän. Lisätään luokkaan erillinen lista tehtäville, jotka on merkattu tehdyiksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tehtavienhallinta {
+
+    private List&lt;String&gt; tehtavat;
+    private List&lt;String&gt; tehdytTehtavat;
+
+    public Tehtavienhallinta() {
+	this.tehtavat = new ArrayList&lt;&gt;();
+	this.tehdytTehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+	return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+	this.tehtavat.add(tehtava);
+    }
+
+    public void merkkaaTehdyksi(String tehtava) {
+	this.tehdytTehtavat.add(tehtava);
+    }
+
+    public boolean onTehty(String tehtava) {
+	return this.tehdytTehtavat.contains(tehtava);
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät taas läpi. Sovelluksessa on muutamia muitakin kysymysmerkkejä. Pitäisikö tehtavalistauksessa palautetut tehtävät merkitä jollain tavalla tehdyksi? Voiko tehtävän, joka ei ole tehtävälistalla tosiaankin merkata tehdyksi?
+</p>
+
+
+<h2 class="material-heading">
+    Refaktorointi ja käsite "Tehtävä"
+
+</h2>
+
+
+<p>
+  Tehdään ensimmäinen hieman laajempi ohjelman sisäisen rakenteen korjaus. Tehtävä on selkeästi käsite, joten sille kannattanee luoda oma erillinen luokka. Luodaan luokka Tehtava. Luokalla Tehtava on nimi sekä tieto siitä, onko tehtävä tehty.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+public class Tehtava {
+
+    private String nimi;
+    private boolean tehty;
+
+    public Tehtava(String nimi) {
+	this.nimi = nimi;
+	this.tehty = false;
+    }
+
+    public String getNimi() {
+	return nimi;
+    }
+
+    public void setTehty(boolean tehty) {
+	this.tehty = tehty;
+    }
+
+    public boolean onTehty() {
+	return tehty;
+    }
+
+}
+</code></pre>
+
+<p>
+  Muokataan tämän jälkeen luokan Tehtavienhallinta <em>sisäistä</em> rakennetta siten, että luokka tallentaa tehtävät merkkijonojen sijaan Tehtava-olioina. Huomaa, että luokan metodien määrittelyt eivät muutu, mutta niiden sisäinen toteutus muuttuu.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Tehtavienhallinta {
+
+    private List&lt;Tehtava&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+	this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+        return this.tehtavat.stream()
+            .map(t -&gt; t.getNimi()).collect(Collectors.toList());
+    }
+
+    public void lisaa(String tehtava) {
+	this.tehtavat.add(new Tehtava(tehtava));
+    }
+
+    public void merkkaaTehdyksi(String tehtava) {
+        this.tehtavat.stream()
+            .filter(t -&gt; t.getNimi().equals(tehtava)).forEach(t -&gt; {
+                t.setTehty(true);
+	    });
+    }
+
+    public boolean onTehty(String tehtava) {
+	return this.tehtavat.stream()
+	    .filter(t -&gt; t.getNimi().equals(tehtava))
+	    .filter(t -&gt; t.onTehty()).count() &gt; 0;
+    }
+}
+</code></pre>
+
+<p>
+  Vaikka tehty muutos muutti luokan Tehtavienhallinta sisäistä toimintaa merkittävästi, testit toimivat yhä. Sykli jatkuisi samalla tavalla kunnes toivottu perustoiminnallisuus olisi paikallaan.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tehtavat (7 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo Tehtavienhallinnalta haluttu toiminnallisuus testivetoista ohjelmistokehitystä noudattaen. Kun olet saanut edellisen esimerkin loppuun asti, lisää sovellukseen vielä testit tehtävien poistamiseen sekä testien vaatima toiminnallisuus.
+  </p>
+
+  <p>
+    Kohdat on pisteytetty askeleittain, jotka ovat seuraavat:
+  </p>
+
+  <ol>
+    <li>
+      Testiluokka ja ensimmäinen testi, ensimmäisen testin vaatimusten täyttäminen
+    </li>
+    <li>
+      Toinen testi, toisen testin vaatimusten täyttäminen
+    </li>
+    <li>
+      Kolmas testi, kolmannen testin vaatimusten täyttäminen, testien refaktorointi
+    </li>
+    <li>
+      Neljäs testi, neljännen testin vaatimusten täyttäminen, viides testi, viidennen testin vaatimusten täyttäminen    </li>
+    <li>
+      Kuudes testi, kuudennen testin vaatimusten täyttäminen
+    </li>
+    <li>
+      Refaktorointi ja käsitteen tehtävä eristäminen
+    </li>
+    <li>
+      Tehtävien poistamiseen liittyvät testit sekä toiminnallisuus -- toteuta poistaminen Tehtavienhallinta-luokkaan metodina <code>public void poista(String tehtava)</code>
+    </li>
+  </ol>
+  
+  <p>
+    Sitä mukaa kun kehität toiminnallisuutta, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
+  </p>
+
+  <p>
+    Esimerkiksi, kun olet saanut ensimmäiset kaksi testiä sekä niihin liittyvän toiminnallisuuden toimimaan olet vaiheessa 2, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>2</code>.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Lisää ohjelmistojen testaamisesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Yksikkötestaus on vain osa ohjelmiston testaamista. Yksikkötestaamisen lisäksi ohjelmiston toteuttaja toteuttaa myös integraatiotestejä, joissa tarkastellaan komponenttien kuten luokkien yhteistoiminnallisuutta, sekä käyttöliittymätestejä, joissa testataan sovelluksen käyttöliittymää käyttöliittymän tarjoamien elementtien kuten nappien kautta.
+  </p>
+
+  <p>
+    Näitä testaamiseen liittyviä menetelmiä tarkastellaan tarkemmin muunmuassa kursseilla ohjelmistotekniikan menetelmät sekä ohjelmistotuotanto.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Sovelluksen käytettävyys
+
+</h1>
+
+<p>
+  Yksikkötestaus on vain osa ohjelmistojen testaamiseen liittyvää työtä. Tärkein sovelluksen testaamisen liittyvä ihmisryhmä on sovelluksen käyttäjät. Käyttäjät toimivat ohjelman parissa ja huomaavat toiminnassa esiintyviä puutteita.
+</p>
+
+<p>
+  Sovelluksen käytettävyyteen liittyy useita erilaisia näkökulmia, joista osa on <a href="https://www.iso.org/standard/16883.html" target="_blank" rel="noopener">standardoitu</a>. Käytettävyyden kannalta oleellisia ominaisuuksia ovat muunmuassa:
+</p>
+
+<ul>
+  <li>
+    Tavoitteiden saavuttaminen. Ohjelmiston käyttäjillä on tavoitteita, joita ohjelmiston avulla halutaan saavuttaa. Miten hyvin ohjelmisto auttaa käyttäjiä saavuttamaan tavoitteensa? Miten tehokkaasti käyttäjät saavuttavat tavoitteensa? Joutuvatko he käyttämään liikaa aikaa tavoitteiden saavuttamiseen? Voisiko tätä helpottaa sovelluksen suunnittelussa?
+  </li>
+  <li>
+    Tyytyväisyys sovelluksen toimintaan. Miten tyytyväisiä käyttäjät ovat sovelluksen toimintaan? Onko sovelluksen käyttö sujuvaa?
+  </li>
+  <li>
+    Ohjelmiston käytön oppiminen. Kuinka nopeasti ohjelmiston käyttö on opittavissa? Minkälaisia ohjeita sovelluksen käyttö vaatii? Tarjoaako ohjelmisto näitä ohjeita? Kuinka hyvin käyttäjä muistaa miten sovellusta käytetään?
+  </li>
+  <li>
+    Virhealttius. Kuinka paljon käyttäjä tekee virheitä sovellusta käyttäessään? Voisiko virheiden määrää vähentää?
+  </li>
+</ul>
+
+<p>
+  Käytettävyyden lisäksi sovelluksissa oleellista on myös saavutettavuus, millä tarkoitetaan erilaisten käyttäjäryhmien huomiointia sovelluksen rakentamisessa. Näitä käsitellään tarkemmin Human-Computer Interaction -teeman kursseilla (Ihmisen ja tietokoneen välinen vuorovaikutus).
+</p>
+
+
+<h1 class="material-heading">
+    Finito
+
+</h1>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">2048 (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <a href="https://en.wikipedia.org/wiki/2048_(video_game)" target="_blank" rel="noopener">2048</a> on suosittu peli. Peliä pelataan 4x4 -kokoisessa lukuja sisältävässä ruudukossa, ja siinä on neljä mahdollista siirtoa: (o)ikealle, (a)las, (v)asemmalle ja (y)lös. Jokainen siirto siirtää kaikkia ruudukossa olevia arvoja niin paljon haluttuun suuntaan kuin mahdollista. Jos kahdessa vierekkäisessä ruudussa on sama arvo, yhdistetään ruutujen arvot yhteen. Esimerkiksi:
+  </p>
+
+  <pre>
+
+2 0 2 0
+0 0 0 1
+0 1 0 0
+0 0 0 0
+&gt; o
+
+0 0 0 4
+0 0 0 1
+0 0 0 1
+0 1 0 0
+  </pre>
+
+  <p>
+    Aina kun pelaaja tekee siirron, satunnaiseen nolla-arvoiseen kohtaan arvotaan uusi luku. Peli loppuu kun yhdessä ruuduista on luku 2048 tai siirtäminen ei enää onnistu. Alla esimerkki pelin kulusta.
+  </p>
+
+  <pre>
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+
+&gt; o
+0 0 0 1
+0 0 0 0
+0 0 0 0
+0 1 0 0
+
+&gt; o
+0 0 0 1
+0 0 0 0
+0 0 0 1
+0 0 0 1
+
+&gt; a
+0 0 0 0
+0 0 0 0
+1 0 0 2
+0 0 0 1
+
+&gt; a
+1 0 0 0
+0 0 0 0
+0 0 0 2
+1 0 0 1
+
+&gt; v
+1 0 0 0
+0 0 0 0
+2 0 0 0
+2 1 0 0
+
+&gt; y
+1 1 0 0
+4 0 0 0
+0 0 0 0
+0 1 0 0
+
+&gt; v
+2 0 0 0
+4 0 0 0
+0 0 0 0
+1 0 1 0
+
+&gt; v
+2 0 0 0
+4 1 0 0
+0 0 0 0
+2 0 0 0
+
+&gt;
+  </pre>
+
+  <p>
+    Tässä tehtävässä rakennat pelin toimintaan tarvittua ydintoiminnallisuutta. Tehtävässä kerrataan myös toistolauseiden ja indeksien käyttöä.
+  </p>
+
+  <h2>Peliruudukko</h2>
+
+  <p>
+    Luo pakkaukseen sovellus luokka Peliruudukko. Luokalla tulee olla parametriton konstruktori, joka luo 4x4-kokoisen ruudukon, ja jonka vasemmassa yläkulmassa on arvo 1. Oleta, että kaksiulotteisen taulukon ensimmäinen indeksi kuvaa y-koordinaattia, ja toinen indeksi x-koordinaattia. Oleta lisäksi, että y-koordinaatti kasvaa alaspäin. Vasen yläkulma on siis kohdassa taulukko[0][0] ja vasen alakulma kohdassa taulukko[3][0] -- olettaen, että taulukon koko on 4.
+  </p>
+
+  <p>
+    Lisää luokalle myös metodit public int[][] getTaulukko(), joka palauttaa pelin sisäisen tilan, ja public void setTaulukko(int[][] taulukko), jolla voi asettaa pelin sisäisen tilan.
+  </p>
+
+  <h2>Siirrä oikealle</h2>
+
+  <p>
+    Tee tämän jälkeen peliruudukolle metodi public void siirraOikealle(), joka siirtää jokaisen rivin palat oikealle. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat. Alla muutamia esimerkkeja.
+  </p>
+
+  <pre>
+1 1 1 1
+1 1 0 1
+1 1 1 0
+1 0 1 1
+
+&gt; o
+0 0 0 4
+0 0 1 2
+0 0 1 2
+0 0 1 2
+  </pre>
+
+  <pre>
+1 0 0 1
+0 1 0 1
+2 2 4 0
+0 1 0 0
+
+&gt; o
+0 0 0 2
+0 0 0 2
+0 0 0 8
+0 0 0 1
+  </pre>
+
+  <h2>Siirrä ylös ja siirrä alas</h2>
+
+  <p>
+    Tee seuraavaksi peliruudukolle metodit public void siirraYlos(), joka siirtää jokaisen rivin palat ylös, ja public void siirraAlas(), joka siirtää jokaisen rivin palat alas. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat.
+  </p>
+
+  <h2>Siirrä vasemmalle ja pelin loppuminen</h2>
+
+  <p>
+    Tee seuraavaksi peliruudukolle metodi public void siirraVasemmalle(), joka siirtää jokaisen rivin palat vasemmalle. Kun metodi siirraVasemmalle on valmis, toteuta sovellukseen metodi public boolean peliKaynnissa(), joka palauttaa tiedon pelin jatkumisesta.
+  </p>
+
+  <p>
+    Peli jatkuu jos (1) pelissä on yksikin ruutu, jossa on arvo 0, tai (2) kaksi pelin vierekkaista (vaaka- tai pystytasossa) ruutua ovat samanarvoiset.
+  </p>
+
+  <h2>Tekstikayttoliittyma ja uuden luvun arpominen</h2>
+
+  <p>
+    Tee lopulta pelille tekstikäyttöliittymä. Pelin tulee käynnistyä kun luokassa Peli olevaa main-metodia kutsutaan. Pelaajalle tulee tarjota vaihtoehdot o, v, y, a, x, missä o on oikealle, v on vasemmalle, y on ylös, a on alas, ja x on lopeta. Jokaisen siirron -- paitsi pelin lopettavan x:n -- jälkeen taulukon satunnaiseen tyhjään kohtaan tulee lisätä luku 1. Alla on esimerkki tekstikäyttöliittymän toiminnasta.
+  </p>
+
+<pre class="sample-output">1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+
+&gt; <font color="red">o</font>
+0 0 0 1
+0 0 0 0
+0 0 0 1
+0 0 0 0
+
+&gt; <font color="red">y</font>
+0 0 0 2
+1 0 0 0
+0 0 0 0
+0 0 0 0
+
+&gt; <font color="red">v</font>
+2 0 1 0
+1 0 0 0
+0 0 0 0
+0 0 0 0
+
+&gt; <font color="red">o</font>
+0 0 2 1
+0 0 0 1
+0 1 0 0
+0 0 0 0
+
+&gt; <font color="red">y</font>
+0 1 2 2
+0 0 0 0
+0 0 0 0
+0 0 1 0
+
+&gt; <font color="red">o</font>
+0 0 1 4
+0 0 0 0
+0 0 0 1
+0 0 0 1
+
+&gt; <font color="red">x</font>
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Mitä seuraavaksi?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tämän kurssin jälkeen on hyvä ottaa kurssit Tietokantojen perusteet sekä Tietorakenteet ja algoritmit. Kurssin tietokantojen perusteet jälkeen kannattaa ottaa kurssi Ohjelmistotekniikan menetelmät. Jos kurssia Tietokoneen toiminta ei ole vielä suorittanut, myös sen ottaminen on suositeltavaa. Muistathan, että kurssin Tietorakenteet ja algoritmit esitietovaatimuksena on kurssi Johdatus yliopistomatematiikkaan.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<div class="quiznator-plugin" data-quiz-id="5a2d21331ffcd00004997916"></div>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener">
+  <button class='btn btn-primary'>
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+  </button>
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/part14.html.erb" target="_blank" rel="noopener">
+  <button class='btn btn-primary'>
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+ Muokkaa sivua
+  </button>
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-s17">
+                hy-ohpe-s17 (Ohjelmoinnin perusteet, syksy 2017)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-s17">
+                hy-ohja-s17 (Ohjelmoinnin jatkokurssi, syksy 2017)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-57bcb25a.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        // window.initTyponator(); // default init disabled -- favoring AB
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
