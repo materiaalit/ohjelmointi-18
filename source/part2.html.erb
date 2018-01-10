@@ -15,6 +15,78 @@
 
 
 
+<% partial 'partials/exercise', locals: { name: 'Työntekijän eläkevakuutus' } do %>
+
+  <p>
+    Työntekijän eläkevakuutus (TyEL) on lakisääteinen ja pakollinen maksu, jolla rahoitetaan suurin osa nykyisistä ja tulevista työeläkkeistä. Työntekijän eläkevakuutuksen maksamisesta vastaa sekä työnantaja että työntekijä: <a href="http://www.etk.fi/uutinen/tyoelakemaksut-vuonna-2017/" target="_blank">Eläketurvakeskuksen mukaan</a> työnantajan maksama TyEL-maksu on vuonna 2017 noin 18% työntekijän palkasta, kun taas työntekijä maksaa palkastaan TyEL-maksua noin 6%.
+  </p>
+
+  <p>
+    Työnantaja maksaa osuutensa bruttopalkan lisäksi, kun taas työntekijän maksama osuus otetaan bruttopalkasta (eli palkasta ennen ennakonpidätyksiä, vakuutusmaksuja ja muita vähennyksiä).
+  </p>
+
+  <p>
+    Toteuta ohjelma, joka kertoo TyEL-kulut annetulle bruttopalkalle. Ohjelman tulee kertoa annetun bruttopalkan perusteella työnantajan maksut sekä palkasta tehtävät pidätykset. Käytä edellä annettuja arvioita (työnantajan osuus 18% ja työntekijän osuus 6%).
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syötä bruttopalkka: <font color="red">800</font>
+    Työnantaja maksaa TyEL-maksuja: 144
+    Työntekijä maksaa työnantajalle vähintään: 944
+
+    Työntekijä maksaa TyEL-maksuja: 48
+    Työntekijän palkka TyEL-maksun jälkeen: 752
+
+    TyEL-kulut yhteensä: 192
+  <% end %>
+
+
+  <% partial 'partials/sample_output' do %>
+    Syötä bruttopalkka: <font color="red">1000</font>
+    Työnantaja maksaa TyEL-maksuja: 180
+    Työntekijä maksaa työnantajalle vähintään: 1180
+
+    Työntekijä maksaa TyEL-maksuja: 60
+    Työntekijän palkka TyEL-maksun jälkeen: 940
+
+    TyEL-kulut yhteensä: 240
+  <% end %>
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
+
+  <p>
+    Tehtävänannossa tulee käyttäjän syöttämien lukujen summan laskeva ohjelma. Ohjelma kysyy lukuja kunnes käyttäjä syöttää nollan. Tämän jälkeen lukujen lukeminen loppuu, ja ohjelma tulostaa lukujen summan luvun.
+  </p>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summa lisäksi syötettyjen lukujen keskiarvon.
+  </p>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Salapaikka ranskassa' } do %>
+
+  <p>
+    Kameralta kuvien kopioimiseen tarkoitetun ohjelmiston toteuttaja löysi ohjelmastaan virheen, jonka lopputulos näkyy tehtäväpohjassa olevan ohjelman näyttämässä kuvassa. Ohjelmiston toteuttaja kertoo seuraavaa.
+  </p>
+  
+  <p>
+    "Tämä virhe oli aika harmittava. Se muutti kaikki siniset ja vihreät väriarvot pelkäksi kohinaksi, joten niistä ei ole mitään iloa eikä niitä saa koskaan takaisin kuvaan. Lisäksi punaisen värin määrä jokaisessa pikselissä jakautui noin kymmenellä kopioinnin yhteydessä, joten kuvan punainen väri on aivan liian tumma."
+  </p>
+
+  <p>
+    Selvitä kopiointiohjelmiston mitä kuvassa näkyy ja mistä kuva on otettu. Tietokoneella kuvatiedostoja käsitellään yleensä <a href="https://fi.wikipedia.org/wiki/RGB-v%C3%A4rimalli" target="_blank" norel>RGB-värimallin</a> kautta. Tässä tapauksessa jokaisen värin arvo on välillä 0-1, ja jokainen väriarvo esitetään desimaalilukuna.
+  </p>
+  
+
+<% end %>
+
+
+
+
+
 <% partial 'partials/hint', locals: { name: 'Toisen osan tavoitteet' } do %>
 
   <p>
