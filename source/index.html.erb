@@ -480,114 +480,47 @@
   Tunnukset ja työvälineet
 <% end %>
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Käyttäjätunnuksen luominen
-<% end %>
-
 <p>
-  Kurssilla tarvitaan käyttäjätunnus Test My Code (TMC) -järjestelmään, jota käytetään tehtävien automaattiseen arviointiin. Käyttäjätunnuksella voit myös kirjautua tähän materiaaliin, jolloin pääset vastaamaan materiaalissa oleviin kyselyihin.
+  Kurssilla tarvitaan Test My Code (TMC) -järjestelmä, jota käytetään tehtävien automaattiseen arviointiin ja palauttamiseen sekä tunnukset kyseiseen järjestelmään. Tämän lisäksi tarvitset koneellesi Java-ohjelmien kehittämiseen tarkoitetun Javan kahdeksannen version.
 </p>
 
 <p>
-  <strong>Huom!</strong> Jos olet Helsingin yliopiston opiskelija, aseta käyttäjätunnukseksesi opiskelijanumerosi. Näin opintopisteiden liittäminen kurssisuoritukseen helpottuu merkittävästi. Jos taas et ole Helsingin yliopiston opiskelija, keksi itsellesi sopiva käyttäjätunnus. Kun jatkossa kysymme TMC-tunnustasi, tarkoitamme sillä tätä käyttäjätunnusta.
+  Ohjeistus Javan asentamiseen, TMC-järjestelmän asentamiseen, käyttäjätunnusten luomiseen sekä ensimmäisen kurssitehtävän tekemiseen löydät osoitteesta <a href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">https://materiaalit.github.io/tmc-asennus/netbeans/</a>.
 </p>
 
-<p>
-  Käyttäjätunnuksen luominen onnistuu sivulla <a href="https://tmc.mooc.fi/user/new" target="_blank" rel="noopener">https://tmc.mooc.fi/user/new</a>.
-</p>
-
-<p>
-  Kun olet luonut käyttäjätunnuksen, voit kirjautua tähän materiaaliin materiaalin oikeassa ylälaidassa olevan "Kirjaudu sisään"-napin kautta.
-</p>
-
-<% partial 'partials/material_sub_heading' do %>
-  Ohjelmointiympäristön asentaminen
-<% end %>
-
-<p>
-  Kurssin ohjelmointiympäristönä käytetään NetBeans-nimistä ohjelmointiympäristöä, johon lisätään TMC-niminen liitännäinen. Nämä työvälineet löytyvät Kumpulan kampuksen Exactumin mikroluokista B221 ja BK107 asennettuna nimellä "TMCBeans".
-</p>
-
-<p>
-  Jos teet kurssia kotoa, tulee sinun asentaa koneellesi sekä tuki Java-ohjelmien kehittämiselle, että ohjelmien kehittämiseen käytettävä NetBeans with TMC-ympäristö.
-</p>
-
-<ul>
-
-  <li>
-    <strong>Javan asentaminen (* linux, kts. alla!)</strong>: lataa uusin Javan kehitysympäristö (Java SE Development Kit 8u112) osoitteesta <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>. Lataamasi versio riippuu käytössäsi olevasta käyttöjärjestelmästä, esimerkiksi Macintosh-käyttäjät lataavat tiedoston <code>jdk-8u112-macosx-x64.dmg</code> ja 64-bittisen Windows-käyttöjärjestelmän käyttäjät lataavat tiedoston <code>jdk-8u112-windows-x64.exe</code>. Kun olet ladannut tiedoston, asenna se koneellesi.
-  </li>
-
-  <li>
-    <strong>NetBeans with TMC:n asentaminen</strong>: Mene osoitteeseen <a href="http://update.testmycode.net/installers/tmc-netbeans_org_mooc/" target="_blank" rel="noopener">http://update.testmycode.net/installers/tmc-netbeans_org_mooc/</a>. Osoitteessa on listattuna eri asennusohjelmat eri käyttöjärjestelmille -- valitse listalla olevista sopivin ja lataa se. Esimerkiksi Windows-käyttäjät lataavat tiedoston <code>http://update.testmycode.net/installers/tmc-netbeans_org_mooc/tmc-netbeans_org_mooc_tmcbeans-windows.exe</code> ja Linuxilla <code>http://update.testmycode.net/installers/tmc-netbeans_org_mooc/tmc-netbeans_org_mooc_tmcbeans-windows.sh</code> jne. Kun tiedoston lataaminen on valmis, asenna sovellus koneellesi.
-  </li>
-</ul>
+<div class="text-center text-xs-center">
+  <p>
+    <a class="btn btn-success btn-xs" href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">
+      Ohjeisiin!
+    </a>
+  </p>
+</div>
 
 
 <p>
-  <strong>(*)</strong> Linux-koneilla OpenJDK:n asentaminen on todennäköisesti helpompaa kuin yllämainitun Oraclen Java-version. OpenJDK:n asennus tapahtuu Ubuntussa komentoriviltä seuraavalla komennolla:
-</p>
-
-<pre>
-sudo apt-get install openjdk-8-jdk
-</pre>
-
-<p>
-  Asenna tämän jälkeen vielä OpenJFX, jota käytetään käyttöliittymien tekemiseen ja käsittelyyn. Tämän asentaminen onnistuu Ubuntussa (komentoriviltä) komennolla:
-</p>
-
-<pre>
-sudo apt-get install openjfx
-</pre>
-
-<p>
-  Joissain Linux-koneissa tulee lisäksi NetBeans with TMC:n asennuksen yhteydessä asettaa ensiksi ladatulle asennuspaketille suoritusoikeudet. Tämä tapahtuu klikkaamalla asennuspakettia oikealla hiirennapilla ja valitsemalla Properties. Valitse tämän jälkeen Permissions, ja aseta Allow executing file as a program -ruutuun ruksi. Ohjelman asennuksen pitäisi tämän jälkeen käynnistyä kun tuplaklikkaat tiedostoa ja valitset Run.
+  Kun olet luonut käyttäjätunnuksen edellä kuvattuja ohjeita seuraten, voit kirjautua tähän materiaaliin materiaalin oikeassa ylälaidassa olevan "Kirjaudu sisään"-napin kautta.
 </p>
 
 <p>
-  Kun olet saanut kurssin työvälineet asennettua, seuraava askel on kurssin valinta ohjelmointiympäristössä.
+  Huomaathan, että kurssin työvälineet löytyvät valmiiksi asennettuina Kumpulan kampuksen Exactumin mikroluokista B221 ja BK107. Ohjelma löytyy nimellä "TMCBeans".
 </p>
 
 
 
-<% partial 'partials/material_sub_sub_heading' do %>
-  Oikean kurssin valinta ohjelmointiympäristössä
-<% end %>
-
-<p>
-  Kurssimateriaalia käytetään kahdella kurssilla.
-</p>
-
-<ul>
-  <li>
-    <strong>Helsingin yliopiston syksyn 2017 kurssi Ohjelmoinnin perusteet</strong> (kurssi <a href="https://courses.helsinki.fi/fi/TKT10002/119284736" target="_blank" rel="noopener">https://courses.helsinki.fi/fi/TKT10002/119284736</a>). Jos teet kurssia Helsingin yliopistolla, valitse TMC:n asetuksista palvelimen osoitteeksi (server address) <code>https://tmc.mooc.fi/org/hy/courses/243</code>. Kurssin nimi on tällöin <code>hy-ohpe-s17</code>.
-  </li>
-  <li>
-    <strong>Helsingin yliopiston syksyn 2017 kurssi Ohjelmoinnin jatkokurssi</strong> (kurssi <a href="https://courses.helsinki.fi/fi/TKT10003/119284733" target="_blank" rel="noopener">https://courses.helsinki.fi/fi/TKT10003/119284733</a>). Jos teet kurssia Helsingin yliopistolla, valitse TMC:n asetuksista palvelimen osoitteeksi <code>https://tmc.mooc.fi/org/hy/courses/264</code>. Kurssin nimi on tällöin <code>hy-ohja-s17</code>.
-  </li>
-</ul>
-
-<p>
-  Ylläolevat asetukset saa asetettua NetBeans with TMC:n valikosta TMC -> Settings. TMC:hen asetettava käyttäjätunnus on aiemmin luomasi TMC-tunnus, ja salasana on luomallesi tunnuksellesi asettamasi salasana.
-</p>
-
-
-
-<% partial 'partials/material_sub_heading' do %>
+<% partial 'partials/material_heading' do %>
   Analytiikkadatan keräämisestä ja kurssilla tehtävästä tutkimuksesta
 <% end %>
 
-<% partial 'partials/material_sub_sub_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Analytiikkadatan kerääminen ja arvostelu
 <% end %>
 
 <p>
-  Kurssin aikana tehdyistä tehtävistä kerätään tietoa. Kerätty tieto sisältää materiaalissa olevia kyselyitä, ohjelmointitehtävien vastauksia, sekä kurssimateriaalin käyttöä. Jos et hyväksy tiedon keräämistä, kurssin pisteytyksessä ei voida ottaa näitä suorituksia huomioon. Tallennettu tieto sisältää henkilökohtaisen tunnisteen, jonka perusteella ei voida suoraan päätellä henkilöllisyyttäsi. Tieto ei esimerkiksi siis sisällä nimeäsi tai sähköpostiosoitettasi.
+  Kurssin aikana tehdyistä tehtävistä kerätään tietoa. Kerätty tieto sisältää materiaalissa olevien kyselyiden vastauksia, osittaisen ohjelmointitehtävien ratkaisuprosessin, sekä kurssimateriaalin käyttöä. Jos et hyväksy tiedon keräämistä, kurssin pisteytyksessä ei voida ottaa näitä suorituksia huomioon. Tallennettu tieto sisältää henkilökohtaisen tunnisteen, jonka perusteella ei voida suoraan päätellä henkilöllisyyttäsi. Tieto ei esimerkiksi siis sisällä nimeäsi tai sähköpostiosoitettasi.
 </p>
 
 <p>
-  Varmista että TMC:n asetuksissa (Valikko TMC -> Settings) kohdassa "Send snapshots of your progress for study" on ruksi.  MOOC-suorituksia tai Helsingin yliopiston avoimen yliopiston suorituksia ei arvostella ilman tätä. Jos olet opiskelijana Helsingin yliopistolla ja et halua että työstämistäsi tehtävistä kerätään ajoittaista dataa kurssiarvostelua varten, voit suorittaa kurssin Kumpulassa järjestettävällä erilliskokeella. Analytiikkadataa kerätään vain kurssiin liittyvistä harjoitustehtävistä, ei muista projekteistasi tai muualta koneeltasi.
+  Varmista että TMC:n asetuksissa (Valikko TMC -> Settings) kohdassa "Send snapshots of your progress for study" on ruksi.  MOOC-suorituksia tai Helsingin yliopiston avoimen yliopiston suorituksia ei arvostella ilman tätä. Jos olet opiskelijana Helsingin yliopistolla ja et halua että työstämistäsi tehtävistä kerätään ajoittaista dataa kurssiarvostelua varten, kurssin voi suorittaa Kumpulassa järjestettävällä erilliskokeella. Analytiikkadataa kerätään vain kurssiin liittyvästä toiminnasta, ei esimerkiksi muista ohjelmointiprojekteistasi tai muuten koneeltasi.
 </p>
 
 
@@ -596,19 +529,26 @@ sudo apt-get install openjfx
 <% end %>
 
 <p>
-  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita. Tutkimusdatan hallinnasta vastaa Helsingin yliopiston tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi muut tutkijat. Voit myös pyytää milloin tahansa sinusta kerätyn datan poistamista lähettämällä sähköpostin osoitteeseen arto.hellas@cs.helsinki.fi
+  Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä tutkimuksella on useampia tavoitteita: (1) lähestyä tilannetta, missä oppimateriaali ja tehtävät osaavat ottaa oppijoiden yksilölliset erot paremmin huomioon ja reagoida niihin tarjoten kohdennetumpaa opetusta, (2) kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen liittyvää ymmärrystä ja tietoa, sekä (3) tukea tutkimustiedon kautta muita oppimaterialien kehittäjiä ja oppimisen tutkijoita.
 </p>
 
 <p>
-  Työskentelystä kerättyä tietoa käytetään tutkimuksessa jos sallit. Tutkimuksemme päätavoitteena on osaamisen kehittymisen arviointi tekemisen arvioinnin sijaan, mikä johtaa tulevaisuudessa yksilöllistä osaamista parhaiten kehittävien vinkkien ja tehtävien tarjoamisen. Tutkimustuloksista ei pystytä tunnistamaan yksittäisiä opiskelijoita. Jos et salli kurssin aikana kerättyjen tietojen käyttämistä tutkimuksessa, siitä ei tule minkäänlaisia seuraamuksia.
+  Tällaisesta tutkimuksesta kiinnostuneiden kannattaa tutustua esimerkiksi artikkeliin <a href="https://dl.acm.org/citation.cfm?id=2858798" target="_blank">Educational Data Mining and Learning Analytics in Programming: Literature Review and Case Studies</a>. 
+</p>
+
+<p>
+  Tutkimusdatan hallinnasta vastaa Helsingin yliopiston tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi muut tutkijat. Voit myös pyytää milloin tahansa sinusta kerätyn datan poistamista lähettämällä sähköpostin osoitteeseen arto.hellas@cs.helsinki.fi
+</p>
+
+<p>
+  Työskentelystä kerättyä tietoa käytetään tutkimuksessa jos sallit. Tutkimuksemme päätavoitteena on osaamisen kehittymisen arviointi tekemisen arvioinnin sijaan, mikä johtaa tulevaisuudessa yksilöllistä osaamista paremmin kehittävien vinkkien ja tehtävien tarjoamiseen. Tutkimustuloksista ei pystytä tunnistamaan yksittäisiä opiskelijoita. Jos et salli kurssin aikana kerättyjen tietojen käyttämistä tutkimuksessa, siitä ei tule minkäänlaisia seuraamuksia.
 </p>
 
 <p>
   Kurssilla tehdään lisäksi tutkimusta, joka voi vaikuttaa kurssikokemukseen (esim. kurssisisältö). Jos osallistut tutkimukseen, saatat saada esimerkiksi parannuksia materiaaliin. Jos et halua osallistua tutkimukseen, saat kurssin sisällöstä perusversion. Tutkimukseen osallistuminen ei vaikuta loppuarvosanaan.
 </p>
 
-
-<div class="quiznator-plugin" data-quiz-id="59a92ba68858e700042f839f"></div>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a32a' } %>
 
 
 <% partial 'partials/hint', locals: { name: 'Sitten materiaaliin...' } do %>
