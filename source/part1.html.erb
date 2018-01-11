@@ -300,7 +300,7 @@ System.out.println("Ensimmäinen\nToinen\nKolmas");
 <% end %>
 
 <p>
-  Ylläoleva lause tulostaa seuraavaa:
+  Yllä oleva lause tulostaa seuraavaa:
 </p>
 
 <% partial 'partials/sample_output' do %>
@@ -336,7 +336,7 @@ Kolmas
 <% end %>
 
 <p>
-  Vaikka ylläoleva esimerkki toimii, on rivinvaihtojen käyttö tärkeää muita ohjelmoijia ajatellen. Tällöin ohjelman lukija tietää, että kullakin rivillä tehdään vain yksi konkreettinen asia.
+  Vaikka yllä oleva esimerkki toimii, on rivinvaihtojen käyttö tärkeää muita ohjelmoijia ajatellen. Tällöin ohjelman lukija tietää, että kullakin rivillä tehdään vain yksi konkreettinen asia.
 </p>
 
 <% partial 'partials/material_sub_sub_heading' do %>
@@ -357,11 +357,15 @@ Kolmas
 
 <img class="naytto" src="/img/lohkoesimerkki-1.png"/>
 
+<p>&nbsp;</p>
+
 <p>
-  Ylläolevan esimerkin lohko sisältää toisen lohkon. Tämä lohko alkaa merkkijonosta <code>public static void main(String[] args)</code> ja sisältää ohjelman käynnistymisessä suoritettavan lähdekoodin.
+  Yllä olevan esimerkin lohko sisältää toisen lohkon. Tämä lohko alkaa merkkijonosta <code>public static void main(String[] args)</code> ja sisältää ohjelman käynnistymisessä suoritettavan lähdekoodin.
 </p>
 
 <img class="naytto" src="/img/lohkoesimerkki-2.png"/>
+
+<p>&nbsp;</p>
 
 <p>
   Laajemmin lohkojen merkitystä voi ajatella suoritettavan ohjelman rakenteen kuvaajina. Merkkijonosta <code>public class <em>Ohjelma</em></code> alkava lohko sisältää koko ohjelman rakenteen, kun taas merkkijonosta <code>public static void main(String[] args)</code> alkava lohko sisältää ohjelman käynnistyksen jälkeen suoritettavan lähdekoodin.
@@ -1302,7 +1306,7 @@ rivi 9: System.out.println(kolmas);
 <% end %>
 
 <p>
-  Alla on kirjoitettu ylläolevan ohjelmakoodin suoritus auki.
+  Alla on kirjoitettu yllä olevan ohjelmakoodin suoritus auki.
 </p>
 
 <% partial 'partials/sample_output' do %>
@@ -1923,11 +1927,11 @@ if (luku == 1) {
 
 
 <p>
-  Luetaan ylläoleva esimerkki: 'Jos luku on yksi, tulosta "Luku on yksi", muuten jos luku on kaksi, tulosta "Lukuna on kaksi", muuten jos lukuna on kolme, tulosta "Kolme lienee lukuna!".  Muulloin, tulosta "Jotain muuta!"'.
+  Luetaan yllä oleva esimerkki: 'Jos luku on yksi, tulosta "Luku on yksi", muuten jos luku on kaksi, tulosta "Lukuna on kaksi", muuten jos lukuna on kolme, tulosta "Kolme lienee lukuna!".  Muulloin, tulosta "Jotain muuta!"'.
 </p>
 
 <p>
-  Ylläolevan ohjelman askeleittainen visualisointi:
+  Yllä olevan ohjelman askeleittainen visualisointi:
 </p>
 
 <div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n  public static void main(String[] args) {\n    int luku = 3;\n    \n    if (luku == 1) {\n      System.out.println(\"Luku on yksi\");\n    } else if (luku == 2) {\n      System.out.println(\"Lukuna on kaksi\");\n    } else if (luku == 3) {\n      System.out.println(\"Kolme lienee lukuna!\");\n    } else {\n      System.out.println(\"Jotain muuta!\");\n    }\n  }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"16","frame_id":16}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Kolme lienee lukuna!\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"20","frame_id":20}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Kolme lienee lukuna!\n","event":"return","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
@@ -2415,7 +2419,7 @@ Luku 7 on pariton.
 </ol>
 
 <p>
-  Jos-tyyppiset ehdot on helppo toteuttaa <code>if - else if - else</code> -valintakäskyjen avulla. Alla oleva koodi on toteutettu ylläolevien askelten perusteella, mutta se ei kuitenkaan toimi oikein. Kokeile!
+  Jos-tyyppiset ehdot on helppo toteuttaa <code>if - else if - else</code> -valintakäskyjen avulla. Alla oleva koodi on toteutettu yllä olevien askelten perusteella, mutta se ei kuitenkaan toimi oikein. Kokeile!
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2444,7 +2448,7 @@ Luku 7 on pariton.
 </p>
 
 <p>
-  Yksi lähestymistapa ylläolevan ajatusketjun kehittämiseen on ensin etsiä <em>vaativin ehto</em> ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.
+  Yksi lähestymistapa yllä olevan ajatusketjun kehittämiseen on ensin etsiä <em>vaativin ehto</em> ja toteuttaa se. Tämän jälkeen toteutettaisiin muut ehdot. Yllä olevassa esimerkissä ehto "jos luku on jaollinen kolmella <strong>ja</strong> viidellä" vaatii kahden tapauksen toteutumista. Nyt ajatusketju olisi muotoa.
 </p>
 
 <ol>
@@ -2626,7 +2630,7 @@ System.out.println("kiitos ja kuulemiin.");
 
 
 <p>
-  Ylläolevassa esimerkissä toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä syöttää nollan tai negatiivisen luvun, suoritetaan komento <code>break</code>. Tällöin suoritus siirtyy toistolausetta seuraavaan komentoon, joka tulostaa merkkijonon <em>kiitos ja kuulemiin.</em>
+  Yllä olevassa esimerkissä toisto etenee siten että ensin tulostuu <em>osaan ohjelmoida!</em> ja tämän jälkeen ohjelma kysyy käyttäjältä jatketaanko vielä. Jos käyttäjä syöttää nollan tai negatiivisen luvun, suoritetaan komento <code>break</code>. Tällöin suoritus siirtyy toistolausetta seuraavaan komentoon, joka tulostaa merkkijonon <em>kiitos ja kuulemiin.</em>
 </p>
 
 
@@ -2657,9 +2661,44 @@ kiitos ja kuulemiin.
 
 <% end %>
 
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujat toistolauseen ulkopuolella
+<% end %>
+
 <p>
-  TODO: järkevä esimerkki
+  Toistolauseissa halutaan usein laskea asioita. Tällöin ohjelmoijan tulee määritellä laskettavien asioiden ylläpitoon muuttuja ennen toistolauseen alkua, jotta muuttujan arvoa voidaan päivittää toistolauseessa. Alla olevassa esimerkissä ohjelma laskee syötettyjen ykkösten lukumääärän. Syötteiden lukeminen lopetetaan kun käyttäjä syöttää luvun 0.
 </p>
+
+<% partial 'partials/code_highlight' do %>
+  Scanner lukija = new Scanner(System.in);
+
+  int ykkosia = 0;
+
+  while (true) {
+      System.out.print("Syötä luku (0 lopettaa): ");
+      int luku = Integer.parseInt(lukija.nextLine());
+      if (luku == 0) {
+          break;
+      }
+ 
+      if (luku == 1) {
+          ykkosia = ykkosia + 1;
+      }
+  }
+  
+  System.out.println("Ykkösiä yhteensä: " + ykkosia);
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  Syötä luku <font color="red">1</font>
+  Syötä luku <font color="red">2</font>
+  Syötä luku <font color="red">1</font>
+  Syötä luku <font color="red">-1</font>
+  Syötä luku <font color="red">0</font>
+  Ykkösiä yhteensä: 2
+<% end %>
+
 
 <% partial 'partials/exercise', locals: { name: 'Summaaja' } do %>
 
@@ -2668,14 +2707,6 @@ kiitos ja kuulemiin.
   </p>
 
 <% end %>
-
-
-<p>
-  TODO: järkevä esimerkki
-</p>
-
-
-
 
 
 <% partial 'partials/material_heading' do %>
