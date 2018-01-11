@@ -58,7 +58,7 @@ function getConfig() {
       return getMoocConfig();
       break;
     default:
-      return getOhpeKevat18Config();
+      return getMoocConfig();
   }
 }
 
