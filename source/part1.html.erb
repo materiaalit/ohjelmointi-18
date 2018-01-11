@@ -344,8 +344,45 @@ Kolmas
 <% end %>
 
 <p>
-  TODO: pari sanaa aaltosuluista; käytetään ohjelman rakenteen määrittelyyn. lohko
+  Lohkolla tarkoitetaan aaltosulkujen rajaamaa aluetta. Ohjelmissamme näitä on tyypillisesti useita. Ohjelman sisältävä tiedosto sisältää merkkijonon <code>public class <em>Ohjelma</em></code>, jota seuraa lohkon avaava aaltosulku. Lohko päättyy sulkevaan aaltosulkuun. <em>Ohjelma</em> -- tai oikeastaan <strong>luokan</strong> (tämä termi tulee myöhemmin tutuksi) -- sisällä voi olla myös muita lohkoja.
 </p>
+
+<p>
+  Esimerkiksi ohjelman käynnistämiskohdan määrittelevä merkkijono <code>public static void main(String[] args)</code> -- tai oikeastaan <strong>metodi</strong> (tämäkin termi tulee myöhemmin tutuksi) -- määrittelee oman lohkon, jonka sisällä oleva lähdekoodi suoritetaan kun ohjelma käynnistetään.
+</p>
+
+<p>
+  Alla olevassa kuvassa on näytettynä Ohjelma-nimisen luokan rajaama lohko. Lohko alkaa merkkijonon <code>public class Ohjelma</code> jälkeen alkavasta aaltosulusta ja päättyy viimeiseen aaltosulkuun.
+</p>
+
+<img class="naytto" src="/img/lohkoesimerkki-1.png"/>
+
+<p>
+  Ylläolevan esimerkin lohko sisältää toisen lohkon. Tämä lohko alkaa merkkijonosta <code>public static void main(String[] args)</code> ja sisältää ohjelman käynnistymisessä suoritettavan lähdekoodin.
+</p>
+
+<img class="naytto" src="/img/lohkoesimerkki-2.png"/>
+
+<p>
+  Laajemmin lohkojen merkitystä voi ajatella suoritettavan ohjelman rakenteen kuvaajina. Merkkijonosta <code>public class <em>Ohjelma</em></code> alkava lohko sisältää koko ohjelman rakenteen, kun taas merkkijonosta <code>public static void main(String[] args)</code> alkava lohko sisältää ohjelman käynnistyksen jälkeen suoritettavan lähdekoodin.
+</p>
+
+<p>
+  Lohko rajataan aina aaltosuluilla, ja aaltosuluille tulee löytyä aina pari. Tietokone ei esimerkiksi ymmärtäisi seuraavanlaista ohjelmaa, sillä siitä puuttuu yksi aaltosulku.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Ohjelma {
+
+      public static void main(String[] args) {
+
+          // Tänne voit kirjoittaa ohjelmakoodia. Ohjelmasi voit ajaa
+          // valitsemalla menusta Run->Run File tai painamalla Shift+F6
+
+      
+  }
+<% end %>
+
 
 <% partial 'partials/material_sub_heading' do %>
   Ohjelmointityylistä
@@ -2651,7 +2688,7 @@ kiitos ja kuulemiin.
 </p>
 
 <p>
-  Tehdään ensimmäisen osan loppuun vielä ohjelma, missä kerrataan ydinasioita. Kertauksen aihealue o n
+  Tehdään ensimmäisen osan loppuun vielä ohjelma, missä kerrataan ydinasioita.
 </p>
 
 <p>
@@ -2887,11 +2924,16 @@ kiitos ja kuulemiin.
 <% partial 'partials/exercise', locals: { name: 'Tykinkuula' } do %>
 
   <p>
-    Jatkokehitetään edellä kuvattua ohjelmaa suoraan ylöspäin ammutun tykinkuulan suurimman korkeuden selvittämiseen. Toteuta ohjelma, joka kysyy käyttäjältä tykinkuulan lähtönopeutta ja suurimman korkeuden laskemisessa käytettävää painovoimaa. Ohjelman tulee tulostaa tykinkuulan korkeus sekunti sekunnilta kunnes tykinkuula palaa maahan. Ohjelman tulee lisäksi ohjelman lopussa kertoa tykinkuulan suurin korkeus.
+    Tässä tehtävässä luot edellä kuvatun ohjelman suoraan ylöspäin ammutun tykinkuulan suurimman korkeuden selvittämiseen. Ohjelmassa on kuitenkin muutamia parannuksia: käyttäjä voi syöttää sekä lähtönopeuden että painovoiman. Tämän lisäksi tulostuksessa arvot on eroteltu sarkaimilla, mikä mahdollistaa niiden helpon siirtämisen esimerkiksi taulukkolaskentaohjelmiin.
   </p>
 
   <p>
-    Vinkki: saat luettua käyttäjältä liukuluvun seuraavasti:
+    Tässä muutamia vinkkejä tehtävän tekemisen helpottamiseen.
+  </p>
+
+  
+  <p>
+    Vinkki 1. Saat luettua käyttäjältä liukuluvun komennolla <code>Double.parseDouble(lukija.nextLine())</code>. Ohjelmassa tämä tapahtuu seuraavasti.
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -2907,12 +2949,91 @@ kiitos ja kuulemiin.
     <font color="red">8.91</font>
     Syötetty: 8.91
   <% end %>
+
+  
+  <p>
+    Vinkki 2. Saat tulostettua arvoja sarkaimilla erotettuna erikoismerkin "\t" avulla.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    int sekunteja = 0;
+    double korkeus = 0;
+    double suurinkorkeus = 0;
+
+    System.out.println(sekunteja + "\t" + korkeus + "\t" + nopeus);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    0    0.0    0.0
+  <% end %>
+  
+  <p>
+    Tehtävänäsi on siis toteuttaa ohjelma, joka kysyy käyttäjältä tykinkuulan lähtönopeutta ja painovoimaa. Ohjelman tulee tulostaa tykinkuulan korkeus sekunti sekunnilta kunnes tykinkuula palaa maahan. Ohjelman tulee lisäksi ohjelman lopussa kertoa tykinkuulan suurin korkeus.
+  </p>
+
+  <p>
+    Ohjelman tulostuksen tulee olla seuraavanlainen. Alla olevassa esimerkissä lähtönopeudeksi on syötetty 42.0 ja painovoimaksi 9.81.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syötä tykinkuulan lähtönopeus: 
+    <font color="red">42.0</font>
+    Syötä painovoima: 
+    <font color="red">9.81</font>
+    
+    0	0.0	42.0
+    1	42.0	32.19
+    2	74.19	22.379999999999995
+    3	96.57	12.569999999999995
+    4	109.13999999999999	2.7599999999999945
+    5	111.89999999999998	-7.050000000000006
+    6	104.84999999999997	-16.860000000000007
+    7	87.98999999999995	-26.67000000000001
+    8	61.31999999999994	-36.48000000000001
+    9	24.839999999999932	-46.29000000000001
+    
+    Tykinkuulan suurin korkeus oli 111.89999999999998
+  <% end %>
+
+  <p>
+    Alla olevassa esimerkissä taas oletetaan, että lähtönopeus on 15 ja painovoima 3.5.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syötä tykinkuulan lähtönopeus: 
+    <font color="red">15</font>
+    Syötä painovoima: 
+    <font color="red">3.5</font>
+
+    0	0.0	15.0
+    1	15.0	11.5
+    2	26.5	8.0
+    3	34.5	4.5
+    4	39.0	1.0
+    5	40.0	-2.5
+    6	37.5	-6.0
+    7	31.5	-9.5
+    8	22.0	-13.0
+    9	9.0	-16.5
+
+    Tykinkuulan suurin korkeus oli 40.0
+  <% end %>
+
+  <p>
+    Huom! Vaikka edellä on syötettynä lähtönopeudeksi kokonaisluku, voi sen silti ohjelmassa toteuttaa niin, että luku asetetaan desimaalilukuun. Komento <code>Double.parseDouble(lukija.nextLine())</code> siis toimi, vaikka käyttäjä syöttäisi kokonaisluvun.
+  </p>
+
+  <p>
+    Kun ohjelman suoritus on valmis, voit kokeilla lukujen syöttämistä taulukkolaskentaohjelmaan. Alla oleva tykinkuulan korkeuden kuvaaja on luotu edellisen esimerkin tulosteesta Google Driven avulla.
+  </p>
+
+  <img class="naytto" src="/img/tykinkuula.png"/>
+
   
 <% end %>
 
 
 
 
-<%= partial 'partials/quiz', locals: { id: '59ad9e2c98b5730004cda2af' } %>
 
-<%= partial 'partials/quiz', locals: { id: '587a99b46b66090004e96c08' } %>
+<%= partial 'partials/quiz', locals: { id: '59ad9e2c98b5730004cda2af' } %>
