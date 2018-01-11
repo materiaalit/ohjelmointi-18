@@ -7,12 +7,13 @@ function getCourseName() {
   return store.get('tmc.course');
 }
 
-function getOhpeSyksy17Config() {
+
+function getOhpeKevat18Config() {
   return {
-    courseId: '243',
+    courseId: '287',
     courseName: 'Ohjelmoinnin perusteet',
     exerciseGroups: {
-      'Osa 1': ['05.09.2017 16:00', '11.09.2017 23:59', 'osa01-'],
+      'Osa 1': ['15.01.2018 16:00', '22.01.2018 23:59', 'osa01-'],
       'Osa 2': ['12.09.2017 16:00', '18.09.2017 23:59', 'osa02-'],
       'Osa 3': ['18.09.2017 12:00', '25.09.2017 23:59', 'osa03-'],
       'Osa 4': ['25.09.2017 18:00', '04.10.2017 23:59', 'osa04-'],
@@ -23,28 +24,12 @@ function getOhpeSyksy17Config() {
   }
 }
 
-function getOhjaSyksy17Config() {
-  return {
-    courseId: '264',
-    courseName: 'Ohjelmoinnin jatkokurssi',
-    exerciseGroups: {
-      'Osa 8': ['31.10.2017 12:00', '06.11.2017 23:59', 'osa08-'],
-      'Osa 9': ['06.11.2017 12:00', '13.11.2017 23:59', 'osa09-'],
-      'Osa 10': ['13.11.2017 12:00', '20.11.2017 23:59', 'osa10-'],
-      'Osa 11': ['20.11.2017 12:00', '27.11.2017 23:59', 'osa11-'],
-      'Osa 12': ['27.11.2017 12:00', '04.12.2017 23:59', 'osa12-'],
-      'Osa 13': ['05.12.2017 12:00', '11.12.2017 23:59', 'osa13-'],
-      'Osa 14': ['11.12.2017 12:00', '18.12.2017 23:59', 'osa14-']
-    },
-  }
-}
-
 function getMoocConfig() {
   return {
-    courseId: '199',
+    courseId: '288',
     courseName: 'Ohjelmoinnin MOOC',
     exerciseGroups: {
-      'Osa 1': ['16.01.2017 01:00', '26.02.2017 21:59', 'osa01-'],
+      'Osa 1': ['15.01.2018 01:00', '26.02.2017 23:59', 'osa01-'],
       'Osa 2': ['23.01.2017 01:00', '26.02.2017 21:59', 'osa02-'],
       'Osa 3': ['30.01.2017 01:00', '26.02.2017 21:59', 'osa03-'],
       'Osa 4': ['06.02.2017 01:00', '26.02.2017 21:59', 'osa04-'],
@@ -66,21 +51,21 @@ function getConfig() {
   const courseName = getCourseName();
 
   switch(courseName) {
-    case 'hy-ohpe-s17':
-      return getOhpeSyksy17Config();
+    case 'hy-ohpe-k18':
+      return getOhpeKevat18Config();
       break;
-    case 'hy-ohja-s17':
-      return getOhjaSyksy17Config();
+    case 'mooc-ohjelmointi-2018':
+      return getMoocConfig();
       break;
     default:
-      return getOhjaSyksy17Config();
+      return getOhpeKevat18Config();
   }
 }
 
 function init() {
   const courseName = getCourseName();
 
-  if(courseName === '2017-ohjelmointi-nodl') {
+  if(courseName === '2018-ohjelmointi-nodl') {
     return;
   }
 

@@ -21,7 +21,7 @@ class LoginModal {
 
     if(client.getUser()) {
       this.afterLogin();
-    } else if(window.location.pathname !== '/' && window.location.pathname !== '/ohjelmointi-s17/') {
+    } else if(window.location.pathname !== '/' && window.location.pathname !== '/ohjelmointi-18/') {
       this.loginModalNode.modal('show');
     }
 
@@ -46,7 +46,7 @@ class LoginModal {
       return response.json();
     }).then(function(data) {
       if(parseInt(data.group) == 1) {
-        window.initTyponator();
+        // no ab testing at the moment window.initTyponator();
       }
     });
   }

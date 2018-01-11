@@ -19,7 +19,7 @@ function onFieldChange(e) {
 
   const quiznatorSpyware = spywares[quizId]
     ? spywares[quizId]
-    : new Spyware(user.username, user.accessToken, 'ohpe-s17', exerciseName, 'https://hy.spyware.testmycode.net');
+    : new Spyware(user.username, user.accessToken, 'ohpe-k18', exerciseName, 'https://hy.spyware.testmycode.net');
 
   quiznatorSpyware.spyEvent(exerciseName, content, action);
 }
