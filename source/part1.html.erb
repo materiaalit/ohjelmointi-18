@@ -15,7 +15,7 @@
 </p>
 
 <p>
-  Ohjelmoinnin opettelua harkitseva tietää harvion mikä kaikki yhteiskunnassamme nojautuu ohjelmoijien tuottamiin ohjelmistoihin. Ilman ohjelmointia yhteydenpito, kaupankäynti, matkustaminen, terveydenhuolto ja niin edelleen olisivat yksinkertaisesti heikommalla tasolla. Puhelimet eivät toimisi, verkkopankkeja saatika pankki- ja luottokortteja ei olisi, matkojen varaaminen ja henkilöasiakirjojen käyttäminen ei onnistuisi verkon yli, lääketeollisuus ei pystyisi käymään suuria massoja dataa läpi parannuskeinoja etsimisessä, tiedon hakeminen tapahtuisi sana- ja tietokirjoista ja niin edelleen. <a href="https://en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)" target="_blank" norel>Margaret Hamilton</a> ei olisi myöskään koskaan kirjoittanut ohjelmaa, joka auttoi avaruuteen pääsemisessä ja kuulennossa.
+  Ohjelmoinnin opettelua harkitseva tietää harvoin mikä kaikki yhteiskunnassamme nojautuu ohjelmoijien tuottamiin ohjelmistoihin. Ilman ohjelmointia yhteydenpito, kaupankäynti, matkustaminen, terveydenhuolto ja niin edelleen olisivat yksinkertaisesti heikommalla tasolla. Puhelimet eivät toimisi, verkkopankkeja saatikka pankki- ja luottokortteja ei olisi, matkojen varaaminen ja henkilöasiakirjojen käyttäminen ei onnistuisi verkon yli, lääketeollisuus ei pystyisi käymään suuria massoja dataa läpi parannuskeinoja etsimisessä, tiedon hakeminen tapahtuisi sana- ja tietokirjoista ja niin edelleen. <a href="https://en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)" target="_blank" norel>Margaret Hamilton</a> ei olisi myöskään koskaan kirjoittanut ohjelmaa, joka auttoi avaruuteen pääsemisessä ja kuulennossa.
 </p>
 
 <p>
@@ -108,7 +108,7 @@ public class Esimerkki {
 </div>
 
 <p>
-  Ohjelmarunko sisältää Java-ohjelmointikielelle oleellisia osia. Eri ohjelmointikielillä on erilainen ohjelmarunko. Tulemme myöhemmin tustumaan tarkemmin sanojen <code>public class</code> ja <code>public static void</code> merkitykseen.
+  Ohjelmarunko sisältää Java-ohjelmointikielelle oleellisia osia. Eri ohjelmointikielillä on erilainen ohjelmarunko. Tulemme myöhemmin tutustumaan tarkemmin sanojen <code>public class</code> ja <code>public static void</code> merkitykseen.
 </p>
 
 <p>
@@ -141,7 +141,7 @@ public class Esimerkki {
       NetBeans with TMC-ohjelmointiympäristön.
     </li>
   </ol>
-  
+
   <p>
     Ohjeistus oleellisten työvälineiden asentamiseen sekä kurssilla tarvittavan käyttäjätunnuksen luomiseen löytyy osoitteesta <a href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">https://materiaalit.github.io/tmc-asennus/netbeans/</a>.
   </p>
@@ -381,7 +381,7 @@ Kolmas
           // Tänne voit kirjoittaa ohjelmakoodia. Ohjelmasi voit ajaa
           // valitsemalla menusta Run->Run File tai painamalla Shift+F6
 
-      
+
   }
 <% end %>
 
@@ -463,7 +463,7 @@ public static void main(String[] args) {
 <% partial 'partials/hint', locals: { name: 'Lyhenne "sout"' } do %>
 
   <p>
-    Kirjoitit todennäköisesti aika monta kertaa <code>System.out.println("...")</code>. Kokeile kirjoittaa NetBeans:iin (main:in sisään) tyhjälle riville <em>sout</em> ja paina tabulaatoria (näppäin q:n vasemmalla puolella). Mitä tapahtuu? Tämä pieni apuväline säästänee jatkossa runsaasti aikaasi.
+    Kirjoitit todennäköisesti aika monta kertaa <code>System.out.println("...")</code>. Kokeile kirjoittaa NetBeans:iin (main:in sisään) tyhjälle riville <em>sout</em> ja paina tabulaattoria (näppäin q:n vasemmalla puolella). Mitä tapahtuu? Tämä pieni apuväline säästänee jatkossa runsaasti aikaasi.
   </p>
 
 <% end %>
@@ -529,8 +529,8 @@ public class Esimerkki {
 </p>
 
 <% partial 'partials/sample_output' do %>
-Kokonaislukumuuttuja: 123
-Liukulukumuuttuja: 3.141592653
+Elämän tarkoitus: 123
+Piin arvo on: 3.141592653
 <% end %>
 
 <% partial 'partials/hint', locals: { name: 'Ohjelman suorituksen visualisointi' } do %>
@@ -772,7 +772,7 @@ int muuttuja7 = 4; // Sallittu, mutta ei kuvaava muuttujan nimi
 <% end %>
 
 <p>
-  Muuttujan nimi ei saa olla jo entuudestaan käytössä. Tälläisiä nimiä ovat mm. aikaisemmin määritellyt muuttujat ja Javan valmiit komennot, kuten <code>System.out.print</code> ja <code>System.out.println</code>.
+  Muuttujan nimi ei saa olla jo entuudestaan käytössä. Tällaisia nimiä ovat mm. aikaisemmin määritellyt muuttujat ja Javan valmiit komennot, kuten <code>System.out.print</code> ja <code>System.out.println</code>.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1041,18 +1041,18 @@ y on 5 ja z on 6
     Esimerkiksi tehtävän <em>Tee ohjelma, jonka avulla voidaan laskea kahden kokonaisluvun summa. Ohjelman alussa määritellään kaksi muuttujaa, jotka sisältävät summattavat luvut. Voit tarvittaessa käyttää myös muita muuttujia.</em> ratkaisumalli on seuraava.
   </p>
 
-  
+
   <% partial 'partials/code_highlight' do %>
     // 1. määritellään syötteet ja luodaan niitä varten muuttujat
     int eka = 1;
     int toka = 2;
-    
+
     // 2. selvitetään laskuoperaatio ja luodaan laskuoperaation tulokselle muuttuja
     int summa = eka + toka;
 
     // 3. tulostetaan laskuoperaation tulos
     System.out.println("Lukujen " + eka + " ja " + toka + " summa on " + summa);  <% end %>
-    
+
 <% end %>
 
 
@@ -1259,7 +1259,7 @@ keskiarvo: 5.333333333333333
 1 / 3 = 0.3333333333333333
   <% end %>
 
-  <p>Tehtävässä ei ole testejä jotka kertovat onko tulostus oikein vai ei. Tarmista että ohjelmasi toimii oikein ennen tehtävän palautusta suorittamalla se useammalla muuttujien arvoilla.</p>
+  <p>Tehtävässä ei ole testejä jotka kertovat onko tulostus oikein vai ei. Tarkista, että ohjelmasi toimii oikein ennen tehtävän palautusta suorittamalla se useammalla muuttujien arvoilla.</p>
 
 <% end %>
 
@@ -1540,11 +1540,11 @@ Syötit: 42
 
 <% partial 'partials/sample_output' do %>
   Ohjelma kysyy kolme kokonaislukua ja tulostaa niiden keskiarvon.
-  Anna kokonaisluku: 
+  Anna kokonaisluku:
   <font color="red">1</font>
-  Anna kokonaisluku: 
+  Anna kokonaisluku:
   <font color="red">3</font>
-  Anna kokonaisluku: 
+  Anna kokonaisluku:
   <font color="red">5</font>
   Syötettyjen lukujen keskiarvo 3.0
 <% end %>
@@ -1761,10 +1761,10 @@ if (luku &gt; 10) {
 
 <ul>
   <li><code>&gt;</code>suurempi kuin</li>
-  <li><code>&gt;=</code>suurempi tai yhtäsuuri kuin</li>
+  <li><code>&gt;=</code>suurempi tai yhtä suuri kuin</li>
   <li><code>&lt;</code>pienempi kuin</li>
-  <li><code>&lt;=</code> pienempi tai yhtäsuuri kuin</li>
-  <li><code>==</code> yhtäsuuri kuin</li>
+  <li><code>&lt;=</code> pienempi tai yhtä suuri kuin</li>
+  <li><code>==</code> yhtä suuri kuin</li>
   <li><code>!=</code> erisuuri kuin</li>
 </ul>
 
@@ -2254,7 +2254,7 @@ Luku 7 on pariton.
   <% end %>
 
   <p>
-    Vihje: Luvun jakojäännös 2:lla kertoo, onko luku parillinen vai pariton. Jakojäännos taas saadaan <code>%</code>-operaattorilla, tehtäväpohjassa on lisää ohjeita miten parittomuustarkastus hoituu jakojäännöksen avulla.
+    Vihje: Luvun jakojäännös 2:lla kertoo, onko luku parillinen vai pariton. Jakojäännös taas saadaan <code>%</code>-operaattorilla, tehtäväpohjassa on lisää ohjeita miten parittomuustarkastus hoituu jakojäännöksen avulla.
   </p>
 
 <% end %>
@@ -2270,7 +2270,7 @@ Luku 7 on pariton.
     Montako osallistujaa? <font color="red">5</font>
     Montako pitsaa? <font color="red">2</font>
     Montako palaa per pitsa? <font color="red">6</font>
-    
+
     Paloja jää yli: 2
   <% end %>
 
@@ -2278,7 +2278,7 @@ Luku 7 on pariton.
     Montako osallistujaa? <font color="red">14</font>
     Montako pitsaa? <font color="red">2</font>
     Montako palaa per pitsa? <font color="red">6</font>
-    
+
     Paloja jää yli: 12
   <% end %>
 
@@ -2301,7 +2301,7 @@ Luku 7 on pariton.
 
 <% partial 'partials/code_highlight' do %>
   int luku = 2;
-  
+
   if (luku % 2 == 0) {
       System.out.println("Luku on parillinen");
   }
@@ -2312,7 +2312,7 @@ Luku 7 on pariton.
 <% end %>
 
 <p>
-  Ehtolauseen lauseke voi koostua myös useammasta osasta, joissa käytetään loogisia operaatioita <strong>ja</strong> <code>&amp;&amp;</code> ja <strong>tai</strong> <code>||</code>. Kaksi ehtoa sisältävä lauseke, jossa on ja-operaatio on totta jos ja vain jos kummatkin ehdoista ovat tosia. Toisaalta, kaksi ehtoa sisältävä lauseke, jossa on tai-operaatio on totta jos jompi kumpi tai molemmat ehdoista ovat tosia.
+  Ehtolauseen lauseke voi koostua myös useammasta osasta, joissa käytetään loogisia operaatioita <strong>ja</strong> <code>&amp;&amp;</code> ja <strong>tai</strong> <code>||</code>. Kaksi ehtoa sisältävä lauseke, jossa on ja-operaatio on totta jos ja vain jos kummatkin ehdoista ovat tosia. Toisaalta, kaksi ehtoa sisältävä lauseke, jossa on tai-operaatio on totta jos jompikumpi tai molemmat ehdoista ovat tosia.
 </p>
 
 <p>
@@ -2336,7 +2336,7 @@ Luku 7 on pariton.
 <% end %>
 
 <p>
-  Seuraavassa annetaan <code>||</code>:n eli tai-operaation avulla kaksi vaihtoehtoa, onko luku pienempi kuin 0 tai suurempi kuin 100. Ehto toteutuu jos luku täyttää jomman kumman ehdon:
+  Seuraavassa annetaan <code>||</code>:n eli tai-operaation avulla kaksi vaihtoehtoa, onko luku pienempi kuin 0 tai suurempi kuin 100. Ehto toteutuu jos luku täyttää jommankumman ehdon:
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2358,7 +2358,7 @@ Luku 7 on pariton.
 
 <ul>
   <li>Looginen operaatio ja: <code>lauseke1 &amp;&amp; lauseke2</code> lausekkeen arvo on tosi kun molemmat ehdoista ovat tosia</li>
-  <li>Looginen operaatio tai: <code>lauseke1 || lauseke2</code> lausekkeen arvo on tosi jos jompi kumpi tai molemmat ehdoista tosia</li>
+  <li>Looginen operaatio tai: <code>lauseke1 || lauseke2</code> lausekkeen arvo on tosi jos jompikumpi tai molemmat ehdoista tosia</li>
 </ul>
 
 
@@ -2401,7 +2401,7 @@ Luku 7 on pariton.
 
 <p>
   <em>
-    'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmellä että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.
+    'Kirjoita ohjelma, joka kysyy käyttäjältä lukua yhden ja sadan väliltä ja tulostaa luvun. Jos luku on kolmella jaollinen, luvun sijaan tulostetaan "Fizz". Jos luku on viidellä jaollinen, luvun sijaan tulostetaan "Buzz". Jos luku on sekä kolmella että viidellä jaollinen, luvun sijaan tulostetaan "FizzBuzz"'.
   </em>
 </p>
 
@@ -2522,7 +2522,7 @@ Vuosi on karkausvuosi.
 
 
   <p>
-    Vihje: mieti ongelmaa if, else if, else if, ... -vertailujen ketjuna ja loita ohjelman rakentaminen tilanteesta, missä voit olla varma, että ohjelma ei ole karkausvuosi.
+    Vihje: mieti ongelmaa if, else if, else if, ... -vertailujen ketjuna ja aloita ohjelman rakentaminen tilanteesta, missä voit olla varma, että ohjelma ei ole karkausvuosi.
   </p>
 
 
@@ -2646,7 +2646,7 @@ kiitos ja kuulemiin.
 
 
   <p>
-    Kirjoita edelläolevaa toistolause-esimerkkiä mukaillen ohjelma, joka kysyy käyttäjältä lukuja kunnes käyttäjä syöttää luvun 4.
+    Kirjoita edellä olevaa toistolause-esimerkkiä mukaillen ohjelma, joka kysyy käyttäjältä lukuja kunnes käyttäjä syöttää luvun 4.
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -2664,7 +2664,7 @@ kiitos ja kuulemiin.
 <% end %>
 
 <p>
-  Toistolauseissa halutaan usein laskea asioita. Tällöin ohjelmoijan tulee määritellä laskettavien asioiden ylläpitoon muuttuja ennen toistolauseen alkua, jotta muuttujan arvoa voidaan päivittää toistolauseessa. Alla olevassa esimerkissä ohjelma laskee syötettyjen ykkösten lukumääärän. Syötteiden lukeminen lopetetaan kun käyttäjä syöttää luvun 0.
+  Toistolauseissa halutaan usein laskea asioita. Tällöin ohjelmoijan tulee määritellä laskettavien asioiden ylläpitoon muuttuja ennen toistolauseen alkua, jotta muuttujan arvoa voidaan päivittää toistolauseessa. Alla olevassa esimerkissä ohjelma laskee syötettyjen ykkösten lukumäärän. Syötteiden lukeminen lopetetaan kun käyttäjä syöttää luvun 0.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2678,12 +2678,12 @@ kiitos ja kuulemiin.
       if (luku == 0) {
           break;
       }
- 
+
       if (luku == 1) {
           ykkosia = ykkosia + 1;
       }
   }
-  
+
   System.out.println("Ykkösiä yhteensä: " + ykkosia);
 <% end %>
 
@@ -2727,7 +2727,7 @@ kiitos ja kuulemiin.
 </p>
 
 <p>
-  Yllä kuvatun ongelman ratkaisu kannttaa tehdä useammassa osassa. Tarvitsemme toistolauseen, missä korkeuden muutosta tarkastellaan sekunti sekunnilta. Tarvitsemme ohjelmaan myös Paronin lentoon vaikuttavan painovoiman. Lopulta tarvitsemme muuttujan, mitä käytetään suurimman korkeuden tarkasteluun.
+  Yllä kuvatun ongelman ratkaisu kannattaa tehdä useammassa osassa. Tarvitsemme toistolauseen, missä korkeuden muutosta tarkastellaan sekunti sekunnilta. Tarvitsemme ohjelmaan myös Paronin lentoon vaikuttavan painovoiman. Lopulta tarvitsemme muuttujan, mitä käytetään suurimman korkeuden tarkasteluun.
 </p>
 
 <p>
@@ -2742,11 +2742,11 @@ kiitos ja kuulemiin.
   System.out.println("Sekunnit: " + sekunteja);
   System.out.println("Nopeus: " + nopeus);
   System.out.println("Korkeus: " + korkeus);
-  
+
   while (true) {
       korkeus = korkeus + nopeus;
       sekunteja = sekunteja + 1;
-  
+
       System.out.println("");
       System.out.println("Sekunnit: " + sekunteja);
       System.out.println("Nopeus: " + nopeus);
@@ -2799,12 +2799,12 @@ kiitos ja kuulemiin.
   System.out.println("Sekunnit: " + sekunteja);
   System.out.println("Nopeus: " + nopeus);
   System.out.println("Korkeus: " + korkeus);
-  
+
   while (true) {
       korkeus = korkeus + nopeus;
       sekunteja = sekunteja + 1;
       nopeus = nopeus - 9.81;
-  
+
       System.out.println("");
       System.out.println("Sekunnit: " + sekunteja);
       System.out.println("Nopeus: " + nopeus);
@@ -2816,11 +2816,11 @@ kiitos ja kuulemiin.
   Sekunteja: 0
   Nopeus: 400.0
   Korkeus: 0.0
-  
+
   Sekunnit: 1
   Nopeus: 390.19
   Korkeus: 400.0
-  
+
   Sekunnit: 2
   Nopeus: 380.38
   Korkeus: 790.19
@@ -2844,16 +2844,16 @@ kiitos ja kuulemiin.
   System.out.println("Sekunnit: " + sekunteja);
   System.out.println("Nopeus: " + nopeus);
   System.out.println("Korkeus: " + korkeus);
-  
+
   while (true) {
       if (korkeus &lt; 0) {
           break;
       }
-  
+
       korkeus = korkeus + nopeus;
       sekunteja = sekunteja + 1;
       nopeus = nopeus - 9.81;
-  
+
       System.out.println("");
       System.out.println("Sekunnit: " + sekunteja);
       System.out.println("Nopeus: " + nopeus);
@@ -2865,11 +2865,11 @@ kiitos ja kuulemiin.
   Sekunteja: 0
   Nopeus: 400.0
   Korkeus: 0.0
-  
+
   Sekunnit: 1
   Nopeus: 390.19
   Korkeus: 400.0
-  
+
   Sekunnit: 2
   Nopeus: 380.38
   Korkeus: 790.19
@@ -2882,7 +2882,7 @@ kiitos ja kuulemiin.
 <% end %>
 
 <p>
-  Ohjelma käy nyt sekunti sekunnilta Paronin korkeuden ja nopeuden. Edellä annetun esimerkkitulosteen perusteella Paroni palaa maahan hieman yli 400 metrin sekuntivauhtia (eli hieman yli 1400 kilometriä tunnissa). 
+  Ohjelma käy nyt sekunti sekunnilta Paronin korkeuden ja nopeuden. Edellä annetun esimerkkitulosteen perusteella Paroni palaa maahan hieman yli 400 metrin sekuntivauhtia (eli hieman yli 1400 kilometriä tunnissa).
 </p>
 
 <p>
@@ -2891,7 +2891,7 @@ kiitos ja kuulemiin.
 
 <% partial 'partials/code_highlight' do %>
   double suurinkorkeus = 0;
-  
+
   int sekunteja = 0;
   double nopeus = 400;
   double korkeus = 0;
@@ -2899,12 +2899,12 @@ kiitos ja kuulemiin.
   System.out.println("Sekunnit: " + sekunteja);
   System.out.println("Nopeus: " + nopeus);
   System.out.println("Korkeus: " + korkeus);
-  
+
   while (true) {
       if (korkeus &lt; 0) {
           break;
       }
-  
+
       korkeus = korkeus + nopeus;
       sekunteja = sekunteja + 1;
       nopeus = nopeus - 9.81;
@@ -2912,7 +2912,7 @@ kiitos ja kuulemiin.
       if (korkeus &gt; suurinkorkeus) {
           suurinkorkeus = korkeus;
       }
-  
+
       System.out.println("");
       System.out.println("Sekunnit: " + sekunteja);
       System.out.println("Nopeus: " + nopeus);
@@ -2927,11 +2927,11 @@ kiitos ja kuulemiin.
   Sekunteja: 0
   Nopeus: 400.0
   Korkeus: 0.0
-  
+
   Sekunnit: 1
   Nopeus: 390.19
   Korkeus: 400.0
-  
+
   Sekunnit: 2
   Nopeus: 380.38
   Korkeus: 790.19
@@ -2960,7 +2960,7 @@ kiitos ja kuulemiin.
     Tässä muutamia vinkkejä tehtävän tekemisen helpottamiseen.
   </p>
 
-  
+
   <p>
     Vinkki 1. Saat luettua käyttäjältä liukuluvun komennolla <code>Double.parseDouble(lukija.nextLine())</code>. Ohjelmassa tämä tapahtuu seuraavasti.
   </p>
@@ -2979,7 +2979,7 @@ kiitos ja kuulemiin.
     Syötetty: 8.91
   <% end %>
 
-  
+
   <p>
     Vinkki 2. Saat tulostettua arvoja sarkaimilla erotettuna erikoismerkin "\t" avulla.
   </p>
@@ -2995,7 +2995,7 @@ kiitos ja kuulemiin.
   <% partial 'partials/sample_output' do %>
     0    0.0    0.0
   <% end %>
-  
+
   <p>
     Tehtävänäsi on siis toteuttaa ohjelma, joka kysyy käyttäjältä tykinkuulan lähtönopeutta ja painovoimaa. Ohjelman tulee tulostaa tykinkuulan korkeus sekunti sekunnilta kunnes tykinkuula palaa maahan. Ohjelman tulee lisäksi ohjelman lopussa kertoa tykinkuulan suurin korkeus.
   </p>
@@ -3005,11 +3005,11 @@ kiitos ja kuulemiin.
   </p>
 
   <% partial 'partials/sample_output' do %>
-    Syötä tykinkuulan lähtönopeus: 
+    Syötä tykinkuulan lähtönopeus:
     <font color="red">42.0</font>
-    Syötä painovoima: 
+    Syötä painovoima:
     <font color="red">9.81</font>
-    
+
     0	0.0	42.0
     1	42.0	32.19
     2	74.19	22.379999999999995
@@ -3020,7 +3020,7 @@ kiitos ja kuulemiin.
     7	87.98999999999995	-26.67000000000001
     8	61.31999999999994	-36.48000000000001
     9	24.839999999999932	-46.29000000000001
-    
+
     Tykinkuulan suurin korkeus oli 111.89999999999998
   <% end %>
 
@@ -3029,9 +3029,9 @@ kiitos ja kuulemiin.
   </p>
 
   <% partial 'partials/sample_output' do %>
-    Syötä tykinkuulan lähtönopeus: 
+    Syötä tykinkuulan lähtönopeus:
     <font color="red">15</font>
-    Syötä painovoima: 
+    Syötä painovoima:
     <font color="red">3.5</font>
 
     0	0.0	15.0
@@ -3058,7 +3058,7 @@ kiitos ja kuulemiin.
 
   <img class="naytto" src="/img/tykinkuula.png"/>
 
-  
+
 <% end %>
 
 
