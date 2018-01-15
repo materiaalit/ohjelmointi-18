@@ -23,7 +23,7 @@ function getMoocConfig() {
     courseId: '288',
     courseName: 'Ohjelmoinnin MOOC',
     exerciseGroups: {
-      'Osa 1': ['13.01.2018 12:00', '26.02.2017 23:59', 'osa01-']
+      'Osa 1': ['13.01.2018 12:00', '26.02.2018 23:59', 'osa01-']
     }
   };
 }
