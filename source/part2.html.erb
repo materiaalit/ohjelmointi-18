@@ -2,7 +2,7 @@
   title: Osa 2
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -13,88 +13,10 @@
 <%= partial 'partials/quiz', locals: { id: '5877687bd095c40004e4b185' } %>
 
 
-
-
-<% partial 'partials/exercise', locals: { name: 'Työntekijän eläkevakuutus' } do %>
-
-  <p>
-    Työntekijän eläkevakuutus (TyEL) on lakisääteinen ja pakollinen maksu, jolla rahoitetaan suurin osa nykyisistä ja tulevista työeläkkeistä. Työntekijän eläkevakuutuksen maksamisesta vastaa sekä työnantaja että työntekijä: <a href="http://www.etk.fi/uutinen/tyoelakemaksut-vuonna-2017/" target="_blank">Eläketurvakeskuksen mukaan</a> työnantajan maksama TyEL-maksu on vuonna 2017 noin 18% työntekijän palkasta, kun taas työntekijä maksaa palkastaan TyEL-maksua noin 6%.
-  </p>
-
-  <p>
-    Työnantaja maksaa osuutensa bruttopalkan lisäksi, kun taas työntekijän maksama osuus otetaan bruttopalkasta (eli palkasta ennen ennakonpidätyksiä, vakuutusmaksuja ja muita vähennyksiä).
-  </p>
-
-  <p>
-    Toteuta ohjelma, joka kertoo TyEL-kulut annetulle bruttopalkalle. Ohjelman tulee kertoa annetun bruttopalkan perusteella työnantajan maksut sekä palkasta tehtävät pidätykset. Käytä edellä annettuja arvioita (työnantajan osuus 18% ja työntekijän osuus 6%).
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Syötä bruttopalkka: <font color="red">800</font>
-    Työnantaja maksaa TyEL-maksuja: 144
-    Työntekijä maksaa työnantajalle vähintään: 944
-
-    Työntekijä maksaa TyEL-maksuja: 48
-    Työntekijän palkka TyEL-maksun jälkeen: 752
-
-    TyEL-kulut yhteensä: 192
-  <% end %>
-
-
-  <% partial 'partials/sample_output' do %>
-    Syötä bruttopalkka: <font color="red">1000</font>
-    Työnantaja maksaa TyEL-maksuja: 180
-    Työntekijä maksaa työnantajalle vähintään: 1180
-
-    Työntekijä maksaa TyEL-maksuja: 60
-    Työntekijän palkka TyEL-maksun jälkeen: 940
-
-    TyEL-kulut yhteensä: 240
-  <% end %>
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
-
-  <p>
-    Tehtävänannossa tulee käyttäjän syöttämien lukujen summan laskeva ohjelma. Ohjelma kysyy lukuja kunnes käyttäjä syöttää nollan. Tämän jälkeen lukujen lukeminen loppuu, ja ohjelma tulostaa lukujen summan luvun.
-  </p>
-
-  <p>
-    Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summa lisäksi syötettyjen lukujen keskiarvon.
-  </p>
-
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Salapaikka ranskassa' } do %>
-
-  <p>
-    Kameralta kuvien kopioimiseen tarkoitetun ohjelmiston toteuttaja löysi ohjelmastaan virheen, jonka lopputulos näkyy tehtäväpohjassa olevan ohjelman näyttämässä kuvassa. Ohjelmiston toteuttaja kertoo seuraavaa.
-  </p>
-  
-  <p>
-    "Tämä virhe oli aika harmittava. Se muutti kaikki siniset ja vihreät väriarvot pelkäksi kohinaksi, joten niistä ei ole mitään iloa eikä niitä saa koskaan takaisin kuvaan. Lisäksi punaisen värin määrä jokaisessa pikselissä jakautui noin kymmenellä kopioinnin yhteydessä, joten kuvan punainen väri on aivan liian tumma."
-  </p>
-
-  <p>
-    Selvitä kopiointiohjelmiston mitä kuvassa näkyy ja mistä kuva on otettu. Tietokoneella kuvatiedostoja käsitellään yleensä <a href="https://fi.wikipedia.org/wiki/RGB-v%C3%A4rimalli" target="_blank" norel>RGB-värimallin</a> kautta. Tässä tapauksessa jokaisen värin arvo on välillä 0-1, ja jokainen väriarvo esitetään desimaalilukuna.
-  </p>
-  
-
-<% end %>
-
-
-
-
-
 <% partial 'partials/hint', locals: { name: 'Toisen osan tavoitteet' } do %>
 
   <p>
     Ymmärtää vuokaavioiden idean ja osaa piirtää vuokaavioita annetusta ohjelmasta. Hahmottaa ja tunnistaa ohjelman käyttämien muuttujien tilan ohjelman eri suoritusvaiheessa. Osaa soveltaa toistolausetta ohjelmointiongelmissa. Tuntee käsitteet metodi, parametri ja kutsupino. Osaa luoda ja käyttää parametrillisia metodeja.
-  </p>
-
-  <p>
-    Huomaa, että tästä lähtien tehtävissä saattaa olla useampia osia. Jokainen osa lasketaan yksittäiseksi tehtäväksi, eli esimerkiksi tehtävä 6 vastaa kahta yksiosaista tehtävää. Useampiosaiset tehtävät voi tyypillisesti palauttaa myös vaikka tehtävä ei olisi vielä valmis -- tällöin valmiista osista lisätään pisteet kirjanpitoon.
   </p>
 
 <% end %>
@@ -398,7 +320,7 @@ cond(no)->io3->io2'></img>
 </p>
 
 
-<%= partial 'partials/quiz', locals: { id: '59b6beb9b7ed1500043076f1' } %>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a32d' } %>
 
 
 <% partial 'partials/material_heading' do %>
@@ -595,7 +517,7 @@ System.out.println(pituus);
 </p>
 
 
-<%= partial 'partials/quiz', locals: { id: '59b6c0beb7ed1500043076f3' } %>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a32e' } %>
 
 <%= partial 'partials/quiz', locals: { id: '59b6c1e5b7ed1500043076f8' } %>
 
@@ -603,6 +525,7 @@ System.out.println(pituus);
 
 <% partial 'partials/exercise', locals: { name: 'Positiivisen luvun lisääminen' } do %>
 
+  
   <p>
     Kaverisi on hahmotellut summaamiseen ja ehtolauseen toimintaan liittyvää testiohjelmaa. Testiohjelmassa ohjelman alussa luettuun lukuun lisätään käyttäjältä luettu toinen luku. Luvun lisäämisen tulee tapahtua vain jos toisena luettu luku on positiivinen.
   </p>
@@ -640,6 +563,52 @@ System.out.println(pituus);
     <font color="red">-3</font>
     Summa: 9
   <% end %>
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Työntekijän eläkevakuutus' } do %>
+
+  <p>
+    Työntekijän eläkevakuutus (TyEL) on lakisääteinen ja pakollinen maksu, jolla rahoitetaan suurin osa nykyisistä ja tulevista työeläkkeistä. Työntekijän eläkevakuutuksen maksamisesta vastaa sekä työnantaja että työntekijä: <a href="http://www.etk.fi/uutinen/tyoelakemaksut-vuonna-2017/" target="_blank">Eläketurvakeskuksen mukaan</a> työnantajan maksama TyEL-maksu on vuonna 2017 noin 18% työntekijän palkasta, kun taas työntekijä maksaa palkastaan TyEL-maksua noin 6%.
+  </p>
+
+  <p>
+    Työnantaja maksaa osuutensa bruttopalkan lisäksi, kun taas työntekijän maksama osuus otetaan bruttopalkasta (eli palkasta ennen ennakonpidätyksiä, vakuutusmaksuja ja muita vähennyksiä).
+  </p>
+
+  <p>
+    Toteuta ohjelma, joka kertoo TyEL-kulut annetulle bruttopalkalle. Ohjelman tulee kertoa annetun bruttopalkan perusteella työnantajan maksut sekä palkasta tehtävät pidätykset. Käytä edellä annettuja vuoden 2017 arvioita (työnantajan osuus 18% ja työntekijän osuus 6%).
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syötä bruttopalkka: <font color="red">800</font>
+    Työnantaja maksaa TyEL-maksuja: 144
+    Työntekijän kustannus työnantajalle vähintään: 944
+
+    Työntekijä maksaa TyEL-maksuja: 48
+    Työntekijän palkka TyEL-maksun jälkeen: 752
+
+    TyEL-kulut yhteensä: 192
+  <% end %>
+
+
+  <% partial 'partials/sample_output' do %>
+    Syötä bruttopalkka: <font color="red">1000</font>
+    Työnantaja maksaa TyEL-maksuja: 180
+    Työntekijän kustannus työnantajalle vähintään: 1180
+
+    Työntekijä maksaa TyEL-maksuja: 60
+    Työntekijän palkka TyEL-maksun jälkeen: 940
+
+    TyEL-kulut yhteensä: 240
+  <% end %>
+
+  <p>
+    <em>
+      Tulostuksessa saa halutessaan käyttää myös desimaalilukuja.
+    </em>
+  </p>
+  
 <% end %>
 
 
@@ -858,19 +827,24 @@ System.out.println(pituus);
 </p>
 
 <p>
-  Toistolause <code>while (true) { /* toistettava */ }</code> saa aikaan sen, että toistolauseeseen liittyvää lohkoa, eli <code>{}</code>:lla ympäröityjä komentoja suoritetaan monta kertaa. Lohkossa olevien rivien määrää ei ole rajattu.
+  Toistolause <code>while (true) { /* toistettava */ }</code> saa aikaan sen, että toistolauseeseen liittyvää lohkoa, eli <code>{}</code>:lla rajattuja komentoja suoritetaan monta kertaa. Lohkossa olevien rivien määrää ei ole rajattu.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Toistolauseesta poistuminen
+<% end %>
+
+<p>
+  Toistolauseesta poistuminen onnistuu <strong>break</strong>-komennolla, joka kirjoitetaan tyypillisesti toistolauseen lohkon sisällä olevaan ehtolauseeseen, missä tarkastellaan haluaako käyttäjä poistua toistolauseesta.
 </p>
 
 <p>
-  Toistolauseesta poistuminen onnistuu break-komennolla, joka kirjoitetaan tyypillisesti toistolauseen lohkon sisällä olevaan ehtolauseeseen, missä tarkastellaan haluaako käyttäjä poistua toistolauseesta.
-</p>
-
-<p>
-  Alla olevassa esimerkissä toistolauseen avulla tulostetaan luvut kymmenestä yhteen.
+  Alla olevassa esimerkissä toistolauseen avulla tulostetaan luvut viidestä yhteen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
-  int luku = 10;
+  int luku = 5;
 
   while (true) {
       System.out.println(luku);
@@ -882,7 +856,51 @@ System.out.println(pituus);
   }
 <% end %>
 
+<% partial 'partials/sample_output' do %>
+  5
+  4
+  3
+  2
+  1
+<% end %>
 
+
+<% partial 'partials/hint', locals: { name: 'Toistolauseesta poistutaan vasta kun break-komento suoritetaan' } do %>
+
+  <p>
+    Huomaa, että toistolauseesta poistutaan kun ohjelman suoritus saavuttaa break-komennon. Alla edellä olevaan esimerkkiin on tehty näennäisesti pieni muutos, mikä samalla muuttaa tulostusta.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+  int luku = 5;
+
+  while (true) {
+      System.out.println(luku);
+
+      if(luku &lt; 1) {
+          break;
+      }
+
+      luku--;
+  }
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+  5
+  4
+  3
+  2
+  1
+  0
+  <% end %>
+
+<% end %>
+
+
+
+<%= partial 'partials/quiz', locals: { id: '5a609b65f4b4dd00042a0d82' } %>
+
+  
 <% partial 'partials/exercise', locals: { name: 'Yhdestä sataan' } do %>
 
   <p>
@@ -926,10 +944,6 @@ System.out.println(pituus);
     1
   <% end %>
 
-  <p>
-    <strong>Vihje:</strong> aseta toistolauseessa käytettävän apumuuttujan arvoksi 100 ja vähennä muuttujan arvoa yhdellä toistolauseen lohkossa.
-  </p>
-
 <% end %>
 
 
@@ -951,8 +965,13 @@ System.out.println(pituus);
 <% end %>
 
 
+<% partial 'partials/material_sub_heading' do %>
+  Toistolause ja interaktiivinen toiminnallisuus
+<% end %>
+
+
 <p>
-  Interaktiivisen toiminnallisuuden lisääminen toistolauseeseen onnistuu suoraviivaisesti.
+  Interaktiivisen toiminnallisuuden lisääminen toistolauseeseen onnistuu suoraviivaisesti. Alla olevassa esimerkissä on toteutettu ohjelma, joka lukee käyttäjältä lukuja. Kun käyttäjä syöttää luvun 0, ohjelman suoritus päätyy break-komentoon ja lukeminen lopetetaan.
 </p>
 
 
@@ -977,7 +996,7 @@ System.out.println("kiitos ja kuulemiin.");
 </p>
 
 <p>
-  Laajemmin ajatellen toistolausetta käyttävän ohjelman rakenne on tyypillisesti seuraavanlainen.
+  Hieman yleistäen, toistolausetta käyttävän ohjelman rakenne on tyypillisesti seuraavanlainen.
 </p>
 
 
@@ -997,156 +1016,10 @@ System.out.println("kiitos ja kuulemiin.");
       // ei vielä lopeteta
   }
 
-
   // toiminnallisuus, joka tehdään toiston
   // lopettamisen jälkeen
 <% end %>
 
-<p>
-  Vastaavaa rakennetta noudattaen voimme luoda ohjelman, joka esimerkiksi tulostaa luvut kymmenestä yhteen.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Mihin ja mistä? (2 osaa)' } do %>
-
-  <p>
-    Tämä tehtävä on ensimmäinen kaksiosainen tehtävä. Kun teet molemmat osat, saat tehtävästä kaksi tehtäväpistettä. Voit palauttaa tehtävän myös siten, että vain ensimmäinen osa on tehtynä.
-  </p>
-
-
-  <h2>Mihin asti?</h2>
-
-  <p>
-    Kirjoita ohjelma, joka tulostaa kokonaisluvut 1:stä käyttäjän antamaan lukuun asti.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Mihin asti? <font color="red">3</font>
-    1
-    2
-    3
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Mihin asti? <font color="red">5</font>
-    1
-    2
-    3
-    4
-    5
-  <% end %>
-
-  <p>
-    <strong>Vihje:</strong> käyttäjältä lukemasi luku toimii nyt whilen lopetusehdon ylärajana. Muista että Javassa <code>a &lt;= b</code> tarkoittaa <em>a pienempi tai yhtä suuri kuin b</em>.
-  </p>
-
-
-  <h2>Mistä lähtien?</h2>
-
-  <p>
-    Lisää ohjelmaan käyttäjältä kysyttävä alaraja.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Mihin asti? <font color="red">8</font>
-    Mistä lähtien? <font color="red">5</font>
-    5
-    6
-    7
-    8
-  <% end %>
-
-  <p>
-    Jos tavoite on suurempi kuin lähtökohta ei tulostu mitään:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Mihin asti? <font color="red">12</font>
-    Mistä lähtien? <font color="red">16</font>
-  <% end %>
-
-  <p>
-    <em>Huom!</em> muista että ala- ja yläraja voivat olla myös negatiivisia!
-  </p>
-
-<% end %>
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Esimerkki: Laskin
-<% end %>
-
-<p>
-  Seuraavassa esimerkissä on toteutettu summa- ja erotustoiminnallisuudet tarjoava laskin. Laskin kysyy käyttäjältä numeerista komentoa. Komennolla <em>0</em> poistutaan toistolauseesta. Jos komento ei ole lopetus, kysytään kahta lukua. Jos komento oli <em>1</em> lasketaan lukujen summa ja tulostetaan se.  Jos komento oli <em>2</em> lasketaan lukujen erotus ja tulostetaan se. Muussa tapauksessa ilmoitetaan että komento on tuntematon. Lopulta -- kun suoritus päätyy toistolauseen lohkon päättävään aaltosulkuun -- palataan toistolauseen lohkon alkuun -- eli toistolauseen lohkon avaavaan aaltosulkuun --, mistä ohjelman suoritus jatkuu.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-System.out.println("tervetuloa käyttämään laskinta");
-
-while (true) {
-    System.out.print("anna komento (1=summa, 2=erotus, 0=lopetus): ");
-
-    int komento = Integer.parseInt(lukija.nextLine());
-    if (komento == 0) {
-        break;
-    }
-
-    System.out.print("anna luvut ");
-    int eka = Integer.parseInt(lukija.nextLine());
-    int toka = Integer.parseInt(lukija.nextLine());
-
-    if (komento == 1) {
-        int summa = eka + toka;
-        System.out.println("lukujen summa " + summa);
-    } else if (komento == 2) {
-        int erotus = eka - toka;
-        System.out.println("lukujen erotus " + erotus);
-    } else {
-        System.out.println("tuntematon komento");
-    }
-}
-
-System.out.println("kiitos ja kuulemiin.");
-<% end %>
-
-
-<p>
-  &nbsp;
-</p>
-
-<% partial 'partials/exercise', locals: { name: 'Juupas eipäs' } do %>
-
-  <p>
-    Kirjoita ohjelma, joka kysyy käyttäjältä lukua. Jos luku on positiivinen, tulostetaan "Juupas", jonka jälkeen kysytään lukua uudestaan. Jos luku on negatiivinen, tulostetaan "Eipäs" ja kysytään lukua uudestaan. Ohjelman suoritus loppuu kun käyttäjä syöttää luvun 0.
-  </p>
-
-  <p>
-    Tässä tehtävässä ei ole TMC:n puolelta testejä, joten pääset testaamaan sovellusta itse. Kun mietit minkälaisilla syötteillä ohjelma toimii toivotusti, erilaisia toimintoja on 3. Ohjelmaa tulee siis testata ainakin kolmella erilaisella syötteellä, jonka lisäksi lienee hyvä tarkastaa ohjelman toiminta hyvin pienillä (esim. -10000) ja hyvin suurilla syötteillä (10000).
-  </p>
-
-  <p>
-    Alla vielä toivottu toiminnallisuus vuokaaviona.
-  </p>
-
-  <img src="/img/vuokaaviojuupaseipas.png" alt='st=>start: Alku
-
-						io=>inputoutput: lue luku
-
-						cond=>condition: luku > 0
-						cond2=>condition: luku < 0
-
-						io2=>inputoutput: "Juupas"
-						io3=>inputoutput: "Eipäs"
-						e=>end: Loppu
-
-						st->io->cond
-						cond(yes, right)->io2->io
-						cond(no)->cond2
-						cond2(yes, right)->io3->io
-						cond2(no)->e'></img>
-
-<% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Useamman luvun summa' } do %>
@@ -1189,6 +1062,78 @@ System.out.println("kiitos ja kuulemiin.");
 
 <% end %>
 
+
+<% partial 'partials/exercise', locals: { name: 'Juupas eipäs' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä lukua. Jos luku on positiivinen, tulostetaan "Juupas", jonka jälkeen kysytään lukua uudestaan. Jos luku on negatiivinen, tulostetaan "Eipäs" ja kysytään lukua uudestaan. Ohjelman suoritus loppuu kun käyttäjä syöttää luvun 0.
+  </p>
+
+  <p>
+    Kun mietit minkälaisilla syötteillä ohjelma toimii toivotusti, erilaisia toimintoja on 3. Ohjelmaa kannattaa siis testata ainakin kolmella erilaisella syötteellä, jonka lisäksi lienee hyvä tarkastaa ohjelman toiminta hyvin pienillä (esim. -10000) ja hyvin suurilla syötteillä (10000).
+  </p>
+
+  <p>
+    Alla vielä toivottu toiminnallisuus vuokaaviona.
+  </p>
+
+  <img src="/img/vuokaaviojuupaseipas.png" alt='st=>start: Alku
+
+						io=>inputoutput: lue luku
+
+						cond=>condition: luku > 0
+						cond2=>condition: luku < 0
+
+						io2=>inputoutput: "Juupas"
+						io3=>inputoutput: "Eipäs"
+						e=>end: Loppu
+
+						st->io->cond
+						cond(yes, right)->io2->io
+						cond(no)->cond2
+						cond2(yes, right)->io3->io
+						cond2(no)->e'></img>
+
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Esimerkki: Laskin
+<% end %>
+
+<p>
+  Seuraavassa esimerkissä on toteutettu summa- ja erotustoiminnallisuudet tarjoava laskin. Laskin kysyy käyttäjältä numeerista komentoa. Komennolla <em>0</em> poistutaan toistolauseesta. Jos komento ei ole lopetus, kysytään kahta lukua. Jos komento oli <em>1</em> lasketaan lukujen summa ja tulostetaan se.  Jos komento oli <em>2</em> lasketaan lukujen erotus ja tulostetaan se. Muussa tapauksessa ilmoitetaan että komento on tuntematon. Lopulta -- kun suoritus päätyy toistolauseen lohkon päättävään aaltosulkuun -- palataan toistolauseen lohkon alkuun -- eli toistolauseen lohkon avaavaan aaltosulkuun --, mistä ohjelman suoritus jatkuu.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+System.out.println("tervetuloa käyttämään laskinta");
+
+while (true) {
+    System.out.print("anna komento (1=summa, 2=erotus, 0=lopetus): ");
+
+    int komento = Integer.parseInt(lukija.nextLine());
+    if (komento == 0) {
+        break;
+    }
+
+    System.out.print("anna luvut ");
+    int eka = Integer.parseInt(lukija.nextLine());
+    int toka = Integer.parseInt(lukija.nextLine());
+
+    if (komento == 1) {
+        int summa = eka + toka;
+        System.out.println("lukujen summa " + summa);
+    } else if (komento == 2) {
+        int erotus = eka - toka;
+        System.out.println("lukujen erotus " + erotus);
+    } else {
+        System.out.println("tuntematon komento");
+    }
+}
+
+System.out.println("kiitos ja kuulemiin.");
+<% end %>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1343,6 +1288,10 @@ System.out.println("kiitos ja kuulemiin.");
     Toteuta ohjelma <a href="https://fi.wikipedia.org/wiki/Mars" target="_blank" rel="noopener">Mars</a>-planeetan lämpötilamittausten tarkasteluun. Marsin alin lämpötila (pinnalla) on -140 astetta, korkein lämpötila on 20 astetta. Ohjelmalle syötetään mittauksia kunnes käyttäjä syöttää luvun 9999. Tämän jälkeen kerrotaan lämpötilamittausten keskiarvo.
   </p>
 
+  <p>
+    Jos et muista miten keskiarvo lasketaan, tutustu aiheen <a href="https://fi.wikipedia.org/wiki/Aritmeettinen_keskiarvo" target="_blank">Wikipedia</a>-sivuun.
+  </p>
+  
   <p>
     Jos käyttäjä syöttää luvun, joka on pienempi kuin -140 tai suurempi kuin 20, lukua ei huomioida lämpötilan keskiarvon laskemisessa.
   </p>
@@ -1510,6 +1459,78 @@ System.out.println("kiitos ja kuulemiin.");
 <p></p>
 
 
+<% partial 'partials/hint', locals: { name: 'Moniosaisista tehtävistä' } do %>
+  
+  <p>
+    Huomaa, että tästä lähtien tehtävissä saattaa olla useampia osia. Jokainen osa lasketaan yksittäiseksi tehtäväksi, eli esimerkiksi seuraava tehtävä vastaa kahta yksiosaista tehtävää. Useampiosaiset tehtävät voi tyypillisesti palauttaa myös vaikka tehtävä ei olisi vielä valmis -- tällöin valmiista osista lisätään pisteet kirjanpitoon.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Mihin ja mistä? (2 osaa)' } do %>
+
+  <p>
+    Tämä tehtävä on ensimmäinen kaksiosainen tehtävä. Kun teet molemmat osat, saat tehtävästä kaksi tehtäväpistettä. Voit palauttaa tehtävän myös siten, että vain ensimmäinen osa on tehtynä.
+  </p>
+
+
+  <h2>Mihin asti?</h2>
+
+  <p>
+    Kirjoita ohjelma, joka tulostaa kokonaisluvut 1:stä käyttäjän antamaan lukuun asti.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Mihin asti? <font color="red">3</font>
+    1
+    2
+    3
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Mihin asti? <font color="red">5</font>
+    1
+    2
+    3
+    4
+    5
+  <% end %>
+
+  <p>
+    <strong>Vihje:</strong> käyttäjältä lukemasi luku toimii nyt whilen lopetusehdon ylärajana. Muista että Javassa <code>a &lt;= b</code> tarkoittaa <em>a pienempi tai yhtä suuri kuin b</em>.
+  </p>
+
+
+  <h2>Mistä lähtien?</h2>
+
+  <p>
+    Lisää ohjelmaan käyttäjältä kysyttävä alaraja.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Mihin asti? <font color="red">8</font>
+    Mistä lähtien? <font color="red">5</font>
+    5
+    6
+    7
+    8
+  <% end %>
+
+  <p>
+    Jos tavoite on suurempi kuin lähtökohta ei tulostu mitään:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Mihin asti? <font color="red">12</font>
+    Mistä lähtien? <font color="red">16</font>
+  <% end %>
+
+  <p>
+    <em>Huom!</em> muista että ala- ja yläraja voivat olla myös negatiivisia!
+  </p>
+
+<% end %>
 
 
 
@@ -1813,7 +1834,7 @@ System.out.println("kiitos ja kuulemiin.");
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Silmukat, lopetus ja muistaminen (4 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Silmukat, lopetus ja muistaminen (5 osaa)' } do %>
 
   <p>
     Seuraavassa tehtävässä tehdään yksi ohjelma, mutta ohjelman rakentaminen tapahtuu hyvin pienissä paloissa. Tämä on ehdottoman suositeltava tapa aina kun ohjelmoit.
@@ -2027,10 +2048,6 @@ System.out.println("kiitos ja kuulemiin.");
 
   <p>
     Opittavan ja käytettävän toistolauseen ominaisuuksia on tarkasteltu ohjelmoinnin opetukseen liittyvässä tutkimuksessa pitkään. Eräs debaatti liittyy <code>break</code>-komennon käyttöön. Jotkut ovat sitä mieltä, että sen käyttäminen on yleisesti ottaen hyvä käytäntö, toiset taas ovat sitä mieltä, että se toimii esimerkiksi toistolauseen käyttöön tutustumisessa. Jotkut taas eivät suosi sen käyttämistä lainkaan.
-  </p>
-
-  <p>
-    Tutustu tätä debaattia avaavaan populääriartikkeliin <a href="http://dl.acm.org/citation.cfm?id=2950065" target="_blank" rel="noopener">Break Statement Considered</a>. Artikkelin PDF-version pitäisi olla ladattavissa edellämainitun sivun takana olevasta linkistä -- PDF-tiedostoon pääsee käsiksi ainakin Kumpulan kampuksen koneilta.
   </p>
 
 <% end %>
@@ -2866,7 +2883,185 @@ Onneksi olkoon, oikein arvattu!
 <% end %>
 
 
-<%= partial 'partials/quiz', locals: { id: '59b6e0b2b7ed150004307763' } %>
+<% partial 'partials/material_heading' do %>
+  Yhteenveto
+<% end %>
+
+<p>
+  Materiaalin toisessa osassa keskityttiin toistolauseen ja muuttujien yhteistoimintaan sekä metodien toimintaan. Arvojen askeleittainen läpikäynti toistolauseen ja muuttujien kanssa esiintyy oikeastaan lähes jokaisessa arkisessa sovelluksessa. Esimerkiksi uutissivustolla näkyvät uutiset tulostetaan näkyville yksi kerrallaan toistolausetta käyttäen, kännykän yhteystiedot tulostetaan näkyville yksi kerrallaan toistolausetta käyttäen ja niin edelleen. Metodeja taas hyödynnetään toistuvien ohjelmakoodien eriyttämiseen sekä ohjelmakoodin ylläpidettävyyden ja luettavuuden parantamiseen. Tämä kaikki tulee kurssilla hiljalleen tutummaksi ja tutummaksi.
+</p>
+
+<p>
+  Toisen osan yhteenvedossa tarkastelet toistolauseiden ja muuttujien käyttämistä hieman toisenlaisessa kontekstissa. Lähtökohtana ohjelmallemme on graafinen käyttöliittymä, jonka lähdekoodi on kuvattuna alla.
+</p>
 
 
-<%= partial 'partials/quiz', locals: { id: '5883af992e0c4f0004e85f4e' } %>
+<% partial 'partials/code_highlight' do %>
+  
+  import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.canvas.Canvas;
+  import javafx.scene.canvas.GraphicsContext;
+  import javafx.scene.layout.Pane;
+  import javafx.stage.Stage;
+
+  // Luokka (ohjelma) Puisevaa "perii" graafisen käyttöliittymän rakentamiseen
+  // tarvittavia ominaisuuksia Application-luokalta (ohjelmalta)
+  public class Puisevaa extends Application {
+
+      // Käyttöliittymän käynnistäminen kutsuu metodia alla olevaa
+      // metodia
+      @Override
+      public void start(Stage ikkuna) throws Exception {
+
+          // luodaan 640 pikseliä leveä ja 480 pikseliä korkea alusta
+          // piirtämiselle ja otetaan alustaan liittyvä piirtoväline
+          // käyttöön
+          Canvas piirtoalusta = new Canvas(640, 480);
+          GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+
+          // kutsutaan piirtämiseen käytettävää metodia piirrä
+          // -- metodiin tullaan toteuttamaan piirtotoiminnallisuus
+          piirra(piirturi);
+
+          // asetetaan käyttöliittymän osat paikalleen ja 
+          // näytetään se käyttäjälle
+          Pane ruutu = new Pane(piirtoalusta);
+          Scene nakyma = new Scene(ruutu);
+
+          ikkuna.setTitle("Niin hyvää puuta!");
+          ikkuna.setScene(nakyma);
+          ikkuna.show();
+      }
+
+      // Ohjelma käynnistetään metodilla public static void main. 
+      // Metodissa kutsutaan Application luokalta perittyä toiminnallisuutta, 
+      // joka lopulta suorittaa yllä kuvatun start-metodin
+      public static void main(String[] args) {
+          launch(Puisevaa.class);
+      }
+  
+      // Oma piirra-metodimme, jonne toteutetaan piirtotoiminnallisuus
+      public static void piirra(GraphicsContext piirturi) {
+
+          // viivan piirtäminen kohdasta (0,0) kohtaan (100, 100)
+          piirturi.strokeLine(0, 0, 100, 100);
+  
+      }
+  }
+<% end %>
+
+<p>
+  Yllä kuvatun ohjelman käynnistäminen näyttää alla olevassa kuvassa näkyvän ikkunan. Ikkunan otsikko on "Niin hyvää puuta!" ja ikkunassa näkyy piirretty viiva. Tietokoneohjelmissa piirtäminen tapahtuu siten, että origo eli piste (0, 0) on ikkunan vasemmassa yläkulmassa, ja y-koordinaatti kasvaa alaspäin mennessä.
+</p>
+
+<img src="/img/puuta/ikkuna-ja-viiva.png" alt="Ikkunan otsikko on 'Niin hyvää puuta!' ja ikkunassa näkyy piirretty viiva."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Metodin <code>public static void piirra(GraphicsContext piirturi)</code> parametrina saama piirturi on kytketty ohjelman ikkunaan. Kaikki piirturin piirtokomennot siis piirtävät ikkunaan.
+</p>
+
+<p>
+  Oleellisia komennot tällä hetkellä ovat seuraavat:
+</p>
+
+<ul>
+
+  <li>
+    <code>piirturi.strokeLine(int mistaX, int mistaY, int mihinX, int mihinY)</code> piirtää viivan kohdasta (mistaX, mistaY) kohtaan (mihinX, mihinY).
+  </li>
+  
+  <li>
+    <code>piirturi.strokeRect(int mistaX, int mistaY, int leveys, int korkeus)</code> piirtää suorakulmion, jonka leveys on <code>leveys</code> ja korkeus on <code>korkeus</code>. Suorakulmion vasen yläkulma on pisteessä (mistaX, mistaY).
+  </li>
+
+  <li>
+    <code>piirturi.strokeOval(int mistaX, int mistaY, int leveys, int korkeus)</code> piirtää ovaalin, jonka leveys on <code>leveys</code> ja korkeus on <code>korkeus</code>. Pienimmän mahdollisimman suorakulmion, joka rajaa ovaalin, vasen yläkulma on pisteessä (mistaX, mistaY)
+  </li>
+  
+</ul>
+
+<p>
+  Alla olevassa esimerkissä on käytetty jokaista komentoa. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // Oma piirra-metodimme, jonne toteutetaan piirtotoiminnallisuus
+  public static void piirra(GraphicsContext piirturi) {
+
+      piirturi.strokeLine(0, 0, 300, 300);
+      piirturi.strokeRect(0, 0, 300, 300);
+      piirturi.strokeOval(0, 0, 300, 300);
+  
+  }
+  
+<% end %>
+
+<img src="/img/puuta/komennot.png" alt="Ikkunaan on piirretty viiva, suorakulmio sekä ovaali."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Voimme hyödyntää piirtämisessä myös toistolauseita. Alla on hahmoa toistetaan 10 kertaa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+
+  // Oma piirra-metodimme, jonne toteutetaan piirtotoiminnallisuus
+  public static void piirra(GraphicsContext piirturi) {
+  
+      int kerta = 0;
+      int leveys = 40;
+      int korkeus = 30;
+
+      while (kerta &lt; 10) {
+  
+          piirturi.strokeLine(kerta * leveys, kerta * korkeus, (kerta + 1) * leveys, (kerta + 1) * korkeus);
+          piirturi.strokeRect(kerta * leveys, kerta * korkeus, leveys, korkeus);
+          piirturi.strokeOval(kerta * leveys, kerta * korkeus, leveys, korkeus);
+  
+          kerta++;
+      }  
+
+  }
+  
+<% end %>
+
+
+<img src="/img/puuta/toisto.png" alt="Toistuva hahmo."/>
+
+<p>
+  &nbsp;
+</p>
+
+<% partial 'partials/exercise', locals: { name: 'Puisevaa' } do %>
+
+  <p>
+    Tässä tehtävässä tavoitteenasi on luoda ohjelma, joka piirtää käyttäjälle näytettävään ikkunaan alla kuvatun puujonon.  
+  </p>
+
+  <img src="/img/puuta/puisevaa.png" alt="Viisi puuta rinnakkain"/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Toteuta toiminnallisuus tehtäväpohjassa olevaan metodiin <code>piirra</code> -- voit myös kokeilla omien metodiesi luomista.
+  </p>
+
+  <p>
+    Tehtävään ei ole automaattisia testejä. Kun olet saanut puujonon luotua, palauta tehtävä.
+  </p>
+
+<% end %>
+
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a32f' } %>
+
+
