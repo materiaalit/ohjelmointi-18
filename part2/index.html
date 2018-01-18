@@ -634,7 +634,7 @@ System.out.println(tulostus); // toimii!
   <div class="collapse">
     <div class="exercise__body">
       
-  
+
   <p>
     Kaverisi on hahmotellut summaamiseen ja ehtolauseen toimintaan liittyvää testiohjelmaa. Testiohjelmassa ohjelman alussa luettuun lukuun lisätään käyttäjältä luettu toinen luku. Luvun lisäämisen tulee tapahtua vain jos toisena luettu luku on positiivinen.
   </p>
@@ -726,7 +726,7 @@ TyEL-kulut yhteensä: 240
       Tulostuksessa saa halutessaan käyttää myös desimaalilukuja.
     </em>
   </p>
-  
+
 
     </div>
   </div>
@@ -958,7 +958,7 @@ Summa: 21
   </div>
 </div>
 
-<div class='crowdsorcerer-widget' data-assignment='5'></div>
+<div class='crowdsorcerer-widget' data-assignment='6'></div>
 
 
 
@@ -1050,7 +1050,7 @@ while (true) {
 <div class="quiznator-plugin" data-quiz-id="5a609b65f4b4dd00042a0d82"></div>
 
 
-  
+
 <div class="exercise">
   <div class="exercise__header">
     <a data-toggle="collapse" class="exercise__toggle">
@@ -1540,7 +1540,7 @@ Kelvollisten lukujen summa: −164
   <p>
     Jos et muista miten keskiarvo lasketaan, tutustu aiheen <a href="https://fi.wikipedia.org/wiki/Aritmeettinen_keskiarvo" target="_blank">Wikipedia</a>-sivuun.
   </p>
-  
+
   <p>
     Jos käyttäjä syöttää luvun, joka on pienempi kuin -140 tai suurempi kuin 20, lukua ei huomioida lämpötilan keskiarvon laskemisessa.
   </p>
@@ -1739,7 +1739,7 @@ while (luku &gt;= 1) {
   </div>
 
   <div class="hint__body">
-      
+    
   <p>
     Huomaa, että tästä lähtien tehtävissä saattaa olla useampia osia. Jokainen osa lasketaan yksittäiseksi tehtäväksi, eli esimerkiksi seuraava tehtävä vastaa kahta yksiosaista tehtävää. Useampiosaiset tehtävät voi tyypillisesti palauttaa myös vaikka tehtävä ei olisi vielä valmis -- tällöin valmiista osista lisätään pisteet kirjanpitoon.
   </p>
@@ -3343,7 +3343,7 @@ public class Puisevaa extends Application {
         // -- metodiin tullaan toteuttamaan piirtotoiminnallisuus
         piirra(piirturi);
 
-        // asetetaan käyttöliittymän osat paikalleen ja 
+        // asetetaan käyttöliittymän osat paikalleen ja
         // näytetään se käyttäjälle
         Pane ruutu = new Pane(piirtoalusta);
         Scene nakyma = new Scene(ruutu);
@@ -3353,19 +3353,19 @@ public class Puisevaa extends Application {
         ikkuna.show();
     }
 
-    // Ohjelma käynnistetään metodilla public static void main. 
-    // Metodissa kutsutaan Application luokalta perittyä toiminnallisuutta, 
+    // Ohjelma käynnistetään metodilla public static void main.
+    // Metodissa kutsutaan Application luokalta perittyä toiminnallisuutta,
     // joka lopulta suorittaa yllä kuvatun start-metodin
     public static void main(String[] args) {
         launch(Puisevaa.class);
     }
-  
+
     // Oma piirra-metodimme, jonne toteutetaan piirtotoiminnallisuus
     public static void piirra(GraphicsContext piirturi) {
 
         // viivan piirtäminen kohdasta (0,0) kohtaan (100, 100)
         piirturi.strokeLine(0, 0, 100, 100);
-  
+
     }
 }
 </code></pre>
@@ -3393,7 +3393,7 @@ public class Puisevaa extends Application {
   <li>
     <code>piirturi.strokeLine(int mistaX, int mistaY, int mihinX, int mihinY)</code> piirtää viivan kohdasta (mistaX, mistaY) kohtaan (mihinX, mihinY).
   </li>
-  
+
   <li>
     <code>piirturi.strokeRect(int mistaX, int mistaY, int leveys, int korkeus)</code> piirtää suorakulmion, jonka leveys on <code>leveys</code> ja korkeus on <code>korkeus</code>. Suorakulmion vasen yläkulma on pisteessä (mistaX, mistaY).
   </li>
@@ -3401,11 +3401,11 @@ public class Puisevaa extends Application {
   <li>
     <code>piirturi.strokeOval(int mistaX, int mistaY, int leveys, int korkeus)</code> piirtää ovaalin, jonka leveys on <code>leveys</code> ja korkeus on <code>korkeus</code>. Pienimmän mahdollisimman suorakulmion, joka rajaa ovaalin, vasen yläkulma on pisteessä (mistaX, mistaY)
   </li>
-  
+
 </ul>
 
 <p>
-  Alla olevassa esimerkissä on käytetty jokaista komentoa. 
+  Alla olevassa esimerkissä on käytetty jokaista komentoa.
 </p>
 
 <pre class="sh_java code-highlight"><code>// Oma piirra-metodimme, jonne toteutetaan piirtotoiminnallisuus
@@ -3414,7 +3414,7 @@ public static void piirra(GraphicsContext piirturi) {
     piirturi.strokeLine(0, 0, 300, 300);
     piirturi.strokeRect(0, 0, 300, 300);
     piirturi.strokeOval(0, 0, 300, 300);
-  
+
 }
 </code></pre>
 
@@ -3430,19 +3430,19 @@ public static void piirra(GraphicsContext piirturi) {
 
 <pre class="sh_java code-highlight"><code>// Oma piirra-metodimme, jonne toteutetaan piirtotoiminnallisuus
 public static void piirra(GraphicsContext piirturi) {
-  
+
     int kerta = 0;
     int leveys = 40;
     int korkeus = 30;
 
     while (kerta &lt; 10) {
-  
+
         piirturi.strokeLine(kerta * leveys, kerta * korkeus, (kerta + 1) * leveys, (kerta + 1) * korkeus);
         piirturi.strokeRect(kerta * leveys, kerta * korkeus, leveys, korkeus);
         piirturi.strokeOval(kerta * leveys, kerta * korkeus, leveys, korkeus);
-  
+
         kerta++;
-    }  
+    }
 
 }
 </code></pre>
@@ -3468,7 +3468,7 @@ public static void piirra(GraphicsContext piirturi) {
     <div class="exercise__body">
       
   <p>
-    Tässä tehtävässä tavoitteenasi on luoda ohjelma, joka piirtää käyttäjälle näytettävään ikkunaan alla kuvatun puujonon.  
+    Tässä tehtävässä tavoitteenasi on luoda ohjelma, joka piirtää käyttäjälle näytettävään ikkunaan alla kuvatun puujonon.
   </p>
 
   <img src="../img/puuta/puisevaa-6e1b75d4.png" alt="Viisi puuta rinnakkain"/>
