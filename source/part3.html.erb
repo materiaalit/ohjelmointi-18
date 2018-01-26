@@ -227,19 +227,19 @@ public static int virheellinenMetodi() {
   <p>
     Seuraavanlainen metodi on virheellinen ohjelmointiympäristön näkökulmasta.
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
     public static int virheellinenMetodi() {
         return 10;
         System.out.println("Väitän palauttavani kokonaisluvun, mutten palauta sitä.");
     }
   <% end %>
-  
+
   <p>
     Seuraava metodi taas toimii, sillä -- vaikka return-komennon alla on lähdekoodia -- jokainen metodin lause on mahdollista saavuttaa.
   </p>
 
-  
+
   <% partial 'partials/code_highlight' do %>
     public static int virheellinenMetodi(int parametri) {
         if (parametri > 10) {
@@ -251,10 +251,10 @@ public static int virheellinenMetodi() {
         return parametri;
     }
   <% end %>
-  
+
 <% end %>
 
-  
+
 
 <% partial 'partials/material_sub_sub_heading' do %>
   Metodi voi palauttaa lausekkeen evaluoinnin tuloksen
@@ -475,7 +475,7 @@ public static void main(String[] args) {
   <p>
     Tee metodi seuraavaan runkoon:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 public static int summa(int luku1, int luku2, int luku3, int luku4) {
     // kirjoita koodia tähän
@@ -499,7 +499,7 @@ Summa: 14
   <p>
     <b>Huom:</b> kun tehtävässä sanotaan että metodin pitää <em>palauttaa</em> jotain, tarkoittaa tämä sitä että metodissa tulee olla määritelty paluutyyppi ja <code>return</code>-komento jolla haluttu asia palautetaan. Metodi ei itse tulosta (eli käytä komentoa <code>System.out.println(..)</code>), tulostuksen hoitaa metodin kutsuja, eli tässä tapauksessa pääohjelma.
   </p>
-  
+
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Pienin' } do %>
@@ -507,7 +507,7 @@ Summa: 14
   <p>
     Tee metodi <code>pienin</code>, joka palauttaa parametrina saamistaan luvuista pienemmän arvon. Jos lukujen arvo on sama, voidaan palauttaa kumpi tahansa luvuista.
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 public static int pienin(int luku1, int luku2) {
     // kirjoita koodia tähän
@@ -527,7 +527,7 @@ public static void main(String[] args) {
   <% partial 'partials/sample_output' do %>
 Pienin: 2
   <% end %>
-  
+
 <% end %>
 
 
@@ -536,7 +536,7 @@ Pienin: 2
   <p>
     Tee metodi <code>suurin</code>, joka saa kolme lukua ja palauttaa niistä suurimman. Jos suurimpia arvoja on useita, riittää niistä jonkun palauttaminen. Tulostus tapahtuu pääohjelmassa.
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 public static int suurin(int luku1, int luku2, int luku3) {
     // kirjoita koodia tähän
@@ -567,7 +567,7 @@ Suurin: 7
   <p>
     Tee metodi seuraavaan runkoon:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
 public static int summa(int luku1, int luku2, int luku3, int luku4) {
     // voit kopioida metodin summa toteutuksen tänne
@@ -595,7 +595,7 @@ Keskiarvo: 3.5
   <p>
     Muistathan miten kokonaisluku (<tt>int</tt>) muutetaan desimaaliluvuksi (<tt>double</tt>)!
   </p>
-  
+
 <% end %>
 
 
@@ -639,7 +639,7 @@ main
 
 <p>
   Kun metodi <code>tulostaLuku</code> on suoritettu, palataan kutsupinossa metodia <code>tulostaLuku</code> yhtä alempana olevaan metodiin, eli metodiin <code>main</code>. Kutsupinosta poistetaan <code>tulostaLuku</code>, ja jatketaan <code>main</code>-metodin suoritusta <code>tulostaLuku</code>-metodikutsun jälkeiseltä riviltä. Kutsupino on nyt seuraavanlainen:
-</p> 
+</p>
 
 <% partial 'partials/sample_output' do %>
 main
@@ -718,7 +718,7 @@ main
 <% end %>
 
 <p>
-  Tarkastellaan samaa ohjelman suorituksen askeleittaisella visualisoinnilla. Visualisointiin käyttämämme sovellus kasvattaa kutsupinoa alaspäin -- oikealla laidalla ylin on aina main-metodi, jonka alle tulee kutsuttavat metodit. 
+  Tarkastellaan samaa ohjelman suorituksen askeleittaisella visualisoinnilla. Visualisointiin käyttämämme sovellus kasvattaa kutsupinoa alaspäin -- oikealla laidalla ylin on aina main-metodi, jonka alle tulee kutsuttavat metodit.
 </p>
 
 <div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   \n   public static void main(String[] args) {\n      int alku = 1;\n      int loppu = 5;\n\n      tulostaTahtia(alku, loppu);\n   }\n\n   public static void tulostaTahtia(int alku, int loppu) {\n      while (alku < loppu) {\n         System.out.print(\"*\");\n         alku++;\n      }\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"alku":1},"ordered_varnames":["alku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"14","frame_id":14}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"32","frame_id":32}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"34","frame_id":34}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"50","frame_id":50}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"51","frame_id":51},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"52","frame_id":52}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"53","frame_id":53},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"61","frame_id":61},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"62","frame_id":62}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"69","frame_id":69},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"70","frame_id":70}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"71","frame_id":71},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"72","frame_id":72}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"73","frame_id":73},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"74","frame_id":74}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"81","frame_id":81},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"82","frame_id":82}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"89","frame_id":89},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"90","frame_id":90}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"91","frame_id":91},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"92","frame_id":92}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"93","frame_id":93},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"94","frame_id":94}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":15,"stack_to_render":[{"func_name":"tulostaTahtia:15","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"101","frame_id":101},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"102","frame_id":102}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"return","line":15,"stack_to_render":[{"func_name":"tulostaTahtia:15","encoded_locals":{"alku":5,"loppu":5,"__return__":["VOID"]},"ordered_varnames":["alku","loppu","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"105","frame_id":105},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"106","frame_id":106}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"****","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"alku":1,"loppu":5,"__return__":["VOID"]},"ordered_varnames":["alku","loppu","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"109","frame_id":109}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
@@ -840,7 +840,7 @@ main
 
 <% partial 'partials/code_highlight' do %>
   Scanner lukija = new Scanner(System.in);
-  
+
   System.out.print("Mikä on nimesi? ");
   String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan se muuttujaan nimi
 
@@ -907,9 +907,9 @@ main
 
 <% partial 'partials/code_highlight' do %>
   import java.util.Scanner;
-  
+
   public class Tervehdys {
-  
+
       public static void main(String[] args) {
           Scanner lukija = new Scanner(System.in);
 
@@ -939,7 +939,7 @@ Mikä tulostetaan? <font color="red">kukka</font>
 
 kukkakukkakukka
   <% end %>
-    
+
   <p>
     Esimerkissä punainen väri tarkoittaa käyttäjän kirjoittamaa tekstiä. Tätä käytäntöä noudatetaan jatkossa esimerkeissä.
   </p>
@@ -1045,7 +1045,7 @@ ei ollut!
 <p>
   Negaatio-operaatio, eli <code>!ehto</code>, kääntää siis totuusarvon ympäri.
 </p>
-  
+
 <% partial 'partials/code_highlight' do %>
 int eka = 1;
 int toka = 3;
@@ -1064,7 +1064,7 @@ if (!onkoSuurempi) {
 
 
 <% partial 'partials/exercise', locals: { name: 'Onko totta' } do %>
-    
+
   <p>
     Tee ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Jos käyttäjä kirjoittaa merkkijonon "totta", tulostetaan merkkijono "Oikein meni!", muulloin tulostetaan merkkijono "Koitappa uudelleen!".
   </p>
@@ -1101,7 +1101,7 @@ Koitappa uudelleen!
       <td>kissa</td>
     </tr>
   </table>
-  
+
   <p>
     Ohjelma näyttää käyttäjälle henkilökohtaisen viestin tai ilmoittaa, jos tunnus tai salasana on väärin.
   </p>
@@ -1131,7 +1131,7 @@ Virheellinen tunnus tai salasana!
   <p>
     <strong>HUOM:</strong> Todellisuudessa kirjautumistoiminnallisuutta ei tule toteuttaa, eikä yleensä toteutetakkaan näin. Kirjautumistoiminnallisuuden toteuttamiseen tutustutaan mm. tietokantojen perusteet -kurssilla.
   </p>
-      
+
 <% end %>
 
 <p>
@@ -1225,7 +1225,7 @@ Kirjainmäärä: 9
   </p>
 
   <h2>Salasanan kysyminen</h2>
-  
+
   <p>Ohjelmarunkoon on määritelty muuttuja <code>String salasana</code>, jolle on asetettu arvoksi <code>porkkana</code> -- älä muuta tätä salasanaa. Toteuta lisätoiminnallisuus, jossa ohjelma kysyy käyttäjältä salasanaa ja vertailee sitä muuttujassa <code>salasana</code> olevaan arvoon. Muista mitä erityistä merkkijonojen vertailussa on!
   </p>
 
@@ -1319,7 +1319,7 @@ System.out.println("7 " + loppuosa); // tulostaa: 7 veljestä
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Alkuosa' } do %>
-  
+
   <p>
     Tee ohjelma, joka tulostaa sanan alkuosan. Ohjelma kysyy käyttäjältä sanan ja alkuosan pituuden. Käytä ohjelmassa metodia <code>substring</code>.
   </p>
@@ -1335,7 +1335,7 @@ Anna sana: <font color="red">esimerkki</font>
 Alkuosan pituus: <font color="red">7</font>
 Tulos: esimerk
   <% end %>
-  
+
 <% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Loppuosa' } do %>
@@ -1349,7 +1349,7 @@ Anna sana: <font color="red">esimerkki</font>
 Loppuosan pituus: <font color="red">4</font>
 Tulos: rkki
   <% end %>
-    
+
   <% partial 'partials/sample_output' do %>
 Anna sana: <font color="red">esimerkki</font>
 Loppuosan pituus: <font color="red">7</font>
@@ -1527,7 +1527,7 @@ String porkkana = "porkkana";
   <p>
     Tehtäväpohjassa tulee mukana ohjelma, joka kysyy käyttäjältä kahta merkkijonoa. Tämän jälkeen ohjelma tulostaa indeksit, joista toinen merkkijono löytyy ensimmäisessä merkkijonossa. Ohjelman esimerkkitulostus on seuraava:
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
     Mistä haetaan: <font color="red">ski-bi dibby dib yo da dub dub</font>
     Mitä haetaan: <font color="red">dib</font>
@@ -1542,7 +1542,7 @@ String porkkana = "porkkana";
   <% partial 'partials/sample_output' do %>
     Mistä haetaan: <font color="red">ski-bi dibby dib yo da dub dub</font>
     Mitä haetaan: <font color="red">dib</font>
-    Merkkijonon dib esiintymiskertoja: 2 
+    Merkkijonon dib esiintymiskertoja: 2
   <% end %>
 
   <p>
@@ -1597,7 +1597,7 @@ String porkkana = "porkkana";
 <% end %>
 
 
-<div class='crowdsorcerer-widget' data-assignment='5' peer-review data-exercises='3'></div>
+<div class='crowdsorcerer-widget' data-assignment='6' peer-review data-exercises='3'></div>
 
 
 
@@ -1857,7 +1857,7 @@ String porkkana = "porkkana";
 
   tehtavat2.add("Positiivisen luvun lisääminen");
   tehtavat2.add("Työntekijän eläkevakuutus");
-  
+
   System.out.println("Listan 1 koko " + tehtavat1.size());
   System.out.println("Listan 2 koko " + tehtavat2.size());
 
@@ -2020,7 +2020,7 @@ String porkkana = "porkkana";
   <p>
     Huom! Listan koon palauttava metodi on tässä hyödyllinen.
   </p>
-  
+
 <% end %>
 
 
@@ -2188,7 +2188,7 @@ String porkkana = "porkkana";
 
 
 <%partial 'partials/exercise', locals: { name: 'Varasto (2 osaa)' } do %>
-  
+
   <p>
     Toteuta ohjelma varaston hallinnointiin. Varaston hallinta tarjoaa käyttäjälle neljä komentoa: <code>lisaa</code>, <code>poista</code>, <code>hae</code> ja <code>lopeta</code>. Jos käyttäjä syöttää merkkijonon "lopeta", tulee varastonhallintaohjelman suorituksen päättyä. Jos käyttäjä syöttää komennon "lisaa", "poista", tai "hae", käyttäjältä kysytään esinettä. Tämän jälkeen käyttäjän syöttämä esine joko lisätään varastoon, poistetaan varastosta tai sitä haetaan varastosta.
   </p>
@@ -2196,33 +2196,33 @@ String porkkana = "porkkana";
   <p>
     Alla on esimerkki ohjelman odotetusta suorituksesta.
   </p>
-  
+
   <% partial 'partials/sample_output' do %>
   Varastonhallinta.
-  
-  Syötä komento (lisaa, poista, hae, lopeta): 
+
+  Syötä komento (lisaa, poista, hae, lopeta):
   <font color="red">lisaa</font>
-  Syötä esine: 
+  Syötä esine:
   <font color="red">nakki</font>
 
-  Syötä komento (lisaa, poista, hae, lopeta): 
+  Syötä komento (lisaa, poista, hae, lopeta):
   <font color="red">hae</font>
-  Syötä esine: 
+  Syötä esine:
   <font color="red">nakki</font>
   Esine nakki löytyy varastosta.
 
-  Syötä komento (lisaa, poista, hae, lopeta): 
+  Syötä komento (lisaa, poista, hae, lopeta):
   <font color="red">poista</font>
-  Syötä esine: 
+  Syötä esine:
   <font color="red">nakki</font>
 
-  Syötä komento (lisaa, poista, hae, lopeta): 
+  Syötä komento (lisaa, poista, hae, lopeta):
   <font color="red">hae</font>
-  Syötä esine: 
+  Syötä esine:
   <font color="red">nakki</font>
   Esinettä nakki ei löydy varastosta.
 
-  Syötä komento (lisaa, poista, hae, lopeta): 
+  Syötä komento (lisaa, poista, hae, lopeta):
   <font color="red">lopeta</font>
   <% end %>
 
@@ -2235,9 +2235,9 @@ String porkkana = "porkkana";
     <li>(2p) lopetus, lisääminen, poistaminen, ja hakeminen toimii.</li>
   </p>
 
-  
+
 <% end %>
-  
+
 
 <% partial 'partials/material_sub_heading' do %>
   Listan läpikäynti
@@ -2332,7 +2332,7 @@ String porkkana = "porkkana";
 
 
 <p>
-  <em>Jos</em> listan arvojen läpikäynnissä ei tarvita tietoa listan arvon sijannista (arvoa ei tarvitse esimerkiksi muuttaa, vaihtaa jne), voi listan läpikäyntiin käyttää myös ns. <strong>for-each</strong>-lausetta. 
+  <em>Jos</em> listan arvojen läpikäynnissä ei tarvita tietoa listan arvon sijannista (arvoa ei tarvitse esimerkiksi muuttaa, vaihtaa jne), voi listan läpikäyntiin käyttää myös ns. <strong>for-each</strong>-lausetta.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2494,7 +2494,7 @@ String porkkana = "porkkana";
         if (pienin &gt; luku) {
             pienin = luku;
         }
-    
+
         indeksi++;
     }
 
@@ -2631,7 +2631,7 @@ String porkkana = "porkkana";
 </p>
 
 <p>
-  Tehdään klassinen ajatustenlukuohjelma. Ohjelmassa käyttäjää pyydetään syöttämään luku 0 tai 1. Tietokoneen tehtävänä on arvata käyttäjän syöttämä luku. Tätä toistetaan kunnes käyttäjä ei enää halua pelata. 
+  Tehdään klassinen ajatustenlukuohjelma. Ohjelmassa käyttäjää pyydetään syöttämään luku 0 tai 1. Tietokoneen tehtävänä on arvata käyttäjän syöttämä luku. Tätä toistetaan kunnes käyttäjä ei enää halua pelata.
 </p>
 
 <p>
@@ -2664,14 +2664,14 @@ String porkkana = "porkkana";
       <input type="button" id="al_nappi_uudestaan" value="Aloita alusta"></input>
     </td>
   </tr>
-  
+
 </table>
 
 <script>
  var aj_oikein = 0;
  var aj_luvut = new Array();
 
- 
+
  document.getElementById("al_nappi_uudestaan").onclick = function(event) {
      aj_luvut.length = 0;
      aj_oikein = 0;
@@ -2679,7 +2679,7 @@ String porkkana = "porkkana";
      document.getElementById("al_tappiot").innerHTML = "Koneen tappiot: " + (aj_luvut.length - aj_oikein);
      document.getElementById("al_arvausteksti").innerHTML = "";
  }
- 
+
  document.getElementById("al_nappi_0").onclick = function(event) {
      syotetty(0);
  }
@@ -2687,14 +2687,14 @@ String porkkana = "porkkana";
   document.getElementById("al_nappi_1").onclick = function(event) {
      syotetty(1);
  }
- 
+
  function syotetty(arvo) {
      if(aj_oikein >= 25 || aj_luvut.length - aj_oikein >= 25) {
 	 document.getElementById("al_arvausteksti").innerHTML = "Peli päättyi.";
 	 return;
      }
 
-     
+
      document.getElementById("al_arvausteksti").innerHTML = "";
      var arvaus = arvaa();
      var syote = parseInt(arvo);
@@ -2712,7 +2712,7 @@ String porkkana = "porkkana";
      document.getElementById("al_voitot").innerHTML = "Koneen voitot: " + aj_oikein;
      document.getElementById("al_tappiot").innerHTML = "Koneen tappiot: " + (aj_luvut.length - aj_oikein);
  }
- 
+
  function arvaa() {
      if (aj_luvut.length < 3) {
 	 return 0;
@@ -2722,9 +2722,9 @@ String porkkana = "porkkana";
 
      var nollat = 0;
      var ykkoset = 0;
-     
+
      for (var i = 2; i < aj_luvut.length; i++) {
-	 
+
 	 if (aj_luvut[i - 2] != aj_luvut[aj_luvut.length - 2] &&
 	     aj_luvut[i - 1] != aj_luvut[aj_luvut.length - 1]) {
 	     continue;
@@ -2736,14 +2736,14 @@ String porkkana = "porkkana";
 	     ykkoset++;
 	 }
      }
-     
+
      if (nollat > ykkoset) {
 	 return 0;
      } else {
 	 return 1;
      }
  }
- 
+
 </script>
 
 <p>
@@ -2751,10 +2751,10 @@ String porkkana = "porkkana";
 </p>
 
 <p>
-  Lukeeko ohjelma ajatuksia? Ei. Se yrittää tosin olla ovela -- ohjelma tallentaa käyttäjän aiemmat päätökset ja pyrkii ennustamaan tulevaa niiden perusteella. George Santayanan sanoin, <em>to know your future you must know your past.</em> 
+  Lukeeko ohjelma ajatuksia? Ei. Se yrittää tosin olla ovela -- ohjelma tallentaa käyttäjän aiemmat päätökset ja pyrkii ennustamaan tulevaa niiden perusteella. George Santayanan sanoin, <em>to know your future you must know your past.</em>
 </p>
 
-  
+
 <p>
   Toteutetaan seuraavaksi samankaltainen sovellus Java-kielellä.  Ohjelman käyttöliittymä on seuraava.
 </p>
@@ -2818,7 +2818,7 @@ String porkkana = "porkkana";
 
       luvut.add(luku);
 
-  
+
       System.out.println("Syötit " + syote + ", arvasin " + arvaus + ".");
       System.out.println("Tietokoneen voitot: " + voitot);
       System.out.println("Pelaajan voitot: " + (syotteet.size() - voitot));
@@ -2830,7 +2830,7 @@ String porkkana = "porkkana";
 <% end %>
 
 <p>
-  Ohjelma lukee käyttäjältä syötteitä kunnes tietokone on voittanut 25 peliä tai käyttäjä on voittanut 25 peliä. 
+  Ohjelma lukee käyttäjältä syötteitä kunnes tietokone on voittanut 25 peliä tai käyttäjä on voittanut 25 peliä.
 </p>
 
 <p>
@@ -2960,7 +2960,7 @@ ykkösiä: 2
               } else {
                   ykkosia++;
               }
-  
+
           }
 
           indeksi++;
@@ -2994,7 +2994,7 @@ ykkösiä: 2
               } else {
                   ykkosia++;
               }
-  
+
           }
 
           indeksi++;
@@ -3035,7 +3035,7 @@ ykkösiä: 2
               } else {
                   ykkosia++;
               }
-  
+
           }
 
           indeksi++;
@@ -3082,7 +3082,7 @@ ykkösiä: 2
     Syötit h, arvasin h.
     Tietokoneen voitot: 1
     Pelaajan voitot: 0
-    
+
     Syötä h tai t: <font color="red">h</font>
     Syötit h, arvasin h.
     Tietokoneen voitot: 2
@@ -3122,10 +3122,10 @@ ykkösiä: 2
     Syötit t, arvasin h.
     Tietokoneen voitot: 5
     Pelaajan voitot: 4
-    
+
     ...
   <% end %>
-  
+
 <% end %>
 
 
