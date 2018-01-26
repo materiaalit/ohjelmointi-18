@@ -1,0 +1,3676 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC, Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, kevät 2018 | Osa 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-d08f7ac6.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Kolmannen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Osaa luoda metodeja, jotka palauttavat arvon. Ymmärtää miten ohjelman suoritus etenee metodikutsun yhteydessä. Ymmärtää muuttujien näkyvyyden ja olemassaolon. Tuntee käsitteen merkkijono ja osaa käsitellä merkkijonoja (erit. vertailu). Tuntee listarakenteen ja osaa lisätä ja poistaa listalla olevia alkioita. Tuntee käsitteen indeksi ja osaa käydä listan läpi while-toistolauseen avulla.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Metodit jatkuvat
+
+</h1>
+
+<p>
+  Metodien avulla ohjelmia voi pilkkoa pienemmiksi osakokonaisuuksiksi. Jos metodit nimetään kuvaavasti, ohjelmoija pystyy seuraamaan sovelluksen toimintaa metodien nimien perusteella. Tämä helpottaa ohjelman ymmärrettävyyttä niin alkuperäisen ohjelmoijan kuin ohjelmaa myöhemmin mahdollisesti ylläpitävän ohjelmoijan tai ohjelmoijien osalta. Jatketaan metodeihin tutustumista.
+</p>
+
+
+<h2 class="material-heading">
+    Metodit ja muuttujien näkyvyys
+
+</h2>
+
+
+<p>
+  Edellisessä osassa käsitellyt muuttujien olemassaoloon liittyvät säännöt pätevät myös metodien yhteydessä. <strong>Muuttuja ei ole olemassa ennen sen esittelyä, ja muuttuja on olemassa vain niiden aaltosulkujen sisällä kuin missä se on esitelty</strong>. Metodien yhteydessä tämä tarkoittaa sitä, että metodeilla on pääsy vain niihin muuttujiin, jotka ovat määritelty metodien sisällä, tai jotka metodi saa parametrina. Alla oleva esimerkki konkretisoi tilanteen, missä <code>kasvataKolme</code>-metodin sisällä yritetään muuttaa <code>main</code>-metodissa määritellyn <code>luku</code>-muuttujan arvoa.
+</p>
+
+<pre class="sh_java code-highlight"><code>// pääohjelma
+public static void main(String[] args) {
+    int luku = 1;
+    kasvataKolmella();
+}
+
+// metodi
+public static void kasvataKolmella() {
+    luku = luku + 3;
+}
+</code></pre>
+
+<p>
+  Yllä oleva ohjelma ei toimi, sillä metodi <code>kasvataKolmella</code> ei näe pääohjelman muuttujaa <code>luku</code>. Tarkemmin ottaen, metodi <code>kasvataKolmella</code> ei edes tiedä mistä muuttujasta <code>luku</code> on kyse, sillä muuttujaa ei ole määritelty metodissa <code>kasvataKolmella</code> tai sen parametreissa.
+</p>
+
+<p>
+  Yleisemmin voi todeta, että pääohjelman muuttujat eivät näy metodien sisälle, ja metodin muuttujat eivät näy muille metodeille tai pääohjelmalle. Ainoa keino viedä metodille tietoa metodin ulkopuolelta on parametrin avulla.
+</p>
+
+
+<h2 class="material-heading">
+    Metodille annettavat muuttujat kopioituvat
+
+</h2>
+
+
+<p>
+  Muistellaan vielä edellisestä osasta erittäin oleellista metodien toimintaan liittyvää ominaisuutta: parametrien arvot kopioituvat. Käytännössä metodien parametrit ovat erillisiä muiden metodien muuttujista (tai parametreista), vaikka niillä olisikin sama luku. Kun metodikutsun yhteydessä metodille annetaan muuttuja, muuttujan arvo kopioituu kutsuttavan metodin metodimäärittelyssä olevan parametrimuuttujan arvoksi. Kahdessa eri metodissa olevat muuttujat ovat siis erillisiä toisistaan.
+</p>
+
+<p>
+  Tarkastellaan seuraavaa esimerkkiä, missä pääohjelmassa määritellään muuttuja <code>luku</code>. Muuttuja luku annetaan parametrina metodille <code>kasvataKolmella</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>// pääohjelma
+public static void main(String[] args) {
+    int luku = 1;
+    System.out.println("Pääohjelman muuttujan luku arvo: " + luku);
+    kasvataKolmella(luku);
+    System.out.println("Pääohjelman muuttujan luku arvo: " + luku);
+}
+
+// metodi
+public static void kasvataKolmella(int luku) {
+    System.out.println("Metodin parametrin luku arvo: " + luku);
+    luku = luku + 3;
+    System.out.println("Metodin parametrin luku arvo: " + luku);
+}
+</code></pre>
+
+<p>
+  Ohjelman suoritus aiheuttaa seuraavanlaisen tulostuksen.
+</p>
+
+<pre class="sample-output">Pääohjelman muuttujan luku arvo: 1
+Metodin parametrin luku arvo: 1
+Metodin parametrin luku arvo: 4
+Pääohjelman muuttujan luku arvo: 1
+</pre>
+
+<p>
+  Kun metodin sisällä kasvatetaan muuttujan <code>luku</code> arvoa kolmella, se onnistuu. Tämä ei kuitenkaan näy pääohjelmassa olevassa muuttujassa <code>luku</code>. Pääohjelmassa oleva muuttuja <code>luku</code> on eri kuin metodissa oleva muuttuja <code>luku</code>.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n\n   public static void main(String[] args) {\n      int luku = 1;\n      System.out.println(\"Pääohjelman luvun arvo: \" + luku);\n      kasvataKolmella(luku);\n      System.out.println(\"Pääohjelman luvun arvo: \" + luku);\n   }\n\n   public static void kasvataKolmella(int luku) {\n      System.out.println(\"Metodin luvun arvo: \" + luku);\n      luku = luku + 3;\n      System.out.println(\"Metodin luvun arvo: \" + luku);\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\n","event":"call","line":11,"stack_to_render":[{"func_name":"kasvataKolmella:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"kasvataKolmella:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"kasvataKolmella:12","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kasvataKolmella:13","encoded_locals":{"luku":4},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"kasvataKolmella:14","encoded_locals":{"luku":4},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"39","frame_id":39},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"40","frame_id":40}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\n","event":"return","line":14,"stack_to_render":[{"func_name":"kasvataKolmella:14","encoded_locals":{"luku":4,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41},{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"kasvataKolmella","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\nPääohjelman luvun arvo: 1\n","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"48","frame_id":48}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Pääohjelman luvun arvo: 1\nMetodin luvun arvo: 1\nMetodin luvun arvo: 4\nPääohjelman luvun arvo: 1\n","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"luku":1,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<p>
+  Parametri <code>luku</code> kopioidaan metodin käyttöön, eli metodia <code>kasvataKolmella</code> varten luodaan oma muuttuja nimeltä <code>luku</code>, johon pääohjelmassa olevan muuttujan <code>luku</code> arvo kopioidaan metodikutsun yhteydessä. Metodissa <code>kasvataKolmella</code> oleva muuttuja <code>luku</code> on olemassa vain metodin suorituksen ajan, eikä sillä ole yhteyttä pääohjelman samannimiseen muuttujaan.
+</p>
+
+<div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a330"></div>
+
+
+
+
+<h2 class="material-heading">
+    Metodi voi palauttaa arvon
+
+</h2>
+
+<p>
+  Metodin määrittelyssä kerrotaan palauttaako metodi arvon. Jos metodi palauttaa arvon, tulee metodimäärittelyn yhteydessä kertoa palautettavan arvon tyyppi. Muulloin määrittelyssä käytetään avainsanaa <code>void</code>. Tähän mennessä tekemämme metodit ovat määritelty avainsanaa <code>void</code> käyttäen eli eivät ole palauttaneet arvoa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static <strong>void</strong> kasvataKolmella() {
+    ...
+}
+</code></pre>
+
+<p>
+  Avainsana <code>void</code> tarkoittaa että metodi ei palauta mitään. Jos haluamme, että metodi palauttaa arvon, tulee avainsanan <code>void</code> paikalle asettaa palautettavan muuttujan tyyppi. Seuraavassa esimerkissä on määritelty metodi <code>palautetaanAinaKymppi</code>, joka palauttaa kokonaislukutyyppisen (<code>int</code>) muuttujan (tässä arvon 10).
+</p>
+
+<p>
+  Konkreettinen arvon palautus tapahtuu komennolla <code>return</code>, jota seuraa palautettava arvo (tai muuttujan nimi, jonka arvo palautetaan).
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int palautetaanAinaKymppi() {
+    return 10;
+}
+</code></pre>
+
+<p>
+  Yllä määritelty metodi palauttaa sitä kutsuttaessa <code>int</code>-tyyppisen arvon <code>10</code>. Jotta metodin palauttamaa arvoa voisi käyttää, tulee se ottaa talteen muuttujaan. Tämä tapahtuu samalla tavalla kuin normaali muuttujan arvon asetus, eli yhtäsuuruusmerkillä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int luku = palautetaanAinaKymppi();
+
+    System.out.println("metodi palautti luvun " + luku);
+}
+</code></pre>
+
+<p>
+  Metodin paluuarvo sijoitetaan <code>int</code>-tyyppiseen muuttujaan aivan kuin mikä tahansa muukin int-arvo. Paluuarvo voi toimia myös osana mitä tahansa lauseketta.
+</p>
+
+<pre class="sh_java code-highlight"><code>double luku = 4 * palautetaanAinaKymppi() + (palautetaanAinaKymppi() / 2) - 8;
+
+System.out.println("laskutoimituksen tulos " + luku);
+</code></pre>
+
+<p>
+  Kaikki tähän mennessä näkemämme muuttujatyypit voidaan palauttaa metodista.
+</p>
+
+<table class="table">
+  <tr>
+    <th>Palautettavan arvon tyyppi</th>
+    <th>Esimerkki</th>
+  </tr>
+  <tr>
+    <td>Metodi ei palauta arvoa</td>
+    <td>
+<pre class="sh_java code-highlight"><code>public static void metodiJokaEiPalautaMitaan() {
+    // metodin runko
+}</code></pre>
+
+    </td>
+  </tr>
+  <tr>
+    <td>Metodi palauttaa <code>int</code>-tyyppisen muuttujan</td>
+    <td>
+<pre class="sh_java code-highlight"><code>public static int metodiJokaPalauttaaKokonaisLuvun() {
+    // metodin runko, tarvitsee return-komennon
+}</code></pre>
+
+    </td>
+  </tr>
+  <tr>
+    <td>Metodi palauttaa <code>double</code>-tyyppisen muuttujan</td>
+    <td>
+<pre class="sh_java code-highlight"><code>public static double metodiJokaPalauttaaLiukuluvun() {
+    // metodin runko, tarvitsee return-komennon
+}</code></pre>
+
+    </td>
+  </tr>
+</table>
+
+<p>
+  Jos metodille määritellään paluuarvon tyyppi, on sen pakko palauttaa arvo. Esimerkiksi seuraava metodi on virheellinen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int virheellinenMetodi() {
+    System.out.println("Väitän palauttavani kokonaisluvun, mutten palauta sitä.");
+}
+</code></pre>
+
+<p>
+  Ylläolevassa metodissa tulee olla komento <code>return</code>, jota seuraa palautettavan arvon tyyppi.
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Komento return lopettaa metodin suorituksen
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Kun metodin suorituksessa päädytään komentoon <code>return</code>, metodin suoritus päättyy ja metodista palautetaan arvo sitä kutsuneelle metodille.
+  </p>
+
+  <p>
+    Ohjelmointikielen kääntäjä sekä käyttämämme ohjelmointiympäristö tietää, että return-komentoa seuraavia lähdekoodirivejä ei koskaan suoriteta. Jos ohjelmoija lisää lähdekoodia return-komennon jälkeen paikkaan, mitä ei metodin suorituksessa voida koskaan saavuttaa, ohjelmointiympäristö antaa virheviesti.
+  </p>
+
+  <p>
+    Seuraavanlainen metodi on virheellinen ohjelmointiympäristön näkökulmasta.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>public static int virheellinenMetodi() {
+    return 10;
+    System.out.println("Väitän palauttavani kokonaisluvun, mutten palauta sitä.");
+}
+</code></pre>
+  
+  <p>
+    Seuraava metodi taas toimii, sillä -- vaikka return-komennon alla on lähdekoodia -- jokainen metodin lause on mahdollista saavuttaa.
+  </p>
+
+  
+<pre class="sh_java code-highlight"><code>public static int virheellinenMetodi(int parametri) {
+    if (parametri > 10) {
+        return 10;
+    }
+
+    System.out.println("Parametrina saatu luku on kymmenen tai pienempi.");
+
+    return parametri;
+}
+</code></pre>
+  
+
+  </div>
+</div>
+
+  
+
+<h3 class="material-heading">
+    Metodi voi palauttaa lausekkeen evaluoinnin tuloksen
+
+</h3>
+
+<p>
+  Palautettavan arvon ei tarvitse olla täysin ennalta määritelty, vaan se voidaan laskea. Metodista arvon palauttavalle return-komennolle voidaan antaa myös lauseke, joka evaluoituu ennen kuin arvo palautetaan.
+</p>
+
+<p>
+  Seuraavassa esimerkissä määritellään metodi summa, joka laskee kahden muuttujan arvon yhteen ja palauttaa summan. Yhteen laskettavien muuttujien <code>eka</code> ja <code>toka</code> arvot saadaan metodin parametrina.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int summa(int eka, int toka) {
+    return eka + toka;
+}
+</code></pre>
+
+<p>
+  Kun metodin suorituksessa päädytään lauseeseen <code>return eka + toka;</code>, evaluoidaan lauseke <code>eka + toka</code>, jonka arvo lopulta palautetaan.
+</p>
+
+<p>
+  Metodin kutsutaan seuraavasti. Alla metodia käytetään laskemaan luvut 2 ja 7 yhteen. Metodikutsusta saatava paluuarvo asetetaan muuttujaan <code>lukujenSumma</code>:
+</p>
+
+<pre class="sh_java code-highlight"><code>int lukujenSumma = summa(2, 7);
+// lukujenSumma on nyt 9
+</code></pre>
+
+<p>
+  Laajennetaan edellistä esimerkkiä siten, että käyttäjä syöttää luvut.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+
+    System.out.print("Anna ensimmäinen luku: ");
+    int eka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Anna toinen luku: ");
+    int toka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Luvut ovat yhteensä: " + summa(eka, toka));
+}
+
+public static int summa(int eka, int toka) {
+    return eka + toka;
+}
+</code></pre>
+
+<p>
+  Yllä olevassa esimerkissä metodin paluuarvoa ei aseteta muuttujaan, vaan sitä käytetään suoraan osana tulostusta. Tällöin tulostuskomennon suoritus tapahtuu siten, että tietokone selvittää ensin tulostettavan merkkijonon <code>"Luvut ovat yhteensä: " + summa(eka, toka)</code>. Ensin tietokone etsii muuttujat <code>eka</code> ja <code>toka</code>, ja kopioi niiden arvot metodin <code>summa</code> parametrien arvoiksi. Tämän jälkeen metodissa lasketaan parametrien arvot yhteen, jonka jälkeen summa palauttaa arvon. Tämä arvo asetetaan metodikutsun <code>summa</code> paikalle, jonka jälkeen summa liitetään merkkijonon <code>"Luvut ovat yhteensä: "</code> jatkeeksi.
+</p>
+
+<p>
+  Koska metodille annettavat arvot kopioidaan metodin parametreihin, metodin parametrien nimillä ja metodin kutsujan puolella määritellyillä muuttujien nimillä ei ole oikeastaan mitään tekemistä keskenään. Edellisessä esimerkissä sekä pääohjelman muuttujat että metodin parametrit olivat "sattumalta" nimetty samoin (eli <code>eka</code> ja <code>toka</code>). Seuraava toimii täysin samalla tavalla vaikka muuttujat ovatkin eri nimisiä:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+
+    System.out.print("Anna ensimmäinen luku: ");
+    int luku1 = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Anna toinen luku: ");
+    int luku2 = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Luvut ovat yhteensä: " + summa(luku1, luku2));
+}
+
+public static int summa(int eka, int toka) {
+    return eka + toka;
+}
+</code></pre>
+
+<p>
+  Nyt pääohjelman muuttujan <code>luku1</code> arvo kopioituu metodin parametrin <code>eka</code> arvoksi ja pääohjelman muuttujan <code>luku2</code> arvo kopioituu metodin parametrin <code>toka</code> arvoksi.
+</p>
+
+<p>
+  Seuraavassa esimerkissä metodia summa kutsutaan kokonaisluvuilla, jotka saadaan <code>summa</code>-metodin paluuarvoina.
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 3;
+int toka = 2;
+
+int monenLuvunSumma = summa(summa(1, 2), summa(eka, toka));
+// 1) suoritetaan sisemmät metodit:
+//    summa(1, 2) = 3   ja summa(eka, toka) = 5
+// 2) suoritetaan ulompi metodi:
+//    summa(3, 5) = 8
+// 3) muuttujan monenLuvunSumma arvoksi siis tulee 8
+</code></pre>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n\n   public static void main(String[] args) {\n      int eka = 3;\n      int toka = 2;\n\n      int monenLuvunSumma = summa(summa(1, 2), summa(eka, toka));\n   }\n   \n   public static int summa(int eka, int toka) {\n      return eka + toka;\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"eka":3},"ordered_varnames":["eka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":1,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":1,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"14","frame_id":14}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":1,"toka":2,"__return__":3},"ordered_varnames":["eka","toka","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"23","frame_id":23},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"24","frame_id":24}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":2,"__return__":5},"ordered_varnames":["eka","toka","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"40","frame_id":40},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":5},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"44","frame_id":44}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":5},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"45","frame_id":45},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"46","frame_id":46}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":11,"stack_to_render":[{"func_name":"summa:11","encoded_locals":{"eka":3,"toka":5,"__return__":8},"ordered_varnames":["eka","toka","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"55","frame_id":55},{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"eka":3,"toka":2},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"57","frame_id":57}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"eka":3,"toka":2,"monenLuvunSumma":8},"ordered_varnames":["eka","toka","monenLuvunSumma"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"58","frame_id":58}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"eka":3,"toka":2,"monenLuvunSumma":8,"__return__":["VOID"]},"ordered_varnames":["eka","toka","monenLuvunSumma","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a68535eed25000480e6e4"></div>
+
+
+
+<h2 class="material-heading">
+    Metodin omat muuttujat
+
+</h2>
+
+<p>
+  Muuttujien määrittely metodissa tapahtuu tutulla tavalla. Seuraava metodi laskee parametrina saamiensa lukujen keskiarvon. Keskiarvon laskemisessa käytetään apumuuttujia <code>summa</code> ja <code>ka</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static double keskiarvo(int luku1, int luku2, int luku3) {
+
+    int summa = luku1 + luku2 + luku3;
+    double ka = summa / 3.0;
+
+    return ka;
+}
+</code></pre>
+
+<p>
+  Metodin kutsu voi tapahtua esim seuraavasti
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+
+    System.out.print("Anna ensimmäinen luku: ");
+    int eka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("Anna toinen luku: ");
+    int toka = Integer.parseInt(lukija.nextLine());
+
+    System.out.print("ja kolmas luku: ");
+    int kolmas = Integer.parseInt(lukija.nextLine());
+
+    double keskiarvonTulos = keskiarvo(eka, toka, kolmas);
+
+    System.out.print("Lukujen keskiarvo: " + keskiarvonTulos);
+}
+</code></pre>
+
+<p>
+  Huomaa että metodin sisäiset muuttujat <code>summa</code> ja <code>ka</code> eivät näy pääohjelmaan. Tyypillinen ohjelmoinnin harjoittelussa eteen tuleva virhe on yrittää käyttää metodia seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int eka = 3;
+    int toka = 8;
+    int kolmas = 4;
+
+    keskiarvo(eka, toka, kolmas);
+
+    // yritetään käyttää metodin sisäistä muuttujaa, EI TOIMI!
+    System.out.print("Lukujen keskiarvo: " + ka);
+}
+</code></pre>
+
+<p>
+  Myös seuraavanlaista virhettä näkee usein.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int eka = 3;
+    int toka = 8;
+    int kolmas = 4;
+
+    keskiarvo(eka, toka, kolmas);
+
+    // yritetään käyttää pelkkää metodin nimeä, EI TOIMI!
+    System.out.print("Lukujen keskiarvo: " + keskiarvo);
+}
+</code></pre>
+
+<p>
+  Eli tässä yritettiin käyttää pelkkää metodin nimeä muuttujamaisesti. Toimiva tapa metodin tuloksen sijoittamisen apumuuttujaan lisäksi on suorittaa metodikutsu suoraan tulostuslauseen sisällä:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int eka = 3;
+    int toka = 8;
+    int kolmas = 4;
+
+    // kutsutaan metodia tulostuslauseessa, TOIMII!
+    System.out.print("Lukujen keskiarvo: " + keskiarvo(eka, toka, kolmas));
+}
+</code></pre>
+
+<p>
+  Tässä siis ensin tapahtuu metodikutsu joka palauttaa arvon 5.0 joka sitten tulostetaan tulostuskomennon avulla.
+</p>
+
+<p>
+  Screencast aiheesta:
+</p>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=zEHvycTo81c" height="300" class="youtube" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a68845eed25000480e6e5"></div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Täydennä tehtäväpohjassa olevaa metodia <code>summa</code> siten, että se laskee ja palauttaa parametrina olevien lukujen summan.
+  </p>
+
+  <p>
+    Tee metodi seuraavaan runkoon:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>public static int summa(int luku1, int luku2, int luku3, int luku4) {
+    // kirjoita koodia tähän
+    // muista että metodissa on oltava (lopussa) return!
+}
+
+public static void main(String[] args) {
+    int vastaus = summa(4, 3, 6, 1);
+    System.out.println("Summa: " + vastaus);
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+<pre class="sample-output">Summa: 14
+</pre>
+
+  <p>
+    <b>Huom:</b> kun tehtävässä sanotaan että metodin pitää <em>palauttaa</em> jotain, tarkoittaa tämä sitä että metodissa tulee olla määritelty paluutyyppi ja <code>return</code>-komento jolla haluttu asia palautetaan. Metodi ei itse tulosta (eli käytä komentoa <code>System.out.println(..)</code>), tulostuksen hoitaa metodin kutsuja, eli tässä tapauksessa pääohjelma.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Pienin</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee metodi <code>pienin</code>, joka palauttaa parametrina saamistaan luvuista pienemmän arvon. Jos lukujen arvo on sama, voidaan palauttaa kumpi tahansa luvuista.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>public static int pienin(int luku1, int luku2) {
+    // kirjoita koodia tähän
+    // älä tulosta metodin sisällä mitään
+
+    // lopussa oltava komento return
+}
+
+public static void main(String[] args) {
+    int vastaus =  pienin(2, 7);
+    System.out.println("Pienin: " + vastaus);
+}
+</code></pre>
+
+  <p>Ohjelman tulostus:</p>
+
+<pre class="sample-output">Pienin: 2
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Suurin</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee metodi <code>suurin</code>, joka saa kolme lukua ja palauttaa niistä suurimman. Jos suurimpia arvoja on useita, riittää niistä jonkun palauttaminen. Tulostus tapahtuu pääohjelmassa.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>public static int suurin(int luku1, int luku2, int luku3) {
+    // kirjoita koodia tähän
+}
+
+public static void main(String[] args) {
+    int vastaus =  suurin(2, 7, 3);
+    System.out.println("Suurin: " + vastaus);
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+<pre class="sample-output">Suurin: 7
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee metodi <code>keskiarvo</code>, joka laskee parametrina olevien lukujen keskiarvon. Metodin sisällä tulee käyttää apuna edellä tehtyä metodia <code>summa</code>!
+  </p>
+
+  <p>
+    Tee metodi seuraavaan runkoon:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>public static int summa(int luku1, int luku2, int luku3, int luku4) {
+    // voit kopioida metodin summa toteutuksen tänne
+}
+
+public static double keskiarvo(int luku1, int luku2, int luku3, int luku4) {
+    // kirjoita koodia tähän
+    // laske alkioiden summa kutsumalla metodia summa
+}
+
+public static void main(String[] args) {
+    double vastaus = keskiarvo(4, 3, 6, 1);
+    System.out.println("Keskiarvo: " + vastaus);
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostus:
+  </p>
+
+<pre class="sample-output">Keskiarvo: 3.5
+</pre>
+
+  <p>
+    Muistathan miten kokonaisluku (<tt>int</tt>) muutetaan desimaaliluvuksi (<tt>double</tt>)!
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Mitä metodia kutsuttaessa tapahtuu -- kutsupino
+
+</h2>
+
+<p>
+  Kun metodia kutsutaan, kutsuvan metodin suoritus jää odottamaan kutsutun metodin suorittamista. Tätä voidaan visualisoida kutsupinon avulla. <strong>Kutsupino</strong> tarkoittaa metodien kutsumisen muodostamaa pinoa -- juuri suoritettevana oleva metodi on aina pinon päällimmäisenä, ja metodin suorituksen päättyessä palataan pinossa seuraavana olevaan metodiin. Tarkastellaan seuraavaa ohjelmaa:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    System.out.println("Hei maailma!");
+    tulostaLuku();
+    System.out.println("Hei hei maailma!");
+}
+
+public static void tulostaLuku() {
+    System.out.println("Luku");
+}
+</code></pre>
+
+<p>
+  Kun ohjelma käynnistetään, suoritus alkaa <code>main</code>-metodin ensimmäiseltä riviltä. Tällä rivillä olevalla komennolla tulostetaan teksti <code>"Heippa maailma!"</code>. Ohjelman kutsupino näyttää seuraavalta:
+</p>
+
+<pre class="sample-output">main
+</pre>
+
+<p>
+  Kun tulostuskomento on suoritettu, siirrytään seuraavaan komentoon, missä kutsutaan metodia<code>tulostaLuku</code>. Metodin <code>tulostaLuku</code> kutsuminen siirtää ohjelman suorituksen metodin <code>tulostaLuku</code> alkuun, jolloin <code>main</code>-metodi jää odottamaan metodin <code>tulostaLuku</code> suorituksen loppumista. Metodin <code>tulostaLuku</code> sisällä ollessa kutsupino näyttää seuraavalta.
+</p>
+
+<pre class="sample-output">tulostaLuku
+main
+</pre>
+
+<p>
+  Kun metodi <code>tulostaLuku</code> on suoritettu, palataan kutsupinossa metodia <code>tulostaLuku</code> yhtä alempana olevaan metodiin, eli metodiin <code>main</code>. Kutsupinosta poistetaan <code>tulostaLuku</code>, ja jatketaan <code>main</code>-metodin suoritusta <code>tulostaLuku</code>-metodikutsun jälkeiseltä riviltä. Kutsupino on nyt seuraavanlainen:
+</p> 
+
+<pre class="sample-output">main
+</pre>
+
+
+<h3 class="material-heading">
+    Kutsupino ja metodin parametrit
+
+</h3>
+
+
+<p>
+  Tarkastellaan kutsupinoa tilanteessa, missä metodille on määritelty parametreja.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    int alku = 1;
+    int loppu = 5;
+
+    tulostaTahtia(alku, loppu);
+}
+
+public static void tulostaTahtia(int alku, int loppu) {
+    while (alku &lt; loppu) {
+        System.out.print("*");
+        alku++;
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelman suoritus alkaa <code>main</code>-metodin ensimmäiseltä riviltä, jota seuraavilla riveillä luodaan muuttujat <code>alku</code> ja <code>loppu</code>, sekä asetetaan niihin arvot. Ohjelman tilanne ennen metodin <code>tulostaTahtia</code>-kutsumista:
+</p>
+
+<pre class="sample-output">main
+  alku = 1
+  loppu = 5
+</pre>
+
+<p>
+  Kun metodia <code>tulostaTahtia</code> kutsutaan, <code>main</code>-metodi jää odottamaan. Metodikutsun yhteydessä metodille <code>tulostaTahtia</code> luodaan uudet muuttujat <code>alku</code> ja <code>loppu</code>, joihin asetetaan parametreina annetut arvot. Nämä kopioidaan <code>main</code>-metodin muuttujista <code>alku</code> ja <code>loppu</code>. Metodin <code>tulostaTahtia</code> suorituksen ensimmäisellä rivillä ohjelman tilanne on seuraavanlainen.
+</p>
+
+<pre class="sample-output">tulostaTahtia
+  alku = 1
+  loppu = 5
+main
+  alku = 1
+  loppu = 5
+</pre>
+
+<p>
+  Kun toistolauseessa suoritetaan komento <code>alku++</code>, muuttuu tällä hetkellä suoritettavaan metodiin liittyvän <code>alku</code>-muuttujan arvo.
+</p>
+
+<pre class="sample-output">tulostaTahtia
+  alku = 2
+  loppu = 5
+main
+  alku = 1
+  loppu = 5
+</pre>
+
+<p>
+  Metodin <code>main</code> muuttujien arvot eivät siis muutu. Metodin <code>tulostaTahtia</code> suoritus jatkuisi tämän jälkeen jokusen hetken. Kun metodin <code>tulostaTahtia</code> suoritus loppuu, palataan takaisin <code>main</code>-metodin suoritukseen.
+</p>
+
+<pre class="sample-output">main
+  alku = 1
+  loppu = 5
+</pre>
+
+<p>
+  Tarkastellaan samaa ohjelman suorituksen askeleittaisella visualisoinnilla. Visualisointiin käyttämämme sovellus kasvattaa kutsupinoa alaspäin -- oikealla laidalla ylin on aina main-metodi, jonka alle tulee kutsuttavat metodit. 
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   \n   public static void main(String[] args) {\n      int alku = 1;\n      int loppu = 5;\n\n      tulostaTahtia(alku, loppu);\n   }\n\n   public static void tulostaTahtia(int alku, int loppu) {\n      while (alku < loppu) {\n         System.out.print(\"*\");\n         alku++;\n      }\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"alku":1},"ordered_varnames":["alku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"13","frame_id":13},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"14","frame_id":14}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"32","frame_id":32}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"34","frame_id":34}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"*","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":2,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"50","frame_id":50}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"51","frame_id":51},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"52","frame_id":52}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"53","frame_id":53},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"**","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"61","frame_id":61},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"62","frame_id":62}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":3,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"69","frame_id":69},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"70","frame_id":70}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"71","frame_id":71},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"72","frame_id":72}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"73","frame_id":73},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"74","frame_id":74}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"***","event":"step_line","line":12,"stack_to_render":[{"func_name":"tulostaTahtia:12","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"81","frame_id":81},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"82","frame_id":82}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":4,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"89","frame_id":89},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"90","frame_id":90}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":13,"stack_to_render":[{"func_name":"tulostaTahtia:13","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"91","frame_id":91},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"92","frame_id":92}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":11,"stack_to_render":[{"func_name":"tulostaTahtia:11","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"93","frame_id":93},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"94","frame_id":94}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":15,"stack_to_render":[{"func_name":"tulostaTahtia:15","encoded_locals":{"alku":5,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"101","frame_id":101},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"102","frame_id":102}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"return","line":15,"stack_to_render":[{"func_name":"tulostaTahtia:15","encoded_locals":{"alku":5,"loppu":5,"__return__":["VOID"]},"ordered_varnames":["alku","loppu","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"105","frame_id":105},{"func_name":"main:7","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"106","frame_id":106}],"globals":{},"ordered_globals":[],"func_name":"tulostaTahtia","heap":{}},{"stdout":"****","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"alku":1,"loppu":5},"ordered_varnames":["alku","loppu"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"****","event":"return","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"alku":1,"loppu":5,"__return__":["VOID"]},"ordered_varnames":["alku","loppu","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"109","frame_id":109}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<h3 class="material-heading">
+    Kutsupino ja arvon palauttaminen metodista
+
+</h3>
+
+<p>
+  Tarkastellaan vielä esimerkkiä, missä metodi palauttaa arvon. Ohjelman <code>main</code>-metodi kutsuu erillistä <code>kaynnista</code>-metodia, jossa luodaan kaksi muuttujaa, kutsutaan <code>summa</code>-metodia, ja tulostetaan <code>summa</code>-metodin palauttama arvo.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    kaynnista();
+}
+
+public static void kaynnista() {
+    int eka = 5;
+    int toka = 6;
+
+    int summa = summa(eka, toka);
+
+    System.out.println("Summa: " + summa);
+}
+
+public static int summa(int luku1, int luku2) {
+    return luku1 + luku2;
+}
+</code></pre>
+
+<p>
+  Metodin <code>kaynnista</code> suorituksen alussa kutsupino näyttää seuraavalta, sillä siihen päädyttiin <code>main</code>-metodista. Metodilla <code>main</code> ei tässä esimerkissä ole omia muuttujia:
+</p>
+
+<pre class="sample-output">kaynnista
+main
+</pre>
+
+<p>
+  Kun <code>kaynnista</code>-metodissa on luotu muuttujat <code>eka</code> ja <code>toka</code>, eli sen ensimmäiset kaksi riviä on suoritettu, on tilanne seuraava:
+</p>
+
+<pre class="sample-output">kaynnista
+  eka = 5
+  toka = 6
+main
+</pre>
+
+<p>
+  Komento <code>int summa = summa(eka, toka);</code> luo metodiin <code>kaynnista</code> muuttujan <code>summa</code>, ja kutsuu metodia <code>summa</code>. Metodi <code>kaynnista</code> jää odottamaan. Koska metodissa <code>summa</code> on määritelty parametrit <code>luku1</code> ja <code>luku2</code>, luodaan ne heti metodin suorituksen alussa, ja niihin kopioidaan parametrina annettujen muuttujien arvot.
+</p>
+
+<pre class="sample-output">summa
+  luku1 = 5
+  luku2 = 6
+kaynnista
+  eka = 5
+  toka = 6
+  summa // ei arvoa
+main
+</pre>
+
+<p>
+  Metodin <code>summa</code> suoritus laskee muuttujien <code>luku1</code> ja <code>luku2</code> arvot yhteen. Komento <code>return</code> palauttaa lukujen summan kutsupinossa yhtä alemmalle metodille, eli metodille <code>kaynnista</code>. Palautettu arvo asetetaan muuttujan <code>summa</code> arvoksi.
+</p>
+
+<pre class="sample-output">kaynnista
+  eka = 5
+  toka = 6
+  summa = 11
+main
+</pre>
+
+<p>
+  Tämän jälkeen suoritetaan tulostuskomento, jonka jälkeen palataan <code>main</code>-metodiin. Kun suoritus on <code>main</code>-metodin lopussa, ohjelman suoritus loppuu.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   public static void main(String[] args) {\n      kaynnista();\n   }\n\n   public static void kaynnista() {\n      int eka = 5;\n      int toka = 6;\n\n      int summa = summa(eka, toka);\n\n      System.out.println(\"Summa: \" + summa);\n   }\n\n   public static int summa(int luku1, int luku2) {\n      return luku1 + luku2;\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":7,"stack_to_render":[{"func_name":"kaynnista:7","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"3","frame_id":3},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"kaynnista:7","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"5","frame_id":5},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"6","frame_id":6}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"kaynnista:8","encoded_locals":{"eka":5},"ordered_varnames":["eka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"11","frame_id":11},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"call","line":16,"stack_to_render":[{"func_name":"summa:16","encoded_locals":{"luku1":5,"luku2":6},"ordered_varnames":["luku1","luku2"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25},{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"26","frame_id":26},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":16,"stack_to_render":[{"func_name":"summa:16","encoded_locals":{"luku1":5,"luku2":6},"ordered_varnames":["luku1","luku2"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28},{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"return","line":16,"stack_to_render":[{"func_name":"summa:16","encoded_locals":{"luku1":5,"luku2":6,"__return__":11},"ordered_varnames":["luku1","luku2","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43},{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"44","frame_id":44},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"45","frame_id":45}],"globals":{},"ordered_globals":[],"func_name":"summa","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kaynnista:10","encoded_locals":{"eka":5,"toka":6},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"46","frame_id":46},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"47","frame_id":47}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"kaynnista:12","encoded_locals":{"eka":5,"toka":6,"summa":11},"ordered_varnames":["eka","toka","summa"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"48","frame_id":48},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"Summa: 11\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kaynnista:13","encoded_locals":{"eka":5,"toka":6,"summa":11},"ordered_varnames":["eka","toka","summa"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"54","frame_id":54},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"55","frame_id":55}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"Summa: 11\n","event":"return","line":13,"stack_to_render":[{"func_name":"kaynnista:13","encoded_locals":{"eka":5,"toka":6,"summa":11,"__return__":["VOID"]},"ordered_varnames":["eka","toka","summa","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56},{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"57","frame_id":57}],"globals":{},"ordered_globals":[],"func_name":"kaynnista","heap":{}},{"stdout":"Summa: 11\n","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"58","frame_id":58}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Summa: 11\n","event":"return","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"__return__":["VOID"]},"ordered_varnames":["__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<h1 class="material-heading">
+    Merkkijonot
+
+</h1>
+
+<p>
+  Tutustutaan seuraavaksi uuteen muuttujatyyppiin eli merkkijonoihin (<code>String</code>). Merkkijonomuuttuja määritellään kertomalla sen tyyppi (String) sekä nimi. Tätä seuraa muuttujan arvo, joka on hipsujen sisällä olevaa tekstiä. Alla luodaan merkkijonomuuttuja <code>taikasana</code>, joka sisältää arvon <code>"abrakadabra"</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>String taikasana = "abrakadabra";
+</code></pre>
+
+<p>
+  Merkkijonomuuttujan antaminen tulostuskomennolle (tai oikeastaan mille tahansa metodille) parametrina onnistuu tutulla tavalla. Alla määritellään merkkijono, joka tulostetaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>String taikasana = "abrakadabra";
+System.out.println(taikasana);
+</code></pre>
+
+<pre class="sample-output">abrakadabra
+</pre>
+
+
+<h2 class="material-heading">
+    Merkkijonojen lukeminen ja tulostaminen
+
+</h2>
+
+<p>
+  Merkkijonon lukeminen onnistuu tutun Scanner-apuvälineen tarjoamalla nextLine-metodilla. Alla oleva ohjelma lukee käyttäjän nimen ja tulostaa sen seuraavalla rivillä (esimerkissä käyttäjän syöttämä teksti on merkitty punaisella):</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+  
+System.out.print("Mikä on nimesi? ");
+String nimi = lukija.nextLine(); // Luetaan käyttäjältä rivi tekstiä ja asetetaan se muuttujaan nimi
+
+System.out.println(nimi);
+</code></pre>
+
+<pre class="sample-output">Mikä on nimesi? <span class="red">Venla</span>
+Venla
+</pre>
+
+<p>
+  Merkkijonoja voi myös yhdistellä. Jos operaatiota <code>+</code> sovelletaan kahden merkkijonon välille, syntyy uusi merkkijono, jossa kaksi merkkijonoa on yhdistetty. Huomaa nokkela välilyönnin käyttö lauseen "muuttujien" osana!</p>
+
+<pre class="sh_java code-highlight"><code>String tervehdys = "Hei ";
+String nimi = "Lilja";
+String hyvastely = " ja näkemiin!";
+
+String lause = tervehdys + nimi + hyvastely;
+
+System.out.println(lause);
+</code></pre>
+
+<pre class="sample-output">Hei Lilja ja näkemiin!
+</pre>
+
+<p>
+  Jos toinen operaation <code>+</code> kohteista on merkkijono, muutetaan myös toinen operaation kohteista merkkijonoksi. Alla olevassa esimerkissä kokonaisluku <code>2</code> on muutettu merkkijonoksi "2", ja siihen on yhdistetty merkkijono.
+</p>
+
+<pre class="sh_java code-highlight"><code>String teksti = "tuossa on kokonaisluku";
+System.out.println(teksti + " --&gt; " + 2);
+System.out.println(2 + " &lt;-- " + teksti);
+</code></pre>
+
+<pre class="sample-output">tuossa on kokonaisluku --&gt; 2
+2 &lt;-- tuossa on kokonaisluku
+</pre>
+
+<p>
+  Aiemmin tutuksi tulleet laskusäännöt sekä sulkeiden noudattaminen pätee myös merkkijonoja käsiteltäessä.
+</p>
+
+<pre class="sh_java code-highlight"><code>String teksti = " oho!";
+System.out.println("Neljä: " + (2 + 2) + teksti);
+System.out.println("Mutta! kaksikymmentäkaksi: " + 2 + 2 + teksti);
+</code></pre>
+
+<pre class="sample-output">Neljä: 4 oho!
+Mutta! kaksikymmentäkaksi: 22 oho!
+</pre>
+
+
+<p>
+  Seuraavassa on vielä käyttäjää tervehtivä ohjelma pääohjelmarungon kanssa.  Ohjelman nimi on <em>Tervehdys</em>.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+  
+public class Tervehdys {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.print("Kenelle sanotaan hei: ");
+        String nimi = lukija.nextLine();
+
+        System.out.println("Hei " + nimi);
+    }
+}
+</code></pre>
+
+<p>
+  Kun yllä oleva ohjelma ajetaan, pääset kirjoittamaan syötteen.  NetBeansin tulostusvälilehti näyttää ajetun ohjelman jälkeen seuraavalta (käyttäjä syöttää nimen "Venla").
+</p>
+
+<div><img class="naytto" src="../img/material/netbeans-output-venla-e163b5a6.png"/></div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tulostus kolmesti</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma joka lukee käyttäjältä merkkijonon ja tulostaa merkkijonon kolmesti peräkkäin.
+  </p>
+
+<pre class="sample-output">Mikä tulostetaan? <font color="red">kukka</font>
+
+kukkakukkakukka
+</pre>
+    
+  <p>
+    Esimerkissä punainen väri tarkoittaa käyttäjän kirjoittamaa tekstiä. Tätä käytäntöä noudatetaan jatkossa esimerkeissä.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Merkkijonojen ja lukujen lukeminen
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Käyttäjän kanssa keskustelevan ohjelman runko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class OhjelmanNimi {
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // koodi tähän
+    }
+}
+</code></pre>
+
+  <p>
+    Merkkijonon lukeminen:
+  </p>
+
+<pre class="sh_java code-highlight"><code>String merkkijono = lukija.nextLine();
+</code></pre>
+
+  <p>
+    Kokonaisluvun lukeminen:
+  </p>
+
+<pre class="sh_java code-highlight"><code>int kokonaisluku = Integer.parseInt(lukija.nextLine());
+</code></pre>
+
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Merkkijonojen vertailu ja equals
+
+</h2>
+
+<p>
+  Merkkijonoja ei voi vertailla yhtäsuuri kuin (<em>==</em>) operaatiolla.  Merkkijonojen vertailuun käytetään erillistä <code>equals</code>-komentoa, joka liittyy aina verrattavaan merkkijonoon.
+</p>
+
+<pre class="sh_java code-highlight"><code>String teksti = "kurssi";
+
+if (teksti.equals("marsipaani")) {
+    System.out.println("Teksti-muuttujassa on teksti marsipaani.");
+} else {
+    System.out.println("Teksti-muuttujassa ei ole tekstiä marsipaani.");
+}
+</code></pre>
+
+<p>
+  Komento <code>equals</code> liitetään aina siihen verrattavaan tekstimuuttujaan, "tekstimuuttuja piste equals teksti". Tekstimuuttujaa voidaan myös verrata toiseen tekstimuuttujaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>String teksti = "kurssi";
+String toinenTeksti = "pursi";
+
+if (teksti.equals(toinenTeksti)) {
+    System.out.println("Samat tekstit!");
+} else {
+    System.out.println("Eri tekstit!");
+}
+</code></pre>
+
+<p>
+  Merkkijonoja vertailtaessa on syytä varmistaa että verrattavalla tekstimuuttujalla on arvo. Jos muuttujalla ei ole arvoa, ohjelma tuottaa virheen <em>NullPointerException</em>, joka tarkoittaa ettei muuttujan arvoa ole asetettu tai se on tyhjä (<em>null</em>).
+</p>
+
+
+<p>
+  Seuraavassa käännetään <code>!</code>:n eli negaatio-operaation avulla ehdon arvo päinvastaiseksi:
+</p>
+
+<pre class="sh_java code-highlight"><code>System.out.println("Eihän merkkijono ole 'maito'");
+String merkkijono = "piimä";
+
+if (!(merkkijono.equals("maito"))) {  // tosi jos ehto merkkijono.equals("maito") on epätosi
+    System.out.println("ei ollut!");
+} else {
+    System.out.println("oli");
+}
+</code></pre>
+
+<pre class="sample-output">ei ollut!
+</pre>
+
+
+<p>
+  Negaatio-operaatio, eli <code>!ehto</code>, kääntää siis totuusarvon ympäri.
+</p>
+  
+<pre class="sh_java code-highlight"><code>int eka = 1;
+int toka = 3;
+
+boolean onkoSuurempi = eka &gt; toka;
+
+if (!onkoSuurempi) {
+    System.out.println("1 ei ole suurempi kuin 3");
+}
+</code></pre>
+
+<pre class="sample-output">1 ei ole suurempi kuin 3
+</pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Onko totta</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+          
+  <p>
+    Tee ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Jos käyttäjä kirjoittaa merkkijonon "totta", tulostetaan merkkijono "Oikein meni!", muulloin tulostetaan merkkijono "Koitappa uudelleen!".
+  </p>
+
+<pre class="sample-output">Kirjoita merkkijono: <font color="red">totta</font>
+Oikein meni!
+</pre>
+
+<pre class="sample-output">Kirjoita merkkijono: <font color="red">tottapa</font>
+Koitappa uudelleen!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Käyttäjätunnukset</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka tunnistaa seuraavat käyttäjät:
+  </p>
+
+  <table class="table">
+    <tr>
+      <th>tunnus</th>
+      <th>salasana</th>
+    </tr>
+    <tr>
+      <td>aleksi</td>
+      <td>tappara</td>
+    </tr>
+    <tr>
+      <td>elina</td>
+      <td>kissa</td>
+    </tr>
+  </table>
+  
+  <p>
+    Ohjelma näyttää käyttäjälle henkilökohtaisen viestin tai ilmoittaa, jos tunnus tai salasana on väärin.
+  </p>
+
+<pre class="sample-output">Anna tunnus: <font color="red">aleksi</font>
+Anna salasana: <font color="red">tappara</font>
+Olet kirjautunut järjestelmään
+</pre>
+
+<pre class="sample-output">Anna tunnus: <font color="red">elina</font>
+Anna salasana: <font color="red">kissa</font>
+Olet kirjautunut järjestelmään
+</pre>
+
+<pre class="sample-output">Anna tunnus: <font color="red">aleksi</font>
+Anna salasana: <font color="red">jokerit</font>
+Virheellinen tunnus tai salasana!
+</pre>
+
+  <p>
+    <strong>HUOM:</strong> muista, että merkkijonoja ei voi vertailla ==-operaatiolla!
+  </p>
+
+  <p>
+    <strong>HUOM:</strong> Todellisuudessa kirjautumistoiminnallisuutta ei tule toteuttaa, eikä yleensä toteutetakkaan näin. Kirjautumistoiminnallisuuden toteuttamiseen tutustutaan mm. tietokantojen perusteet -kurssilla.
+  </p>
+      
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Merkkijonoilta voi kysyä niiden pituutta kirjoittamalla merkkijonon perään <code>.length()</code> eli kutsumalla merkkijonolle sen pituuden kertovaa metodia.
+</p>
+
+<pre class="sh_java code-highlight"><code>String banaani = "banaani";
+String kurkku = "kurkku";
+String yhdessa = banaani + kurkku;
+
+System.out.println("Banaanin pituus on " + banaani.length());
+System.out.println("Kurkku pituus on " + kurkku.length());
+System.out.println("Sanan " + yhdessa + " pituus on " + yhdessa.length());
+</code></pre>
+
+<p>
+  Edellä kutsutaan metodia <code>length()</code> kolmelle eri merkkijonolle. Kutsu <code>banaani.length()</code> kutsuu nimenomaan merkkijonon <code>banaani</code> pituuden kertovaa metodia, kun taas <code>kurkku.length()</code> on merkkijonon <code>kurkku</code> pituuden kertovan metodin kutsu. Pisteen vasemman puoleinen osa kertoo <em>kenen</em> metodia kutsutaan.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Nimen pituus</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjän nimen ja ilmoittaa, kuinka monta kirjainta siinä on. Toteuta merkkijonon pituuden selvittäminen erilliseen metodiin <code>public static int laskeKirjaimet(String merkkijono)</code>.
+  </p>
+
+<pre class="sample-output">Anna nimi: <font color="red">Pekka</font>
+Kirjainmäärä: 5
+</pre>
+
+<pre class="sample-output">Anna nimi: <font color="red">Katariina</font>
+Kirjainmäärä: 9
+</pre>
+
+  <p>
+    <strong>Huom!</strong> Rakenna ohjelmasi niin että laitat pituuden laskemisen omaan metodiinsa: <code>public static int laskeKirjaimet(String merkkijono)</code>. Testit testaavat sekä metodia <code>laskeKirjaimet</code> että koko ohjelman toimintaa.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Toistolauseen käyttö merkkijonojen kanssa käy samalla tavalla kuin muiden muuttujien kanssa. Alla olevassa esimerkissä luetaan käyttäjältä merkkijonoja, kunnes käyttäjä syöttää merkkijonon "loppu". Tämän jälkeen tulostetaan pisin merkkijono sekä pisimmän merkkijonon pituus.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+String pisin = "";
+
+while (true) {
+    System.out.println("Syötä sana, tyhjä lopettaa.");
+    String syote = lukija.nextLine();
+
+    if (syote.equals("")) {
+        break;
+    }
+
+    if (pisin.length() &lt; syote.length()) {
+        pisin = syote;
+    }
+}
+
+if (pisin.length() &gt; 0) {
+    System.out.println("Pisin merkkijono: " + pisin + " (pituus: " + pisin.length() + ")");
+} else {
+    System.out.println("Ei järkeviä syötteitä...");
+}
+</code></pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Salasana (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä luodaan ohjelma joka kyselee käyttäjältä salasanaa. Jos salasana menee oikein, nähdään salainen viesti.
+  </p>
+
+<pre class="sample-output">Anna salasana: <font color="red">nauris</font>
+Väärin!
+Anna salasana: <font color="red">lanttu</font>
+Väärin!
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+
+Salaisuus on: znvavbfgv grugl!
+</pre>
+
+  <p>
+    Toteutetaan ohjelma kolmessa askeleessa.
+  </p>
+
+  <h2>Salasanan kysyminen</h2>
+  
+  <p>Ohjelmarunkoon on määritelty muuttuja <code>String salasana</code>, jolle on asetettu arvoksi <code>porkkana</code> -- älä muuta tätä salasanaa. Toteuta lisätoiminnallisuus, jossa ohjelma kysyy käyttäjältä salasanaa ja vertailee sitä muuttujassa <code>salasana</code> olevaan arvoon. Muista mitä erityistä merkkijonojen vertailussa on!
+  </p>
+
+<pre class="sample-output">Anna salasana: <font color="red">nauris</font>
+Väärin!
+</pre>
+
+<pre class="sample-output">Anna salasana: <font color="red">porkkana</font>
+Oikein!
+</pre>
+
+<pre class="sample-output">Anna salasana: <font color="red">bataatti</font>
+Väärin!
+</pre>
+
+  <h2>Salasanan kysyminen kunnes käyttäjä vastaa oikein</h2>
+
+  <p>
+    Muokkaa ohjelmaa siten, että se kysyy salasanaa kunnes käyttäjä syöttää oikean salasanan. Toteuta salasanan jatkuva kysyminen <code>while (true) { ... }</code> -toistolausekkeen avulla. Toistolausekkeesta pääsee pois, jos ja vain jos käyttäjän syöttämä salasana on sama kuin muuttujassa <code>salasana</code> oleva arvo.
+  </p>
+
+<pre class="sample-output">Anna salasana: <font color="red">nauris</font>
+Väärin!
+Anna salasana: <font color="red">lanttu</font>
+Väärin!
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+</pre>
+
+  <h2>Salainen viesti</h2>
+
+  <p>
+    Lisää ohjelmaan oma salainen viestisi joka näytetään kun käyttäjä kirjoittaa salasanan oikein. Se voi olla mitä tahansa!
+  </p>
+
+<pre class="sample-output">Anna salasana: <font color="red">nauris</font>
+Väärin!
+Anna salasana: <font color="red">lanttu</font>
+Väärin!
+Anna salasana: <font color="red">porkkana</font>
+Oikein!
+
+Salaisuus on: znvavbfgv grugl!
+</pre>
+
+  <p>
+    Ylläoleva salaisuus on salattu käyttäen <a href="http://fi.wikipedia.org/wiki/Rot13" target="_blank">Rot13</a>-algoritmia.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Muita merkkijonojen metodeja
+
+</h2>
+
+<p>
+  Merkkijonosta halutaan usein lukea jokin tietty osa. Tämä onnistuu mekkkijonojen eli String-luokan metodilla <code>substring</code>. Metodia <code>substring</code> voidaan käyttää kahdella tavalla: yksiparametrisenä palauttamaan merkkijonon loppuosa tai kaksiparametrisena palauttamaan parametrien määrittelemä osajono merkkijonosta:
+</p>
+
+<pre class="sh_java code-highlight"><code>String kirja = "Kalavale";
+
+System.out.println(kirja.substring(4));
+System.out.println(kirja.substring(2, 6));
+</code></pre>
+
+<pre class="sample-output">vale
+lava
+</pre>
+
+<p>
+  Koska <code>substring</code>-metodin <em>paluuarvo</em> on <code>String</code>-tyyppinen, voidaan metodin paluuarvo ottaa talteen String-tyyppiseen muuttujaan loppuosa.
+</p>
+
+<pre class="sh_java code-highlight"><code>String kirja = "8 veljestä";
+
+String loppuosa = kirja.substring(2);
+System.out.println("7 " + loppuosa); // tulostaa: 7 veljestä
+</code></pre>
+
+<pre class="sample-output">7 veljestä
+</pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Alkuosa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+        
+  <p>
+    Tee ohjelma, joka tulostaa sanan alkuosan. Ohjelma kysyy käyttäjältä sanan ja alkuosan pituuden. Käytä ohjelmassa metodia <code>substring</code>.
+  </p>
+
+<pre class="sample-output">Anna sana: <font color="red">esimerkki</font>
+Alkuosan pituus: <font color="red">4</font>
+Tulos: esim
+</pre>
+
+<pre class="sample-output">Anna sana: <font color="red">esimerkki</font>
+Alkuosan pituus: <font color="red">7</font>
+Tulos: esimerk
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Loppuosa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka tulostaa sanan loppuosan. Ohjelma kysyy käyttäjältä sanan ja loppuosan pituuden. Käytä ohjelmassa merkkijonon metodia <code>substring</code>.
+  </p>
+
+<pre class="sample-output">Anna sana: <font color="red">esimerkki</font>
+Loppuosan pituus: <font color="red">4</font>
+Tulos: rkki
+</pre>
+    
+<pre class="sample-output">Anna sana: <font color="red">esimerkki</font>
+Loppuosan pituus: <font color="red">7</font>
+Tulos: imerkki
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  String-luokan metodit tarjoavat myös mahdollisuuden etsiä tekstistä tiettyä sanaa. Esimerkiksi sana "erkki" sisältyy tekstiin "merkki". Metodi <code>indexOf()</code> etsii sille parametrina annettua sanaa merkkijonosta. Jos sana löytyy, metodi <code>indexOf()</code> palauttaa sanan ensimmäisen kirjaimen indeksin, eli paikan (muista että paikkanumerointi alkaa nollasta!). Jos taas sanaa ei merkkijonosta löydy, metodi palauttaa arvon -1.
+</p>
+
+<pre class="sh_java code-highlight"><code>String sana = "merkkijono";
+
+int indeksi = sana.indexOf("erkki"); //indeksin arvoksi tulee 1
+System.out.println(sana.substring(indeksi)); //tulostetaan "erkkijono"
+
+indeksi = sana.indexOf("jono"); //indeksin arvoksi tulee 6
+System.out.println(sana.substring(indeksi)); //tulostetaan "jono"
+
+indeksi = sana.indexOf("kirja"); //sana "kirja" ei sisälly sanaan "merkkijono"
+System.out.println(indeksi); // tulostetaan -1
+System.out.println(sana.substring(indeksi)); // virhe!
+</code></pre>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n   public static void main(String[] args) {\n      String sana = \"merkkijono\";\n\n      int indeksi = sana.indexOf(\"erkki\");\n      System.out.println(sana.substring(indeksi));\n\n      indeksi = sana.indexOf(\"jono\");\n      System.out.println(sana.substring(indeksi));\n\n      indeksi = sana.indexOf(\"kirja\");\n      System.out.println(indeksi);\n      System.out.println(sana.substring(indeksi));\n   }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"sana":"merkkijono"},"ordered_varnames":["sana"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\n","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"sana":"merkkijono","indeksi":1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\n","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"sana":"merkkijono","indeksi":6},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"19","frame_id":19}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"sana":"merkkijono","indeksi":-1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"22","frame_id":22}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n-1\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"sana":"merkkijono","indeksi":-1},"ordered_varnames":["sana","indeksi"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"25","frame_id":25}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"erkkijono\njono\n-1\n","event":"exception","exception_msg":"java.lang.StringIndexOutOfBoundsException: String index out of range: -1","stack_to_render":[],"globals":{},"ordered_globals":[],"func_name":"runMain","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Sana sanassa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kaksi sanaa. Tämän jälkeen ohjelma kertoo onko toinen sana ensimmäisen sanan osana. Käytä ohjelmassa merkkijonon metodia <code>indexOf</code>.
+  </p>
+
+<pre class="sample-output">Anna 1. sana: <font color="red">suppilovahvero</font>
+Anna 2. sana: <font color="red">ilo</font>
+Sana 'ilo' on sanan 'suppilovahvero' osana.
+</pre>
+
+<pre class="sample-output">Anna 1. sana: <font color="red">suppilovahvero</font>
+Anna 2. sana: <font color="red">suru</font>
+Sana 'suru' ei ole sanan 'suppilovahvero' osana.
+</pre>
+
+  <p>
+    <strong>Huom:</strong> toteuta ohjelmasi tulostus täsmälleen samassa muodossa kuin esimerkin tulostus!
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Metodille <code>indexOf</code> voi antaa haettavan merkkijonon lisäksi parametrina myös indeksin, mistä lähtien merkkijonoa haetaan. Esimerkiksi
+
+</p>
+
+<pre class="sh_java code-highlight"><code>String sana = "merkkijono";
+
+int indeksi = sana.indexOf("erkki"); // indeksin arvoksi tulee 1
+System.out.println(sana.substring(indeksi)); //tulostetaan "erkkijono"
+
+indeksi = sana.indexOf("erkki", 2); // indeksin arvoksi tulee -1 sillä erkkiä ei löydy lopusta
+System.out.println(sana.substring(indeksi)); // tapahtuu virhe!
+</code></pre>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a69d95eed25000480e6ea"></div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a6ad25eed25000480e6eb"></div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a6b445eed25000480e6ec"></div>
+
+
+
+
+<h2 class="material-heading">
+    Merkkijonon... metodit?
+
+</h2>
+
+<p>
+  Merkkijonot poikkeavat luonteeltaan hieman esimerkiksi kokonaisluvuista. Kokonaisluvut ovat "pelkkiä arvoja" -- niiden avulla voi tehdä laskutoimituksia ja niiden arvon voi tulostaa:
+</p>
+
+<pre class="sh_java code-highlight"><code>int x = 1;
+int y = 3;
+
+y = 3 * x + 2;
+
+System.out.println("y:n arvo nyt: " + y);
+</code></pre>
+
+<pre class="sample-output">y:n arvo nyt: 5
+</pre>
+
+<p>
+  Merkkijonot taas ovat hieman "älykkäämpiä" ja tietävät esimerkiksi pituutensa:
+</p>
+
+<pre class="sh_java code-highlight"><code>String sana1 = "Ohjelmointi";
+String sana2 = "Java";
+
+System.out.println("merkkijonon " + sana1 + " pituus: " + sana1.length());
+System.out.println("merkkijonon " + sana2 + " pituus: " + sana2.length());
+</code></pre>
+
+<p>
+  Tulostuu:
+</p>
+
+<pre class="sample-output">merkkijonon Ohjelmointi pituus on 11
+merkkijonon Java pituus on 4
+</pre>
+
+<p>
+  Pituus saadaan selville kutsumalla merkkijonon metodia <code>length()</code>. Merkkijonoilla on joukko muitakin metodeja. Kokonaisluvuilla eli <code>int</code>:eillä ei ole metodeja ollenkaan, ne eivät itsessään "osaa" mitään. Mistä tässä oikein on kyse?
+</p>
+
+
+<h2 class="material-heading">
+    Olioihin liittyy sekä metodeja että arvoja
+
+</h2>
+
+<p>
+  Merkkijonot ovat olioita, joihin liittyy sekä merkkijonon teksti että metodeja, joilla tekstiä voi käsitellä. Termi <strong>olio</strong> tarkoittaa tietynlaista muuttujaa. Jatkossa tulemme näkemään hyvin paljon muitakin olioita kuin merkkijonoja.
+</p>
+
+<p>
+  Olion metodia kutsutaan lisäämällä muuttujan nimen perään piste ja metodin nimi. Näiden lisäksi tulee sulut sekä mahdolliset parametrit:
+</p>
+
+<pre class="sh_java code-highlight"><code>String sana1 = "Ohjelmointi";
+String sana2 = "Java";
+
+sana1.length();    // kutsutaan merkkijono-olion sana1 metodia length()
+sana2.length();    // kutsutaan merkkijono-olion sana2 metodia length()
+</code></pre>
+
+<p>
+  Metodikutsu kohdistuu nimenomaan sihen olioon, mille metodia kutsutaan. Yllä kutsumme ensin <code>sana1</code>-nimisen merkkijonon <code>length()</code>-metodia, sitten merkkijonon <code>sana2</code> metodia <code>length()</code>.</p>
+
+<p>
+  Vanha tuttumme <code>lukija</code> on myös olio:
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+</code></pre>
+
+<p>
+  Lukijat ja merkkijonot ovat molemmat oliota, mutta ne ovat kuitenkin varsin erilaisia. Lukijoilla on mm. metodi <code>nextLine()</code> jota merkkijonoilla ei ole. Javassa oliot "synnytetään" eli luodaan melkein aina komennolla <code>new</code>, merkkijonot muodostavat tässä suhteessa poikkeuksen! -- Merkkijonoja voi luoda kahdella tavalla:
+</p>
+
+<pre class="sh_java code-highlight"><code>String banaani = new String("Banaani");
+String porkkana = "porkkana";
+</code></pre>
+
+<p>
+  Kumpikin ylläolevista riveistä luo uuden merkkijono-olion. Merkkijonojen luonnissa <code>new</code>-komentoa käytetään kuitenkin hyvin harvoin, sillä Java-ohjelmointikielen toteuttajat ovat tehneet merkkijonojen luomiseen lyhyemmän (ei new-komentoa tarvitsevan) tavan.
+</p>
+
+<p>
+  Olion "tyypistä" puhuttaessa puhutaan usein <em>luokista</em>. Merkkijonojen luokka on <code>String</code>, lukijoiden luokka taas on <code>Scanner</code>. Opimme jatkossa luokista ja olioista paljon lisää.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Montako kertaa merkkijonossa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee mukana ohjelma, joka kysyy käyttäjältä kahta merkkijonoa. Tämän jälkeen ohjelma tulostaa indeksit, joista toinen merkkijono löytyy ensimmäisessä merkkijonossa. Ohjelman esimerkkitulostus on seuraava:
+  </p>
+  
+<pre class="sample-output">Mistä haetaan: <font color="red">ski-bi dibby dib yo da dub dub</font>
+Mitä haetaan: <font color="red">dib</font>
+Merkkijono dib löytyy kohdasta 7
+Merkkijono dib löytyy kohdasta 13
+</pre>
+
+  <p>
+    Muokaa ohjelmaa siten, että ohjelma ei tulosta esiintymiskohtia, mutta tulostaa esiintymiskertojen yhteislukumäärän. Ohjelman tulee muokkauksen jälkeen toimia seuraavasti:
+  </p>
+
+<pre class="sample-output">Mistä haetaan: <font color="red">ski-bi dibby dib yo da dub dub</font>
+Mitä haetaan: <font color="red">dib</font>
+Merkkijonon dib esiintymiskertoja: 2 
+</pre>
+
+  <p>
+    Voit olettaa, että haettava merkkijono ei itsessään sisällä toistuvaa hahmoa. Haettava ei siis voi olla esim. "voivoi" (mitä harmia tästä voisi tulla jos merkkijono olisi esimerkiksi "voivoivoivoi"?).
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Crowdsorcerer: Arvioi tehtäviä
+
+</h1>
+
+<p>
+  Otetaan hetkeksi askel taaksepäin ja muistellaan viime osaa. Palataan tämän jälkeen takaisin olioiden pariin.
+</p>
+
+<p>
+  Ohjelmointikurssin toisessa osassa loimme ensimmäisiä omia tehtäviä Crowdsorcererin avulla. Nyt on erinomainen hetki vertaisarviointiin -- on aika arvioida Crowdsorcereriin lähetettyjä tehtäviä! Anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Itse tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Vertaisarviointi
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Alla on kolme Crowdsorcereriin tehtyä tehtävää: kaksi jonkun kurssitoverisi lähettämää ja yksi itsearviointia varten. Niiden yhteydessä on muistin virkistykseksi ohjeistus, jonka pohjalta kyseiset tehtävänannot on tehty.
+  </p>
+
+  <p>
+    Tarkastele jokaisen tehtävän eri osia: tehtävänantoa, tehtäväpohjaa ja malliratkaisua sekä testaukseen käytettäviä syötteitä ja tulosteita. Arvioi niiden selkeyttä, vaikeutta ja sitä, kuinka hyvin ne vastaavat ohjeistukseensa.
+  </p>
+
+  <p>
+    Voit vaihtaa näkymää tehtäväpohjan ja mallivastauksen välillä painamalla lähdekoodin yläpalkin painikkeita. Palautteenannon avuksi on annettu väittämiä. Voit valita kuinka samaa mieltä niiden kanssa olet painamalla hymiöitä. Annathan myös sanallista palautetta sille varattuun kenttään! Lisää vielä tehtävää mielestäsi kuvaavia tageja ja paina Lähetä.
+  </p>
+
+  <p>
+    Anna arvio kummallekin vertaispalautetehtävälle ja lopuksi vielä omallesi.
+  </p>
+
+  <p>
+    Muista olla reilu ja ystävällinen. Hyvä palaute on rehellistä, mutta kannustavaa!
+  </p>
+
+  <p>
+    Voit halutessasi ladata arvioitavan tehtävän tehtäväpohjan ja malliratkaisun koneellesi, ja testata niiden käyttöä. Molemmat tulevat ZIP-paketeissa, jolloin sinun täytyy purkaa ne, ennen kuin voit avata ne NetBeansissä.
+  </p>
+
+
+  </div>
+</div>
+
+<div class="general-callout">
+  <div class="general-callout__header">
+    <i class="fa fa-magic general-callout__icon"></i> Vertaisarvioitavien tehtävien ohjeistus: Ehtolause
+  </div>
+
+  <div class="general-callout__body">
+      Tee tehtävä, jonka tarkoitus on laittaa opiskelija koodaamaan ohjelma, joka lukee käyttäjältä kokonaislukusyötteen, tarkastelee sitä ehtolauseen avulla ja tulostaa merkkijonon. Anna testejä vasten syöte-esimerkki ja ohjelman tuloste tuolla syötteellä.
+
+  </div>
+</div>
+
+
+<div class='crowdsorcerer-widget' data-assignment='5' peer-review data-exercises='3'></div>
+
+
+
+<h1 class="material-heading">
+    Useita arvoja sisältävä lista
+
+</h1>
+
+<p>
+  Tutustuimme hetki sitten merkkijonojen toimintaan. Merkkijonot ovat olioita. Tämä tarkoittaa sitä, että jokaisella merkkijonolla on oma arvo (eli tässä tapauskessa teksti) sekä metodeja, joilla arvoa voi käsitellä.
+</p>
+
+<p>
+  <em>
+    Tutustutaan seuraavaksi erääseen toiseen hyvin paljon käytettyyn olioon.
+  </em>
+</p>
+
+<p>
+  Ohjelmoidessa tulee vastaan tilanteita, joissa haluamme käsitellä useita arvoja. Epäkäytännöllinen mutta tähän mennessä käytännössä ainoa tapa on ollut määritellä jokaiselle arvolle oma muuttuja.
+</p>
+
+<pre class="sh_java code-highlight"><code>String sana1;
+String sana2;
+String sana3;
+// ...
+String sana10;
+</code></pre>
+
+
+<p>
+  Tämä ratkaisu on oikeastaan kelvoton -- ajattele ylläoleva esimerkki vaikkapa tuhannella sanalla.
+</p>
+
+<p>
+  Ohjelmointikielet tarjoavat apuvälineitä, joiden avulla on helppo säilyttää useita arvoja. Tutustumme seuraavaksi Java-ohjelmointikielen ehkäpä eniten käytettyyn apuvälineeseen <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html" target="_blank" norel>ArrayListiin</a> (linkki vie Javan omaan dokumentaatioon), joka on useamman arvon säilömiseen tarkoitettu lista.
+</p>
+
+
+<h2 class="material-heading">
+    ArrayList
+
+</h2>
+
+<p>
+  ArrayList on Javan valmiiksi tarjoama työväline, joka piilottaa listan arvojen käsittelyyn tarvittavan konkreettisen ohjelmakoodin. ArrayList-muuttujan tyyppi on <code>ArrayList</code>, jonka lisäksi sille määritellään listalle lisättävien arvojen tyyppi. Esimerkiksi merkkijonoja sisältävän ArrayListin tyyppi on <code>ArrayList&lt;String&gt;</code> ja kokonaislukuja sisältävän ArrayListin tyyppi on <code>ArrayList&lt;Integer&gt;</code>. Listan luominen tapahtuu komennolla <code>new ArrayList&lt;&gt;();</code>.
+</p>
+
+<p>
+  Yhteen listaan lisätään aina samantyyppisiä arvoja.
+</p>
+
+<p>
+  Seuraavassa esimerkissä esitellään merkkijonoja tallentava ArrayList, johon lisätään muutama merkkijono. Tämän jälkeen tulostetaan listan nollannessa kohdassa oleva arvo eli ensimmäinen merkkijono (ohjelmoijat aloittavat laskemisen aina nollasta, lue tarkemmin <a href="https://www.quora.com/Why-do-array-indexes-start-with-0-zero-in-many-programming-languages" target="_blank" rel="noopener">täältä</a>).
+</p>
+
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class SanalistaEsimerkki {
+
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; sanalista = new ArrayList&lt;&gt;();
+
+        sanalista.add("Ensimmäinen");
+        sanalista.add("Toinen");
+
+        System.out.println(sanalista.get(0));
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Ensimmäinen
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tietyn arvon tulostaminen</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Ohjelmaan on toteutettu valmiina pohja, joka lukee käyttäjältä syötteitä listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää tyhjän merkkijonon.
+  </p>
+
+  <p>
+    Ohjelma tulostaa tämän jälkeen listan ensimmäisen arvon. Muokkaa ohjelmaa siten, että ensimmäisen arvon sijaan tulostetaan kolmas arvo. Huomaa, että ohjelmoijat aloittavat laskemisen nollasta! Ohjelma saa rikkoutua rikkoutua jos listalla ei ole vähintään kolmea arvoa. Tarkastele minkälainen virheilmoitus ohjelmasta tällöin tulee.
+  </p>
+
+<pre class="sample-output"><font color="red">Terho</font>
+<font color="red">Elina</font>
+<font color="red">Aleksi</font>
+<font color="red">Mari</font>
+
+Aleksi
+</pre>
+
+<pre class="sample-output"><font color="red">Elina</font>
+<font color="red">Aleksi</font>
+<font color="red">Mari</font>
+
+Mari
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Jos ArrayListiltä haetaan arvoa olemattomasta sijainnista, ohjelma tulostaa viestin IndexOutOfBoundsException.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Esimerkki {
+
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; sanalista = new ArrayList&lt;&gt;();
+
+        sanalista.add("Ensimmäinen");
+        sanalista.add("Toinen");
+
+        System.out.println(sanalista.get(2));
+    }
+}
+</code></pre>
+
+<p>
+  Virheviesti antaa myös pientä vinkkiä ArrayList-olion kapseloimasta toteutuksesta. Se siis kertoo metodit, joita kutsuttaessa virhe tapahtui.
+</p>
+
+<pre class="sample-output"><font color="red">Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+  at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+  at java.util.ArrayList.get(ArrayList.java:429)
+  at Esimerkki.main(Esimerkki.java:(rivi))
+  Java Result: 1</font>
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">IndexOutOfBoundsException</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Lista on erittäin hyödyllinen kun halutaan tallentaa muuttujien arvoja myöhempää käsittelyä varten. Sillä on myös helpohko tehdä virheitä.
+  </p>
+
+  <p>
+    Tehtäväpohjassa on listaa käyttävä ohjelma. Muokkaa ohjelmaa siten, että sen suorittaminen tuottaa aina virheen <code>IndexOutOfBoundsException</code>. Ohjelman tulee olla sellainen, että käyttäjän ei tarvitse antaa konelle syötettä (esim. näppäimistöltä).
+  </p>
+
+  <p>
+    Ohjelmassa näkyy myös toisenlainen tapa listan läpikäyntiin -- palaamme siihen myöhemmin kurssilla.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Javan tarjoamien työvälineiden tuominen ohjelman käyttöön
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Jokaisella Javan tarjoamalla työvälineellä on nimi ja sijainti. Valmiin työvälineen -- tai luokan -- tuominen ohjelman käyttöön tapahtuu <code>import</code>-käskyllä. Käskylle kerrotaan luokan sijainti ja luokan nimi. Esimerkiksi ArrayListin käyttöönotto vaatii komennon <code>import java.util.ArrayList;</code> ohjelman ylälaitaan.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class ListaOhjelma {
+
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; sanalista = new ArrayList&lt;&gt;();
+
+        sanalista.add("Ensimmäinen");
+        sanalista.add("Toinen");
+    }
+}
+</code></pre>
+
+  <p>
+    Sama pätee myös muillekin Javan luokille. Olemmekin jo aiemmin käyttäneet lukemiseen tarkoitettua Scanner-luokkaa, jonka on saanut käyttöön komennolla <code>import java.util.Scanner;</code>
+  </p>
+
+  <p>
+    Useamman apuvälineen käyttöönotto on helppoa. Käyttöön tuotavat apuvälineet listataan allekkain ohjelman ylälaitaan.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListaOhjelma {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+        ArrayList&lt;String&gt; sanalista = new ArrayList&lt;&gt;();
+
+        sanalista.add("Ensimmäinen");
+        sanalista.add(lukija.nextLine());
+    }
+}
+</code></pre>
+
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Listaan liittyviä metodeja
+
+</h2>
+
+<p>
+  ArrayListillä on useita hyödyllisiä metodeja. Metodin toiminnallisuus suoritetaan aina sille listaoliolle, mihin liittyen metodia kutsutaan -- yhteys määritellään pisteellä. Alla olevassa esimerkissä käsitellään vain yhtä listaoliota, eli listaa opettajat.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
+
+opettajat.add("Veera");
+opettajat.add("Jyri");
+opettajat.add("Verna");
+opettajat.add("Mikko");
+opettajat.add("Pihla");
+opettajat.add("Sami");
+
+System.out.println("opettajien lukumäärä " + opettajat.size());
+
+System.out.println("listalla ensimmäisenä " + opettajat.get(0));
+System.out.println("listalla kolmantena " + opettajat.get(2));
+
+opettajat.remove("Juha");
+
+if (opettajat.contains("Juha")) {
+    System.out.println("Juha on opettajien listalla");
+} else {
+    System.out.println("Juha ei ole opettajien listalla");
+}
+</code></pre>
+
+<pre class="sample-output">opettajien lukumäärä 6
+listalla ensimmäisena Veera
+listalla kolmantena Verna
+Juha ei ole opettajien listalla
+</pre>
+
+<p>
+  Alla taas on luotu kaksi listaa.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; tehtavat1 = new ArrayList&lt;&gt;();
+ArrayList&lt;String&gt; tehtavat2 = new ArrayList&lt;&gt;();
+
+tehtavat1.add("Ada Lovelace");
+tehtavat1.add("Hei Maailma! (Ja Mualima!)");
+tehtavat1.add("Kuusi");
+
+tehtavat2.add("Positiivisen luvun lisääminen");
+tehtavat2.add("Työntekijän eläkevakuutus");
+  
+System.out.println("Listan 1 koko " + tehtavat1.size());
+System.out.println("Listan 2 koko " + tehtavat2.size());
+
+System.out.println("Ensimmäisen listan eka arvo " + tehtavat1.get(0));
+System.out.println("Toisen listan vika arvo " + tehtavat2.get(tehtavat2.size() - 1));
+</code></pre>
+
+<pre class="sample-output">Listan 1 koko 3
+Listan 2 koko 2
+Ensimmäisen listan eka arvo Ada Lovelace
+Toisen listan vika arvo Työntekijän eläkevakuutus
+</pre>
+
+<p>
+  Jokainen lista on siis oma erillinen olionsa ja listan metodit käsittelevät aina sitä listaa, mille metodia kutsutaan. Alla yhteenveto listan metodeista.
+</p>
+
+
+<h3 class="material-heading">
+    Listalle lisääminen: add
+
+</h3>
+
+<p>
+  Listan metodi <strong>add</strong> lisää listalle metodille parametrina annetun arvon. Huomaa, että listalle lisättävän arvon tulee olla saman tyyppinen kuin listan määrittelyssä kuvattu tyyppi. Alla olevassa esimerkissä lista on määritelty sisältämään merkkijonoja, ja listalle lisätään merkkijono.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+// listalle lisääminen
+lista.add("Arvo");
+</code></pre>
+
+
+
+<h3 class="material-heading">
+    Listalla olevien arvojen lukumäärä: size
+
+</h3>
+
+<p>
+  Listan metodi <strong>size</strong> palauttaa listalla olevien arvojen lukumäärän. Lukumäärä on kokonaisluku (<code>int</code>) ja sitä voidaan käyttää osana lauseketta tai se voidaan asettaa kokonaislukumuuttujaan myöhempää käyttöä varten.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+System.out.println("Listalla arvoja: " + lista.size());
+
+lista.add("Eka");
+System.out.println("Listalla arvoja: " + lista.size());
+
+int arvoja = lista.size();
+
+lista.add("Toka");
+System.out.println("Listalla arvoja: " + arvoja);
+</code></pre>
+
+<pre class="sample-output">Listalla arvoja: 0
+Listalla arvoja: 1
+Listalla arvoja: 1
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Listalla olevien arvojen määrä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä syötteitä. Muokkaa ohjelman toimintaa siten, että kun syötteiden lukeminen lopetetaan, ohjelma tulostaa listalla olevien arvojen lukumäärän.
+  </p>
+
+<pre class="sample-output"><font color="red">Terho</font>
+<font color="red">Elina</font>
+<font color="red">Aleksi</font>
+<font color="red">Mari</font>
+
+Yhteensä: 4
+</pre>
+
+<pre class="sample-output"><font color="red">Juno</font>
+<font color="red">Elizabeth</font>
+<font color="red">Mauri</font>
+<font color="red">Irene</font>
+<font color="red">Outi</font>
+<font color="red">Lauri</font>
+<font color="red">Iisa</font>
+<font color="red">Risto</font>
+<font color="red">Markus</font>
+<font color="red">Ville</font>
+<font color="red">Oskari</font>
+
+Yhteensä: 11
+</pre>
+
+  <p>
+    Huom! Et saa käyttää arvojen lukumäärän laskemiseen kokonaislukumuuttujaa.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Listan tietystä kohdasta hakeminen: get
+
+</h3>
+
+<p>
+  Listan metodi <strong>get</strong> palauttaa listan parametrina annettuun paikkaan liittyvä sisältö. Parametri annetaan kokonaislukuna. Listan paikkojen numerointi alkaa nollasta, eli ensimmäisenä lisätty arvo on paikassa numero 0, toisena lisätty paikassa numero 1 jne.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lista.add("Eka");
+lista.add("Toka");
+lista.add("Kolmas");
+
+System.out.println("Paikka 1 eli toinen paikka: " + lista.get(1));
+System.out.println("Paikka 0 eli ensimmäinen paikka: " + lista.get(0));
+</code></pre>
+
+<pre class="sample-output">Toka
+Eka
+</pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Ensimmäinen ja viimeinen arvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä syötteitä. Muokkaa ohjelman toimintaa siten, että kun syötteiden lukeminen lopetetaan, ohjelma tulostaa sekä ensiksi että viimeksi luetun arvon. Voit olettaa, että listalle luetaan vähintään kaksi arvoa.
+  </p>
+
+<pre class="sample-output"><font color="red">Terho</font>
+<font color="red">Elina</font>
+<font color="red">Aleksi</font>
+<font color="red">Mari</font>
+
+Terho
+Mari
+</pre>
+
+<pre class="sample-output"><font color="red">Juno</font>
+<font color="red">Elizabeth</font>
+<font color="red">Mauri</font>
+<font color="red">Irene</font>
+<font color="red">Outi</font>
+<font color="red">Lauri</font>
+<font color="red">Iisa</font>
+<font color="red">Risto</font>
+<font color="red">Markus</font>
+<font color="red">Ville</font>
+<font color="red">Oskari</font>
+
+Juno
+Oskari
+</pre>
+
+  <p>
+    Huom! Listan koon palauttava metodi on tässä hyödyllinen.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h3 class="material-heading">
+    Listan tietystä kohdasta poistaminen: remove
+
+</h3>
+
+<p>
+  Listan metodi <strong>remove</strong> poistaa listalta parametrina annettuun paikkaan liittyvän arvon. Parametri annetaan kokonaislukuna.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lista.add("Eka");
+lista.add("Toka");
+lista.add("Kolmas");
+
+lista.remove(1);
+
+System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));
+System.out.println("Paikka 1 eli toinen: " + lista.get(1));
+</code></pre>
+
+<pre class="sample-output">Eka
+Kolmas
+</pre>
+
+
+<p>
+  Jos parametri on listan sisältämien arvojen tyyppinen, mutta ei kokonaisluku (kokonaislukua käytetään paikasta poistamiseen), voidaan sitä käyttää arvon poistamiseen listalta suoraan.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lista.add("Eka");
+lista.add("Toka");
+lista.add("Kolmas");
+
+lista.remove("Eka");
+
+System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));
+System.out.println("Paikka 1 eli toinen: " + lista.get(1));
+</code></pre>
+
+<pre class="sample-output">Toka
+Kolmas
+</pre>
+
+<p>
+  Jos lista sisältää kokonaislukuja, ei listalta voi poistaa lukua antamalla remove-metodille luvun int-tyyppisenä parametrina. Tämä poistaisi luvun annetusta indeksistä. Kokonaislukutyyppisten arvojen poistaminen tapahtuu muuttamalla arvot Integer-tyyppisiksi, eli kapseloimalla ne Integer-olioiksi, Integer-luokan metodilla <code>valueOf</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lista.add(15);
+lista.add(18);
+lista.add(21);
+lista.add(24);
+
+lista.remove(2);
+lista.remove(Integer.valueOf(15));
+
+System.out.println("Paikka 0 eli ensimmäinen: " + lista.get(0));
+System.out.println("Paikka 1 eli toinen: " + lista.get(1));
+</code></pre>
+
+<pre class="sample-output">18
+24
+</pre>
+
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a68e15eed25000480e6e6"></div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a6a69045eed25000480e6e7"></div>
+
+
+
+<h3 class="material-heading">
+    Onko listalla: contains
+
+</h3>
+
+
+<p>
+  Listan metodi <strong>contains</strong> kertoo löytyykö haettua arvoa listalta. Metodi saa haettavan arvon parametrina, ja se palauttaa totuustyyppisen arvon (boolean) <code>true</code> tai <code>false</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+
+lista.add("Eka");
+lista.add("Toka");
+lista.add("Kolmas");
+
+System.out.println("Löytyykö eka? " + lista.contains("Eka"));
+
+if (lista.contains("Toka")) {
+    System.out.println("Toka löytyi");
+}
+</code></pre>
+
+<pre class="sample-output">Löytyykö eka? true
+Toka löytyi
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Löytyykö listalta</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä syötteitä. Lisää ohjelmaan toiminnallisuus, missä syötteiden lukemisen jälkeen kysytään vielä yhtä merkkijonoa. Ohjelma kertoo tämän jälkeen löytyikö käyttäjän syöttämä merkkijono listalta vai ei.
+  </p>
+
+<pre class="sample-output"><font color="red">Terho</font>
+<font color="red">Elina</font>
+<font color="red">Aleksi</font>
+<font color="red">Mari</font>
+
+Ketä etsitään? <font color="red">Mari</font>
+Mari löytyi!
+</pre>
+
+
+<pre class="sample-output"><font color="red">Terho</font>
+<font color="red">Elina</font>
+<font color="red">Aleksi</font>
+<font color="red">Mari</font>
+
+Ketä etsitään? <font color="red">Leevi</font>
+Leevi ei löytynyt!
+</pre>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Listalla olevan arvon paikka eli indeksi
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Listan paikkojen numerointi eli <em>indeksointi</em> alkaa aina nollasta. Listan ensimmäinen arvo on indeksissä 0, toinen arvo indeksissä 1, kolmas arvo indeksissä 2 ja niin edelleen.
+  </p>
+
+  <img src="../img/drawings/arraylist-63aa313a.png">
+
+  <p>
+    Ylläolevassa listassa ensimmäisenä on arvo 6 ja toisena arvo 1. Jos ylläolevaan listaan lisättäisiin uusi arvo kutsumalla <code>luvut</code>-listan metodia <code>add</code> parametrilla 8, menisi luku 8 listan indeksiin 6 eli seitsemänneksi luvuksi.
+  </p>
+
+  <img src="../img/drawings/arraylist-add-946983ba.png">
+
+  <p>
+    Vastaavasti kutsumalla metodia <code>get</code> parametrilla 4, listalta haettaisiin viidettä lukua.
+  </p>
+
+
+  </div>
+</div>
+
+<div class="quiznator-plugin" data-quiz-id="5a6a693c5eed25000480e6e9"></div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Varasto (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+        
+  <p>
+    Toteuta ohjelma varaston hallinnointiin. Varaston hallinta tarjoaa käyttäjälle neljä komentoa: <code>lisaa</code>, <code>poista</code>, <code>hae</code> ja <code>lopeta</code>. Jos käyttäjä syöttää merkkijonon "lopeta", tulee varastonhallintaohjelman suorituksen päättyä. Jos käyttäjä syöttää komennon "lisaa", "poista", tai "hae", käyttäjältä kysytään esinettä. Tämän jälkeen käyttäjän syöttämä esine joko lisätään varastoon, poistetaan varastosta tai sitä haetaan varastosta.
+  </p>
+
+  <p>
+    Alla on esimerkki ohjelman odotetusta suorituksesta.
+  </p>
+  
+<pre class="sample-output">Varastonhallinta.
+  
+Syötä komento (lisaa, poista, hae, lopeta): 
+<font color="red">lisaa</font>
+Syötä esine: 
+<font color="red">nakki</font>
+
+Syötä komento (lisaa, poista, hae, lopeta): 
+<font color="red">hae</font>
+Syötä esine: 
+<font color="red">nakki</font>
+Esine nakki löytyy varastosta.
+
+Syötä komento (lisaa, poista, hae, lopeta): 
+<font color="red">poista</font>
+Syötä esine: 
+<font color="red">nakki</font>
+
+Syötä komento (lisaa, poista, hae, lopeta): 
+<font color="red">hae</font>
+Syötä esine: 
+<font color="red">nakki</font>
+Esinettä nakki ei löydy varastosta.
+
+Syötä komento (lisaa, poista, hae, lopeta): 
+<font color="red">lopeta</font>
+</pre>
+
+  <p>
+    Pisteytys:
+  </p>
+
+  <ul>
+    <li>(1p) lopetus, lisääminen, ja hakeminen toimii.</li>
+    <li>(2p) lopetus, lisääminen, poistaminen, ja hakeminen toimii.</li>
+  </p>
+
+  
+
+    </div>
+  </div>
+</div>
+  
+
+<h2 class="material-heading">
+    Listan läpikäynti
+
+</h2>
+
+
+<p>
+  Seuraavassa esimerkissä listalle lisätään neljä nimeä, jonka jälkeen listan sisältö tulostetaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
+
+opettajat.add("Sami");
+opettajat.add("Samu");
+opettajat.add("Anne");
+opettajat.add("Anna");
+
+System.out.println(opettajat.get(0));
+System.out.println(opettajat.get(1));
+System.out.println(opettajat.get(2));
+System.out.println(opettajat.get(3));
+</code></pre>
+
+<pre class="sample-output">Sami
+Samu
+Anne
+Anna
+</pre>
+
+<p>
+  Esimerkki on kömpelö. Entä jos listalla olisi enemmän arvoja? Tai vähemmän? Entäs jos emme tietäisi listalla olevien arvojen määrää?
+</p>
+
+<p>
+  Tehdään ensin välivaiheen versio jossa pidetään kirjaa tulostettavasta paikasta muuttujan <code>paikka</code> avulla:
+</p>
+
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
+
+opettajat.add("Sami");
+opettajat.add("Samu");
+opettajat.add("Anne");
+opettajat.add("Anna");
+
+int paikka = 0;
+
+System.out.println(opettajat.get(paikka));
+paikka++;
+
+System.out.println(opettajat.get(paikka));  // paikka = 1
+paikka++;
+
+System.out.println(opettajat.get(paikka));  // paikka = 2
+paikka++;
+
+System.out.println(opettajat.get(paikka));  // paikka = 3
+paikka++;
+</code></pre>
+
+<p>
+  Huomaamme, että ylläolevassa ohjelmassa on toistoa. Voimme hyödyntää toistolausetta ja kasvattaa muuttujaa <code>paikka</code> niin kauan kunnes se kasvaa liian suureksi:
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
+
+opettajat.add("Sami");
+opettajat.add("Samu");
+opettajat.add("Anne");
+opettajat.add("Anna");
+
+int paikka = 0;
+while (paikka &lt; opettajat.size()) {
+    System.out.println(opettajat.get(paikka));
+    paikka++;
+}
+
+// muistatko miksi paikka &lt;= opettajat.size() ei toimi?
+</code></pre>
+
+<p>
+  Nyt tulostus toimii riippumatta listalla olevien alkioiden määrästä.
+</p>
+
+<h3 class="material-heading">
+    For-each
+
+</h3>
+
+
+<p>
+  <em>Jos</em> listan arvojen läpikäynnissä ei tarvita tietoa listan arvon sijannista (arvoa ei tarvitse esimerkiksi muuttaa, vaihtaa jne), voi listan läpikäyntiin käyttää myös ns. <strong>for-each</strong>-lausetta. 
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; opettajat = new ArrayList&lt;&gt;();
+
+opettajat.add("Sami");
+opettajat.add("Samu");
+opettajat.add("Anne");
+opettajat.add("Anna");
+
+for (String opettaja: opettajat) {
+    System.out.println(opettaja);
+}
+</code></pre>
+
+<p>
+  Yllä olevaa lausetta käytetään listan jokaisen arvon läpikäyntiin. Lause määritellään muodossa <code>for (MuuttujanTyyppi muuttujanArvo: listanNimi)</code>, missä <code>MuuttujanTyyppi</code> on listalla olevien arvojen tyyppi ja <code>muuttujanArvo</code> on muuttuja, johon listan arvo asetetaan jokaisen läpikäynnin yhteydessä.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"import java.util.ArrayList;\n\npublic class Toistolause {\n    public static void main(String[] args) {\n        ArrayList<String> opettajat = new ArrayList<>();\n\n        opettajat.add(\"Sami\");\n        opettajat.add(\"Samu\");\n        opettajat.add(\"Anne\");\n        opettajat.add(\"Anna\");\n\n        for (String opettaja: opettajat) {\n            System.out.println(opettaja);\n        }\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"3","frame_id":3}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"6","frame_id":6}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"opettaja":"Sami","opettajat":["REF",427]},"ordered_varnames":["opettajat","opettaja"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"20","frame_id":20}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"opettaja":"Samu","opettajat":["REF",427]},"ordered_varnames":["opettajat","opettaja"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"23","frame_id":23}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"26","frame_id":26}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"opettaja":"Anne","opettajat":["REF",427]},"ordered_varnames":["opettajat","opettaja"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"32","frame_id":32}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"opettaja":"Anna","opettajat":["REF",427]},"ordered_varnames":["opettajat","opettaja"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"35","frame_id":35}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\nAnna\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"38","frame_id":38}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\nAnna\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"39","frame_id":39}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\nAnna\n","event":"step_line","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"opettajat":["REF",427]},"ordered_varnames":["opettajat"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"41","frame_id":41}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}},{"stdout":"Sami\nSamu\nAnne\nAnna\n","event":"return","line":15,"stack_to_render":[{"func_name":"main:15","encoded_locals":{"opettajat":["REF",427],"__return__":["VOID"]},"ordered_varnames":["opettajat","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"42","frame_id":42}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"427":["INSTANCE","java.util.ArrayList"]}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+
+
+<h2 class="material-heading">
+    Listalle lisättävien muuttujien tyyppi
+
+</h2>
+
+<p>
+  Lista voi sisältää vain tietyntyyppisiä arvoja. Nämä arvot määritellään listaa luodessa, esimerkiksi <code>ArrayList&lt;String&gt;</code> sisältää merkkijonotyyppisiä muuttujia.
+</p>
+
+<p>
+  Aiemmin käyttämämme muuttujatyypit <code>int</code> ja <code>double</code> sekä lähes kaikki muut pienellä alkukirjaimella kirjoitettavat muuttujat ovat alkeistyyppisiä ja ne eivät käy suoraan listan sisältämien alkioiden tyypiksi. Jos haluamme lisätä alkeistyyppisiä muuttujia listalle, tulee ne määritellä niiden viittaustyppisten muuttujatyyppien avulla. Esimerkiksi <code>int</code>-tyyppisten muuttujien tyypiksi tulee asettaa <code>Integer</code>. Vastaavasti <code>double</code>-tyyppisten muuttujien tyypiksi tulee asettaa <code>Double</code>.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; nimet = new ArrayList&lt;&gt;();
+
+nimet.add("Sami");
+nimet.add("Samu");
+nimet.add("Anne");
+nimet.add("Anna");
+
+
+ArrayList&lt;Integer&gt; iat = new ArrayList&lt;&gt;();
+
+iat.add(6);
+iat.add(11);
+iat.add(38);
+iat.add(14);
+
+int paikka = 0;
+while (paikka &lt; iat.length()) {
+    System.out.print("Nimi: " + nimet.get(paikka));
+    System.out.print("\t");
+
+    int ika = iat.get(paikka);
+    System.out.println("Ikä: " + ika);
+
+    // tai:
+    // System.out.print("Ikä: " + iat.get(paikka));
+    System.out.println();
+
+    paikka++;
+}
+</code></pre>
+
+<pre class="sample-output">Nimi: Sami    Ikä 6
+Nimi: Samu    Ikä 11
+Nimi: Anne    Ikä 38
+Nimi: Anna    Ikä 14
+</pre>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Miksei ArrayList&lt;int&gt; toimi?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tämä rajoitus liittyy siihen, miten ArrayList on toteutettu. Javan muuttujat voidaan jakaa kahteen kategoriaan: alkeistyyppisiin muuttujiin ja viittaustyyppisiin muuttujiin. <strong>Alkeistyyppiset</strong> muuttujat kuten <code>int</code> ja <code>double</code> sisältävät niihin liittyvät arvot. <strong>Viittaustyyppiset</strong> muuttujat taas, kuten esimerkiksi <code>ArrayList</code> sisältävät viitteen paikkaan, joka sisältää muuttujaan liittyvät arvot.
+  </p>
+
+  <p>
+    Hieman yksinkertaistaen: alkeistyyppiset muuttujat pystyvät sisältämään vain rajatun määrän tietoa, kun taas viitteen taakse tietoa voi säilöä lähes rajattomasti.
+  </p>
+
+  <p>
+    ArrayList olettaa, että sen sisältämät muuttujat ovat viittaustyyppisiä. Java muuntaa automaattisesti <code>int</code>-tyyppisen muuttujan <code>Integer</code>-tyyppiseksi kun se lisätään listalle, sama tapahtuu myös kun muuttuja haetaan listalta. Vastaava muunnos tapahtuu myös <code>double</code>-tyyppiselle muuttujalle, josta tulee <code>Double</code>-tyyppinen muuttuja.
+  </p>
+
+  <p>
+    Palaamme tähän jatkossakin, sillä muuttujat vaikuttavat oleellisesti ohjelmamme suoritukseen.
+  </p>
+
+
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Listan lukujen summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Ohjelmaan on toteutettu valmiina pohja, joka lukee käyttäjältä lukuja listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää luvun -1.
+  </p>
+
+  <p>
+    Lisää ohjelmaan toiminnallisuus, joka lukujen lukemisen jälkeen tulostaa listalla olevien lukujen summan.
+  </p>
+
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">-1</font>
+
+Summa: 93
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Listan suurin luku</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Ohjelmaan on toteutettu valmiina pohja, joka lukee käyttäjältä lukuja listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää luvun -1.
+  </p>
+
+  <p>
+    Lisää ohjelmaan toiminnallisuus, joka etsii listalta listan suurimman luvun ja tulostaa sen arvon. Ohjelman pitäisi toimia seuraavasti.
+  </p>
+
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">93</font>
+<font color="red">11</font>
+<font color="red">-1</font>
+
+Listan suurin luku: 93
+</pre>
+
+  <p>
+    Ota mallia allaolevasta pienintä lukua etsivästä lähdekoodista.
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista, jossa on kokonaislukuja
+
+int pienin = lista.get(0);
+
+int indeksi = 0;
+while (indeksi &lt; lista.size()) {
+    int luku = lista.get(indeksi);
+    if (pienin &gt; luku) {
+        pienin = luku;
+    }
+    
+    indeksi++;
+}
+
+System.out.println("Listan pienin luku: " + pienin);
+</code></pre>
+
+  <p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Listan lukujen keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta ohjelma, joka lukee käyttäjältä lukuja listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää luvun -1.
+  </p>
+
+  <p>
+    Kun lukujen lukeminen lopetetaan, laske listalla olevien lukujen keskiarvo ja tulosta se.
+  </p>
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">-1</font>
+
+Keskiarvo: 23.25
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Kysytyn luvun indeksi</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Ohjelmaan on toteutettu valmiina pohja, joka lukee käyttäjältä lukuja listalle. Syötteiden lukeminen päätetään kun käyttäjä syöttää luvun -1.
+  </p>
+
+  <p>
+    Lisää ohjelmaan toiminnallisuus, joka kysyy käyttäjältä lukua ja kertoo luvun indeksin. Jos lukua ei löydy, tulee siitä ilmoittaa erikseen (vihje: contains!).
+  </p>
+
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">-1</font>
+
+Mitä etsitään? <font color="red">2</font>
+Luku 2 on indeksissä 1
+</pre>
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">-1</font>
+
+Mitä etsitään? <font color="red">7</font>
+Lukua 7 ei löydy.
+</pre>
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">-1</font>
+
+Mitä etsitään? <font color="red">8</font>
+Luku 8 on indeksissä 2
+Luku 8 on indeksissä 3
+</pre>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Pienimmän luvun indeksi</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta ohjelma, joka lukee käyttäjältä lukuja. Kun käyttäjä syöttää luvun 9999, lukujen lukeminen lopetetaan. Ohjelma tulostaa tämän jälkeen pienimmän listalla olevan luvun sekä indeksit, joista pienin luku löytyy. Pienin luku voi siis esiintyä useamman kerran.
+  </p>
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">2</font>
+<font color="red">8</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">9999</font>
+
+Pienin luku on 2
+Pienin luku löytyy indeksistä 1
+</pre>
+
+<pre class="sample-output"><font color="red">72</font>
+<font color="red">44</font>
+<font color="red">8</font>
+<font color="red">8</font>
+<font color="red">11</font>
+<font color="red">9999</font>
+
+
+Pienin luku on 8
+Pienin luku löytyy indeksistä 2
+Pienin luku löytyy indeksistä 3
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Yhteenveto
+
+</h1>
+
+<p>
+  Kolmannessa osassa syvennyttiin metodeihin ja tutustuttiin sekä merkkijonoihin että listoihin. Huomasimme myös, että merkkijonot ja listat ovat erilaisia kuin muuttujat, sillä jokaiseen merkkijonoon ja muuttujaan liittyy "omat" metodit. Tarkemmin tarkasteltuna jokaisella merkkijonolla on samat metodit, mutta metodit käsittelevät aina tiettyä merkkijonoa, eli sitä, jonka kohdalla metodia kutsutaan.
+</p>
+
+<p>
+  Tämä johdattelee meitä olio-ohjelmoinnin saloihin, johon syvennytään tarkemmin seuraavassa osassa. Oliot ovat ohjelmassa käytettäviä kokonaisuuksia, joista jokaisella on oma sisäinen tila, ja joiden sisäistä tilaa voidaan muuttaa olioon liittyvillä metodeilla. Olion rakennuspiirrustukset määritellään olion luokassa -- esimerkiksi merkkijonon metodit on määritelty Javan luokassa <code>String</code> ja käyttämämme listan metodit Javan luokassa <code>ArrayList</code>.
+</p>
+
+<p>
+  Tutustutaan lopuksi ohjelmaan, jossa käytetään juuri harjoittelemiamme asioita.
+</p>
+
+<p>
+  Tehdään klassinen ajatustenlukuohjelma. Ohjelmassa käyttäjää pyydetään syöttämään luku 0 tai 1. Tietokoneen tehtävänä on arvata käyttäjän syöttämä luku. Tätä toistetaan kunnes käyttäjä ei enää halua pelata. 
+</p>
+
+<p>
+  Alla esimerkki mahdollisesta ajatustenlukijasta. Kun painat nollaa tai ykköstä, tietokone yrittää arvata painalluksesi. Jos tietokone arvaa oikein, tietokone saa pisteen. Muuten saat pisteen. Kumpi saa ensin 25 pistettä?
+</p>
+
+<p>
+  <em id="al_arvausteksti">
+  </em>
+</p>
+<table border="0">
+  <tr>
+    <td>
+      <input type="button" id="al_nappi_0" value="0"></input>
+      <input type="button" id="al_nappi_1" value="1"></input>
+    </td>
+  </tr>
+  <tr>
+    <td id="al_voitot">
+      Koneen voitot: 0
+    </td>
+  </tr>
+  <tr>
+    <td id="al_tappiot">
+      Koneen tappiot: 0
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="button" id="al_nappi_uudestaan" value="Aloita alusta"></input>
+    </td>
+  </tr>
+  
+</table>
+
+<script>
+ var aj_oikein = 0;
+ var aj_luvut = new Array();
+
+ 
+ document.getElementById("al_nappi_uudestaan").onclick = function(event) {
+     aj_luvut.length = 0;
+     aj_oikein = 0;
+     document.getElementById("al_voitot").innerHTML = "Koneen voitot: " + aj_oikein;
+     document.getElementById("al_tappiot").innerHTML = "Koneen tappiot: " + (aj_luvut.length - aj_oikein);
+     document.getElementById("al_arvausteksti").innerHTML = "";
+ }
+ 
+ document.getElementById("al_nappi_0").onclick = function(event) {
+     syotetty(0);
+ }
+
+  document.getElementById("al_nappi_1").onclick = function(event) {
+     syotetty(1);
+ }
+ 
+ function syotetty(arvo) {
+     if(aj_oikein >= 25 || aj_luvut.length - aj_oikein >= 25) {
+	 document.getElementById("al_arvausteksti").innerHTML = "Peli päättyi.";
+	 return;
+     }
+
+     
+     document.getElementById("al_arvausteksti").innerHTML = "";
+     var arvaus = arvaa();
+     var syote = parseInt(arvo);
+     if (syote != 0 && syote != 1) {
+	 document.getElementById("al_arvausteksti").innerHTML = "Odotettiin lukua 0 tai 1.";
+	 return;
+     }
+
+     if(arvaus == syote) {
+	 aj_oikein++;
+     }
+
+     aj_luvut.push(syote);
+
+     document.getElementById("al_voitot").innerHTML = "Koneen voitot: " + aj_oikein;
+     document.getElementById("al_tappiot").innerHTML = "Koneen tappiot: " + (aj_luvut.length - aj_oikein);
+ }
+ 
+ function arvaa() {
+     if (aj_luvut.length < 3) {
+	 return 0;
+     }
+
+     var luvut = new Array();
+
+     var nollat = 0;
+     var ykkoset = 0;
+     
+     for (var i = 2; i < aj_luvut.length; i++) {
+	 
+	 if (aj_luvut[i - 2] != aj_luvut[aj_luvut.length - 2] &&
+	     aj_luvut[i - 1] != aj_luvut[aj_luvut.length - 1]) {
+	     continue;
+	 }
+
+	 if(aj_luvut[i] == 0) {
+	     nollat++;
+	 } else {
+	     ykkoset++;
+	 }
+     }
+     
+     if (nollat > ykkoset) {
+	 return 0;
+     } else {
+	 return 1;
+     }
+ }
+ 
+</script>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Lukeeko ohjelma ajatuksia? Ei. Se yrittää tosin olla ovela -- ohjelma tallentaa käyttäjän aiemmat päätökset ja pyrkii ennustamaan tulevaa niiden perusteella. George Santayanan sanoin, <em>to know your future you must know your past.</em> 
+</p>
+
+  
+<p>
+  Toteutetaan seuraavaksi samankaltainen sovellus Java-kielellä.  Ohjelman käyttöliittymä on seuraava.
+</p>
+
+<pre class="sample-output">Syötä nolla tai ykkönen, ihan sama, tiedän sen.
+
+Syötä 0 tai 1: <font color="red">1</font>
+Syötit 1, arvasin 0.
+Tietokoneen voitot: 0
+Pelaajan voitot: 1
+
+Syötä 0 tai 1: <font color="red">1</font>
+Syötit 1, arvasin 0.
+Tietokoneen voitot: 0
+Pelaajan voitot: 2
+
+Syötä 0 tai 1: <font color="red">0</font>
+Syötit 0, arvasin 0.
+Tietokoneen voitot: 1
+Pelaajan voitot: 2
+
+Syötä 0 tai 1: <font color="red">0</font>
+Syötit 0, arvasin 1.
+Tietokoneen voitot: 1
+Pelaajan voitot: 3
+
+...
+</pre>
+
+<p>
+  Lähtökohta sovellukselle on seuraava runko:
+</p>
+
+<pre class="sh_java code-highlight"><code>System.out.println("Syötä nolla tai ykkönen, ihan sama, tiedän sen.");
+Scanner lukija = new Scanner(System.in);
+
+ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+int voitot = 0;
+
+while (true) {
+    // peli päättyy kun jommalla kummalla on yli 25 pistettä
+    if (voitot &gt;= 25 || luvut.size() - voitot &gt;= 25) {
+        break;
+    }
+
+    // arvaustoiminnallisuus saa käyttöönsä aiemmat syötteet
+    int arvaus = arvaa(luvut);
+
+    System.out.print("Syötä 0 tai 1: ");
+    int luku = Integer.parseInt(lukija.nextLine());
+    if (luku != 0 && luku != 1) {
+        System.out.println("höpönlöpön..");
+        continue;
+    }
+
+    if (luku == arvaus) {
+        voitot++;
+    }
+
+    luvut.add(luku);
+
+  
+    System.out.println("Syötit " + syote + ", arvasin " + arvaus + ".");
+    System.out.println("Tietokoneen voitot: " + voitot);
+    System.out.println("Pelaajan voitot: " + (syotteet.size() - voitot));
+
+    System.out.println();
+}
+
+System.out.println("Peli päättyi.");
+</code></pre>
+
+<p>
+  Ohjelma lukee käyttäjältä syötteitä kunnes tietokone on voittanut 25 peliä tai käyttäjä on voittanut 25 peliä. 
+</p>
+
+<p>
+  Ajatustenlukijan "älykkyyden" ytimessä on käyttäjän aiempien syötteiden tarkastelu. Kohta rakennettavassa esimerkissä -- ja ajatustenlukijassa -- tehdään oletus, että pelaajan kaksi viimeistä valintaa ovat aina tärkeät ja kertovat seuraavasta valinnasta. Tämän oletuksen perusteella voimme käydä koko syötehistorian läpi ja etsiä peräkkäisiä siirtoja, jotka ovat samat kuin pelaajan kaksi viimeistä siirtoa. Vastaavien peräkkäisten siirtojen löytyessä laitamme niitä seuranneen siirron muistiin. Kun pelihistoria on käyty läpi, valitsemme "arvaukseksi" siirron, joka on esiintynyt eniten.
+</p>
+
+<p>
+  Tarkastellaan tätä vielä esimerkin kautta. Oletetaan, että käyttäjän syötehistoria on seuraavanlainen.
+</p>
+
+<pre>
+0 1 0 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 1 0 0 1
+</pre>
+
+<p>
+  Käyttäjän kaksi viimeistä syötettä ovat 0 ja 1.
+</p>
+
+<pre>
+0 1 0 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 1 0 <strong>0 1</strong>
+</pre>
+
+<p>
+  Ensimmäisen kerran syötteet 0 ja 1 esiintyvät syötelistan indekseissä 0 ja 1. Näitä seuraa luku nolla.
+</p>
+
+<pre>
+<font color="blue">0 1</font> <font color="red">0</font> 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 1 0 <strong>0 1</strong>
+
+nollia: 1
+</pre>
+
+<p>
+  Seuraavan kerran syötteet 0 ja 1 esiintyvät syötelistan indekseissä 2 ja 3. Näitä seuraa luku yksi.
+</p>
+
+<pre>
+0 1 <font color="blue">0 1</font> <font color="red">1</font> 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 1 0 <strong>0 1</strong>
+
+nollia: 1
+ykkösiä: 1
+</pre>
+
+<p>
+  Seuraavan kerran syötteet 0 ja 1 esiintyvät syötelistan indekseissä 5 ja 6. Näitä seuraa luku 1.
+</p>
+
+<pre>
+0 1 0 1 1 <font color="blue">0 1</font> <font color="red">1</font> 1 0 1 0 1 0 1 0 0 0 1 0 1 0 <strong>0 1</strong>
+
+nollia: 1
+ykkösiä: 2
+</pre>
+
+<p>
+  Seuraavan kerran syötteet 0 ja 1 esiintyvät syötelistan indekseissä 9 ja 10. Näitä seuraa luku 0.
+</p>
+
+<pre>
+0 1 0 1 1 0 1 1 1 <font color="blue">0 1</font> <font color="red">0</font> 1 0 1 0 0 0 1 0 1 0 <strong>0 1</strong>
+
+nollia: 2
+ykkösiä: 2
+</pre>
+
+<p>
+  Tämä jatkuu kunnes lista on käyty läpi. Lopussa tilanne on seuraava.
+</p>
+
+<pre>
+0 1 0 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 1 0 <strong>0 1</strong>
+
+nollia: 6
+ykkösiä: 2
+</pre>
+
+<p>
+  Pelaaja on syöttänyt nollan ja ykkösen jälkeen kuusi kertaa nollan, kaksi kertaa ykkösen. Kone päätyy arvaamaan, että pelaaja syöttää seuraavaksi nollan. Koneen tulee siis myös valita nolla.
+</p>
+
+<p>
+  Kahden peräkkäisen listan viimeisiä lukuja vastaavan lukuparin löytäminen onnistuu toistolauseen avulla. Alla oleva esimerkki tulostaa "hep" aina kun tarkasteltavat luvut vastaavat listan viimeisiä lukuja.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int arvaa(ArrayList&lt;Integer&gt; luvut) {
+
+    int viimeinen = luvut.get(luvut.size() - 1);
+    int toiseksiViimeinen = luvut.get(luvut.size() - 2);
+
+    int indeksi = 2;
+
+    while (indeksi &lt; luvut.size()) {
+        if (luvut.get(indeksi - 2) == toiseksiViimeinen &&
+                luvut.get(indeksi - 1) == viimeinen) {
+            System.out.println("hep");
+        }
+
+        indeksi++;
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>
+  Lisätään metodiin toiminnallisuus nollien ja ykkösten laskemiseen. Mikäli tarkasteltava lukupari vastaa listan viimeisiä lukuja ja tarkasteltavaa lukuparia seuraa nolla, kasvatetaan havaittujen nollien määrää yhdellä. Vastaavasti, mikäli tarkasteltava lukupari vastaa listan viimeisiä lukuja ja tarkasteltavaa lukuparia seuraa ykkönen, kasvatetaan havaittujen ykkösten määrää yhdellä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int arvaa(ArrayList&lt;Integer&gt; luvut) {
+
+    int viimeinen = luvut.get(luvut.size() - 1);
+    int toiseksiViimeinen = luvut.get(luvut.size() - 2);
+
+    int indeksi = 2;
+    int nollia = 0;
+    int ykkosia = 0;
+
+    while (indeksi &lt; luvut.size()) {
+        if (luvut.get(indeksi - 2) == toiseksiViimeinen &&
+                luvut.get(indeksi - 1) == viimeinen) {
+            System.out.println("hep");
+
+            if (luvut.get(indeksi) == 0) {
+                nollia++;
+            } else {
+                ykkosia++;
+            }
+  
+        }
+
+        indeksi++;
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>
+  Nyt ohjelma laskee pelaajan viimeisiä siirtoja mahdollisesti seuraavien nollien ja ykkösten määrän. Palautetaan metodista arvo 0 mikäli nollia on enemmän kuin ykkösiä. Muulloin palautetaan arvo 1.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int arvaa(ArrayList&lt;Integer&gt; luvut) {
+
+    int viimeinen = luvut.get(luvut.size() - 1);
+    int toiseksiViimeinen = luvut.get(luvut.size() - 2);
+
+    int indeksi = 2;
+    int nollia = 0;
+    int ykkosia = 0;
+
+    while (indeksi &lt; luvut.size()) {
+        if (luvut.get(indeksi - 2) == toiseksiViimeinen &&
+                luvut.get(indeksi - 1) == viimeinen) {
+            System.out.println("hep");
+
+            if (luvut.get(indeksi) == 0) {
+                nollia++;
+            } else {
+                ykkosia++;
+            }
+  
+        }
+
+        indeksi++;
+    }
+
+    if (nollia &gt ykkosia) {
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
+
+<p>
+  Metodi toimii melko hyvin, mutta siinä on vielä ongelma. Mikäli metodille annetaan parametrina lista, jossa on alle 2 arvoa, ohjelma heittää poikkeuksen. Korjataan metodi -- sovitaan, että mikäli lukuja on alle 3, arvaus on aina 0.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static int arvaa(ArrayList&lt;Integer&gt; luvut) {
+    if (luvut.size() &lt; 3) {
+        return 0;
+    }
+
+    int viimeinen = luvut.get(luvut.size() - 1);
+    int toiseksiViimeinen = luvut.get(luvut.size() - 2);
+
+    int indeksi = 2;
+    int nollia = 0;
+    int ykkosia = 0;
+
+    while (indeksi &lt; luvut.size()) {
+        if (luvut.get(indeksi - 2) == toiseksiViimeinen &&
+                luvut.get(indeksi - 1) == viimeinen) {
+            System.out.println("hep");
+
+            if (luvut.get(indeksi) == 0) {
+                nollia++;
+            } else {
+                ykkosia++;
+            }
+  
+        }
+
+        indeksi++;
+    }
+
+    if (nollia &gt ykkosia) {
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Ajatustenlukija</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävänäsi on tehdä edellistä esimerkkiä mukaileva ohjelma. Ohjelmassa on kuitenkin pieni muutos edelliseen esimerkkiin verrattuna -- sen sijaan, että ohjelma kysyy käyttäjältä lukuja, ohjelman tulee kysyä käyttäjältä merkkijonoja. Käyttäjän tulee syöttää joko "h" (heads = kruuna) tai "t" (tails = klaaava) ja tietokoneen tulee pyrkiä arvaamaan käyttäjän syöte.
+  </p>
+
+  <p>
+    Noudata edellä kuvattua strategiaa ajatustenlukijan tekoälyn toteuttamiseksi. Tässä strategia vielä lyhyesti:
+  </p>
+
+  <ul>
+    <li>
+      Mikäli käyttäjä on syöttänyt alle 3 syötettä, tietokoneen tulee arvata "h" eli kruuna.
+    </li>
+    <li>
+      Muulloin, tietokoneen tulee tarkastella pelaajan aiempia valintoja ja etsiä sopiva valinta. Sopivan valinnan etsiminen tehdään tarkastelemalla käyttäjän kahta viimeistä syötettä ja vertailemalla niitä koko historiaan. Mikäli historian mukaan kahta viimeistä syötettä seuraa useammin "h" kuin "t", tulee tulee tietokoneen pelata "h". Muulloin tietokoneen tulee pelata "t".
+    </li>
+  </ul>
+
+  <p>
+    Muistathan että merkkijonoja ei saa vertailla kahdella yhtäsuuruusmerkillä.
+  </p>
+
+  <p>
+    Ote odotetusta ohjelman tulostuksesta ohjelman suorituksen alusta.
+  </p>
+
+<pre class="sample-output">Syötä h tai t: <font color="red">h</font>
+Syötit h, arvasin h.
+Tietokoneen voitot: 1
+Pelaajan voitot: 0
+    
+Syötä h tai t: <font color="red">h</font>
+Syötit h, arvasin h.
+Tietokoneen voitot: 2
+Pelaajan voitot: 0
+
+Syötä h tai t: <font color="red">t</font>
+Syötit t, arvasin h.
+Tietokoneen voitot: 2
+Pelaajan voitot: 1
+
+Syötä h tai t: <font color="red">t</font>
+Syötit t, arvasin t.
+Tietokoneen voitot: 3
+Pelaajan voitot: 1
+
+Syötä h tai t: <font color="red">h</font>
+Syötit h, arvasin t.
+Tietokoneen voitot: 3
+Pelaajan voitot: 2
+
+Syötä h tai t: <font color="red">t</font>
+Syötit t, arvasin t.
+Tietokoneen voitot: 4
+Pelaajan voitot: 2
+
+Syötä h tai t: <font color="red">h</font>
+Syötit h, arvasin t.
+Tietokoneen voitot: 4
+Pelaajan voitot: 3
+
+Syötä h tai t: <font color="red">t</font>
+Syötit t, arvasin t.
+Tietokoneen voitot: 5
+Pelaajan voitot: 3
+
+Syötä h tai t: <font color="red">t</font>
+Syötit t, arvasin h.
+Tietokoneen voitot: 5
+Pelaajan voitot: 4
+    
+...
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a332"></div>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener">
+  <button class='btn btn-primary'>
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+  </button>
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/part3.html.erb" target="_blank" rel="noopener">
+  <button class='btn btn-primary'>
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+ Muokkaa sivua
+  </button>
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-0becd750.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        window.initTyponator();
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
