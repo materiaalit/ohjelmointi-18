@@ -160,10 +160,28 @@
   <p>
     Muista merkitä ainakin käskyyn reagointiin liittyvät rivit malliratkaisuriveiksi -- näin ratkaisu ei tule suoraan tehtäväpohjaan. Vastaavasti älä merkitse listan luontia tai sen arvoja lisäävää koodia malliratkaisuriveiksi, sillä se on tarkoitus jättää tehtäväpohjaan.
   </p>
-  
+
 
   </div>
 </div>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Ongelma listan importtauksessa
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Joillakin tuli tässä ongelmaksi, että ei voinut lisätä importteja koska niille tarkoitetut rivit olivat lukittuja. Jos sinulla crowdsorcererin aivan ensimmäiset rivit ovat lukittuja, kopio ensiksi työsi johonkin toiseen ohjelmaan ja sitten paina tästä napista nollataksesi Crowdsorcererin:
+  </p>
+
+  <button class="btn btn-secondary" id="reset-crowdsorcerer">Nollaa Crowdsorcerer</button>
+
+
+  </div>
+</div>
+
 
 
 
@@ -3257,6 +3275,22 @@ Minkä nimiseen tiedostoon muistio tallennetaan? <font color="red">nimet-2.tsv</
 
 <div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a333"></div>
 
+
+
+<script>
+  var button = document.getElementById("reset-crowdsorcerer");
+  button.onclick = function() {
+    if (confirm("Oletko varma, että haluat nollata Crowdsorcererin? Varmista, että vastauksesi on tallessa ennen kuin teet tämän.")) {
+      console.log("Nollataan crowdsorcerer");
+      Object.keys(localStorage)
+        .filter(function(key) { return key.startsWith("crowdsorcerer-assignment-7")})
+        .forEach(function(key) {
+          localStorage.removeItem(key);
+        });
+      window.location.reload();
+    }
+  }
+</script>
 
         </div>
       </div>
