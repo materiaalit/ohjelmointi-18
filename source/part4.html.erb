@@ -46,8 +46,19 @@
   <p>
     Muista merkitä ainakin käskyyn reagointiin liittyvät rivit malliratkaisuriveiksi -- näin ratkaisu ei tule suoraan tehtäväpohjaan. Vastaavasti älä merkitse listan luontia tai sen arvoja lisäävää koodia malliratkaisuriveiksi, sillä se on tarkoitus jättää tehtäväpohjaan.
   </p>
-  
+
 <% end %>
+
+<% partial 'partials/hint', locals: { name: 'Ongelma listan importtauksessa' } do %>
+
+  <p>
+    Joillakin tuli tässä ongelmaksi, että ei voinut lisätä importteja koska niille tarkoitetut rivit olivat lukittuja. Jos sinulla crowdsorcererin aivan ensimmäiset rivit ovat lukittuja, kopio ensiksi työsi johonkin toiseen ohjelmaan ja sitten paina tästä napista nollataksesi Crowdsorcererin:
+  </p>
+
+  <button class="btn btn-secondary" id="reset-crowdsorcerer">Nollaa Crowdsorcerer</button>
+
+<% end %>
+
 
 
 
@@ -2920,3 +2931,19 @@ J. K. Rowling, Harry Potter ja viisasten kivi, 223 sivua
 
 
 <%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a333' } %>
+
+
+<script>
+  var button = document.getElementById("reset-crowdsorcerer");
+  button.onclick = function() {
+    if (confirm("Oletko varma, että haluat nollata Crowdsorcererin? Varmista, että vastauksesi on tallessa ennen kuin teet tämän.")) {
+      console.log("Nollataan crowdsorcerer");
+      Object.keys(localStorage)
+        .filter(function(key) { return key.startsWith("crowdsorcerer-assignment-7")})
+        .forEach(function(key) {
+          localStorage.removeItem(key);
+        });
+      window.location.reload();
+    }
+  }
+</script>
