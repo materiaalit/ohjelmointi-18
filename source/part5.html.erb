@@ -2,7 +2,7 @@
   title: Osa 5
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -10,14 +10,413 @@
 <% partial 'partials/hint', locals: { name: 'Viidennen osan tavoitteet' } do %>
 
   <p>
-    
-    
-    Tietää olio-ohjelmoinnin perusperiaatteet ja luo luokkia, jotka kuvaavat annettua ongelma-aluetta. Tunnistaa käsitteet alkeis- ja viittaustyyppinen muuttuja. Osaa määritellä olioita, jotka sisältävät olioita. Osaa käyttää olioita metodin parametrina sekä luoda metodeja, jotka palauttavat olioita. Tuntee listarakenteen ja osaa lisätä ja poistaa listalla olevia alkioita. Tuntee käsitteen indeksi ja osaa käydä listan läpi while-toistolauseen avulla.
-    
-    Ymmärtää alkeis- ja viittaustyyppisten muuttujien erot. Osaa käsitellä olioita listarakenteessa sekä käyttää listaa oliomuuttujana. Ymmärtää automaattisen testaamisen periaatteet ja osaa luoda yksinkertaisen luokan toimintaa testaavia automaattisia testejä. 
+    Ymmärtää alkeis- ja viittaustyyppisten muuttujien erot. Osaa määritellä olioita, jotka sisältävät olioita. Osaa käyttää olioita metodin parametrina sekä luoda metodeja, jotka palauttavat olioita. Osaa käsitellä olioita listarakenteessa sekä käyttää listaa oliomuuttujana.
   </p>
 
 <% end %>
+
+<%= partial 'partials/quiz', locals: { id: '5a7e08e95b43a10004fb3879' } %>
+
+
+<% partial 'partials/material_heading' do %>
+  Alkeis- ja viittaustyyppiset muuttujat
+<% end %>
+
+<p>
+  Javan muuttujat voi jakaa alkeis- ja viittaustyyppisiin muuttujiin. Alkeistyyppisten muuttujien sisältämä tieto on tallennettu muuttujan arvoksi, kun taas viittaustyyppisten muuttujien arvona on viite muuttujaan liittyvään tietoon. Tarkastellaan näitä muuttujatyyppejä kahden esimerkin kautta.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  int arvo = 10;
+  System.out.println(arvo);  
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  10
+<% end %>
+
+<% partial 'partials/code_highlight' do %>
+  public Nimi {
+      private String nimi;
+
+      public Nimi(String nimi) {
+          this.nimi = nimi;
+      }
+
+  }
+<% end %>
+
+<% partial 'partials/code_highlight' do %>
+  Nimi leevi = new Nimi("Leevi");
+  System.out.println(leevi);
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  Nimi@4aa298b7
+<% end %>
+
+<p>
+  Ensimmäisessä esimerkissä luodaan alkeistyyppinen <code>int</code>-muuttuja, jonka arvoksi kopioidaan luku 10. Kun muuttuja annetaan System.out.println-metodille tulostettavaksi, tulostuu arvo 10. Toisessa esimerkissä taas luodaan viittaustyyppinen Nimi-muuttuja, jonka arvoksi kopioidaan Nimi-luokassa määritellyn konstruktorin kutsun palauttama viite olioon. Kun muuttuja tulostetaan, tulostuu merkkijono Nimi@4aa298b7. Mistä tässä oikein on kyse?
+</p>
+
+<p>
+  Metodikutsu System.out.println tulostaa muuttujan arvon. Alkeistyyppiset muuttujat sisältävät konkreettisen arvon, joka tulostuu tulostuskutsun yhteydessä. Myös viittaustyyppiset muuttujat sisältävät konkreettisen arvon, mutta viittaustyyppisten muuttujien arvo on viite paikkaan, missä olion tiedot ovat. Voidaan ajatella, että merkkijono <code>Nimi@4aa298b7</code> kertoo, että kyse on <code>Nimi</code>-tyyppisestä muuttujasta paikassa <code>4aa298b7</code>.
+</p>
+
+<p>
+  <em>
+    Viittaustyyppisten muuttujien tulostusmuotoa voi muokata. Viittaustyyppisen muuttujan tulostusmuodon määrittelee muuttujan rakenteen määrittelevään luokkaan määritelty metodi <code>toString</code>.
+  </em>
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public Nimi {
+      private String nimi;
+
+      public Nimi(String nimi) {
+          this.nimi = nimi;
+      }
+
+      public String toString() {
+          return this.nimi;
+      }
+  }
+<% end %>
+
+<% partial 'partials/code_highlight' do %>
+  Nimi leevi = new Nimi("Leevi");
+  System.out.println(leevi); // sama kuin System.out.println(leevi.toString());
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  Leevi
+<% end %>
+
+
+<p>
+  Tutustutaan näihin muuttujatyyppeihin tarkemmin.
+</p>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Alkeistyyppiset muuttujat
+<% end %>
+
+<p>
+  Java-ohjelmointikielessä on kahdeksan alkeistyyppistä muuttujaa. Nämä ovat <code>boolean</code> (totuusarvo), <code>byte</code> (8 bittiä sisältävä tavu), <code>char</code> (yhtä merkkiä kuvaava 16-bittiä sisältävä kirjainarvo), <code>short</code> (pientä lukua kuvaava 16 bittiä sisältävä arvo), <code>int</code> (keskikokoista lukua kuvaava 32 bittiä sisältävä arvo), <code>long</code> (isohkoa lukua kuvaava 64 bittiä sisältävä arvo), <code>float</code> (32-bittiä sisältävä liukuluku) ja <code>double</code> (64-bittiä sisältävä liukuluku).
+</p>
+
+<p>
+  Olemme käyttäneet näistä ensisijaisesti totuusarvomuuttujia (<code>boolean</code>), kokonaislukumuuttujia (<code>int</code>), ja liukulukumuuttujia (<code>double</code>).
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  boolean totuusarvo = false;
+  int kokonaisluku = 42;
+  double liukuluku = 4.2;
+
+  System.out.println(totuusarvo);
+  System.out.println(kokonaisluku);
+  System.out.println(liukuluku);
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  false
+  42
+  4.2
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Bitit ja binääriluvut' } do %>
+
+  <p>
+    Tietokoneen muisti on käytännössä taulukko, missä jokainen taulukon lokero sisältää joko luvun 0 tai 1. Näitä yksittäisiä lukuja kutsutaan biteiksi (lyhenne sanasta binary digit). Koneen käyttämät luvut kuvataan bittien avulla binäärilukuna: esimerkiksi <code>short</code>-tyyppinen muuttuja sisältää 16 bittiä ja <code>int</code>-tyyppinen muuttuja 32 bittiä.
+  </p>
+
+  <p>
+    Tarkastellaan miten binääriluvut toimivat. Alla on kuvattuna 8 bittiä pitkä alue tietokoneen muistista, missä jokainen bitin arvo on 0. 
+  </p>
+
+  <table border="1">
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+
+  <br/>
+  
+  <p>
+    Binäärilukukujen avulla jokainen luku voidaan esittää luvun 2 potensseina. Esimerkiksi yllä olevan kahdeksan bitin luvun arvo kymmenjärjestelmässä on: 0 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + ... + 0 * 2<sup>7</sup> = 0. Laskeminen aloitetaan tyypillisesti luvun oikeasta laidasta. Alla on kuvattuna toinen esimerkki.
+  </p>
+  
+  <table border="1">
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </table>
+
+  <br/>
+  
+  <p>
+    Yllä kuvattu binääriluku on kymmenjärjestelmässä: 1 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + 1 * 2<sup>2</sup> + 0 * 2<sup>3</sup> + ... + 0 * 2<sup>7</sup> = 5. 
+  </p>
+
+  <p>
+    Vastaavasti kymmenjärjestelmän luku 3 voidaan ilmaista binäärilukuna "11", ja esimerkiksi luku 256 binäärilukuna "100000000". Binäärilukujen avulla kuvataan lukujen lisäksi käytännössä kaikki tietokoneen tallentama tieto. Tähän teemaan tutustutaan tarkemmin kurssilla Tietokoneen toiminta (TKT-10005). 
+  </p>
+
+<% end %>
+
+<p>
+  Alkeistyyppisillä muuttujilla muuttujan esittely varaa muistipaikan, johon kopioidaan arvo. Alla olevassa esimerkissä luodaan kolme muuttujaa. Jokaisella muuttujalla on erillinen muistipaikka, johon asetettava arvo kopioidaan.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  int eka = 10;
+  int toka = eka;
+  int kolmas = toka;
+  System.out.println(eka + " " + toka + " " + kolmas);
+  toka = 5;
+  System.out.println(eka + " " + toka + " " + kolmas);
+<% end %>
+
+
+<% partial 'partials/code_highlight' do %>
+  10 10 10
+  10 5 10
+<% end %>
+
+
+<p>
+  Muuttujan arvon asetus yhtäsuuruusmerkillä aiheuttaa muuttujan arvon kopioimisen. Esimerkiksi lause <code>int eka = 10</code> luo int-tyyppisen muuttujan nimeltä eka, jonka arvoksi kopioidaan luku 10. Vastaavasti lause <code>int toka = eka;</code> luo int-tyyppisen muuttujan nimeltä toka, jonka arvoksi kopioidaan muuttujan eka arvo.
+</p>
+
+<p>
+  Muuttujien arvot kopioituvat myös metodikutsujen yhteydessä. Käytännössä tämä tarkoittaa sitä, että metodikutsun yhteydessä metodin parametriksi annetun muuttujan arvo ei muutu metodia kutsuvassa metodissa. Alla olevassa esimerkissä main-metodissa esitellään muuttuja luku, jonka arvo kopioidaan metodin kutsu parametriksi. Metodissa kutsu parametrina saatu arvo tulostetaan, jonka jälkeen arvoa kasvatetaan yhdellä, jonka jälkeen arvo tulostetaan vielä kerran. Lopulta metodin kutsu suoritus loppuu, ja palataan main-metodiin. Main-metodissa olevan luku-muuttujan arvo ei ole muuttunut, sillä se ei liity millään tavalla kutsu-metodin parametriksi määriteltyyn muuttujaan luku.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int luku = 1;\n        kutsu(luku);\n       \n        System.out.println(\"Luku vieläkin: \" + luku);\n    }\n   \n    public static void kutsu(int luku) {\n        System.out.println(\"Luku aluksi: \" + luku);\n        luku++;\n        System.out.println(\"Luku lopuksi: \" + luku);\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"kutsu:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"16","frame_id":16}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"kutsu:12","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"return","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"36","frame_id":36}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"return","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"37","frame_id":37}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Viittaustyyppiset muuttujat
+<% end %>
+
+<p>
+  Lähes kaikki Javan muuttujat ovat viittaustyyppisiä. Ohjelmoija voi myös luoda uusia viittaustyypin muuttujatyyppejä määrittelemällä uusia luokkia. Käytännössä jokainen (mistä tahansa) luokasta luotu olio on viittaustyyppinen muuttuja.
+</p>
+
+<p>
+  Tarkastellaan alussa ollutta esimerkkiä, missä luotiin Nimi-tyyppinen muuttuja leevi.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Nimi leevi = new Nimi("Leevi");
+<% end %>
+
+<p>
+  Kutsun osat ovat seuravat:
+</p>
+
+<ul>
+
+  <li>
+    Mitä tahansa uutta muuttujaa esiteltäessä tulee ensin kertoa esiteltävän muuttujan tyyppi. Alla esitellään muuttuja, jonka tyyppi on <code>Nimi</code>. Jotta ohjelman suorittaminen onnistuu, tulee käytössä olla luokka nimeltä <code>Nimi</code>.
+    
+    <% partial 'partials/code_highlight' do %>
+      <strong>Nimi</strong> leevi = new Nimi("Leevi");
+    <% end %>
+    
+  </li>
+
+  <li>
+
+    Muuttujan esittelyn yhteydessä kerrotaan myös muuttujan nimi. Muuttujan arvoon voi myöhemmin viitata muuttujan nimen perusteella. Alla muuttujan nimeksi on määritelty leevi.
+    
+    <% partial 'partials/code_highlight' do %>
+      Nimi <strong>leevi</strong> = new Nimi("Leevi");
+    <% end %>
+    
+  </li>
+
+  <li>
+
+    Muuttujaan halutaan asettaa arvo. Luokista luodaan olioita kutsumalla konstruktoria, joka määrittelee luotavan olion muuttujiin asetettavat arvot. Alla oletetaan, että luokassa <code>Nimi</code> on konstruktori, joka saa parametrikseen merkkijonon.
+    
+    <% partial 'partials/code_highlight' do %>
+      Nimi leevi = <strong>new Nimi("Leevi");</strong>
+    <% end %>
+    
+  </li>
+
+  <li>
+
+    Konstruktorikutsu palauttaa arvon, joka on viite luotuun olioon. Yhtäsuuruusmerkki kertoo ohjelmalle, että yhtäsuuruusmerkin oikealla puolella olevan lausekkeen arvo tulee kopioida yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi.
+    
+    <% partial 'partials/code_highlight' do %>
+      Nimi leevi <strong>=</strong> new Nimi("Leevi");
+    <% end %>
+
+  </li>
+</ul>
+
+<p>
+  On mahdollista, että Nimi-luokalle on määritelty metodeja, joiden avulla Nimi-luokasta tehtyjen olioiden sisäistä tilaa voidaan muuttaa.
+</p>
+
+<p>
+  Suurin ero alkeis- ja viittaustyyppisten muuttujien välillä on se, että alkeistyyppiset muuttujat (jotka ovat lähes poikkeuksetta numeroita) ovat muuttumattomia. Viittaustyyppisten muuttujien sisäistä tilaa taas voi tyypillisesti muuttaa. Tämä ilmiö liittyy siihen, että alkeistyyppisten muuttujien arvo on tallennettu suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo on viite muuttujan tietoihin eli sisäiseen tilaan.
+</p>
+
+<p>
+  Alkeistyyppisille muuttujille löytyy laskuoperaatioita kuten plus, miinus, kerto jne -- nämä operaatiot eivät muuta alkuperäisten muuttujien arvoja. Laskuoperaatioiden avulla voidaan luodaan uusia arvoja, jotka varastoidaan muuttujiin tarvittaessa. Toisaalta, viittaustyyppisten muuttujien arvoa ei voi muuttaa plus, miinus, kerto ym. laskuoperaatioiden avulla.
+</p>
+
+<p>
+  Viittaustyyppisen muuttujan arvo -- eli viite -- osoittaa paikkaan muistissa, mistä löytyy viittaustyyppiseen muuttujaan liittyvät tiedot. Oletetaan, että käytössä on luokka Henkilo, jossa on määritelty oliomuuttujaksi ika. Jos luokasta on luotu henkilöolio, voi henkilöolion viitettä seuraamalla päästä käsiksi muuttujaan ika, jonka arvoa voi tarvittaessa muuttaa. 
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujat ja tietokoneen muisti
+<% end %>
+
+<p>
+  Totesimme aiemmin, että alkeistyyppisten muuttujien arvo on tallennettuna suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo sisältää viitteen olioon. Totesimme myös, että muuttujan arvon asettaminen yhtäsuuruusmerkillä kopioi oikealla olevan (muuttujan) arvon vasemmalla olevan muuttujan arvoksi. Vastaava toiminnallisuus on myös metodikutsujen yhteydessä -- metodikutsun yhteydessä parametrina annettava arvo kopioidaan metodin käyttöön.
+</p>
+
+<p>
+  Tarkastellaan tätä käytännössä. Oletetaan, että käytössämme on seuraava luokka <code>Henkilo</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Henkilo {
+      private String nimi;
+      private int syntymavuosi;
+
+      public Henkilo(String nimi) {
+          this.nimi = nimi;
+          this.syntymavuosi = 1970;
+      }
+
+      public int getSyntymavuosi() {
+          return this.syntymavuosi;
+      }
+  
+      public void setSyntymavuosi(int syntymavuosi) {
+          this.syntymavuosi = syntymavuosi;
+      }
+
+      public String toString() {
+          return this.nimi + " (" + this.syntymavuosi + ")";
+      }
+  }
+<% end %>
+
+<p>
+  Tarkastellaan seuraavan ohjelman toimintaa askeleittain.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Esimerkki {
+      public static void main(String[] args) {
+          Henkilo eka = new Henkilo("Eka");
+  
+          System.out.println(eka);
+          nuorenna(eka);
+          System.out.println(eka);
+  
+          Henkilo toka = eka;
+          nuorenna(toka);
+  
+          System.out.println(eka);
+      }
+  
+      public static void nuorenna(Henkilo henkilo) {
+          henkilo.setSyntymavuosi(henkilo.getSyntymavuosi() + 1);
+      }
+  }
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Eka (1970)
+  Eka (1971)
+  Eka (1972)
+<% end %>
+
+<p>
+  Ohjelman suoritus alkaa main-metodin ensimmäiseltä riviltä. Main-metodin ensimmäisellä rivillä esitellään Henkilo-tyyppinen muuttuja eka, johon kopioidaan Henkilo-luokan konstruktorin palauttama arvo. Konstruktorissa luodaan olio, jonka syntymävuodeksi asetetaan 1970 ja jonka nimeksi asetetaan parametrina saatu arvo. Konstruktori palauttaa viitteen. Rivin suorituksen jälkeen ohjelman tilanne on seuraava -- ohjelman muistiin on luotu Henkilo-olio, johon on viittaus main-metodissa määritellystä eka-muuttujasta.
+</p>
+
+
+<img src="/img/drawings/eka-1.png"/>
+
+<p>
+  Main-metodin kolmannella rivillä tulostetaan muuttujan eka arvo. Metodikutsu System.out.println etsii sille parametrina annetulta viittaustyyppiseltä muuttujalta toString-metodia. Henkilo-luokalla on metodi toString, joten metodia kutsutaan eka-muuttujan osoittamalle oliolle. Oliossa olevan muuttujan nimi arvo on "Eka" ja syntymävuoden arvo on 1970. Tulostukseksi tulee "Eka (1970)".
+</p>
+
+<p>
+  Neljännellä rivillä kutsutaan nuorenna-metodia, jolle annetaan parametriksi muuttuja eka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin parametriksi. Koska muuttuja eka on viittaustyyppinen, kopioituu metodin käyttöön aiemmin luotu viite. Metodin suorituksen lopussa tilanne on seuraava -- metodi kasvattaa parametrina saamansa olion syntymävuotta yhdellä.
+</p>
+
+<img src="/img/drawings/eka-2.png"/>
+
+<p>
+  Kun metodin nuorenna suoritus loppuu, palataan takaisin main-metodiin. Nuorenna-metodin suoritukseen liittyvät tiedot katoavat kutsupinosta. 
+</p>
+
+<img src="/img/drawings/eka-3.png"/>
+
+<p>
+  Metodikutsusta palaamisen jälkeen suoritetaan taas muuttujan eka arvon tulostaminen. Tällä kertaa muuttujan eka osoittama olio on muuttunut hieman -- edellisen metodikutsun yhteydessä viitatun olion syntymäpäivä-muuttujaa kasvatettiin yhdellä. Tulostukseksi tulee lopulta "Eka (1971)".
+</p>
+
+<p>
+  Tämän jälkeen ohjelmassa esitellään uusi Henkilo-tyyppinen muuttuja toka. Muuttujaan toka kopioidaan muuttujan eka arvo, eli muuttujan toka arvoksi tulee viite jo olemassaolevaan Henkilo-olioon.
+</p>
+
+<img src="/img/drawings/eka-4.png"/>
+
+<p>
+  Tämän jälkeen kutsutaan metodia nuorenna, jolle annetaan parametriksi muuttuja toka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin arvoksi. Metodi saa siis käyttöönsä muuttujan toka sisältämän viitteen. Metodin suorituksen lopuksi metodin viittaaman olion syntymävuosi on kasvanut yhdellä.
+</p>
+
+<img src="/img/drawings/eka-5.png"/>
+
+<p>
+  Lopulta metodin suoritus päättyy, ja ohjelman suoritus palaa takaisin main-metodiin. Main-metodissa tulostetaan vielä kerran muuttujan eka arvo. Tulostukseksi tulee lopulta "Eka (1972)".
+</p>
+
+
+<%= partial 'partials/quiz', locals: { id: '59d2aa2945370b0004080777' } %>
+
+
+
+<%= partial 'partials/quiz', locals: { id: '59d2ab9045370b000408077b' } %>
+
 
 
 
@@ -27,55 +426,55 @@
 
 
 <p>
-  Oletetaan, että käytössämme on alla oleva luokka.
+  Jatketaan nyt olioiden ja viitteiden parissa. Oletetaan, että käytössämme on alla oleva luokka.
 </p>
 
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
 
-  private String nimi;
-  private int ika;
-  private int paino;
-  private int pituus;
+      private String nimi;
+      private int ika;
+      private int paino;
+      private int pituus;
 
-  public Henkilo(String nimi) {
-  this.nimi = nimi;
-  this.ika = 0;
-  this.paino = 0;
-  this.pituus = 0;
-  }
+      public Henkilo(String nimi) {
+          this.nimi = nimi;
+          this.ika = 0;
+          this.paino = 0;
+          this.pituus = 0;
+      }
 
-  // muita konstruktoreja ja metodeja
+      // muita konstruktoreja ja metodeja
   
-  public String getNimi() {
-  return this.nimi;
-  }
+      public String getNimi() {
+          return this.nimi;
+      }
   
-  public int getIka() {
-  return this.ika;
-  }
+      public int getIka() {
+          return this.ika;
+      }
   
-  public void vanhene() {
-  this.ika++;
-  }
+      public void vanhene() {
+          this.ika++;
+      }
   
-  public void setPituus(int uusiPituus) {
-  this.pituus = uusiPituus;
-  }
+      public void setPituus(int uusiPituus) {
+          this.pituus = uusiPituus;
+      }
   
-  public void setPaino(int uusiPaino) {
-  this.paino = uusiPaino;
-  }
+      public void setPaino(int uusiPaino) {
+          this.paino = uusiPaino;
+      }
   
-  public double painoIndeksi() {
-  double pituusPerSata = this.pituus / 100.0;
-  return this.paino / (pituusPerSata * pituusPerSata);
-  }
+      public double painoIndeksi() {
+          double pituusPerSata = this.pituus / 100.0;
+          return this.paino / (pituusPerSata * pituusPerSata);
+      }
   
-  @Override
-  public String toString() {
-  return this.nimi + ", ikä " + this.ika + " vuotta";
-  }
+      @Override
+      public String toString() {
+          return this.nimi + ", ikä " + this.ika + " vuotta";
+      }
   }
 <% end %>
 
@@ -146,7 +545,7 @@
 
 
 <p>
-  Joan Ball -- eli henkilöolio, johon viite muuttujassa <code>joan</code> osoittaa -- on alussa 0-vuotias. Tämän jälkeen muuttujaan <code>ball</code> asetetaan (eli <strong>kopioidaan</strong>) muuttujan <code>joan</code> arvo. Henkilöoliota <code>ball</code> vanhennetaan kaksi vuotta ja sen seurauksena Joan Ball vanhenee!
+  Joan Ball -- eli henkilöolio, johon viite muuttujassa <code>joan</code> osoittaa -- on alussa 0-vuotias. Tämän jälkeen muuttujaan <code>ball</code> asetetaan (eli kopioidaan) muuttujan <code>joan</code> arvo. Henkilöoliota <code>ball</code> vanhennetaan kaksi vuotta ja sen seurauksena Joan Ball vanhenee!
 </p>
 
 <p>
@@ -313,32 +712,32 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Paivays {
-  private int paiva;
-  private int kuukausi;
-  private int vuosi;
+      private int paiva;
+      private int kuukausi;
+      private int vuosi;
 
-  public Paivays(int paiva, int kuukausi, int vuosi) {
-  this.paiva = paiva;
-  this.kuukausi = kuukausi;
-  this.vuosi = vuosi;
-  }
+      public Paivays(int paiva, int kuukausi, int vuosi) {
+          this.paiva = paiva;
+          this.kuukausi = kuukausi;
+          this.vuosi = vuosi;
+      }
 
-  public int getPaiva() {
-  return this.paiva;
-  }
+      public int getPaiva() {
+          return this.paiva;
+      }
 
-  public int getKuukausi() {
-  return this.kuukausi;
-  }
+      public int getKuukausi() {
+          return this.kuukausi;
+      }
 
-  public int getVuosi() {
-  return this.vuosi;
-  }
+      public int getVuosi() {
+          return this.vuosi;
+      }
 
-  @Override
-  public String toString() {
-  return this.paiva + "." + this.kuukausi + "." + this.vuosi;
-  }
+      @Override
+      public String toString() {
+          return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+      }
   }
 <% end %>
 
@@ -348,10 +747,10 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
-  private String nimi;
-  private Paivays syntymaPaiva;
-  private int paino = 0;
-  private int pituus = 0;
+      private String nimi;
+      private Paivays syntymaPaiva;
+      private int paino = 0;
+      private int pituus = 0;
 
   // ...
 <% end %>
@@ -362,10 +761,10 @@
 
 <% partial 'partials/code_highlight' do %>
   public Henkilo(String nimi, int paiva, int kuukausi, int vuosi) {
-  this.nimi = nimi;
-  this.syntymaPaiva = new Paivays(paiva, kuukausi, vuosi);
-  this.paino = 0;
-  this.pituus = 0;
+      this.nimi = nimi;
+      this.syntymaPaiva = new Paivays(paiva, kuukausi, vuosi);
+      this.paino = 0;
+      this.pituus = 0;
   }
 <% end %>
 
@@ -380,7 +779,7 @@
 
 <% partial 'partials/code_highlight' do %>
   public String toString() {
-  return this.nimi + ", syntynyt " + this.syntymaPaiva;
+      return this.nimi + ", syntynyt " + this.syntymaPaiva;
   }
 <% end %>
 
@@ -430,15 +829,20 @@
 
 <% partial 'partials/code_highlight' do %>
   import java.time.LocalDate;
-  // ...
+
+  public class Esimerkki {
+
+      public static void main(String[] args) {
   
-  LocalDate nyt = LocalDate.now();
-  int vuosi = nyt.getYear();
-  int kuukausi = nyt.getMonthValue();
-  int paiva = nyt.getDayOfMonth();
+          LocalDate nyt = LocalDate.now();
+          int vuosi = nyt.getYear();
+          int kuukausi = nyt.getMonthValue();
+          int paiva = nyt.getDayOfMonth();
   
-  System.out.println("tänään on " + paiva + "." + kuukausi + "." + vuosi);
-  // ...
+          System.out.println("tänään on " + paiva + "." + kuukausi + "." + vuosi);
+
+      }
+  }
 <% end %>
 
 
@@ -460,89 +864,14 @@
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Kellosta olio' } do %>
-
-  <p>
-    Teimme aiemmin luokan <code>YlhaaltaRajoitettuLaskuri</code> ja rakennettiin laskurien avulla pääohjelmaan kello. Tehdään tässä tehtävässä kellostakin oma olio -- kello sisältää kolme viisaria, jotka jokainen esitetään ylhäältä rajoitetun laskurin avulla. Luokan kello runko näyttää seuraavalta:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Kello {
-    private YlhaaltaRajoitettuLaskuri tunnit;
-    private YlhaaltaRajoitettuLaskuri minuutit;
-    private YlhaaltaRajoitettuLaskuri sekunnit;
-
-    public Kello(int tunnitAlussa, int minuutitAlussa, int sekunnitAlussa) {
-    // laskurit tunneille, minuuteille ja sekunneille;
-    // laskurien arvot tulee asettaa parametreina saatuun aikaan
-    }
-
-    public void etene() {
-    // kello etenee sekunnilla
-    }
-
-    public String toString() {
-    // palauttaa kellon merkkijonoesityksen
-    }
-    }
-  <% end %>
-
-  <p>
-    Luokkaan YlhaaltaRajoitettuLaskuri on kopioitu eräs ratkaisu viime osan tehtävään. Toteuta luokan <code>Kello</code> konstruktori ja puuttuvat metodit kolmea ylhäältä rajoitettua laskuria hyödyntäen.
-  </p>
-
-  <p>
-    Voit testata kelloasi seuraavalla pääohjelmalla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Main {
-    public static void main(String[] args) {
-    Kello kello = new Kello(23, 59, 50);
-
-    int i = 0;
-    while (i &lt; 20) {
-    System.out.println(kello);
-    kello.etene();
-    i++;
-    }
-    }
-    }
-  <% end %>
-
-  <p>
-    Tulostuksen tulisi edetä seuraavasti:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    23:59:50
-    23:59:51
-    23:59:52
-    23:59:53
-    23:59:54
-    23:59:55
-    23:59:56
-    23:59:57
-    23:59:58
-    23:59:59
-    00:00:00
-    00:00:01
-    ...
-  <% end %>
-
-<% end %>
-
-
-
-
-<% partial 'partials/hint', locals: { name: 'Algoritmi -- al-Khwarizmi' } do %>
+<% partial 'partials/hint', locals: { name: 'Mikä ihmeen al-Khwarizmi -- tai algoritmi?' } do %>
 
   <p>
     Ensimmäiset korkeakulttuurit syntyivät (laajemman) lähi-idän alueelle, mikä nopeutti siellä myös henkistä kasvua. Lähi-idässä oltiin merkittävästi muuta maailmaa edellä muunmuassa matematiikassa ja tähtitieteessä -- esimerkiksi Euroopassa 1500-luvulla tapahtunut murros tähtitieteessä (maa kiertääkin aurinkoa eikä toisin päin), tapahtui laajemman lähi-idän vaikutuspiirissä olleessa kreikassa jo noin 300 vuotta ennen ajanlaskumme alkua.
   </p>
 
   <p>
-    Nimi al-Khwarizmi viittaa oikeastaan alueeseen, tai hieman laajemmin, etuosa al- viittaa usein henkilön synty- tai kotipaikkaan. <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank" rel="noopener">Muhammad ibn Musa al-Khwarizmi</a> -- tai hänen isänsä tai esi-isänsä -- tulivat keskiaasiasta alueelta, joka tunnetaan nykyään suomen kielessä nimellä Harezm. Nykyään käytetty termi algoritmi on siis sekä hatunnosto Muhammad ibn Musa al-Khwarizmille, että laajemmin hänen syntyperälleen.
+    Nimi al-Khwarizmi viittaa oikeastaan alueeseen, tai hieman laajemmin, etuosa al- viittaa usein henkilön synty- tai kotipaikkaan. <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank" rel="noopener">Muhammad ibn Musa al-Khwarizmi</a> -- tai hänen isänsä tai esi-isänsä -- tulivat keskiaasiasta alueelta, joka tunnetaan nykyään suomen kielessä nimellä Harezm. Nykyään käytetty termi <strong>algoritmi</strong> onkin hatunnosto sekä Muhammad ibn Musa al-Khwarizmille että hänen syntyperälleen.
   </p>
 
   <p>
@@ -577,11 +906,11 @@
 
 <% partial 'partials/code_highlight' do %>
   public class PainonvartijaYhdistys {
-  private double alinPainoindeksi;
+      private double alinPainoindeksi;
 
-  public PainonvartijaYhdistys(double indeksiRaja) {
-  this.alinPainoindeksi = indeksiRaja;
-  }
+      public PainonvartijaYhdistys(double indeksiRaja) {
+          this.alinPainoindeksi = indeksiRaja;
+      }
   }
 <% end %>
 
@@ -591,19 +920,19 @@
 
 <% partial 'partials/code_highlight' do %>
   public class PainonvartijaYhdistys {
-  private double alinPainoindeksi;
+      private double alinPainoindeksi;
 
-  public PainonvartijaYhdistys(double indeksiRaja) {
-  this.alinPainoindeksi = indeksiRaja;
-  }
+      public PainonvartijaYhdistys(double indeksiRaja) {
+          this.alinPainoindeksi = indeksiRaja;
+      }
 
-  public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
-  if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
-  return false;
-  }
+      public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
+          if (henkilo.painoIndeksi() &lt; this.alinPainoindeksi) {
+              return false;
+          }
 
-  return true;
-  }
+          return true;
+      }
   }
 <% end %>
 
@@ -627,15 +956,15 @@
   PainonvartijaYhdistys kumpulanPaino = new PainonvartijaYhdistys(25);
 
   if (kumpulanPaino.hyvaksytaanJaseneksi(matti)) {
-  System.out.println(matti.getNimi() + " pääsee jäseneksi");
+      System.out.println(matti.getNimi() + " pääsee jäseneksi");
   } else {
-  System.out.println(matti.getNimi() + " ei pääse jäseneksi");
+      System.out.println(matti.getNimi() + " ei pääse jäseneksi");
   }
 
   if (kumpulanPaino.hyvaksytaanJaseneksi(juhana)) {
-  System.out.println(juhana.getNimi() + " pääsee jäseneksi");
+      System.out.println(juhana.getNimi() + " pääsee jäseneksi");
   } else {
-  System.out.println(juhana.getNimi() + " ei pääse jäseneksi");
+      System.out.println(juhana.getNimi() + " ei pääse jäseneksi");
   }
 <% end %>
 
@@ -645,7 +974,6 @@
   Matti pääsee jäseneksi
   Juhana ei pääse jäseneksi
 <% end %>
-
 
 
 
@@ -677,6 +1005,7 @@
     Tehtäväpohjassasi on valmiina jo tutuksi tullut luokka <code>Henkilo</code> sekä runko luokalle <code>Kasvatuslaitos</code>. Kasvatuslaitosoliot käsittelevät ihmisiä eri tavalla, esim. punnitsevat ja syöttävät ihmisiä. Rakennamme tässä tehtävässä kasvatuslaitoksen. Luokan Henkilö koodiin ei tehtävässä ole tarkoitus koskea!
   </p>
 
+
   <h2>Henkilöiden punnitseminen</h2>
 
   <p>
@@ -686,10 +1015,10 @@
   <% partial 'partials/code_highlight' do %>
     public class Kasvatuslaitos {
 
-    public int punnitse(Henkilo henkilo) {
-    // palautetaan parametrina annetun henkilön paino
-    return -1;
-    }
+        public int punnitse(Henkilo henkilo) {
+            // palautetaan parametrina annetun henkilön paino
+            return -1;
+        }
     }
   <% end %>
 
@@ -703,15 +1032,15 @@
 
   <% partial 'partials/code_highlight' do %>
     public static void main(String[] args) {
-    // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
+        // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
 
-    Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
+        Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
 
-    Henkilo eero = new Henkilo("Eero", 1, 110, 7);
-    Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
+        Henkilo eero = new Henkilo("Eero", 1, 110, 7);
+        Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
 
-    System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
-    System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
+        System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
+        System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
     }
   <% end %>
 
@@ -736,22 +1065,22 @@
 
   <% partial 'partials/code_highlight' do %>
     public static void main(String[] args) {
-    Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
+        Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
 
-    Henkilo eero = new Henkilo("Eero", 1, 110, 7);
-    Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
+        Henkilo eero = new Henkilo("Eero", 1, 110, 7);
+        Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
 
-    System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
-    System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
+        System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
+        System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
 
-    haaganNeuvola.syota(eero);
-    haaganNeuvola.syota(eero);
-    haaganNeuvola.syota(eero);
+        haaganNeuvola.syota(eero);
+        haaganNeuvola.syota(eero);
+        haaganNeuvola.syota(eero);
 
-    System.out.println("");
+        System.out.println("");
 
-    System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
-    System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
+        System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
+        System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
     }
   <% end %>
 
@@ -775,26 +1104,26 @@
 
   <% partial 'partials/code_highlight' do %>
     public static void main(String[] args) {
-    // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
+        // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
 
-    Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
+        Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
 
-    Henkilo eero = new Henkilo("Eero", 1, 110, 7);
-    Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
+        Henkilo eero = new Henkilo("Eero", 1, 110, 7);
+        Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
 
-    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
+        System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 
-    haaganNeuvola.punnitse(eero);
-    haaganNeuvola.punnitse(pekka);
+        haaganNeuvola.punnitse(eero);
+        haaganNeuvola.punnitse(pekka);
 
-    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
+        System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
 
-    haaganNeuvola.punnitse(eero);
-    haaganNeuvola.punnitse(eero);
-    haaganNeuvola.punnitse(eero);
-    haaganNeuvola.punnitse(eero);
+        haaganNeuvola.punnitse(eero);
+        haaganNeuvola.punnitse(eero);
+        haaganNeuvola.punnitse(eero);
+        haaganNeuvola.punnitse(eero);
 
-    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
+        System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
     }
   <% end %>
 
@@ -816,11 +1145,11 @@
   <h2>"Tyhmä" Maksukortti</h2>
 
   <p>
-    Teimme viime viikolla luokan Maksukortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.
+    Teimme edellisessä osassa luokan Maksukortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.
   </p>
 
   <p>
-    Viime viikon tyylillä tehdyssä Maksukortti-luokassa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla.
+    Edellisen osan tyylillä tehdyssä Maksukortti-luokassa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla.
   </p>
 
   <p>
@@ -833,24 +1162,24 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Maksukortti {
-    private double saldo;
+        private double saldo;
 
-    public Maksukortti(double saldo) {
-    this.saldo = saldo;
-    }
+        public Maksukortti(double saldo) {
+            this.saldo = saldo;
+        }
 
-    public double saldo() {
-    return this.saldo;
-    }
+        public double saldo() {
+            return this.saldo;
+        }
 
-    public void lataaRahaa(double lisays) {
-    this.saldo += lisays;
-    }
+        public void lataaRahaa(double lisays) {
+            this.saldo += lisays;
+        }
 
-    public boolean otaRahaa(double maara) {
-    // toteuta metodi siten että se ottaa kortilta rahaa vain jos saldo on vähintään maara
-    // onnistuessaan metodi palauttaa true ja muuten false
-    }
+        public boolean otaRahaa(double maara) {
+            // toteuta metodi siten että se ottaa kortilta rahaa vain jos saldo on vähintään maara
+            // onnistuessaan metodi palauttaa true ja muuten false
+        }
     }
   <% end %>
 
@@ -860,18 +1189,18 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Paaohjelma {
-    public static void main(String[] args) {
-    Maksukortti pekanKortti = new Maksukortti(10);
+        public static void main(String[] args) {
+            Maksukortti pekanKortti = new Maksukortti(10);
 
-    System.out.println("rahaa " + pekanKortti.saldo());
-    boolean onnistuiko = pekanKortti.otaRahaa(8);
-    System.out.println("onnistuiko otto: " + onnistuiko);
-    System.out.println("rahaa " + pekanKortti.saldo());
+            System.out.println("rahaa " + pekanKortti.saldo());
+            boolean onnistuiko = pekanKortti.otaRahaa(8);
+            System.out.println("onnistuiko otto: " + onnistuiko);
+            System.out.println("rahaa " + pekanKortti.saldo());
 
-    onnistuiko = pekanKortti.otaRahaa(4);
-    System.out.println("onnistuiko otto: " + onnistuiko);
-    System.out.println("rahaa " + pekanKortti.saldo());
-    }
+            onnistuiko = pekanKortti.otaRahaa(4);
+            System.out.println("onnistuiko otto: " + onnistuiko);
+            System.out.println("rahaa " + pekanKortti.saldo());
+        }
     }
   <% end %>
 
@@ -900,29 +1229,29 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Kassapaate {
-    private double rahaa;  // kassassa olevan käteisen määrä
-    private int edulliset; // myytyjen edullisten lounaiden määrä
-    private int maukkaat;  // myytyjen maukkaiden lounaiden määrä
+        private double rahaa;  // kassassa olevan käteisen määrä
+        private int edulliset; // myytyjen edullisten lounaiden määrä
+        private int maukkaat;  // myytyjen maukkaiden lounaiden määrä
 
-    public Kassapaate() {
-    // kassassa on aluksi 1000 euroa rahaa
-    }
+        public Kassapaate() {
+            // kassassa on aluksi 1000 euroa rahaa
+        }
 
-    public double syoEdullisesti(double maksu) {
-    // edullinen lounas maksaa 2.50 euroa.
-    // kasvatetaan kassan rahamäärää edullisen lounaan hinnalla ja palautetaan vaihtorahat
-    // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
-    }
+        public double syoEdullisesti(double maksu) {
+            // edullinen lounas maksaa 2.50 euroa.
+            // kasvatetaan kassan rahamäärää edullisen lounaan hinnalla ja palautetaan vaihtorahat
+            // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
+        }
 
-    public double syoMaukkaasti(double maksu) {
-    // maukas lounas maksaa 4.30 euroa.
-    // kasvatetaan kassan rahamäärää maukkaan lounaan hinnalla ja palautetaan vaihtorahat
-    // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
-    }
+        public double syoMaukkaasti(double maksu) {
+            // maukas lounas maksaa 4.30 euroa.
+            // kasvatetaan kassan rahamäärää maukkaan lounaan hinnalla ja palautetaan vaihtorahat
+            // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
+        }
 
-    public String toString() {
-    return "kassassa rahaa " + rahaa + " edullisia lounaita myyty " + edulliset + " maukkaita lounaita myyty " + maukkaat;
-    }
+        public String toString() {
+            return "kassassa rahaa " + rahaa + " edullisia lounaita myyty " + edulliset + " maukkaita lounaita myyty " + maukkaat;
+        }
     }
   <% end %>
 
@@ -932,20 +1261,20 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Paaohjelma {
-    public static void main(String[] args) {
-    Kassapaate unicafeExactum = new Kassapaate();
+        public static void main(String[] args) {
+            Kassapaate unicafeExactum = new Kassapaate();
 
-    double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
-    System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+            double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
+            System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
-    vaihtorahaa = unicafeExactum.syoEdullisesti(5);
-    System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+            vaihtorahaa = unicafeExactum.syoEdullisesti(5);
+            System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
-    vaihtorahaa = unicafeExactum.syoMaukkaasti(4.3);
-    System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+            vaihtorahaa = unicafeExactum.syoMaukkaasti(4.3);
+            System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
-    System.out.println(unicafeExactum);
-    }
+            System.out.println(unicafeExactum);
+        }
     }
   <% end %>
 
@@ -965,21 +1294,21 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Kassapaate {
-    // ...
+        // ...
 
-    public boolean syoEdullisesti(Maksukortti kortti) {
-    // edullinen lounas maksaa 2.50 euroa.
-    // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
-    // muuten palautetaan false
-    }
+        public boolean syoEdullisesti(Maksukortti kortti) {
+            // edullinen lounas maksaa 2.50 euroa.
+            // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
+            // muuten palautetaan false
+        }
 
-    public boolean syoMaukkaasti(Maksukortti kortti) {
-    // maukas lounas maksaa 4.30 euroa.
-    // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
-    // muuten palautetaan false
-    }
+        public boolean syoMaukkaasti(Maksukortti kortti) {
+            // maukas lounas maksaa 4.30 euroa.
+            // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
+            // muuten palautetaan false
+        }
 
-    // ...
+        // ...
     }
   <% end %>
 
@@ -993,23 +1322,23 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Paaohjelma {
-    public static void main(String[] args) {
-    Kassapaate unicafeExactum = new Kassapaate();
+        public static void main(String[] args) {
+            Kassapaate unicafeExactum = new Kassapaate();
 
-    double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
-    System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+            double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
+            System.out.println("vaihtorahaa jäi " + vaihtorahaa);
 
-    Maksukortti antinKortti = new Maksukortti(7);
+            Maksukortti antinKortti = new Maksukortti(7);
 
-    boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
-    System.out.println("riittikö raha: " + onnistuiko);
-    onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
-    System.out.println("riittikö raha: " + onnistuiko);
-    onnistuiko = unicafeExactum.syoEdullisesti(antinKortti);
-    System.out.println("riittikö raha: " + onnistuiko);
+            boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+            System.out.println("riittikö raha: " + onnistuiko);
+            onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+            System.out.println("riittikö raha: " + onnistuiko);
+            onnistuiko = unicafeExactum.syoEdullisesti(antinKortti);
+            System.out.println("riittikö raha: " + onnistuiko);
 
-    System.out.println(unicafeExactum);
-    }
+            System.out.println(unicafeExactum);
+        }
     }
   <% end %>
 
@@ -1030,7 +1359,7 @@
 
   <% partial 'partials/code_highlight' do %>
     public void lataaRahaaKortille(Maksukortti kortti, double summa) {
-    // ...
+        // ...
     }
   <% end %>
 
@@ -1040,26 +1369,26 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Paaohjelma {
-    public static void main(String[] args) {
-    Kassapaate unicafeExactum = new Kassapaate();
-    System.out.println(unicafeExactum);
+        public static void main(String[] args) {
+            Kassapaate unicafeExactum = new Kassapaate();
+            System.out.println(unicafeExactum);
 
-    Maksukortti antinKortti = new Maksukortti(2);
+            Maksukortti antinKortti = new Maksukortti(2);
 
-    System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
+            System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
 
-    boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
-    System.out.println("riittikö raha: " + onnistuiko);
+            boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+            System.out.println("riittikö raha: " + onnistuiko);
 
-    unicafeExactum.lataaRahaaKortille(antinKortti, 100);
+            unicafeExactum.lataaRahaaKortille(antinKortti, 100);
 
-    onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
-    System.out.println("riittikö raha: " + onnistuiko);
+            onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+            System.out.println("riittikö raha: " + onnistuiko);
 
-    System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
-
-    System.out.println(unicafeExactum);
-    }
+            System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
+ 
+            System.out.println(unicafeExactum);
+        }
     }
   <% end %>
 
@@ -1086,18 +1415,18 @@
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
 
-  private String nimi;
-  private Paivays syntymaPaiva;
-  private int pituus;
-  private int paino;
+      private String nimi;
+      private Paivays syntymaPaiva;
+      private int pituus;
+      private int paino;
 
-  // ...
+      // ...
   }
 <% end %>
 
 
 <p>
-  Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Voisimme käyttää esimerkiksi aiemmassa tehtävässä toteutettua metodia <code>ikaVuosina()</code>, jolloin kahden henkilön iän vertailu tapauhtuisi tällöin seuraavasti:
+  Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Voisimme esimerkiksi toteuttaa Henkilo-luokkaan metodin <code>public int ikaVuosina()</code>, jolloin kahden henkilön iän vertailu tapauhtuisi tällöin seuraavasti:
 </p>
 
 
@@ -1106,12 +1435,12 @@
   Henkilo pascal = new Henkilo("Blaise Pascal", 19, 6, 1623);
 
   if (muhammad.ikaVuosina() &gt; pascal.ikaVuosina()) {
-  System.out.println(muhammad.getNimi() + " on vanhempi kuin " + pascal.getNimi());
+      System.out.println(muhammad.getNimi() + " on vanhempi kuin " + pascal.getNimi());
   }
 <% end %>
 
 <p>
-  Harjoittelemme nyt hieman "oliohenkisemmän" tavan kahden henkilön ikävertailun tekemiseen.
+  Harjoittelemme tässä kuitenkin hieman "oliohenkisemmän" tavan kahden henkilön ikävertailun tekemiseen.
 </p>
 
 <p>
@@ -1127,9 +1456,9 @@
   Henkilo pascal = new Henkilo("Blaise Pascal", 19, 6, 1623);
 
   if (muhammad.vanhempiKuin(pascal)) {  //  sama kun muhammad.vanhempiKuin(pascal)==true
-  System.out.println(muhammad.getNimi() + " on vanhempi kuin " + pascal.getNimi());
+      System.out.println(muhammad.getNimi() + " on vanhempi kuin " + pascal.getNimi());
   } else {
-  System.out.println(muhammad.getNimi() + " ei ole vanhempi kuin " + pascal.getNimi());
+      System.out.println(muhammad.getNimi() + " ei ole vanhempi kuin " + pascal.getNimi());
   }
 <% end %>
 
@@ -1138,7 +1467,7 @@
 </p>
 
 <p>
-  Käytännössä yllä kutsutaan "Muhammad ibn Musa al-Khwarizmia" vastaavan olion, johon muuttuja <code>muhammad</code> viittaa, metodia <code>vanhempiKuin</code>, jolle annetaan parametriksi "Blaise Pascal" vastaavan olion viite <code>pascal</code>.
+  Käytännössä yllä kutsutaan "Muhammad ibn Musa al-Khwarizmia" vastaavan olion, johon muuttuja <code>muhammad</code> viittaa, metodia <code>vanhempiKuin</code>. Metodille annetaan parametriksi "Blaise Pascal" vastaavan olion viite <code>pascal</code>.
 </p>
 
 <p>
@@ -1159,28 +1488,29 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
-  // ...
+      // ...
 
-  public boolean vanhempiKuin(Henkilo verrattava) {
-  // toteutus
-  if (this.getSyntymaPaiva().getVuosi() &lt; verrattava.getSyntymaPaiva().getVuosi()) {
-  return true;
-  }
+      public boolean vanhempiKuin(Henkilo verrattava) {
+          // toteutus
+          if (this.getSyntymaPaiva().getVuosi() &lt; verrattava.getSyntymaPaiva().getVuosi()) {
+              return true;
+          }
 
-  if (this.getSyntymaPaiva().getVuosi() == verrattava.getSyntymaPaiva().getVuosi()
-  && this.getSyntymaPaiva().getKuukausi() &lt; verrattava.getSyntymaPaiva().getKuukausi()) {
-  return true;
-  }
+          if (this.getSyntymaPaiva().getVuosi() == verrattava.getSyntymaPaiva().getVuosi()
+              && this.getSyntymaPaiva().getKuukausi() &lt; verrattava.getSyntymaPaiva().getKuukausi()) {
+              return true;
+          }
 
-  if (this.getSyntymaPaiva().getVuosi() == verrattava.getSyntymaPaiva().getVuosi()
-  && this.getSyntymaPaiva().getKuukausi() == verrattava.getSyntymaPaiva().getKuukausi()
-  && this.getSyntymaPaiva().getPaiva() &lt; verrattava.getSyntymaPaiva().getPaiva()) {
-  return true;
-  }
+          if (this.getSyntymaPaiva().getVuosi() == verrattava.getSyntymaPaiva().getVuosi()
+              && this.getSyntymaPaiva().getKuukausi() == verrattava.getSyntymaPaiva().getKuukausi()
+              && this.getSyntymaPaiva().getPaiva() &lt; verrattava.getSyntymaPaiva().getPaiva()) {
+              return true;
+          }
 
-  return false;
+          return false;
+      }
   }
-  }<% end %>
+<% end %>
 
 
 <p>
@@ -1193,41 +1523,41 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Paivays {
-  private int paiva;
-  private int kuukausi;
-  private int vuosi;
+      private int paiva;
+      private int kuukausi;
+      private int vuosi;
 
-  public Paivays(int paiva, int kuukausi, int vuosi) {
-  this.paiva = paiva;
-  this.kuukausi = kuukausi;
-  this.vuosi = vuosi;
-  }
+      public Paivays(int paiva, int kuukausi, int vuosi) {
+          this.paiva = paiva;
+          this.kuukausi = kuukausi;
+          this.vuosi = vuosi;
+      }
 
-  public String toString() {
-  return this.paiva + "." + this.kuukausi + "." + this.vuosi;
-  }
+      public String toString() {
+          return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+      }
 
-  // metodilla tarkistetaan onko tämä päiväysolio (<code>this</code>) ennen
-  // parametrina annettavaa päiväysoliota (<code>verrattava</code>)
-  public boolean aiemmin(Paivays verrattava) {
-  // ensin verrataan vuosia
-  if (this.vuosi &lt; verrattava.vuosi) {
-  return true;
-  }
+      // metodilla tarkistetaan onko tämä päiväysolio (<code>this</code>) ennen
+      // parametrina annettavaa päiväysoliota (<code>verrattava</code>)
+      public boolean aiemmin(Paivays verrattava) {
+          // ensin verrataan vuosia
+          if (this.vuosi &lt; verrattava.vuosi) {
+              return true;
+          }
 
-  // jos vuodet ovat samat, verrataan kuukausia
-  if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
-  return true;
-  }
+          // jos vuodet ovat samat, verrataan kuukausia
+          if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
+              return true;
+          }
 
-  // vuodet ja kuukaudet samoja, verrataan päivää
-  if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
-  this.paiva &lt; verrattava.paiva) {
-  return true;
-  }
+          // vuodet ja kuukaudet samoja, verrataan päivää
+          if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
+              this.paiva &lt; verrattava.paiva) {
+              return true;
+          }
 
-  return false;
-  }
+          return false;
+      }
   }
 <% end %>
 
@@ -1241,19 +1571,19 @@
 
 <% partial 'partials/code_highlight' do %>
   public static void main(String[] args) {
-  Paivays p1 = new Paivays(14, 2, 2011);
-  Paivays p2 = new Paivays(21, 2, 2011);
-  Paivays p3 = new Paivays(1, 3, 2011);
-  Paivays p4 = new Paivays(31, 12, 2010);
+      Paivays p1 = new Paivays(14, 2, 2011);
+      Paivays p2 = new Paivays(21, 2, 2011);
+      Paivays p3 = new Paivays(1, 3, 2011);
+      Paivays p4 = new Paivays(31, 12, 2010);
 
-  System.out.println(p1 + " aiemmin kuin " + p2 + ": " + p1.aiemmin(p2));
-  System.out.println(p2 + " aiemmin kuin " + p1 + ": " + p2.aiemmin(p1));
+      System.out.println(p1 + " aiemmin kuin " + p2 + ": " + p1.aiemmin(p2));
+      System.out.println(p2 + " aiemmin kuin " + p1 + ": " + p2.aiemmin(p1));
 
-  System.out.println(p2 + " aiemmin kuin " + p3 + ": " + p2.aiemmin(p3));
-  System.out.println(p3 + " aiemmin kuin " + p2 + ": " + p3.aiemmin(p2));
+      System.out.println(p2 + " aiemmin kuin " + p3 + ": " + p2.aiemmin(p3));
+      System.out.println(p3 + " aiemmin kuin " + p2 + ": " + p3.aiemmin(p2));
 
-  System.out.println(p4 + " aiemmin kuin " + p1 + ": " + p4.aiemmin(p1));
-  System.out.println(p1 + " aiemmin kuin " + p4 + ": " + p1.aiemmin(p4));
+      System.out.println(p4 + " aiemmin kuin " + p1 + ": " + p4.aiemmin(p1));
+      System.out.println(p1 + " aiemmin kuin " + p4 + ": " + p1.aiemmin(p4));
   }
 <% end %>
 
@@ -1272,15 +1602,18 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
-  // ...
+      // ...
 
-  public boolean vanhempiKuin(Henkilo verrattava) {
-  if (this.syntymaPaiva.aiemmin(verrattava.getSyntymaPaiva())) {
-  return true;
-  }
+      public boolean vanhempiKuin(Henkilo verrattava) {
+          if (this.syntymaPaiva.aiemmin(verrattava.getSyntymaPaiva())) {
+              return true;
+          }
 
-  return false;
-  }
+          return false;
+
+          // tai suoraan:
+          // return this.syntymaPaiva.aiemmin(verrattava.getSyntymaPaiva());
+      }
   }
 <% end %>
 
@@ -1291,20 +1624,20 @@
 <% partial 'partials/exercise', locals: { name: 'Asuntovertailu (3 osaa)' } do %>
 
   <p>
-    Asuntovälitystoimiston tietojärjestelmässä myynnissä olevaa asuntoa kuvataan seuraavan luokan olioilla:
+    Asuntovälitystoimiston tietojärjestelmässä kuvataan myynnissä olevaa asuntoa seuraavasta luokasta tehdyillä olioilla:
   </p>
 
   <% partial 'partials/code_highlight' do %>
     public class Asunto {
-    private int huoneita;
-    private int nelioita;
-    private int neliohinta;
+        private int huoneita;
+        private int nelioita;
+        private int neliohinta;
 
-    public Asunto(int huoneita, int nelioita, int neliohinta) {
-    this.huoneita = huoneita;
-    this.nelioita = nelioita;
-    this.neliohinta = neliohinta;
-    }
+        public Asunto(int huoneita, int nelioita, int neliohinta) {
+            this.huoneita = huoneita;
+            this.nelioita = nelioita;
+            this.neliohinta = neliohinta;
+        }
     }
   <% end %>
 
@@ -1388,14 +1721,14 @@
   String toka = lukija.nextLine();
 
   if (eka.equals(toka)) {
-  System.out.println("Sanat olivat samat.");
+      System.out.println("Sanat olivat samat.");
   } else {
-  System.out.println("Sanat eivät olleet samat.");
+      System.out.println("Sanat eivät olleet samat.");
   }
 <% end %>
 
 <p>
-  Alkeistyyppisten muuttujien kuten <code>int</code> kanssa muuttujien vertailu on mahdollista kahden yhtäsuuruusmerkin avulla. Tämä johtuu siitä, että alkeistyyppisten muuttujien arvo sijaitsee "muuttujan lokerossa". Viittaustyyppisten muuttujien arvo on taas osoite viitattavaan olioon, eli viittaustyyppisten muuttujien "lokerossa" on viite muistipaikkaan. Kahden yhtäsuuruusmerkin avulla verrataan "muuttujan lokeron" sisällön yhtäsuuruutta -- viittaustyyppisillä muuttujilla vertailu tarkastelisi siis muuttujien osoitteita.
+  Alkeistyyppisten muuttujien kuten <code>int</code> kanssa muuttujien vertailu on mahdollista kahden yhtäsuuruusmerkin avulla. Tämä johtuu siitä, että alkeistyyppisten muuttujien arvo sijaitsee "muuttujan lokerossa". Viittaustyyppisten muuttujien arvo on taas osoite viitattavaan olioon, eli viittaustyyppisten muuttujien "lokerossa" on viite muistipaikkaan. Kahden yhtäsuuruusmerkin avulla verrataan "muuttujan lokeron" sisällön yhtäsuuruutta -- viittaustyyppisillä muuttujilla vertailu tarkastelisi siis muuttujien osoitteiden yhtäsuuruutta.
 </p>
 
 <p>
@@ -1410,57 +1743,57 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Paivays {
-  private int paiva;
-  private int kuukausi;
-  private int vuosi;
+      private int paiva;
+      private int kuukausi;
+      private int vuosi;
 
-  public Paivays(int paiva, int kuukausi, int vuosi) {
-  this.paiva = paiva;
-  this.kuukausi = kuukausi;
-  this.vuosi = vuosi;
-  }
+      public Paivays(int paiva, int kuukausi, int vuosi) {
+          this.paiva = paiva;
+          this.kuukausi = kuukausi;
+          this.vuosi = vuosi;
+      }
 
-  public int getPaiva() {
-  return this.paiva;
-  }
+      public int getPaiva() {
+          return this.paiva;
+      }
 
-  public int getKuukausi() {
-  return this.kuukausi;
-  }
+      public int getKuukausi() {
+          return this.kuukausi;
+      }
 
-  public int getVuosi() {
-  return this.vuosi;
-  }
+      public int getVuosi() {
+          return this.vuosi;
+      }
 
-  public boolean equals(Object verrattava) {
-  // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
-  if (this == verrattava) {
-  return true;
-  }
+      public boolean equals(Object verrattava) {
+          // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
+          if (this == verrattava) {
+              return true;
+          }
 
-  // jos verrattava olio ei ole Paivays-tyyppinen, oliot eivät ole samat
-  if (!(verrattava instanceof Paivays)) {
-  return false;
-  }
+          // jos verrattava olio ei ole Paivays-tyyppinen, oliot eivät ole samat
+          if (!(verrattava instanceof Paivays)) {
+              return false;
+          }
 
-  // muunnetaan oli Paivays-olioksi
-  Paivays verrattavaPaivays = (Paivays) verrattava;
+          // muunnetaan oli Paivays-olioksi
+          Paivays verrattavaPaivays = (Paivays) verrattava;
 
-  // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
-  if (this.paiva == verrattavaPaivays.paiva &&
-  this.kuukausi == verrattavaPaivays.kuukausi &&
-  this.vuosi == verrattavaPaivays.vuosi) {
-  return true;
-  }
+          // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
+          if (this.paiva == verrattavaPaivays.paiva &&
+              this.kuukausi == verrattavaPaivays.kuukausi &&
+              this.vuosi == verrattavaPaivays.vuosi) {
+              return true;
+          }
 
-  // muulloin oliot eivät ole samat
-  return false;
-  }
+          // muulloin oliot eivät ole samat
+          return false;
+      }
   
-  @Override
-  public String toString() {
-  return this.paiva + "." + this.kuukausi + "." + this.vuosi;
-  }
+      @Override
+      public String toString() {
+          return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+      }
   }
 <% end %>
 
@@ -1471,41 +1804,41 @@
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
 
-  private String nimi;
-  private int ika;
-  private int paino;
-  private int pituus;
+      private String nimi;
+      private int ika;
+      private int paino;
+      private int pituus;
 
-  // konstruktorit ja metodit
+      // konstruktorit ja metodit
 
 
-  public boolean equals(Object verrattava) {
-  // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
-  if (this == verrattava) {
-  return true;
-  }
+      public boolean equals(Object verrattava) {
+          // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
+          if (this == verrattava) {
+              return true;
+          }
 
-  // jos verrattava olio ei ole Henkilo-tyyppinen, oliot eivät ole samat
-  if (!(verrattava instanceof Henkilo)) {
-  return false;
-  }
+          // jos verrattava olio ei ole Henkilo-tyyppinen, oliot eivät ole samat
+          if (!(verrattava instanceof Henkilo)) {
+              return false;
+          }
 
-  // muunnetaan olio Henkilo-olioksi
-  Henkilo verrattavaHenkilo = (Henkilo) verrattava;
+          // muunnetaan olio Henkilo-olioksi
+          Henkilo verrattavaHenkilo = (Henkilo) verrattava;
 
-  // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
-  if (this.nimi.equals(verrattavaHenkilo.nimi) && 
-  this.ika == verrattavaHenkilo.ika &&
-  this.paino == verrattavaHenkilo.paino &&
-  this.pituus == verrattavaHenkilo.pituus) {
-  return true;
-  }
+          // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
+          if (this.nimi.equals(verrattavaHenkilo.nimi) && 
+              this.ika == verrattavaHenkilo.ika &&
+              this.paino == verrattavaHenkilo.paino &&
+              this.pituus == verrattavaHenkilo.pituus) {
+              return true;
+          }
 
-  // muulloin oliot eivät ole samat
-  return false;
-  }
+          // muulloin oliot eivät ole samat
+          return false;
+      }
 
-  // .. metodeja
+      // .. metodeja
   }
 <% end %>
 
@@ -1521,11 +1854,11 @@
     Kappale toinenSparrow = new Kappale("The Lonely Island", "Jack Sparrow", 196);
 
     if (jackSparrow.equals(toinenSparrow)) {
-    System.out.println("Kappaleet olivat samat.");
+        System.out.println("Kappaleet olivat samat.");
     }
 
     if (jackSparrow.equals("Toinen olio")) {
-    System.out.println("Nyt on jotain hassua.");
+        System.out.println("Nyt on jotain hassua.");
     }
   <% end %>
 
@@ -1546,20 +1879,20 @@
   </p>
 
   <% partial 'partials/code_highlight' do %>
-    Paivays pvm = new Paivays(24, 2, 2017);
+    Paivays pvm = new Paivays(24, 3, 2017);
     Paivays pvm2 = new Paivays(23, 7, 2017);
 
     Henkilo leevi = new Henkilo("Leevi", pvm, 62, 9);
     Henkilo lilja = new Henkilo("Lilja", pvm2, 65, 8);
 
     if (leevi.equals(lilja)) {
-    System.out.println("Meniköhän nyt ihan oikein?");
+        System.out.println("Meniköhän nyt ihan oikein?");
     } 
 
     Henkilo leeviEriPainolla = new Henkilo("Leevi", pvm, 62, 10);
 
     if (leevi.equals(leeviEriPainolla)) {
-    System.out.println("Meniköhän nyt ihan oikein?");
+        System.out.println("Meniköhän nyt ihan oikein?");
     } 
 
   <% end %>
@@ -1583,11 +1916,11 @@
   
   <% partial 'partials/code_highlight' do %>
     public class Lintu {
-    private String nimi;
+        private String nimi;
 
-    public Lintu(String nimi) {
-    this.nimi = nimi;
-    } 
+        public Lintu(String nimi) {
+            this.nimi = nimi;
+        } 
     }
   <% end %>
 
@@ -1600,7 +1933,7 @@
     System.out.println(chuck);
 
     if (red.equals(chuck)) {
-    System.out.println(red + " on sama kuin " + chuck);
+        System.out.println(red + " on sama kuin " + chuck);
     }
   <% end %>
 
@@ -1626,31 +1959,34 @@
 
 <% partial 'partials/code_highlight' do %>
   public Laskuri {
-  private int arvo;
+      private int arvo;
 
-  public Laskuri() {
-  this(0);
-  }
+      // esimerkki useamman konstruktorin käytöstä:
+      // konstruktorista voi kutsua toista konstruktoria this-kutsulla
+      // huomaa tosin, että this-kutsun tulee olla konstruktorin ensimmäisellä rivillä.
+      public Laskuri() {
+          this(0);
+      }
 
-  public Laskuri(int alkuarvo) {
-  this.arvo = alkuarvo;
-  }
+      public Laskuri(int alkuarvo) {
+          this.arvo = alkuarvo;
+      }
 
-  public void kasvata() {
-  this.arvo++;
-  }
+      public void kasvata() {
+          this.arvo++;
+      }
 
-  public String toString() {
-  return "arvo: " + arvo;
-  }
+      public String toString() {
+          return "arvo: " + arvo;
+      }
 
-  public Laskuri kloonaa() {
-  // luodaan uusi laskuriolio, joka saa alkuarvokseen kloonattavan laskurin arvon
-  Laskuri klooni = new Laskuri(this.arvo);
+      public Laskuri kloonaa() {
+          // luodaan uusi laskuriolio, joka saa alkuarvokseen kloonattavan laskurin arvon
+          Laskuri klooni = new Laskuri(this.arvo);
 
-  // palautetaan klooni kutsujalle
-  return klooni;
-  }
+          // palautetaan klooni kutsujalle
+          return klooni;
+      }
   }
 <% end %>
 
@@ -1694,15 +2030,15 @@
 
 <% partial 'partials/code_highlight' do %>
   public class Tehdas {
-  private String merkki;
+      private String merkki;
 
-  public Tehdas(String merkki) {
-  this.merkki = merkki;
-  }
+      public Tehdas(String merkki) {
+          this.merkki = merkki;
+      }
 
-  public Auto tuotaAuto() {
-  return new Auto(this.merkki);
-  }
+      public Auto tuotaAuto() {
+          return new Auto(this.merkki);
+      }
   }
 <% end %>
 
@@ -1715,39 +2051,39 @@
 
   <% partial 'partials/code_highlight' do %>
     public class Paivays {
-    private int paiva;
-    private int kuukausi;
-    private int vuosi;
+        private int paiva;
+        private int kuukausi;
+        private int vuosi;
 
-    public Paivays(int paiva, int kuukausi, int vuosi) {
-    this.paiva = paiva;
-    this.kuukausi = kuukausi;
-    this.vuosi = vuosi;
-    }
+        public Paivays(int paiva, int kuukausi, int vuosi) {
+            this.paiva = paiva;
+            this.kuukausi = kuukausi;
+            this.vuosi = vuosi;
+        }
 
-    public String toString() {
-    return this.paiva + "." + this.kuukausi + "." + this.vuosi;
-    }
+        public String toString() {
+            return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+        }
 
-    public boolean aiemmin(Paivays verrattava) {
-    // ensin verrataan vuosia
-    if (this.vuosi &lt; verrattava.vuosi) {
-    return true;
-    }
+        public boolean aiemmin(Paivays verrattava) {
+            // ensin verrataan vuosia
+            if (this.vuosi &lt; verrattava.vuosi) {
+                return true;
+            }
 
-    // jos vuodet ovat samat, verrataan kuukausia
-    if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
-    return true;
-    }
+            // jos vuodet ovat samat, verrataan kuukausia
+            if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
+                return true;
+            }
 
-    // vuodet ja kuukaudet samoja, verrataan päivää
-    if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
-    this.paiva &lt; verrattava.paiva) {
-    return true;
-    }
+            // vuodet ja kuukaudet samoja, verrataan päivää
+            if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
+                this.paiva &lt; verrattava.paiva) {
+                return true;
+            }
 
-    return false;
-    }
+            return false;
+        }
     }
   <% end %>
 
@@ -1782,11 +2118,11 @@
 
   <% partial 'partials/code_highlight' do %>
     public Paivays paivienPaasta(int paivia) {
-    Paivays uusiPaivays = new Paivays( ... );
+        Paivays uusiPaivays = new Paivays( ... );
 
-    // tehdään jotain...
+        // tehdään jotain...
 
-    return uusiPaivays;
+        return uusiPaivays;
     }
   <% end %>
 
@@ -1796,21 +2132,21 @@
 
   <% partial 'partials/code_highlight' do %>
     public static void main(String[] args) {
-    Paivays pvm = new Paivays(13, 2, 2015);
-    System.out.println("Tarkistellun viikon perjantai on " + pvm);
+        Paivays pvm = new Paivays(13, 2, 2015);
+        System.out.println("Tarkistellun viikon perjantai on " + pvm);
 
-    Paivays uusiPvm = pvm.paivienPaasta(7);
-    int vk = 1;
-    while (vk &lt;= 7) {
-    System.out.println("Perjantai " + vk + " viikon kuluttua on " + uusiPvm);
-    uusiPvm = uusiPvm.paivienPaasta(7);
+        Paivays uusiPvm = pvm.paivienPaasta(7);
+        int vk = 1;
+        while (vk &lt;= 7) {
+            System.out.println("Perjantai " + vk + " viikon kuluttua on " + uusiPvm);
+            uusiPvm = uusiPvm.paivienPaasta(7);
 
-    vk++;
-    }
+            vk++;
+        }
 
 
-    System.out.println("Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!");
-    //    System.out.println("Kokeile " + pvm.paivienPaasta(790));
+        System.out.println("Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!");
+        //    System.out.println("Kokeile " + pvm.paivienPaasta(790));
     }
   <% end %>
 
@@ -1869,30 +2205,30 @@
   <% partial 'partials/code_highlight' do %>
     public class Raha {
 
-    private final int euroa;
-    private final int senttia;
+        private final int euroa;
+        private final int senttia;
 
-    public Raha(int euroa, int senttia) {
-    this.euroa = euroa;
-    this.senttia = senttia;
-    }
+        public Raha(int euroa, int senttia) {
+            this.euroa = euroa;
+            this.senttia = senttia;
+        }
 
-    public int eurot() {
-    return euroa;
-    }
+        public int eurot() {
+            return euroa;
+        }
 
-    public int sentit() {
-    return senttia;
-    }
+        public int sentit() {
+            return senttia;
+        }
 
-    public String toString() {
-    String nolla = "";
-    if (senttia &lt;= 10) {
-    nolla = "0";
-    }
+        public String toString() {
+            String nolla = "";
+            if (senttia &lt;= 10) {
+                nolla = "0";
+            }
 
-    return euroa + "." + nolla + senttia + "e";
-    }
+            return euroa + "." + nolla + senttia + "e";
+        }
     }
   <% end %>
 
@@ -1917,10 +2253,10 @@
 
   <% partial 'partials/code_highlight' do %>
     public Raha plus(Raha lisattava) {
-    Raha uusi = new Raha(...); // luodaan uusi Raha-olio jolla on oikea arvo
+        Raha uusi = new Raha(...); // luodaan uusi Raha-olio jolla on oikea arvo
 
-    // palautetaan uusi Raha-olio
-    return uusi;
+        // palautetaan uusi Raha-olio
+        return uusi;
     }
   <% end %>
 
@@ -1996,361 +2332,74 @@
 
 
 
+
 <% partial 'partials/material_heading' do %>
-  Alkeis- ja viittaustyyppiset muuttujat
+  Crowdsorcerer: Arvioi tehtäviä
 <% end %>
 
 <p>
-  Javan muuttujat voi jakaa alkeis- ja viittaustyyppisiin muuttujiin. Alkeistyyppisten muuttujien sisältämä tieto on tallennettu muuttujan arvoksi, kun taas viittaustyyppisten muuttujien arvona on viite muuttujaan liittyvään tietoon. Tarkastellaan näitä muuttujatyyppejä kahden esimerkin kautta.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  int arvo = 10;
-  System.out.println(arvo);  
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  10
-<% end %>
-
-
-<% partial 'partials/code_highlight' do %>
-  Nimi leevi = new Nimi("Leevi");
-  System.out.println(leevi);
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-  Nimi@4aa298b7
-<% end %>
-
-<p>
-  Ensimmäisessä esimerkissä luodaan alkeistyyppinen <code>int</code>-muuttuja, jonka arvoksi kopioidaan luku 10. Kun muuttuja annetaan System.out.println-metodille tulostettavaksi, tulostuu arvo 10. Toisessa esimerkissä taas luodaan viittaustyyppinen Nimi-muuttuja, jonka arvoksi kopioidaan Nimi-luokassa määritellyn konstruktorin kutsun palauttama viite olioon. Kun muuttuja annetaan System.out.println-metodille tulostettavaksi, tulostuu merkkijono Nimi@4aa298b7. Mistä tässä oikein on kyse?
+  Otetaan hetkeksi askel taaksepäin ja muistellaan listojen käyttöä. Tämän jälkeen palaamme takaisin olioiden ja listojen pariin. 
 </p>
 
 <p>
-  Metodikutsu System.out.println tulostaa muuttujan arvon. Alkeistyyppiset muuttujat sisältävät konkreettisen arvon, joka tulostuu tulostuskutsun yhteydessä. Myös viittaustyyppiset muuttujat sisältävät konkreettisen arvon, mutta viittaustyyppisten muuttujien arvo on viite paikkaan, missä olion tiedot ovat. Voidaan ajatella, että merkkijono <code>Nimi@4aa298b7</code> kertoo, että kyse on <code>Nimi</code>-tyyppisestä muuttujasta paikassa <code>4aa298b7</code>.
+  Ohjelmointikurssin neljännessä osassa loimme taas omia tehtäviä Crowdsorcererin avulla. Nyt on hetki vertaisarviointiin -- arvioimme Crowdsorcereriin lähetettyjä tehtäviä! Anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Itse tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
 </p>
 
-<p>
-  Tutustutaan näihin muuttujatyyppeihin tarkemmin.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Alkeistyyppiset muuttujat
-<% end %>
-
-<p>
-  Javassa on yhteensä kahdeksan erilaista alkeistyyppistä muuttujaa. Nämä ovat <code>boolean</code> (totuusarvo), <code>byte</code> (8 bittiä sisältävä tavu), <code>char</code> (yhtä merkkiä kuvaava 16-bittiä sisältävä kirjainarvo), <code>short</code> (pientä lukua kuvaava 16 bittiä sisältävä arvo), <code>int</code> (keskikokoista lukua kuvaava 32 bittiä sisältävä arvo), <code>long</code> (isohkoa lukua kuvaava 64 bittiä sisältävä arvo), <code>float</code> (32-bittiä sisältävä liukuluku) ja <code>double</code> (64-bittiä sisältävä liukuluku).
-</p>
-
-<p>
-  Olemme käyttäneet näistä ensisijaisesti totuusarvomuuttujia (<code>boolean</code>), kokonaislukumuuttujia (<code>int</code>), ja liukulukumuuttujia (<code>double</code>).
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  boolean totuusarvo = false;
-  int kokonaisluku = 42;
-  double liukuluku = 4.2;
-
-  System.out.println(totuusarvo);
-  System.out.println(kokonaisluku);
-  System.out.println(liukuluku);
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-  false
-  42
-  4.2
-<% end %>
-
-
-<% partial 'partials/hint', locals: { name: 'Bitit ja binääriluvut' } do %>
+<% partial 'partials/hint', locals: { name: 'Vertaisarviointi' } do %>
 
   <p>
-    Tietokoneen muisti on käytännössä taulukko, missä jokainen taulukon lokero sisältää joko luvun 0 tai 1. Näitä yksittäisiä lukuja kutsutaan biteiksi (lyhenne sanasta binary digit). Koneen käyttämät luvut kuvataan bittien avulla binäärilukuna: esimerkiksi <code>short</code>-tyyppinen muuttuja sisältää 16 bittiä ja <code>int</code>-tyyppinen muuttuja 32 bittiä.
+    Alla on kolme Crowdsorcereriin tehtyä tehtävää: kaksi jonkun kurssitoverisi lähettämää ja yksi itsearviointia varten. Niiden yhteydessä on muistin virkistykseksi ohjeistus, jonka pohjalta kyseiset tehtävänannot on tehty.
   </p>
 
   <p>
-    Tarkastellaan miten binääriluvut toimivat. Alla on kuvattuna 8 bittiä pitkä alue tietokoneen muistista, missä jokainen bitin arvo on 0. 
-  </p>
-
-  <table border="1">
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-  </table>
-
-  <br/>
-  
-  <p>
-    Binäärilukukujen avulla jokainen luku voidaan esittää luvun 2 potensseina. Esimerkiksi yllä olevan kahdeksan bitin luvun arvo kymmenjärjestelmässä on: 0 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + ... + 0 * 2<sup>7</sup>. Laskeminen aloitetaan tyypillisesti luvun oikeasta laidasta. Alla on kuvattuna toinen esimerkki.
-  </p>
-  
-  <table border="1">
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-  </table>
-
-  <br/>
-  
-  <p>
-    Yllä kuvattu binääriluku on kymmenjärjestelmässä: 1 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + 1 * 2<sup>2</sup> + 0 * 2<sup>3</sup> + ... + 0 * 2<sup>7</sup> = 5. 
+    Tarkastele jokaisen tehtävän eri osia: tehtävänantoa, tehtäväpohjaa ja malliratkaisua sekä testaukseen käytettäviä syötteitä ja tulosteita. Arvioi niiden selkeyttä, vaikeutta ja sitä, kuinka hyvin ne vastaavat ohjeistukseensa.
   </p>
 
   <p>
-    Vastaavasti toiseen suuntaan siirryttäessä luku 3 voidaan ilmaista binäärilukuna "11", ja esimerkiksi luku 256 binäärilukuna "100000000". Binäärilukujen avulla kuvataan lukujen lisäksi käytännössä kaikki tietokoneen tallentama tieto. Tähän teemaan tutustutaan tarkemmin kurssilla Tietokoneen toiminta (TKT-10005). 
+    Voit vaihtaa näkymää tehtäväpohjan ja mallivastauksen välillä painamalla lähdekoodin yläpalkin painikkeita. Palautteenannon avuksi on annettu väittämiä. Voit valita kuinka samaa mieltä niiden kanssa olet painamalla hymiöitä. Annathan myös sanallista palautetta sille varattuun kenttään! Lisää vielä tehtävää mielestäsi kuvaavia tageja ja paina Lähetä.
+  </p>
+
+  <p>
+    Anna arvio kummallekin vertaispalautetehtävälle ja lopuksi vielä omallesi.
+  </p>
+
+  <p>
+    Muista olla reilu ja ystävällinen. Hyvä palaute on rehellistä, mutta kannustavaa!
+  </p>
+
+  <p>
+    Voit halutessasi ladata arvioitavan tehtävän tehtäväpohjan ja malliratkaisun koneellesi, ja testata niiden käyttöä. Molemmat tulevat ZIP-paketeissa, jolloin sinun täytyy purkaa ne, ennen kuin voit avata ne NetBeansissä.
   </p>
 
 <% end %>
 
-<p>
-  Alkeistyyppisillä muuttujilla muuttujan esittely varaa muistipaikan, johon kopioidaan arvo. Alla olevassa esimerkissä luodaan kolme muuttujaa. Jokaisella muuttujalla on erillinen muistipaikka, johon asetettava arvo kopioidaan.
-</p>
 
+<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: listat' } do %>
 
-<% partial 'partials/code_highlight' do %>
-  int eka = 10;
-  int toka = eka;
-  int kolmas = toka;
-  System.out.println(eka + " " + toka + " " + kolmas);
-  toka = 5;
-  System.out.println(eka + " " + toka + " " + kolmas);
-<% end %>
+  <p>
+    Suunnittele tehtävä, joka harjoituttaa listojen käsittelyä ja tietojen hakemista niistä.
+  </p>
 
+  <p>
+    Tee tehtävään valmiiksi lista tai listoja, jotka sisältävät oman valintasi mukaan joko merkkijonoja, kokonailukuja tai liukulukuja. Täytä listan arvot valmiiksi.
+  </p>
 
-<% partial 'partials/code_highlight' do %>
-  10 10 10
-  10 5 10
-<% end %>
+  <p>
+    Ohjeista tulevaa tehtävän ratkaisijaa kysymään käyttäjältä komentoa, jonka jälkeen listalta haetaan komennon perusteella jotakin tietoa, joka sen jälkeen tuolostetaan. Jos käskyä ei tarjota, tulee ohjelman tulostaa jokin varoitusteksti.
+  </p>
 
+  <p>
+    Esimerkiksi yksi tälläinen tehtävä voisi sisältää listan kokonaislukuja, ja käskyt voisivat olla: "suurin", "pienin", "keskiarvo". Kun tuleva tehtävän ratkaisija antaa käskyn "keskiarvo", tulee ohjelman tulostaan listan lukujen keskiarvon ja niin edelleen.
+  </p>
 
-<p>
-  Muuttujan arvon asetus yhtäsuuruusmerkillä aiheuttaa muuttujan arvon kopioimisen. Esimerkiksi lause <code>int eka = 10</code> luo int-tyyppisen muuttujan nimeltä eka, jonka arvoksi kopioidaan luku 10. Vastaavasti lause <code>int toka = eka;</code> luo int-tyyppisen muuttujan nimeltä toka, jonka arvoksi kopioidaan muuttujan eka arvo.
-</p>
-
-<p>
-  Muuttujien arvot kopioituvat myös metodikutsujen yhteydessä. Käytännössä tämä tarkoittaa sitä, että metodikutsun yhteydessä metodin parametriksi annetun muuttujan arvo ei muutu metodia kutsuvassa metodissa. Alla olevassa esimerkissä main-metodissa esitellään muuttuja luku, jonka arvo kopioidaan metodin kutsu parametriksi. Metodissa kutsu parametrina saatu arvo tulostetaan, jonka jälkeen arvoa kasvatetaan yhdellä, jonka jälkeen arvo tulostetaan vielä kerran. Lopulta metodin kutsu suoritus loppuu, ja palataan main-metodiin, missä luku-muuttujan arvo ei ole muuttunut. 
-</p>
-
-<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int luku = 1;\n        kutsu(luku);\n       \n        System.out.println(\"Luku vieläkin: \" + luku);\n    }\n   \n    public static void kutsu(int luku) {\n        System.out.println(\"Luku aluksi: \" + luku);\n        luku++;\n        System.out.println(\"Luku lopuksi: \" + luku);\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"kutsu:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"16","frame_id":16}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"kutsu:12","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"return","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"36","frame_id":36}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"return","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"37","frame_id":37}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
-
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Viittaustyyppiset muuttujat
-<% end %>
-
-<p>
-  Lähes kaikki Javan muuttujat ovat viittaustyyppisiä, ja ohjelmoija voi luoda Javaan myös uusia viittaustyypin muuttujatyyppejä. Käytännössä jokainen annetusta luokasta luotu olio on viittaustyyppinen muuttuja.
-</p>
-
-<p>
-  Tarkastellaan alussa ollutta esimerkkiä, missä luotiin Nimi-tyyppinen muuttuja leevi.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  Nimi leevi = new Nimi("Leevi");
-<% end %>
-
-<p>
-  Kutsun osat ovat seuravat:
-</p>
-
-<ul>
-
-  <li>
-    Mitä tahansa uutta muuttujaa esiteltäessä tulee ensin kertoa esiteltävän muuttujan tyyppi. Alla esitellään muuttuja, jonka tyyppi on <code>Nimi</code>. Jotta ohjelman suorittaminen onnistuu, tulee ohjelmassa olla luokka nimeltä <code>Nimi</code>.
-    
-    <% partial 'partials/code_highlight' do %>
-      <strong>Nimi</strong> leevi = new Nimi("Leevi");
-    <% end %>
-    
-  </li>
-
-  <li>
-
-    Muuttujan esittelyn yhteydessä kerrotaan myös muuttujan nimi. Muuttujan arvoon voi myöhemmin viitata muuttujan nimen perusteella. Alla muuttujan nimeksi tulee leevi.
-    
-    <% partial 'partials/code_highlight' do %>
-      Nimi <strong>leevi</strong> = new Nimi("Leevi");
-    <% end %>
-    
-  </li>
-
-  <li>
-
-    Muuttujaan halutaan asettaa arvo. Luokista luodaan olioita kutsumalla niiden konstruktoria, joka määrittelee luotavan olion muuttujiin asetettavat arvot. Alla oletetaan, että luokassa <code>Nimi</code> on konstruktori, joka saa parametrikseen merkkijonon.
-    
-    <% partial 'partials/code_highlight' do %>
-      Nimi leevi = <strong>new Nimi("Leevi");</strong>
-    <% end %>
-    
-  </li>
-
-  <li>
-
-    Konstruktorikutsu palauttaa arvon, joka on viite luotuun olioon. Yhtäsuuruusmerkki kertoo ohjelmalle, että yhtäsuuruusmerkin oikealla puolella olevan lausekkeen arvo tulee kopioida yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi.
-    
-    <% partial 'partials/code_highlight' do %>
-      Nimi leevi <strong>=</strong> new Nimi("Leevi");
-    <% end %>
-
-  </li>
-</ul>
-
-<p>
-  On mahdollista, että Nimi-luokalle on määritelty metodeja, joiden avulla Nimi-luokasta tehtyjen olioiden sisäistä tilaa voidaan muuttaa.
-</p>
-
-<p>
-  Suurin ero alkeis- ja viittaustyyppisten muuttujien välillä on se, että alkeistyyppiset muuttujat (jotka ovat lähes poikkeuksetta numeroita) ovat muuttumattomia, kun taas viittaustyyppiset muuttujat voivat muuttua. Tämä ilmiö liittyy siihen, että alkeistyyppisten muuttujien arvo on tallennettu suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo on viite muuttujan tietoihin.
-</p>
-
-<p>
-  Alkeistyyppisille muuttujille löytyy laskuoperaatioita kuten plus, miinus, kerto jne -- nämä operaatiot eivät muuta alkuperäisten muuttujien arvoja. Laskuoperaatioiden avulla voidaan luodaan uusia arvoja, jotka varastoidaan muuttujiin tarvittaessa. Toisaalta, viittaustyyppisten muuttujien arvoa ei voi muuttaa plus, miinus, kerto ym. laskuoperaatioiden avulla.
-</p>
-
-<p>
-  Viittaustyyppisen muuttujan arvo -- eli viite -- osoittaa paikkaan muistissa, mistä löytyy viittaustyyppiseen muuttujaan liittyvät tiedot. Oletetaan, että käytössä on luokka Henkilo, jossa on määritelty oliomuuttujaksi ika. Jos luokasta on luotu henkilöolio, voi henkilöolion viitettä seuraamalla päästä käsiksi muuttujaan ika, jonka arvoa voi tarvittaessa muuttaa. 
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Muuttujat ja tietokoneen muisti
-<% end %>
-
-<p>
-  Totesimme aiemmin, että alkeistyyppisten muuttujien arvo on tallennettuna suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo sisältää viitteen olioon. Totesimme myös, että muuttujan arvon asettaminen yhtäsuuruusmerkillä kopioi oikealla olevan (muuttujan) arvon vasemmalla olevan muuttujan arvoksi. Vastaava toiminnallisuus on myös metodikutsujen yhteydessä -- metodikutsun yhteydessä parametrina annettava arvo kopioidaan metodin käyttöön.
-</p>
-
-<p>
-  Tarkastellaan tätä käytännössä. Oletetaan, että käytössämme on seuraava luokka <code>Henkilo</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Henkilo {
-      private String nimi;
-      private int syntymavuosi;
-
-      public Henkilo(String nimi) {
-          this.nimi = nimi;
-          this.syntymavuosi = 1970;
-      }
-
-      public int getSyntymavuosi() {
-          return this.syntymavuosi;
-      }
+  <p>
+    Muista merkitä ainakin käskyyn reagointiin liittyvät rivit malliratkaisuriveiksi -- näin ratkaisu ei tule suoraan tehtäväpohjaan.
+  </p>
   
-      public void setSyntymavuosi(int syntymavuosi) {
-          this.syntymavuosi = syntymavuosi;
-      }
-
-      public String toString() {
-          return this.nimi + " (" + this.syntymavuosi + ")";
-      }
-  }
 <% end %>
 
-<p>
-  Tarkastellaan seuraavan ohjelman toimintaa askeleittain.
-</p>
 
-<% partial 'partials/code_highlight' do %>
-  public class Esimerkki {
-      public static void main(String[] args) {
-          Henkilo eka = new Henkilo("Eka");
-  
-          System.out.println(eka);
-          nuorenna(eka);
-          System.out.println(eka);
-  
-          Henkilo toka = eka;
-          nuorenna(toka);
-  
-          System.out.println(eka);
-      }
-  
-      public static void nuorenna(Henkilo henkilo) {
-          henkilo.setSyntymavuosi(henkilo.getSyntymavuosi() + 1);
-      }
-  }
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  Eka (1970)
-  Eka (1971)
-  Eka (1972)
-<% end %>
-
-<p>
-  Ohjelman suoritus alkaa main-metodin ensimmäiseltä riviltä. Main-metodin ensimmäisellä rivillä esitellään Henkilo-tyyppinen muuttuja eka, johon kopioidaan Henkilo-luokan konstruktorin palauttama arvo. Konstruktorissa luodaan olio, jonka syntymävuodeksi asetetaan 1970 ja jonka nimeksi asetetaan parametrina saatu arvo. Konstruktori palauttaa viitteen. Rivin suorituksen jälkeen ohjelman tilanne on seuraava -- ohjelman muistiin on luotu Henkilo-olio, johon on viittaus main-metodissa määritellystä eka-muuttujasta.
-</p>
-
-
-<img src="/img/drawings/eka-1.png"/>
-
-<p>
-  Main-metodin kolmannella rivillä tulostetaan muuttujan eka arvo. Metodikutsu System.out.println etsii sille parametrina annetulta viittaustyyppiseltä muuttujalta toString-metodia. Henkilo-luokalla on metodi toString, joten metodia kutsutaan eka-muuttujan osoittamalle oliolle. Oliossa olevan muuttujan nimi arvo on "Eka" ja syntymävuoden arvo on 1970. Tulostukseksi tulee "Eka (1970)".
-</p>
-
-<p>
-  Neljännellä rivillä kutsutaan nuorenna-metodia, jolle annetaan parametriksi muuttuja eka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin parametriksi. Koska muuttuja eka on viittaustyyppinen, kopioituu metodin käyttöön aiemmin luotu viite. Metodin suorituksen lopussa tilanne on seuraava -- metodi kasvattaa parametrina saamansa olion syntymävuotta yhdellä.
-</p>
-
-<img src="/img/drawings/eka-2.png"/>
-
-<p>
-  Kun metodin nuorenna suoritus loppuu, palataan takaisin main-metodiin. Nuorenna-metodin suoritukseen liittyvät tiedot katoavat kutsupinosta. 
-</p>
-
-<img src="/img/drawings/eka-3.png"/>
-
-<p>
-  Metodikutsusta palaamisen jälkeen suoritetaan taas muuttujan eka arvon tulostaminen. Tällä kertaa muuttujan eka osoittama olio on muuttunut hieman -- edellisen metodikutsun yhteydessä viitatun olion syntymäpäivä-muuttujaa kasvatettiin yhdellä. Tulostukseksi tulee lopulta "Eka (1971)".
-</p>
-
-<p>
-  Tämän jälkeen ohjelmassa esitellään uusi Henkilo-tyyppinen muuttuja toka. Muuttujaan toka kopioidaan muuttujan eka arvo, eli muuttujan toka arvoksi tulee viite jo olemassaolevaan Henkilo-olioon.
-</p>
-
-<img src="/img/drawings/eka-4.png"/>
-
-<p>
-  Tämän jälkeen kutsutaan metodia nuorenna, jolle annetaan parametriksi muuttuja toka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin arvoksi. Metodi saa siis käyttöönsä muuttujan toka sisältämän viitteen. Metodin suorituksen lopuksi metodin viittaaman olion syntymävuosi on kasvanut yhdellä.
-</p>
-
-<img src="/img/drawings/eka-5.png"/>
-
-<p>
-  Lopulta metodin suoritus päättyy, ja ohjelman suoritus palaa takaisin main-metodiin. Main-metodissa tulostetaan vielä kerran muuttujan eka arvo. Tulostukseksi tulee lopulta "Eka (1972)".
-</p>
-
-
-<%= partial 'partials/quiz', locals: { id: '59d2aa2945370b0004080777' } %>
-
-
-
-<%= partial 'partials/quiz', locals: { id: '59d2ab9045370b000408077b' } %>
+<div class='crowdsorcerer-widget' data-assignment='7' peer-review data-exercises='3'></div>
 
 
 
@@ -2386,15 +2435,44 @@
   nimet.add("Marlyn Wescoff");
   nimet.add("Ruth Lichterman");
 
-  // listan alkioiden läpikäynti onnistuu toistolauseen avulla
+  // listan alkioiden läpikäynti onnistuu useamman erilaisen
+  // toistolauseen avulla
+
+  // 1. while-toistolause
   int indeksi = 0;
   while (indeksi &lt; nimet.size()) {
       System.out.println(nimet.get(indeksi));
       indeksi++;
   }
+
+  System.out.println();
+  // 2. for-toistolause indeksillä
+  for (int i = 0; i &lt; nimet.size(); i++) {
+      System.out.println(nimet.get(i));
+  }
+
+  System.out.println();
+  // 3. for-each toistolause (ei indeksiä)
+  for (String nimi: nimet) {
+      System.out.println(nimi);
+  }
 <% end %>
 
 <% partial 'partials/sample_output' do %>
+  Betty Jennings
+  Betty Snyder
+  Frances Spence
+  Kay McNulty
+  Marlyn Wescoff
+  Ruth Lichterman
+
+  Betty Jennings
+  Betty Snyder
+  Frances Spence
+  Kay McNulty
+  Marlyn Wescoff
+  Ruth Lichterman
+
   Betty Jennings
   Betty Snyder
   Frances Spence
@@ -2487,10 +2565,8 @@
   henkilot.add(new Henkilo("Matti"));
   henkilot.add(new Henkilo("Martin"));
 
-  int indeksi = 0;
-  while (indeksi &lt; henkilot.size()) {
-      System.out.println(henkilot.get(indeksi));
-      indeksi++;
+  for (Henkilo henkilo: henkilot) {
+      System.out.println(henkilo);
   }
 <% end %>
 
@@ -2521,14 +2597,9 @@
   System.out.println();
   System.out.println("Henkilöitä yhteensä: " + henkilot.size());
   System.out.println("Henkilöt: ");
-
-  int indeksi = 0;
-  while (indeksi &lt; henkilot.size()) {
-      Henkilo henkilo = henkilot.get(indeksi);
+  
+  for (Henkilo henkilo: henkilot) {
       System.out.println(henkilo);
-      // tai: System.out.println(henkilot.get(indeksi));
-
-      indeksi++;
   }
 <% end %>
 
@@ -2538,15 +2609,12 @@
 
 <% partial 'partials/code_highlight' do %>
   // ..
-  int indeksi = 0;
-  while (indeksi &lt; henkilot.size()) {
-      Henkilo henkilo = henkilot.get(indeksi);
 
+
+  for (Henkilo henkilo: henkilot) {
       if (henkilo.getIka() &gt;= 18) {
           System.out.println(henkilo);
       }
-
-      indeksi++;
   }
 <% end %>
 
@@ -2559,15 +2627,10 @@
   System.out.print("Mikä ikäraja? ");
   int ikaraja = Integer.parseInt(lukija.nextLine());
 
-  int indeksi = 0;
-  while (indeksi &lt; henkilot.size()) {
-      Henkilo henkilo = henkilot.get(indeksi);
-
-      if (henkilo.getIka() &gt;= ikaraja) {
+  for (Henkilo henkilo: henkilot) {
+      if (henkilo.getIka() &gt;= 18) {
           System.out.println(henkilo);
       }
-
-      indeksi++;
   }
 <% end %>
 
@@ -2690,23 +2753,12 @@
   juhana.vanhene();
   juhana.vanhene();
 
-  // jokainen listalla oleva henkilöolio vanhenee vuoden
-  int indeksi = 0;
-  while (indeksi &lt; henkilot.size()) {
-      Henkilo henkilo = henkilot.get(indeksi);
+  for (Henkilo henkilo: henkilot) {
       henkilo.vanhene();
-      indeksi++;
   }
 
-  // tulostetaan henkilöt
-  indeksi = 0;
-  while (indeksi &lt; henkilot.size()) {
-      Henkilo henkilo = henkilot.get(indeksi);
+  for (Henkilo henkilo: henkilot) {
       System.out.println(henkilo);
-
-      // tai: System.out.println(henkilot.get(indeksi));
-
-      indeksi++;
   }
 <% end %>
 
@@ -2758,12 +2810,8 @@
       }
 
       public void tulostaKappaleet() {
-          int indeksi = 0;
-          while (indeksi &lt; this.kappaleet.size()) {
-              String kappale = this.kappaleet.get(indeksi);
+          for (String kappale: this.kappaleet) {
               System.out.println(kappale);
-
-              indeksi++;
           }
       }
   }
@@ -2907,11 +2955,8 @@
       public String toString() {
           String jasenetMerkkijonona = "";
 
-          int indeksi = 0;
-          while (indeksi &lt; this.jasenet.size()) {
-              Henkilo jasen = this.jasenet.get(indeksi);
+          for (Henkilo jasen: this.jasenet) {
               jasenetMerkkijonona += "  " + jasen.getNimi() + "\n";
-              indeksi++;
           }
 
           return "Painonvartijayhdistys " + this.nimi + " jäsenet: \n" + jasenetMerkkijonona;
@@ -2971,6 +3016,9 @@
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Rut2pt5ztN0" height="300" target="_blank" rel="noopener"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
 
+<p>
+  &nbsp;
+</p>
 
 <p>
   Tehdään vielä lopuksi painovartijayhdistykselle metodi, jolla saadaan tietoon yhdistyksen suurimman painoindeksin omaava henkilö.
@@ -2988,7 +3036,11 @@
 
           Henkilo painavinTahanAsti = this.jasenet.get(0);
 
-          int indeksi = 0;
+          // Huom! Aloitamme tässä läpikäynnin ensimmäisestä
+          // listan alkiosta (ei nollannesta)
+          // -- tähän for-each -toisto ei sovi
+              
+          int indeksi = 1;
           while (indeksi < this.jasenet.size()) {
               Henkilo henkilo = this.jasenet.get(indeksi);
               if (henkilo.painoIndeksi() &gt; painavinTahanAsti.painoIndeksi()) {
@@ -2996,6 +3048,14 @@
               }
 
               indeksi++;
+          }
+
+          // tai:
+          for (int i = 1; i < this.jasenet.size; i++)
+              Henkilo henkilo = this.jasenet.get(indeksi);
+              if (henkilo.painoIndeksi() &gt; painavinTahanAsti.painoIndeksi()) {
+                  painavinTahanAsti = henkilo;
+              }
           }
 
           return painavinTahanAsti;
@@ -3138,208 +3198,6 @@
   <% end %>
   
 <% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Joukkueet ja pelaajat (5 osaa)' } do %>
-
-  <p>
-    Tässä tehtävässä tehdään joukkueiden ja joukkueen pelaajien ylläpitoon tarkoitettuun ohjelmistoon tarvittavat ydinluokat.
-  </p>
-
-  <h2>Joukkue</h2>
-
-  <p>
-    Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:
-  </p>
-
-  <ul>
-    <li> konstruktori, jolle annetaan joukkueen nimi</li>
-    <li> <code>getNimi</code>, joka palauttaa joukkueen nimen</li>
-  </ul>
-
-  <p>
-    Seuraava pääohjelma testaa luokan toimintaa:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Main {
-        public static void main(String[] args) {
-            Joukkue tapiiri = new Joukkue("FC Tapiiri");
-            System.out.println("Joukkue: " + tapiiri.haeNimi());
-        } 
-    }
-  <% end %>
-
-  <p>
-    Ohjelman tulostus on seuraava:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Joukkue: FC Tapiiri
-  <% end %>
-
-  <h2>Pelaaja</h2>
-
-  <p>
-    Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:
-  </p>
-
-  <ul>
-    <li> <code>getNimi</code>, joka palauttaa pelaajan nimen</li>
-    <li> <code>getMaalit</code>, joka palauttaa tehtyjen maalien määrän</li>
-    <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
-  </ul>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Main {
-        public static void main(String[] args) {
-            Joukkue tapiiri = new Joukkue("FC Tapiiri");
-            System.out.println("Joukkue: " + tapiiri.getNimi());
-
-            Pelaaja matti = new Pelaaja("Matti");
-            System.out.println("Pelaaja: " + matti);
-
-            Pelaaja pekka = new Pelaaja("Pekka", 39);
-            System.out.println("Pelaaja: " + pekka);
-        }
-    }
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Joukkue: FC Tapiiri
-    Pelaaja: Matti, maaleja 0
-    Pelaaja: Pekka, maaleja 39
-  <% end %>
-
-  
-  <h2>Pelaajat joukkueisiin</h2>
-
-  <p>
-    Lisää luokkaan <code>Joukkue</code> seuraavat metodit:
-  </p>
-
-  <ul>
-    <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
-    <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
-  </ul>
-
-  <p>
-    Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.
-  </p>
-
-  <p>
-    Seuraava pääohjelma testaa luokan toimintaa:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Main {
-        public static void main(String[] args) {
-            Joukkue tapiiri = new Joukkue("FC Tapiiri");
-
-            Pelaaja matti = new Pelaaja("Matti");
-            Pelaaja pekka = new Pelaaja("Pekka", 39);
-
-            tapiiri.lisaaPelaaja(matti);
-            tapiiri.lisaaPelaaja(pekka);
-            tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
-
-            tapiiri.tulostaPelaajat();
-        }
-    }
-  <% end %>
-
-  <p>
-    Ohjelman tulostuksen tulisi olla seuraava:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Matti, maaleja 0
-    Pekka, maaleja 39
-    Mikael, maaleja 1
-  <% end %>
-
-  
-  <h2>Joukkueen maksimikoko ja nykyinen koko</h2>
-
-  <p>
-    Lisää luokkaan <code>Joukkue</code> seuraavat metodit:
-  </p>
-
-  <ul>
-    <li> <code>setMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
-    <li> <code>getPelaajienLukumaara</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
-  </ul>
-
-  <p>
-    Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16 (lisää tämä luokan oliomuuttujaksi ja alusta muuttujan arvo konstruktorissa). Metodin <code>setMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta edellisessä osassa tehtyä metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.
-  </p>
-
-  <p>
-    <strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.
-  </p>
-
-  <p>
-    Seuraava pääohjelma testaa luokan toimintaa:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Main {
-        public static void main(String[] args) {
-            Joukkue tapiiri = new Joukkue("FC Tapiiri");
-            tapiiri.setMaksimikoko(1);
-
-            Pelaaja matti = new Pelaaja("Matti");
-            Pelaaja pekka = new Pelaaja("Pekka", 39);
-            tapiiri.lisaaPelaaja(matti);
-            tapiiri.lisaaPelaaja(pekka);
-            tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
-
-            System.out.println("Pelaajia yhteensä: " + tapiiri.getPelaajienLukumaara());
-        }
-    }
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Pelaajia yhteensä: 1
-  <% end %>
-
-  
-  <h2>Joukkueen maalit</h2>
-
-  <p>
-    Lisää luokkaan <code>Joukkue</code> metodi:
-  </p>
-
-  <ul>
-    <li> <code>yhteismaalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
-  </ul>
-
-  <p>
-    Seuraava pääohjelma testaa luokan toimintaa:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Main {
-        public static void main(String[] args) {
-            Joukkue tapiiri = new Joukkue("FC Tapiiri");
-
-            Pelaaja matti = new Pelaaja("Matti");
-            Pelaaja pekka = new Pelaaja("Pekka", 39);
-            tapiiri.lisaaPelaaja(matti);
-            tapiiri.lisaaPelaaja(pekka);
-            tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
-
-            System.out.println("Maaleja yhteensä: " + tapiiri.yhteismaalit());
-        }
-    }
-  <% end %>
-
-  <% partial 'partials/sample_output' do%>
-    Maaleja yhteensä: 40
-  <% end %>
-
-<% end %>
-
 
 
 <% partial 'partials/exercise', locals: { name: 'Lahjapakkaamo (2 osaa)' } do %>
@@ -3772,423 +3630,72 @@
 
 
 <% partial 'partials/material_heading' do %>
-  Ensiaskeleet automaattiseen testaamiseen
+  Yhteenveto
 <% end %>
 
 <p>
-  Otetaan seuraavaksi ensiaskeleet ohjelmien testaamiseen.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan
-<% end %>
-
-<p>
-  Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle. Joskus toisaalta virheet voivat johtaa hyvinkin vakaviin seurauksiin. Varmaa on joka tapauksessa se, että ohjelmoimaan opetteleva ihminen tekee paljon virheitä.
+  Tässä osassa tutustuimme alkeis- ja viittaustyyppisten muuttujien eroihin sekä syvennyimme olioiden toimintaan. Toteutimme ohjelmia, missä olioiden käyttöä harjoiteltiin erilaisissa muodoissa, esimerkiksi metodin parametreina kuin paluuarvoina. Oleellisessa roolissa olivat myös oliot listalla sekä listat olion oliomuuttujana.
 </p>
 
 <p>
-  Virheitä ei kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä.
+  Tutustutaan vielä lopuksi hieman erilaiseen listojen käyttötarkoitukseen harjoitustehtävän kautta.
 </p>
 
-<% partial 'partials/hint', locals: { name: 'Ohjelmistovirhe' } do %>
+
+
+<% partial 'partials/exercise', locals: { name: 'StackyWindows' } do %>
 
   <p>
-    Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman sekä ohjelmistovirheen.
+    Nykyiset käyttöjärjestelmät ovat kiitollisuudenvelassa Xerox Alto -nimisessä tietokoneessa 1970-luvulla käytettyyn oivallukseen: sovellukset voivat olla osittain päällekkäin.
   </p>
 
   <p>
-    Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.
+    Oivallus on loppujenlopuksi melko suoraviivainen. Jokainen sovellus on suorakulmion sisällä, ja käyttäjä voi suorakulmiota klikkaamalla nostaa suorakulmion päällimmäiseksi.
   </p>
 
   <p>
-    Satelliitti tuhoutui.
+    Tehtäväpohjassa on ohjelma, joka käynnistyessään näyttää allaolevalta.
   </p>
 
-<% end %>
-
-
-<p>
-  Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Debuggerin käyttöä on esitelty kurssimateriaaliin upotetuilla videoilla; alla oleva video esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.
-</p>
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-
-<% partial 'partials/material_sub_heading' do %>
-  Stack trace
-<% end %>
-
-<p>
-  Kun ohjelmassa tapahtuu virhe, ohjelma tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Exception in thread "main" ...
-      at Ohjelma.main(Ohjelma.java:15)
-<% end %>
-
-<p>
-  Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.
-</p>
-
-<% partial 'partials/sample_output' do %>
-      at Ohjelma.main(Ohjelma.java:15)
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Muistilista virheenselvitykseen
-<% end %>
-
-<p>
-  Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.
-</p>
-
-<ol>
-  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
-  <li>Tarkista ovatko käytetyt muuttujat oikean nimisiä.</li>
-  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
-  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
-  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
-  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
-  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
-</ol>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Testisyötteen antaminen Scannerille
-<% end %>
-
-<p>
-  Ohjelman testaaminen käsin on usein työlästä. Syötteen antaminen on mahdollista automatisoida esimerkiksi syöttämällä Scanner-oliolle luettava merkkijono. Alla on annettu esimerkki siitä, miten ohjelmaa voi testata automaattisesti. Ohjelmassa syötetään ensin viisi merkkijonoa, jonka jälkeen syötetään aiemmin nähty merkkijono. Tämän jälkeen yritetään syöttää vielä uusi merkkijono. Merkkijonoa "kuusi" ei pitäisi esiintyä sanajoukossa.
-</p>
-
-<p>
-  Testisyötteen voi antaa merkkijonona Scanner-oliolle konstruktorissa. Jokainen testisyötteessä annettava rivinvaihto merkitään merkkijonoon kenoviivan ja n-merkin yhdistelmänä "\n".
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  String syote = "yksi\n" + "kaksi\n"  +
-      "kolme\n" + "nelja\n" +
-      "viisi\n" + "yksi\n"  +
-      "kuusi\n";
-
-  Scanner lukija = new Scanner(syote);
-
-  ArrayList&lt;String&gt; luetut = new ArrayList&lt;&gt;();
-  while (true) {
-      System.out.println("Anna syote: ");
-      String rivi = lukija.nextLine();
-      if (luetut.contains(rivi)) {
-          break;
-      }
-
-      luettu.add(rivi);
-  }
-
-  System.out.println("Kiitos!");
-
-  if (luetut.sisaltaa("kuusi")) {
-      System.out.println("Joukkoon lisättiin arvo, jota sinne ei olisi pitänyt lisätä.");
-  }
-<% end %>
-
-<p>
-  Ohjelma tulostus näyttää vain ohjelman antaman tulostuksen, ei käyttäjän tekemiä komentoja.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Kiitos!
-<% end %>
-
-<p>
-  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa yhtä nextLine()-komentoon annettua syötettä.
-</p>
-
-<p>
-  Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion konstruktorin parametriksi <code>System.in</code>, eli järjestelmän syötevirta. Voit toisaalta halutessasi myös vaihtaa testisyötettä, sillä kyse on merkkijonosta.
-</p>
-
-<p>
-  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Debuggailua' } do %>
+  <img src="/img/stackywindows-1.png"/>
 
   <p>
-    Ohjelmassa on yritetty luoda sovellus, joka kysyy käyttäjältä merkkijonoa ja lukua. Sovelluksen pitäisi toimia esimerkiksi seuraavasti:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Sana:
-    <font color="red">testi</font>
-    Luku:
-    <font color="red">3</font>
-    t
-     e
-      s
-    t
-     i
-  <% end %>
-
-  <p>
-    Esimerkki 2:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Sana:
-    <font color="red">esim</font>
-    Luku:
-    <font color="red">2</font>
-    e
-     s
-    i
-     m
-  <% end %>
-
-  <p>
-    Tällä hetkellä ohjelma ei kuitenkaan toimi halutusti. Ota selvää miksi ja korjaa ohjelma. Huomaat myös, että ohjelmassa käytetään paljon omituisia asioita, jotka eivät ole tulleet vielä kurssilla tutuksi. Kannattaakin tehdä niin, että kokeilee myös näitä uusia asioita erikseen.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Yksikkötestaus
-<% end %>
-
-<p>
-  Edellä esitetty menetelmä automaattiseen testaamiseen missä ohjelmalle syötetyt syötteet muutetaan on varsin kätevä, mutta kuitenkin melko rajoittunut. Isompien ohjelmien testaaminen edellä kuvatulla tavalla on haastavaa. Eräs ratkaisu tähän on yksikkötestaus, missä ohjelman pieniä osia testataan erikseen.
-</p>
-
-<p>
-  Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien kuten luokkien ja niiden tarjoamien metodien testaamista.  Luokkien ja metodien rakenteen suunnittelussa käytettävän ohjesäännön -- jokaisella metodilla ja luokalla tulee olla yksi selkeä vastuu -- noudattamisen tai siitä poikkeamisen huomaa testejä kirjoittaessa. Mitä useampi vastuu metodilla on, sitä monimutkaisempi testi on. Jos laaja sovellus on kirjoitettu yksittäiseen metodiin, on testien kirjoittaminen sitä varten erittäin haastavaa ellei jopa mahdotonta. Vastaavasti, jos sovellus on pilkottu selkeisiin luokkiin ja metodeihin, on testienkin kirjoittaminen suoraviivaista.
-</p>
-
-<p>
-  Testien kirjoittamisessa hyödynnetään tyypillisesti valmiita yksikkötestauskirjastoja, jotka tarjoavat metodeja ja apuluokkia testien kirjoittamiseen. Javassa käytetyin yksikkötestauskirjasto on <a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a>, johon löytyy myös tuki lähes kaikista ohjelmointiympäristöistä. Esimerkiksi NetBeans osaa automaattisesti etsiä JUnit-testejä projektista -- jos testejä löytyy, ne näytetään projektin alla Test Packages -kansiossa.
-</p>
-
-<p>
-  Tarkastellaan yksikkötestien kirjoittamista esimerkin kautta. Oletetaan, että käytössämme on seuraava luokka Laskin, ja haluamme kirjoittaa sitä varten automaattisia testejä.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  public class Laskin {
-
-      private int arvo;
-
-      public Laskin() {
-          this.arvo = 0;
-      }
-
-      public void summa(int luku) {
-          this.arvo += luku;
-      }
-
-      public void erotus(int luku) {
-          this.arvo += luku;
-      }
-
-      public int getArvo() {
-          return this.arvo;
-      }
-  }
-<% end %>
-
-<p>
-  Laskimen toiminta perustuu siihen, että se muistaa aina edellisen laskuoperaation tuottaman tuloksen. Seuraavat laskuoperaatiot lisätään aina edelliseen lopputulokseen. Yllä olevaan laskimeen on jäänyt myös pieni copy-paste -ohjelmoinnista johtuva virhe. Metodin erotus pitäisi vähentää arvosta, mutta nyt se lisää arvoon.
-</p>
-
-<p>
-  Yksikkötestien kirjoittaminen aloitetaan testiluokan luomisella. Testiluokka luodaan Test Packages -kansion alle. Kun testaamme luokkaa <code>Laskin</code>, testiluokan nimeksi tulee <code>LaskinTest</code>. Nimen lopussa oleva merkkijono <code>Test</code> kertoo ohjelmointiympäristölle, että kyseessä on testiluokka. Ilman merkkijonoa Test luokassa olevia testejä ei suoriteta. (Huom! Testit luodaan NetBeansissa Test Packages -kansion alle.)
-</p>
-
-<p>
-  Testiluokka LaskinTest on aluksi tyhjä.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  public class LaskinTest {
-
-  }
-<% end %>
-
-<p>
-  Testit ovat testiluokassa olevia metodeja ja jokainen testi testaa yksittäistä asiaa. Aloitetaan luokan Laskin testaaminen -- luodaan ensin testimetodi, jossa varmistetaan, että juuri luodun laskimen sisältämä arvo on 0.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-
-  import static org.junit.Assert.assertEquals;
-  import org.junit.Test;
-
-  public class LaskinTest {
-
-      @Test
-      public void laskimenArvoAlussaNolla() {
-          Laskin laskin = new Laskin();
-          assertEquals(0, laskin.getArvo());
-      }
-  }
-<% end %>
-
-<p>
-  Yllä olevassa metodissa laskimenArvoAlussaNolla luodaan ensin laskinolio. Tämän jälkeen käytetään JUnit-testikehyksen tarjoamaa assertEquals-metodia arvon tarkistamiseen. Metodi tuodaan luokasta Assert komennolla import static, ja sille annetaan parametrina odotettu arvo -- tässä 0 -- sekä laskimen palauttama arvo. Jos metodin assertEquals arvot poikkeavat toisistaan, testin suoritus ei pääty hyväksytysti. Jokaisella testimetodilla tulee olla <em>annotaatio</em> @Test -- tämä kertoo JUnit-testikehykselle, että kyseessä on suoritettava testimetodi.
-</p>
-
-<p>
-  Testien suorittaminen onnistuu valitsemalla projekti oikealla hiirennapilla ja klikkaamalla vaihtoehtoa Test.
-</p>
-
-<p>
-  Testien suorittaminen luo output-välilehdelle (tyypillisesti NetBeansin alalaidassa) tulosteen, jossa on testiluokkakohtaiset tilastot. Alla olevassa esimerkissä on suoritettu pakkauksessa laskin olevan testiluokan LaskinTest testit. Testejä suoritettiin 1, joista yksikään ei epäonnistunut -- epäonnistuminen tarkoittaa tässä sitä, että testin testaama toiminnallisuus ei toiminut oletetusti.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Testsuite: LaskinTest
-  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
-
-  test-report:
-  test:
-  BUILD SUCCESSFUL (total time: 0 seconds)
-<% end %>
-
-<p>
-  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package laskin;
-
-  import static org.junit.Assert.assertEquals;
-  import org.junit.Test;
-
-  public class LaskinTest {
-
-      @Test
-      public void laskimenArvoAlussaNolla() {
-          Laskin laskin = new Laskin();
-          assertEquals(0, laskin.getArvo());
-      }
-
-      @Test
-      public void arvoViisiKunSummataanViisi() {
-          Laskin laskin = new Laskin();
-          laskin.summa(5);
-          assertEquals(5, laskin.getArvo());
-      }
-
-      @Test
-      public void arvoMiinusKaksiKunErotetaanKaksi() {
-          Laskin laskin = new Laskin();
-          laskin.erotus(2);
-          assertEquals(-2, laskin.getArvo());
-      }
-  }
-<% end %>
-
-<p>
-  Testien suorittaminen antaa seuraavanlaisen tulostuksen.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Testsuite: LaskinTest
-  Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
-
-  Testcase: arvoMiinusKaksiKunErotetaanKaksi(LaskinTest):	FAILED
-  expected:<-2> but was:<2>
-  junit.framework.AssertionFailedError: expected:<-2> but was:<2>
-      at LaskinTest.arvoMiinusKaksiKunErotetaanKaksi(LaskinTest.java:25)
-
-
-  Test LaskinTest FAILED
-  test-report:
-  test:
-  BUILD SUCCESSFUL (total time: 0 seconds)
-<% end %>
-
-<p>
-  Tulostus kertoo, että kolme testiä suoritettiin. Yksi niistä päätyi virheeseen. Testitulostuksessa on tieto myös testin rivistä, jossa virhe tapahtui (25) sekä tieto odotetusta (-2) ja saadusta arvosta (2). Kun testien suoritus päättyy virheeseen, NetBeans näyttää testien suoritukseen liitttyvän virhetilanteen myös visuaalisena.
-</p>
-
-<p>
-  Edellisillä testeillä kaksi testeistä menee läpi, mutta yhdessä on tapahtunut virhe. Korjataan luokkaan Laskin jäänyt virhe.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // ...
-  public void erotus(int luku) {
-      this.arvo -= luku;
-  }
-  // ...
-<% end %>
-
-<p>
-  Kun testit suoritetaan uudestaan, testit menevät läpi.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Testsuite: LaskinTest
-  Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
-
-  test-report:
-  test:
-  BUILD SUCCESSFUL (total time: 0 seconds)
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Laskimen testailua' } do %>
-
-  <p>
-    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo laskimelle esimerkissä näytetyt testit. Kokeile testien toimintaa, ja palauta lopulta tehtävä Test My Code-palvelimelle.
-  </p>
-
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Breakout' } do %>
-
-  <p>
-    <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)" target="_blank" rel="noopener">Breakout</a> on <a href="https://en.wikipedia.org/wiki/Atari,_Inc." target="_blank" rel="noopener">Atarin</a> vuonna 1976 julkaisema videopeli. Pelin ideana käyttää pelin alalaidassa olevaa mailaa pelissä liikkuvan pallon lyömiseen siten, että pallolla saadaan rikottua ylälaidassa olevia palasia.
+    &nbsp;
   </p>
 
   <p>
-    Termi "Breakout" tulee tilanteesta, missä pelaaja saa pallon ylälaidassa olevien palasten yläpuolelle, missä pallo tekee tuhoa useammalle palalle samaan aikaan.
+    Tehtävänäsi on muokata sovellusta siten, että suorakulmiota klikkaamalla suorakulmio saadaan nostettua "kokonaan näkyville". Alla olevassa kuvassa käyttäjä on klikannut sinistä suorakulmiota, jolloin se on noussut päällimmäiseksi.
+  </p>
+
+  <img src="/img/stackywindows-2.png"/>
+
+  <p>
+    &nbsp;
   </p>
 
   <p>
-    Tässä tehtävässä fiilistellään Breakout-pelin tekemistä.
+    Toiminnallisuutta varten kannattaa tarkastella tehtäväpohjassa olevaa ikkunoiden piirtotoiminnallisuutta ja miettiä ikkunoiden piirtojärjestys. Paperille piirtäminen lienee myös hyödyllistä.
   </p>
 
   <p>
-    Tehtäväpohjaan on toteutettuna ensimmäisiä palasia Breakout peliin. Tehtävänäsi on täydentää pelin toimintaa. Alla lista täydennysehdotuksista:
+    Kun klikkaus toimii, lähde sen jälkeen toteuttamaan ikkunan siirtämistä hiiren napin ollessa pohjassa.
   </p>
-
-  <ol>
-    <li>Tällä hetkellä pelin ylälaidassa on vain muutama vaivainen palikka. Muokkaa peliä siten, että ylälaidassa on useita erivärisiä palikoita. Hae inspiraatiota <a href="https://images.google.com" target="_blank" rel="noopener">Googlen kuvahausta</a> avainsanalla "Breakout".</li>
-    <li>Pelin pelattavuus on tällä hetkellä melko heikko. Mailalla ei osuta palloon, vaikka kuinka yritettäisiin. Lisää peliin mahdollisuus osua mailalla palloon -- palloon osumisen pitäisi muuttaa pallon suuntaa. Osoitteesta <a href="http://www.edu4java.com/en/game/game6.html" target="_blank" rel="noopener">http://www.edu4java.com/en/game/game6.html</a> olevasta oppaasta saattaa olla hyötyä. Hifistelyä kaipaavat voivat lähteä liikenteeseen kysymyksestä <a href="http://gamedev.stackexchange.com/questions/10911/a-ball-hits-the-corner-where-will-it-deflect" target="_blank" rel="noopener">A ball hits the corner, where will it deflect?</a></li>
-    <li>Kun pallon osuminen mailaan on hanskassa, lisää samanlainen osumistoiminnallisuus kaikkiin paloihin. Tässä kohtaa paloja ei vielä tarvitse poistaa.</li>
-    <li>Kun pallo osuu palaan, pala pitäisi poistaa. Sehän on melkein jo peli!</li>
-    <li>Mieti minkälaisia luokkia pelissä kannattaisi olla. Nyt piirtämiseen käytetty paikka sisältää varmaankin jo hyvin paljon koodia.. Siistimisen paikka!</li>
-  </ol>
 
   <p>
-    Tehtävässä ei ole automaattisia testejä ja se on yhden pisteen arvoinen. Voit palauttaa tehtävän jo kun saat ensimmäisen parannusehdotuksen tehtyä mutta peliä saa toki viilata enemmänkin.
+    Tehtäväpohjan kohdat "root.setonMousePressed" ja "root.setOnMouseDragged" ovat tärkeitä toiminnan toteuttamisen kannalta.
   </p>
 
+  <p>
+    Muistathan, että double-tyyppisen muuttujan saa muunnettua int-tyyppiseksi muuttujaksi esimerkiksi lauseella “int arvo = (int) (doublearvo);” Vastaavasti, siirtoa varten tarvitset jonkinlaisen tavan pitää kirjaa edellisistä sijainneista -- tarvitset tätä varten viittaustyyppisen muuttujan, johon voidaan säilöä aiemmat arvot.
+  </p>
+
+  <p>
+    <em>
+      Tehtäväpohjassa ei ole testejä -- palauta tehtävä kun se toimii toivotulla tavalla.
+    </em>
+  </p>
+  
 <% end %>
 
 
-<%= partial 'partials/quiz', locals: { id: '59d2acc145370b000408077c' } %>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a334' } %>
