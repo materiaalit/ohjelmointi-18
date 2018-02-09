@@ -15,6 +15,393 @@
 <% end %>
 
 
+<% partial 'partials/material_heading' do %>
+  Ensiaskeleet automaattiseen testaamiseen
+<% end %>
+
+<p>
+  Otetaan seuraavaksi ensiaskeleet ohjelmien testaamiseen.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan
+<% end %>
+
+<p>
+  Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle. Joskus toisaalta virheet voivat johtaa hyvinkin vakaviin seurauksiin. Varmaa on joka tapauksessa se, että ohjelmoimaan opetteleva ihminen tekee paljon virheitä.
+</p>
+
+<p>
+  Virheitä ei kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä.
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Ohjelmistovirhe' } do %>
+
+  <p>
+    Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman sekä ohjelmistovirheen.
+  </p>
+
+  <p>
+    Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.
+  </p>
+
+  <p>
+    Satelliitti tuhoutui.
+  </p>
+
+<% end %>
+
+
+<p>
+  Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Debuggerin käyttöä on esitelty kurssimateriaaliin upotetuilla videoilla; alla oleva video esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.
+</p>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
+
+<% partial 'partials/material_sub_heading' do %>
+  Stack trace
+<% end %>
+
+<p>
+  Kun ohjelmassa tapahtuu virhe, ohjelma tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Exception in thread "main" ...
+  at Ohjelma.main(Ohjelma.java:15)
+<% end %>
+
+<p>
+  Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  at Ohjelma.main(Ohjelma.java:15)
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Muistilista virheenselvitykseen
+<% end %>
+
+<p>
+  Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.
+</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Tarkista ovatko käytetyt muuttujat oikean nimisiä.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Testisyötteen antaminen Scannerille
+<% end %>
+
+<p>
+  Ohjelman testaaminen käsin on usein työlästä. Syötteen antaminen on mahdollista automatisoida esimerkiksi syöttämällä Scanner-oliolle luettava merkkijono. Alla on annettu esimerkki siitä, miten ohjelmaa voi testata automaattisesti. Ohjelmassa syötetään ensin viisi merkkijonoa, jonka jälkeen syötetään aiemmin nähty merkkijono. Tämän jälkeen yritetään syöttää vielä uusi merkkijono. Merkkijonoa "kuusi" ei pitäisi esiintyä sanajoukossa.
+</p>
+
+<p>
+  Testisyötteen voi antaa merkkijonona Scanner-oliolle konstruktorissa. Jokainen testisyötteessä annettava rivinvaihto merkitään merkkijonoon kenoviivan ja n-merkin yhdistelmänä "\n".
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String syote = "yksi\n" + "kaksi\n"  +
+  "kolme\n" + "nelja\n" +
+  "viisi\n" + "yksi\n"  +
+  "kuusi\n";
+
+  Scanner lukija = new Scanner(syote);
+
+  ArrayList&lt;String&gt; luetut = new ArrayList&lt;&gt;();
+  while (true) {
+  System.out.println("Anna syote: ");
+  String rivi = lukija.nextLine();
+  if (luetut.contains(rivi)) {
+  break;
+  }
+
+  luettu.add(rivi);
+  }
+
+  System.out.println("Kiitos!");
+
+  if (luetut.sisaltaa("kuusi")) {
+  System.out.println("Joukkoon lisättiin arvo, jota sinne ei olisi pitänyt lisätä.");
+  }
+<% end %>
+
+<p>
+  Ohjelma tulostus näyttää vain ohjelman antaman tulostuksen, ei käyttäjän tekemiä komentoja.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Anna syote:
+  Kiitos!
+<% end %>
+
+<p>
+  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa yhtä nextLine()-komentoon annettua syötettä.
+</p>
+
+<p>
+  Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion konstruktorin parametriksi <code>System.in</code>, eli järjestelmän syötevirta. Voit toisaalta halutessasi myös vaihtaa testisyötettä, sillä kyse on merkkijonosta.
+</p>
+
+<p>
+  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa.
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Debuggailua' } do %>
+
+  <p>
+    Ohjelmassa on yritetty luoda sovellus, joka kysyy käyttäjältä merkkijonoa ja lukua. Sovelluksen pitäisi toimia esimerkiksi seuraavasti:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Sana:
+    <font color="red">testi</font>
+    Luku:
+    <font color="red">3</font>
+    t
+    e
+    s
+    t
+    i
+  <% end %>
+
+  <p>
+    Esimerkki 2:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Sana:
+    <font color="red">esim</font>
+    Luku:
+    <font color="red">2</font>
+    e
+    s
+    i
+    m
+  <% end %>
+
+  <p>
+    Tällä hetkellä ohjelma ei kuitenkaan toimi halutusti. Ota selvää miksi ja korjaa ohjelma. Huomaat myös, että ohjelmassa käytetään paljon omituisia asioita, jotka eivät ole tulleet vielä kurssilla tutuksi. Kannattaakin tehdä niin, että kokeilee myös näitä uusia asioita erikseen.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Yksikkötestaus
+<% end %>
+
+<p>
+  Edellä esitetty menetelmä automaattiseen testaamiseen missä ohjelmalle syötetyt syötteet muutetaan on varsin kätevä, mutta kuitenkin melko rajoittunut. Isompien ohjelmien testaaminen edellä kuvatulla tavalla on haastavaa. Eräs ratkaisu tähän on yksikkötestaus, missä ohjelman pieniä osia testataan erikseen.
+</p>
+
+<p>
+  Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien kuten luokkien ja niiden tarjoamien metodien testaamista.  Luokkien ja metodien rakenteen suunnittelussa käytettävän ohjesäännön -- jokaisella metodilla ja luokalla tulee olla yksi selkeä vastuu -- noudattamisen tai siitä poikkeamisen huomaa testejä kirjoittaessa. Mitä useampi vastuu metodilla on, sitä monimutkaisempi testi on. Jos laaja sovellus on kirjoitettu yksittäiseen metodiin, on testien kirjoittaminen sitä varten erittäin haastavaa ellei jopa mahdotonta. Vastaavasti, jos sovellus on pilkottu selkeisiin luokkiin ja metodeihin, on testienkin kirjoittaminen suoraviivaista.
+</p>
+
+<p>
+  Testien kirjoittamisessa hyödynnetään tyypillisesti valmiita yksikkötestauskirjastoja, jotka tarjoavat metodeja ja apuluokkia testien kirjoittamiseen. Javassa käytetyin yksikkötestauskirjasto on <a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a>, johon löytyy myös tuki lähes kaikista ohjelmointiympäristöistä. Esimerkiksi NetBeans osaa automaattisesti etsiä JUnit-testejä projektista -- jos testejä löytyy, ne näytetään projektin alla Test Packages -kansiossa.
+</p>
+
+<p>
+  Tarkastellaan yksikkötestien kirjoittamista esimerkin kautta. Oletetaan, että käytössämme on seuraava luokka Laskin, ja haluamme kirjoittaa sitä varten automaattisia testejä.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class Laskin {
+
+  private int arvo;
+
+  public Laskin() {
+  this.arvo = 0;
+  }
+
+  public void summa(int luku) {
+  this.arvo += luku;
+  }
+
+  public void erotus(int luku) {
+  this.arvo += luku;
+  }
+
+  public int getArvo() {
+  return this.arvo;
+  }
+  }
+<% end %>
+
+<p>
+  Laskimen toiminta perustuu siihen, että se muistaa aina edellisen laskuoperaation tuottaman tuloksen. Seuraavat laskuoperaatiot lisätään aina edelliseen lopputulokseen. Yllä olevaan laskimeen on jäänyt myös pieni copy-paste -ohjelmoinnista johtuva virhe. Metodin erotus pitäisi vähentää arvosta, mutta nyt se lisää arvoon.
+</p>
+
+<p>
+  Yksikkötestien kirjoittaminen aloitetaan testiluokan luomisella. Testiluokka luodaan Test Packages -kansion alle. Kun testaamme luokkaa <code>Laskin</code>, testiluokan nimeksi tulee <code>LaskinTest</code>. Nimen lopussa oleva merkkijono <code>Test</code> kertoo ohjelmointiympäristölle, että kyseessä on testiluokka. Ilman merkkijonoa Test luokassa olevia testejä ei suoriteta. (Huom! Testit luodaan NetBeansissa Test Packages -kansion alle.)
+</p>
+
+<p>
+  Testiluokka LaskinTest on aluksi tyhjä.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class LaskinTest {
+
+  }
+<% end %>
+
+<p>
+  Testit ovat testiluokassa olevia metodeja ja jokainen testi testaa yksittäistä asiaa. Aloitetaan luokan Laskin testaaminen -- luodaan ensin testimetodi, jossa varmistetaan, että juuri luodun laskimen sisältämä arvo on 0.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+
+  import static org.junit.Assert.assertEquals;
+  import org.junit.Test;
+
+  public class LaskinTest {
+
+  @Test
+  public void laskimenArvoAlussaNolla() {
+  Laskin laskin = new Laskin();
+  assertEquals(0, laskin.getArvo());
+  }
+  }
+<% end %>
+
+<p>
+  Yllä olevassa metodissa laskimenArvoAlussaNolla luodaan ensin laskinolio. Tämän jälkeen käytetään JUnit-testikehyksen tarjoamaa assertEquals-metodia arvon tarkistamiseen. Metodi tuodaan luokasta Assert komennolla import static, ja sille annetaan parametrina odotettu arvo -- tässä 0 -- sekä laskimen palauttama arvo. Jos metodin assertEquals arvot poikkeavat toisistaan, testin suoritus ei pääty hyväksytysti. Jokaisella testimetodilla tulee olla <em>annotaatio</em> @Test -- tämä kertoo JUnit-testikehykselle, että kyseessä on suoritettava testimetodi.
+</p>
+
+<p>
+  Testien suorittaminen onnistuu valitsemalla projekti oikealla hiirennapilla ja klikkaamalla vaihtoehtoa Test.
+</p>
+
+<p>
+  Testien suorittaminen luo output-välilehdelle (tyypillisesti NetBeansin alalaidassa) tulosteen, jossa on testiluokkakohtaiset tilastot. Alla olevassa esimerkissä on suoritettu pakkauksessa laskin olevan testiluokan LaskinTest testit. Testejä suoritettiin 1, joista yksikään ei epäonnistunut -- epäonnistuminen tarkoittaa tässä sitä, että testin testaama toiminnallisuus ei toiminut oletetusti.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: LaskinTest
+  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
+
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+<p>
+  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package laskin;
+
+  import static org.junit.Assert.assertEquals;
+  import org.junit.Test;
+
+  public class LaskinTest {
+
+  @Test
+  public void laskimenArvoAlussaNolla() {
+  Laskin laskin = new Laskin();
+  assertEquals(0, laskin.getArvo());
+  }
+
+  @Test
+  public void arvoViisiKunSummataanViisi() {
+  Laskin laskin = new Laskin();
+  laskin.summa(5);
+  assertEquals(5, laskin.getArvo());
+  }
+
+  @Test
+  public void arvoMiinusKaksiKunErotetaanKaksi() {
+  Laskin laskin = new Laskin();
+  laskin.erotus(2);
+  assertEquals(-2, laskin.getArvo());
+  }
+  }
+<% end %>
+
+<p>
+  Testien suorittaminen antaa seuraavanlaisen tulostuksen.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: LaskinTest
+  Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
+
+  Testcase: arvoMiinusKaksiKunErotetaanKaksi(LaskinTest):	FAILED
+  expected:<-2> but was:<2>
+  junit.framework.AssertionFailedError: expected:<-2> but was:<2>
+  at LaskinTest.arvoMiinusKaksiKunErotetaanKaksi(LaskinTest.java:25)
+
+
+  Test LaskinTest FAILED
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+<p>
+  Tulostus kertoo, että kolme testiä suoritettiin. Yksi niistä päätyi virheeseen. Testitulostuksessa on tieto myös testin rivistä, jossa virhe tapahtui (25) sekä tieto odotetusta (-2) ja saadusta arvosta (2). Kun testien suoritus päättyy virheeseen, NetBeans näyttää testien suoritukseen liitttyvän virhetilanteen myös visuaalisena.
+</p>
+
+<p>
+  Edellisillä testeillä kaksi testeistä menee läpi, mutta yhdessä on tapahtunut virhe. Korjataan luokkaan Laskin jäänyt virhe.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // ...
+  public void erotus(int luku) {
+  this.arvo -= luku;
+  }
+  // ...
+<% end %>
+
+<p>
+  Kun testit suoritetaan uudestaan, testit menevät läpi.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: LaskinTest
+  Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
+
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Laskimen testailua' } do %>
+
+  <p>
+    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo laskimelle esimerkissä näytetyt testit. Kokeile testien toimintaa, ja palauta lopulta tehtävä Test My Code-palvelimelle.
+  </p>
+
+<% end %>
+
+
+
 
 <% partial 'partials/material_heading' do %>
   Lista arvojen virtana
