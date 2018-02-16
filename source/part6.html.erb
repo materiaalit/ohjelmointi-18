@@ -3671,11 +3671,11 @@ Hajautustaulu:
 
       // pidetään pelaajan kaksi viimeisintä arvausta tallessa
       viimeisimmat += luku;
+      muisti.put(viimeisimmat, muisti.getOrDefault(viimeisimmat, 0) + 1);
       if (viimeisimmat.length() &gt; 2) {
           viimeisimmat = viimeisimmat.substring(1);
       }
 
-      muisti.put(viimeisimmat, muisti.getOrDefault(viimeisimmat, 0) + 1);
 
       System.out.println("Syötit " + syote + ", arvasin " + arvaus + ".");
       System.out.println("Tietokoneen voitot: " + voitot);
