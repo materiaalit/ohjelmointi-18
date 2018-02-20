@@ -2822,7 +2822,7 @@ System.out.print("Mikä ikäraja? ");
 int ikaraja = Integer.parseInt(lukija.nextLine());
 
 for (Henkilo henkilo: henkilot) {
-    if (henkilo.getIka() &gt;= 18) {
+    if (henkilo.getIka() &gt;= ikaraja) {
         System.out.println(henkilo);
     }
 }
