@@ -83,9 +83,9 @@ while (true) {
     37
     10
   <% end %>
-  
+
   <h2>Pisteiden keskiarvot</h2>
-  
+
   <p>
     Kirjoita ohjelma, joka lukee käyttäjältä kurssin yhteispisteitä kuvaavia kokonaislukuja. Luvut väliltä [0-100] ovat hyväksyttäviä ja luku -1 lopettaa syötteen. Muut luvut ovat virhesyötteitä, jotka tulee jättää huomiotta. Kun käyttäjä syöttää luvun -1, tulostetaan syötettyjen yhteispisteiden keskiarvo.
   </p>
@@ -111,9 +111,9 @@ while (true) {
     Pisteiden keskiarvo (kaikki): 51.0
   <% end %>
 
-  
+
   <h2>Hyväkysyttyyn arvosanaan liittyvien pisteiden keskiarvot</h2>
-  
+
   <p>
     Täydennä ohjelmaa siten, että se laskee kaikkien pisteiden keskiarvon lisäksi myös hyväksyttyyn arvosanaan liittyvien pisteiden keskiarvot.
   </p>
@@ -145,7 +145,7 @@ while (true) {
     Pisteiden keskiarvo (hyväksytyt): -
   <% end %>
 
-  
+
   <h2>Hyväksyttyjen prosenttiosuus</h2>
 
   <p>
@@ -185,12 +185,12 @@ while (true) {
   </p>
 
   <table class="table">
-    
+
     <tr>
       <th>pistemäärä</th>
       <th>arvosana</th>
     </tr>
-    
+
     <tr>
       <td>&lt; 70</td>
       <td>hylätty eli 0</td>
@@ -220,7 +220,7 @@ while (true) {
       <td>&gt;= 91</td>
       <td>5</td>
     </tr>
-    
+
   </table>
 
 
@@ -280,11 +280,11 @@ while (true) {
   <p>
     Tässä tehtävässä ei ohjelmoida, vaan tutustutaan tiedoston luomiseen.
   </p>
-  
+
   <p>
-    Luo tehtäväpohjan juurikansioon (samassa kansiossa mm. kansiot <code>src</code> ja <code>test</code>) tiedosto nimeltä <code>tiedosto.txt</code>. Muokkaa tiedostoa, ja kirjoita tiedoston ensimmäisen rivin alkuun viesti <code>Hei maailma</code>. 
+    Luo tehtäväpohjan juurikansioon (samassa kansiossa mm. kansiot <code>src</code> ja <code>test</code>) tiedosto nimeltä <code>tiedosto.txt</code>. Muokkaa tiedostoa, ja kirjoita tiedoston ensimmäisen rivin alkuun viesti <code>Hei maailma</code>.
   </p>
-  
+
 <% end %>
 
 
@@ -496,11 +496,11 @@ Lukuja: 4
 
 <% partial 'partials/code_highlight' do %>
   import java.util.ArrayList;
-  
+
   public class Resepti {
       private String nimi;
       private ArrayList&lt;String&gt; raakaAineet;
-  
+
       public Resepti(String nimi) {
           this.nimi = nimi;
           this.raakaAineet = new ArrayList&lt;&gt;();
@@ -543,7 +543,7 @@ Lukuja: 4
 <% end %>
 
 <p>
-  Nyt tiedoston lukeminen onnistuu seuraavasti. 
+  Nyt tiedoston lukeminen onnistuu seuraavasti.
 </p>
 
 
@@ -574,7 +574,7 @@ Lukuja: 4
                   // (ulompi jatkaa)
                   break;
               }
-              
+
               resepti.lisaaRaakaAine(raakaAine);
           }
 
@@ -614,7 +614,7 @@ Lukuja: 4
     sokeri
     suola
     voi
-    
+
     Lihapullat
     20
     jauheliha
@@ -640,7 +640,7 @@ Lukuja: 4
     Tehtäväpohjassa on mukana tiedosto <code>reseptit.txt</code>, jota voi käyttää sovelluksen testaamiseen. <em>Huomaa, että ohjelman ei tule listata reseptien raaka-aineita, mutta niitä käytetään hakutoiminnallisuudessa.</em>
   </p>
 
-  
+
   <h2>
     Reseptien lukeminen ja listaaminen
   </h2>
@@ -696,17 +696,17 @@ Lukuja: 4
 
     Reseptit:
     Tofurullat, keittoaika: 30
-    
+
     Syötä komento:  <font color="red">lopeta</font>
   <% end %>
 
-  
+
   <h2>
     Reseptien hakeminen keittoajan perusteella
   </h2>
 
   <p>
-    Lisää seuraavaksi ohjelmaan mahdollisuus reseptien hakemiseen keittoajan perusteella. Keittoajan perusteella hakeminen tapahtuu komennolla <code>hae keittoaika</code>, jonka jälkeen käyttäjältä kysytään suurinta hyväksyttävää keittoaikaa. Hakutoiminnallisuuden tulee toimia siten, että se tulostaa kaikki ne reseptit, joiden keittoaika on pienempi tai yhtä suuri kuin käyttäjän syöttämä keittoaika. 
+    Lisää seuraavaksi ohjelmaan mahdollisuus reseptien hakemiseen keittoajan perusteella. Keittoajan perusteella hakeminen tapahtuu komennolla <code>hae keittoaika</code>, jonka jälkeen käyttäjältä kysytään suurinta hyväksyttävää keittoaikaa. Hakutoiminnallisuuden tulee toimia siten, että se tulostaa kaikki ne reseptit, joiden keittoaika on pienempi tai yhtä suuri kuin käyttäjän syöttämä keittoaika.
   </p>
 
 
@@ -721,7 +721,7 @@ Lukuja: 4
 
     Syötä komento: <font color="red">hae keittoaika</font>
     Keittoaika korkeintaan: <font color="red">30</font>
-    
+
     Reseptit:
     Lihapullat, keittoaika: 20
     Tofurullat, keittoaika: 30
@@ -736,10 +736,10 @@ Lukuja: 4
 
     Reseptit:
     Tofurullat, keittoaika: 30
-    
+
     Syötä komento:  <font color="red">lopeta</font>
   <% end %>
-  
+
 
   <h2>
     Reseptien hakeminen raaka-aineen perusteella
@@ -761,7 +761,7 @@ Lukuja: 4
 
     Syötä komento: <font color="red">hae keittoaika</font>
     Keittoaika korkeintaan: <font color="red">30</font>
-    
+
     Reseptit:
     Lihapullat, keittoaika: 20
     Tofurullat, keittoaika: 30
@@ -774,16 +774,16 @@ Lukuja: 4
 
     Syötä komento: <font color="red">hae aine</font>
     Mitä raaka-ainetta haetaan: <font color="red">muna</font>
-    
+
     Reseptit:
     Lettutaikina, keittoaika: 60
     Lihapullat, keittoaika: 20
 
     Syötä komento: <font color="red">hae aine</font>
     Mitä raaka-ainetta haetaan: <font color="red">una</font>
-    
+
     Reseptit:
-    
+
     Syötä komento:  <font color="red">lopeta</font>
   <% end %>
 
@@ -804,7 +804,7 @@ ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
 
 // luodaan lukija web-osoitteen lukemista varten
 try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").openStream())) {
-  
+
     // luetaan osoitteesta http://www.cs.helsinki.fi/home/
     // saatava vastaus
     while (lukija.hasNextLine()) {
@@ -1144,7 +1144,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 <% end %>
 
 <p>
-  Haluamme joskus etsiä kirjaa nimen osan perusteella. Hajautustaulun metodi <code>get</code> ei tähän sovellu, sillä sitä käytetään tietyllä avaimella etsimiseen. Kirjan nimen osan perusteella etsiminen ei sillä onnistu. 
+  Haluamme joskus etsiä kirjaa nimen osan perusteella. Hajautustaulun metodi <code>get</code> ei tähän sovellu, sillä sitä käytetään tietyllä avaimella etsimiseen. Kirjan nimen osan perusteella etsiminen ei sillä onnistu.
 </p>
 
 <p>
@@ -1167,7 +1167,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 
       for(String kirjanNimi : this.hakemisto.keySet()) {
           if(!kirjanNimi.contains(nimenOsa)) {
-              continue; 
+              continue;
           }
 
           // mikäli avain sisältää haetun merkkijonon, haetaan avaimeen
@@ -1200,7 +1200,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 
       for(Kirja kirja : this.hakemisto.values()) {
           if(!kirja.getNimi().contains(nimenOsa)) {
-              continue; 
+              continue;
           }
 
           kirjat.add(kirja);
@@ -1240,13 +1240,13 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
     <th>Alkeistyyppi</th>
     <th>Viittaustyyppinen vastine</th>
   </tr>
-  
+
   <tr>
     <td>int</td>
     <td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html" target="_blank" rel="noopener">Integer</a>
     </td>
   </tr>
-  
+
   <tr>
     <td>double</td>
     <td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" target="_blank" rel="noopener">Double</a></td>
@@ -1431,9 +1431,9 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   <p>
     Esimerkiksi jos haluat antaa testisyötteeksi "kissa", "koira", "lopeta", syötä input-kenttään teksti <code>kissa\nkoira\nlopeta</code>.
   </p>
-  
+
   <p>
-    Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään. 
+    Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään.
   </p>
 
 <% end %>
@@ -1499,7 +1499,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   <p>
     Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
     import java.util.Random;
 
@@ -1509,7 +1509,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 
         public Noppa(int tahkojenMaara) {
             this.random = new Random();
-            // Alusta oliomuuttuja tahkojenMaara tässä 
+            // Alusta oliomuuttuja tahkojenMaara tässä
         }
 
         public int heita() {
@@ -1670,22 +1670,22 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 
 <% partial 'partials/exercise', locals: { name: 'Lottoarvonta' } do %>
 
-  
+
   <p>
     Tehtävänäsi on täydentää luokkaa <code>Lottorivi</code>, joka arpoo viikon lottonumerot. Lottonumerot ovat väliltä 1&ndash;40 ja niitä arvotaan 7. Lottorivi koostuu siis seitsemästä eri numerosta väliltä 1&ndash;40. Luokassa on seuraavat toiminnot:
   </p>
-  
+
   <ul>
     <li> konstruktori <code>Lottorivi</code> luo uuden Lottorivi-olion joka sisältää uudet, arvotut numerot</li>
     <li> metodi <code>numerot</code> palauttaa tämän lottorivin lottonumerot</li>
     <li> metodi <code>sisaltaaNumeron</code> kertoo onko arvotuissa numeroissa annettu numero</li>
     <li> metodi <code>arvoNumerot</code> arpoo riville uudet numerot</li>
   </ul>
-  
+
   <p>
     Luokan runko on seuraava:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
     import java.util.ArrayList;
     import java.util.Random;
@@ -1713,7 +1713,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
         }
     }
   <% end %>
-  
+
   <p>
     Tehtäväpohjan mukana tulee seuraava pääohjelma:
   </p>
@@ -1735,7 +1735,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
         }
     }
   <% end %>
-  
+
   <p>
     Ohjelman mahdollisia tulostuksia ovat seuraavat:
   </p>
@@ -1749,7 +1749,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
     Lottonumerot:
     2 9 11 18 23 32 34
   <% end %>
-  
+
   <p>
     <strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran. Lottorivin numeroiden ei tarvitse olla järjestyksessä.
   </p>
@@ -1765,7 +1765,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   <p>
     Tietokoneohjelmissa käytetyt satunnaisluvut ovat tyypillisesti pseudosatunnaislukuja, eli ne vaikuttavat satunnaisluvuilta, mutta seuraavat todellisuudessa jonkinlaista algoritmisesti luotua toistuvaa lukusarjaa. Suurimmalle osalle tietokoneohjelmista pseudosatunnaisluvut ovat riittävän hyviä -- esimerkiksi youtube-videoiden satunnaisessa toistossa normaali käyttäjä tuskin huomaa eroa. Toisaalta, jos satunnaislukuja käytetään tieteelliseen laskentaan, heikosti toimivat pseudosatunnaislukuja luovat algoritmit saattavat jopa johtaa tulosten kyseenalaistamiseen. Eräs esimerkki tällaisesta on hetken 1960-luvulla käytössä ollut IBM:n <a href="https://en.wikipedia.org/wiki/RANDU" target="_blank" norel>RANDU</a>.
   </p>
-  
+
   <p>
     Kaikki tietokoneohjelmien satunnaisuus ei kuitenkaan ole pseudosatunnaisuutta. Vahvempaan satunnaisuuteen pyrkivät ohjelmat hyödyntävät muunmuassa jonkinlaisia tosielämän satunnaiseksi ajateltuja ilmiöitä satunnaislukujen luomiseen. Tällaisia ilmiöitä ovat esimerkiksi avaruussäteily tai vaikkapa <a href="https://www.wired.com/2003/08/random/" target="_blank" norel>laavalamppujen toiminta</a>.
   </p>
@@ -1773,7 +1773,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   <p>
     Lisää aiheesta osoitteessa <a href="https://www.random.org/randomness/" target="_blank" norel>https://www.random.org/randomness/</a>.
   </p>
-  
+
 <% end %>
 
 
@@ -1792,7 +1792,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   </p>
 
   <p>
-    Jos algoritmi ei ole saavuttanut pistettä (20, 20) hyvin ison askelmäärän jälkeen, voimme ehdottaa, että pisteeseen (20, 20) ei ole pääsyä. 
+    Jos algoritmi ei ole saavuttanut pistettä (20, 20) hyvin ison askelmäärän jälkeen, voimme ehdottaa, että pisteeseen (20, 20) ei ole pääsyä.
   </p>
 
   <p>
@@ -1812,7 +1812,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   </p>
 
   <img src="/img/satunnaiskavely.gif" alt="Esimerkki (lyhyestä) satunnaiskävelystä)"/>
-  
+
   <p>
     Vaikka <a href="https://en.wikipedia.org/wiki/Random_walk" target="_blank" norel>Random walk</a> -menetelmä tuntuu hyvin yksinkertaiselta, sillä on monia sovelluksia. Sitä käytetään muunmuassa molekyylien satunnaisen liikkeen mallintamisessa, osakkeiden hintojen muutosten mallintamisessa, ja geenien satunnaisissa muutoksissa.
   </p>
@@ -1820,7 +1820,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
   <p>
     Tehtävään ei ole testejä -- palauta se kun se toimii halutusti.
   </p>
-  
+
 <% end %>
 
 
@@ -2145,7 +2145,7 @@ try (Scanner lukija = new Scanner(new URL("http://www.cs.helsinki.fi/home/").ope
 
 <% partial 'partials/code_highlight' do %>
 import java.util.ArrayList;
-  
+
 public class Ohjelma {
 
     public static void nollaaLista(ArrayList&lt;Integer&gt; lista) {
@@ -2161,7 +2161,7 @@ public class Ohjelma {
         luvut.add(3);
         luvut.add(4);
         luvut.add(5);
-  
+
         for (int luku : luvut) {
             System.out.print(luku + " ");  // tulostuu 1 2 3 4 5
         }
@@ -2212,7 +2212,7 @@ public class Ohjelma {
         luvut.add(3);
         luvut.add(4);
         luvut.add(5);
-  
+
         for (int luku : luvut) {
             System.out.print(luku + " ");  // tulostuu 1 2 3 4 5
         }
@@ -2230,7 +2230,7 @@ public class Ohjelma {
 
 <% partial 'partials/code_highlight' do %>
 import java.util.ArrayList;
-  
+
 public class ListaApurit {
 
     public static void nollaaLista(ArrayList&lt;Integer&gt; lista) {
@@ -2503,13 +2503,13 @@ public class Main {
     }
 
     System.out.println("---");
-    
+
     for (Kirja kirja: kirjasto.haeKirjaJulkaisijalla("Pong Group")) {
         System.out.println(kirja);
     }
-    
+
     System.out.println("---");
-    
+
     for (Kirja kirja: kirjasto.haeKirjaJulkaisuvuodella(1851)) {
         System.out.println(kirja);
     }
@@ -2523,7 +2523,7 @@ public class Main {
     Battle Axes, Tom A. Hawk, 1851
   <% end %>
 
-  
+
   <h2>Paranneltu hakutoiminnallisuus</h2>
 
   <p>
@@ -2746,7 +2746,7 @@ public class Main {
   public class Kayttoliittyma {
       private Scanner lukija;
       private ArrayList&lt;String&gt; aiemmatSanat;
-   
+
       public Kayttoliittyma(Scanner lukija) {
           this.lukija = lukija;
           this.aiemmatSanat = new ArrayList&lt;String&gt;();
@@ -2781,7 +2781,7 @@ public class Main {
   public class Kayttoliittyma {
       private Scanner lukija;
       private ArrayList&lt;String&gt; aiemmatSanat;
-  
+
       public Kayttoliittyma(Scanner lukija) {
           this.lukija = lukija;
           this.aiemmatSanat = new ArrayList&lt;String&gt;();
@@ -2868,7 +2868,7 @@ public class Main {
   public class Kayttoliittyma {
       private Scanner lukija;
       private ArrayList&lt;String&gt; aiemmatSanat;
-  
+
       public Kayttoliittyma(Scanner lukija) {
           this.lukija = lukija;
           this.aiemmatSanat = new ArrayList&lt;String&gt;();
@@ -2965,7 +2965,7 @@ public class Main {
 
 <% partial 'partials/code_highlight' do %>
   import java.util.ArrayList;
-  
+
   public class Sanajoukko {
       private ArrayList&lt;String&gt; sanat;
 
@@ -3099,13 +3099,13 @@ public class Main {
 
       public int palindromeja() {
           int lukumaara = 0;
-  
+
           for (String sana: this.sanat) {
               if (onPalindromi(sana)) {
                   lukumaara++;
               }
           }
- 
+
           return lukumaara;
       }
 
@@ -3160,7 +3160,7 @@ public class Main {
       <li> Tunnista ehdot, minkä tapauksessa ohjelman tulee toimia eri tavalla. Esimerkiksi yllä tarkistus, jolla katsotaan onko sana jo syötetty, johtaa erilaiseen toiminnallisuuden.</li>
     </ul>
   </li>
-  
+
   <li> Kirjoita mahdollisimman "siistiä" koodia
     <ul>
       <li> sisennä koodi </li>
@@ -3171,15 +3171,15 @@ public class Main {
       <li> korvaa koodisi "huonot" ja epäsiistit osat siistillä koodilla</li>
     </ul>
   </li>
-  
+
   <li>
     Astu tarvittaessa askel taaksepäin ja mieti kokonaisuutta. Jos ohjelma ei toimi, voi olla hyvä idea palata aiemmin toimineeseen tilaan. Käänteisesti voidaan sanoa, että rikkinäinen ohjelma korjaantuu harvemmin lisäämällä siihen lisää koodia.
   </li>
-  
+
 </ul>
 
 <p>
-  Ohjelmoijat noudattavat näitä käytänteitä sen takia että ohjelmointi olisi helpompaa. Käytänteiden noudattaminen tekee myös ohjelmien lukemisesta, ylläpitämisestä ja muokkaamisesta helpompaa muille. 
+  Ohjelmoijat noudattavat näitä käytänteitä sen takia että ohjelmointi olisi helpompaa. Käytänteiden noudattaminen tekee myös ohjelmien lukemisesta, ylläpitämisestä ja muokkaamisesta helpompaa muille.
 </p>
 
 
@@ -3376,7 +3376,7 @@ public class Main {
 
 
 <p>
-  Alla on kurssin kolmannesta osasta tuttu "ajatustenlukija", joka yrittää arvata valitsemasi numeron. 
+  Alla on kurssin kolmannesta osasta tuttu "ajatustenlukija", joka yrittää arvata valitsemasi numeron.
 </p>
 
 <p>
@@ -3513,7 +3513,7 @@ public class Main {
 
 <pre>
 Siirrot:
-0 
+0
 </pre>
 
 <p>
@@ -3708,7 +3708,7 @@ Hajautustaulu:
       Mikäli käyttäjä on syöttänyt alle 3 syötettä, tietokoneen tulee pelata "k" eli kivi.
     </li>
     <li>
-      Muulloin, tietokoneen tulee tarkastella pelaajan aiempia valintoja ja etsiä sopiva valinta. Sopivan valinnan etsiminen tehdään tarkastelemalla käyttäjän kahta viimeistä syötettä ja vertailemalla niitä koko historiaan. Mikäli historian mukaan kahta viimeistä syötettä seuraa useimmin kivi, tekoälyn tulee pelata sakset. Mikäli kahta viimeistä syötettä seuraa useimmin paperi, tekoälyn tulee pelata sakset. Mikäli taas kahta viimeistä syötettä seuraa useimmin sakset, tekoälyn tulee pelata kivi. Muissa tapauksissa pelataan kivi.
+      Muulloin, tietokoneen tulee tarkastella pelaajan aiempia valintoja ja etsiä sopiva valinta. Sopivan valinnan etsiminen tehdään tarkastelemalla käyttäjän kahta viimeistä syötettä ja vertailemalla niitä koko historiaan. Mikäli historian mukaan kahta viimeistä syötettä seuraa useimmin kivi, tekoälyn tulee pelata paperi. Mikäli kahta viimeistä syötettä seuraa useimmin paperi, tekoälyn tulee pelata sakset. Mikäli taas kahta viimeistä syötettä seuraa useimmin sakset, tekoälyn tulee pelata kivi. Muissa tapauksissa pelataan kivi.
     </li>
   </ul>
 
@@ -3795,7 +3795,7 @@ Hajautustaulu:
 
     ...
   <% end %>
-  
+
 <% end %>
 
 
