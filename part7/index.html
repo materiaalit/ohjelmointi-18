@@ -124,9 +124,9 @@
   <div class="hint__body">
     
   <p>
-    Osaa pilkkoa ohjelman useampaan osaan, missä yhden vastuulla on (tekstimuotoinen) käyttöliittymä, toinen vastuulla sovelluslogiikka. Tuntee testivetoisen ohjelmistokehityksen perusajatuksen ja osaa kirjoittaa ohjelman metodien toiminnallisuutta tarkastelevia testejä. Ryhmittelee arvoja hajautustaulun avulla ja osaa käyttää listaa hajautustaulun arvona. Osaa luoda yksinkertaisia simulaatioita. 
+    Osaa pilkkoa ohjelman useampaan osaan, missä yhden vastuulla on (tekstimuotoinen) käyttöliittymä, toinen vastuulla sovelluslogiikka. Tuntee testivetoisen ohjelmistokehityksen perusajatuksen ja osaa kirjoittaa ohjelman metodien toiminnallisuutta tarkastelevia testejä. Ryhmittelee arvoja hajautustaulun avulla ja osaa käyttää listaa hajautustaulun arvona. Osaa luoda yksinkertaisia simulaatioita.
   </p>
-  
+
 
   </div>
 </div>
@@ -162,7 +162,7 @@
 </h1>
 
 <p>
-  Edellisessä osassa tarkasteltiin sovelluksen jakamista vastuualueisiin. Jatketaan tässä samalla teemalla. 
+  Edellisessä osassa tarkasteltiin sovelluksen jakamista vastuualueisiin. Jatketaan tässä samalla teemalla.
 </p>
 
 <p>
@@ -170,7 +170,7 @@
 </p>
 
 <p>
-  Edellä kuvattu tilanne vaatii kuitenkin sen, että ohjelman komponenttien tarjoamat rajapinnat eli metodit ja niiden parametrit on selkeästi määritelty. 
+  Edellä kuvattu tilanne vaatii kuitenkin sen, että ohjelman komponenttien tarjoamat rajapinnat eli metodit ja niiden parametrit on selkeästi määritelty.
 </p>
 
 <p>
@@ -208,7 +208,7 @@ Tietokone valitsi: k
 Tasapeli.
 Tilanne: Pelaaja 2 - 2 Tietokone
 
-Valitse [k]ivi, [p]aperi tai [s]akset: 
+Valitse [k]ivi, [p]aperi tai [s]akset:
 Peli päättyi.
 Lopputilanne: Pelaaja 2 - 2 Tietokone
 </pre>
@@ -225,7 +225,7 @@ Lopputilanne: Pelaaja 2 - 2 Tietokone
 </h2>
 
 <p>
-  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään. 
+  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään.
 </p>
 
 <p>
@@ -435,7 +435,7 @@ Lopputilanne: Pelaaja 2 - 2 Tietokone
 
         // lopetusviesti
     }
-}  
+}
 </code></pre>
 
 <p>
@@ -623,7 +623,7 @@ public class Main {
             return "k";
         }
     }
-   
+
     public void tallennaVastustajanSiirto(String siirto) {
         this.vastustajanSiirto = siirto;
     }
@@ -695,7 +695,7 @@ Haukka (Dorkus Dorkus): 2 havaintoa
   <p>
     <strong>Huom!</strong> Ohjelmasi rakenne on täysin vapaa. Testaamme vain että <code>Paaohjelma</code> luokan <code>main</code>-metodi toimii kuten tässä on kuvailtu. Hyödyt tehtävässä todennäköisesti ongelma-aluetta sopivasti kuvaavista luokista.
   </p>
-  
+
 
     </div>
   </div>
@@ -793,7 +793,7 @@ public class TehtavienhallintaTest {
 </p>
 
 <pre class="sh_java code-highlight"><code>import java.util.ArrayList;
- 
+
 public class Tehtavienhallinta {
 
     public ArrayList&lt;String&gt; tehtavalista() {
@@ -919,7 +919,7 @@ BUILD SUCCESSFUL (total time: 0 seconds)
 </h2>
 
 <p>
-  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>. 
+  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>.
 </p>
 
 <pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
@@ -995,7 +995,7 @@ public class Tehtavienhallinta {
 </h2>
 
 <p>
-  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>. 
+  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>.
 </p>
 
 <pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
@@ -1311,7 +1311,7 @@ public class Tehtavienhallinta {
       Kuudes testi, kuudennen testin vaatimusten täyttäminen. Refaktorointi ja käsitteen tehtävä eristäminen. Tehtävien poistamiseen liittyvät testit sekä toiminnallisuus -- toteuta poistaminen Tehtavienhallinta-luokkaan metodina <code>public void poista(String tehtava)</code>
     </li>
   </ol>
-  
+
   <p>
     Sitä mukaa kun kehität toiminnallisuutta, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
   </p>
@@ -1319,7 +1319,7 @@ public class Tehtavienhallinta {
   <p>
     Esimerkiksi, kun olet saanut ensimmäiset kaksi testiä sekä niihin liittyvän toiminnallisuuden toimimaan olet vaiheessa 1, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>1</code>.
   </p>
-  
+
 
     </div>
   </div>
@@ -1419,7 +1419,7 @@ public class Tehtavienhallinta {
   <p>
     Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään.
   </p>
-  
+
 
   </div>
 </div>
@@ -1497,7 +1497,7 @@ puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
 </code></pre>
 
 <p>
-  Vastaavalla tyylillä voi toteuttaa esimerkiksi tehtävien pistekirjanpidon. Alla olevassa esimerkissä on hahmoteltu luokkaa <code>Tehtavakirjanpito</code>, mikä sisältää käyttäjäkohtaisen pistekirjanpidon. Käyttäjä esitetään merkkijonona ja pisteet kokonaislukuina. 
+  Vastaavalla tyylillä voi toteuttaa esimerkiksi tehtävien pistekirjanpidon. Alla olevassa esimerkissä on hahmoteltu luokkaa <code>Tehtavakirjanpito</code>, mikä sisältää käyttäjäkohtaisen pistekirjanpidon. Käyttäjä esitetään merkkijonona ja pisteet kokonaislukuina.
 
 <pre class="sh_java code-highlight"><code>public class Tehtavakirjanpito {
     private HashMap&lt;String, ArrayList&lt;Integer&gt;&gt; tehdytTehtavat;
@@ -1620,7 +1620,7 @@ HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko = new HashMap<>
 
 int leveys = 10;
 int korkeus = 10;
-  
+
 int x = 0;
 while (x &lt; leveys) {
     taulukko.putIfAbsent(x, new HashMap<>());
@@ -1642,7 +1642,7 @@ System.out.println(taulukko.get(0).get(1));
 </code></pre>
 
 <p>
-  Taulukko kannattanee abstrahoida omaksi luokakseen, joka kapseloi hajautustaulun sisälleen. Alla olevassa toteutuksessa oletetaan, että tyhjissä taulukon kohdissa on arvo 0. 
+  Taulukko kannattanee abstrahoida omaksi luokakseen, joka kapseloi hajautustaulun sisälleen. Alla olevassa toteutuksessa oletetaan, että tyhjissä taulukon kohdissa on arvo 0.
 </p>
 
 
@@ -1650,7 +1650,7 @@ System.out.println(taulukko.get(0).get(1));
     private HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko;
     private int leveys;
     private int korkeus;
-  
+
     public Taulukko(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
@@ -1664,16 +1664,16 @@ System.out.println(taulukko.get(0).get(1));
 
         this.taulukko.putIfAbsent(x, new HashMap<>());
         this.taulukko.get(x).put(y, arvo);
-    } 
+    }
 
     public int hae(int x, int y) {
         if(!this.taulukko.containsKey(x)) {
             return 0;
-        } 
+        }
 
         if(!this.taulukko.get(x).containsKey(y)) {
             return 0;
-        } 
+        }
 
         return this.taulukko.get(x).get(y);
     }
@@ -1723,7 +1723,7 @@ System.out.println(taulukko.hae(0, 1));
   <p>
     Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää hajautustaulun avulla toteutetun kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
   </p>
-  
+
 
   <h2>Elossa olevien naapurien lukumäärä</h2>
 
@@ -1745,7 +1745,7 @@ System.out.println(taulukko.hae(0, 1));
 
   <table border="1">
 
-    
+
     <tr>
       <td>
 	x=0,y=0: true
@@ -1757,7 +1757,7 @@ System.out.println(taulukko.hae(0, 1));
 	x=2,y=0: false
       </td>
     </tr>
-    
+
     <tr>
       <td>
 	x=0,y=1: true
@@ -1787,7 +1787,7 @@ System.out.println(taulukko.hae(0, 1));
   <p>
     Palauttavat seuraavat kutsut seuraavat arvot:
   </p>
-  
+
 <pre class="sh_java code-highlight"><code>System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
 System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
 System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
@@ -1800,7 +1800,7 @@ System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
 1
 </pre>
 
-  
+
   <h2>Kehittyminen</h2>
 
   <p>
@@ -2099,6 +2099,26 @@ System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
 <div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a336"></div>
 
 
+<script>
+var a = localStorage[localStorage["crowdsorcerer-assignment-8-review-2-hn"]]
+  console.log("Nollataan crowdsorcerer");
+  var wrong = Object.keys(localStorage)
+    .filter(function(key) { return key.startsWith("crowdsorcerer-assignment-8-review")})
+    .filter(function(key) {
+      try {
+        var questions = JSON.parse(localStorage[key]).review.reviews.value;
+        return questions.length == 0;
+      } catch (e) {
+        return false;
+      }
+      return false;
+    })
+
+  if (wrong.length > 0) {
+    wrong.forEach(function(key) { localStorage.removeItem(key) });
+    window.location.reload();
+  }
+</script>
 
         </div>
       </div>
