@@ -3578,7 +3578,6 @@ Hajautustaulu:
 0 1 0=1
 1 0 1=1
 0 1 1=1
-0 1 1=1
 </pre>
 
 <p>
@@ -3596,7 +3595,6 @@ Siirrot:
 Hajautustaulu:
 0 1 0=1
 1 0 1=1
-0 1 1=1
 0 1 1=1
 1 1 0=1
 </pre>
@@ -3620,7 +3618,6 @@ Hajautustaulu:
 0 1 0=1
 1 0 1=2
 0 1 1=1
-0 1 1=1
 1 1 0=1
 </pre>
 
@@ -3638,7 +3635,7 @@ Hajautustaulu:
   Scanner lukija = new Scanner(System.in);
 
   String viimeisimmat = "";
-  HashMap&lt;String, Integer&gt; muisti  = new ArrayList&lt;&gt;();
+  HashMap&lt;String, Integer&gt; muisti  = new HashMap&lt;&gt;();
   int voitot = 0;
   int tappiot = 0;
 
@@ -3677,7 +3674,7 @@ Hajautustaulu:
       }
 
 
-      System.out.println("Syötit " + syote + ", arvasin " + arvaus + ".");
+      System.out.println("Syötit " + luku + ", arvasin " + arvaus + ".");
       System.out.println("Tietokoneen voitot: " + voitot);
       System.out.println("Pelaajan voitot: " + (syotteet.size() - voitot));
 
