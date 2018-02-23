@@ -756,9 +756,7 @@ Haukka (Dorkus Dorkus): 2 havaintoa
 </p>
 
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import static org.junit.Assert.assertEquals;
+<pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class TehtavienhallintaTest {
@@ -794,9 +792,7 @@ public class TehtavienhallintaTest {
   Toiminnallisuus on yksinkertainen. Luokalla Tehtavienhallinta on metodi tehtavalista, joka palauttaa tyhjän listan.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
  
 public class Tehtavienhallinta {
 
@@ -820,9 +816,7 @@ public class Tehtavienhallinta {
   Aloitamme testivetoiseen kehitykseen liittyvän syklin uudestaan. Seuraavaksi luomme uuden testin, jossa tarkastellaan tehtävien lisäämiseen liittyvää toiminnallisuutta. Testissä määritellään luokalle Tehtavienhallinta metodi lisää, joka lisää tehtävälistalle uuden tehtävän. Tehtävän lisäämisen onnistuminen tarkastetaan tehtavalista-metodin koon kasvamisen kautta.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import static org.junit.Assert.assertEquals;
+<pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class TehtavienhallintaTest {
@@ -855,9 +849,7 @@ public class TehtavienhallintaTest {
   Lisätään luokkaan Tehtavienhallinta metodi <code>lisaa</code>, ja suoritetaan testit.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
 
 public class Tehtavienhallinta {
 
@@ -875,22 +867,20 @@ public class Tehtavienhallinta {
   Nyt testien ajamisesta saadaan seuraava ilmoitus.
 </p>
 
-<pre class="sample-output">Testsuite: tehtavat.TehtavienhallintaTest
+<pre class="sample-output">Testsuite: TehtavienhallintaTest
 Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec
 
-Testcase: tehtavanLisaaminenKasvattaaListanKokoaYhdella(tehtavat.TehtavienhallintaTest):	FAILED
+Testcase: tehtavanLisaaminenKasvattaaListanKokoaYhdella(TehtavienhallintaTest):	FAILED
     expected:<1> but was:<0>
     junit.framework.AssertionFailedError: expected:<1> but was:<0>
-    at tehtavat.TehtavienhallintaTest.tehtavanLisaaminenKasvattaa...(TehtavienhallintaTest.java:18)
+    at TehtavienhallintaTest.tehtavanLisaaminenKasvattaa...(TehtavienhallintaTest.java:18)
 </pre>
 
 <p>
   Testit eivät siis mene vieläkään läpi. Muokataan luokan tehtävänhallinta toiminnallisuutta siten, että luokalle luodaan oliomuuttujaksi tehtävät sisältävä lista. Muokataan metodin lisaa-toiminnallisuutta vain niin, että se läpäisee testin, mutta ei tee todellisuudessa haluttua asiaa.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
 
 public class Tehtavienhallinta {
 
@@ -914,7 +904,7 @@ public class Tehtavienhallinta {
   Testit menevät läpi, joten olemme tyytyväisiä ja voimme siirtyä seuraavaan askeleeseen.
 </p>
 
-<pre class="sample-output">Testsuite: tehtavat.TehtavienhallintaTest
+<pre class="sample-output">Testsuite: TehtavienhallintaTest
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
 
 test-report:
@@ -932,9 +922,7 @@ BUILD SUCCESSFUL (total time: 0 seconds)
   Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>. 
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import static org.junit.Assert.assertEquals;
+<pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -976,9 +964,7 @@ public class TehtavienhallintaTest {
   Noheva ohjelmoija muokkaisi luokan Tehtavienhallinta toimintaa siten, että metodissa lisaa lisättäisiin listalle aina merkkijono "Kirjoita testi". Tämä johtaisi tilanteeseen, missä testit menisivät läpi, mutta toiminnallisuus sovellus ei vieläkään tarjoaisi toimivaa tehtävien lisäämistoiminnallisuutta. Muokataan luokkaa Tehtavienhallinta siten, että lisättävä tehtävä lisätään tehtävälistalle.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
 
 public class Tehtavienhallinta {
 
@@ -1012,9 +998,7 @@ public class Tehtavienhallinta {
   Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>. 
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import static org.junit.Assert.assertEquals;
+<pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -1108,9 +1092,7 @@ public void tehdyksiMerkattuOnTehty() {
   Nyt toiminnallisuutta varten tulee toteuttaa uusi metodi onTehty. Metodi voi aluksi palauttaa aina arvon true. Kokko luokan Tehtavienhallinta sisältö on nyt seuraava.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
 
 public class Tehtavienhallinta {
 
@@ -1177,9 +1159,7 @@ public void tehdyksiMerkkaamatonEiOleTehty() {
   Joudumme nyt muokkaamaan luokan Tehtavienhallinta toiminnallisuutta hieman enemmän. Lisätään luokkaan erillinen lista tehtäville, jotka on merkattu tehdyiksi.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
 
 public class Tehtavienhallinta {
 
@@ -1223,9 +1203,7 @@ public class Tehtavienhallinta {
   Tehdään ensimmäinen hieman laajempi ohjelman sisäisen rakenteen korjaus. Tehtävä on selkeästi käsite, joten sille kannattanee luoda oma erillinen luokka. Luodaan luokka Tehtava. Luokalla Tehtava on nimi sekä tieto siitä, onko tehtävä tehty.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-public class Tehtava {
+<pre class="sh_java code-highlight"><code>public class Tehtava {
 
     private String nimi;
     private boolean tehty;
@@ -1253,9 +1231,7 @@ public class Tehtava {
   Muokataan tämän jälkeen luokan Tehtavienhallinta <em>sisäistä</em> rakennetta siten, että luokka tallentaa tehtävät merkkijonojen sijaan Tehtava-olioina. Huomaa, että luokan metodien määrittelyt eivät muutu, mutta niiden sisäinen toteutus muuttuu.
 </p>
 
-<pre class="sh_java code-highlight"><code>package tehtavat;
-
-import java.util.ArrayList;
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
 
 public class Tehtavienhallinta {
 
