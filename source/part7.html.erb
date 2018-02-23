@@ -9,9 +9,9 @@
 <% partial 'partials/hint', locals: { name: 'Seitsemännen osan tavoitteet' } do %>
 
   <p>
-    Osaa pilkkoa ohjelman useampaan osaan, missä yhden vastuulla on (tekstimuotoinen) käyttöliittymä, toinen vastuulla sovelluslogiikka. Tuntee testivetoisen ohjelmistokehityksen perusajatuksen ja osaa kirjoittaa ohjelman metodien toiminnallisuutta tarkastelevia testejä. Ryhmittelee arvoja hajautustaulun avulla ja osaa käyttää listaa hajautustaulun arvona. Osaa luoda yksinkertaisia simulaatioita. 
+    Osaa pilkkoa ohjelman useampaan osaan, missä yhden vastuulla on (tekstimuotoinen) käyttöliittymä, toinen vastuulla sovelluslogiikka. Tuntee testivetoisen ohjelmistokehityksen perusajatuksen ja osaa kirjoittaa ohjelman metodien toiminnallisuutta tarkastelevia testejä. Ryhmittelee arvoja hajautustaulun avulla ja osaa käyttää listaa hajautustaulun arvona. Osaa luoda yksinkertaisia simulaatioita.
   </p>
-  
+
 <% end %>
 
 <% partial 'partials/hint', locals: { name: 'Kurssin väli/loppukysely' } do %>
@@ -36,7 +36,7 @@
 <% end %>
 
 <p>
-  Edellisessä osassa tarkasteltiin sovelluksen jakamista vastuualueisiin. Jatketaan tässä samalla teemalla. 
+  Edellisessä osassa tarkasteltiin sovelluksen jakamista vastuualueisiin. Jatketaan tässä samalla teemalla.
 </p>
 
 <p>
@@ -44,7 +44,7 @@
 </p>
 
 <p>
-  Edellä kuvattu tilanne vaatii kuitenkin sen, että ohjelman komponenttien tarjoamat rajapinnat eli metodit ja niiden parametrit on selkeästi määritelty. 
+  Edellä kuvattu tilanne vaatii kuitenkin sen, että ohjelman komponenttien tarjoamat rajapinnat eli metodit ja niiden parametrit on selkeästi määritelty.
 </p>
 
 <p>
@@ -83,7 +83,7 @@
   Tasapeli.
   Tilanne: Pelaaja 2 - 2 Tietokone
 
-  Valitse [k]ivi, [p]aperi tai [s]akset: 
+  Valitse [k]ivi, [p]aperi tai [s]akset:
   Peli päättyi.
   Lopputilanne: Pelaaja 2 - 2 Tietokone
 <% end %>
@@ -99,7 +99,7 @@
 <% end %>
 
 <p>
-  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään. 
+  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään.
 </p>
 
 <p>
@@ -310,7 +310,7 @@ public class Tekoaly {
 
           // lopetusviesti
       }
-  }  
+  }
 <% end %>
 
 <p>
@@ -503,7 +503,7 @@ public class Main {
               return "k";
           }
       }
-   
+
       public void tallennaVastustajanSiirto(String siirto) {
           this.vastustajanSiirto = siirto;
       }
@@ -565,7 +565,7 @@ public class Main {
   <p>
     <strong>Huom!</strong> Ohjelmasi rakenne on täysin vapaa. Testaamme vain että <code>Paaohjelma</code> luokan <code>main</code>-metodi toimii kuten tässä on kuvailtu. Hyödyt tehtävässä todennäköisesti ongelma-aluetta sopivasti kuvaavista luokista.
   </p>
-  
+
 <% end %>
 
 
@@ -661,7 +661,7 @@ public class Main {
 <% partial 'partials/code_highlight' do %>
 
   import java.util.ArrayList;
- 
+
   public class Tehtavienhallinta {
 
       public ArrayList&lt;String&gt; tehtavalista() {
@@ -792,7 +792,7 @@ public class Main {
 <% end %>
 
 <p>
-  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>. 
+  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -870,7 +870,7 @@ public class Main {
 <% end %>
 
 <p>
-  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>. 
+  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1181,7 +1181,7 @@ public class Main {
       Kuudes testi, kuudennen testin vaatimusten täyttäminen. Refaktorointi ja käsitteen tehtävä eristäminen. Tehtävien poistamiseen liittyvät testit sekä toiminnallisuus -- toteuta poistaminen Tehtavienhallinta-luokkaan metodina <code>public void poista(String tehtava)</code>
     </li>
   </ol>
-  
+
   <p>
     Sitä mukaa kun kehität toiminnallisuutta, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
   </p>
@@ -1189,7 +1189,7 @@ public class Main {
   <p>
     Esimerkiksi, kun olet saanut ensimmäiset kaksi testiä sekä niihin liittyvän toiminnallisuuden toimimaan olet vaiheessa 1, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>1</code>.
   </p>
-  
+
 <% end %>
 
 
@@ -1266,7 +1266,7 @@ public class Main {
   <p>
     Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään.
   </p>
-  
+
 <% end %>
 
 
@@ -1347,7 +1347,7 @@ public class Main {
 <% end %>
 
 <p>
-  Vastaavalla tyylillä voi toteuttaa esimerkiksi tehtävien pistekirjanpidon. Alla olevassa esimerkissä on hahmoteltu luokkaa <code>Tehtavakirjanpito</code>, mikä sisältää käyttäjäkohtaisen pistekirjanpidon. Käyttäjä esitetään merkkijonona ja pisteet kokonaislukuina. 
+  Vastaavalla tyylillä voi toteuttaa esimerkiksi tehtävien pistekirjanpidon. Alla olevassa esimerkissä on hahmoteltu luokkaa <code>Tehtavakirjanpito</code>, mikä sisältää käyttäjäkohtaisen pistekirjanpidon. Käyttäjä esitetään merkkijonona ja pisteet kokonaislukuina.
 
 <% partial 'partials/code_highlight' do %>
   public class Tehtavakirjanpito {
@@ -1461,7 +1461,7 @@ public class Main {
 
   int leveys = 10;
   int korkeus = 10;
-  
+
   int x = 0;
   while (x &lt; leveys) {
       taulukko.putIfAbsent(x, new HashMap<>());
@@ -1483,7 +1483,7 @@ public class Main {
 <% end %>
 
 <p>
-  Taulukko kannattanee abstrahoida omaksi luokakseen, joka kapseloi hajautustaulun sisälleen. Alla olevassa toteutuksessa oletetaan, että tyhjissä taulukon kohdissa on arvo 0. 
+  Taulukko kannattanee abstrahoida omaksi luokakseen, joka kapseloi hajautustaulun sisälleen. Alla olevassa toteutuksessa oletetaan, että tyhjissä taulukon kohdissa on arvo 0.
 </p>
 
 
@@ -1492,7 +1492,7 @@ public class Main {
       private HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko;
       private int leveys;
       private int korkeus;
-  
+
       public Taulukko(int leveys, int korkeus) {
           this.leveys = leveys;
           this.korkeus = korkeus;
@@ -1506,16 +1506,16 @@ public class Main {
 
           this.taulukko.putIfAbsent(x, new HashMap<>());
           this.taulukko.get(x).put(y, arvo);
-      } 
+      }
 
       public int hae(int x, int y) {
           if(!this.taulukko.containsKey(x)) {
               return 0;
-          } 
+          }
 
           if(!this.taulukko.get(x).containsKey(y)) {
               return 0;
-          } 
+          }
 
           return this.taulukko.get(x).get(y);
       }
@@ -1555,7 +1555,7 @@ public class Main {
   <p>
     Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää hajautustaulun avulla toteutetun kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
   </p>
-  
+
 
   <h2>Elossa olevien naapurien lukumäärä</h2>
 
@@ -1577,7 +1577,7 @@ public class Main {
 
   <table border="1">
 
-    
+
     <tr>
       <td>
 	x=0,y=0: true
@@ -1589,7 +1589,7 @@ public class Main {
 	x=2,y=0: false
       </td>
     </tr>
-    
+
     <tr>
       <td>
 	x=0,y=1: true
@@ -1619,7 +1619,7 @@ public class Main {
   <p>
     Palauttavat seuraavat kutsut seuraavat arvot:
   </p>
-  
+
   <% partial 'partials/code_highlight' do %>
     System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
     System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
@@ -1634,7 +1634,7 @@ public class Main {
     1
   <% end %>
 
-  
+
   <h2>Kehittyminen</h2>
 
   <p>
@@ -1900,3 +1900,22 @@ public class Main {
 
 <%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a336' } %>
 
+<script>
+  console.log("Nollataan crowdsorcerer");
+  var wrong = Object.keys(localStorage)
+    .filter(function(key) { return key.startsWith("crowdsorcerer-assignment-8-review")})
+    .filter(function(key) {
+      try {
+        var questions = JSON.parse(localStorage[key]).review.reviews.value;
+        return questions.length == 0;
+      } catch (e) {
+        return false;
+      }
+      return false;
+    })
+
+  if (wrong.length > 0) {
+    wrong.forEach(function(key) { localStorage.removeItem(key) });
+    window.location.reload();
+  }
+</script>
