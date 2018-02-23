@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC, Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, kevät 2018 | Osa 7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-d08f7ac6.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Seitsemännen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Osaa pilkkoa ohjelman useampaan osaan, missä yhden vastuulla on (tekstimuotoinen) käyttöliittymä, toinen vastuulla sovelluslogiikka. Ryhmittelee arvoja hajautustaulun avulla ja osaa käyttää listaa hajautustaulun arvona. Osaa hyödyntää Javan valmiita kirjastoja satunnaisten lukujen luomiseen. Osaa luoda yksinkertaisia simulaatioita. 
+  </p>
+  
+
+  </div>
+</div>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Kurssin väli/loppukysely
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Kurssiin kuuluu kyselyitä, joiden tavoitteena on parantaa kurssia. Vastaa kyselyyn osoitteessa <a href="https://elomake.helsinki.fi/lomakkeet/85847/lomake.html"  target="_blank" rel="noopener">https://elomake.helsinki.fi/lomakkeet/85847/lomake.html</a>.
+  </p>
+
+  <p>
+    Käy vastaamassa ensin kyselyyn ja ruksaa sen jälkeen allaoleva tekstikenttä. Jos allaolevan tekstikentän ruksaaminen ei onnistu, varmista että olet kirjautunut tälle sivulle. Kirjautuminen onnistuu sivun oikeasta ylälaidasta.
+  </p>
+
+  <div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a337"></div>
+
+
+
+  </div>
+</div>
+
+
+
+
+<h1 class="material-heading">
+    Käyttöliittymän ja sovelluslogiikan eriyttäminen
+
+</h1>
+
+<p>
+  Edellisessä osassa tarkasteltiin sovelluksen jakamista vastuualueisiin. Jatketaan tässä samalla teemalla. 
+</p>
+
+<p>
+  Suurin syy käyttöliittymän ja sovelluslogiikan eriyttämiseen on ohjelman ylläpidettävyyden ja ymmärrettävyyden lisääminen. Sovellluslogiikan eri osa-alueet ovat ideaalitilanteessa käyttöliittymäriippumattomia, jolloin niitä voidaan parannella ilman käyttöliittymään koskemista. Vastaavasti osia voidaan siirtää sovelluksesta toiseen, jolloin käyttöliittymä on esimerkiksi vaihdettavissa tekstikäyttöliittymästä graafiseen käyttöliittymään.
+</p>
+
+<p>
+  Edellä kuvattu tilanne vaatii kuitenkin sen, että ohjelman komponenttien tarjoamat rajapinnat eli metodit ja niiden parametrit on selkeästi määritelty. 
+</p>
+
+<p>
+  Pohditaan uudestaan edellisen osan lopussa nähtyä kivi-paper-sakset -peliä sekä siihen liittyvää "tekoälyä". Peli kysyy ensin käyttäjältä siirtoa, sitten tietokoneen valintaa, ja lopulta kertoo tuloksen. Pelin lopettaminen onnistuu nyt hahmottelemassamme versiossa syöttämällä tyhjän merkkijonon.
+</p>
+
+<pre class="sample-output">KPS!
+Valitse [k]ivi, [p]aperi tai [s]akset: <font color="red">k</font>
+Tietokone valitsi: k
+Tasapeli.
+Tilanne: Pelaaja 0 - 0 Tietokone
+
+Valitse [k]ivi, [p]aperi tai [s]akset: <font color="red">p</font>
+Tietokone valitsi: k
+Pelaaja voitti!
+Tilanne: Pelaaja 1 - 0 Tietokone
+
+Valitse [k]ivi, [p]aperi tai [s]akset: <font color="red">p</font>
+Tietokone valitsi: k
+Pelaaja voitti!
+Tilanne: Pelaaja 2 - 0 Tietokone
+
+Valitse [k]ivi, [p]aperi tai [s]akset: <font color="red">s</font>
+Tietokone valitsi: k
+Tietokone voitti!
+Tilanne: Pelaaja 2 - 1 Tietokone
+
+Valitse [k]ivi, [p]aperi tai [s]akset: <font color="red">s</font>
+Tietokone valitsi: k
+Tietokone voitti!
+Tilanne: Pelaaja 2 - 2 Tietokone
+
+Valitse [k]ivi, [p]aperi tai [s]akset: <font color="red">k</font>
+Tietokone valitsi: k
+Tasapeli.
+Tilanne: Pelaaja 2 - 2 Tietokone
+
+Valitse [k]ivi, [p]aperi tai [s]akset: 
+Peli päättyi.
+Lopputilanne: Pelaaja 2 - 2 Tietokone
+</pre>
+
+<p>
+  Luodaan ohjelmaa varten neljä luokkaa: (1) tekstikäyttöliittymän toteuttamiseen käytettävä luokka <code>Tekstikayttoliittyma</code>, (2) pistetilanteen ylläpitoon käytettävä <code>Pistetilanne</code>, (3) Kivi-paperi-sakset -pelin sääntöjen ylläpitoon käytettävä luokka <code>Saannot</code> ja (4) tietokoneen tarjoaman vastustajan toimintaa kontrolloiva luokka <code>Tekoaly</code>.
+</p>
+
+
+
+<h2 class="material-heading">
+    Tietokoneen "tekoäly"
+
+</h2>
+
+<p>
+  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään. 
+</p>
+
+<p>
+  Sovitaan, että ohjelmassa käytetään merkkijonoa "k" kiven kuvaamiseen, "p" paperin kuvaamiseen ja "s" saksien kuvaamiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tekoaly {
+
+    public String annaSiirto() {
+        return "k";
+    }
+
+    public void tallennaVastustajanSiirto(String siirto) {
+
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Pistetilanteen ylläpito
+
+</h2>
+
+<p>
+  Pistetilanteen ylläpito tapahtuu luokan <code>Pistetilanne</code> avulla. Pistetilanne tallentaa sekä pelaajan että tekoälyn pisteet sekä mahdollistaa näiden pisteiden kasvattamisen. Tämän lisäksi pistetilanteen voi tulostaa <code>toString</code>-metodilla. Pistetilanne näyttää seuraavalta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Pistetilanne {
+
+    private int pelaajaPisteet;
+    private int tietokonePisteet;
+
+    public Pistetilanne() {
+        this.pelaajaPisteet = 0;
+        this.tietokonePisteet = 0;
+    }
+
+    public void pelaajaVoitti() {
+        this.pelaajaPisteet++;
+    }
+
+    public void tietokoneVoitti() {
+        this.tietokonePisteet++;
+    }
+
+    @Override
+    public String toString() {
+        return "Pelaaja " + this.pelaajaPisteet + " - " + this.tietokonePisteet + " Tietokone";
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Pelin säännöt
+
+</h2>
+
+<p>
+  Hyödynnetään Wikipediaa <a href="https://fi.wikipedia.org/wiki/Kivi,_paperi_ja_sakset"  target="_blank">Kivi, paperi ja sakset</a>-pelin sääntöjen tarkastamiseen. Voitto tai tappio määritellään seuraavalla tavalla.
+</p>
+
+<table class="table">
+  <tr>
+    <th>
+      Pelaaja 1
+    </th>
+    <th>
+      Pelaaja 2
+    </th>
+    <th>
+      Voittaja
+    </th>
+  </tr>
+  <tr>
+    <td>
+      Kivi
+    </td>
+    <td>
+      Sakset
+    </td>
+    <td>
+      Pelaaja 1
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Kivi
+    </td>
+    <td>
+      Paperi
+    </td>
+    <td>
+      Pelaaja 2
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Kivi
+    </td>
+    <td>
+      Kivi
+    </td>
+    <td>
+      Tasapeli
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Sakset
+    </td>
+    <td>
+      Paperi
+    </td>
+    <td>
+      Pelaaja 1
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      ...
+    </td>
+  </tr>
+</table>
+
+<p>
+  Luodaan sääntöjä varten luokka <code>Saannot</code>, joka palauttaa pelaajan voittaessa merkkijonon "pelaaja", tietokoneen voittaessa merkkijonon "tietokone", ja tasapelin yhteydessä merkkijonon "tasapeli".
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Saannot {
+
+    public String voittaja(String pelaajanValinta, String tietokoneenValinta) {
+        if (pelaajanValinta.equals("k")) {
+            if (tietokoneenValinta.equals("p")) {
+                return "tietokone";
+            }
+
+            if (tietokoneenValinta.equals("s")) {
+                return "pelaaja";
+            }
+        }
+
+        if (pelaajanValinta.equals("p")) {
+            if (tietokoneenValinta.equals("s")) {
+                return "tietokone";
+            }
+
+            if (tietokoneenValinta.equals("k")) {
+                return "pelaaja";
+            }
+        }
+
+        if (pelaajanValinta.equals("s")) {
+            if (tietokoneenValinta.equals("k")) {
+                return "tietokone";
+            }
+
+            if (tietokoneenValinta.equals("p")) {
+                return "pelaaja";
+            }
+        }
+
+        return "tasapeli";
+    }
+}
+</code></pre>
+
+<p>
+  Ylläolevan esimerkin voisi toteuttaa myös myöhemmin tutuksi tulevien enum-tyyppisten muuttujien avulla (eli järjestettävien ja ennalta määriteltyjen käsitteiden perusteella). Näitä käytettäessä käyttäisimme erillistä käsitettä <code>Siirto</code>, joka tietäisi miten se vertautuu toisiin siirtoihin. Vastaavasti käytössä olisi myös käsite <code>Tulos</code>, joka voisi olla esimerkiksi voitto, tappio tai tasapeli.
+</p>
+
+
+<h2 class="material-heading">
+    Tekstikäyttöliittymä
+
+</h2>
+
+<p>
+  Nivotaan edelliset osat yhteen. Tekstikäyttöliittymä on luokka, joka sisältää sovelluslogiikkaan liittyvät oliot oliomuuttujina. Käytössämme olevilla sovelluslogiikan palasilla tekstikäyttöliittymän rakenne on seuraava:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    // tekstikäyttöliittymän tarvitsemat oliomuuttujat
+    private Scanner lukija;
+    private Tekoaly tekoaly;
+    private Saannot saannot;
+    private Pistetilanne pistetilanne;
+
+        // konstruktori, jolle annetaan parametrina tarvitut oliomuuttujat
+    // ...
+
+    // käyttöliittymän käynnistysmetodi
+    public void kaynnista() {
+        // tervehdysviesti
+
+        // ohjelman toistuva logiikka
+        while (true) {
+
+            // syötteen lukeminen
+
+            // lopetusehdon tarkastelu
+
+            // logiikka
+        }
+
+
+        // lopetusviesti
+    }
+}  
+</code></pre>
+
+<p>
+  Hahmotellaan metodiin <code>kaynnista</code> käyttöliittymän tekstit.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public void kaynnista() {
+    System.out.println("KPS!");
+    System.out.println("");
+
+    while (true) {
+        System.out.print("Valitse [k]ivi, [p]aperi tai [s]akset: ");
+        String pelaajanValinta = lukija.nextLine();
+
+        if (/* lopetusehto */) {
+            break;
+        }
+
+        String tietokoneenValinta = tekoaly.annaSiirto();
+        System.out.println("Tietokone valitsi: " + tietokoneenValinta);
+
+        tekoaly.tallennaVastustajanSiirto(pelaajanValinta);
+
+        String voittaja = saannot.voittaja(pelaajanValinta, tietokoneenValinta);
+
+
+        // kerro voittaja ja päivitä pisteet
+
+        System.out.println("Tilanne: " + pistetilanne);
+        System.out.println("");
+
+    }
+
+    System.out.println("Peli päättyi.");
+    System.out.println("Lopputilanne: " + pistetilanne);
+}
+</code></pre>
+
+<p>
+  Lopetusehto on selkeä. Jos käyttäjä ei syötä merkkijonoa k, p tai s, toistosta poistutaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean pelaajaHaluaaLopettaa(String pelaajanValinta) {
+    return !pelaajanValinta.equals("k")
+            && !pelaajanValinta.equals("p")
+            && !pelaajanValinta.equals("s");
+}
+</code></pre>
+
+<p>
+  Voittajan kertomiseen ja pisteiden päivittämiseen käytetään sääntöjä ja pistetilannetta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void kerroVoittajaJaPaivitaPisteet(String voittaja) {
+    if (voittaja.equals("tietokone")) {
+        System.out.println("Tietokone voitti!");
+        pistetilanne.tietokoneVoitti();
+    } else if (voittaja.equals("pelaaja")) {
+        System.out.println("Pelaaja voitti!");
+        pistetilanne.pelaajaVoitti();
+    } else {
+        System.out.println("Tasapeli.");
+    }
+}
+</code></pre>
+
+<p>
+  Kayttoliittyma on kokonaisuudessaan seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Kayttoliittyma {
+
+    private Scanner lukija;
+    private Tekoaly tekoaly;
+    private Saannot saannot;
+    private Pistetilanne pistetilanne;
+
+    public Kayttoliittyma(Scanner lukija, Tekoaly tekoaly, Saannot saannot, Pistetilanne pistetilanne) {
+        this.lukija = lukija;
+        this.tekoaly = tekoaly;
+        this.saannot = saannot;
+        this.pistetilanne = pistetilanne;
+    }
+
+    public void kaynnista() {
+        System.out.println("KPS!");
+        System.out.println("");
+
+        while (true) {
+            System.out.print("Valitse [k]ivi, [p]aperi tai [s]akset: ");
+            String pelaajanValinta = lukija.nextLine();
+
+            if (pelaajaHaluaaLopettaa(pelaajanValinta)) {
+                break;
+            }
+
+            String tietokoneenValinta = tekoaly.annaSiirto();
+            System.out.println("Tietokone valitsi: " + tietokoneenValinta);
+
+            tekoaly.tallennaVastustajanSiirto(pelaajanValinta);
+
+            String voittaja = saannot.voittaja(pelaajanValinta, tietokoneenValinta);
+
+            kerroVoittajaJaPaivitaPisteet(voittaja);
+
+            System.out.println("Tilanne: " + pistetilanne);
+            System.out.println("");
+
+        }
+
+        System.out.println("Peli päättyi.");
+        System.out.println("Lopputilanne: " + pistetilanne);
+    }
+
+    public void kerroVoittajaJaPaivitaPisteet(String voittaja) {
+        if (voittaja.equals("tietokone")) {
+            System.out.println("Tietokone voitti!");
+            pistetilanne.tietokoneVoitti();
+        } else if (voittaja.equals("pelaaja")) {
+            System.out.println("Pelaaja voitti!");
+            pistetilanne.pelaajaVoitti();
+        } else {
+            System.out.println("Tasapeli.");
+        }
+    }
+
+    public boolean pelaajaHaluaaLopettaa(String pelaajanValinta) {
+        return !pelaajanValinta.equals("k")
+                && !pelaajanValinta.equals("p")
+                && !pelaajanValinta.equals("s");
+    }
+}
+</code></pre>
+
+<p>
+  Sovelluksen käynnistäminen onnistuu erillisestä Main-luokasta suoraviivaisesti.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // Testaa ohjelmasi toimintaa täällä!
+        Scanner lukija = new Scanner(System.in);
+        Pistetilanne pisteet = new Pistetilanne();
+        Tekoaly tekoaly = new Tekoaly();
+        Saannot saannot = new Saannot();
+
+        Kayttoliittyma kayttis = new Kayttoliittyma(lukija, tekoaly, saannot, pisteet);
+        kayttis.kaynnista();
+    }
+}
+</code></pre>
+
+<h2 class="material-heading">
+    Pelin jatkokehitys
+
+</h2>
+
+<p>
+  Sovellus toimii nyt halutulla tavalla. Jos ohjelmoija haluaisi muuttaa pelin sääntöjä -- esimerkiksi lisäämällä uusia siirtotyyppejä pelin <a href="http://bigbangtheory.wikia.com/wiki/Rock_Paper_Scissors_Lizard_Spock" target="_blank" norel>Rock, Paper, Scissors, Lizard & Spock</a>-hengessä, muutettavia kohtia on melko paljon, sillä siirtoa ei ole abstrahoitu omaksi käsitteekseen vaan se esitetään merkkijonona.
+</p>
+
+<p>
+  Toisaalta, tekoäly on kapseloitu sovelluksessa hyvin, jolloin sen jatkokehitys on suoraviivaista. Selkeä parannus edelliseen tekoälyyn olisi pelata aina sellainen siirto, joka voittaa pelaajan edellisen siirron. Tämä onnistuisi seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tekoaly {
+    private String vastustajanSiirto;
+
+    public Tekoaly() {
+        this.vastustajanSiirto = "k";
+    }
+
+    public String annaSiirto() {
+        if (this.vastustajanSiirto.equals("k")) {
+            return "p";
+        } else if (this.vastustajanSiirto.equals("p")) {
+            return "s";
+        } else {
+            return "k";
+        }
+    }
+   
+    public void tallennaVastustajanSiirto(String siirto) {
+        this.vastustajanSiirto = siirto;
+    }
+}
+</code></pre>
+
+<p>
+  Edellisen osan lopussa hahmoteltiin myös hieman parempaa tekoälyä..
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lintubongarin tietokanta (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p><b>Tehtävä vastaa kolmea yksiosaista tehtävää. </b></p>
+
+  <p>
+    Tässä tehtävässä suunnittelet ja toteutat tietokannan lintubongareille. Tietokanta sisältää lintuja, joista jokaisella on nimi (merkkijono) ja latinankielinen nimi (merkkijono). Tämän lisäksi tietokanta laskee kunkin linnun havaintokertoja.
+  </p>
+
+  <p>
+    Ohjelmasi täytyy toteuttaa seuraavat komennot:
+  </p>
+
+  <ul>
+    <li><code>Lisaa</code> - lisää linnun (<b>huom:</b> komennon nimessä ei ä-kirjainta!)</li>
+    <li><code>Havainto</code> - lisää havainnon</li>
+    <li><code>Tilasto</code> - tulostaa kaikki linnut</li>
+    <li><code>Nayta</code> - tulostaa yhden linnun (<b>huom:</b> komennon nimessä ei ä-kirjainta!)</li>
+    <li><code>Lopeta</code> - lopettaa ohjelman</li>
+  </ul>
+
+  <p>
+    Lisäksi virheelliset syötteet pitää käsitellä. (Ks. <code>Simo</code> alla). Tässä vielä esimerkki ohjelman toiminnasta:
+  </p>
+
+<pre class="sample-output">? <font color="red">Lisaa</font>
+Nimi: <font color="red">Korppi</font>
+Latinankielinen nimi: <font color="red">Corvus Corvus</font>
+? <font color="red">Lisaa</font>
+Nimi: <font color="red">Haukka</font>
+Latinankielinen nimi: <font color="red">Dorkus Dorkus</font>
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Haukka</font>
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Simo</font>
+Ei ole lintu!
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Haukka</font>
+? <font color="red">Tilasto</font>
+Haukka (Dorkus Dorkus): 2 havaintoa
+Korppi (Corvus Corvus): 0 havaintoa
+? <font color="red">Nayta</font>
+Mikä? <font color="red">Haukka</font>
+Haukka (Dorkus Dorkus): 2 havaintoa
+? <font color="red">Lopeta</font>
+</pre>
+
+  <p>
+    <strong>Huom!</strong> Ohjelmasi rakenne on täysin vapaa. Testaamme vain että <code>Paaohjelma</code> luokan <code>main</code>-metodi toimii kuten tässä on kuvailtu. Hyödyt tehtävässä todennäköisesti ongelma-aluetta sopivasti kuvaavista luokista.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Testivetoinen ohjelmistokehitys
+
+</h1>
+
+<p>
+  Testivetoinen ohjelmistokehitys (<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank" rel="noopener">Test-driven development</a>) on ohjelmistokehitysprosessi, joka perustuu ohjelman rakentamiseen pienissä osissa. Testivetoisessa ohjelmistokehityksessä ohjelmoija kirjoittaa aina ensin automaattisesti suoritettavan yksittäistä tietokoneohjelman osaa tarkastelevan testin.
+</p>
+
+<p>
+  Testi ei mene läpi, sillä testin täyttävä toiminnallisuus eli tarkasteltava tietokoneohjelman osa puuttuu. Kun testi on kirjoitettu, ohjelmaan lisätään toiminnallisuus, joka täyttää testin vaatimukset. Testit suoritetaan uudestaan, jonka jälkeen -- jos kaikki testit menevät läpi -- lisätään uusi testi tai vaihtoehtoisesti -- jos testit eivät mene läpi -- korjataan aiemmin kirjoitettua ohjelmaa. Ohjelman sisäistä rakennetta korjataan eli refaktoroidaan tarvittaessa siten, että ohjelman toiminnallisuus pysyy samana mutta rakenne selkiytyy.
+</p>
+
+<p>
+  Testivetoinen ohjelmistokehitys koostuu viidestä askeleesta, joita toistetaan kunnes ohjelman toiminnallisuus on valmis.
+</p>
+
+<ul>
+  <li>
+    Kirjoita testi. Ohjelmoija päättää, mitä ohjelman toiminnallisuutta testataan, ja kirjoittaa toiminnallisuutta varten testin.
+  </li>
+  <li>
+    Suorita testit ja tarkista menevätkö testit läpi. Kun uusi testi on kirjoitettu, testit suoritetaan. Jos testin suoritus päättyy hyväksyttyyn tilaan, testissä on todennäköisesti virhe ja se tulee korjata -- testin pitäisi testata vain toiminnallisuutta, jota ei ole vielä toteutettu.
+  </li>
+  <li>
+    Kirjoita toiminnallisuus, joka täyttää testin vaatimukset. Ohjelmoija toteuttaa toiminnallisuuden, joka täyttää vain testin vaatimukset. Huomaa, että tässä ei toteuteta asioita, joita testi ei vaadi -- toiminnallisuutta lisätään vain vähän kerrallaan.
+  </li>
+  <li>
+    Suorita testit. Jos testit eivät pääty hyväksyttyyn tilaan, kirjoitetussa toiminnallisuudessa on todennäköisesti virhe. Korjaa toiminnallisuus -- tai, jos toiminnallisuudessa ei ole virhettä -- korjaa viimeksi toteutettu testi.
+  </li>
+  <li>
+    Korjaa ohjelman sisäistä rakennetta. Kun ohjelman koko kasvaa, sen sisäistä rakennetta korjataan tarvittaessa. Liian pitkät metodit pilkotaan useampaan osaan ja ohjelmasta eriytetään käsitteisiin liittyviä luokkia. Testejä ei muuteta, vaan niitä hyödynnetään ohjelman sisäiseen rakenteeseen tehtyjen muutosten oikeellisuuden varmistamisessa -- jos ohjelman rakenteeseen tehty muutos muuttaa ohjelman toiminnallisuutta, testit varoittavat siitä, ja ohjelmoija voi korjata tilanteen.
+  </li>
+</ul>
+
+
+<h2 class="material-heading">
+    Testiluokka ja ensimmäinen testi
+
+</h2>
+
+<p>
+  Tarkastellaan tätä prosessia tehtävien hallintaan tarkoitetun sovelluksen kannalta. Tehtävien hallintasovellukseen halutaan mahdollisuus tehtävien listaamiseen, lisäämiseen, tehdyksi merkkaamiseen sekä poistamiseen. Aloitetaan sovelluksen kehitys luomalla tyhjä testiluokka. Asetetaan testiluokan nimeksi TehtavienHallintaTest, ja lisätään se pakkaukseen tehtavat. Tällä hetkellä sovelluksessa ei ole vielä lainkaan toiminnallisuutta.
+</p>
+
+<img src="../img/material/tehtavienhallinta-testiluokka-837dcf93.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Luodaan ensimmäinen testi. Testissä määritellään luokka Tehtavienhallinta, ja oletetaan, että luokalla on metodi tehtavalista, joka palauttaa tehtävälistan. Testimetodi <code>assertEquals</code> saa parametrinaan kaksi arvoa -- ensimmäinen on odotettu arvo ja toinen on ohjelman palauttama arvo. Tässä metodia käytetään tehtävälistan koon tarkastamiseen uuden tehtävälistan luomisen yhteydessä: uuden listan tulee olla tyhjä.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        assertEquals(0, hallinta.tehtavalista().size());
+    }
+}
+</code></pre>
+
+<p>
+  Luokkaa Tehtavienhallinta ei ole määritelty joten testien suoritus epäonnistuu.
+</p>
+
+
+<h2 class="material-heading">
+    Ensimmäisen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Toteutetaan seuraavaksi toiminnallisuus, joka täyttää testin. Luodaan luokka Tehtavienhallinta ja lisätään luokalle toiminnallisuus, joka täyttää testin vaatimukset. Luokka luodaan NetBeansissa kansioon Source Packages. Nyt projekti näyttää seuraavalta.
+</p>
+
+
+<img src="../img/material/tehtavienhallinta-luokat-f1dff2f7.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Toiminnallisuus on yksinkertainen. Luokalla Tehtavienhallinta on metodi tehtavalista, joka palauttaa tyhjän listan.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+ 
+public class Tehtavienhallinta {
+
+    public ArrayList&lt;String&gt; tehtavalista() {
+        return new ArrayList&lt;&gt;();
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät läpi. Luokan Tehtavienhallinta sisäinen rakenne on vielä niin pieni, ettei siinä ole juurikaan korjattavaa.
+</p>
+
+
+<h2 class="material-heading">
+    Toinen testi
+
+</h2>
+
+<p>
+  Aloitamme testivetoiseen kehitykseen liittyvän syklin uudestaan. Seuraavaksi luomme uuden testin, jossa tarkastellaan tehtävien lisäämiseen liittyvää toiminnallisuutta. Testissä määritellään luokalle Tehtavienhallinta metodi lisää, joka lisää tehtävälistalle uuden tehtävän. Tehtävän lisäämisen onnistuminen tarkastetaan tehtavalista-metodin koon kasvamisen kautta.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        assertEquals(0, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        hallinta.lisaa("Kirjoita testi");
+        assertEquals(1, hallinta.tehtavalista().size());
+    }
+}
+</code></pre>
+
+<p>
+  Testit toimi lainkaan, sillä luokasta Tehtavienhallinta puuttuu lisaa-metodi.
+</p>
+
+<h2 class="material-heading">
+    Toisen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Lisätään luokkaan Tehtavienhallinta metodi <code>lisaa</code>, ja suoritetaan testit.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+
+public class Tehtavienhallinta {
+
+    public ArrayList&lt;String&gt; tehtavalista() {
+        return new ArrayList&lt;&gt;();
+    }
+
+    public void lisaa(String tehtava) {
+
+    }
+}
+</code></pre>
+
+<p>
+  Nyt testien ajamisesta saadaan seuraava ilmoitus.
+</p>
+
+<pre class="sample-output">Testsuite: tehtavat.TehtavienhallintaTest
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec
+
+Testcase: tehtavanLisaaminenKasvattaaListanKokoaYhdella(tehtavat.TehtavienhallintaTest):	FAILED
+    expected:<1> but was:<0>
+    junit.framework.AssertionFailedError: expected:<1> but was:<0>
+    at tehtavat.TehtavienhallintaTest.tehtavanLisaaminenKasvattaa...(TehtavienhallintaTest.java:18)
+</pre>
+
+<p>
+  Testit eivät siis mene vieläkään läpi. Muokataan luokan tehtävänhallinta toiminnallisuutta siten, että luokalle luodaan oliomuuttujaksi tehtävät sisältävä lista. Muokataan metodin lisaa-toiminnallisuutta vain niin, että se läpäisee testin, mutta ei tee todellisuudessa haluttua asiaa.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+
+public class Tehtavienhallinta {
+
+    private ArrayList&lt;String&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+        this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public ArrayList&lt;String&gt; tehtavalista() {
+        return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+        this.tehtavat.add("Uusi");
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät läpi, joten olemme tyytyväisiä ja voimme siirtyä seuraavaan askeleeseen.
+</p>
+
+<pre class="sample-output">Testsuite: tehtavat.TehtavienhallintaTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
+
+test-report:
+test:
+BUILD SUCCESSFUL (total time: 0 seconds)
+</pre>
+
+
+<h2 class="material-heading">
+    Kolmas testi
+
+</h2>
+
+<p>
+  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>. 
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        assertEquals(0, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        hallinta.lisaa("Kirjoita testi");
+        assertEquals(1, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void lisattyTehtavaLoytyyTehtavalistalta() {
+        Tehtavienhallinta hallinta = new Tehtavienhallinta();
+        hallinta.lisaa("Kirjoita testi");
+        assertTrue(hallinta.tehtavalista().contains("Kirjoita testi"));
+    }
+}
+</code></pre>
+
+<p>
+  Testit eivät mene taaskaan läpi ja ohjelman toiminnallisuutta tulee muokata.
+</p>
+
+
+<h2 class="material-heading">
+    Kolmannen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Noheva ohjelmoija muokkaisi luokan Tehtavienhallinta toimintaa siten, että metodissa lisaa lisättäisiin listalle aina merkkijono "Kirjoita testi". Tämä johtaisi tilanteeseen, missä testit menisivät läpi, mutta toiminnallisuus sovellus ei vieläkään tarjoaisi toimivaa tehtävien lisäämistoiminnallisuutta. Muokataan luokkaa Tehtavienhallinta siten, että lisättävä tehtävä lisätään tehtävälistalle.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+
+public class Tehtavienhallinta {
+
+    private ArrayList&lt;String&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+        this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+        return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+        this.tehtavat.add(tehtava);
+    }
+}
+</code></pre>
+
+<p>
+  Nyt testit menevät taas läpi.
+</p>
+
+
+<h2 class="material-heading">
+    Testien refaktorointi
+
+</h2>
+
+<p>
+  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>. 
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
+public class TehtavienhallintaTest {
+
+    private Tehtavienhallinta hallinta;
+
+    @Before
+    public void alusta() {
+        hallinta = new Tehtavienhallinta();
+    }
+
+    @Test
+    public void tehtavalistaAlussaTyhja() {
+        assertEquals(0, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+        hallinta.lisaa("Kirjoita testi");
+        assertEquals(1, hallinta.tehtavalista().size());
+    }
+
+    @Test
+    public void lisattyTehtavaLoytyyTehtavalistalta() {
+        hallinta.lisaa("Kirjoita testi");
+        assertTrue(hallinta.tehtavalista().contains("Kirjoita testi"));
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Neljäs testi
+
+</h2>
+
+<p>
+  Lisätään seuraavaksi mahdollisuus tehtävän tehdyksi merkkaamiseen. Mutta! Mitä tarkoittaa tehdyksi merkkaaminen? Alunperin tavoitteena oli luoda ohjelma, joka mahdollistaa tehtävien listaamisen, listaamisen, tehdyksi merkkaamisen sekä poistamisen. Miten tarkastamme onko tehtävä tehty? Jos emme voi tietää onko tehtävä tehty vai ei, voisimme periaatteessa jättää koko toiminnallisuuden huomiotta. Voimme toisaalta päättää miten tehtän tehdyksi määrittely tapahtuu.
+</p>
+
+<p>
+  Määritellään ensin testi, joka mahdollistaa tehtävän tehdyksi merkkaamiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>// ...
+@Test
+public void tehtavanVoiMerkataTehdyksi() {
+    hallinta.lisaa("Satunnainen tehtava");
+    hallinta.merkkaaTehdyksi("Satunnainen tehtava");
+}
+// ..
+</code></pre>
+
+<h2 class="material-heading">
+    Neljännen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Tehtavienhallintaan lisätään seuraavaksi metodi merkkaaTehdyksi. Metodin toiminnallisuus voi olla aluksi tyhjä, sillä testi vaatii vain kyseisen metodin olemassaolon.
+</p>
+
+<h2 class="material-heading">
+    Viides testi
+
+</h2>
+
+<p>
+  Lisätään tämän jälkeen testi, jonka tehtävänä on tarkistaa onko parametrina annettu tehtävä tehty.
+</p>
+
+<pre class="sh_java code-highlight"><code>// ...
+@Test
+public void tehdyksiMerkattuOnTehty() {
+    hallinta.lisaa("Uusi tehtava");
+    hallinta.merkkaaTehdyksi("Uusi tehtava");
+    assertTrue(hallinta.onTehty("Uusi tehtava"));
+}
+// ..
+</code></pre>
+
+
+<h2 class="material-heading">
+    Viidennen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Nyt toiminnallisuutta varten tulee toteuttaa uusi metodi onTehty. Metodi voi aluksi palauttaa aina arvon true. Kokko luokan Tehtavienhallinta sisältö on nyt seuraava.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+
+public class Tehtavienhallinta {
+
+    private ArrayList&lt;String&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+        this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public ArrayList&lt;String&gt; tehtavalista() {
+        return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+        this.tehtavat.add(tehtava);
+    }
+
+    public void merkkaaTehdyksi(String tehtava) {
+
+    }
+
+    public boolean onTehty(String tehtava) {
+        return true;
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät taas läpi.
+</p>
+
+
+<h2 class="material-heading">
+    Kuudes testi
+
+</h2>
+
+<p>
+  Seuraavaksi toteutettava testi on oleellinen tehtävän toiminnan kannalta. Olemme tähän mennessä tarkistaneet, että haluttu toiminnallisuus on olemassa, mutta emme ole juurikaan tarkastaneet epätoivotun toiminnan poissaoloa. Jos testejä kirjoitettaessa keskitytään halutun toiminnallisuuden olemassaoloon, testit saattavat jäädä ohjelman toiminnallisuutta hyvin vähän tarkastelevaksi.
+</p>
+
+<p>
+  Kirjoitetaan seuraavaksi testi, joka tarkastaa, että tekemättömäksi merkkaamaton testi ei ole tehty.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>// ...
+@Test
+public void tehdyksiMerkkaamatonEiOleTehty() {
+    hallinta.lisaa("Uusi tehtava");
+    hallinta.merkkaaTehdyksi("Uusi tehtava");
+    assertFalse(hallinta.onTehty("Joku tehtava"));
+}
+// ..
+</code></pre>
+
+
+<h2 class="material-heading">
+    Kuudennen testin vaatimusten täyttäminen
+
+</h2>
+
+<p>
+  Joudumme nyt muokkaamaan luokan Tehtavienhallinta toiminnallisuutta hieman enemmän. Lisätään luokkaan erillinen lista tehtäville, jotka on merkattu tehdyiksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+
+public class Tehtavienhallinta {
+
+    private ArrayList&lt;String&gt; tehtavat;
+    private ArrayList&lt;String&gt; tehdytTehtavat;
+
+    public Tehtavienhallinta() {
+        this.tehtavat = new ArrayList&lt;&gt;();
+        this.tehdytTehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public List&lt;String&gt; tehtavalista() {
+        return this.tehtavat;
+    }
+
+    public void lisaa(String tehtava) {
+        this.tehtavat.add(tehtava);
+    }
+
+    public void merkkaaTehdyksi(String tehtava) {
+        this.tehdytTehtavat.add(tehtava);
+    }
+
+    public boolean onTehty(String tehtava) {
+        return this.tehdytTehtavat.contains(tehtava);
+    }
+}
+</code></pre>
+
+<p>
+  Testit menevät taas läpi. Sovelluksessa on muutamia muitakin kysymysmerkkejä. Pitäisikö tehtavalistauksessa palautetut tehtävät merkitä jollain tavalla tehdyksi? Voiko tehtävän, joka ei ole tehtävälistalla tosiaankin merkata tehdyksi?
+</p>
+
+
+<h2 class="material-heading">
+    Refaktorointi ja käsite "Tehtävä"
+
+</h2>
+
+<p>
+  Tehdään ensimmäinen hieman laajempi ohjelman sisäisen rakenteen korjaus. Tehtävä on selkeästi käsite, joten sille kannattanee luoda oma erillinen luokka. Luodaan luokka Tehtava. Luokalla Tehtava on nimi sekä tieto siitä, onko tehtävä tehty.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+public class Tehtava {
+
+    private String nimi;
+    private boolean tehty;
+
+    public Tehtava(String nimi) {
+        this.nimi = nimi;
+        this.tehty = false;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public void setTehty(boolean tehty) {
+        this.tehty = tehty;
+    }
+
+    public boolean onTehty() {
+        return tehty;
+    }
+}
+</code></pre>
+
+<p>
+  Muokataan tämän jälkeen luokan Tehtavienhallinta <em>sisäistä</em> rakennetta siten, että luokka tallentaa tehtävät merkkijonojen sijaan Tehtava-olioina. Huomaa, että luokan metodien määrittelyt eivät muutu, mutta niiden sisäinen toteutus muuttuu.
+</p>
+
+<pre class="sh_java code-highlight"><code>package tehtavat;
+
+import java.util.ArrayList;
+
+public class Tehtavienhallinta {
+
+    private ArrayList&lt;Tehtava&gt; tehtavat;
+
+    public Tehtavienhallinta() {
+        this.tehtavat = new ArrayList&lt;&gt;();
+    }
+
+    public ArrayList&lt;String&gt; tehtavalista() {
+        ArrayList&lt;String&gt; palautettavat = new ArrayList&lt;&gt;();
+        for (Tehtava tehtava: tehtavat) {
+            palautettavat.add(tehtava.getNimi());
+        }
+
+        return palautettavat;
+    }
+
+    public void lisaa(String tehtava) {
+        this.tehtavat.add(new Tehtava(tehtava));
+    }
+
+    public void merkkaaTehdyksi(String tehtava) {
+        for (Tehtava tehtava: tehtavat) {
+            if (tehtava.getNimi().equals(tehtava)) {
+                tehtava.setTehty(true);
+            }
+        }
+    }
+
+    public boolean onTehty(String tehtava) {
+        for (Tehtava tehtava: tehtavat) {
+            if (tehtava.getNimi().equals(tehtava) && tehtava.onTehty()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+</code></pre>
+
+<p>
+  Vaikka tehty muutos muutti luokan Tehtavienhallinta sisäistä toimintaa merkittävästi, testit toimivat yhä. Sykli jatkuisi samalla tavalla kunnes toivottu perustoiminnallisuus olisi paikallaan.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tehtavat (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo Tehtavienhallinnalta haluttu toiminnallisuus testivetoista ohjelmistokehitystä noudattaen. Kun olet saanut edellisen esimerkin loppuun asti, lisää sovellukseen vielä testit tehtävien poistamiseen sekä testien vaatima toiminnallisuus.
+  </p>
+
+  <p>
+    Kohdat on pisteytetty askeleittain, jotka ovat seuraavat:
+  </p>
+
+  <ol>
+    <li>
+      Testiluokka ja ensimmäinen testi, ensimmäisen testin vaatimusten täyttäminen. Toinen testi, toisen testin vaatimusten täyttäminen.
+    </li>
+    <li>
+      Kolmas testi, kolmannen testin vaatimusten täyttäminen, testien refaktorointi. Neljäs testi, neljännen testin vaatimusten täyttäminen, viides testi, viidennen testin vaatimusten täyttäminen.
+    </li>
+    <li>
+      Kuudes testi, kuudennen testin vaatimusten täyttäminen. Refaktorointi ja käsitteen tehtävä eristäminen. Tehtävien poistamiseen liittyvät testit sekä toiminnallisuus -- toteuta poistaminen Tehtavienhallinta-luokkaan metodina <code>public void poista(String tehtava)</code>
+    </li>
+  </ol>
+  
+  <p>
+    Sitä mukaa kun kehität toiminnallisuutta, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
+  </p>
+
+  <p>
+    Esimerkiksi, kun olet saanut ensimmäiset kaksi testiä sekä niihin liittyvän toiminnallisuuden toimimaan olet vaiheessa 1, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>1</code>.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Lisää ohjelmistojen testaamisesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Yksikkötestaus on vain osa ohjelmiston testaamista. Yksikkötestaamisen lisäksi ohjelmiston toteuttaja toteuttaa myös integraatiotestejä, joissa tarkastellaan komponenttien kuten luokkien yhteistoiminnallisuutta, sekä käyttöliittymätestejä, joissa testataan sovelluksen käyttöliittymää käyttöliittymän tarjoamien elementtien kuten nappien kautta.
+  </p>
+
+  <p>
+    Näitä testaamiseen liittyviä menetelmiä tarkastellaan tarkemmin muunmuassa kursseilla ohjelmistotekniikan menetelmät sekä ohjelmistotuotanto.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+
+<h1 class="material-heading">
+    Tiedon ryhmittely hajautustaulun avulla
+
+</h1>
+
+
+<p>
+  Hajautustaulu sisältää korkeintaan yhden arvon yhtä avainta kohti. Seuraavassa esimerkissä tallennamme henkilöiden puhelinnumeroita hajautustauluun.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, String&gt; puhelinnumerot = new HashMap&lt;&gt;();
+puhelinnumerot.put("Pekka", "040-12348765");
+
+System.out.println("Pekan numero: " + puhelinnumerot.get("Pekka"));
+
+puhelinnumerot.put("Pekka", "09-111333");
+
+System.out.println("Pekan numero: " + puhelinnumerot.get("Pekka"));
+</code></pre>
+
+<pre class="sample-output">Pekan numero: 040-12348765
+Pekan numero: 09-111333
+</pre>
+
+
+<p>
+  Entä jos haluaisimme liittää yhteen avaimeen useita arvoja, eli esimerkiksi useampia puhelinnumeroita yhdelle henkilölle?
+</p>
+
+<p>
+  Koska hajautustaulun avaimet ja arvot voivat olla mitä tahansa muuttujia, listojen käyttäminen hajautustaulun arvona onnistuu. Useamman arvon lisääminen yhdelle arvolle onnistuu liittämällä avaimeen lista. Muutetaan puhelinnumeroiden talletustapaa seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, ArrayList&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+</code></pre>
+
+<p>
+  Nyt hajautustaulussa on jokaiseen avaimeen liitettynä lista. Vaikka new-komento luo hajautustaulun, ei hajautustaulu sisällä alussa yhtäkään listaa. Ne on luotava tarvittaessa erikseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, ArrayList&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+
+// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new ArrayList&lt;&gt;());
+
+// ja lisätään Pekkaa vastaavalle listalle puhelinnumero
+puhelinnumerot.get("Pekka").add("040-12348765");
+// ja lisätään toinenkin puhelinnumero
+puhelinnumerot.get("Pekka").add("09-111333");
+
+System.out.println("Pekan numerot: " + puhelinnumerot.get("Pekka"));
+</code></pre>
+
+<pre class="sample-output">Pekan numero: [040-12348765, 09-111333]
+</pre>
+
+<p>
+  Määrittelimme muuttujan puhelinnumero tyypiksi <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>. Tämä tarkoittaa hajautustaulua, joka käyttää avaimena merkkijonoa ja arvona merkkijonoja sisältävää listaa. Hajautustauluun lisättävät arvot ovat siis konkreettisia listoja.
+</p>
+
+<pre class="sh_java code-highlight"><code>// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
+
+// ...
+</code></pre>
+
+<p>
+  Vastaavalla tyylillä voi toteuttaa esimerkiksi tehtävien pistekirjanpidon. Alla olevassa esimerkissä on hahmoteltu luokkaa <code>Tehtavakirjanpito</code>, mikä sisältää käyttäjäkohtaisen pistekirjanpidon. Käyttäjä esitetään merkkijonona ja pisteet kokonaislukuina. 
+
+<pre class="sh_java code-highlight"><code>public class Tehtavakirjanpito {
+    private HashMap&lt;String, ArrayList&lt;Integer&gt;&gt; tehdytTehtavat;
+
+    public Tehtavakirjanpito() {
+        this.tehdytTehtavat = new HashMap&lt;&gt;();
+    }
+
+    public void lisaa(String kayttaja, int tehtava) {
+        // uudelle käyttäjälle on lisättävä HashMapiin tyhjä lista jos sitä
+        // ei ole jo lisätty
+        this.tehdytTehtavat.putIfAbsent(kayttaja, new ArrayList&lt;&gt;());
+
+        // haetaan ensin käyttäjän tehtävät sisältävä lista ja tehdään siihen lisäys
+        ArrayList&lt;Integer&gt; tehdyt = this.tehdytTehtavat.get(kayttaja);
+        tehdyt.add(tehtava);
+
+        // edellinen olisi onnitunut myös ilman apumuuttujaa seuraavasti
+        // this.tehdytTehtavat.get(kayttaja).add(tehtava);
+    }
+
+    public void tulosta() {
+        for (String nimi: tehdytTehtavat.keySet()) {
+            System.out.println(nimi + ": " + tehdytTehtavat.get(nimi));
+        }
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 4);
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 3);
+
+kirjanpito.lisaa("Pekka", 4);
+kirjanpito.lisaa("Pekka", 4);
+
+kirjanpito.lisaa("Matti", 1);
+kirjanpito.lisaa("Matti", 2);
+
+kirjanpito.tulosta();
+</code></pre>
+
+<pre class="sample-output">Matti: [1, 2]
+Pekka: [4, 4]
+Ada: [3, 4, 3, 3]
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Usean käännöksen sanakirja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtävänäsi on toteuttaa luokka <code>UseanKaannoksenSanakirja</code>, johon voidaan lisätä yksi tai useampi käännös jokaiselle sanalle. Luokan tulee toteuttaa seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public void lisaa(String sana, String kaannos)</code> lisää käännöksen sanalle säilyttäen vanhat käännökset</li>
+    <li><code>public ArrayList&lt;String&gt; kaanna(String sana)</code> palauttaa listan, joka sisältää sanojen käännökset. Jos sanalle ei ole yhtäkään käännöstä, metodin tulee palauttaa tyhjä lista.</li>
+    <li><code>public void poista(String sana)</code> poistaa sanan ja sen kaikki käännökset sanakirjasta.</li>
+  </ul>
+
+  <p>
+    Käännökset kannattanee lisätä <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan.
+  </p>
+
+  <p>
+    Esimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>UseanKaannoksenSanakirja sanakirja = new UseanKaannoksenSanakirja();
+sanakirja.lisaa("kuusi", "six");
+sanakirja.lisaa("kuusi", "spruce");
+
+sanakirja.lisaa("pii", "silicon");
+sanakirja.lisaa("pii", "pi");
+
+System.out.println(sanakirja.kaanna("kuusi"));
+sanakirja.poista("pii");
+System.out.println(sanakirja.kaanna("pii"));
+</code></pre>
+
+<pre class="sample-output">[six, spruce]
+[]
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Simulaatiot
+
+</h1>
+
+<p>
+  Simulaatiot ovat ohjelmia, joilla pyritään kuvaamaan tai ennustamaan jonkinlaista todellista ilmiötä. Tutustutaan simulaatioihin tehtävien kautta. Tehtävissä on käytössä kaksiulotteinen maailma, jota mallinnetaan hajautustaulun avulla. Alla on kuvattu kaksiulotteisen hajautustaulun toimintaa:
+</p>
+
+<pre class="sh_java code-highlight"><code>// luodaan hajautustaulu
+HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko = new HashMap<>();
+
+// yllä olevassa hajautustaulussa jokainen x-koordinaatti viittaa uuteen hajautustauluun:
+// näitä ei ole kuitenkaan vielä tehty, joten alustetaan kaikki arvot nolliksi
+
+// luodaan 10 x 10 kokoinen maailma, missä kaikki arvot ovat nollia
+
+int leveys = 10;
+int korkeus = 10;
+  
+int x = 0;
+while (x &lt; leveys) {
+    taulukko.putIfAbsent(x, new HashMap<>());
+
+    int y = 0;
+    while (y &lt; korkeus) {
+        taulukko.get(x).put(y, 0);
+        y++;
+    }
+
+    x++;
+}
+
+// asetetaan kohtaan (3, 2) arvo 5
+taulukko.get(3).put(2, 5);
+
+// haetaan arvo kohdasta (0, 1) ja tulostetaan se
+System.out.println(taulukko.get(0).get(1));
+</code></pre>
+
+<p>
+  Taulukko kannattanee abstrahoida omaksi luokakseen, joka kapseloi hajautustaulun sisälleen. Alla olevassa toteutuksessa oletetaan, että tyhjissä taulukon kohdissa on arvo 0. 
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Taulukko {
+    private HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko;
+    private int leveys;
+    private int korkeus;
+  
+    public Taulukko(int leveys, int korkeus) {
+        this.leveys = leveys;
+        this.korkeus = korkeus;
+        this.taulukko = new HashMap<>();
+    }
+
+    public void aseta(int x, int y, int arvo) {
+        if (x &lt; 0 || x &gt;= this.leveys || y &lt; 0 || y &gt;= this.korkeus) {
+            return;
+        }
+
+        this.taulukko.putIfAbsent(x, new HashMap<>());
+        this.taulukko.get(x).put(y, arvo);
+    } 
+
+    public int hae(int x, int y) {
+        if(!this.taulukko.containsKey(x)) {
+            return 0;
+        } 
+
+        if(!this.taulukko.get(x).containsKey(y)) {
+            return 0;
+        } 
+
+        return this.taulukko.get(x).get(y);
+    }
+}
+</code></pre>
+
+<p>
+  Nyt edellä kuvattu ohjelma olisi hieman suoraviivaisempi.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Taulukko taulukko = new Taulukko(10, 10);
+taulukko.aseta(3, 2, 5);
+System.out.println(taulukko.hae(0, 1));
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Game of Life (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank" rel="noopener">Game of Life</a> on neljää yksinkertaista sääntöä seuraava soluautomaatti:
+  </p>
+
+  <ol>
+    <li>Jos elävän solun naapureina on alle kaksi elävää solua, se kuolee alikansoituksen takia.</li>
+    <li>Jos elävän solun naapureina on kaksi tai kolme elävää solua, se jää henkiin.</li>
+    <li>Jos elävän solun naapureina on yli kolme elävää solua, se kuolee ylikansoituksen takia.</li>
+    <li>Jos kuolleen solun naapureina on tasan kolme elävää solua, se syntyy eli muuttuu eläväksi.</li>
+  </ol>
+
+  <p>
+    Peli ei sisällä minkäänlaisia liikkumissääntöjä, mutta se silti luo tilanteita, missä erilaiset hahmot liikkuvat ruudulla. Katso pelin keksineen <a href="https://youtu.be/E8kUJL04ELA" target="_blank" rel="noopener">John Conwayn mietteitä pelistä sekä sääntöjen selitys</a>.
+  </p>
+
+  <p>
+    Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää hajautustaulun avulla toteutetun kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
+  </p>
+  
+
+  <h2>Elossa olevien naapurien lukumäärä</h2>
+
+  <p>
+    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(Taulukko taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
+  </p>
+
+  <p>
+    Esimerkiksi kohdassa (0, 0) oleva alkio on elossa jos kutsu <code>taulukko.arvo(x, y)</code> palauttaa arvon <code>true</code>.
+  </p>
+
+  <p>
+    Naapureita ovat kaikki ne alkiot, jotka ovat kulman tai sivun kautta yhteydessä alkioon.
+  </p>
+
+  <p>
+    Esimerkiksi, jos taulukko on seuraavanlainen:
+  </p>
+
+  <table border="1">
+
+    
+    <tr>
+      <td>
+	x=0,y=0: true
+      </td>
+      <td>
+	x=1,y=0: false
+      </td>
+      <td>
+	x=2,y=0: false
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+	x=0,y=1: true
+      </td>
+      <td>
+	x=1,y=1: true
+      </td>
+      <td>
+	x=2,y=1: false
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+	x=0,y=2: false
+      </td>
+      <td>
+	x=1,y=2: false
+      </td>
+      <td>
+	x=2,y=2: true
+      </td>
+    </tr>
+
+  </table>
+
+  <p>
+    Palauttavat seuraavat kutsut seuraavat arvot:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
+</code></pre>
+
+<pre class="sample-output">2
+3
+3
+1
+</pre>
+
+  
+  <h2>Kehittyminen</h2>
+
+  <p>
+    Täydennä seuraavaksi GameOfLife-luokan metodia <code>public void kehity()</code> siten, että se käy yhden Game of Life -pelin askeleen.
+  </p>
+
+  <p>
+    Toteuta toiminnallisuus niin, että luot toisen taulukon, jonka koko on sama kuin alkuperäisen taulukon. Käy tämän jälkeen alkuperäistä taulukkoa läpi alkio alkiolta siten, että seuraat seuraavia sääntöjä:
+  </p>
+
+  <ol>
+    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on alle kaksi elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on kaksi tai kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on yli kolme elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on 0 ja sillä on tasan kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
+  </ol>
+
+  <p>
+    Käytä naapureiden lukumäärän selvittämisessä edellisessä osassa tehtyä metodia. Kun olet käynyt koko taulukon läpi, vaihda kopio taulukon paikalle.
+  </p>
+
+
+  <p>
+    Kokeile tämän jälkeen sovelluksen toimintaa graafisen käyttöliittymän kautta. Sovelluksen pitäisi käynnistyä -- yksi mahdollinen hetkellinen tila on seuraavanlainen.
+  </p>
+
+  <img src="../img/exercises/06-15-gameoflife-4ad85c50.png" width="600"/>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Schelling (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <a href="https://en.wikipedia.org/wiki/Thomas_Schelling" target="_blank" rel="noopener">Thomas Schelling</a> on yhdysvaltalainen taloustieteilijä, joka esitti ihmisten eriytymistä selittävän mallin. Malli perustuu ajatukselle, että vaikka ihmiset asetettasiin satunnaisesti asumaan, he muuttavat pois jos he eivät ole tyytyväisiä naapureihinsa.
+  </p>
+
+  <p>
+    Tässä tehtävässä pohditaan Schellingin mallia sekä kehitetään siihen liittyvää simulaatio-ohjelmaa.
+  </p>
+
+  <p>
+    Simulaation suoritus alkaa tilanteesta, missä ihmiset ovat asetettu satunnaisesti asumaan.
+  </p>
+
+  <img src="../img/exercises/schelling-alku-509a7d06.png" alt="Tilanne, missä ihmiset asuvat satunnaisesti."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kun simulaatio etenee, päädytään ennen pitkää tilanteeseen, missä samankaltaiset ihmiset ovat muuttaneet samankaltaisten ihmisten luo.
+  </p>
+
+  <img src="../img/exercises/schelling-loppu-f58926b6.png" alt="Ihmiset ovat muuttaneet sopivampiin paikkoihin."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Simulaatio-ohjelmasta puuttuu muutamia oleellisia toiminnallisuuksia: (1) kartan tyhjennys, (2) tyhjien paikkojen etsiminen, sekä (3) tyytymättömien henkilöiden tunnistaminen. Kannattaa ennen aloitusta tutustua nykyiseen tehtävän koodiin -- ohjelmassa on mukana myös visualisointiin käytettävä komponentti.
+  </p>
+
+
+  <h2>Kartan tyhjentäminen ja tyhjien paikkojen etsiminen</h2>
+
+  <p>
+    Simulaatiomallissa käytetään sisäkkäistä hajautustaulua kaksiulotteisen taulukon kuvaamiseen. Kohdassa (x, y) oleva arvo 0 kuvaa tyhjää paikkaa ja luvut 1-5 kuvaavat eri ryhmiä.
+  </p>
+
+  <p>
+    Toteuta ensin luokan <code>Eriytymismalli</code> metodiin <code>public void tyhjenna()</code> toiminnallisuus, joka asettaa jokaisen solun arvoksi 0.
+  </p>
+
+  <p>
+    Lisää tämän jälkeen metodiin <code>public ArrayList&lt;Piste&gt; tyhjatPaikat()</code> toiminnallisuus, joka tunnistaa tyhjät paikat (solut, joissa on arvo 0), luo jokaisesta Piste-olion, ja palauttaa ne listana. Huomaa, että käytössä olevassa hajautustaulussa ensimmäinen ulottuvuus kuvaa x-koordinaattia, ja toinen y-koordinaattia (taulukko.hae(x, y)).
+  </p>
+
+
+  <h2>Tyytymättömien hakeminen</h2>
+
+  <p>
+    Mallille voidaan asettaa parametri <code>tyytyvaisyysraja</code>. Tyytyväisyysrajalla kuvataan samaan ryhmään kuuluvien naapureiden minimimäärää, millä henkilö on tyytyväinen sijaintiinsa. Jos ruudussa (x, y) olevan henkilön naapureista on samankaltaisia yhtä paljon tai yli <code>tyytyvaisyysraja</code>n, on henkilö tyytyväinen. Muissa tapauksissa henkilö on tyytymätön.
+  </p>
+
+  <p>
+    Naapureista tulee tarkastella kaikkia ruudun vieressä olevia ruutuja. Alueen ulkopuolella olevat ruudut (esim. -1, 0) tulee käsitellä tyhjänä ruutuna (ei samankaltainen).
+  </p>
+
+  <p>
+    Toteuta metodi <code>public ArrayList&lt;Piste&gt; haeTyytymattomat()</code>, joka palauttaa tyytymättömät listana.
+  </p>
+
+  <p>
+    Kun metodi on toteutettu, ihaile ohjelman toimintaa :)
+  </p>
+
+
+  <p>
+    <em>
+      Vaikka karttamme on suorakulmio, voisi sen yhtä hyvin piirtää vaikkapa Helsingin muotoiseksi.
+    </em>
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<h1 class="material-heading">
+    Ensimmäisen seitsemän osan lopuksi
+
+</h1>
+
+<p>
+  Tämän materiaalin ensimmäiset seitsemän osaa käsittelee Helsingin yliopiston kurssia Ohjelmoinnin perusteet. Kahdeksannesta osasta lähtien käynnissä on Ohjelmoinnin jatkokurssi.
+</p>
+
+<p>
+  Tässä lopuksi pieni pähkinätehtävä.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Uno (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <a href="https://fi.wikipedia.org/wiki/Uno_(korttipeli)" target="_blank" rel="noopener">Uno</a> on korttipeli, missä jokaisella pelaajalla on kädessään kortteja. Kortteja pelataan vuorotellen siten, että jokainen pelaaja pelaa aina yhden kortin kerrallaan. Pelin voittaja on se, jonka kädestä loppuu kortit ensimmäisenä kesken.
+  </p>
+
+  <p>
+    Suurimmalla osalla korteista on väri -- Punainen, Vihreä, Sininen tai Keltainen -- ja kortin saa pelata edellisen pelaajan pelaaman kortin jälkeen jos kortilla on sama väri tai numero kuin edellisellä kortilla. Pelissä on lisäksi joukko erikoiskortteja. Osalla niistä on väri ja ne saa pelata vain jos edellisessä kortissa on sama väri. Osalla erikoiskorteista ei ole väriä. Värittömät kortit saa pelata minkä tahansa kortin jälkeen (pelaaminen tapahtuu kuitenkin aina omalla vuorolla).
+  </p>
+
+  <ul>
+    <li>
+      Värilliset erikoiskortit ovat "Ohitus", "Suunnanvaihto" ja "Nosta 2". Kun pelaaja pelaa kortin "Ohitus", seuraavalta pelaajalta jää vuoro välistä. Kortti "Suunnanvaihto" kääntää pelin suuntaa (esim. myötäpäivästä vastapäivään), ja "Nosta 2" lisää seuraavalle pelaajalle kaksi korttia sekä jättää häneltä vuoron välistä.
+    </li>
+    <li>
+      Värittömät erikoiskortit ovat "Villi kortti" ja "Villi kortti + Nosta 4". Molemmat kortit antavat kortin pelaavalle pelaajalle mahdollisuuden valita seuraavaksi pelattava väri. Tämän lisäksi kortti "Villi kortti + Nosta 4" lisää seuraavalle pelaajalle 4 korttia sekä jättää häneltä vuoron välistä.
+    </li>
+  </ul>
+
+  <p>
+    Pelin tavoitteena on saada kortit loppumaan. Kun tämä tapahtuu, ensimmäisenä korttinsa loppuun pelannut pelaaja saa pisteitä muiden pelaajien käteen jääneistä korteista. Pisteet lasketaan seuraavasti: numerokortit ovat kortissa olevan numeron arvoisia, värilliset erikoiskortit ovat 20 pisteen arvoisia, ja värittömät erikoiskortit ovat 50 pisteen arvoisia. Uusia pelejä pelataan kunnes joku pelaajista saavuttaa 500 pistettä.
+  </p>
+
+  <p>
+    Tässä tehtävässä rakennetaan Uno-peliä varten tekoäly. Ennen aloittamista, kokeile tehtäväpohjassa olevan pelin käynnistämistä ja pelaamista. Peli käynnistetään tehtäväpohjan Main-luokasta.
+  </p>
+
+  <hr/>
+
+  <p>
+    Tekoäly tulee toteuttaa luokkaan <code>Tekoalypelaaja</code>. Luokalle on valmiiksi määriteltynä <em>rajapinta</em> (palaamme tähän myöhemmissä osissa) ja kolme metodia.
+  </p>
+
+  <ul>
+    <li>
+      <p>
+	Metodi <code>public int pelaa(ArrayList&lt;Kortti&gt, omatKortit, Kortti paallimmaisin, String vari, Pelitilanne tilanne)</code> on tekoälyn ydin ja sen tehtävänä on päättää mikä kortti pelataan seuraavaksi. Metodi saa parametrina pelaajan kädessä olevat kortit (omatKortit), viimeksi pelatun kortin minkä päälle pelataan (paallimmaisin), edellisen pelaajan valitseman värin jos viimeksi pelattu kortti oli villi kortti (vari), sekä yleisen pelitilanteen (tilanne). Pelitilanne-luokasta kerrotaan enemmän tehtävänannon lopussa.
+	<br/>
+	Tehtävänäsi on toteuttaa ohjelma, joka palauttaa pelattavan kortin indeksin. Jos käytettävissä ei ole yhtäkään sopivaa korttia, metodin tulee palauttaa arvo -1, jolloin nostetaan kortti. Huomaa, että pelissä tulee pelata kortti jos se vain on mahdollista.
+      </p>
+    </li>
+
+    <li>
+      <p>
+	Metodia <code>public String valitseVari(ArrayList&lt;Kortti&gt; omatKortit)</code> kutsutaan kun tekoäly pelaa villin kortin eli vaihtaa pelattavaa väriä. Metodin tulee palauttaa joku seuraavista merkkijonoista: "Punainen", "Vihreä", "Sininen", "Keltainen".
+      </p>
+    </li>
+
+    <li>
+      <p>
+	Metodi <code>public String nimi()</code> kertoo tekoälysi nimen, jonka saat luonnollisesti keksiä itse. Tekoälyn nimi saattaa ilmestyä jonkinlaisiin turnauslistoihin, eli pidä nimi ns. kilttinä.
+      </p>
+    </li>
+  </ul>
+
+  <p>
+    Tehtävänäsi on tutustua ohjelmaan sekä toteuttaa luokkaan Tekoalypelaaja tekoäly, joka toimii oikein, eli se pelaa aina sallitun kortin. Oikein toimiva tekoäly on kahden tehtäväpisteen arvoinen.
+  </p>
+
+  <p>
+    Kun olet saanut toteutettua oikein toimivan tekoälyn, viilaa sitä paremmaksi.
+  </p>
+
+  <p>
+    Kun tehtävän määräaika on ohi, jokaisen palauttamaa (toimivaa) tekoälyä peluutetaan muita tekoälyjä vastaan. Tulokset julkaistaan myöhemmin.
+  </p>
+
+
+  <hr/>
+
+  <p>
+    Vinkkejä viilaamiseen:
+  </p>
+
+  <ul>
+    <li>
+      Koska häviötilanteessa käden pisteet menevät voittajalla, saattaa olla hyvä idea pyrkiä pelaamaan ensin kortit, joiden pistearvo on suuri.
+    </li>
+    <li>
+      Toisaalta, esimerkiksi villit kortit saattavat olla erittäin hyödyllisiä myöhemmässä vaiheessa peliä, eli niistä kannattanee pitää kiinni.
+    </li>
+    <li>
+      Tai no, ehkä villeistä korteista ei kannata pitää ikuisesti kiinni, koska ne kuitenkin ovat 50 pisteen arvoisia.
+    </li>
+    <li>
+      Kun pelaat villin kortin ja valitset värin, voi olla ihan fiksua valita väri, jota sinulla on paljon kädessä.
+    </li>
+    <li>
+      Toiisaalta sitten, jos kädessäsi on punaiset 0, 1 ja 6 ja vihreä 9 sekä vihdeä nosta 2, voi olla kuitenkin ihan fiksua yrittää ensin hankkiutua eroon vihreistä korteista, sillä niiden pistearvo on hyvin suuri.
+    </li>
+    <li>
+      Pohdi tilannetta, missä pöydällä on punainen 5 ja kädessäsi on punainen 3 sekä sininen 5. Kannattaako sinun pelata punainen vai vihreä kortti? Tässä on pohdittavana sekä mahdollinen pistesaldo että syy punaisen kortin pöydällä olemiseen. Entäpä jos vastustaja on pelannut punaisen kortin koska hänellä on punaisia kortteja jäljellä?
+    </li>
+    <li>
+      Jokaista nollakorttia löytyy pelistä vain yksi, mutta jokaista numerokorttia on kaksi. Nollan pelaaminen ei vaikuta käden pisteisiin, mutta sen pelaaminen saattaa johtaa tilanteeseen, missä on epätodennäköisempää että jollain muulla on sama numero. Tällöin todennäköisyys värin vaihdolle saattaa olla pienempi..
+    </li>
+    <li>
+      Kaikkiin näihin vinkkeihin varmaankin vaikuttaa myös kädessä olevien korttien määrä. Pienellä määrällä kortteja voi olla ehkäpä hyvä ottaa riskejä ja yrittää voittaa peli. Toisaalta sitten, jos kädessä on paljon kortteja, kannattaa ehkä unohtaa kyseisen kierroksen voitto ja pyrkiä minimoimaan vastustajalle menevien pisteiden määrä.
+    </li>
+    <li>
+      Ainiin, muutkin osallistujat lukevat näitä vinkkejä.. Löytyisiköhän joillekin edeltäville vinkeille jonkinlainen käänteisstrategia?
+    </li>
+  </ul>
+
+  <hr/>
+
+  <p>
+    Pelitilanne-luokka sisältää havaintoja tähän asti kuluneesta pelistä sekä lisätietoa kehittyneemmille tekoälyille. Se tarjoaa seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>
+      Metodi <code>public String getSuunta()</code> palauttaa pelin tämänhetkisen suunnan. Suunta on joko "Myötäpäivään" eli eteenpäin tai "Vastapäivään" eli taaksepäin.
+    </li>
+    <li>
+      Metodi <code>public int getOmaIndeksi()</code> palauttaa oman tekoälyn indeksin. Indeksiä käytetään seuraavissa metodeissa.
+    </li>
+    <li>
+      Metodi <code>public HashMap&lt;Integer, Integer&gt; getPelaajienPisteet()</code> kertoo tämänhetkisen pistetilanteen kaikille pelaajille.
+    </li>
+    <li>
+      Metodi <code>public HashMap&lt;Integer, Integer&gt; getPelaajienKorttienLukumaarat()</code> kertoo pelaajien tämänhetkisen korttien lukumäärän.
+    </li>
+    <li>
+      Metodi <code>public HashMap&lt;Integer, String&gt; getPelaajienViimeksiPelaamatVarit()</code> kertoo pelaajien viimeksi pelaamat värit. Alkiossa on arvo null jos pelaaja ei ole vielä pelannut korttia.
+    </li>
+  </ul>
+
+  <p>
+    <em>
+      Tehtävän alkuperäinen idea: Stephen Davies, UMW
+    </em>
+  </p>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a336"></div>
+
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/part7.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-6f7e442b.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        window.initTyponator();
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
