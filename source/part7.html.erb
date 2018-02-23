@@ -2,7 +2,7 @@
   title: Osa 7
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -30,135 +30,6 @@
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Kirjaston tietojärjestelmä (3 osaa)' } do %>
-
-  <p>
-    Tässä tehtävässä kerrataan olio-ohjelmoinnin perusteita sekä listojen käsittelyä virran avulla.
-  </p>
-
-  <p>
-    <em>
-      Kumpulan tiedekirjasto tarvitsee uuden järjestelmän kirjojen hallintaan. Tässä tehtävässä hahmotellaan ongelma-alueen tietosisältöä ja toteutetaan prototyyppi, joka mahdollistaa kirjan haun nimen, julkaisijan tai julkaisuvuoden perusteella.
-    </em>
-  </p>
-
-  <p>
-    Rakennetaan järjestelmä osista, ensin toteutetaan oleelliset luokat eli <code>Kirja</code> ja <code>Kirjasto</code>. Luokka <code>Kirja</code> sisältää kirjaan liittyvät tiedot, luokka <code>Kirjasto</code> tarjoaa erilaisia hakutoiminnallisuuksia kirjoihin liittyen.
-  </p>
-
-  <h2>Kirja</h2>
-
-  <p>
-    Luodaan ensiksi luokka Kirja. Kirjalla on oliomuuttujina <code>nimeke</code>, eli kirjan nimi, <code>julkaisija</code>, eli kirjan julkaisija, ja <code>julkaisuvuosi</code> eli vuosi jolloin kirja on julkaistu. Kaksi ensimmäistä muuttujaa on merkkijonotyyppisiä, viimeisin on kokonaisluku. Oletamme tässä että kirjalla on aina vain yksi kirjoittaja.
-  </p>
-
-  <p>
-    Toteuta luokka <code>Kirja</code>. Kirjalla tulee olla myös konstruktori <code>public Kirja(String niemeke, String julkaisija, int julkaisuvuosi)</code> sekä metodit <code>public String nimeke()</code>, <code>public String julkaisija()</code>, <code>public int julkaisuvuosi()</code> ja <code>public String toString()</code>. Arvannet mitä metodien tulee tehdä, alla esimerkki.
-  </p>
-
-  <p>
-    Testaa luokan toimintaa:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
-    System.out.println(cheese.nimeke());
-    System.out.println(cheese.julkaisija());
-    System.out.println(cheese.julkaisuvuosi());
-
-    System.out.println(cheese);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Cheese Problems Solved
-    Woodhead Publishing
-    2007
-    Cheese Problems Solved, Woodhead Publishing, 2007
-  <% end %>
-
-
-  <h2>Kirjasto</h2>
-
-  <p>
-    Kirjaston tehtävä on antaa käyttäjälle mahdollisuus kirjojen lisäämiseen ja niiden hakemiseen. Luo luokka <code>Kirjasto</code>, jolla on konstruktori <code>public Kirjasto()</code> ja metodit <code>public void lisaaKirja(Kirja uusiKirja)</code> ja <code>public void tulostaKirjat()</code>
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Kirjasto kirjasto = new Kirjasto();
-
-    Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
-    kirjasto.lisaaKirja(cheese);
-
-    Kirja nhl = new Kirja("NHL Hockey", "Stanley Kupp", 1952);
-    kirjasto.lisaaKirja(nhl);
-
-    kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
-
-    kirjasto.tulostaKirjat();
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Cheese Problems Solved, Woodhead Publishing, 2007
-    NHL Hockey, Stanley Kupp, 1952
-    Battle Axes, Tom A. Hawk, 1851
-  <% end %>
-
-
-  <h2>Hakutoiminnallisuus</h2>
-
-  <p>
-    Kirjastosta tulee pystyä etsimään kirjoja nimekkeiden ja julkaisijoiden perusteella. Lisää kirjastolle metodit <code>public ArrayList&lt;Kirja&gt; haeKirjaNimekkeella(String nimeke)</code>, <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisijalla(String julkaisija)</code> ja <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisuvuodella(int julkaisuvuosi)</code>. Metodit palauttavat listan kirjoista, joissa on haluttu nimeke, julkaisija tai julkaisuvuosi.
-  </p>
-
-  <p>
-    Voit halutessasi hyödyntää seuraavaa runkoa metodin tekemiseen.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Kirjasto {
-        // ...
-
-        public ArrayList&lt;Kirja&gt; haeKirjaNimekkeella(String nimeke) {
-            ArrayList&lt;Kirja&gt; loydetyt = new ArrayList&lt;&gt;();
-
-            // käy läpi kaikki kirjat ja lisää ne joilla haetun kaltainen nimeke listalle loydetyt
-
-            return loydetyt;
-        }
-    }
-  <% end %>
-
-  <p>
-    Huom! Kun haet teet hakua merkkijonon avulla, älä tee tarkkaa hakua (metodi <code>equals</code>) vaan käytä <code>String</code>-luokan metodia <code>contains</code>. Huomaat todennäköisesti myös että sinulla on ns. copy-paste -koodia <code>Kirjasto</code>-luokan koodissa. Keksitkö tavan päästä siitä eroon?
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Kirjasto kirjasto = new Kirjasto();
-
-    kirjasto.lisaaKirja(new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007));
-    kirjasto.lisaaKirja(new Kirja("The Stinky Cheese Man and Other Fairly Stupid Tales", "Penguin Group", 1992));
-    kirjasto.lisaaKirja(new Kirja("NHL Hockey", "Stanley Kupp", 1952));
-    kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
-
-    kirjasto.haeKirjaNimekkeella("Cheese").forEach(k -&gt; System.out.println(k));
-
-    System.out.println("---");
-    kirjasto.haeKirjaJulkaisijalla("Pong Group").forEach(k -&gt; System.out.println(k));
-
-    System.out.println("---");
-    kirjasto.haeKirjaJulkaisuvuodella(1851).forEach(k -&gt; System.out.println(k));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Cheese Problems Solved, Woodhead Publishing, 2007
-    The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
-    ---
-    ---
-    Battle Axes, Tom A. Hawk, 1851
-  <% end %>
-
-<% end %>
-
 
 <% partial 'partials/material_heading' do %>
   Käyttöliittymän ja sovelluslogiikan eriyttäminen
@@ -169,7 +40,7 @@
 </p>
 
 <p>
-  Suurin syy käyttöliittymän ja sovelluslogiikan eriyttämiseen on ohjelman ylläpidettävyyden ja ymmärrettävyyden lisääminen. Sovellluslogiikan eri osa-alueet ovat ideaalitilanteessa käyttöliittymäriippumattomia, jolloin niitä voidaan parannella ilman käyttöliittymään koskemista. Vastaavasti osia voidaan siirtää sovelluksesta toiseen. Vastaavasti käyttöliittymä on vaihdettavissa tekstikäyttöliittymästä graafiseen käyttöliittymään.
+  Suurin syy käyttöliittymän ja sovelluslogiikan eriyttämiseen on ohjelman ylläpidettävyyden ja ymmärrettävyyden lisääminen. Sovellluslogiikan eri osa-alueet ovat ideaalitilanteessa käyttöliittymäriippumattomia, jolloin niitä voidaan parannella ilman käyttöliittymään koskemista. Vastaavasti osia voidaan siirtää sovelluksesta toiseen, jolloin käyttöliittymä on esimerkiksi vaihdettavissa tekstikäyttöliittymästä graafiseen käyttöliittymään.
 </p>
 
 <p>
@@ -177,7 +48,7 @@
 </p>
 
 <p>
-  Hahmotellaan Kivi-paper-sakset -peliä sekä siihen liittyvää "tekoälyä". Peli kysyy käyttäjältä siirtoa, kysyy sen jälkeen tietokoneen valintaa ja lopulta kertoo tuloksen. Pelin lopettaminen onnistuu syöttämällä tyhjän merkkijonon.
+  Pohditaan uudestaan edellisen osan lopussa nähtyä kivi-paper-sakset -peliä sekä siihen liittyvää "tekoälyä". Peli kysyy ensin käyttäjältä siirtoa, sitten tietokoneen valintaa, ja lopulta kertoo tuloksen. Pelin lopettaminen onnistuu nyt hahmottelemassamme versiossa syöttämällä tyhjän merkkijonon.
 </p>
 
 <% partial 'partials/sample_output' do %>
@@ -228,7 +99,7 @@
 <% end %>
 
 <p>
-  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään. Ei kovin älykäs siis.
+  Tekoäly antaa siirron sovellukselle pyydettäessä, jonka lisäksi sille kerrotaan kierroksen lopussa vastustajan siirto. Ensimmäinen tekoäly voi olla hyvin yksinkertainen -- kun tekoäly luodaan erilliseen luokkaan, sitä voidaan jatkossa tarvittaessa parantaa. Luodaan luokasta <code>Tekoaly</code> sellainen, että se palauttaa aina kiven eikä tee tiedolla vastustajan aiemmista siirroista mitään. 
 </p>
 
 <p>
@@ -399,7 +270,7 @@ public class Tekoaly {
 <% end %>
 
 <p>
-  Ylläolevan esimerkin voisi toteuttaa myös ohjelmoinnin jatkokurssilla tutuksi tulevien enum-tyyppisten muuttujien avulla (eli järjestettävien ja ennalta määriteltyjen käsitteiden perusteella). Näitä käytettäessä käyttäisimme erillistä käsitettä <code>Siirto</code>, joka tietäisi miten se vertautuu toisiin siirtoihin. Vastaavasti käytössä olisi myös käsite <code>Tulos</code>, joka voisi olla esimerkiksi voitto, tappio tai tasapeli.
+  Ylläolevan esimerkin voisi toteuttaa myös myöhemmin tutuksi tulevien enum-tyyppisten muuttujien avulla (eli järjestettävien ja ennalta määriteltyjen käsitteiden perusteella). Näitä käytettäessä käyttäisimme erillistä käsitettä <code>Siirto</code>, joka tietäisi miten se vertautuu toisiin siirtoihin. Vastaavasti käytössä olisi myös käsite <code>Tulos</code>, joka voisi olla esimerkiksi voitto, tappio tai tasapeli.
 </p>
 
 
@@ -413,15 +284,16 @@ public class Tekoaly {
 
 <% partial 'partials/code_highlight' do %>
   public class Kayttoliittyma {
-      // oliomuuttujat
+      // tekstikäyttöliittymän tarvitsemat oliomuuttujat
       private Scanner lukija;
       private Tekoaly tekoaly;
       private Saannot saannot;
       private Pistetilanne pistetilanne;
 
-    
-      // konstruktori
-  
+          // konstruktori, jolle annetaan parametrina tarvitut oliomuuttujat
+      // ...
+
+      // käyttöliittymän käynnistysmetodi
       public void kaynnista() {
           // tervehdysviesti
 
@@ -638,44 +510,9 @@ public class Main {
   }
 <% end %>
 
-
-<% partial 'partials/exercise', locals: { name: 'Kivi, paperi ja sakset tekoäly (2 osaa)' } do %>
-
-  <p>
-    Tehtäväpohjassa on edellisessä esimerkissä kuvattu kivi, paperi, sakset -peli. Pelin tekoäly on kuitenkin harmittavan heikko. Tässä tehtävässä kehität pelin tekoälyä.
-  </p>
-
-  <p>
-    Eräs hyvä tekoälystrategia perustuu tietoon siitä, että ihmisten toiminta on helposti ennakoitavissa.
-  </p>
-
-  <p>
-    Laajenna Tekoaly-luokkaa siten, että se pitää kirjaa vastustajan tekemistä siirroista listassa. Metodi tallennaVastustajanSiirto lisää vastustajan siirron tekoälyn muistiin.
-  </p>
-
-  <p>
-    Muuta Tekoaly-luokan annaSiirto-metodia siten, että se käyttää muistissa olevaa listaa seuraavan siirron tekemiseen. Tässä erittäin hyvä strategia on katsoa vastustajan viimeisintä kahta siirtoa ja etsiä vastustajan pelihistoriasta niitä seuraava todennäköisin siirto.
-  </p>
-
-  <p>
-    Tarkastellaan esimerkiksi tilannetta, missä tekoälyn muistissa on siirrot [p, p, k, k, s, p, k, k, s, p, k, k]. Vastustajan kaksi viimeisintä siirtoa ovat kivi ja kivi. Muistin perusteella voidaan laskea "todennäköisyydet" sille, että seuraava siirto on kivi, paperi tai sakset. 
-  </p>
-
-  <ul>
-    <li>kivi, kivi, kivi: esiintyy muistissa 0 kertaa.</li>
-    <li>kivi, kivi, paperi: esiintyy muisissa 0 kertaa.</li>
-    <li>kivi, kivi, sakset: esiintyy muistissa 2 kertaa.</li>
-  </ul>
-
-  <p>
-    Muistin perusteella arvaamme, että pelaajan seuraava siirto on "sakset". Tekoälyn kannattaa siis pelata kivi.
-  </p>
-
-  <p>
-    Tämä tehtävä vastaa kahta yksiosaista tehtävää. Tehtävään ei ole testejä -- testaa tekoälyn toimintaa pelaamalla sitä vastaan itse.
-  </p>
-    
-<% end %>
+<p>
+  Edellisen osan lopussa hahmoteltiin myös hieman parempaa tekoälyä..
+</p>
 
 
 <% partial 'partials/exercise', locals: { name: 'Lintubongarin tietokanta (3 osaa)' } do %>
@@ -730,6 +567,657 @@ public class Main {
   </p>
   
 <% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Testivetoinen ohjelmistokehitys
+<% end %>
+
+<p>
+  Testivetoinen ohjelmistokehitys (<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank" rel="noopener">Test-driven development</a>) on ohjelmistokehitysprosessi, joka perustuu ohjelman rakentamiseen pienissä osissa. Testivetoisessa ohjelmistokehityksessä ohjelmoija kirjoittaa aina ensin automaattisesti suoritettavan yksittäistä tietokoneohjelman osaa tarkastelevan testin.
+</p>
+
+<p>
+  Testi ei mene läpi, sillä testin täyttävä toiminnallisuus eli tarkasteltava tietokoneohjelman osa puuttuu. Kun testi on kirjoitettu, ohjelmaan lisätään toiminnallisuus, joka täyttää testin vaatimukset. Testit suoritetaan uudestaan, jonka jälkeen -- jos kaikki testit menevät läpi -- lisätään uusi testi tai vaihtoehtoisesti -- jos testit eivät mene läpi -- korjataan aiemmin kirjoitettua ohjelmaa. Ohjelman sisäistä rakennetta korjataan eli refaktoroidaan tarvittaessa siten, että ohjelman toiminnallisuus pysyy samana mutta rakenne selkiytyy.
+</p>
+
+<p>
+  Testivetoinen ohjelmistokehitys koostuu viidestä askeleesta, joita toistetaan kunnes ohjelman toiminnallisuus on valmis.
+</p>
+
+<ul>
+  <li>
+    Kirjoita testi. Ohjelmoija päättää, mitä ohjelman toiminnallisuutta testataan, ja kirjoittaa toiminnallisuutta varten testin.
+  </li>
+  <li>
+    Suorita testit ja tarkista menevätkö testit läpi. Kun uusi testi on kirjoitettu, testit suoritetaan. Jos testin suoritus päättyy hyväksyttyyn tilaan, testissä on todennäköisesti virhe ja se tulee korjata -- testin pitäisi testata vain toiminnallisuutta, jota ei ole vielä toteutettu.
+  </li>
+  <li>
+    Kirjoita toiminnallisuus, joka täyttää testin vaatimukset. Ohjelmoija toteuttaa toiminnallisuuden, joka täyttää vain testin vaatimukset. Huomaa, että tässä ei toteuteta asioita, joita testi ei vaadi -- toiminnallisuutta lisätään vain vähän kerrallaan.
+  </li>
+  <li>
+    Suorita testit. Jos testit eivät pääty hyväksyttyyn tilaan, kirjoitetussa toiminnallisuudessa on todennäköisesti virhe. Korjaa toiminnallisuus -- tai, jos toiminnallisuudessa ei ole virhettä -- korjaa viimeksi toteutettu testi.
+  </li>
+  <li>
+    Korjaa ohjelman sisäistä rakennetta. Kun ohjelman koko kasvaa, sen sisäistä rakennetta korjataan tarvittaessa. Liian pitkät metodit pilkotaan useampaan osaan ja ohjelmasta eriytetään käsitteisiin liittyviä luokkia. Testejä ei muuteta, vaan niitä hyödynnetään ohjelman sisäiseen rakenteeseen tehtyjen muutosten oikeellisuuden varmistamisessa -- jos ohjelman rakenteeseen tehty muutos muuttaa ohjelman toiminnallisuutta, testit varoittavat siitä, ja ohjelmoija voi korjata tilanteen.
+  </li>
+</ul>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Testiluokka ja ensimmäinen testi
+<% end %>
+
+<p>
+  Tarkastellaan tätä prosessia tehtävien hallintaan tarkoitetun sovelluksen kannalta. Tehtävien hallintasovellukseen halutaan mahdollisuus tehtävien listaamiseen, lisäämiseen, tehdyksi merkkaamiseen sekä poistamiseen. Aloitetaan sovelluksen kehitys luomalla tyhjä testiluokka. Asetetaan testiluokan nimeksi TehtavienHallintaTest, ja lisätään se pakkaukseen tehtavat. Tällä hetkellä sovelluksessa ei ole vielä lainkaan toiminnallisuutta.
+</p>
+
+<img src="/img/material/tehtavienhallinta-testiluokka.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Luodaan ensimmäinen testi. Testissä määritellään luokka Tehtavienhallinta, ja oletetaan, että luokalla on metodi tehtavalista, joka palauttaa tehtävälistan. Testimetodi <code>assertEquals</code> saa parametrinaan kaksi arvoa -- ensimmäinen on odotettu arvo ja toinen on ohjelman palauttama arvo. Tässä metodia käytetään tehtävälistan koon tarkastamiseen uuden tehtävälistan luomisen yhteydessä: uuden listan tulee olla tyhjä.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import static org.junit.Assert.assertEquals;
+  import org.junit.Test;
+
+  public class TehtavienhallintaTest {
+
+      @Test
+      public void tehtavalistaAlussaTyhja() {
+          Tehtavienhallinta hallinta = new Tehtavienhallinta();
+          assertEquals(0, hallinta.tehtavalista().size());
+      }
+  }
+<% end %>
+
+<p>
+  Luokkaa Tehtavienhallinta ei ole määritelty joten testien suoritus epäonnistuu.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ensimmäisen testin vaatimusten täyttäminen
+<% end %>
+
+<p>
+  Toteutetaan seuraavaksi toiminnallisuus, joka täyttää testin. Luodaan luokka Tehtavienhallinta ja lisätään luokalle toiminnallisuus, joka täyttää testin vaatimukset. Luokka luodaan NetBeansissa kansioon Source Packages. Nyt projekti näyttää seuraavalta.
+</p>
+
+
+<img src="/img/material/tehtavienhallinta-luokat.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Toiminnallisuus on yksinkertainen. Luokalla Tehtavienhallinta on metodi tehtavalista, joka palauttaa tyhjän listan.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+ 
+  public class Tehtavienhallinta {
+
+      public ArrayList&lt;String&gt; tehtavalista() {
+          return new ArrayList&lt;&gt;();
+      }
+  }
+<% end %>
+
+<p>
+  Testit menevät läpi. Luokan Tehtavienhallinta sisäinen rakenne on vielä niin pieni, ettei siinä ole juurikaan korjattavaa.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Toinen testi
+<% end %>
+
+<p>
+  Aloitamme testivetoiseen kehitykseen liittyvän syklin uudestaan. Seuraavaksi luomme uuden testin, jossa tarkastellaan tehtävien lisäämiseen liittyvää toiminnallisuutta. Testissä määritellään luokalle Tehtavienhallinta metodi lisää, joka lisää tehtävälistalle uuden tehtävän. Tehtävän lisäämisen onnistuminen tarkastetaan tehtavalista-metodin koon kasvamisen kautta.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import static org.junit.Assert.assertEquals;
+  import org.junit.Test;
+
+  public class TehtavienhallintaTest {
+
+      @Test
+      public void tehtavalistaAlussaTyhja() {
+          Tehtavienhallinta hallinta = new Tehtavienhallinta();
+          assertEquals(0, hallinta.tehtavalista().size());
+      }
+
+      @Test
+      public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+          Tehtavienhallinta hallinta = new Tehtavienhallinta();
+          hallinta.lisaa("Kirjoita testi");
+          assertEquals(1, hallinta.tehtavalista().size());
+      }
+  }
+<% end %>
+
+<p>
+  Testit toimi lainkaan, sillä luokasta Tehtavienhallinta puuttuu lisaa-metodi.
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Toisen testin vaatimusten täyttäminen
+<% end %>
+
+<p>
+  Lisätään luokkaan Tehtavienhallinta metodi <code>lisaa</code>, ja suoritetaan testit.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+
+  public class Tehtavienhallinta {
+
+      public ArrayList&lt;String&gt; tehtavalista() {
+          return new ArrayList&lt;&gt;();
+      }
+
+      public void lisaa(String tehtava) {
+
+      }
+  }
+<% end %>
+
+<p>
+  Nyt testien ajamisesta saadaan seuraava ilmoitus.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: tehtavat.TehtavienhallintaTest
+  Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec
+
+  Testcase: tehtavanLisaaminenKasvattaaListanKokoaYhdella(tehtavat.TehtavienhallintaTest):	FAILED
+      expected:<1> but was:<0>
+      junit.framework.AssertionFailedError: expected:<1> but was:<0>
+      at tehtavat.TehtavienhallintaTest.tehtavanLisaaminenKasvattaa...(TehtavienhallintaTest.java:18)
+<% end %>
+
+<p>
+  Testit eivät siis mene vieläkään läpi. Muokataan luokan tehtävänhallinta toiminnallisuutta siten, että luokalle luodaan oliomuuttujaksi tehtävät sisältävä lista. Muokataan metodin lisaa-toiminnallisuutta vain niin, että se läpäisee testin, mutta ei tee todellisuudessa haluttua asiaa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+
+  public class Tehtavienhallinta {
+
+      private ArrayList&lt;String&gt; tehtavat;
+
+      public Tehtavienhallinta() {
+          this.tehtavat = new ArrayList&lt;&gt;();
+      }
+
+      public ArrayList&lt;String&gt; tehtavalista() {
+          return this.tehtavat;
+      }
+
+      public void lisaa(String tehtava) {
+          this.tehtavat.add("Uusi");
+      }
+  }
+<% end %>
+
+<p>
+  Testit menevät läpi, joten olemme tyytyväisiä ja voimme siirtyä seuraavaan askeleeseen.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Testsuite: tehtavat.TehtavienhallintaTest
+  Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
+
+  test-report:
+  test:
+  BUILD SUCCESSFUL (total time: 0 seconds)
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kolmas testi
+<% end %>
+
+<p>
+  Täydennetään testejä siten, että ne vaativat, että lisätyn tehtävän tulee olla listalla. JUnit-kirjaston tarjoama metodi <code>assertTrue</code> vaatii, että sille parametrina annettu lauseke saa lopulta arvon <code>true</code>. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import static org.junit.Assert.assertEquals;
+  import static org.junit.Assert.assertTrue;
+  import org.junit.Test;
+
+  public class TehtavienhallintaTest {
+
+      @Test
+      public void tehtavalistaAlussaTyhja() {
+          Tehtavienhallinta hallinta = new Tehtavienhallinta();
+          assertEquals(0, hallinta.tehtavalista().size());
+      }
+
+      @Test
+      public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+          Tehtavienhallinta hallinta = new Tehtavienhallinta();
+          hallinta.lisaa("Kirjoita testi");
+          assertEquals(1, hallinta.tehtavalista().size());
+      }
+
+      @Test
+      public void lisattyTehtavaLoytyyTehtavalistalta() {
+          Tehtavienhallinta hallinta = new Tehtavienhallinta();
+          hallinta.lisaa("Kirjoita testi");
+          assertTrue(hallinta.tehtavalista().contains("Kirjoita testi"));
+      }
+  }
+<% end %>
+
+<p>
+  Testit eivät mene taaskaan läpi ja ohjelman toiminnallisuutta tulee muokata.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kolmannen testin vaatimusten täyttäminen
+<% end %>
+
+<p>
+  Noheva ohjelmoija muokkaisi luokan Tehtavienhallinta toimintaa siten, että metodissa lisaa lisättäisiin listalle aina merkkijono "Kirjoita testi". Tämä johtaisi tilanteeseen, missä testit menisivät läpi, mutta toiminnallisuus sovellus ei vieläkään tarjoaisi toimivaa tehtävien lisäämistoiminnallisuutta. Muokataan luokkaa Tehtavienhallinta siten, että lisättävä tehtävä lisätään tehtävälistalle.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+
+  public class Tehtavienhallinta {
+
+      private ArrayList&lt;String&gt; tehtavat;
+
+      public Tehtavienhallinta() {
+          this.tehtavat = new ArrayList&lt;&gt;();
+      }
+
+      public List&lt;String&gt; tehtavalista() {
+          return this.tehtavat;
+      }
+
+      public void lisaa(String tehtava) {
+          this.tehtavat.add(tehtava);
+      }
+  }
+<% end %>
+
+<p>
+  Nyt testit menevät taas läpi.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Testien refaktorointi
+<% end %>
+
+<p>
+  Huomaamme, että testiluokassa on taas jonkinverran toistoa -- siirretään Tehtavienhallinta testiluokan oliomuuttujaksi, ja alustetaan se jokaisen testin alussa. Metodi <code>alusta</code> suoritetaan ennen jokaisen testimetodin suoritusta. Tämä tapahtuu koska metodille on määritelty ohjeiden antamiseen tarkoitettu <em>annotaatio</em> <code>@Before</code>. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import static org.junit.Assert.assertEquals;
+  import static org.junit.Assert.assertTrue;
+  import org.junit.Before;
+  import org.junit.Test;
+
+  public class TehtavienhallintaTest {
+
+      private Tehtavienhallinta hallinta;
+
+      @Before
+      public void alusta() {
+          hallinta = new Tehtavienhallinta();
+      }
+
+      @Test
+      public void tehtavalistaAlussaTyhja() {
+          assertEquals(0, hallinta.tehtavalista().size());
+      }
+
+      @Test
+      public void tehtavanLisaaminenKasvattaaListanKokoaYhdella() {
+          hallinta.lisaa("Kirjoita testi");
+          assertEquals(1, hallinta.tehtavalista().size());
+      }
+
+      @Test
+      public void lisattyTehtavaLoytyyTehtavalistalta() {
+          hallinta.lisaa("Kirjoita testi");
+          assertTrue(hallinta.tehtavalista().contains("Kirjoita testi"));
+      }
+  }
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Neljäs testi
+<% end %>
+
+<p>
+  Lisätään seuraavaksi mahdollisuus tehtävän tehdyksi merkkaamiseen. Mutta! Mitä tarkoittaa tehdyksi merkkaaminen? Alunperin tavoitteena oli luoda ohjelma, joka mahdollistaa tehtävien listaamisen, listaamisen, tehdyksi merkkaamisen sekä poistamisen. Miten tarkastamme onko tehtävä tehty? Jos emme voi tietää onko tehtävä tehty vai ei, voisimme periaatteessa jättää koko toiminnallisuuden huomiotta. Voimme toisaalta päättää miten tehtän tehdyksi määrittely tapahtuu.
+</p>
+
+<p>
+  Määritellään ensin testi, joka mahdollistaa tehtävän tehdyksi merkkaamiseen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // ...
+  @Test
+  public void tehtavanVoiMerkataTehdyksi() {
+      hallinta.lisaa("Satunnainen tehtava");
+      hallinta.merkkaaTehdyksi("Satunnainen tehtava");
+  }
+  // ..
+<% end %>
+
+<% partial 'partials/material_sub_heading' do %>
+  Neljännen testin vaatimusten täyttäminen
+<% end %>
+
+<p>
+  Tehtavienhallintaan lisätään seuraavaksi metodi merkkaaTehdyksi. Metodin toiminnallisuus voi olla aluksi tyhjä, sillä testi vaatii vain kyseisen metodin olemassaolon.
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Viides testi
+<% end %>
+
+<p>
+  Lisätään tämän jälkeen testi, jonka tehtävänä on tarkistaa onko parametrina annettu tehtävä tehty.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // ...
+  @Test
+  public void tehdyksiMerkattuOnTehty() {
+      hallinta.lisaa("Uusi tehtava");
+      hallinta.merkkaaTehdyksi("Uusi tehtava");
+      assertTrue(hallinta.onTehty("Uusi tehtava"));
+  }
+  // ..
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Viidennen testin vaatimusten täyttäminen
+<% end %>
+
+<p>
+  Nyt toiminnallisuutta varten tulee toteuttaa uusi metodi onTehty. Metodi voi aluksi palauttaa aina arvon true. Kokko luokan Tehtavienhallinta sisältö on nyt seuraava.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+
+  public class Tehtavienhallinta {
+
+      private ArrayList&lt;String&gt; tehtavat;
+
+      public Tehtavienhallinta() {
+          this.tehtavat = new ArrayList&lt;&gt;();
+      }
+
+      public ArrayList&lt;String&gt; tehtavalista() {
+          return this.tehtavat;
+      }
+
+      public void lisaa(String tehtava) {
+          this.tehtavat.add(tehtava);
+      }
+
+      public void merkkaaTehdyksi(String tehtava) {
+
+      }
+
+      public boolean onTehty(String tehtava) {
+          return true;
+      }
+  }
+<% end %>
+
+<p>
+  Testit menevät taas läpi.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kuudes testi
+<% end %>
+
+<p>
+  Seuraavaksi toteutettava testi on oleellinen tehtävän toiminnan kannalta. Olemme tähän mennessä tarkistaneet, että haluttu toiminnallisuus on olemassa, mutta emme ole juurikaan tarkastaneet epätoivotun toiminnan poissaoloa. Jos testejä kirjoitettaessa keskitytään halutun toiminnallisuuden olemassaoloon, testit saattavat jäädä ohjelman toiminnallisuutta hyvin vähän tarkastelevaksi.
+</p>
+
+<p>
+  Kirjoitetaan seuraavaksi testi, joka tarkastaa, että tekemättömäksi merkkaamaton testi ei ole tehty.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  // ...
+  @Test
+  public void tehdyksiMerkkaamatonEiOleTehty() {
+      hallinta.lisaa("Uusi tehtava");
+      hallinta.merkkaaTehdyksi("Uusi tehtava");
+      assertFalse(hallinta.onTehty("Joku tehtava"));
+  }
+  // ..
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kuudennen testin vaatimusten täyttäminen
+<% end %>
+
+<p>
+  Joudumme nyt muokkaamaan luokan Tehtavienhallinta toiminnallisuutta hieman enemmän. Lisätään luokkaan erillinen lista tehtäville, jotka on merkattu tehdyiksi.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+
+  public class Tehtavienhallinta {
+
+      private ArrayList&lt;String&gt; tehtavat;
+      private ArrayList&lt;String&gt; tehdytTehtavat;
+
+      public Tehtavienhallinta() {
+          this.tehtavat = new ArrayList&lt;&gt;();
+          this.tehdytTehtavat = new ArrayList&lt;&gt;();
+      }
+
+      public List&lt;String&gt; tehtavalista() {
+          return this.tehtavat;
+      }
+
+      public void lisaa(String tehtava) {
+          this.tehtavat.add(tehtava);
+      }
+
+      public void merkkaaTehdyksi(String tehtava) {
+          this.tehdytTehtavat.add(tehtava);
+      }
+
+      public boolean onTehty(String tehtava) {
+          return this.tehdytTehtavat.contains(tehtava);
+      }
+  }
+<% end %>
+
+<p>
+  Testit menevät taas läpi. Sovelluksessa on muutamia muitakin kysymysmerkkejä. Pitäisikö tehtavalistauksessa palautetut tehtävät merkitä jollain tavalla tehdyksi? Voiko tehtävän, joka ei ole tehtävälistalla tosiaankin merkata tehdyksi?
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Refaktorointi ja käsite "Tehtävä"
+<% end %>
+
+<p>
+  Tehdään ensimmäinen hieman laajempi ohjelman sisäisen rakenteen korjaus. Tehtävä on selkeästi käsite, joten sille kannattanee luoda oma erillinen luokka. Luodaan luokka Tehtava. Luokalla Tehtava on nimi sekä tieto siitä, onko tehtävä tehty.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  public class Tehtava {
+
+      private String nimi;
+      private boolean tehty;
+
+      public Tehtava(String nimi) {
+          this.nimi = nimi;
+          this.tehty = false;
+      }
+
+      public String getNimi() {
+          return nimi;
+      }
+
+      public void setTehty(boolean tehty) {
+          this.tehty = tehty;
+      }
+
+      public boolean onTehty() {
+          return tehty;
+      }
+  }
+<% end %>
+
+<p>
+  Muokataan tämän jälkeen luokan Tehtavienhallinta <em>sisäistä</em> rakennetta siten, että luokka tallentaa tehtävät merkkijonojen sijaan Tehtava-olioina. Huomaa, että luokan metodien määrittelyt eivät muutu, mutta niiden sisäinen toteutus muuttuu.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  package tehtavat;
+
+  import java.util.ArrayList;
+
+  public class Tehtavienhallinta {
+
+      private ArrayList&lt;Tehtava&gt; tehtavat;
+
+      public Tehtavienhallinta() {
+          this.tehtavat = new ArrayList&lt;&gt;();
+      }
+
+      public ArrayList&lt;String&gt; tehtavalista() {
+          ArrayList&lt;String&gt; palautettavat = new ArrayList&lt;&gt;();
+          for (Tehtava tehtava: tehtavat) {
+              palautettavat.add(tehtava.getNimi());
+          }
+
+          return palautettavat;
+      }
+
+      public void lisaa(String tehtava) {
+          this.tehtavat.add(new Tehtava(tehtava));
+      }
+
+      public void merkkaaTehdyksi(String tehtava) {
+          for (Tehtava tehtava: tehtavat) {
+              if (tehtava.getNimi().equals(tehtava)) {
+                  tehtava.setTehty(true);
+              }
+          }
+      }
+
+      public boolean onTehty(String tehtava) {
+          for (Tehtava tehtava: tehtavat) {
+              if (tehtava.getNimi().equals(tehtava) && tehtava.onTehty()) {
+                  return true;
+              }
+          }
+
+          return false;
+      }
+  }
+<% end %>
+
+<p>
+  Vaikka tehty muutos muutti luokan Tehtavienhallinta sisäistä toimintaa merkittävästi, testit toimivat yhä. Sykli jatkuisi samalla tavalla kunnes toivottu perustoiminnallisuus olisi paikallaan.
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Tehtavat (3 osaa)' } do %>
+
+  <p>
+    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo Tehtavienhallinnalta haluttu toiminnallisuus testivetoista ohjelmistokehitystä noudattaen. Kun olet saanut edellisen esimerkin loppuun asti, lisää sovellukseen vielä testit tehtävien poistamiseen sekä testien vaatima toiminnallisuus.
+  </p>
+
+  <p>
+    Kohdat on pisteytetty askeleittain, jotka ovat seuraavat:
+  </p>
+
+  <ol>
+    <li>
+      Testiluokka ja ensimmäinen testi, ensimmäisen testin vaatimusten täyttäminen. Toinen testi, toisen testin vaatimusten täyttäminen.
+    </li>
+    <li>
+      Kolmas testi, kolmannen testin vaatimusten täyttäminen, testien refaktorointi. Neljäs testi, neljännen testin vaatimusten täyttäminen, viides testi, viidennen testin vaatimusten täyttäminen.
+    </li>
+    <li>
+      Kuudes testi, kuudennen testin vaatimusten täyttäminen. Refaktorointi ja käsitteen tehtävä eristäminen. Tehtävien poistamiseen liittyvät testit sekä toiminnallisuus -- toteuta poistaminen Tehtavienhallinta-luokkaan metodina <code>public void poista(String tehtava)</code>
+    </li>
+  </ol>
+  
+  <p>
+    Sitä mukaa kun kehität toiminnallisuutta, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
+  </p>
+
+  <p>
+    Esimerkiksi, kun olet saanut ensimmäiset kaksi testiä sekä niihin liittyvän toiminnallisuuden toimimaan olet vaiheessa 1, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>1</code>.
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Lisää ohjelmistojen testaamisesta' } do %>
+
+  <p>
+    Yksikkötestaus on vain osa ohjelmiston testaamista. Yksikkötestaamisen lisäksi ohjelmiston toteuttaja toteuttaa myös integraatiotestejä, joissa tarkastellaan komponenttien kuten luokkien yhteistoiminnallisuutta, sekä käyttöliittymätestejä, joissa testataan sovelluksen käyttöliittymää käyttöliittymän tarjoamien elementtien kuten nappien kautta.
+  </p>
+
+  <p>
+    Näitä testaamiseen liittyviä menetelmiä tarkastellaan tarkemmin muunmuassa kursseilla ohjelmistotekniikan menetelmät sekä ohjelmistotuotanto.
+  </p>
+
+<% end %>
+
+
 
 
 <% partial 'partials/material_heading' do %>
@@ -828,9 +1316,9 @@ public class Main {
       }
 
       public void tulosta() {
-          this.tehdytTehtavat.entrySet().stream().forEach(entry -&gt; {
-              System.out.println(entry.getKey() + ": " + entry.getValue());
-          });
+          for (String nimi: tehdytTehtavat.keySet()) {
+              System.out.println(nimi + ": " + tehdytTehtavat.get(nimi));
+          }
       }
   }
 <% end %>
@@ -899,19 +1387,15 @@ public class Main {
 <% end %>
 
 
-
-
-
 <% partial 'partials/material_heading' do %>
   Simulaatiot
 <% end %>
 
 <p>
-  Simulaatiot ovat ohjelmia, joilla pyritään kuvaamaan tai ennustamaan jonkinlaista todellista ilmiötä. Tutustutaan simulaatioihin kolmen tehtävän kautta. Kaikissa tehtävissä on käytössä kaksiulotteinen maailma, jota mallinnetaan hajautustaulun avulla. Alla on kuvattu kaksiulotteisen hajautustaulu toimintaa:
+  Simulaatiot ovat ohjelmia, joilla pyritään kuvaamaan tai ennustamaan jonkinlaista todellista ilmiötä. Tutustutaan simulaatioihin tehtävien kautta. Tehtävissä on käytössä kaksiulotteinen maailma, jota mallinnetaan hajautustaulun avulla. Alla on kuvattu kaksiulotteisen hajautustaulun toimintaa:
 </p>
 
 <% partial 'partials/code_highlight' do %>
-
   // luodaan hajautustaulu
   HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko = new HashMap<>();
 
@@ -937,10 +1421,61 @@ public class Main {
   }
 
   // asetetaan kohtaan (3, 2) arvo 5
-  taulukko.get(x).put(y, 5);
+  taulukko.get(3).put(2, 5);
 
   // haetaan arvo kohdasta (0, 1) ja tulostetaan se
-  System.out.println(taulukko.get(x).get(y));
+  System.out.println(taulukko.get(0).get(1));
+<% end %>
+
+<p>
+  Taulukko kannattanee abstrahoida omaksi luokakseen, joka kapseloi hajautustaulun sisälleen. Alla olevassa toteutuksessa oletetaan, että tyhjissä taulukon kohdissa on arvo 0. 
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class Taulukko {
+      private HashMap&lt;Integer, HashMap&lt;Integer, Integer&gt;&gt; taulukko;
+      private int leveys;
+      private int korkeus;
+  
+      public Taulukko(int leveys, int korkeus) {
+          this.leveys = leveys;
+          this.korkeus = korkeus;
+          this.taulukko = new HashMap<>();
+      }
+
+      public void aseta(int x, int y, int arvo) {
+          if (x &lt; 0 || x &gt;= this.leveys || y &lt; 0 || y &gt;= this.korkeus) {
+              return;
+          }
+
+          this.taulukko.putIfAbsent(x, new HashMap<>());
+          this.taulukko.get(x).put(y, arvo);
+      } 
+
+      public int hae(int x, int y) {
+          if(!this.taulukko.containsKey(x)) {
+              return 0;
+          } 
+
+          if(!this.taulukko.get(x).containsKey(y)) {
+              return 0;
+          } 
+
+          return this.taulukko.get(x).get(y);
+      }
+  }
+<% end %>
+
+<p>
+  Nyt edellä kuvattu ohjelma olisi hieman suoraviivaisempi.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  Taulukko taulukko = new Taulukko(10, 10);
+  taulukko.aseta(3, 2, 5);
+  System.out.println(taulukko.hae(0, 1));
 <% end %>
 
 
@@ -970,19 +1505,15 @@ public class Main {
   <h2>Elossa olevien naapurien lukumäärä</h2>
 
   <p>
-    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(HashMap&lt;Integer, HashMap&lt;Integer, Boolean>> taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
+    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(Taulukko taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
   </p>
 
   <p>
-    Esimerkiksi kohdassa (0, 0) oleva alkio on elossa jos kutsu <code>taulukko.get(x).get(y)</code> palauttaa arvon <code>true</code>.
+    Esimerkiksi kohdassa (0, 0) oleva alkio on elossa jos kutsu <code>taulukko.arvo(x, y)</code> palauttaa arvon <code>true</code>.
   </p>
 
   <p>
     Naapureita ovat kaikki ne alkiot, jotka ovat kulman tai sivun kautta yhteydessä alkioon.
-  </p>
-
-  <p>
-    Huomaa, että metodin tulee varoa taulukon ulkopuolelle menemistä. Indeksissä -1 ei esimerkiksi voi olla ketään. Vastaavasti leveyden tai korkeuden yli ei voi mennä (esim. <code>taulukko.get(taulukko.size()).get(0)</code> tai <code>taulukko.get(0).get(taulukko.size())</code>).
   </p>
 
   <p>
@@ -1123,11 +1654,11 @@ public class Main {
   </p>
 
   <p>
-    Toteuta ensin luokan <code>Eriytymismalli</code> metodiin <code>public void asetaKaikkiTyhjiksi()</code> toiminnallisuus, joka asettaa jokaisen solun arvoksi 0.
+    Toteuta ensin luokan <code>Eriytymismalli</code> metodiin <code>public void tyhjenna()</code> toiminnallisuus, joka asettaa jokaisen solun arvoksi 0.
   </p>
 
   <p>
-    Lisää tämän jälkeen metodiin <code>public ArrayList&lt;Piste&gt; tyhjatPaikat()</code> toiminnallisuus, joka tunnistaa tyhjät paikat (solut, joissa on arvo 0), luo jokaisesta Piste-olion, ja palauttaa ne listana. Huomaa, että käytössä olevassa hajautustaulussa ensimmäinen ulottuvuus kuvaa x-koordinaattia, ja toinen y-koordinaattia (taulukko.get(x).get(y)).
+    Lisää tämän jälkeen metodiin <code>public ArrayList&lt;Piste&gt; tyhjatPaikat()</code> toiminnallisuus, joka tunnistaa tyhjät paikat (solut, joissa on arvo 0), luo jokaisesta Piste-olion, ja palauttaa ne listana. Huomaa, että käytössä olevassa hajautustaulussa ensimmäinen ulottuvuus kuvaa x-koordinaattia, ja toinen y-koordinaattia (taulukko.hae(x, y)).
   </p>
 
 
@@ -1162,11 +1693,15 @@ public class Main {
 
 
 <% partial 'partials/material_heading' do %>
-  Kurssin lopuksi
+  Ensimmäisen seitsemän osan lopuksi
 <% end %>
 
 <p>
-  Kurssin lopuksi vielä pieni pähkinätehtävä, jonka parhaiten pärjääviä toteutuksia tarkastellaan ohjelmoinnin jatkokurssin ensimmäisellä luennolla.
+  Tämän materiaalin ensimmäiset seitsemän osaa käsittelee Helsingin yliopiston kurssia Ohjelmoinnin perusteet. Kahdeksannesta osasta lähtien käynnissä on Ohjelmoinnin jatkokurssi.
+</p>
+
+<p>
+  Tässä lopuksi pieni pähkinätehtävä.
 </p>
 
 <% partial 'partials/exercise', locals: { name: 'Uno (2 osaa)' } do %>
@@ -1233,7 +1768,7 @@ public class Main {
   </p>
 
   <p>
-    Kun tehtävän määräaika on ohi, jokaisen palauttamaa (toimivaa) tekoälyä peluutetaan kaikkia muita tekoälyjä vastaan useampaan otteeseen. Parhaille tekoälyille on tiedossa myös palkintoja.
+    Kun tehtävän määräaika on ohi, jokaisen palauttamaa (toimivaa) tekoälyä peluutetaan muita tekoälyjä vastaan. Tulokset julkaistaan myöhemmin.
   </p>
 
 
@@ -1308,5 +1843,5 @@ public class Main {
 
 
 
-<%= partial 'partials/quiz', locals: { id: '59e382a8c6dd020004fdd9b2' } %>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a336' } %>
 
