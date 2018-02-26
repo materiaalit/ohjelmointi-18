@@ -1560,11 +1560,11 @@ public class Main {
   <h2>Elossa olevien naapurien lukumäärä</h2>
 
   <p>
-    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(Taulukko taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
+    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(Taulukko taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa mikäli sen arvo on <code>true</code>.
   </p>
 
   <p>
-    Esimerkiksi kohdassa (0, 0) oleva alkio on elossa jos kutsu <code>taulukko.arvo(x, y)</code> palauttaa arvon <code>true</code>.
+    Esimerkiksi kohdassa (0, 0) oleva alkio on elossa jos kutsu <code>taulukko.hae(x, y)</code> palauttaa arvon <code>true</code>.
   </p>
 
   <p>
@@ -1646,10 +1646,10 @@ public class Main {
   </p>
 
   <ol>
-    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on alle kaksi elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
-    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on kaksi tai kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
-    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on yli kolme elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
-    <li>Jos alkuperäisen taulukon alkion arvo on 0 ja sillä on tasan kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on <code>true</code> ja sillä on alle kaksi elävää naapuria, kopioon asetetaan alkion arvoksi <code>false</code>.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on <code>true</code> ja sillä on kaksi tai kolme elävää naapuria, kopioon asetetaan alkion arvoksi <code>true</code>.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on <code>true</code> ja sillä on yli kolme elävää naapuria, kopioon asetetaan alkion arvoksi <code>false</code>.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on <code>false</code> ja sillä on tasan kolme elävää naapuria, kopioon asetetaan alkion arvoksi <code>true</code>.</li>
   </ol>
 
   <p>
