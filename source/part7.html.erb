@@ -1135,17 +1135,17 @@ public class Main {
           this.tehtavat.add(new Tehtava(tehtava));
       }
 
-      public void merkkaaTehdyksi(String tehtava) {
+      public void merkkaaTehdyksi(String tehdyksiMerkattavaTehtava) {
           for (Tehtava tehtava: tehtavat) {
-              if (tehtava.getNimi().equals(tehtava)) {
+              if (tehtava.getNimi().equals(tehdyksiMerkattavaTehtava)) {
                   tehtava.setTehty(true);
               }
           }
       }
 
-      public boolean onTehty(String tehtava) {
+      public boolean onTehty(String tarkistettavaTehtava) {
           for (Tehtava tehtava: tehtavat) {
-              if (tehtava.getNimi().equals(tehtava) && tehtava.onTehty()) {
+              if (tehtava.getNimi().equals(tarkistettavaTehtava) && tehtava.onTehty()) {
                   return true;
               }
           }
