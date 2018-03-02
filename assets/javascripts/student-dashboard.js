@@ -26,7 +26,7 @@ function getOhpeKevat18Config() {
 
 function getOhjaKevat18Config() {
   return {
-    courseId: '287',
+    courseId: '305',
     courseName: 'Ohjelmoinnin jatkokurssi',
     exerciseGroups: {
       'Osa 8': ['09.03.2018 12:00', '19.03.2018 23:59', 'osa08-']
@@ -76,6 +76,10 @@ function init() {
     return;
   }
 
+  if(courseName === '2018-ohjelmointi-jatkokurssi-nodl') {
+    return;
+  }
+    
   const user = client.getUser();
 
   const config = Object.assign({}, getConfig(), { accessToken: user.accessToken, userId: user.username });
