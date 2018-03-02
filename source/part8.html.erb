@@ -2,9 +2,17 @@
   title: Osa 8
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
+
+<% partial 'partials/hint', locals: { name: 'Kahdeksannen osan tavoitteet' } do %>
+
+  <p>
+    Tuntee käsitteen object ja ymmärtää miksi jokaisella oliolla on metodi toString ja hashCode. Tietää joitakin käyttökohteita em. metodeille. Tuntee käsitteen rajapinta ja osaa luoda luokan, joka toteuttaa annetun rajapinnan. Osaa määritellä rajapinnan ja tietää, että eri luokista luodut oliot voivat toteuttaa saman rajapinnan.
+  </p>
+
+<% end %>
 
 <p>
   <strong>
@@ -16,1227 +24,12 @@
   </strong>
 </p>
 
-<% partial 'partials/hint', locals: { name: 'Kahdeksannen osan tavoitteet' } do %>
-
-  <p>
-    Tuntee käsitteen object ja ymmärtää miksi jokaisella oliolla on metodi toString ja hashCode. Tietää joitakin käyttökohteita em. metodeille. Tuntee käsitteen rajapinta ja osaa luoda luokan, joka toteuttaa annetun rajapinnan. Osaa määritellä rajapinnan ja tietää, että eri luokista luodut oliot voivat toteuttaa saman rajapinnan. Ymmärtää käsitteen pakkaus ja osaa hyödyntää pakkauksia ohjelman rakenteen pilkkomisessa.
-  </p>
-
-<% end %>
-
-<% partial 'partials/material_heading' do %>
-  Ensiaskeleet automaattiseen testaamiseen
-<% end %>
-
-<p>
-  Otetaan seuraavaksi ensiaskeleet ohjelmien testaamiseen.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan
-<% end %>
-
-<p>
-  Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle. Joskus toisaalta virheet voivat johtaa hyvinkin vakaviin seurauksiin. Varmaa on joka tapauksessa se, että ohjelmoimaan opetteleva ihminen tekee paljon virheitä.
-</p>
-
-<p>
-  Virheitä ei kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä.
-</p>
-
-<% partial 'partials/hint', locals: { name: 'Ohjelmistovirhe' } do %>
-
-  <p>
-    Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman sekä ohjelmistovirheen.
-  </p>
-
-  <p>
-    Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.
-  </p>
-
-  <p>
-    Satelliitti tuhoutui.
-  </p>
-
-<% end %>
-
-
-<p>
-  Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Debuggerin käyttöä on esitelty kurssimateriaaliin upotetuilla videoilla; alla oleva video esittelee myös miten projekteja voidaan luoda, avata ja sulkea sekä miten ohjelmia voidaan suorittaa NetBeansin ulkopuolella. Screencastissa on myös asioita, joita kurssilla ei vielä ole tullut -- älä huoli, nämä tulevat vastaan opintojen edetessä.
-</p>
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=2QlbAvDPmk8" class="youtube" height="300" target="_blank"><img src=" https://www.cs.helsinki.fi/group/java/k13/ohpe/img/youtube.jpg"/></a>
-
-<% partial 'partials/material_sub_heading' do %>
-  Stack trace
-<% end %>
-
-<p>
-  Kun ohjelmassa tapahtuu virhe, ohjelma tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Exception in thread "main" ...
-  at Ohjelma.main(Ohjelma.java:15)
-<% end %>
-
-<p>
-  Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  at Ohjelma.main(Ohjelma.java:15)
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Muistilista virheenselvitykseen
-<% end %>
-
-<p>
-  Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.
-</p>
-
-<ol>
-  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
-  <li>Tarkista ovatko käytetyt muuttujat oikean nimisiä.</li>
-  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
-  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
-  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
-  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
-  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
-</ol>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Testisyötteen antaminen Scannerille
-<% end %>
-
-<p>
-  Ohjelman testaaminen käsin on usein työlästä. Syötteen antaminen on mahdollista automatisoida esimerkiksi syöttämällä Scanner-oliolle luettava merkkijono. Alla on annettu esimerkki siitä, miten ohjelmaa voi testata automaattisesti. Ohjelmassa syötetään ensin viisi merkkijonoa, jonka jälkeen syötetään aiemmin nähty merkkijono. Tämän jälkeen yritetään syöttää vielä uusi merkkijono. Merkkijonoa "kuusi" ei pitäisi esiintyä sanajoukossa.
-</p>
-
-<p>
-  Testisyötteen voi antaa merkkijonona Scanner-oliolle konstruktorissa. Jokainen testisyötteessä annettava rivinvaihto merkitään merkkijonoon kenoviivan ja n-merkin yhdistelmänä "\n".
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  String syote = "yksi\n" + "kaksi\n"  +
-  "kolme\n" + "nelja\n" +
-  "viisi\n" + "yksi\n"  +
-  "kuusi\n";
-
-  Scanner lukija = new Scanner(syote);
-
-  ArrayList&lt;String&gt; luetut = new ArrayList&lt;&gt;();
-  while (true) {
-  System.out.println("Anna syote: ");
-  String rivi = lukija.nextLine();
-  if (luetut.contains(rivi)) {
-  break;
-  }
-
-  luettu.add(rivi);
-  }
-
-  System.out.println("Kiitos!");
-
-  if (luetut.sisaltaa("kuusi")) {
-  System.out.println("Joukkoon lisättiin arvo, jota sinne ei olisi pitänyt lisätä.");
-  }
-<% end %>
-
-<p>
-  Ohjelma tulostus näyttää vain ohjelman antaman tulostuksen, ei käyttäjän tekemiä komentoja.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Anna syote:
-  Kiitos!
-<% end %>
-
-<p>
-  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa yhtä nextLine()-komentoon annettua syötettä.
-</p>
-
-<p>
-  Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion konstruktorin parametriksi <code>System.in</code>, eli järjestelmän syötevirta. Voit toisaalta halutessasi myös vaihtaa testisyötettä, sillä kyse on merkkijonosta.
-</p>
-
-<p>
-  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Debuggailua' } do %>
-
-  <p>
-    Ohjelmassa on yritetty luoda sovellus, joka kysyy käyttäjältä merkkijonoa ja lukua. Sovelluksen pitäisi toimia esimerkiksi seuraavasti:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Sana:
-    <font color="red">testi</font>
-    Luku:
-    <font color="red">3</font>
-    t
-    e
-    s
-    t
-    i
-  <% end %>
-
-  <p>
-    Esimerkki 2:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Sana:
-    <font color="red">esim</font>
-    Luku:
-    <font color="red">2</font>
-    e
-    s
-    i
-    m
-  <% end %>
-
-  <p>
-    Tällä hetkellä ohjelma ei kuitenkaan toimi halutusti. Ota selvää miksi ja korjaa ohjelma. Huomaat myös, että ohjelmassa käytetään paljon omituisia asioita, jotka eivät ole tulleet vielä kurssilla tutuksi. Kannattaakin tehdä niin, että kokeilee myös näitä uusia asioita erikseen.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Yksikkötestaus
-<% end %>
-
-<p>
-  Edellä esitetty menetelmä automaattiseen testaamiseen missä ohjelmalle syötetyt syötteet muutetaan on varsin kätevä, mutta kuitenkin melko rajoittunut. Isompien ohjelmien testaaminen edellä kuvatulla tavalla on haastavaa. Eräs ratkaisu tähän on yksikkötestaus, missä ohjelman pieniä osia testataan erikseen.
-</p>
-
-<p>
-  Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien kuten luokkien ja niiden tarjoamien metodien testaamista.  Luokkien ja metodien rakenteen suunnittelussa käytettävän ohjesäännön -- jokaisella metodilla ja luokalla tulee olla yksi selkeä vastuu -- noudattamisen tai siitä poikkeamisen huomaa testejä kirjoittaessa. Mitä useampi vastuu metodilla on, sitä monimutkaisempi testi on. Jos laaja sovellus on kirjoitettu yksittäiseen metodiin, on testien kirjoittaminen sitä varten erittäin haastavaa ellei jopa mahdotonta. Vastaavasti, jos sovellus on pilkottu selkeisiin luokkiin ja metodeihin, on testienkin kirjoittaminen suoraviivaista.
-</p>
-
-<p>
-  Testien kirjoittamisessa hyödynnetään tyypillisesti valmiita yksikkötestauskirjastoja, jotka tarjoavat metodeja ja apuluokkia testien kirjoittamiseen. Javassa käytetyin yksikkötestauskirjasto on <a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a>, johon löytyy myös tuki lähes kaikista ohjelmointiympäristöistä. Esimerkiksi NetBeans osaa automaattisesti etsiä JUnit-testejä projektista -- jos testejä löytyy, ne näytetään projektin alla Test Packages -kansiossa.
-</p>
-
-<p>
-  Tarkastellaan yksikkötestien kirjoittamista esimerkin kautta. Oletetaan, että käytössämme on seuraava luokka Laskin, ja haluamme kirjoittaa sitä varten automaattisia testejä.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  public class Laskin {
-
-  private int arvo;
-
-  public Laskin() {
-  this.arvo = 0;
-  }
-
-  public void summa(int luku) {
-  this.arvo += luku;
-  }
-
-  public void erotus(int luku) {
-  this.arvo += luku;
-  }
-
-  public int getArvo() {
-  return this.arvo;
-  }
-  }
-<% end %>
-
-<p>
-  Laskimen toiminta perustuu siihen, että se muistaa aina edellisen laskuoperaation tuottaman tuloksen. Seuraavat laskuoperaatiot lisätään aina edelliseen lopputulokseen. Yllä olevaan laskimeen on jäänyt myös pieni copy-paste -ohjelmoinnista johtuva virhe. Metodin erotus pitäisi vähentää arvosta, mutta nyt se lisää arvoon.
-</p>
-
-<p>
-  Yksikkötestien kirjoittaminen aloitetaan testiluokan luomisella. Testiluokka luodaan Test Packages -kansion alle. Kun testaamme luokkaa <code>Laskin</code>, testiluokan nimeksi tulee <code>LaskinTest</code>. Nimen lopussa oleva merkkijono <code>Test</code> kertoo ohjelmointiympäristölle, että kyseessä on testiluokka. Ilman merkkijonoa Test luokassa olevia testejä ei suoriteta. (Huom! Testit luodaan NetBeansissa Test Packages -kansion alle.)
-</p>
-
-<p>
-  Testiluokka LaskinTest on aluksi tyhjä.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  public class LaskinTest {
-
-  }
-<% end %>
-
-<p>
-  Testit ovat testiluokassa olevia metodeja ja jokainen testi testaa yksittäistä asiaa. Aloitetaan luokan Laskin testaaminen -- luodaan ensin testimetodi, jossa varmistetaan, että juuri luodun laskimen sisältämä arvo on 0.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-
-  import static org.junit.Assert.assertEquals;
-  import org.junit.Test;
-
-  public class LaskinTest {
-
-  @Test
-  public void laskimenArvoAlussaNolla() {
-  Laskin laskin = new Laskin();
-  assertEquals(0, laskin.getArvo());
-  }
-  }
-<% end %>
-
-<p>
-  Yllä olevassa metodissa laskimenArvoAlussaNolla luodaan ensin laskinolio. Tämän jälkeen käytetään JUnit-testikehyksen tarjoamaa assertEquals-metodia arvon tarkistamiseen. Metodi tuodaan luokasta Assert komennolla import static, ja sille annetaan parametrina odotettu arvo -- tässä 0 -- sekä laskimen palauttama arvo. Jos metodin assertEquals arvot poikkeavat toisistaan, testin suoritus ei pääty hyväksytysti. Jokaisella testimetodilla tulee olla <em>annotaatio</em> @Test -- tämä kertoo JUnit-testikehykselle, että kyseessä on suoritettava testimetodi.
-</p>
-
-<p>
-  Testien suorittaminen onnistuu valitsemalla projekti oikealla hiirennapilla ja klikkaamalla vaihtoehtoa Test.
-</p>
-
-<p>
-  Testien suorittaminen luo output-välilehdelle (tyypillisesti NetBeansin alalaidassa) tulosteen, jossa on testiluokkakohtaiset tilastot. Alla olevassa esimerkissä on suoritettu pakkauksessa laskin olevan testiluokan LaskinTest testit. Testejä suoritettiin 1, joista yksikään ei epäonnistunut -- epäonnistuminen tarkoittaa tässä sitä, että testin testaama toiminnallisuus ei toiminut oletetusti.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Testsuite: LaskinTest
-  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
-
-  test-report:
-  test:
-  BUILD SUCCESSFUL (total time: 0 seconds)
-<% end %>
-
-<p>
-  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package laskin;
-
-  import static org.junit.Assert.assertEquals;
-  import org.junit.Test;
-
-  public class LaskinTest {
-
-  @Test
-  public void laskimenArvoAlussaNolla() {
-  Laskin laskin = new Laskin();
-  assertEquals(0, laskin.getArvo());
-  }
-
-  @Test
-  public void arvoViisiKunSummataanViisi() {
-  Laskin laskin = new Laskin();
-  laskin.summa(5);
-  assertEquals(5, laskin.getArvo());
-  }
-
-  @Test
-  public void arvoMiinusKaksiKunErotetaanKaksi() {
-  Laskin laskin = new Laskin();
-  laskin.erotus(2);
-  assertEquals(-2, laskin.getArvo());
-  }
-  }
-<% end %>
-
-<p>
-  Testien suorittaminen antaa seuraavanlaisen tulostuksen.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Testsuite: LaskinTest
-  Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
-
-  Testcase: arvoMiinusKaksiKunErotetaanKaksi(LaskinTest):	FAILED
-  expected:<-2> but was:<2>
-  junit.framework.AssertionFailedError: expected:<-2> but was:<2>
-  at LaskinTest.arvoMiinusKaksiKunErotetaanKaksi(LaskinTest.java:25)
-
-
-  Test LaskinTest FAILED
-  test-report:
-  test:
-  BUILD SUCCESSFUL (total time: 0 seconds)
-<% end %>
-
-<p>
-  Tulostus kertoo, että kolme testiä suoritettiin. Yksi niistä päätyi virheeseen. Testitulostuksessa on tieto myös testin rivistä, jossa virhe tapahtui (25) sekä tieto odotetusta (-2) ja saadusta arvosta (2). Kun testien suoritus päättyy virheeseen, NetBeans näyttää testien suoritukseen liitttyvän virhetilanteen myös visuaalisena.
-</p>
-
-<p>
-  Edellisillä testeillä kaksi testeistä menee läpi, mutta yhdessä on tapahtunut virhe. Korjataan luokkaan Laskin jäänyt virhe.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // ...
-  public void erotus(int luku) {
-  this.arvo -= luku;
-  }
-  // ...
-<% end %>
-
-<p>
-  Kun testit suoritetaan uudestaan, testit menevät läpi.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Testsuite: LaskinTest
-  Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
-
-  test-report:
-  test:
-  BUILD SUCCESSFUL (total time: 0 seconds)
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Laskimen testailua' } do %>
-
-  <p>
-    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa edellistä esimerkkiä, ja luo laskimelle esimerkissä näytetyt testit. Kokeile testien toimintaa, ja palauta lopulta tehtävä Test My Code-palvelimelle.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_heading' do %>
-  Lista arvojen virtana
-<% end %>
-
-<p>
-  Tutustutaan listan läpikäyntiin arvojen virtana (stream). Virta on menetelmä tietoa sisältävän kokoelman läpikäyntiin siten, että ohjelmoija määrittelee kullekin listan arvolle suoritettavan toiminnallisuuden. Indeksistä tai kullakin hetkellä käsiteltävästä muuttujasta ei pidetä kirjaa.
-</p>
-
-<p>
-  Virran avulla ohjelmoija määrittelee funktioketjun, joita kutsutaan tietokokoelman arvoille. Virran avulla voi muuntaa tietoa muodosta toiseen, mutta virta ei muuta alkuperäisen tietokokoelman arvoja.
-</p>
-
-<p>
-  Tutustutaan virran käyttöön konkreettisen esimerkin kautta. Tarkastellaan seuraavaa ongelmaa:
-</p>
-
-<p>
-  <em>
-    Kirjoita ohjelma, joka lukee käyttäjältä syötteitä ja tulostaa niihin liittyen tilastoja. Kun käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Muut syötteet ovat lukuja. Kun syötteiden lukeminen lopetetaan, ohjelma tulostaa kolmella jaollisten positiivisten lukujen lukumäärän sekä kaikkien lukujen keskiarvon.
-  </em>
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // alustetaan lukija ja lista, johon syotteet luetaan
-  Scanner lukija = new Scanner(System.in);
-  ArrayList&lt;String&gt; syotteet = new ArrayList&lt;&gt;();
-
-  // luetaan syotteet
-  while (true) {
-  String rivi = lukija.nextLine();
-  if (rivi.equals("loppu")) {
-  break;
-  }
-  
-  syotteet.add(rivi);
-  }
-
-  // selvitetään kolmella jaollisten lukumaara
-  long kolmellaJaollistenLukumaara = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .filter(luku -&gt; luku % 3 == 0)
-  .count();
-
-  // selvitetään keskiarvo
-  double keskiarvo = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .average()
-  .getAsDouble();
-
-  // tulostetaan tilastot
-  System.out.println("Kolmella jaollisia: " + kolmellaJaollistenLukumaara);
-  System.out.println("Lukujen keskiarvo: " + keskiarvo);
-<% end %>
-
-<p>
-  Tarkastellaan tarkemmin yllä kuvatun ohjelman osaa, missä luettuja syötteitä käsitellään virtana. 
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // selvitetään kolmella jaollisten lukumaara
-  long kolmellaJaollistenLukumaara = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .filter(luku -&gt; luku % 3 == 0)
-  .count();
-<% end %>
-
-<p>
-  Virta luodaan ArrayList-oliosta metodilla <code>stream()</code>. Tämän jälkeen merkkijonomuotoiset arvot muunnetaan kokonaislukumuotoon virran metodilla <code>mapToInt(arvo -&gt; muunnos)</code> -- muunto toteutetaan Integer-luokan tarjoamalla parseInt-metodilla, jota olemme käyttäneet aiemminkin. Seuraavaksi rajaamme metodilla <code>filter(arvo -&gt; rajausehto)</code> käsiteltäväksi vain ne luvut, jotka ovat kolmella jaollisia. Lopulta kutsumme virran metodia <code>count()</code>, joka laskee virran alkioiden lukumäärän ja palauttaa sen <code>long</code>-tyyppisenä muuttujana.
-</p>
-
-<p>
-  Tarkastellaan tämän jälkeen listan alkioiden keskiarvon laskemiseen tarkoitettua ohjelmaa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // selvitetään keskiarvo
-  double keskiarvo = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .average()
-  .getAsDouble();
-<% end %>
-
-<p>
-  Keskiarvon laskeminen onnistuu virrasta, jolle on kutsuttu <code>mapToInt</code>-metodia. Kokonaislukuja sisältävällä virralla on metodi <code>average()</code>, joka palauttaa <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html" target="_blank" norel>OptionalDouble</a>-tyyppisen olion. Oliolla on metodi <code>getAsDouble()</code>, joka palauttaa listan arvojen keskiarvon <code>double</code>-tyyppisenä muuttujana.
-</p>
-
-<p>
-  Lyhyt yhteenveto tähän mennessä tutuiksi tulleista virtaan liittyvistä metodeista.
-</p>
-
-<table class="table">
-  <tr>
-    <th>
-      Tarkoitus ja metodi
-    </th>
-    <th>
-      Oletukset
-    </th>
-  </tr>
-
-  <tr>
-    <td>
-      Virran luominen: <code>stream()</code>
-    </td>
-    <td>
-      Metodia kutsutaan kokoelmalle kuten ArrayList-oliolle. Luotavalle virralle tehdään jotain.
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      Virran muuntaminen kokonaislukuvirraksi: <code>mapToInt(arvo -&gt; toinen)</code>
-    </td>
-    <td>
-      Virta muuntuu kokonaislukuja sisältäväksi virraksi. Merkkijonoja sisältävä muunnos voidaan tehdä esimerkiksi Integer-luokan parseInt-metodin avulla. Kokonaislukuja sisältävälle virralle tehdään jotain.
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      Arvojen rajaaminen: <code>filter(arvo -&gt; hyvaksymisehto)</code>
-    </td>
-    <td>
-      Virrasta rajataan pois ne arvot, jotka eivät täytä hyväksymisehtoa. "Nuolen" oikealla puolella on lauseke, joka palauttaa totuusarvon. Jos totuusarvo on <code>true</code>, arvo hyväksytään virtaan. Jos totuusarvo on <code>false</code>, arvoa ei hyväksytä virtaan. Rajatuille arvoille tehdään jotain.
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Keskiarvon laskeminen: <code>average()</code>
-    </td>
-    <td>
-      Palauttaa OptionalDouble-tyyppisen olion, jolla on <code>double</code> tyyppisen arvon palauttava metodi <code>getAsDouble()</code>. Metodin <code>average()</code> kutsuminen onnistuu kokonaislukuja sisältävälle virralle (luominen onnistuu <code>mapToInt</code>-metodilla.
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      Virrassa olevien alkioiden lukumaara: <code>count()</code>
-    </td>
-    <td>
-      Palauttaa virrassa olevien alkioiden lukumäärän <code>long</code>-tyyppisenä arvona.
-    </td>
-  </tr>
-  
-</table>
-
-<% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
-
-  <p>
-    Harjoitellaan lukujen lukemista listalle sekä listan arvojen keskiarvon laskemista virran avulla.
-  </p>
-
-  <p>
-    Toteuta ohjelma, joka lukee käyttäjältä syötteitä. Jos käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Muut syötteet ovat lukuja. Kun käyttäjä syöttää merkkijonon "loppu", ohjelman tulee tulostaa syötettyjen lukujen keskiarvo.
-  </p>
-
-
-  <% partial 'partials/sample_output' do %>
-    Kirjoita syötteitä, "loppu" lopettaa.
-    <font color="red">2</font>
-    <font color="red">4</font>
-    <font color="red">6</font>
-    <font color="red">loppu</font>
-    Lukujen keskiarvo: 4.0
-  <% end %>
-  
-
-  <% partial 'partials/sample_output' do %>
-    Kirjoita syötteitä, "loppu" lopettaa.
-    <font color="red">-1</font>
-    <font color="red">1</font>
-    <font color="red">2</font>
-    <font color="red">loppu</font>
-    Lukujen keskiarvo: 0.6666666666666666
-  <% end %>
-  
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Tiettyjen lukujen keskiarvo' } do %>
-
-  <p>
-    Harjoitellaan lukujen lukemista listalle sekä listan arvojen rajaamista virran avulla.
-  </p>
-
-  <p>
-    Toteuta ohjelma, joka lukee käyttäjältä syötteitä. Jos käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Muut syötteet ovat lukuja. Kun käyttäjä syöttää merkkijonon "loppu", syötteiden lukeminen lopetetaan.
-  </p>
-
-  <p>
-    Tämän jälkeen käyttäjältä kysytään tulostetaanko negatiivisten vai positiivisten lukujen keskiarvo (n vai p). Jos käyttäjä syöttää merkkijonon "n", tulostetaan negatiivisten lukujen keskiarvo, muulloin tulostetaan positiivisten lukujen keskiarvo.
-  </p>
-
-
-  <% partial 'partials/sample_output' do %>
-    Kirjoita syötteitä, "loppu" lopettaa.
-    <font color="red">-1</font>
-    <font color="red">1</font>
-    <font color="red">2</font>
-    <font color="red">loppu</font>
-    
-    Tulostetaanko negatiivisten vai positiivisten lukujen keskiarvo? (n/p)
-    <font color="red">n</font>
-    Negatiivisten lukujen keskiarvo: -1.0
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Kirjoita syötteitä, "loppu" lopettaa.
-    <font color="red">-1</font>
-    <font color="red">1</font>
-    <font color="red">2</font>
-    <font color="red">loppu</font>
-    
-    Tulostetaanko negatiivisten vai positiivisten lukujen keskiarvo? (n/p)
-    <font color="red">p</font>
-    Positiivisten lukujen keskiarvo: 1.5
-  <% end %>
-  
-<% end %>
-
-
-<% partial 'partials/hint', locals: { name: 'Mikä ihmeen <code>x -&gt; ???</code>' } do %>
-
-  <p>
-    Virran arvoja käsitellään virtaan liittyvillä metodeilla. Arvoja käsittelevät metodit saavat parametrinaan funktion, joka kertoo mitä kullekin arvolle tulee tehdä. Funktion toiminnallisuus on metodikohtaista: rajaamiseen käytetylle metodille <code>filter</code> annetaan funktio, joka palauttaa totuusarvoisen muuttujan arvon <code>true</code> tai <code>false</code>, riippuen halutaanko arvo säilyttää virrassa; muuntamiseen käytetylle metodille <code>mapToInt</code> annetaan funktio, joka muuntaa arvon kokonaisluvuksi, jne.
-  </p>
-
-  <p>
-    Miksi funktiot kirjoitetaan muodossa <code>luku -&gt; luku &gt; 5</code>?
-  </p>
-
-  <p>
-    Kyseinen kirjoitusmuoto on Javan tarjoama lyhenne. Saman funktion voi kirjoittaa useammalla eri tavalla -- funktio sisältää sekä funktion parametrien määrittelyn että funktion rungon. Saman voi kirjoittaa useammassa muodossa, kts. alla.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    // alkuperäinen
-    .filter(luku -&gt; luku &gt; 5)
-
-    // on sama kuin
-    .filter((Integer luku) -&gt; 
-    if (luku &gt; 5) {
-    return true;
-    }
-    
-    return false;
-    })
-  <% end %>
-
-  <p>
-    Käytännössä kyseessä on ns. anonyymi funktio. Saman voi kirjoittaa myös eksplisiittisesti niin, että ohjelmaan määrittelee staattisen metodin, jota kutsutaan virran metodista. Tämä tapahtuisi seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Rajaajat {
-    public static boolean vitostaSuurempi(int luku) {
-    return luku &gt; 5;
-    }
-    }
-
-  <% end %>  
-
-  <% partial 'partials/code_highlight' do %>
-    // alkuperäinen
-    .filter(luku -&gt; luku &gt; 5)
-
-    // on sama kuin
-    .filter(luku -&gt; Rajaajat.vitostaSuurempi(luku))
-    
-    // on sama kuin
-    .filter(Rajaajat::vitostaSuurempi);
-  <% end %>
-
-  <p>
-    Virran arvoja käsittelevät funktiot eivät voi muuttaa funktion ulkopuolisten muuttujien arvoja. Kyse on käytännössä lähes samasta kuin metodeja kutsuessa -- metodia kutsuttaessa metodin ulkopuolisiin muuttujiin ei pääse käsiksi. Funktioiden tilanteessa funktion ulkopuolisten muuttujien arvoja voi lukea olettaen, että luettavien muuttujien arvot eivät muutu lainkaan ohjelmassa.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Virran metodit
-<% end %>
-
-<p>
-  Virran metodit voi jakaa karkeasti kahteen eri ryhmään: virran (1) arvojen käsittelyyn tarkoitettuihin välioperaatioihin sekä (2) käsittelyn lopettaviin pääteoperaatiohin. Edellisessä esimerkissä nähdyt metodit <code>filter</code> ja <code>mapToInt</code> ovat välioperaatioita. Välioperaatiot palauttavat arvonaan virran, jonka käsittelyä voi jatkaa -- käytännössä välioperaatioita voi olla käytännössä ääretön määrä ketjutettuna peräkkäin (pisteellä eroteltuna). Toisaalta edellisessä esimerkissä nähty metodi <code>average</code> on pääteoperaatio. Pääteoperaatio palauttaa käsiteltävän arvon, joka luodaan esimerkiksi virran arvoista.
-</p>
-
-<p>
-  Alla olevassa kuvassa on kuvattu virran toimintaa. Lähtötilanteena (1) on lista, jossa on arvoja. Kun listalle kutsutaan <code>stream()</code>-metodia, (2) luodaan virta listan arvoista. Arvoja käsitellään tämän jälkeen yksitellen. Virran arvoja voidaan (3) rajata metodilla <code>filter</code>. Tämä poistaa virrasta ne arvot, jotka ovat rajauksen ulkopuolella. Virran metodilla <code>map</code> voidaan (4) muuntaa virrassa olevia arvoja muodosta toiseen. Metodi <code>collect</code> (5) kerää virrassa olevat arvot arvot sille annettuun kokoelmaan, esim. listalle.
-</p>
-
-<img src="/img/drawings/stream.png" alt="Yllä tekstuaalisesti kuvattu virran toiminta kuvana." />
-
-<p>&nbsp;</p>
-
-<p>
-  Alla vielä yllä olevan kuvan kuvaama esimerkki ohjelmakoodina.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
-  lista.add(3);
-  lista.add(7);
-  lista.add(4);
-  lista.add(2);
-  lista.add(6);
-
-  ArrayList&lt;Integer&gt; luvut = lista.stream()
-  .filter(luku -&gt; luku &gt; 5)
-  .map(luku -&gt; luku * 2)
-  .collect(Collectors.toCollection(ArrayList::new));
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Pääteoperaatiot
-<% end %>
-
-<p>
-  Tarkastellaan tässä kolmea pääteoperaatiota: listan arvojen lukumäärän selvittämistä <code>count</code>-metodin avulla, listan arvojen läpikäyntiä <code>forEach</code>-metodin avulla sekä listan arvojen keräämistä tietorakenteeseen <code>collect</code>-metodin avulla.
-</p>
-
-<p>
-  Metodi <code>count</code> kertoo virran alkioiden lukumäärän <code>long</code>-tyyppisenä muuttujana.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
-  luvut.add(3);
-  luvut.add(2);
-  luvut.add(17);
-  luvut.add(6);
-  luvut.add(8);
-
-  System.out.println("Lukuja: " + luvut.stream().count());
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  Lukuja: 5
-<% end %>
-
-
-<p>
-  Metodi <code>forEach</code> kertoo mitä kullekin listan arvolle tulee tehdä ja samalla päättää virran käsittelyn. Alla olevassa esimerkissä luodaan ensin numeroita sisältävä lista, jonka jälkeen tulostetaan vain kahdella jaolliset luvut.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
-  luvut.add(3);
-  luvut.add(2);
-  luvut.add(17);
-  luvut.add(6);
-  luvut.add(8);
-
-  luvut.stream()
-  .filter(luku -&gt; luku % 2 == 0)
-  .forEach(luku -&gt; System.out.println(luku));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  2
-  6
-  8
-<% end %>
-
-
-<p>
-  Virran arvojen kerääminen toiseen kokoelmaan onnistuu metodin <code>collect</code> avulla. Alla olevassa esimerkissä luodaan uusi lista annetun positiivisista arvoista.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
-  luvut.add(3);
-  luvut.add(2);
-  luvut.add(-17);
-  luvut.add(-6);
-  luvut.add(8);
-
-  ArrayList&lt;Integer&gt; positiiviset = luvut.stream()
-  .filter(luku -&gt; luku > 0)
-  .collect(Collectors.toCollection(ArrayList::new));
-
-  positiiviset.stream()
-  .forEach(luku -&gt; System.out.println(luku));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  3
-  2
-  8
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Jaolliset' } do %>
-
-  <p>
-    Tehtävässä harjoitellaan virran <code>filter</code> ja <code>collect</code>-metodien käyttöä.
-  </p>
-
-  <p>
-    Tehtäväpohjassa on annettuna metodirunko <code>public static ArrayList&lt;Integer&gt jaolliset(ArrayList&lt;Integer&gt; luvut)</code>. Toteuta metodirunkoon toiminnallisuus, kerää parametrina saadulta listalta kahdella, kolmella tai viidellä jaolliset luvut, ja palauttaa ne uudessa listassa. Metodille parametrina annetun listan ei tule muuttua.
-  </p>
-  
-  <% partial 'partials/code_highlight' do %>
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
-    luvut.add(3);
-    luvut.add(2);
-    luvut.add(-17);
-    luvut.add(-5);
-    luvut.add(7);
-    
-    ArrayList&lt;Integer&gt; jaolliset = jaolliset(luvut);
-
-    jaolliset.stream()
-    .forEach(luku -&gt; System.out.println(luku));
-  <% end %>
-
-  
-  <% partial 'partials/sample_output' do %>
-    3
-    2
-    -5
-  <% end %>  
-
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Välioperaatiot
-<% end %>
-
-<p>
-  Virran välioperaatiot ovat metodeja, jotka palauttavat arvonaan virran. Koska palautettava arvo on virta, voidaan välioperaatioita kutsua peräkkäin. Tyypillisiä välioperaatioita ovat arvon muuntaminen muodosta toiseen <code>map</code> sekä sen erityistapaus <code>mapToInt</code>, arvojen rajaaminen <code>filter</code>, uniikkien arvojen tunnistaminen <code>distinct</code> sekä arvojen järjestäminen <code>sorted</code> (mikäli mahdollista).
-</p>
-
-<p>
-  Tarkastellaan näitä metodeja muutaman ongelman avulla. Oletetaan, että käytössämme on seuraava luokka Henkilo.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Henkilo {
-  private String etunimi;
-  private String sukunimi;
-  private int syntymavuosi;
-
-  public Henkilo(String etunimi, String sukunimi, int syntymavuosi) {
-  this.etunimi = etunimi;
-  this.sukunimi = sukunimi;
-  this.syntymavuosi = syntymavuosi;
-  }
-
-  public String getEtunimi() {
-  return this.etunimi;
-  }
-
-  public String getSukunimi() {
-  return this.sukunimi;
-  }
-
-  public int getSyntymavuosi() {
-  return this.syntymavuosi;
-  }
-  }
-<% end %>
-
-
-<p>
-  <em>
-    Ongelma 1: Saat käyttöösi listan henkilöitä. Tulosta ennen vuotta 1970 syntyneiden henkilöiden lukumäärä.
-  </em>
-</p>
-
-<p>
-  Käytetään <code>filter</code>-metodia henkilöiden rajaamiseen niihin, jotka ovat syntyneet ennen vuotta 1970. Lasketaan tämän jälkeen henkilöiden lukumäärä metodilla <code>count</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // oletetaan, että käytössämme on lista henkiloita
-  // ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
-
-  long lkm = henkilot.stream()
-  .filter(henkilo -&gt; henkilo.getSyntymavuosi() &lt; 1970)
-  .count();
-  System.out.println("Lukumäärä: " + lkm);
-<% end %>
-
-
-<p>
-  <em>
-    Ongelma 2: Saat käyttöösi listan henkilöitä. Kuinka monen henkilön etunimi alkaa kirjaimella "A"?
-  </em>
-</p>
-
-<p>
-  Käytetään <code>filter</code>-metodia henkilöiden rajaamiseen niihin, joiden etunimi alkaa kirjaimella "A". Lasketaan tämän jälkeen henkilöiden lukumäärä metodilla <code>count</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // oletetaan, että käytössämme on lista henkiloita
-  // ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
-
-  long lkm = henkilot.stream()
-  .filter(henkilo -&gt; henkilo.getEtunimi().startsWith("A"))
-  .count();
-  System.out.println("Lukumäärä: " + lkm);
-<% end %>
-
-<p>
-  <em>
-    Ongelma 3: Saat käyttöösi listan henkilöitä. Tulosta henkilöiden uniikit etunimet aakkosjärjestyksessä.
-  </em>
-</p>
-
-<p>
-  Käytetään ensin <code>map</code>-metodia, jonka avulla henkilö-olioita sisältävä virta muunnetaan etunimiä sisältäväksi virraksi. Tämän jälkeen kutsutaan metodia <code>distinct</code>, joka palauttaa virran, jossa on uniikit arvot. Seuraavaksi kutsutaan metodia <code>sorted</code>, joka järjestää merkkijonot. Lopulta kutsutaan metodia <code>forEach</code>, jonka avulla tulostetaan merkkijonot.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // oletetaan, että käytössämme on lista henkiloita
-  // ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
-
-  henkilot.stream()
-  .map(henkilo -&gt; henkilo.getEtunimi())
-  .distinct()
-  .sorted()
-  .forEach(nimi -&gt; System.out.println(nimi));
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Luettujen arvojen tulostaminen' } do %>
-
-  <p>
-    Kirjoita ohjelma, joka lukee käyttäjältä merkkijonoja. Lukeminen tulee lopettaa kun käyttäjä syöttää tyhjän merkkijonon. Tulosta tämän jälkeen käyttäjän syöttämät merkkijonot.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    <font color="red">eka</font>
-    <font color="red">toka</font>
-    <font color="red">kolmas</font>
-    eka
-    toka
-    kolmas
-  <% end %>
-
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Rajatut luvut' } do %>
-
-  <p>
-    Kirjoita ohjelma, joka lukee käyttäjältä lukuja. Kun käyttäjä syöttää negatiivisen luvun, lukeminen lopetetaan. Tulosta tämän jälkeen ne luvut, jotka ovat välillä 1-5.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    <font color="red">7</font>
-    <font color="red">14</font>
-    <font color="red">4</font>
-    <font color="red">5</font>
-    <font color="red">4</font>
-    <font color="red">-1</font>
-    4
-    5
-    4
-  <% end %>
-
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Uniikit sukunimet' } do %>
-
-  <p>
-    Tehtäväpohjaan on hahmoteltu ohjelmaa, joka lukee käyttäjältä syötteenä henkilötietoja. Täydennä ohjelmaa siten, että tietojen lukemisen jälkeen ohjelma tulostaa henkilöiden uniikit sukunimet aakkosjärjestyksessä.
-  </p>
-
-  
-  <% partial 'partials/sample_output' do %>
-    Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: 
-    Syötä etunimi: <font color="red">Ada</font>
-    Syötä sukunimi: <font color="red">Lovelace</font>
-    Syötä syntymävuosi: <font color="red">1815</font>
-
-    Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: 
-    Syötä etunimi: <font color="red">Grace</font>
-    Syötä sukunimi: <font color="red">Hopper</font>
-    Syötä syntymävuosi: <font color="red">1906</font>
-
-    Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: 
-    Syötä etunimi: <font color="red">Alan</font>
-    Syötä sukunimi: <font color="red">Turing</font>
-    Syötä syntymävuosi: <font color="red">1912</font>
-    
-    Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: loppu
-    
-    Uniikit sukunimet aakkosjärjestyksessä:
-    Hopper
-    Lovelace
-    Turing
-  <% end %>
-
-  <p>
-    Ohjelmassa ei ole valmiita automaattisia testejä. Voit kirjoittaa automaattisia testejä testiluokkaan <code>UniikitSukunimetTest</code> -- tässä tapauksessa olisi näppärää tehdä esimerkiksi erillinen listan palauttava metodi uniikkien sukunimien tunnistamiseen sille parametrina annetusta henkilölistasta. 
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Oliot ja virta
-<% end %>
-
-<p>
-  Olioiden käsittely virran metodien avulla on luontevaa. Kukin virran metodi, missä käsitellään virran arvoja, mahdollistaa myös arvoihin liittyvän metodin kutsumisen. Tarkastellaan vielä esimerkkiä, missä käytössämme on Kirjoja, joilla on kirjailijoita. Oletetaan, että kirjailijat ovat edellä kuvattuja Henkilo-olioita. Oletetaan lisäksi, että käytössämme on alla kuvattu luokka Kirja.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  public class Kirja {
-  private Henkilo kirjailija;
-  private String nimi;
-  private int sivujenLukumaara;
-  
-  public Kirja(Henkilo kirjailija, String nimi, int sivuja) {
-  this.kirjailija = kirjailija;
-  this.nimi = nimi;
-  this.sivujenLukumaara = sivuja;
-  }
-
-  public Henkilo getKirjailija() {
-  return this.kirjailija;
-  }
-
-  public String getNimi() {
-  return this.nimi;
-  }
-
-  public int getSivujenLukumaara() {
-  return this.sivujenLukumaara;
-  }
-  }
-<% end %>
-
-<p>
-  Oletetaan, että käytössämme on lista kirjoja. Virran metodien avulla esimerkiksi kirjailijoiden syntymävuosien keskiarvon selvittäminen onnistuu luontevasti. Ensin muunnamme kirjoja sisältävän virran henkilöitä sisältäväksi virraksi, tämän jälkeen muunnamme henkilöitä sisältävän virran syntymävuosia sisältäväksi virraksi, ja lopulta pyydämme (kokonaislukuja sisältävältä) virralta keskiarvoa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // oletetaan, että käytössämme on lista kirjoja
-  // ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
-
-  double keskiarvo = kirjat.stream()
-  .map(kirja -&gt; kirja.getKirjailija())
-  .mapToInt(kirjailija -&gt; kirjailija.getSyntymavuosi())
-  .average()
-  .getAsDouble();
-
-  System.out.println("Kirjailijoiden syntymävuosien keskiarvo: " + keskiarvo);
-<% end %>
-
-
-<p>
-  Vastaavasti kirjojen, joiden nimessä esiintyy sana "Potter", kirjailijoiden nimet saa selville seuraavasti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // oletetaan, että käytössämme on lista kirjoja
-  // ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
-
-  kirjat.stream()
-  .filter(kirja -&gt; kirja.getNimi().contains("Potter"))
-  .map(kirja -&gt; kirja.getKirjailija())
-  .forEach(kirjailija -&gt; System.out.println(kirjailija.getEtunimi() + " " + kirjailija.getSukunimi()));
-<% end %>
-
-<p>
-  Myös monimutkaisempien merkkijonoesitysten rakentaminen on virran avulla mahdollista. Alla olevassa esimerkissä tulostamme "Kirjailijan sukunimi: Kirja" -parit aakkosjärjestyksessä.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // oletetaan, että käytössämme on lista kirjoja
-  // ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
-
-  kirjat.stream()
-  .map(kirja -&gt; kirja.getKirjailija().getSukunimi() + ": " + kirja.getNimi())
-  .sorted()
-  .forEach(nimi -&gt; System.out.println(nimi));
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Painon laskemista (2 osaa)' } do %>
-
-  <p>
-    Tehtäväpohjassa on edellisen osan tehtävä "Tavara, Matkalaukku ja Lastiruuma". Tässä tehtävässä tarkoituksenasi on muuttaa toistolausetta käyttävät metodit virtaa käyttäviksi metodeiksi niiltä osin, kuin tämä on mahdollista. Ohjelman toiminnallisuuden tulee säilyä samana.
-  </p>
-
-  <p>
-    Tässä tehtävässä ei ole erillisiä virran käyttämistä testaavista testejä. Kun toistolausetta hyödyntävät osiot on muunnettu virtaa käyttäviksi, palauta tehtävä. Tehtävä on kokonaisuudessaan kahden pisteen arvoinen.
-  </p>
-  
-<% end %>
-
-
-
-<% partial 'partials/material_heading' do %>
-  Tehtäväpohjien rakenne ja Maven
-<% end %>
-
-<p>
-  Ohjelmoinnin jatkokurssista lähtien kurssin tehtäväpohjat käyttävät <a href="https://maven.apache.org/" target="_blank" norel>Maven</a>-nimistä projektinhallintatyövälinettä. Kyseinen työväline helpottaa kurssin tehtävien mukana tuotavien kirjastojen hallintaa. Tehtäviin tämä vaikuttaa siten, että niiden kansiorakenne muuttuu hieman. 
-</p>
-
-<p>
-  Jatkossa tehtävän juurikansiossa on tiedosto pom.xml, joka kuvaa tehtäväpohjan rakenteen. Kansio <code>src</code> sisältää kansiot <code>main</code> ja <code>test</code>, jotka sisältävät lähdekooditiedostot sekä testitiedostot.
-
-</p>
-
-<pre>
-$/Osa08_01.SamaPaivays$ tree
-.
-├── pom.xml
-└── src
-    ├── main
-    │   └── java
-    │       ├── Paaohjelma.java
-    │       └── Paivays.java
-    └── test
-        └── java
-            └── PaivaysTest.java
-
-</pre>
-
-
-<p>
-  Ohjelmien toiminta ei käytännössä juurikaan muutu. Toisin kuin ennen, ohjelmien tarvitsemat kirjastot eivät kuitenkaan tule tehtäväpohjan mukana, vaan Mavenilta tulee pyytää tarvittaessa niiden lataamista. Tämä onnistuu klikkaamalla tehtäväpohjan Dependencies-kuvaketta Projects-välilehdellä ja valitsemalla "Download declared dependencies."
-</p>
-
-<img src="/img/maven-1.png"/>
-
-<br/>
-
-<p>
-  Riippuen tietokoneesi käyttöjärjestelmästä, on mahdollista, että joudut lisäämään Maven-ohjelmaan ajo-oikeudet kun sitä käytetään ensimmäistä kertaa. Windowsille ohjeita löytyy yleisesti ottaen googlettamalla ja mm. täältä: <a href="https://www.online-tech-tips.com/computer-tips/set-file-folder-permissions-windows/" target="_blank" norel>https://www.online-tech-tips.com/computer-tips/set-file-folder-permissions-windows/</a> -- myös pajassa neuvotaan tähän liittyen. 
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Ongelmia ja ratkaisuja
-<% end %>
-
-<p>
-  Mavenin käyttöönottoon on liittynyt kurssilla ongelmia. Tässä lyhyt ongelmanratkaisuopas.
-</p>
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Linux ja Mac
-<% end %>
-
-<p>
-  Ongelma: Maven-binäärin suoritusoikeudet puuttuvat. Mavenin virhe on (esimerkiksi) muotoa.
-</p>
-
-<pre>
-Cannot run program
-  /Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven/bin/mvn"
-  (in directory "/Users/[nimi]/NetBeansProjects/hy-[kurssi]/[tehtava]"):
-  error=13,
-  Permission denied
-</pre>
-
-<p>
-  Ratkaisu: lisää maven-binäärille suoritusoikeudet. Suorita terminaalissa (pääte) komento.
-</p>
-
-<pre>
-chmod +x /Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven/bin/mvn
-</pre>
-
-<p>
-  Huomaa, että edellä polku on sama kuin virheviestin "Cannot run program"-polku.
-</p>
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Windows
-<% end %>
-
-<p>
-  Ongelma: Ympäristömuuttuja <code>JAVA_HOME</code> ei ole asetettu. Käytännössä Maven yrittää etsiä Javaa, mutta ei löydä sitä.
-</p>
-
-<p>
-  Ratkaisu: Lisää Windowsiin JAVA_HOME ympäristömuuttuja (esim.) osoitteessa <a href="https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html" target="_blank" norel>https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html</a> olevia ohjeita seuraamalla. Huomaa, että kansion tulee olla jdk, ei jre.
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Tietojenkäsittelytieteen laitoksen koneet
-<% end %>
-
-<p>
-  Ongelma: Riippuvuuksien lataaminen ei onnistu tai ne eivät toimi. Tässä syynä on joko loppunut levytila tai verkkoyhteysongelma. Levytilan tilanteen saa selvitettyä komennolla "quota".
-</p>
-
-<p>
-  Ratkaisu:
-</p>
-
-<ol>
-  <li>
-    Poista vanhat ohjelmoinnin perusteiden (ja mahdollisesti muiden TMCtä käyttävien kurssien) tehtäväpohjat. Nämä löytyvät kotikansiosta kansion NetBeansProjects alta. Kannattanee harkita myös muiden turhien tiedostojen poistamista sekä esimerkiksi selaimen välimuistin tyhjentämistä ajoittain.
-  </li>
-
-  <li>
-    Poista kotikansiossa olevan .m2-kansion sisältö. Tämä tehdään sillä Maven luo ladattavista riippuvuuksista (eli kirjastoista) vahingossa tyhjät tiedostot mikäli levytila on loppunut.
-  </li>
-
-  <li>
-    (Jatkuva) Kun saat tehtäviä lähetettyä TMC:lle, klikkaa tehtäväpohjaa ja valitse "clean". Tämä poistaa tehtäväpohjasta käännetyt tiedostot.
-  </li>
-</ol>
-
-
 <% partial 'partials/material_heading' do %>
   Object
 <% end %>
 
 <p>
-  Olemme useampaan otteeseen käyttäneet metodia <code>public String toString()</code> olion merkkijonoesityksen muodostamiseen. Emme ole kuitenkaan saaneet selvyyttä <em>miksi</em> Java osaa käyttää kyseistä metodia. Olemattoman metodin kutsuminenhan tuottaa normaalisti virheen.
+  Olemme useampaan otteeseen käyttäneet metodia <code>public String toString()</code> olion merkkijonoesityksen muodostamiseen. Emme ole kuitenkaan saaneet selville miksi Java osaa käyttää kyseistä metodia. Olemattoman metodin kutsuminenhan tuottaa normaalisti virheen.
 </p>
 
 <p>
@@ -1270,7 +63,7 @@ System.out.println(olioKirja.toString());
 <% end %>
 
 <p>
-  Ohjelma ei tulosta virheilmoitusta tai kaadu kun annamme <code>Kirja</code>-luokasta tehdyn olion parametrina <code>System.out.println</code>-komennolle tai kutsumme oliolle metodia <code>toString</code>. Näemme virheilmoituksen tai kaatumisen sijaan mielenkiintoisen tulosteen. Tuloste sisältää luokan <code>Kirja</code> nimen ja epämääräisen @-merkkiä seuraavan merkkijonon. Huomaa että kutsussa <code>System.out.println(olioKirja)</code> Java tekee oikeasti kutsun <code>System.out.println(olioKirja.toString())</code>
+  Ohjelma ei tulosta virheilmoitusta tai kaadu kun annamme <code>Kirja</code>-luokasta tehdyn olion parametrina <code>System.out.println</code>-komennolle tai kutsumme oliolle metodia <code>toString</code>. Näemme virheheilmoituksen tai kaatumisen sijaan mielenkiintoisen tulosteen. Tuloste sisältää luokan <code>Kirja</code> nimen ja epämääräisen @-merkkiä seuraavan merkkijonon. Huomaa että kutsussa <code>System.out.println(olioKirja)</code> Java tekee oikeasti kutsun <code>System.out.println(olioKirja.toString())</code>
 </p>
 
 <p>
@@ -1278,7 +71,7 @@ System.out.println(olioKirja.toString());
 </p>
 
 <p>
-  Object-luokassa määritelty <code>toString</code>-metodi ei yleensä ole toivomamme, minkä takia se tyypillisesti korvataan omalla toteutuksellamme. Tämä tapahtuu luomalla omaan luokkaamme <code>public String toString()</code>-metodi, jossa on toivomamme toiminnallisuus.
+  Object-luokassa määritelty <code>toString</code>-metodi ei yleensä ole toivomamme. Se voidaan korvata omalla toteutuksella. Tämä tapahtuu luomalla omaan luokkaamme <code>public String toString()</code>-metodi, jossa on toivomamme toiminnallisuus.
 </p>
 
 <p>
@@ -1553,39 +346,10 @@ if (olioKirja.equals(toinenOlioKirja)) {
 Kirjat olivat samat
 <% end %>
 
+<%= partial 'partials/quiz', locals: { id: '5a9882fc7863c4000454a048' } %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Sama päiväys' } do %>
-
-  <p>
-    Laajennetaan alkukurssin tehtävässä "Päivämäärien erotus" toteutettua Paivays-luokkaa siten, että se osaa myös sanoa ovatko päivämäärät täsmälleen samat.
-  </p>
-
-  <p>
-    Lisää <code>Paivays</code>-luokkaan metodi <code>public boolean equals(Object object)</code>, joka kertoo onko metodille parametrina annettu olio päiväys ja onko parametrina annetun olion päiväys sama kuin käytetyn olion päiväys.
-  </p>
-
-  <p>
-    Metodin tulee toimia seuraavasti:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Paivays p = new Paivays(1, 2, 2000);
-System.out.println(p.equals("heh"));
-System.out.println(p.equals(new Paivays(5, 2, 2012)));
-System.out.println(p.equals(new Paivays(1, 2, 2000)));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-false
-false
-true
-  <% end %>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Equals ja ArrayList
 <% end %>
 
@@ -1612,6 +376,8 @@ if (!kirjat.contains(olioKirja)) {
 <p>
   Tämä oletusmetodeihin kuten <code>equals</code> tukeutuminen on oikeastaan syy sille, miksi Java haluaa, että ArrayListiin lisättävät muuttujat ovat viittaustyyppisiä. Koska jokaisella luokalla on Object-luokasta periytyvä equals-metodi, ei luokan ArrayList sisäistä toteutusta tarvitse muuttaa lainkaan erilaisia muuttujia lisättäessä. Alkeistyyppisillä muuttujilla tällaisia metodeja ei ole, jolloin ArrayList ei löydä niihin liittyvää equals-metodia.
 </p>
+
+<%= partial 'partials/quiz', locals: { id: '5a9886df7863c4000454a04d' } %>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1692,18 +458,6 @@ public int hashCode() {
 
     return this.julkaisuvuosi + this.nimi.hashCode();
 }
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Hajautusarvo päiväykselle' } do %>
-
-  <p>
-    Laajennetaan vielä edellisessä tehtävässä nähtyä <code>Paivays</code>-luokkaa siten, että sillä on myös oma <code>hashCode</code>-metodi.</p>
-
-  <p>
-    Lisää <code>Paivays</code>-luokkaan metodi <code>public int hashCode()</code>, joka laskee päiväys-oliolle hajautusarvon. Toteuta hajautusarvon laskeminen siten, että vuosien 1900 ja 2100 välillä löytyy mahdollisimman vähän samankaltaisia hajautusarvoja.
-  </p>
-
 <% end %>
 
 
@@ -1812,7 +566,53 @@ Arto
 <% end %>
 
 
+
+<% partial 'partials/exercise', locals: { name: 'Sama päiväys' } do %>
+
+  <p>
+    Laajennetaan alkukurssin tehtävässä "Päivämäärien erotus" toteutettua Paivays-luokkaa siten, että se osaa myös sanoa ovatko päivämäärät täsmälleen samat.
+  </p>
+
+  <p>
+    Lisää <code>Paivays</code>-luokkaan metodi <code>public boolean equals(Object object)</code>, joka kertoo onko metodille parametrina annettu olio päiväys ja onko parametrina annetun olion päiväys sama kuin käytetyn olion päiväys.
+  </p>
+
+  <p>
+    Metodin tulee toimia seuraavasti:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Paivays p = new Paivays(1, 2, 2000);
+    System.out.println(p.equals("heh"));
+    System.out.println(p.equals(new Paivays(5, 2, 2012)));
+    System.out.println(p.equals(new Paivays(1, 2, 2000)));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    false
+    false
+    true
+  <% end %>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Hajautusarvo päiväykselle' } do %>
+
+  <p>
+    Laajennetaan vielä edellisessä tehtävässä nähtyä <code>Paivays</code>-luokkaa siten, että sillä on myös oma <code>hashCode</code>-metodi.</p>
+
+  <p>
+    Lisää <code>Paivays</code>-luokkaan metodi <code>public int hashCode()</code>, joka laskee päiväys-oliolle hajautusarvon. Toteuta hajautusarvon laskeminen siten, että vuosien 1900 ja 2100 välillä löytyy mahdollisimman vähän samankaltaisia hajautusarvoja.
+  </p>
+
+<% end %>
+
+
 <% partial 'partials/exercise', locals: { name: 'Autorekisterikeskus (3 osaa)' } do %>
+
+  <p>
+    TODO: låinkki hashmap-kertaukseen
+  </p>
 
 
   <h2>Rekisterinumeron equals ja hashCode</h2>
@@ -1910,8 +710,14 @@ Jürgen
   </p>
 
   <ul>
-    <li><code>public void tulostaRekisterinumerot()</code> tulostaa rekisterissä olevat rekisterinumerot</li>
-    <li><code>public void tulostaOmistajat()</code> tulostaa rekisterissä olevien autojen omistajat, yhden omistajan nimeä ei saa tulostaa kuin kertaalleen vaikka omistajalla olisikin useampi auto</li>
+
+    <li>
+      <code>public void tulostaRekisterinumerot()</code> tulostaa rekisterissä olevat rekisterinumerot.
+    </li>
+    
+    <li>
+      <code>public void tulostaOmistajat()</code> tulostaa rekisterissä olevien autojen omistajat. Kukin nimi tulee tulostaa vain kertaalleen vaikka omistajalla olisikin useampi auto.
+    </li>
   </ul>
 
 <% end %>
@@ -2051,10 +857,10 @@ Ohjelmoi aina ensin pieni osa, jolla ratkaiset osan ongelmasta.
 Harjoittelu tekee mestarin. Keksi ja tee omia kokeiluja ja projekteja.
 <% end %>
 
-<% partial 'partials/hint', locals: { name: 'Mikä ihmeen for (int i = 0; ...?' } do %>
+<% partial 'partials/hint', locals: { name: 'Miten toimikaan for (int i = 0; ...?' } do %>
 
   <p>
-    Yllä olevassa esimerkissä käytettiin toisenlaista toistolausetta alkioiden läpikäyntiin. Olemme tottuneet seuraavanlaiseen toistolauseeseen while-toistolauseeseen.
+    Yllä olevassa esimerkissä käytettiin for-toistolausetta alkioiden läpikäyntiin. Toistolausetta käytetään listojen läpikäyntiin indeksien perusteella -- saman voisi toteuttaa myös while-toistolauseella. 
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -2181,7 +987,9 @@ sivut.add("Metodi voi kutsua itse itseään.");
 
 lukulista.add(new Sahkokirja("Rekursion alkeet.", sivut));
 
-lukulista.stream().forEach(l -&gt; System.out.println(l.lue()));
+for (Luettava luettava: lukulista) {
+    System.out.println(luettava.lue());
+}
 <% end %>
 
 <p>
@@ -2281,16 +1089,10 @@ public class Lukulista implements Luettava {
     }
 
     public String lue() {
-        String luettu = this.luettavat.stream()
-            .reduce("", (a, luettava) -&gt; a + luettava.lue() + "\n");
-
-        // yllä oleva on sama kuin
-        /*
         String luettu = "";
         for (int i = 0; i &lt; this.luettavat.size(); i++) {
             luettu += this.luettavat.get(i).lue() + "\n";
         }
-        */
 
         // kun lukulista on luettu, tyhjennetään se
         this.luettavat.clear();
@@ -2348,57 +1150,6 @@ Jonilla luettavia: 0
 <p>
   Kuten huomaat, ohjelmassa on jo hyvin paljon viitteitä. Kannattaa piirtää ohjelman tilaa askeleittain paperille, ja hahmotella miten <code>vernanLista</code>-oliolle tapahtuva metodikutsu <code>lue</code> etenee!
 </p>
-
-<% partial 'partials/hint', locals: { name: 'Mikä ihmeen reduce?' } do %>
-
-  <p>
-    Edellisessä esimerkissä käytettiin virtaan liittyvää reduce-metodia. Reduce-metodi on hyödyllinen kun virrassa olevat alkiot halutaan yhdistää jonkinlaiseen toiseen muotoon. Metodin saamat parametrit ovat seuraavaa muotoa: <code>reduce(<em>alkutila</em>, (<em>edellinen</em>, <em>olio</em>) -&gt; <em>mitä oliolla tehdään</em>)</code>.
-  </p>
-
-  <p>
-    Esimerkiksi kokonaislukuja sisältävän listan summan saa luotua reduce-metodin avulla seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
-luvut.add(7);
-luvut.add(3);
-luvut.add(2);
-luvut.add(1);
-
-int summa = luvut.stream()
-    .reduce(0, (edellinenSumma, luku) -&gt; edellinenSumma + luku);
-System.out.println(summa);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-13
-  <% end %>
-
-  <p>
-    Vastaavasti merkkijonoista koostuvasta listasta saa luotua rivitetyn merkkijonon seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
-sanat.add("Eka");
-sanat.add("Toka");
-sanat.add("Kolmas");
-sanat.add("Neljäs");
-
-String yhdistetty = sanat.stream()
-    .reduce("", (edellinenMjono, sana) -&gt; edellinenMjono + sana + "\n");
-System.out.println(yhdistetty);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-Eka
-Toka
-Kolmas
-Neljäs
-  <% end %>
-
-<% end %>
 
 <% partial 'partials/exercise', locals: { name: 'Tavaroita ja laatikoita (4 osaa)' } do %>
 
@@ -2757,8 +1508,9 @@ Map&lt;String, String&gt; kaannokset = new HashMap&lt;&gt;();
 kaannokset.put("gambatte", "tsemppiä");
 kaannokset.put("hai", "kyllä");
 
-kaannokset.keySet().stream()
-    .forEach(avain -&gt; System.out.println(avain + ": " + kaannokset.get(avain)));
+for (String avain: kaannokset.keySet()) {
+    System.out.println(avain + ": " + kaannokset.get(avain));
+}
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -2767,7 +1519,7 @@ hai: kyllä
 <% end %>
 
 <p>
-  Metodi <code>keySet</code> palauttaa <code>Set</code>-rajapinnan toteuttavan joukon alkioita. <code>Set</code>-rajapinnan toteuttavan joukon voi käydä läpi virtana. Hajautustaulusta saa talletetut arvot metodin <code>values</code>-avulla. Metodi <code>values</code> palauttaa <code>Collection</code> rajapinnan toteuttavan joukon alkioita. Tutustutaan vielä pikaisesti Set- ja Collection-rajapintoihin.
+  Metodi <code>keySet</code> palauttaa <code>Set</code>-rajapinnan toteuttavan joukon alkioita. <code>Set</code>-rajapinnan toteuttavan joukon voi käydä läpi <code>for-each</code>-lauseella. Hajautustaulusta saa talletetut arvot metodin <code>values</code>-avulla. Metodi <code>values</code> palauttaa <code>Collection</code> rajapinnan toteuttavan joukon alkioita. Tutustutaan vielä pikaisesti Set- ja Collection-rajapintoihin.
 </p>
 
 
@@ -2808,7 +1560,9 @@ joukko.add("yksi");
 joukko.add("yksi");
 joukko.add("kaksi");
 
-joukko.stream().forEach(alkio -&gt; System.out.println(alkio));
+for (String alkio: joukko) {
+    System.out.println(alkio);
+}
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -2862,7 +1616,7 @@ System.out.println(new JoukonTarkistin().palautaKoko(nimet));
 </p>
 
 <p>
-  Collection-rajapinta määrää myös virtatoteutuksesta. Jokaisella luokalla, joka toteuttaa Collection-rajapinnan joko välillisesti tai suoraan, tulee olla virran luomiseen käytettävä metodi <code>stream</code>.
+  Collection-rajapinta määrää myös läpikäynnin toteuttamisesta. Jokaisella luokalla, joka toteuttaa Collection-rajapinnan joko välillisesti tai suoraan, on myös <code>for-each</code>-toistolauseessa tarvittava toiminnallisuus. 
 </p>
 
 <p>
@@ -2878,12 +1632,17 @@ Set&lt;String&gt; avaimet = kaannokset.keySet();
 Collection&lt;String&gt; avainKokoelma = avaimet;
 
 System.out.println("Avaimet:");
-avainKokoelma.stream().forEach(avain -&gt; System.out.println(avain));
+for (String avain: avainKokoelma) {  
+    System.out.println(avain);
+}
 
 System.out.println();
 System.out.println("Arvot:");
 Collection&lt;String&gt; arvot = kaannokset.values();
-arvot.stream().forEach(arvo -&gt; System.out.println(arvo));
+
+for (String arvo: arvot) {
+    System.out.println(arvo);
+}
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -3024,7 +1783,10 @@ varasto.lisaaTuote("piimä", 2, 20);
 varasto.lisaaTuote("jugurtti", 2, 20);
 
 System.out.println("tuotteet:");
-varasto.tuotteet().stream().forEach(t -&gt; System.out.println(t));
+
+for (Tuote tuote: varasto.tuotteet()) {
+    System.out.println(tuote);
+}
   <% end %>
 
   <% partial 'partials/sample_output' do %>
@@ -3216,8 +1978,10 @@ public class Kauppa {
         System.out.println("Tervetuloa kauppaan " + asiakas);
         System.out.println("valikoimamme:");
 
-        varasto.tuotteet().stream().forEach(t -&gt; System.out.println(t));
-
+        for (String tuote: varasto.tuotteet()) {
+            System.out.println(t);
+        }
+    
         while (true) {
             System.out.print("mitä laitetaan ostoskoriin (pelkkä enter vie kassalle):");
             String tuote = lukija.nextLine();
@@ -3531,10 +2295,10 @@ List&lt;Lehma&gt; lehmaLista = new ArrayList&lt;&gt;();
 lehmaLista.add(ammu);
 lehmaLista.add(new Lehma());
 
-lehmaLista.stream().forEach(lehma -&gt; {
+for (Lehma lehma: lehmaLista) {
     lehma.eleleTunti();
     lehma.eleleTunti();
-});
+};
 
 navetta.hoida(lehmaLista);
 System.out.println("Navetta: " + navetta);
@@ -3664,407 +2428,6 @@ Lehmät:
 
 
 
-<% partial 'partials/material_heading' do %>
-  Ohjelman rakenne ja pakkaukset
-<% end %>
 
 
-<p>
-  Ohjelmaa varten toteutettujen luokkien määrän kasvaessa niiden toiminnallisuuksien ja metodien muistaminen vaikeutuu. Muistamista helpottaa luokkien järkevä nimentä sekä luokkien suunnittelu siten, että jokaisella luokalla on yksi selkeä vastuu. Tämän lisäksi luokat kannattaa jakaa toiminnallisuutta, käyttötarkoitusta tai jotain muuta loogista kokonaisuutta kuvaaviin pakkauksiin.
-</p>
-
-<p>
-  Pakkaukset (<em>package</em>) ovat käytännössä hakemistoja (directory, puhekielessä myös kansio), joihin lähdekooditiedostot organisoidaan.
-</p>
-
-<p>
-  Ohjelmointiympäristöt tarjoavat valmiit työkalut pakkausten hallintaan. Olemme tähän mennessä luoneet luokkia ja rajapintoja vain projektiin liittyvän lähdekoodipakkaukset-osion (<em>Source Packages</em>) oletuspakkaukseen (<em>default package</em>). Uuden pakkauksen voi luoda NetBeansissa projektin pakkauksiin liittyvässä Source Packages -osiossa oikeaa hiirennappia painamalla ja valitsemalla <em>New -&gt; Java Package...</em>.
-</p>
-
-<p>
-  Pakkauksen sisälle voidaan luoda luokkia aivan kuten oletuspakkaukseenkin (<code>default package</code>). Alla luodaan juuri luotuun pakkaukseen <code>kirjasto</code> luokka <code>Sovellus</code>.
-</p>
-
-<p>
-  Luokan pakkaus -- eli pakkaus, jossa luokka sijaitsee -- ilmaistaan lähdekooditiedoston alussa lauseella <code>package <em>pakkaus</em>;</code>. Alla oleva luokka <code>Sovellus</code> sijaitsee pakkauksessa <code>kirjasto</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto;
-
-  public class Sovellus {
-
-      public static void main(String[] args) {
-          System.out.println("Hello packageworld!");
-      }
-  }
-<% end %>
-
-<p>
-  Jokainen pakkaus -- myös oletuspakkaus eli default package -- voi sisältää useampia pakkauksia. Esimerkiksi pakkausmäärittelyssä <code>package kirjasto.domain</code> pakkaus <code>domain</code> on pakkauksen <code>kirjasto</code> sisällä. Edellä käytettyä nimeä <code>domain</code> käytetään usein kuvaamaan sovellusalueen käsitteisiin liittyvien luokkien säilytyspaikkaa. Esimerkiksi luokka <code>Kirja</code> voisi hyvin olla pakkauksen <code>kirjasto.domain</code> sisällä, sillä se kuvaa kirjastosovellukseen liittyvää käsitettä.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto.domain;
-
-  public class Kirja {
-      private String nimi;
-
-      public Kirja(String nimi) {
-          this.nimi = nimi;
-      }
-
-      public String getNimi() {
-          return this.nimi;
-      }
-  }
-<% end %>
-
-<p>
-  Pakkauksissa olevia luokkia tuodaan luokan käyttöön <code>import</code>-lauseen avulla. Pakkauksessa <code>kirjasto.domain</code> oleva luokka <code>Kirja</code> tuodaan käyttöön puolipisteeseen päättyvällä lauseella <code>import kirjasto.domain.Kirja</code>. Luokkien tuomiseen käytetyt import-lauseet asetetaan lähdekooditiedostoon pakkausmäärittelyn jälkeen.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto;
-
-  import kirjasto.domain.Kirja;
-
-  public class Sovellus {
-
-      public static void main(String[] args) {
-          Kirja kirja = new Kirja("pakkausten ABC!");
-          System.out.println("Hello packageworld: " + kirja.getNimi());
-      }
-  }
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  Hello packageworld: pakkausten ABC!
-<% end %>
-
-
-<p>
-  Jatkossa <em>kaikissa</em> tehtävissämme käytetään pakkauksia. Luodaan seuraavaksi ensimmäiset pakkaukset itse.
-</p>
-
-<% partial 'partials/exercise', locals: { name: 'Ensimmäisiä pakkauksia (3 osaa)' } do %>
-
-
-  <h2>Käyttöliittymä-rajapinta</h2>
-
-  <p>
-    Luo projektipohjaan pakkaus <code>mooc</code>. Rakennetaan tämän pakkauksen sisälle sovelluksen toiminta. Lisää pakkaukseen mooc pakkaus <code>ui</code> (tämän jälkeen käytössä pitäisi olla pakkaus <code>mooc.ui</code>), ja lisää sinne rajapinta <code>Kayttoliittyma</code>.
-  </p>
-
-  <p>
-    Rajapinnan <code>Kayttoliittyma</code> tulee määritellä metodi <code>void paivita()</code>.
-  </p>
-
-
-  <h2>Tekstikäyttöliittymä</h2>
-
-  <p>
-    Luo samaan pakkaukseen luokka <code>Tekstikayttoliittyma</code>, joka toteuttaa rajapinnan <code>Kayttoliittyma</code>. Toteuta luokassa <code>Tekstikayttoliittyma</code> rajapinnan <code>Kayttoliittyma</code> vaatima metodi <code>public void paivita()</code> siten, että sen ainut tehtävä on merkkijonon "<code>Päivitetään käyttöliittymää</code>"-tulostaminen <code>System.out.println</code>-metodikutsulla.
-  </p>
-
-
-  <h2>Sovelluslogiikka</h2>
-
-  <p>
-    Luo tämän jälkeen pakkaus <code>mooc.logiikka</code>, ja lisää sinne luokka <code>Sovelluslogiikka</code>. Sovelluslogiikan tarjoaman toiminnallisuuden tulee olla seuraavanlainen.
-  </p>
-
-  <ul>
-    <li>
-      <code>public Sovelluslogiikka(Kayttoliittyma kayttoliittyma)</code><br/>Sovelluslogiikka-luokan konstruktori. Saa parametrina Kayttoliittyma-rajapinnan toteuttavan luokan. Huom: jotta sovelluslogiikka näkisi rajapinnan, on sen "importoitava" se, eli tarvitset tiedoston alkuun rivin <code>import mooc.ui.Kayttoliittyma;</code>
-    </li>
-    
-    <li>
-      <code>public void suorita(int montaKertaa)</code><br/>Tulostaa <code>montaKertaa</code>-muuttujan määrittelemän määrän merkkijonoa "Sovelluslogiikka toimii". Jokaisen "Sovelluslogiikka toimii"-tulostuksen jälkeen tulee kutsua konstruktorin parametrina saadun rajapinnan <code>Kayttoliittyma</code>-toteuttaman olion määrittelemää <code>paivita()</code>-metodia.
-    </li>
-  </ul>
-
-  <p>
-    Voit testata sovelluksen toimintaa seuraavalla pääohjelmaluokalla.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    import mooc.logiikka.Sovelluslogiikka;
-    import mooc.ui.Kayttoliittyma;
-    import mooc.ui.Tekstikayttoliittyma;
-
-    public class Main {
-
-        public static void main(String[] args) {
-            Kayttoliittyma kayttoliittyma = new Tekstikayttoliittyma();
-            new Sovelluslogiikka(kayttoliittyma).suorita(3);
-        }
-    }
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Sovelluslogiikka toimii
-    Päivitetään käyttöliittymää
-    Sovelluslogiikka toimii
-    Päivitetään käyttöliittymää
-    Sovelluslogiikka toimii
-    Päivitetään käyttöliittymää
-  <% end %>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Hakemistorakenne tiedostojärjestelmässä
-<% end %>
-
-<p>
-  Kaikki NetBeansissa näkyvät projektit ovat tietokoneesi <em><a href="http://fi.wikipedia.org/wiki/Tiedostoj%C3%A4rjestelm%C3%A4" target="_blank" rel="noopener">tiedostojärjestelmässä</a></em> tai jollain keskitetyllä levypalvelimella. Jokaiselle projektille on olemassa oma hakemisto, jonka sisällä on projektiin liittyvät tiedostot ja hakemistot.
-</p>
-
-<p>
-  Projektin hakemistossa <code>src</code> on ohjelmaan liittyvät lähdekoodit. Jos luokan pakkauksena on kirjasto, sijaitsee se projektin lähdekoodihakemiston <code>src</code> sisällä olevassa hakemistossa <code>kirjasto</code>. NetBeansissa voi käydä katsomassa projektien konkreettista rakennetta <em>Files</em>-välilehdeltä joka on normaalisti <em>Projects</em>-välilehden vieressä. Jos et näe välilehteä <em>Files</em>, saa sen näkyville valitsemalla vaihtoehdon <em>Files</em> valikosta <em>Window</em>.
-</p>
-
-<p>
-  Sovelluskehitystä tehdään normaalisti <em>Projects</em>-välilehdeltä, jossa NetBeans on piilottanut projektiin liittyviä tiedostoja joista ohjelmoijan ei tarvitse välittää.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Pakkaukset ja näkyvyysmääreet
-<% end %>
-
-<p>
-  Olemme tähän mennessä käyttäneet kahta näkyvyysmäärettä. Näkyvyysmääreellä <code>private</code> määritellään muuttujia (ja metodeja), jotka ovat näkyvissä vain sen luokan sisällä joka määrittelee ne. Niitä ei voi käyttää luokan ulkopuolelta. Näkyvyysmääreellä <code>public</code> varustetut metodit ja muuttujat ovat taas kaikkien käytettävissä.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto.ui;
-
-  public class Kayttoliittyma {
-      private Scanner lukija;
-
-      public Kayttoliittyma(Scanner lukija) {
-          this.lukija = lukija;
-      }
-
-      public void kaynnista() {
-          tulostaOtsikko();
-
-          // muu toiminnallisuus
-      }
-
-      private void tulostaOtsikko() {
-          System.out.println("************");
-          System.out.println("* KIRJASTO *");
-          System.out.println("************");
-      }
-  }
-<% end %>
-
-<p>
-  Yllä olevasta <code>Kayttoliittyma</code>-luokasta tehdyn olion konstruktori ja <code>kaynnista</code>-metodi on kutsuttavissa mistä tahansa ohjelmasta. Metodi <code>tulostaOtsikko</code> ja <code>lukija</code>-muuttuja on käytössä vain luokan sisällä.
-</p>
-
-<p>
-  Jos näkyvyysmäärettä ei määritellä, metodit ja muuttujat ovat näkyvillä saman pakkauksen sisällä. Tätä kutsutaan oletus- tai pakkausnäkyvyydeksi. Muutetaan yllä olevaa esimerkkiä siten, että metodilla <code>tulostaOtsikko</code> on pakkausnäkyvyys.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto.ui;
-
-  public class Kayttoliittyma {
-      private Scanner lukija;
-
-      public Kayttoliittyma(Scanner lukija) {
-          this.lukija = lukija;
-      }
-
-      public void kaynnista() {
-          tulostaOtsikko();
-
-          // muu toiminnallisuus
-      }
-
-      void tulostaOtsikko() {
-          System.out.println("************");
-          System.out.println("* KIRJASTO *");
-          System.out.println("************");
-      }
-  }
-<% end %>
-
-<p>
-  Nyt saman pakkauksen sisällä olevat luokat -- eli luokat, jotka sijaitsevat pakkauksessa <code>kirjasto.ui</code> voivat käyttää metodia <code>tulostaOtsikko</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto.ui;
-
-  import java.util.Scanner;
-
-  public class Main {
-
-      public static void main(String[] args) {
-          Scanner lukija = new Scanner(System.in);
-          Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
-
-          kayttoliittyma.tulostaOtsikko(); // onnistuu!
-      }
-  }
-<% end %>
-
-<p>
-  Jos luokka on eri pakkauksessa, ei metodia <code>tulostaOtsikko</code> pysty käyttämään. Alla olevassa esimerkissä luokka Main on pakkauksessa <code>kirjasto</code>, jolloin pakkauksessa <code>kirjasto.ui</code> pakkausnäkyvyydellä määriteltyyn metodiin <code>tulostaOtsikko</code> ei pääse käsiksi.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package kirjasto;
-
-  import java.util.Scanner;
-  import kirjasto.ui.Kayttoliittyma;
-
-  public class Main {
-
-      public static void main(String[] args) {
-          Scanner lukija = new Scanner(System.in);
-          Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
-
-          kayttoliittyma.tulostaOtsikko(); // ei onnistu!
-      }
-  }
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Lentokenttä (3 osaa)' } do %>
-
-  <p>
-    Tässä tehtävässä pääset suunnittelemaan vapaasti ohjelman rakenteen. Käyttöliittymän ulkomuoto sekä vaaditut komennot on määritelty ennalta. Tehtävä on kolmen yksittäisen tehtäväpisteen arvoinen.
-  </p>
-
-  <p>
-    <strong>Huom: jotta testit toimisivat, saat luoda ohjelmassasi vain yhden Scanner-olion käyttäjän syötteen lukemiseen.</strong>
-  </p>
-
-  <p>
-    Lentokenttä-tehtävässä toteutetaan lentokentän hallintasovellus. Lentokentän hallintasovelluksessa hallinnoidaan lentokoneita ja lentoja. Lentokoneista tiedetään aina tunnus ja kapasiteetti. Lennoista tiedetään lennon lentokone, lähtöpaikan tunnus (esim. <a href="http://en.wikipedia.org/wiki/Helsinki_Airport" target="_blank" rel="noopener">HEL</a>) ja kohdepaikan tunnus (esim. <a href="http://en.wikipedia.org/wiki/Batman_Airport" target="_blank" rel="noopener">BAL</a>).
-  </p>
-
-  <p>
-    Sekä lentokoneita että lentoja voi olla useita. Samalla lentokoneella voidaan myös lentää useita eri lentoja.
-  </p>
-
-  <p>
-    Sovelluksen tulee toimia kahdessa vaiheessa: ensin syötetään lentokoneiden ja lentojen tietoja hallintakäyttöliittymässä, jonka jälkeen siirrytään lentopalvelun käyttöön. Lentopalvelussa on kolme toimintoa; lentokoneiden tulostaminen, lentojen tulostaminen, ja lentokoneen tietojen tulostaminen. Tämän lisäksi käyttäjä voi poistua ohjelmasta valitsemalla vaihtoehdon <code>x</code>. Jos käyttäjä syöttää epäkelvon komennon, kysytään komentoa uudestaan.
-  </p>
-
-
-  <% partial 'partials/sample_output' do %>
-    Lentokentän hallinta
-    --------------------
-
-    Valitse toiminto:
-    [1] Lisää lentokone
-    [2] Lisää lento
-    [x] Poistu hallintamoodista
-    &gt; <font color="red">1</font>
-    Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
-    Anna lentokoneen kapasiteetti: <font color="red">42</font>
-    Valitse toiminto:
-    [1] Lisää lentokone
-    [2] Lisää lento
-    [x] Poistu hallintamoodista
-    &gt; <font color="red">1</font>
-    Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
-    Anna lentokoneen kapasiteetti: <font color="red">101</font>
-    Valitse toiminto:
-    [1] Lisää lentokone
-    [2] Lisää lento
-    [x] Poistu hallintamoodista
-    &gt; <font color="red">2</font>
-    Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
-    Anna lähtöpaikan tunnus: <font color="red">HEL</font>
-    Anna kohdepaikan tunnus: <font color="red">BAL</font>
-    Valitse toiminto:
-    [1] Lisää lentokone
-    [2] Lisää lento
-    [x] Poistu hallintamoodista
-    &gt; <font color="red">2</font>
-    Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
-    Anna lähtöpaikan tunnus: <font color="red">JFK</font>
-    Anna kohdepaikan tunnus: <font color="red">BAL</font>
-    Valitse toiminto:
-    [1] Lisää lentokone
-    [2] Lisää lento
-    [x] Poistu hallintamoodista
-    &gt; <font color="red">2</font>
-    Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
-    Anna lähtöpaikan tunnus: <font color="red">BAL</font>
-    Anna kohdepaikan tunnus: <font color="red">HEL</font>
-    Valitse toiminto:
-    [1] Lisää lentokone
-    [2] Lisää lento
-    [x] Poistu hallintamoodista
-    &gt; <font color="red">x</font>
-
-    Lentopalvelu
-    ------------
-
-    Valitse toiminto:
-    [1] Tulosta lentokoneet
-    [2] Tulosta lennot
-    [3] Tulosta lentokoneen tiedot
-    [x] Lopeta
-    &gt; <font color="red">1</font>
-    G-OWAC (101 henkilöä)
-    HA-LOL (42 henkilöä)
-    Valitse toiminto:
-    [1] Tulosta lentokoneet
-    [2] Tulosta lennot
-    [3] Tulosta lentokoneen tiedot
-    [x] Lopeta
-    &gt; <font color="red">2</font>
-    HA-LOL (42 henkilöä) (HEL-BAL)
-    HA-LOL (42 henkilöä) (BAL-HEL)
-    G-OWAC (101 henkilöä) (JFK-BAL)
-
-    Valitse toiminto:
-    [1] Tulosta lentokoneet
-    [2] Tulosta lennot
-    [3] Tulosta lentokoneen tiedot
-    [x] Lopeta
-    &gt; <font color="red">3</font>
-    Mikä kone: <font color="red">G-OWAC</font>
-    G-OWAC (101 henkilöä)
-
-    Valitse toiminto:
-    [1] Tulosta lentokoneet
-    [2] Tulosta lennot
-    [3] Tulosta lentokoneen tiedot
-    [x] Lopeta
-    &gt; <font color="red">x</font>
-  <% end %>
-
-  <p>
-    <strong>Huom1:</strong> Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii <strong>täsmälleen</strong> kuten yllä kuvattu. Ohjelman tulostamat vaihtoehdot kannattanee copypasteta tästä ohjelmakoodiin. Testit eivät oleta, että ohjelmasi on varautunut epäkelpoihin syötteisiin.
-  </p>
-
-  <p>
-    <strong>Huom2:</strong> älä käytä luokkein nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin!
-  </p>
-
-  <p>
-    <em>
-      <strong>Ohjelman tulee käynnistyä kun pakkauksessa lentokentta olevan luokan Main metodi main suoritetaan.</strong>
-    </em>
-  </p>
-
-<% end %>
-
-
-
-
-<%= partial 'partials/quiz', locals: { id: '59f5f23a271b380004a262e2' } %>
+<%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a03e' } %>
