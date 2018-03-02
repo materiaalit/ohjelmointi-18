@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC, Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, kevät 2018 | Kertaus 1-7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-4f205160.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=kertaus1.html&gt;')">Kertaus 1-7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part8/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part8.html&gt;')">Osa 8</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+</div>
+
+
+          
+<h1 class="material-heading">
+    Kertaustehtäviä osiin 1-7 liittyen
+
+</h1>
+
+<p>
+  Tällä sivulla on kertaustehtäviä materiaalin osiin 1-7 liittyen.  Kertaustehtävät saa ladattua TMC:stä. Tehtävät eivät missään nimessä kata kaikkea osien 1-7 sisällöstä, vaan ne toimivat lisäkertauksena kurssin aihepiiriin.
+</p>
+
+<p>
+  Kertaustehtävissä ei ole automaattisia testejä mukana, eli palauta niitä sitä mukaa kun saat tehtävän toimimaan toivotusti. Mieti myös minkälaisilla syötteillä tehtävän toimintaa kannattaa testata.
+</p>
+
+
+<h2 class="material-heading">
+    Toisto- ja ehtolauseet
+
+</h2>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Kerrottu kymmenellä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta ohjelma, joka kysyy käyttäjältä lukua, ja tulostaa sen kerrottuna yhdellä, kahdella jne seuraavasti.
+  </p>
+
+  
+<pre class="sample-output">Luku: <font color="red">2</font>
+
+1 * 2 = 2
+2 * 2 = 4
+3 * 2 = 6
+4 * 2 = 8
+5 * 2 = 10
+6 * 2 = 12
+7 * 2 = 14
+8 * 2 = 16
+9 * 2 = 18
+10 * 2 = 20
+</pre>
+
+<pre class="sample-output">Luku: <font color="red">7</font>
+
+1 * 7 = 7
+2 * 7 = 14
+3 * 7 = 21
+4 * 7 = 28
+5 * 7 = 35
+6 * 7 = 42
+7 * 7 = 49
+8 * 7 = 56
+9 * 7 = 63
+10 * 7 = 70
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Kolmella jaollisten summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä lukuja, ja tulostaa sen jälkeen kolmella jaollisten syötteiden summan. Ohjelman lopettaa lukemisen kun käyttäjä syöttää tyhjän merkkijonon.
+  </p>
+
+  
+<pre class="sample-output">Luku: <font color="red">3</font>
+Luku: <font color="red">5</font>
+Luku: <font color="red">27</font>
+Luku: <font color="red">3301</font>
+Luku: <font color="red">3</font>
+Luku:
+
+Kolmella jaollisten lukujen summa: 33
+</pre>
+
+<pre class="sample-output">Luku: <font color="red">1</font>
+Luku: <font color="red">2</font>
+Luku: <font color="red">5</font>
+Luku: 
+
+Ei kolmella jaollisia lukuja
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Pyöristelyä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä luvun, ja pyöristää pyöristää sen ylöspäin lähimpään viidellä jaolliseen lukuun.
+  </p>
+
+  
+<pre class="sample-output">Luku: <font color="red">3</font>
+Pyöristys: 5
+</pre>
+
+  
+<pre class="sample-output">Luku: <font color="red">5</font>
+Pyöristys: 5
+</pre>
+
+  
+<pre class="sample-output">Luku: <font color="red">27</font>
+Pyöristys: 30
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Karkausvuosia</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä vuosilukua, ja tulostaa sen jälkeen vuosilukua seuraavat 5 karkausvuotta. Karkausvuoden laskemiseen löytyy ohjeita Wikipediasta.
+  </p>
+
+  
+<pre class="sample-output">Syötä vuosiluku: <font color="red">1999</font>
+Karkausvuodet: 2000, 2004, 2008, 2012, 2016
+</pre>
+
+<pre class="sample-output">Syötä vuosiluku: <font color="red">2016</font>
+Karkausvuodet: 2016, 2020, 2024, 2028, 2032
+</pre>
+  
+<pre class="sample-output">Syötä vuosiluku: <font color="red">2084</font>
+Karkausvuodet: 2084, 2088, 2092, 2096, 2104
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Fibonacci</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Fibonaccin luvut ovat lukuja, jotka ovat aina kahden edeltävän luvun summa. Ensimmäiset kaksi lukua ovat 1 ja 1, jota seuraa luvut 2, 3, 5, 8 jne. Toteuta ohjelma, joka tulostaa halutun määrän Fibonaccin lukuja.
+  </p>
+  
+<pre class="sample-output">Montako lukua tulostetaan: <font color="red">5</font>
+1, 1, 2, 3, 5
+</pre>
+
+  
+<pre class="sample-output">Montako lukua tulostetaan: <font color="red">11</font>
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Nugettiostoksilla</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    McDonaldsissa voi ostaa nugetteja neljän, kuuden, yhdeksän ja kahdenkymmenen nugetin pakkauksissa. Kirjoita ohjelma, jolle annetaan luku, ja joka kertoo käyttäjälle onko annettua määrää mahdollista ostaa.
+  </p>
+  
+<pre class="sample-output">Nugetteja: <font color="red">3</font>
+Ostaminen ei ole mahdollista
+</pre>
+
+<pre class="sample-output">Nugetteja: <font color="red">8</font>
+Ostaminen on mahdollista
+</pre>
+  
+<pre class="sample-output">Nugetteja: <font color="red">9</font>
+Ostaminen on mahdollista
+</pre>
+
+<pre class="sample-output">Nugetteja: <font color="red">11</font>
+Ostaminen ei ole mahdollista
+</pre>
+
+<pre class="sample-output">Nugetteja: <font color="red">24</font>
+Ostaminen on mahdollista
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Suorakulmio</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä suorakulmion leveyttä ja korkeutta, ja tulostaa x-merkeistä muodostuvan suorakulmion. 
+  </p>
+
+  
+<pre class="sample-output">Leveys: <font color="red">4</font>
+Korkeus: <font color="red">2</font>
+
+xxxx
+xxxx
+</pre>
+
+  
+<pre class="sample-output">Leveys: <font color="red">4</font>
+Korkeus: <font color="red">3</font>
+
+xxxx
+xxxx
+xxxx
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Matto</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä maton leveyttä ja korkeutta, ja tulostaa x-merkeistä koostuvan maton, jonka joka toisella rivillä joka toinen merkki on o.
+  </p>
+
+  
+<pre class="sample-output">Leveys: <font color="red">4</font>
+Korkeus: <font color="red">2</font>
+
+xxxx
+xoxo
+</pre>
+
+  
+<pre class="sample-output">Leveys: <font color="red">5</font>
+Korkeus: <font color="red">5</font>
+
+xxxxx
+xoxox
+xxxxx
+xoxox
+xxxxx
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Erilainen Matto</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä maton leveyttä ja korkeutta, ja tulostaa maton seuraavia sääntöjä noudattaen. Säännöt ovat tärkeysjärjestyksessä, ja tärkeintä sääntöä tulee noudattaa aina ensin:
+  </p>
+
+  <ul>
+    <li>joka toisella rivillä joka toinen merkki on o</li>
+    <li>joka kolmannella rivillä joka kolmas merkki on z</li>
+    <li>joka viidennellä rivillä joka viides merkki on s</li>
+    <li>kaikki muut merkit ovat x-muotoisia</li>
+  </ul>
+  
+<pre class="sample-output">Leveys: <font color="red">5</font>
+Korkeus: <font color="red">3</font>
+
+xxxxx
+xoxox
+xxzxx
+</pre>
+
+  
+<pre class="sample-output">Leveys: <font color="red">7</font>
+Korkeus: <font color="red">7</font>
+
+xxxxxxx
+xoxoxox
+xxzxxzx
+xoxoxox
+xxxxsxx
+xozoxox
+xxxxxxx
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Salmiakki</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy salmiakin korkeutta, jonka jälkeen se tulostaa "salmiakin". 
+  </p>
+  
+<pre class="sample-output">Korkeus: <font color="red">1</font>
+
+*
+</pre>
+
+  
+<pre class="sample-output">Korkeus: <font color="red">5</font>
+
+  *
+ * *
+*   *
+ * *
+  *
+</pre>
+
+<pre class="sample-output">Korkeus: <font color="red">6</font>
+
+  *
+ * *
+*   *
+*   *
+ * *
+  *
+</pre>
+
+  
+<pre class="sample-output">Korkeus: <font color="red">7</font>
+
+   *
+  * *
+ *   *
+*     *
+ *   *
+  * *
+   *
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Metodeja ja listoja
+
+</h2>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Esiintyykö luku kerran</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee metodi <code>public static boolean esiintyykoListallaKerran(ArrayList&lt;Integer&gt; luvut, int luku)</code>, joka palauttaa arvon <code>true</code> jos luku esiintyy listalla kerran, muuten arvon <code>false</code>.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Esiintyykö luku kolmesti</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee metodi <code>public static boolean esiintyykoListallaKolmesti(ArrayList&lt;Integer&gt; luvut, int luku)</code>, joka palauttaa arvon <code>true</code> jos luku esiintyy listalla tasan kolme kertaa, muuten arvon <code>false</code>.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Löytyykö luvut väliltä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee metodi <code>public static boolean loytyykoLuvutValilta(ArrayList&lt;Integer&gt; luvut, int alku, int loppu)</code>, joka palauttaa arvon <code>true</code> jos listalla löytyy kaikki luvut lukujen alku ja loppu väliltä, muuten metodi palauttaa arvon <code>false</code>.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Merkkijonojen käsittelyä
+
+</h2>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Merkkijono osissa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonoa, ja tulostaa sen jälkeen merkkijonon jokaisen merkin erikseen.
+  </p>
+  
+<pre class="sample-output">Merkkijono: <font color="red">hello world!</font>
+h
+e
+l
+l
+o
+
+w
+o
+r
+l
+d
+!
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Palindromi</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä syötettä ja kertoo sen jälkeen onko syöte palindromi.
+  </p>
+
+<pre class="sample-output">Syöte: <font color="red">saippuakauppias</font>
+Syöte on palindromi
+</pre>
+  
+<pre class="sample-output">Syöte: <font color="red">nakkikauppias</font>
+Syöte ei ole palindromi
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Palindromin jakajamerkki</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Parittoman pituisissa palindromeissa on jakajamerkki. Toteuta ohjelma, joka selvittää palindromin jakajamerkin.
+  </p>
+
+<pre class="sample-output">Syöte: <font color="red">saippuakauppias</font>
+Palindromin jakajamerkki on k
+</pre>
+
+<pre class="sample-output">Syöte: <font color="red">saippuakivikauppias</font>
+Palindromin jakajamerkki on v
+</pre>
+
+<pre class="sample-output">Syöte: <font color="red">aa</font>
+Ei jakajamerkkiä
+</pre>
+  
+<pre class="sample-output">Syöte: <font color="red">nauris</font>
+Ei palindromi
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Oliot
+
+</h2>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Pisteiden etäisyys toisistaan</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta luokka <code>Piste</code>, jolla on oliomuuttujat <code>double x</code> ja <code>double y</code>, sopiva konstruktori, sekä metodit <code>public double getX()</code> ja <code>public double getY()</code>. Toteuta tämän jälkeen luokalle metodi <code>public double etaisyys(Piste toinen)</code>, joka laskee pisteen etäisyyden toisesta pisteestä. Kahden pisteen etäisyyden laskemiseen löytyy esimerkiksi apua Wikipediasta. 
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Osuuko ympyrä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta luokka <code>Ympyra</code>, jolla on oliomuuttujat <code>double x</code>, <code>double y</code> sekä <code>double sade</code>. Muuttuja x kuvaa ympyrän keskipisteen x-koordinaattia, muuttuja y ympyrän keskipisteen y-koordinaattia sekä sade ympyrän sädettä. Toteuta tämän jälkeen metodi <code>public boolean osuuko(Ympyra toinen)</code>, joka palauttaa true jos ympyrä osuu toiseen ympyrään. Edellisestä tehtävästä on tässä hyötyä.
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Olioita listalla
+
+</h2>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tehtävälista</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Ohjelmoi luokka <code>Tehtava</code>. Tehtavalla tulee olla tieto tehtävästä (merkkijono) sekä tieto siitä, onko tehtävä tehty. Luokan tulee toimia seuraavasti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Tehtava t = new Tehtava("Korjaa kokeet");
+System.out.println(t);
+t.asetaTehdyksi();
+System.out.println(t);
+t.asetaTekemattomaksi();
+System.out.println(t);
+</code></pre>
+  
+<pre class="sample-output">Korjaa kokeet (ei tehty)
+Korjaa kokeet (tehty)
+Korjaa kokeet (ei tehty)
+</pre>
+  
+  <p>
+    Toteuta tämän jälkeen luokka <code>Tehtavalista</code>, joka toimii seuraavasti.
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>Tehtavalista tl = new Tehtavalista();
+tl.lisaa("Käy kaupassa");
+System.out.println(tl);
+tl.asetaTehdyksi("Käy kaupassa");
+System.out.println(tl);
+Tehtava t = tl.annaTehtava("Käy kaupassa");
+t.asetaTekemattomaksi();
+tl.lisaa("Imuroi");
+System.out.println(tl);
+</code></pre>
+
+<pre class="sample-output">Tehtävät
+* Käy kaupassa (ei tehty)
+
+Tehtävät
+* Käy kaupassa (tehty)
+
+Tehtävät
+* Käy kaupassa (ei tehty)
+* Imuroi (ei tehty)
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Palautteet</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta luokka <code>Palaute</code>, joka saa konstruktorin parametrina tekstikuvauksen sekä välillä 1-5 olevan arvosanan. Luokan tulee toimia esimerkiksi seuraavasti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Palaute p = new Palaute("Kiitti letuista", 2);
+System.out.println(p)
+</code></pre>
+  
+<pre class="sample-output">(2/5) Kiitti letuista
+</pre>
+  
+  <p>
+    Kirjoita tämän jälkeen luokka <code>Palauteanalyytikko</code>, jolle voidaan lisätä palautteita. Palauteanalyytikon tulee tarjota seuraavat metodit: 
+  </p>
+
+  <ul>
+    <li>
+      <code>public void add(Palaute p)</code> -- lisää palautteen analysoitavaksi
+    </li>
+    <li>
+      <code>public double palautteidenKeskiarvo()</code> -- laskee palautteiden keskiarvon ja palauttaa sen. Mikäli palautteita ei ole, palauta arvo -1
+    </li>
+    <li>
+      <code>public ArrayList&lt;Palaute&gt; palautteetValilta(int alku, int loppu)</code> -- palauttaa kaikki palautteet, joiden arvosana on annetulla välillä
+    </li>
+    <li>
+      <code>public String toString()</code> -- tulostaa kaikki palautteet
+    </li>
+  </ul>
+  
+
+<pre class="sh_java code-highlight"><code>Palauteanalyytikko pa = new Palauteanalyytikko();
+pa.add(new Palaute("Kiitti letuista", 2));
+pa.add(new Palaute(“Kiitti letuista ja hillosta”, 4));
+
+System.out.println(pa.palautteidenKeskiarvo());
+System.out.println();
+System.out.println(pa.palautteetValilta(3, 5));
+System.out.println();
+System.out.println(pa);
+</code></pre>
+
+<pre class="sample-output">3.0
+
+[(4/5) Kiitti letuista ja hilloista]
+
+Palautteet:
+* (2/5) Kiitti letuista
+* (4/5) Kiitti letuista ja hillosta
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Hajautustaulu
+
+</h2>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Morsetus</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonoa, ja tulostaa sen jälkeen merkkijonon morsekoodina. Morseaakkoset löytyvät wikipediasta: https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6tys
+  </p>
+  
+<pre class="sample-output">Sana: <font color="red">hei</font>
+.... 
+.
+..
+</pre>
+
+  
+<pre class="sample-output">Sana: <font color="red">hah</font>
+.... 
+.-
+....
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Suorakulmio ja ruudukko</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta ensin luokka <code>Suorakulmio</code>, joka saa konstruktorin parametrina x-koordinaatin, y-koordinaatin, leveyden ja korkeuden. Tee tämän jälkeen luokka <code>Ruudukko</code>, johon suorakulmioita voi lisätä, ja joka piirtää kaikki suorakulmiot ruudukossa. Ohjelman tulee toimia seuraavasti:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Ruudukko r = new Ruudukko();
+r.lisaa(new Suorakulmio(0, 0, 2, 3));
+System.out.println(r);
+</code></pre>
+  
+<pre class="sample-output">xx
+xx
+xx
+</pre>
+
+  
+<pre class="sh_java code-highlight"><code>Ruudukko r = new Ruudukko();
+r.lisaa(new Suorakulmio(0, 0, 2, 3));
+r.lisaa(new Suorakulmio(3, 2, 4, 2));
+System.out.println(r);
+</code></pre>
+  
+<pre class="sample-output">xx
+xx
+xx xxxx
+   xxxx
+</pre>
+
+  
+<pre class="sh_java code-highlight"><code>Ruudukko r = new Ruudukko();
+r.lisaa(new Suorakulmio(0, 0, 2, 3));
+r.lisaa(new Suorakulmio(3, 2, 4, 2));
+r.lisaa(new Suorakulmio(5, 0, 1, 1));
+System.out.println(r);
+</code></pre>
+  
+<pre class="sample-output">xx   x
+xx
+xx xxxx
+   xxxx
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/kertaus1.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-k18">
+                Ohjelmoinnin jatkokurssi, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-802ce333.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        window.initTyponator();
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
