@@ -1,0 +1,691 @@
+---
+  title: Kertaus 1-7
+  exercise_page: true
+  quiz_page: false
+  published: true
+---
+
+
+<% partial 'partials/material_heading' do %>
+  Kertaustehtäviä osiin 1-7 liittyen
+<% end %>
+
+<p>
+  Tällä sivulla on kertaustehtäviä materiaalin osiin 1-7 liittyen.  Kertaustehtävät saa ladattua TMC:stä. Tehtävät eivät missään nimessä kata kaikkea osien 1-7 sisällöstä, vaan ne toimivat lisäkertauksena kurssin aihepiiriin.
+</p>
+
+<p>
+  Kertaustehtävissä ei ole automaattisia testejä mukana, eli palauta niitä sitä mukaa kun saat tehtävän toimimaan toivotusti. Mieti myös minkälaisilla syötteillä tehtävän toimintaa kannattaa testata.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Toisto- ja ehtolauseet
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Kerrottu kymmenellä' } do %>
+
+  <p>
+    Toteuta ohjelma, joka kysyy käyttäjältä lukua, ja tulostaa sen kerrottuna yhdellä, kahdella jne seuraavasti.
+  </p>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">2</font>
+
+    1 * 2 = 2
+    2 * 2 = 4
+    3 * 2 = 6
+    4 * 2 = 8
+    5 * 2 = 10
+    6 * 2 = 12
+    7 * 2 = 14
+    8 * 2 = 16
+    9 * 2 = 18
+    10 * 2 = 20
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">7</font>
+
+    1 * 7 = 7
+    2 * 7 = 14
+    3 * 7 = 21
+    4 * 7 = 28
+    5 * 7 = 35
+    6 * 7 = 42
+    7 * 7 = 49
+    8 * 7 = 56
+    9 * 7 = 63
+    10 * 7 = 70
+  <% end %>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Kolmella jaollisten summa' } do %>
+
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä lukuja, ja tulostaa sen jälkeen kolmella jaollisten syötteiden summan. Ohjelman lopettaa lukemisen kun käyttäjä syöttää tyhjän merkkijonon.
+  </p>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">3</font>
+    Luku: <font color="red">5</font>
+    Luku: <font color="red">27</font>
+    Luku: <font color="red">3301</font>
+    Luku: <font color="red">3</font>
+    Luku:
+
+    Kolmella jaollisten lukujen summa: 33
+  <% end %>  
+
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">1</font>
+    Luku: <font color="red">2</font>
+    Luku: <font color="red">5</font>
+    Luku: 
+
+    Ei kolmella jaollisia lukuja
+  <% end %>  
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Pyöristelyä' } do %>
+
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä luvun, ja pyöristää pyöristää sen ylöspäin lähimpään viidellä jaolliseen lukuun.
+  </p>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">3</font>
+    Pyöristys: 5
+  <% end %>  
+
+  
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">5</font>
+    Pyöristys: 5
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Luku: <font color="red">27</font>
+    Pyöristys: 30
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Karkausvuosia' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä vuosilukua, ja tulostaa sen jälkeen vuosilukua seuraavat 5 karkausvuotta. Karkausvuoden laskemiseen löytyy ohjeita Wikipediasta.
+  </p>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Syötä vuosiluku: <font color="red">1999</font>
+    Karkausvuodet: 2000, 2004, 2008, 2012, 2016
+  <% end %>  
+
+  <% partial 'partials/sample_output' do %>
+    Syötä vuosiluku: <font color="red">2016</font>
+    Karkausvuodet: 2016, 2020, 2024, 2028, 2032
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Syötä vuosiluku: <font color="red">2084</font>
+    Karkausvuodet: 2084, 2088, 2092, 2096, 2104
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Fibonacci' } do %>
+
+  <p>
+    Fibonaccin luvut ovat lukuja, jotka ovat aina kahden edeltävän luvun summa. Ensimmäiset kaksi lukua ovat 1 ja 1, jota seuraa luvut 2, 3, 5, 8 jne. Toteuta ohjelma, joka tulostaa halutun määrän Fibonaccin lukuja.
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
+    Montako lukua tulostetaan: <font color="red">5</font>
+    1, 1, 2, 3, 5
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Montako lukua tulostetaan: <font color="red">11</font>
+    1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+  <% end %>  
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Nugettiostoksilla' } do %>
+
+  <p>
+    McDonaldsissa voi ostaa nugetteja neljän, kuuden, yhdeksän ja kahdenkymmenen nugetin pakkauksissa. Kirjoita ohjelma, jolle annetaan luku, ja joka kertoo käyttäjälle onko annettua määrää mahdollista ostaa.
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
+    Nugetteja: <font color="red">3</font>
+    Ostaminen ei ole mahdollista
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Nugetteja: <font color="red">8</font>
+    Ostaminen on mahdollista
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Nugetteja: <font color="red">9</font>
+    Ostaminen on mahdollista
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Nugetteja: <font color="red">11</font>
+    Ostaminen ei ole mahdollista
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Nugetteja: <font color="red">24</font>
+    Ostaminen on mahdollista
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Suorakulmio' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä suorakulmion leveyttä ja korkeutta, ja tulostaa x-merkeistä muodostuvan suorakulmion. 
+  </p>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Leveys: <font color="red">4</font>
+    Korkeus: <font color="red">2</font>
+
+    xxxx
+    xxxx
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Leveys: <font color="red">4</font>
+    Korkeus: <font color="red">3</font>
+
+    xxxx
+    xxxx
+    xxxx
+  <% end %>
+  
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Matto' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä maton leveyttä ja korkeutta, ja tulostaa x-merkeistä koostuvan maton, jonka joka toisella rivillä joka toinen merkki on o.
+  </p>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Leveys: <font color="red">4</font>
+    Korkeus: <font color="red">2</font>
+
+    xxxx
+    xoxo
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Leveys: <font color="red">5</font>
+    Korkeus: <font color="red">5</font>
+
+    xxxxx
+    xoxox
+    xxxxx
+    xoxox
+    xxxxx
+  <% end %>
+  
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Erilainen Matto' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä maton leveyttä ja korkeutta, ja tulostaa maton seuraavia sääntöjä noudattaen. Säännöt ovat tärkeysjärjestyksessä, ja tärkeintä sääntöä tulee noudattaa aina ensin:
+  </p>
+
+  <ul>
+    <li>joka toisella rivillä joka toinen merkki on o</li>
+    <li>joka kolmannella rivillä joka kolmas merkki on z</li>
+    <li>joka viidennellä rivillä joka viides merkki on s</li>
+    <li>kaikki muut merkit ovat x-muotoisia</li>
+  </ul>
+  
+  <% partial 'partials/sample_output' do %>
+    Leveys: <font color="red">5</font>
+    Korkeus: <font color="red">3</font>
+
+    xxxxx
+    xoxox
+    xxzxx
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Leveys: <font color="red">7</font>
+    Korkeus: <font color="red">7</font>
+
+    xxxxxxx
+    xoxoxox
+    xxzxxzx
+    xoxoxox
+    xxxxsxx
+    xozoxox
+    xxxxxxx
+  <% end %>
+  
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Salmiakki' } do %>
+
+  <p>
+    Tee ohjelma, joka kysyy salmiakin korkeutta, jonka jälkeen se tulostaa "salmiakin". 
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
+    Korkeus: <font color="red">1</font>
+
+    *
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Korkeus: <font color="red">5</font>
+
+      *
+     * *
+    *   *
+     * *
+      *
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Korkeus: <font color="red">6</font>
+
+      *
+     * *
+    *   *
+    *   *
+     * *
+      *
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Korkeus: <font color="red">7</font>
+
+       *
+      * *
+     *   *
+    *     *
+     *   *
+      * *
+       *
+  <% end %>
+  
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Metodeja ja listoja
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Esiintyykö luku kerran' } do %>
+
+  <p>
+    Tee metodi <code>public static boolean esiintyykoListallaKerran(ArrayList&lt;Integer&gt; luvut, int luku)</code>, joka palauttaa arvon <code>true</code> jos luku esiintyy listalla kerran, muuten arvon <code>false</code>.
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Esiintyykö luku kolmesti' } do %>
+
+  <p>
+    Tee metodi <code>public static boolean esiintyykoListallaKolmesti(ArrayList&lt;Integer&gt; luvut, int luku)</code>, joka palauttaa arvon <code>true</code> jos luku esiintyy listalla tasan kolme kertaa, muuten arvon <code>false</code>.
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Löytyykö luvut väliltä' } do %>
+
+  <p>
+    Tee metodi <code>public static boolean loytyykoLuvutValilta(ArrayList&lt;Integer&gt; luvut, int alku, int loppu)</code>, joka palauttaa arvon <code>true</code> jos listalla löytyy kaikki luvut lukujen alku ja loppu väliltä, muuten metodi palauttaa arvon <code>false</code>.
+  </p>
+  
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Merkkijonojen käsittelyä
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Merkkijono osissa' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonoa, ja tulostaa sen jälkeen merkkijonon jokaisen merkin erikseen.
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
+    Merkkijono: <font color="red">hello world!</font>
+    h
+    e
+    l
+    l
+    o
+
+    w
+    o
+    r
+    l
+    d
+    !
+  <% end %>  
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Palindromi' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä syötettä ja kertoo sen jälkeen onko syöte palindromi.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syöte: <font color="red">saippuakauppias</font>
+    Syöte on palindromi
+  <% end %>  
+  
+  <% partial 'partials/sample_output' do %>
+    Syöte: <font color="red">nakkikauppias</font>
+    Syöte ei ole palindromi
+  <% end %>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Palindromin jakajamerkki' } do %>
+
+  <p>
+    Parittoman pituisissa palindromeissa on jakajamerkki. Toteuta ohjelma, joka selvittää palindromin jakajamerkin.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syöte: <font color="red">saippuakauppias</font>
+    Palindromin jakajamerkki on k
+  <% end %>  
+
+  <% partial 'partials/sample_output' do %>
+    Syöte: <font color="red">saippuakivikauppias</font>
+    Palindromin jakajamerkki on v
+  <% end %>  
+
+  <% partial 'partials/sample_output' do %>
+    Syöte: <font color="red">aa</font>
+    Ei jakajamerkkiä
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Syöte: <font color="red">nauris</font>
+    Ei palindromi
+  <% end %>
+  
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Oliot
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Pisteiden etäisyys toisistaan' } do %>
+
+  <p>
+    Toteuta luokka <code>Piste</code>, jolla on oliomuuttujat <code>double x</code> ja <code>double y</code>, sopiva konstruktori, sekä metodit <code>public double getX()</code> ja <code>public double getY()</code>. Toteuta tämän jälkeen luokalle metodi <code>public double etaisyys(Piste toinen)</code>, joka laskee pisteen etäisyyden toisesta pisteestä. Kahden pisteen etäisyyden laskemiseen löytyy esimerkiksi apua Wikipediasta. 
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Osuuko ympyrä' } do %>
+
+  <p>
+    Toteuta luokka <code>Ympyra</code>, jolla on oliomuuttujat <code>double x</code>, <code>double y</code> sekä <code>double sade</code>. Muuttuja x kuvaa ympyrän keskipisteen x-koordinaattia, muuttuja y ympyrän keskipisteen y-koordinaattia sekä sade ympyrän sädettä. Toteuta tämän jälkeen metodi <code>public boolean osuuko(Ympyra toinen)</code>, joka palauttaa true jos ympyrä osuu toiseen ympyrään. Edellisestä tehtävästä on tässä hyötyä.
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Olioita listalla
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Tehtävälista' } do %>
+
+  <p>
+    Ohjelmoi luokka <code>Tehtava</code>. Tehtavalla tulee olla tieto tehtävästä (merkkijono) sekä tieto siitä, onko tehtävä tehty. Luokan tulee toimia seuraavasti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Tehtava t = new Tehtava("Korjaa kokeet");
+    System.out.println(t);
+    t.asetaTehdyksi();
+    System.out.println(t);
+    t.asetaTekemattomaksi();
+    System.out.println(t);
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Korjaa kokeet (ei tehty)
+    Korjaa kokeet (tehty)
+    Korjaa kokeet (ei tehty)
+  <% end %>
+  
+  <p>
+    Toteuta tämän jälkeen luokka <code>Tehtavalista</code>, joka toimii seuraavasti.
+  </p>
+
+
+  <% partial 'partials/code_highlight' do %>
+    Tehtavalista tl = new Tehtavalista();
+    tl.lisaa("Käy kaupassa");
+    System.out.println(tl);
+    tl.asetaTehdyksi("Käy kaupassa");
+    System.out.println(tl);
+    Tehtava t = tl.annaTehtava("Käy kaupassa");
+    t.asetaTekemattomaksi();
+    tl.lisaa("Imuroi");
+    System.out.println(tl);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Tehtävät
+    * Käy kaupassa (ei tehty)
+
+    Tehtävät
+    * Käy kaupassa (tehty)
+
+    Tehtävät
+    * Käy kaupassa (ei tehty)
+    * Imuroi (ei tehty)
+  <% end %>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Palautteet' } do %>
+
+  <p>
+    Toteuta luokka <code>Palaute</code>, joka saa konstruktorin parametrina tekstikuvauksen sekä välillä 1-5 olevan arvosanan. Luokan tulee toimia esimerkiksi seuraavasti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Palaute p = new Palaute("Kiitti letuista", 2);
+    System.out.println(p)
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    (2/5) Kiitti letuista
+  <% end %>
+  
+  <p>
+    Kirjoita tämän jälkeen luokka <code>Palauteanalyytikko</code>, jolle voidaan lisätä palautteita. Palauteanalyytikon tulee tarjota seuraavat metodit: 
+  </p>
+
+  <ul>
+    <li>
+      <code>public void add(Palaute p)</code> -- lisää palautteen analysoitavaksi
+    </li>
+    <li>
+      <code>public double palautteidenKeskiarvo()</code> -- laskee palautteiden keskiarvon ja palauttaa sen. Mikäli palautteita ei ole, palauta arvo -1
+    </li>
+    <li>
+      <code>public ArrayList&lt;Palaute&gt; palautteetValilta(int alku, int loppu)</code> -- palauttaa kaikki palautteet, joiden arvosana on annetulla välillä
+    </li>
+    <li>
+      <code>public String toString()</code> -- tulostaa kaikki palautteet
+    </li>
+  </ul>
+  
+
+  <% partial 'partials/code_highlight' do %>
+    Palauteanalyytikko pa = new Palauteanalyytikko();
+    pa.add(new Palaute("Kiitti letuista", 2));
+    pa.add(new Palaute(“Kiitti letuista ja hillosta”, 4));
+
+    System.out.println(pa.palautteidenKeskiarvo());
+    System.out.println();
+    System.out.println(pa.palautteetValilta(3, 5));
+    System.out.println();
+    System.out.println(pa);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    3.0
+
+    [(4/5) Kiitti letuista ja hilloista]
+
+    Palautteet:
+    * (2/5) Kiitti letuista
+    * (4/5) Kiitti letuista ja hillosta
+  <% end %>
+  
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Hajautustaulu
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Morsetus' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonoa, ja tulostaa sen jälkeen merkkijonon morsekoodina. Morseaakkoset löytyvät wikipediasta: https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6tys
+  </p>
+  
+  <% partial 'partials/sample_output' do %>
+    Sana: <font color="red">hei</font>
+    .... 
+    .
+    ..
+  <% end %>
+
+  
+  <% partial 'partials/sample_output' do %>
+    Sana: <font color="red">hah</font>
+    .... 
+    .-
+    ....
+  <% end %>
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Suorakulmio ja ruudukko' } do %>
+
+  <p>
+    Toteuta ensin luokka <code>Suorakulmio</code>, joka saa konstruktorin parametrina x-koordinaatin, y-koordinaatin, leveyden ja korkeuden. Tee tämän jälkeen luokka <code>Ruudukko</code>, johon suorakulmioita voi lisätä, ja joka piirtää kaikki suorakulmiot ruudukossa. Ohjelman tulee toimia seuraavasti:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Ruudukko r = new Ruudukko();
+    r.lisaa(new Suorakulmio(0, 0, 2, 3));
+    System.out.println(r);
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    xx
+    xx
+    xx
+  <% end %>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    Ruudukko r = new Ruudukko();
+    r.lisaa(new Suorakulmio(0, 0, 2, 3));
+    r.lisaa(new Suorakulmio(3, 2, 4, 2));
+    System.out.println(r);
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    xx
+    xx
+    xx xxxx
+       xxxx
+  <% end %>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    Ruudukko r = new Ruudukko();
+    r.lisaa(new Suorakulmio(0, 0, 2, 3));
+    r.lisaa(new Suorakulmio(3, 2, 4, 2));
+    r.lisaa(new Suorakulmio(5, 0, 1, 1));
+    System.out.println(r);
+
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    xx   x
+    xx
+    xx xxxx
+       xxxx
+  <% end %>
+  
+<% end %>
+
+
+
+
+
+
+
+
