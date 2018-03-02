@@ -24,6 +24,16 @@ function getOhpeKevat18Config() {
   }
 }
 
+function getOhjaKevat18Config() {
+  return {
+    courseId: '287',
+    courseName: 'Ohjelmoinnin jatkokurssi',
+    exerciseGroups: {
+      'Osa 8': ['09.03.2018 12:00', '19.03.2018 23:59', 'osa08-']
+    },
+  }
+}
+
 function getMoocConfig() {
   return {
     courseId: '288',
@@ -35,7 +45,8 @@ function getMoocConfig() {
       'Osa 4': ['02.02.2018 22:00', '26.02.2018 23:59', 'osa04-'],
       'Osa 5': ['09.02.2018 23:00', '05.03.2018 23:59', 'osa05-'],
       'Osa 6': ['16.02.2018 23:30', '12.03.2018 23:59', 'osa06-'],
-      'Osa 7': ['23.02.2018 10:00', '19.03.2018 23:59', 'osa07-']
+      'Osa 7': ['23.02.2018 10:00', '19.03.2018 23:59', 'osa07-'],
+      'Osa 8': ['02.03.2018 12:00', '26.03.2018 23:59', 'osa08-']
     }
   };
 }
@@ -47,7 +58,10 @@ function getConfig() {
     case 'hy-ohpe-k18':
       return getOhpeKevat18Config();
       break;
-    case 'mooc-ohjelmointi-2018':
+    case 'hy-ohja-k18':
+      return getOhjaKevat18Config();
+      break;
+  case 'mooc-ohjelmointi-2018':
       return getMoocConfig();
       break;
     default:
