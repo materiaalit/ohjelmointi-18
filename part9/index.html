@@ -1,0 +1,3066 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC, Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, kevät 2018 | Osa 9</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-4f205160.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../kertaus1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=kertaus1.html&gt;')">Kertaus 1-7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part8/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part8.html&gt;')">Osa 8</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part9.html&gt;')">Osa 9</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Yhdeksännen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+      
+  <p>
+    Tuntee luokkaakaavioiden merkintätavan ja luo luokkia luokkakaavioiden perusteella. Ymmärtää käsitteen pakkaus ja osaa hyödyntää pakkauksia ohjelman jäsentelyssä. Tuntee Javan erityyppiset poikkeukset ja luo ohjelmia, jotka varautuvat poikkeuksiin. Tuntee käsitteen perintähierarkia ja kertaa arvojen ryhmittelyä hajautustaulun avulla. Tallentaa olioita useampaan hajautustauluun.
+  </p>
+    
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Luokkakaaviot
+
+</h1>
+
+<p>
+  Luokkakaavio on ohjelmistojen mallinnuksessa käytettävä kaaviotyyppi, jonka avulla kuvataan olio-ohjelmoinnin luokkia. Luokkaaviossa kuvattavat luokat vastaavat ohjelmakoodin luokkia. Kaavioissa kuvataan luokkien nimet, attribuutit, luokkien väliset yhteydet sekä mahdollisesti myös metodit.
+</p>
+
+<h2 class="material-heading">
+    Luokka ja attribuutit
+
+</h2>
+
+<p>
+  Luodaan luokka nimeltä <code>Henkilo</code>, jolla on oliomuuttujat nimi ja ikä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int ika;
+}
+</code></pre>
+
+<p>
+  Yllä kuvattua luokkaa kuvaa seuraava luokkakaavio. Luokkakaavioissa luokka kuvataan suorakulmiona, jonka ylälaidassa on luokan nimi, ja keskellä on oliomuuttujien nimet ja tyypit. 
+</p>
+
+<p>
+  Luokkaakaaviossa luokkaan liittyvät muuttujat määritellään muodossa "muuttujanNimi: muuttujanTyyppi". Miinusmerkki ennen muuttujan nimeä kertoo, että muuttujalla on avainsana private.
+</p>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-henkilo-ika-ja-nimi-a76b3442.png" alt="[Henkilo|-nimi:String;-ika:int]">
+</p>
+
+<p>
+  Olemme nyt määritelleet rakennuspiirustukset -- luokan -- henkilöoliolle. Jokaisella uudella henkilöolioilla on muuttujat <code>nimi</code> ja <code>ika</code>, joissa voi olla oliokohtainen arvo. Henkilöiden "tila" koostuu niiden nimeen ja ikään asetetuista arvoista.
+</p>
+
+<p>
+  Määrittellään seuraavaksi luokalle konstruktori, joka saa parametrina nimen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int ika;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimiAlussa;
+        this.ika = 0;
+    }
+}
+</code></pre>
+
+<p>
+  Luokkakaaviossa konstruktori (ja metodit) merkitään oliomuuttujien alapuolelle. Konstruktori saa näkyvyysmääreen public takia eteen plussan, jonka lisäksi siitä merkitään nimi sekä parametrien nimet ja niiden tyypit (tässä <code>+ Henkilo(nimi: String)</code>).
+</p>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-henkilo-ika-ja-nimi-ja-konstruktori-028cf24a.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String)]">
+</p>
+
+<p>
+  Lisätään luokalle metodi, jonka palautustyyppi on void.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int ika;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+        this.ika = 0;
+    }
+
+    public void tulostaHenkilo() {
+        System.out.println(this.nimi + ", ikä " + this.ika + " vuotta");
+    }
+}
+</code></pre>
+
+<p>
+  Luokkakaaviossa metodi merkitään kuten konstruktori, mutta tämän lisäksi metodista kirjoitetaan myös sen palautustyyppi.
+</p>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-henkilo-ika-ja-nimi-ja-konstruktori-ja-tulosta-a7ee18e3.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void]">
+</p>
+
+<p>
+  Metodi <code>tulostaHenkilo</code> hyödyntää oliomuuttujia <code>nimi</code> ja <code>ika</code>, mutta luokkakaaviossa tätä ei kerrota. Tarkemmin katsoen huomaamme, että luokkakaavio ei kerro mitään konstruktorien ja metodien sisäisestä toteutuksesta. Luokkakaaviolla kerrotaan siis olioiden rakenteesta, mutta luokkakaaviot eivät itsessään määrittele toiminnallisuutta.
+</p>
+
+<p>
+  Lisätään luokalle vielä nimen palauttava metodi <code>getNimi</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int ika;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+        this.ika = 0;
+    }
+
+    public void tulostaHenkilo() {
+        System.out.println(this.nimi + ", ikä " + this.ika + " vuotta");
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+}
+</code></pre>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-henkilo-ika-ja-nimi-ja-konstruktori-ja-tulosta-ja-getnimi-db6896df.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String]">
+</p>
+
+
+<h2 class="material-heading">
+    Yhteyksien merkintä luokkakaavioon
+
+</h2>
+
+<p>
+  Luokkakaavioissa yhteydet merkitään viivoilla, joissa nuolet kuvaavat yhteyden suuntaa. Oletetaan, että käytössämme luokka Kirja.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String nimi;
+    private String kustantaja;
+
+    // konstruktorit ja metodit
+}
+</code></pre>
+
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-kirja-nimi-ja-kustantaja-69099d3d.png" alt="[Kirja|-nimi:String;-julkaisija:String]">
+</p>
+
+
+
+<p>
+  Jos luokalle kirja merkitään kirjoittaja, joka on tyyppiä Henkilö, ohjelmakoodissa oliomuuttuja merkitänä muiden muuttujien seuraksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String nimi;
+    private String kustantaja;
+    private Henkilo kirjoittaja;
+
+    // konstruktorit ja metodit
+}
+</code></pre>
+
+<p>
+  Luokkakaaviossa toisiin olioihin viittaavia muuttujia ei merkitä attribuutteihin, vaan ne merkitään yhteyksinä. Alla olevassa luokkakaaviossa on merkittynä sekä luokka Henkilo että luokka Kirja, sekä näiden välinen yhteys. Yhteys kertoo, että se luotu kirjan suunnasta (nuoli henkilöön) ja että yhteys kertoo kirjoittajasta (nuolen teksti "kirjoittaja").
+</p>
+
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-kirja-nimi-ja-kustantaja-ja-kirjoittaja-e7db1c82.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String]
+											 [Kirja|-nimi:String;-julkaisija:String]
+											 [Kirja]-kirjoittaja->[Henkilo]">
+</p>
+
+<p>
+  Jos kirjalla voi olla useita kirjoittajia, kirjoittajat merkitään luokkaan listana.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String nimi;
+    private String kustantaja;
+    private ArrayList&lt;Henkilo&gt; kirjoittajat;
+
+    // konstruktorit ja metodit
+}
+</code></pre>
+
+
+<p>
+  Luokkakaaviossa tilanne merkitään yhteyden päätyyn asetettavalla tähdellä. Tähti kertoo, että kirjalla voi olla nollasta äärettömään kirjoittajaa. Alla olevassa esimerkissä yhteyteen ei ole merkitty yhteyttä kuvaavaa tekstiä "kirjoittajat", mutta se kannattaisi lisätä kaavioon.
+</p>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-kirja-nimi-ja-kustantaja-ja-kirjoittajat-8da41786.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String]
+											  [Kirja|-nimi:String;-julkaisija:String]
+											  [Kirja]-*>[Henkilo]">
+</p>
+
+<p>
+  Metodit merkitään luokkakaavioon normaalisti. Alla luokkaan Kirja on lisätty metodit <code>getKirjoittajat</code> ja <code>lisaaKirjoittaja</code>.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String nimi;
+    private String kustantaja;
+    private ArrayList&lt;Henkilo&gt; kirjoittajat;
+
+    // konstruktori
+
+    public ArrayList&lt;Henkilo&gt; getKirjoittajat() {
+        return this.kirjoittajat;
+    }
+
+    public void lisaaKirjoittaja(Henkilo kirjoittaja) {
+        this.kirjoittajat.add(kirjoittaja);
+    }
+}
+</code></pre>
+
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-kirja-nimi-ja-kustantaja-ja-kirjoittajat-ja-metodit-2ba6c04f.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String]
+												     [Kirja|-nimi:String;-julkaisija:String|+getKirjoittajat():ArrayList;+lisaaKirjoittaja(kirjoittaja:Henkilo)]
+												     [Kirja]-*>[Henkilo]">
+</p>
+
+<p>
+  Ylläolevaan kaavioon voisi lisätä vielä ArrayListin sisältämien arvojen tyypin <code>ArrayList&lt;Henkilo&gt;</code> sekä yhteyttä tarkentavan määreen "kirjoittajat".
+</p>
+
+
+<h2 class="material-heading">
+    Rajapinnat luokkakaaviossa
+
+</h2>
+
+<p>
+  Rajapinnat merkitään luokkakaavioissa muodossa &lt;&lt;interface&gt;&gt; RajapintaLuokanNimi. Tarkastellaan esimerkkinä rajapintaa Luettava.
+</p>
+
+<pre class="sh_java code-highlight"><code>public interface Luettava {
+
+}
+</code></pre>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-rajapinta-luettava-58b46571.png" alt="[&lt;&lt;interface&gt;&gt; Luettava]">
+</p>
+
+<p>
+  Metodit voidaan merkitä alle kuten luokkakaavioissa.
+</p>
+
+<p>
+  Rajapinnan toteuttaminen merkitään katkoviivalla ja kolmiolla. Alla on kuvattu tilanne, missä luokka Kirja toteuttaa rajapinnan Luettava.
+</p>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-kirja-toteuttaa-luettavan-4b1d7dae.png" alt="[<<interface>> Luettava]
+									   [Kirja]-.-^[<<interface>> Luettava]">
+</p>
+
+
+
+<h2 class="material-heading">
+    Laajempi esimerkki: Maatilasimulaattori
+
+</h2>
+
+<p>
+  Eräs edellisen osan ohjelmointitehtävä oli maatilasimulaattori. Maatilalla on lehmiä, jotka ovat eleleviä ja lypsäviä. Navetassa on lypsyrobotti ja maitosäiliö. Maatilalla on navetta ja lehmiä. Tämän lisäksi myös Maatila on elelevä. Eräs mahdollinen tehtävän loppuratkaisua kuvaava luokkakaavio on seuraavanlainen.
+</p>
+
+<p>
+  <img src="../img/diagrams/luokkakaavio-maatilasimulaattori-d5790b04.png" alt="[Maitosailio|-tilavuus:double;-saldo:double]
+								     [Lehma]
+								     [&lt;&lt;interface&gt;&gt; Eleleva]
+								     [&lt;&lt;interface&gt;&gt; Lypsava]
+								     [Lypsyrobotti]
+								     [Maatila|-omistaja:String]
+								     [Navetta]
+								     [Navetta]-&gt;[Maitosailio]
+								     [Navetta]-&gt;[Lypsyrobotti]
+								     [Maatila]-&gt;[Navetta]
+								     [Maatila]-&gt;*[Lehma]
+								     [Maatila]-.-^[&lt;&lt;interface&gt;&gt; Eleleva]
+								     [Lehma]-.-^[&lt;&lt;interface&gt;&gt; Eleleva]
+								     [Lehma]-.-^[&lt;&lt;interface&gt;&gt; Lypsava]">
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Luokkakaavioiden käytöstä
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Luokkakaavioita kannattaa käyttää laajempien tehtävien (ja ongelmien) käsitteiden sekä niiden yhteyksien hahmottamisessa. Kurssin tehtäviä tehdessä hyvä lähtökohta on piirtää luokat ja niiden yhteydet ilman oliomuuttujia tai metodeja.
+  </p>
+  
+
+  </div>
+</div>
+
+
+
+
+<h1 class="material-heading">
+    Ohjelman rakenne ja pakkaukset
+
+</h1>
+
+
+<p>
+  Ohjelmaa varten toteutettujen luokkien määrän kasvaessa niiden toiminnallisuuksien ja metodien muistaminen vaikeutuu. Muistamista helpottaa luokkien järkevä nimentä sekä luokkien suunnittelu siten, että jokaisella luokalla on yksi selkeä vastuu. Tämän lisäksi luokat kannattaa jakaa toiminnallisuutta, käyttötarkoitusta tai jotain muuta loogista kokonaisuutta kuvaaviin pakkauksiin.
+</p>
+
+<p>
+  Pakkaukset (<em>package</em>) ovat käytännössä hakemistoja (directory, puhekielessä myös kansio), joihin lähdekooditiedostot organisoidaan.
+</p>
+
+<p>
+  Ohjelmointiympäristöt tarjoavat valmiit työkalut pakkausten hallintaan. Olemme tähän mennessä luoneet luokkia ja rajapintoja vain projektiin liittyvän lähdekoodipakkaukset-osion (<em>Source Packages</em>) oletuspakkaukseen (<em>default package</em>). Uuden pakkauksen voi luoda NetBeansissa projektin pakkauksiin liittyvässä Source Packages -osiossa oikeaa hiirennappia painamalla ja valitsemalla <em>New -&gt; Java Package...</em>.
+</p>
+
+<p>
+  Pakkauksen sisälle voidaan luoda luokkia aivan kuten oletuspakkaukseenkin (<code>default package</code>). Alla luodaan juuri luotuun pakkaukseen <code>kirjasto</code> luokka <code>Sovellus</code>.
+</p>
+
+<p>
+  Luokan pakkaus -- eli pakkaus, jossa luokka sijaitsee -- ilmaistaan lähdekooditiedoston alussa lauseella <code>package <em>pakkaus</em>;</code>. Alla oleva luokka <code>Sovellus</code> sijaitsee pakkauksessa <code>kirjasto</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>package kirjasto;
+
+public class Sovellus {
+
+    public static void main(String[] args) {
+        System.out.println("Hello packageworld!");
+    }
+}
+</code></pre>
+
+<p>
+  Jokainen pakkaus -- myös oletuspakkaus eli default package -- voi sisältää useampia pakkauksia. Esimerkiksi pakkausmäärittelyssä <code>package kirjasto.domain</code> pakkaus <code>domain</code> on pakkauksen <code>kirjasto</code> sisällä. Edellä käytettyä nimeä <code>domain</code> käytetään usein kuvaamaan sovellusalueen käsitteisiin liittyvien luokkien säilytyspaikkaa. Esimerkiksi luokka <code>Kirja</code> voisi hyvin olla pakkauksen <code>kirjasto.domain</code> sisällä, sillä se kuvaa kirjastosovellukseen liittyvää käsitettä.
+</p>
+
+<pre class="sh_java code-highlight"><code>package kirjasto.domain;
+
+public class Kirja {
+    private String nimi;
+
+    public Kirja(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+}
+</code></pre>
+
+<p>
+  Pakkauksissa olevia luokkia tuodaan luokan käyttöön <code>import</code>-lauseen avulla. Pakkauksessa <code>kirjasto.domain</code> oleva luokka <code>Kirja</code> tuodaan käyttöön puolipisteeseen päättyvällä lauseella <code>import kirjasto.domain.Kirja</code>. Luokkien tuomiseen käytetyt import-lauseet asetetaan lähdekooditiedostoon pakkausmäärittelyn jälkeen.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>package kirjasto;
+
+import kirjasto.domain.Kirja;
+
+public class Sovellus {
+
+    public static void main(String[] args) {
+        Kirja kirja = new Kirja("pakkausten ABC!");
+        System.out.println("Hello packageworld: " + kirja.getNimi());
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Hello packageworld: pakkausten ABC!
+</pre>
+
+
+<p>
+  Jatkossa <em>kaikissa</em> tehtävissämme käytetään pakkauksia. Luodaan seuraavaksi ensimmäiset pakkaukset itse.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Ensimmäisiä pakkauksia (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+
+  <h2>Käyttöliittymä-rajapinta</h2>
+
+  <p>
+    Luo projektipohjaan pakkaus <code>mooc</code>. Rakennetaan tämän pakkauksen sisälle sovelluksen toiminta. Lisää pakkaukseen mooc pakkaus <code>ui</code> (tämän jälkeen käytössä pitäisi olla pakkaus <code>mooc.ui</code>), ja lisää sinne rajapinta <code>Kayttoliittyma</code>.
+  </p>
+
+  <p>
+    Rajapinnan <code>Kayttoliittyma</code> tulee määritellä metodi <code>void paivita()</code>.
+  </p>
+
+
+  <h2>Tekstikäyttöliittymä</h2>
+
+  <p>
+    Luo samaan pakkaukseen luokka <code>Tekstikayttoliittyma</code>, joka toteuttaa rajapinnan <code>Kayttoliittyma</code>. Toteuta luokassa <code>Tekstikayttoliittyma</code> rajapinnan <code>Kayttoliittyma</code> vaatima metodi <code>public void paivita()</code> siten, että sen ainut tehtävä on merkkijonon "<code>Päivitetään käyttöliittymää</code>"-tulostaminen <code>System.out.println</code>-metodikutsulla.
+  </p>
+
+
+  <h2>Sovelluslogiikka</h2>
+
+  <p>
+    Luo tämän jälkeen pakkaus <code>mooc.logiikka</code>, ja lisää sinne luokka <code>Sovelluslogiikka</code>. Sovelluslogiikan tarjoaman toiminnallisuuden tulee olla seuraavanlainen.
+  </p>
+
+  <ul>
+    <li>
+      <code>public Sovelluslogiikka(Kayttoliittyma kayttoliittyma)</code><br/>Sovelluslogiikka-luokan konstruktori. Saa parametrina Kayttoliittyma-rajapinnan toteuttavan luokan. Huom: jotta sovelluslogiikka näkisi rajapinnan, on sen "importoitava" se, eli tarvitset tiedoston alkuun rivin <code>import mooc.ui.Kayttoliittyma;</code>
+    </li>
+    
+    <li>
+      <code>public void suorita(int montaKertaa)</code><br/>Tulostaa <code>montaKertaa</code>-muuttujan määrittelemän määrän merkkijonoa "Sovelluslogiikka toimii". Jokaisen "Sovelluslogiikka toimii"-tulostuksen jälkeen tulee kutsua konstruktorin parametrina saadun rajapinnan <code>Kayttoliittyma</code>-toteuttaman olion määrittelemää <code>paivita()</code>-metodia.
+    </li>
+  </ul>
+
+  <p>
+    Voit testata sovelluksen toimintaa seuraavalla pääohjelmaluokalla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import mooc.logiikka.Sovelluslogiikka;
+import mooc.ui.Kayttoliittyma;
+import mooc.ui.Tekstikayttoliittyma;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Kayttoliittyma kayttoliittyma = new Tekstikayttoliittyma();
+        new Sovelluslogiikka(kayttoliittyma).suorita(3);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Sovelluslogiikka toimii
+Päivitetään käyttöliittymää
+Sovelluslogiikka toimii
+Päivitetään käyttöliittymää
+Sovelluslogiikka toimii
+Päivitetään käyttöliittymää
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Hakemistorakenne tiedostojärjestelmässä
+
+</h2>
+
+<p>
+  Kaikki NetBeansissa näkyvät projektit ovat tietokoneesi <em><a href="http://fi.wikipedia.org/wiki/Tiedostoj%C3%A4rjestelm%C3%A4" target="_blank" rel="noopener">tiedostojärjestelmässä</a></em> tai jollain keskitetyllä levypalvelimella. Jokaiselle projektille on olemassa oma hakemisto, jonka sisällä on projektiin liittyvät tiedostot ja hakemistot.
+</p>
+
+<p>
+  Projektin hakemistossa <code>src</code> on ohjelmaan liittyvät lähdekoodit. Jos luokan pakkauksena on kirjasto, sijaitsee se projektin lähdekoodihakemiston <code>src</code> sisällä olevassa hakemistossa <code>kirjasto</code>. NetBeansissa voi käydä katsomassa projektien konkreettista rakennetta <em>Files</em>-välilehdeltä joka on normaalisti <em>Projects</em>-välilehden vieressä. Jos et näe välilehteä <em>Files</em>, saa sen näkyville valitsemalla vaihtoehdon <em>Files</em> valikosta <em>Window</em>.
+</p>
+
+<p>
+  Sovelluskehitystä tehdään normaalisti <em>Projects</em>-välilehdeltä, jossa NetBeans on piilottanut projektiin liittyviä tiedostoja joista ohjelmoijan ei tarvitse välittää.
+</p>
+
+
+<h2 class="material-heading">
+    Pakkaukset ja näkyvyysmääreet
+
+</h2>
+
+<p>
+  Olemme tähän mennessä käyttäneet kahta näkyvyysmäärettä. Näkyvyysmääreellä <code>private</code> määritellään muuttujia (ja metodeja), jotka ovat näkyvissä vain sen luokan sisällä joka määrittelee ne. Niitä ei voi käyttää luokan ulkopuolelta. Näkyvyysmääreellä <code>public</code> varustetut metodit ja muuttujat ovat taas kaikkien käytettävissä.
+</p>
+
+<pre class="sh_java code-highlight"><code>package kirjasto.ui;
+
+public class Kayttoliittyma {
+    private Scanner lukija;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+        tulostaOtsikko();
+
+        // muu toiminnallisuus
+    }
+
+    private void tulostaOtsikko() {
+        System.out.println("************");
+        System.out.println("* KIRJASTO *");
+        System.out.println("************");
+    }
+}
+</code></pre>
+
+<p>
+  Yllä olevasta <code>Kayttoliittyma</code>-luokasta tehdyn olion konstruktori ja <code>kaynnista</code>-metodi on kutsuttavissa mistä tahansa ohjelmasta. Metodi <code>tulostaOtsikko</code> ja <code>lukija</code>-muuttuja on käytössä vain luokan sisällä.
+</p>
+
+<p>
+  Jos näkyvyysmäärettä ei määritellä, metodit ja muuttujat ovat näkyvillä saman pakkauksen sisällä. Tätä kutsutaan oletus- tai pakkausnäkyvyydeksi. Muutetaan yllä olevaa esimerkkiä siten, että metodilla <code>tulostaOtsikko</code> on pakkausnäkyvyys.
+</p>
+
+<pre class="sh_java code-highlight"><code>package kirjasto.ui;
+
+public class Kayttoliittyma {
+    private Scanner lukija;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+        tulostaOtsikko();
+
+        // muu toiminnallisuus
+    }
+
+    void tulostaOtsikko() {
+        System.out.println("************");
+        System.out.println("* KIRJASTO *");
+        System.out.println("************");
+    }
+}
+</code></pre>
+
+<p>
+  Nyt saman pakkauksen sisällä olevat luokat -- eli luokat, jotka sijaitsevat pakkauksessa <code>kirjasto.ui</code> voivat käyttää metodia <code>tulostaOtsikko</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>package kirjasto.ui;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+
+        kayttoliittyma.tulostaOtsikko(); // onnistuu!
+    }
+}
+</code></pre>
+
+<p>
+  Jos luokka on eri pakkauksessa, ei metodia <code>tulostaOtsikko</code> pysty käyttämään. Alla olevassa esimerkissä luokka Main on pakkauksessa <code>kirjasto</code>, jolloin pakkauksessa <code>kirjasto.ui</code> pakkausnäkyvyydellä määriteltyyn metodiin <code>tulostaOtsikko</code> ei pääse käsiksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>package kirjasto;
+
+import java.util.Scanner;
+import kirjasto.ui.Kayttoliittyma;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+
+        kayttoliittyma.tulostaOtsikko(); // ei onnistu!
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Laajempi esimerkki: lentokentän hallinta
+
+</h2>
+
+<p>
+  Tarkastellaan ohjelmaa, joka tarjoaa tekstikäyttöliittymän lentokoneiden ja lentojen lisäämiseen sekä näiden tarkasteluun. Ohjelman tekstikäyttöliittymä on seuraava.
+</p>
+
+<pre class="sample-output">Lentokentän hallinta
+--------------------
+
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">1</font>
+Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+Anna lentokoneen kapasiteetti: <font color="red">42</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">1</font>
+Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
+Anna lentokoneen kapasiteetti: <font color="red">101</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">2</font>
+Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+Anna lähtöpaikan tunnus: <font color="red">HEL</font>
+Anna kohdepaikan tunnus: <font color="red">BAL</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">2</font>
+Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
+Anna lähtöpaikan tunnus: <font color="red">JFK</font>
+Anna kohdepaikan tunnus: <font color="red">BAL</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">2</font>
+Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+Anna lähtöpaikan tunnus: <font color="red">BAL</font>
+Anna kohdepaikan tunnus: <font color="red">HEL</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">x</font>
+
+Lentopalvelu
+------------
+
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">1</font>
+G-OWAC (101 henkilöä)
+HA-LOL (42 henkilöä)
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">2</font>
+HA-LOL (42 henkilöä) (HEL-BAL)
+HA-LOL (42 henkilöä) (BAL-HEL)
+G-OWAC (101 henkilöä) (JFK-BAL)
+
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">3</font>
+Mikä kone: <font color="red">G-OWAC</font>
+G-OWAC (101 henkilöä)
+
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">x</font>
+</pre>
+
+<p>
+  Ohjelmasta löytyy useita aihealueen käsitteitä, joista oleellisia ovat <code>Lentokone</code> ja <code>Lento</code>. Kuhunkin lentoon liittyy lisäksi <code>Paikka</code> (lähtöpaikka ja kohdepaikka).  Aihealuetta kuvaavien käsitteiden lisäksi ohjelmaan kuuluu tekstikäyttöliittymä sekä luokka, jonka kautta tekstikäyttöliittymä hallinnoi käsitteitä.
+</p>
+
+<p>
+  Ohjelman pakkausrakenne voi olla -- esimerkiksi -- seuraava:
+</p>
+
+<ul>
+  <li>
+    <code>lentokentta</code> - sisältää ohjelman käynnistämiseen tarvittavan pääohjelmaluokan.
+  </li>
+  <li>
+    <code>lentokentta.domain</code> - sisältää aihealueen käsitteitä kuvaavat luokat <code>Lentokone</code>, <code>Lento</code>, ja <code>Paikka</code>.
+  </li>
+  <li>
+    <code>lentokentta.logiikka</code> - sisältää toiminnallisuuden, jonka avulla sovellusta hallinnoidaan
+  </li>
+  <li>
+    <code>lentokentta.ui</code> - sisältää tekstikäyttöliittymän
+  </li>
+</ul>
+
+<p>
+  Alla olevissa aliluvuissa on kuvattu sovelluksen käyttämät luokat (poislukien pääohjelmaluokka).
+</p>
+
+
+<h3 class="material-heading">
+    Aihealueen käsitteitä kuvaavat luokat
+
+</h3>
+
+<pre class="sh_java code-highlight"><code>package lentokentta.domain;
+
+public class Paikka {
+
+    private String tunnus;
+
+    public Paikka(String tunnus) {
+        this.tunnus = tunnus;
+    }
+
+    @Override
+    public String toString() {
+        return this.tunnus;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>package lentokentta.domain;
+
+public class Paikka {
+
+    private String tunnus;
+
+    public Paikka(String tunnus) {
+        this.tunnus = tunnus;
+    }
+
+    @Override
+    public String toString() {
+        return this.tunnus;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>package lentokentta.domain;
+
+public class Lento {
+
+    private Lentokone lentokone;
+    private Paikka lahtopaikka;
+    private Paikka kohdepaikka;
+
+    public Lento(Lentokone lentokone, Paikka lahtopaikka, Paikka kohdepaikka) {
+        this.lentokone = lentokone;
+        this.lahtopaikka = lahtopaikka;
+        this.kohdepaikka = kohdepaikka;
+    }
+
+    public Lentokone getLentokone() {
+        return this.lentokone;
+    }
+
+    public Paikka getLahtopaikka() {
+        return lahtopaikka;
+    }
+
+    public Paikka getKohdepaikka() {
+        return kohdepaikka;
+    }
+
+    @Override
+    public String toString() {
+        return this.lentokone + " (" + this.lahtopaikka + "-" + this.kohdepaikka + ")";
+    }
+}
+</code></pre>
+
+
+<h3 class="material-heading">
+    Sovelluslogiikka
+
+</h3>
+
+<pre class="sh_java code-highlight"><code>package lentokentta.logiikka;
+
+import java.util.Collection;
+import lentokentta.domain.Lento;
+import lentokentta.domain.Lentokone;
+import java.util.HashMap;
+import java.util.Map;
+import lentokentta.domain.Paikka;
+
+public class Lentohallinta {
+
+    private Map&lt;String, Lentokone&gt; lentokoneet;
+    private Map&lt;String, Lento&gt; lennot;
+    private Map&lt;String, Paikka&gt; paikat;
+
+    public Lentohallinta() {
+        this.lennot = new HashMap&lt;&gt;();
+        this.lentokoneet = new HashMap&lt;&gt;();
+        this.paikat = new HashMap&lt;&gt;();
+    }
+
+    public void lisaaLentokone(String tunnus, int kapasiteetti) {
+        Lentokone lentokone = new Lentokone(tunnus, kapasiteetti);
+        this.lentokoneet.put(tunnus, lentokone);
+    }
+
+    public void lisaaLento(Lentokone lentokone, String lahtotunnus, String kohdetunnus) {
+        this.paikat.putIfAbsent(lahtotunnus, new Paikka(lahtotunnus));
+        this.paikat.putIfAbsent(kohdetunnus, new Paikka(kohdetunnus));
+
+        Lento lento = new Lento(lentokone, this.paikat.get(lahtotunnus), this.paikat.get(kohdetunnus));
+        this.lennot.put(lento.toString(), lento);
+    }
+
+    public Collection&lt;Lentokone&gt; getLentokoneet() {
+        return this.lentokoneet.values();
+    }
+
+    public Collection&lt;Lento&gt; getLennot() {
+        return this.lennot.values();
+    }
+
+    public Lentokone haeLentokone(String tunnus) {
+        return this.lentokoneet.get(tunnus);
+    }
+}
+</code></pre>
+
+<h3 class="material-heading">
+    Tekstikäyttöliittymä
+
+</h3>
+
+<pre class="sh_java code-highlight"><code>package lentokentta.ui;
+
+import lentokentta.domain.Lento;
+import lentokentta.domain.Lentokone;
+import java.util.Scanner;
+import lentokentta.logiikka.Lentohallinta;
+
+public class Tekstikayttoliittyma {
+
+    private Lentohallinta lentohallinta;
+    private Scanner lukija;
+
+    public Tekstikayttoliittyma(Lentohallinta lentohallinta, Scanner lukija) {
+        this.lentohallinta = lentohallinta;
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+        // tehdään käynnistys kahdessa osassa -- ensin käynnistetään hallinta,
+        // sitten lentopalvelu
+        kaynnistaLentokentanHallinta();
+        System.out.println();
+        kaynnistaLentoPalvelu();
+        System.out.println();
+    }
+
+    private void kaynnistaLentokentanHallinta() {
+        System.out.println("Lentokentän hallinta");
+        System.out.println("--------------------");
+        System.out.println();
+
+        while (true) {
+            System.out.println("Valitse toiminto:");
+            System.out.println("[1] Lisää lentokone");
+            System.out.println("[2] Lisää lento");
+            System.out.println("[x] Poistu hallintamoodista");
+
+            System.out.print("&gt; ");
+            String vastaus = lukija.nextLine();
+
+            if (vastaus.equals("1")) {
+                lisaaLentokone();
+            } else if (vastaus.equals("2")) {
+                lisaaLento();
+            } else if (vastaus.equals("x")) {
+                break;
+            }
+        }
+    }
+
+    private void lisaaLentokone() {
+        System.out.print("Anna lentokoneen tunnus: ");
+        String tunnus = lukija.nextLine();
+        System.out.print("Anna lentokoneen kapasiteetti: ");
+        int kapasiteetti = Integer.parseInt(lukija.nextLine());
+
+        this.lentohallinta.lisaaLentokone(tunnus, kapasiteetti);
+    }
+
+    private void lisaaLento() {
+        System.out.print("Anna lentokoneen tunnus: ");
+        Lentokone lentokone = kysyLentokone();
+        System.out.print("Anna lähtöpaikan tunnus: ");
+        String lahtotunnus = lukija.nextLine();
+        System.out.print("Anna kohdepaikan tunnus: ");
+        String kohdetunnus = lukija.nextLine();
+
+        this.lentohallinta.lisaaLento(lentokone, lahtotunnus, kohdetunnus);
+    }
+
+    private void kaynnistaLentoPalvelu() {
+        System.out.println("Lentopalvelu");
+        System.out.println("------------");
+        System.out.println();
+
+        while (true) {
+            System.out.println("Valitse toiminto:");
+            System.out.println("[1] Tulosta lentokoneet");
+            System.out.println("[2] Tulosta lennot");
+            System.out.println("[3] Tulosta lentokoneen tiedot");
+            System.out.println("[x] Lopeta");
+
+            System.out.print("&gt; ");
+            String vastaus = lukija.nextLine();
+            if (vastaus.equals("1")) {
+                tulostaLentokoneet();
+            } else if (vastaus.equals("2")) {
+                tulostaLennot();
+            } else if (vastaus.equals("3")) {
+                tulostaLentokone();
+            } else if (vastaus.equals("x")) {
+                break;
+            }
+        }
+    }
+
+    private void tulostaLentokoneet() {
+        for (Lentokone lentokone : lentohallinta.getLentokoneet()) {
+            System.out.println(lentokone);
+        }
+    }
+
+    private void tulostaLennot() {
+        for (Lento lento : lentohallinta.getLennot()) {
+            System.out.println(lento);
+            System.out.println("");
+        }
+    }
+
+    private void tulostaLentokone() {
+        System.out.print("Mikä kone: ");
+        Lentokone kone = kysyLentokone();
+        System.out.println(kone);
+        System.out.println();
+    }
+
+    private Lentokone kysyLentokone() {
+        Lentokone lentokone = null;
+        while (lentokone == null) {
+            String tunnus = lukija.nextLine();
+            lentokone = lentohallinta.haeLentokone(tunnus);
+
+            if (lentokone == null) {
+                System.out.println("Tunnuksella " + tunnus + " ei ole lentokonetta.");
+            }
+        }
+
+        return lentokone;
+    }
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lentokenttä (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä toteutat edellä kuvattuun aiheeseen sovelluksen. Saat suunnitella rakenteen vapaasti, tai voit noudattaa edellä kuvattua rakennetta. Käyttöliittymän ulkomuoto sekä vaaditut komennot on määritelty ennalta. Tehtävä on kahden yksittäisen tehtäväpisteen arvoinen.
+  </p>
+
+  <p>
+    <strong>Huom: jotta testit toimisivat, saat luoda ohjelmassasi vain yhden Scanner-olion käyttäjän syötteen lukemiseen.</strong>
+  </p>
+
+  <p>
+    Lentokenttä-tehtävässä toteutetaan lentokentän hallintasovellus. Lentokentän hallintasovelluksessa hallinnoidaan lentokoneita ja lentoja. Lentokoneista tiedetään aina tunnus ja kapasiteetti. Lennoista tiedetään lennon lentokone, lähtöpaikan tunnus (esim. <a href="http://en.wikipedia.org/wiki/Helsinki_Airport" target="_blank" rel="noopener">HEL</a>) ja kohdepaikan tunnus (esim. <a href="http://en.wikipedia.org/wiki/Batman_Airport" target="_blank" rel="noopener">BAL</a>).
+  </p>
+
+  <p>
+    Sekä lentokoneita että lentoja voi olla useita. Samalla lentokoneella voidaan myös lentää useita eri lentoja.
+  </p>
+
+  <p>
+    Sovelluksen tulee toimia kahdessa vaiheessa: ensin syötetään lentokoneiden ja lentojen tietoja hallintakäyttöliittymässä, jonka jälkeen siirrytään lentopalvelun käyttöön. Lentopalvelussa on kolme toimintoa; lentokoneiden tulostaminen, lentojen tulostaminen, ja lentokoneen tietojen tulostaminen. Tämän lisäksi käyttäjä voi poistua ohjelmasta valitsemalla vaihtoehdon <code>x</code>. Jos käyttäjä syöttää epäkelvon komennon, kysytään komentoa uudestaan.
+  </p>
+
+
+<pre class="sample-output">Lentokentän hallinta
+--------------------
+
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">1</font>
+Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+Anna lentokoneen kapasiteetti: <font color="red">42</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">1</font>
+Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
+Anna lentokoneen kapasiteetti: <font color="red">101</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">2</font>
+Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+Anna lähtöpaikan tunnus: <font color="red">HEL</font>
+Anna kohdepaikan tunnus: <font color="red">BAL</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">2</font>
+Anna lentokoneen tunnus: <font color="red">G-OWAC</font>
+Anna lähtöpaikan tunnus: <font color="red">JFK</font>
+Anna kohdepaikan tunnus: <font color="red">BAL</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">2</font>
+Anna lentokoneen tunnus: <font color="red">HA-LOL</font>
+Anna lähtöpaikan tunnus: <font color="red">BAL</font>
+Anna kohdepaikan tunnus: <font color="red">HEL</font>
+Valitse toiminto:
+[1] Lisää lentokone
+[2] Lisää lento
+[x] Poistu hallintamoodista
+&gt; <font color="red">x</font>
+
+Lentopalvelu
+------------
+
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">1</font>
+G-OWAC (101 henkilöä)
+HA-LOL (42 henkilöä)
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">2</font>
+HA-LOL (42 henkilöä) (HEL-BAL)
+HA-LOL (42 henkilöä) (BAL-HEL)
+G-OWAC (101 henkilöä) (JFK-BAL)
+
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">3</font>
+Mikä kone: <font color="red">G-OWAC</font>
+G-OWAC (101 henkilöä)
+
+Valitse toiminto:
+[1] Tulosta lentokoneet
+[2] Tulosta lennot
+[3] Tulosta lentokoneen tiedot
+[x] Lopeta
+&gt; <font color="red">x</font>
+</pre>
+
+  <p>
+    <strong>Huom1:</strong> Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii <strong>täsmälleen</strong> kuten yllä kuvattu. Ohjelman tulostamat vaihtoehdot kannattanee copypasteta tästä ohjelmakoodiin. Testit eivät oleta, että ohjelmasi on varautunut epäkelpoihin syötteisiin.
+  </p>
+
+  <p>
+    <strong>Huom2:</strong> älä käytä luokkein nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin!
+  </p>
+
+  <p>
+    <em>
+      <strong>Ohjelman tulee käynnistyä kun pakkauksessa <code>lentokentta</code> olevan luokan Main metodi main suoritetaan.</strong>
+    </em>
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Poikkeukset
+
+</h1>
+
+<p>
+  Poikkeukset ovat tilanteita, joissa ohjelman suoritus päättyy virheeseen. Ohjelmassa on esimerkiksi kutsuttu <em>null</em>-viitteeseen liittyvää metodia, jolloin ohjelmassa tapahtuu poikkeus <code>NullPointerException</code>. Vastaavasti taulukon ulkopuolella olevan indeksin hakeminen johtaa poikkeukseen <code>IndexOutOfBoundsException</code> ym.
+</p>
+
+<p>
+  Osa Javassa esiintyvistä poikkeuksista on sellaisia, että niihin tulee aina varautua. Näitä ovat esimerkiksi tiedoston lukemisessa tapahtuvaan virheeseen tai verkkoyhteyden katkeamiseen liittyvät poikkeukset. Osa poikkeuksista taas on ajonaikaisia poikkeuksia -- kuten vaikkapa NullPointerException --, joihin ei erikseen tarvitse varautua. Java ilmoittaa aina jos ohjelmassa on lause tai lauseke, jossa mahdollisesti tapahtuvaan poikkeukseen tulee varautua.
+</p>
+
+
+<h2 class="material-heading">
+    Poikkeusten käsittely
+
+</h2>
+
+<p>
+  Poikkeukset käsitellään <code>try { } catch (Exception e) { }</code> -lohkorakenteella. Avainsanan <code>try</code> aloittaman lohkon sisällä on lähdekoodi, jonka suorituksessa tapahtuu <em>mahdollisesti</em> poikkeus. Avainsanan <code>catch</code> aloittaman lohkon sisällä taas määritellään poikkeustilanteessa tapahtuva käsittely, eli mitä tehdään kun try-lohkossa tapahtuu poikkeus. Avainsanaa catch seuraa myös käsiteltävän poikkeuksen tyyppi, esimerkiksi "kaikki poikkeukset" eli Exception (<code>catch (Exception e)</code>).
+</p>
+
+<pre class="sh_java code-highlight"><code>try {
+    // poikkeuksen mahdollisesti heittävä ohjelmakoodi
+} catch (Exception e) {
+    // lohko johon päädytään poikkeustilanteessa
+}
+</code></pre>
+
+<p>
+  Avainsana <code>catch</code> eli <em>ota kiinni</em> tulee siitä, että poikkeukset <em>heitetään</em> (<code>throw</code>).</p>
+</p>
+
+<p>
+  Kuten edellä todettiin, ajonaikaisiin poikkeuksiin kuten NullPointerException ei tarvitse erikseen varautua. Tällaiset poikkeukset voidaan jättää käsittelemättä, jolloin ohjelman suoritus päättyy virheeseen poikkeustilanteen tapahtuessa. Tarkastellaan erästä poikkeustilannetta nyt jo tutun merkkijonon kokonaisluvuksi muuntamisen kautta.
+</p>
+
+<p>
+  Olemme käyttäneet luokan <code>Integer</code> metodia <code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#parseInt-java.lang.String-" target="_blank" rel="noopener">parseInt</a></code> merkkijonon kokonaisluvuksi muuntamiseen. Metodi heittää poikkeuksen <code>NumberFormatException</code>, jos sille parametrina annettu merkkijono ei ole muunnettavissa kokonaisluvuksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+System.out.print("Syötä numero: ");
+
+int numero = Integer.parseInt(lukija.nextLine());
+</code></pre>
+
+<pre class="sample-output">Syötä numero: <font color="red">tatti</font>
+  <font color="red">Exception in thread "..." java.lang.NumberFormatException: For input string: "tatti"</font>
+</pre>
+
+<p>
+  Yllä ohjelma heittää poikkeuksen, kun käyttäjä syöttää virheellisen numeron. Ohjelman suoritus päättyy tällöin virhetilanteeseen.
+</p>
+
+<p>
+  Lisätään esimerkkiin poikkeuksen käsittely. Kutsu, joka saattaa heittää poikkeuksen asetetaan <code>try</code>-lohkon sisään, ja virhetilanteessa tapahtuva toiminta <code>catch</code>-lohkon sisään.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+System.out.print("Syötä numero: ");
+int numero = -1;
+
+try {
+    numero = Integer.parseInt(lukija.nextLine());
+} catch (Exception e) {
+    System.out.println("Et syöttänyt kunnollista numeroa.");
+}
+</code></pre>
+
+<pre class="sample-output">Syötä numero: <font color="red">5</font>
+</pre>
+
+<pre class="sample-output">Syötä numero: <font color="red">enpäs!</font>
+Et syöttänyt kunnollista numeroa.
+</pre>
+
+<p>
+  Avainsanan <code>try</code> määrittelemän lohkon sisältä siirrytään <code>catch</code>-lohkoon heti poikkeuksen tapahtuessa. Havainnollistetaan tätä lisäämällä tulostuslause <code>try</code>-lohkossa metodia <code>Integer.parseInt</code> kutsuvan rivin jälkeen.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+System.out.print("Syötä numero: ");
+int numero = -1;
+
+try {
+    numero = Integer.parseInt(lukija.nextLine());
+    System.out.println("Hienosti syötetty!");
+} catch (Exception e) {
+    System.out.println("Et syöttänyt kunnollista numeroa.");
+}
+</code></pre>
+
+<pre class="sample-output">Syötä numero: <font color="red">5</font>
+Hienosti syötetty!
+</pre>
+
+<pre class="sample-output">Syötä numero: <font color="red">enpäs!</font>
+Et syöttänyt kunnollista numeroa.
+</pre>
+
+<p>
+  Ohjelmalle syötetty merkkijono <code>enpäs!</code> annetaan parametrina <code>Integer.parseInt</code>-metodille, joka heittää poikkeuksen, jos parametrina saadun merkkijonon muuntaminen luvuksi epäonnistuu. Huomaa, että <code>catch</code>-lohkossa oleva koodi suoritetaan <em>vain</em> poikkeustapauksissa.
+</p>
+
+<p>
+  Tehdään yllä olevasta luvun muuntajasta hieman hyödyllisempi. Tehdään siitä metodi, joka kysyy numeroa yhä uudestaan, kunnes käyttäjä syöttää oikean numeron. Metodin suoritus loppuu vasta silloin, kun käyttäjä syöttää kokonaisluvun.
+</p>
+
+<pre class="sh_java code-highlight"><code>public int lueLuku(Scanner lukija) {
+    while (true) {
+        System.out.print("Syötä numero: ");
+
+        try {
+            int numero = Integer.parseInt(lukija.nextLine());
+            return numero;
+        } catch (Exception e) {
+            System.out.println("Et syöttänyt kunnollista numeroa.");
+        }
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Syötä numero: <font color="red">enpäs!</font>
+Et syöttänyt kunnollista numeroa.
+Syötä numero: <font color="red">Matilla on ovessa tatti.</font>
+Et syöttänyt kunnollista numeroa.
+Syötä numero: <font color="red">43</font>
+</pre>
+
+<h2 class="material-heading">
+    Poikkeukset ja resurssit
+
+</h2>
+
+<p>
+  Erilaisten käyttöjärjestelmäresurssien kuten tiedostojen lukemiseen on toteutettu erillinen versio poikkeustenhallinnasta. ns. try-with-resources -tyyppisessä poikkeustenhallinnassa avattava resurssi lisätään try-osaan määriteltävään ei-pakolliseen suluilla rajattavaan osaan. 
+</p>
+
+<p>
+  Alla olevassa esimerkissä luetaan tiedoston "tiedosto.txt" kaikki rivit, jotka lisätään ArrayList-listaan. Tiedostoja lukiessa voidaan kohdata virhetilanne, joten tiedoston lukeminen vaatii erillisen "yrittämisen" (try) sekä mahdollisen virheen kiinnioton (catch). 
+</p>
+
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+// luodaan lukija tiedoston lukemista varten
+try (Scanner lukija = new Scanner(new File("tiedosto.txt"))) {
+
+    // luetaan kaikki tiedoston rivit
+    while (lukija.hasNextLine()) {
+        rivit.add(lukija.nextLine());
+    }
+} catch (Exception e) {
+    System.out.println("Virhe: " + e.getMessage());
+}
+
+// tee jotain luetuilla riveillä
+</code></pre>
+
+<p>
+  Yllä kuvattu try-with-resources -lähestymistapa on hyödyllinen resurssien käsittelyssä, sillä tässä tapauksessa ohjelma sulkee käytetyt resurssit automaattisesti. Tällöin esimerkiksi tiedostoihin liittyvät viitteet saavat luvan "kadota", koska niille ei ole enää käyttöä. Mikäli taas resursseja ei suljeta, ovat tiedostot käyttöjärjestelmän näkökulmasta käytössä kunnes ohjelma sammutetaan.
+</p>
+
+<h2 class="material-heading">
+    Käsittelyvastuun siirtäminen
+
+</h2>
+
+<p>
+  Metodit ja konstruktorit voivat <em>heittää</em> poikkeuksia. Heitettäviä poikkeuksia on karkeasti ottaen kahdenlaisia. On poikkeuksia jotka on pakko käsitellä, ja on poikkeuksia joita ei ole pakko käsitellä. Poikkeukset käsitellään joko <code>try-catch</code> -lohkossa, tai <em>heittämällä ne ulos metodista</em>.
+</p>
+
+<p>
+  Alla olevassa esimerkissä luetaan parametrina annetun tiedoston rivit yksitellen. Tiedoston lukeminen saattaa heittää poikkeuksen -- voi olla, ettei tiedostoa esimerkiksi löydy, tai voi olla ettei siihen ole lukuoikeuksia. Tällainen poikkeus tulee käsitellä. Poikkeuksen käsittely tapahtuu  <code>try-catch</code> -lauseella. Seuraavassa esimerkissä emme juurikaan välitä poikkeustilanteesta, mutta tulostamme kuitenkin poikkeukseen liittyvän viestin.
+</p>
+
+<pre class="sh_java code-highlight"><code>public List&lt;String&gt; lue(String tiedosto) {
+    List&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+    try {
+        Files.lines(Paths.get("tiedosto.txt")).forEach(rivi -&gt; rivit.add(rivi));
+    } catch (Exception e) {
+        System.out.println("Virhe: " + e.getMessage());
+    }
+
+    return rivit;
+}
+</code></pre>
+
+<p>
+  Ohjelmoija voi myös jättää poikkeuksen käsittelemättä ja <em>siirtää vastuun</em> poikkeuksen käsittelystä metodin kutsujalle. Vastuun siirto tapahtuu heittämällä poikkeus metodista eteenpäin lisäämällä tästä tieto metodin määrittelyyn. Tieto poikkeuksen heitosta -- <code>throws <em>PoikkeusTyyppi</em></code>, missä poikkeustyyppi esimerkiksi Exception -- lisätään ennen metodirungon avaavaa aaltosulkua.
+</p>
+
+<pre class="sh_java code-highlight"><code>public List&lt;String&gt; lue(String tiedosto) <strong>throws Exception</strong> {
+    ArrayList&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+    Files.lines(Paths.get(tiedosto)).forEach(rivi -&gt; rivit.add(rivi));
+    return rivit;
+}
+</code></pre>
+
+<p>
+  Nyt metodia <code>lue</code> kutsuvan metodin tulee joko käsitellä poikkeus <code>try-catch</code> -lohkossa tai siirtää poikkeuksen käsittelyn vastuuta eteenpäin. Joskus poikkeuksen käsittelyä vältetään viimeiseen asti, ja <code>main</code>-metodikin heittää poikkeuksen käsiteltäväksi eteenpäin:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Paaohjelma {
+   public static void main(String[] args) throws Exception {
+       // ...
+   }
+}
+</code></pre>
+
+<p>
+  Tällöin mahdollinen poikkeus päätyy ohjelman suorittajalle eli Javan virtuaalikoneelle, joka keskeyttää ohjelman suorituksen poikkeukseen johtavan virheen tapahtuessa.
+</p>
+
+
+
+<h2 class="material-heading">
+    Poikkeusten heittäminen
+
+</h2>
+
+<p>
+  Voimme heittää poikkeuksen <code>throw</code>-komennolla. Esimerkiksi <code>NumberFormatException</code>-luokasta luodun poikkeuksen heittäminen tapahtuisi komennolla <code>throw new NumberFormatException()</code>. Seuraava ohjelma päätyy aina poikkeustilaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+
+    public static void main(String[] args) throws Exception {
+        throw new NumberFormatException(); // Ohjelmassa heitetään poikkeus
+    }
+}
+</code></pre>
+
+<p>
+  Eräs poikkeus, johon käyttäjän ei ole pakko varautua on <code>IllegalArgumentException</code>. Poikkeuksella <code>IllegalArgumentException</code> kerrotaan että metodille tai konstruktorille annettujen parametrien arvot ovat <em>vääränlaiset</em>. IllegalArgumentException-poikkeusta käytetään esimerkiksi silloin, kun halutaan varmistaa, että parametreilla on tietyt arvot.
+</p>
+
+<p>
+  Luodaan luokka <code>Arvosana</code>, joka saa konstruktorin parametrina kokonaislukutyyppisen arvosanan.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Arvosana {
+    private int arvosana;
+
+    public Arvosana(int arvosana) {
+        this.arvosana = arvosana;
+    }
+
+    public int getArvosana() {
+        return this.arvosana;
+    }
+}</code></pre>
+
+
+<p>
+  Haluamme seuraavaksi varmistaa, että Arvosana-luokan konstruktorin parametrina saatu arvo täyttää tietyt kriteerit. Arvosanan tulee olla aina välillä 0-5. Jos arvosana on jotain muuta, haluamme <em>heittää poikkeuksen</em>. Lisätään <code>Arvosana</code>-luokan konstruktoriin ehtolause, joka tarkistaa onko arvosana arvovälin 0-5 ulkopuolella. Jos on, heitetään poikkeus <code>IllegalArgumentException</code> sanomalla <code>throw new IllegalArgumentException("Arvosanan tulee olla välillä 0-5");</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Arvosana {
+    private int arvosana;
+
+    public Arvosana(int arvosana) {
+        if (arvosana &lt; 0 || arvosana &gt; 5) {
+            throw new IllegalArgumentException("Arvosanan tulee olla välillä 0-5");
+        }
+
+        this.arvosana = arvosana;
+    }
+
+    public int getArvosana() {
+        return this.arvosana;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Arvosana arvosana = new Arvosana(3);
+System.out.println(arvosana.getArvosana());
+
+Arvosana virheellinenArvo = new Arvosana(22);
+// tapahtuu poikkeus, tästä ei jatketa eteenpäin
+</code></pre>
+
+<pre class="sample-output">3
+Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee olla välillä 0-5
+</pre>
+
+<p>
+  Jos poikkeus on esimerkiksi tyyppiä IllegalArgumentException, tai yleisemmin ajonaikainen poikkeus, ei sen heittämisestä tarvitse kirjoittaa erikseen metodin määrittelyyn.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Parametrien validointi (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Harjoitellaan hieman parametrien validointia <code>IllegalArgumentException</code>-poikkeuksen avulla. Tehtäväpohjassa tulee kaksi luokkaa, <code>Henkilo</code> ja <code>Laskin</code>. Muuta luokkia seuraavasti:
+  </p>
+
+  
+  <h2>Henkilön validointi</h2>
+
+  <p>
+    Luokan <code>Henkilo</code> konstruktorin tulee varmistaa että parametrina annettu nimi ei ole null, tyhjä tai yli 40 merkkiä pitkä. Myös iän tulee olla väliltä 0-120. Jos joku edelläolevista ehdoista ei päde, tulee konstruktorin heittää <code>IllegalArgumentException</code>-poikkeus.
+  </p>
+
+
+  <h2>Laskimen validointi</h2>
+
+  <p>
+    Luokan <code>Laskin</code> metodeja tulee muuttaa seuraavasti: Metodin <code>kertoma</code> tulee toimia vain jos parametrina annetaan ei-negatiivinen luku (0 tai suurempi). Metodin <code>binomikerroin</code> tulee toimia vain jos parametrit ovat ei-negatiivisia ja osajoukon koko on pienempi kuin joukon koko. Jos jompikumpi metodeista saa epäkelpoja arvoja metodikutsujen yhteydessä, tulee metodien heittää poikkeus <code>IllegalArgumentException</code>.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Poikkeukset ja rajapinnat
+
+</h2>
+
+<p>
+  Rajapintaluokilla ei ole metodirunkoa, mutta metodimäärittely on vapaasti rajapinnan suunnittelijan toteutettavissa. Rajapintaluokissa voidaan määritellä metodeja, jotka saattavat heittää poikkeuksen. Esimerkiksi seuraavan rajapinnan <code>Tiedostopalvelin</code> toteuttavat luokat heittävät <em>mahdollisesti</em> poikkeuksen <code>lataa</code>- ja <code>tallenna</code>-metodissa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public interface Tiedostopalvelin {
+    String lataa(String tiedosto) throws Exception;
+    void tallenna(String tiedosto, String merkkijono) throws Exception;
+}
+</code></pre>
+
+<p>
+  Jos rajapinta määrittelee metodeille <code>throws Exception</code>-määreet, eli että metodit heittävät mahdollisesti poikkeuksen, tulee samat määreet olla myös rajapinnan toteuttavassa luokassa. Luokan ei kuitenkaan ole pakko heittää poikkeusta kuten alla olevasta esimerkistä näkee.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tekstipalvelin implements Tiedostopalvelin {
+
+    private Map&lt;String, String&gt; data;
+
+    public Tekstipalvelin() {
+        this.data = new HashMap&lt;&gt;();
+    }
+
+    @Override
+    public String lataa(String tiedosto) throws Exception {
+        return this.data.get(tiedosto);
+    }
+
+    @Override
+    public void tallenna(String tiedosto, String merkkijono) throws Exception {
+        this.data.put(tiedosto, merkkijono);
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Poikkeuksen tiedot
+
+</h2>
+
+<p>
+  Poikkeusten käsittelytoiminnallisuuden sisältämä <code>catch</code>-lohko määrittelee catch-osion sisällä poikkeuksen johon varaudutaan <code>catch (<em>Exception e</em>)</code>. Poikkeuksen tiedot tallennetaan <code>e</code>-muuttujaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>try {
+    // ohjelmakoodi, joka saattaa heittää poikkeuksen
+} catch (Exception e) {
+    // poikkeuksen tiedot ovat tallessa muuttujassa e
+}
+</code></pre>
+
+<p>
+  Luokka <code>Exception</code> tarjoaa hyödyllisiä metodeja. Esimerkiksi metodi <code>printStackTrace()</code> tulostaa <em>stack tracen</em>, joka kertoo miten poikkeukseen päädyttiin. Tutkitaan seuraavaa metodin <code>printStackTrace()</code> tulostamaa virhettä.
+</p>
+
+<pre class="sample-output">Exception in thread "main" java.lang.NullPointerException
+  at pakkaus.Luokka.tulosta(Luokka.java:43)
+  at pakkaus.Luokka.main(Luokka.java:29)
+</pre>
+
+<p>
+  Stack tracen lukeminen tapahtuu alhaalta ylöspäin. Alimpana on ensimmäinen kutsu, eli ohjelman suoritus on alkanut luokan <code>Luokka</code> metodista <code>main()</code>. Luokan <code>Luokka</code> main-metodin rivillä 29 on kutsuttu metodia <code>tulosta()</code>. Metodin <code>tulosta</code> rivillä 43 on tapahtunut poikkeus <code>NullPointerException</code>. Poikkeuksen tiedot ovatkin hyvin hyödyllisiä virhekohdan selvittämisessä.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Sensorit ja lämpötila (4 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+
+  <p>
+    Kaikki luotavat luokat tulee sijoittaa pakkaukseen <code>sovellus</code>.
+  </p>
+
+  <p>
+    Käytössämme on seuraava rajapinta:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public interface Sensori {
+    boolean onPaalla();  // palauttaa true jos sensori on päällä
+    void paalle();       // käynnistä sensorin
+    void poisPaalta();   // sulkee sensorin
+    int mittaa();        // palauttaa sensorin lukeman jos sensori on päällä
+                         // jos sensori ei ole päällä heittää poikkeuksen
+                         // IllegalStateException
+}
+</code></pre>
+
+
+  <h2>Vakiosensori</h2>
+
+  <p>
+    Tee luokka <code>Vakiosensori</code> joka toteuttaa rajapinnan <code>Sensori</code>.
+  </p>
+
+  <p>
+    Vakiosensori on koko ajan päällä. Metodien paalle ja poisPaalta kutsuminen ei tee mitään. Vakiosensorilla tulee olla konstruktori, jonka parametrina on kokonaisluku. Metodikutsu <code>mittaa</code> palauttaa aina konstruktorille parametrina annetun luvun.
+  </p>
+
+  <p>Esimerkki:</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Vakiosensori kymppi = new Vakiosensori(10);
+    Vakiosensori miinusViis = new Vakiosensori(-5);
+
+    System.out.println(kymppi.mittaa());
+    System.out.println(miinusViis.mittaa());
+
+    System.out.println(kymppi.onPaalla());
+    kymppi.poisPaalta();
+    System.out.println(kymppi.onPaalla());
+}
+</code></pre>
+
+<pre class="sample-output">10
+-5
+true
+true
+</pre>
+
+
+  <h2>Lampomittari</h2>
+
+  <p>
+    Tee luokka <code>Lampomittari</code>, joka toteuttaa rajapinnan <code>Sensori</code>.
+  </p>
+
+  <p>
+    Aluksi lämpömittari on poissa päältä. Kutsuttaessa metodia <code>mittaa</code> kun mittari on päällä mittari arpoo luvun väliltä -30...30 ja palauttaa sen kutsujalle. Jos mittari ei ole päällä, heitetään poikkeus <code>IllegalStateException</code>.
+  </p>
+
+  <p>
+    Käytä Javan valmista luokkaa <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Random.html" target="_blank" rel="noopener">Random</a> satunnaisen luvun arpomiseen. Saat luvun väliltä 0...60 kutsulla <code>new Random().nextInt(61);</code> -- väliltä -30...30 arvotun luvun saa vähentämällä väliltä 0...60 olevasta luvusta sopiva luku.
+  </p>
+
+
+  <h2>Keskiarvosensori</h2>
+
+  <p>
+    Tee luokka <code>Keskiarvosensori</code>, joka toteuttaa rajapinnan <code>Sensori</code>.
+  </p>
+
+  <p>
+    Keskiarvosensori sisältää useita sensoreita. Rajapinnan <code>Sensori</code> määrittelemien metodien lisäksi keskiarvosensorilla on metodi <code>public void lisaaSensori(Sensori lisattava)</code> jonka avulla keskiarvosensorin hallintaan lisätään uusi sensori.
+  </p>
+
+  <p>
+    Keskiarvosensori on päällä silloin kuin <em>kaikki</em> sen sisältävät sensorit ovat päällä. Kun keskiarvosensori käynnistetään, täytyy kaikkien sen sisältävien sensorien käynnistyä jos ne eivät ole käynnissä. Kun keskiarvosensori suljetaan, täytyy ainakin yhden sen sisältävän sensorin mennä pois päältä. Saa myös käydä niin että kaikki sen sisältävät sensorit menevät pois päältä.
+  </p>
+
+  <p>
+    Keskiarvosensorin metodi <code>mittaa</code> palauttaa sen sisältämien sensoreiden lukemien keskiarvon (koska paluuarvo on <code>int</code>, pyöristyy lukema alaspäin kuten kokonaisluvuilla tehdyissä jakolaskuissa). Jos keskiarvosensorin metodia <code>mittaa</code> kutsutaan sensorin ollessa poissa päältä, tai jos keskiarvosensorille ei vielä ole lisätty yhtään sensoria heitetään poikkeus <code>IllegalStateException</code>.
+  </p>
+
+  <p>
+    Seuraavassa sensoreja käyttävä esimerkkiohjelma (huomaa, että sekä Lämpömittarin että Keskiarvosensorin konstruktorit ovat parametrittomia):
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Sensori kumpula = new Lampomittari();
+    kumpula.paalle();
+    System.out.println("lämpötila Kumpulassa " + kumpula.mittaa() + " astetta");
+
+    Sensori kaisaniemi = new Lampomittari();
+    Sensori helsinkiVantaa = new Lampomittari();
+
+    Keskiarvosensori paakaupunki = new Keskiarvosensori();
+    paakaupunki.lisaaSensori(kumpula);
+    paakaupunki.lisaaSensori(kaisaniemi);
+    paakaupunki.lisaaSensori(helsinkiVantaa);
+
+    paakaupunki.paalle();
+    System.out.println("lämpötila Pääkaupunkiseudulla " + paakaupunki.mittaa() + " astetta");
+}
+</code></pre>
+
+  <p>
+    Alla olevan esimerkin tulostukset riippuvat arvotuista lämpötiloista:
+  </p>
+
+<pre class="sh_java code-highlight"><code>lämpötila Kumpulassa 11 astetta
+lämpötila Pääkaupunkiseudulla 8 astetta
+</code></pre>
+
+
+  <h2>Kaikki mittaukset</h2>
+
+  <p>
+    Lisää luokalle Keskiarvosensori metodi <code>public List&lt;Integer&gt; mittaukset()</code>, joka palauttaa listana kaikkien keskiarvosensorin avulla suoritettujen mittausten tulokset. Seuraavassa esimerkki metodin toiminnasta:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Sensori kumpula = new Lampomittari();
+    Sensori kaisaniemi = new Lampomittari();
+    Sensori helsinkiVantaa = new Lampomittari();
+
+    Keskiarvosensori paakaupunki = new Keskiarvosensori();
+    paakaupunki.lisaaSensori(kumpula);
+    paakaupunki.lisaaSensori(kaisaniemi);
+    paakaupunki.lisaaSensori(helsinkiVantaa);
+
+    paakaupunki.paalle();
+    System.out.println("lämpötila Pääkaupunkiseudulla " + paakaupunki.mittaa() + " astetta");
+    System.out.println("lämpötila Pääkaupunkiseudulla " + paakaupunki.mittaa() + " astetta");
+    System.out.println("lämpötila Pääkaupunkiseudulla " + paakaupunki.mittaa() + " astetta");
+
+    System.out.println("mittaukset: " + paakaupunki.mittaukset());
+}
+</code></pre>
+
+  <p>
+    Alla olevan esimerkin tulostukset riippuvat jälleen arvotuista lämpötiloista:
+  </p>
+
+<pre class="sh_java code-highlight"><code>lämpötila Pääkaupunkiseudulla -10 astetta
+lämpötila Pääkaupunkiseudulla -4 astetta
+lämpötila Pääkaupunkiseudulla 5 astetta
+
+mittaukset: [-10, -4, 5]
+</code></pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<h1 class="material-heading">
+    Olioiden monimuotoisuus
+
+</h1>
+
+<p>
+  Olemme aiemmissa osissa törmänneet tilanteisiin, joissa viittaustyyppisillä muuttujilla on oman tyyppinsä lisäksi muita tyyppejä. Esimerkiksi <em>kaikki</em> oliot ovat tyyppiä <code>Object</code>, eli mikä tahansa olio voidaan oman tyyppinsä lisäksi esittää <code>Object</code>-tyyppisenä muuttujana.
+</p>
+
+<pre class="sh_java code-highlight"><code>String merkkijono = "merkkijono";
+Object merkkijonoString = "toinen merkkijono";
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>String merkkijono = "merkkijono";
+Object merkkijonoString = merkkijono;
+</code></pre>
+
+<p>
+  Yllä olevissa esimerkeissä merkkijonomuuttuja esitetään sekä String-tyyppisenä että Object-tyyppisenä, jonka lisäksi String-tyyppinen muuttuja asetetaan Object-tyyppiseen muuttujaan. Asetus toiseen suuntaan, eli Object-tyyppisen muuttujan asettaminen String-tyyppiseksi ei kuitenkaan onnistu. Tämä johtuu siitä, että <code>Object</code>-tyyppiset muuttujat eivät ole tyyppiä <code>String</code></p>
+
+<pre class="sh_java code-highlight"><code>Object merkkijonoString = "toinen merkkijono";
+String merkkijono = merkkijonoString; // EI ONNISTU!
+</code></pre>
+
+<p>
+  Mistä tässä oikein on kyse?
+</p>
+
+<p>
+  Jokainen muuttuja voidaan esittää muuttujan alkuperäisen tyypin lisäksi myös muuttujan toteuttamien rajapintojen sekä perimien luokkien tyyppisenä. Luokka String perii luokan Object, joten String-oliot ovat aina myös tyyppiä Object. Luokka Object ei peri String-luokkaa, joten Object-tyyppiset muuttujat eivät ole automaattisesti tyyppiä String. Tutustutaan tarkemmin <code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a></code>-luokan API-dokumentaatioon, erityisesti HTML-sivun yläosaan.
+</p>
+
+<img src="../img/material/string-api-perinta-553695cc.png" alt="Kuvakaappaus String-luokan API-dokumentaatiosta. Kuvakaappauksessa näkyy, että String-luokka perii luokan Object."/>
+
+<p>
+  String-luokan API-dokumentaatio alkaa yleisellä otsakkeella jota seuraa luokan pakkaus (<code>java.lang</code>). Pakkauksen jälkeen tulee luokan nimi (<code>Class String</code>), jota seuraa luokan <em>perintähierarkia</em>.
+</p>
+
+<pre>
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html">java.lang.Object</a>
+  <img src="../img/material/perinta-e36fbc5f.gif"/><strong>java.lang.String</strong>
+</pre>
+
+<p>
+  Perintähierarkia listaa luokat, jotka luokka on perinyt. Perityt luokat listataan perimisjärjestyksessä, tarkasteltava luokka aina alimpana. String-luokan perintähierarkiasta näemme, että <code>String</code>-luokka perii luokan <code>Object</code>. <em>Javassa jokainen luokka voi periä korkeintaan yhden luokan</em>. Toisaalta, perittävä luokka on voinut periä toisen luokan, joten välillisesti luokka voi periä useampia luokkia.
+</p>
+
+<p>
+  Perintähierarkiaa voi ajatella myös listana tyypeistä, joita olio toteuttaa.
+</p>
+
+<p>
+  Tieto siitä, että oliot voivat olla montaa eri tyyppiä -- esimerkiksi tyyppiä Object -- suoraviivaistaa ohjelmointia. Jos tarvitsemme metodissa vain Object-luokassa määriteltyjä metodeja kuten <code>toString</code>, <code>equals</code> ja <code>hashCode</code>, voimme käyttää metodin parametrina tyyppiä <code>Object</code>. Tällöin metodille voi antaa parametrina <em>minkä tahansa</em> olion. Tarkastellaan tätä metodin <code>tulostaMonesti</code> avulla. Metodi saa parametrinaan <code>Object</code>-tyyppisen muuttujan ja tulostusten lukumäärän.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tulostin {
+    ...
+    public void tulostaMonesti(Object object, int kertaa) {
+        for (int i = 0; i &lt; kertaa; i++) {
+            System.out.println(object.toString());
+            // tai System.out.println(object);
+        }
+    }
+...
+}
+</code></pre>
+
+<p>
+  Metodille voi antaa parametrina minkä tahansa olion. Metodin <code>tulostaMonesti</code> sisällä oliolla on käytössään vain <code>Object</code>-luokassa määritellyt metodit, koska olio <em>tunnetaan</em> metodissa <code>Object</code>-tyyppisenä. Todellisuudessa olio voi olla myös toisen tyyppinen.
+</p>
+
+<pre class="sh_java code-highlight"><code>Tulostin tulostin = new Tulostin();
+
+String merkkijono = " o ";
+List&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+sanat.add("polymorfismi");
+sanat.add("perintä");
+sanat.add("kapselointi");
+sanat.add("abstrahointi");
+
+tulostin.tulostaMonesti(merkkijono, 2);
+tulostin.tulostaMonesti(sanat, 3);
+</code></pre>
+
+<pre class="sample-output">o
+o
+[polymorfismi, perintä, kapselointi, abstrahointi]
+[polymorfismi, perintä, kapselointi, abstrahointi]
+[polymorfismi, perintä, kapselointi, abstrahointi]
+</pre>
+
+<p>
+  Jatketaan <code>String</code>-luokan API-kuvauksen tarkastelua. Kuvauksessa olevaa perintähierarkiaa seuraa listaus luokan toteuttamista rajapinnoista.
+</p>
+
+<pre>
+  <strong>All Implemented Interfaces:</strong>
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html" target="_blank" rel="noopener">Serializable</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html" target="_blank" rel="noopener">CharSequence</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="noopener">Comparable</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" target="_blank" rel="noopener">String</a>&gt;
+</pre>
+
+<p>
+  Luokka <code>String</code> toteuttaa rajapinnat <code>Serializable</code>, <code>CharSequence</code>, ja <code>Comparable&lt;String&gt;</code>. Myös rajapinta on tyyppi. Luokan String API-kuvauksen mukaan String-olion tyypiksi voi asettaa seuraavat rajapinnat.
+</p>
+
+<pre class="sh_java code-highlight"><code>Serializable serializableString = "merkkijono";
+CharSequence charSequenceString = "merkkijono";
+Comparable&lt;String&gt; comparableString = "merkkijono";
+</code></pre>
+
+<p>
+  Koska metodeille voidaan määritellä metodin parametrin tyyppi, voimme määritellä metodeja jotka vastaanottavat <em>tietyn rajapinnan toteuttavan</em> olion. Kun metodille määritellään parametrina rajapinta, sille voidaan antaa parametrina mikä tahansa olio, joka toteuttaa kyseisen rajapinnan.
+</p>
+
+<p>
+  Täydennetään <code>Tulostin</code>-luokkaa siten, että sillä on metodi <code>CharSequence</code>-rajapinnan toteuttavien olioiden merkkien tulostamiseen. Rajapinta <code>CharSequence</code> tarjoaa muunmuassa metodit <code>int length()</code>, jolla saa merkkijonon pituuden, ja <code>char charAt(int index)</code>, jolla saa merkin tietyssä indeksissä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tulostin {
+    ...
+    public void tulostaMonesti(Object object, int kertaa) {
+        for (int i = 0; i &lt; kertaa; i++) {
+            System.out.println(object.toString());
+        }
+    }
+
+    public void tulostaMerkit(CharSequence charSequence) {
+        for (int i = 0; i &lt; charSequence.length(); i++) {
+            System.out.println(charSequence.charAt(i));
+        }
+    }
+    ...
+}</code></pre>
+
+
+<p>
+  Metodille <code>tulostaMerkit</code> voi antaa minkä tahansa <code>CharSequence</code>-rajapinnan toteuttavan olion. Näitä on muunmuassa <code>String</code> ja merkkijonojen rakentamisessa usein Stringiä tehokkaampi <code>StringBuilder</code>. Metodi <code>tulostaMerkit</code> tulostaa annetun olion jokaisen merkin omalle rivilleen.
+</p>
+
+<pre class="sh_java code-highlight"><code>Tulostin tulostin = new Tulostin();
+
+String mjono = "toimii";
+
+tulostin.tulostaMerkit(mjono);
+</code></pre>
+
+<pre class="sample-output">t
+o
+i
+m
+i
+i
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Sukunimet Espanjassa (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Espanjassa ihmisillä on kaksi sukunimeä. Ennen vuoden 1999 lakimuutosta lapsen ensimmäinen sukunimi tuli isän ensimmäisestä sukunimestä ja toinen äidin ensimmäisestä sukunimestä. Vuonna 1999 lainsäädäntöä muutettiin niin, että vanhempien yhteisestä päätöksestä ensimmäiseksi sukunimeksi voidaan valita myös äidin ensimmäinen sukunimi.
+  </p>
+
+  <p>
+    Tee tämän tehtävän luokat pakkaukseen <code>sukunimet</code>.
+  </p>
+
+  <h2>Henkilo</h2>
+  
+  <p>
+    Tarkastellaan olioiden monimuotoisuutta luomalla vuotta 1999 edeltävää Espanjalaista nimentää kuvaava luokka Henkilo. 
+  </p>
+
+  <p>
+    Luo luokka Henkilo, jolla on kaksi konstruktoria:
+  </p>
+
+  <ul>
+    <li>
+      public Henkilo(String etunimi, String ensimmainenSukunimi, String toinenSukunimi)
+    </li>
+    <li>
+      public Henkilo(String etunimi, Henkilo isa, Henkilo aiti)
+    </li>
+  </ul>
+
+  <p>
+    Luo luokalle lisäksi toString-metodi, joka tulostaa henkilöä kuvaavan merkkijonoesityksen.
+  </p>
+
+  <p>
+    Luokan tulee toimia seuraavasti. Huomaa myös viimeinen rivi, missä luokasta tehtyä oliota käsitellään Object-tyyppisenä. 
+  </p>
+
+<pre class="sh_java code-highlight"><code>Henkilo dolores = new Henkilo("Dolores", "D.", "Parto");
+System.out.println(dolores);
+
+Henkilo hay = new Henkilo("Hay", "Alen", "Gualarga");
+System.out.println(hay);
+
+Henkilo nacho = new Henkilo("Nacho", "Cuesta", "Parto");
+System.out.println(nacho);
+
+Henkilo valeria = new Henkilo("Valeria", "Mogollon" "Gualarga");
+System.out.println(valeria);
+
+Henkilo enrico = new Henkilo("Enrico", dolores, hay);
+System.out.println(enrico);
+
+Henkilo luz = new Henkilo("Luz", nacho, valeria);
+System.out.println(luz);
+
+Henkilo valentina = Henkilo("Valentina", enrico, luz);
+System.out.println(valentina);
+
+Object valObject = valentina;
+System.out.println(valObject);
+</code></pre>
+
+
+<pre class="sample-output">Dolores D. Parto
+Hay Alen Gualarga
+Nacho Cuesta Parto
+Valeria Mogollon Gualarga
+Enrico D. Alen
+Luz Cuesta Mogollon
+Valentina D. Cuesta
+Valentina D. Cuesta
+</pre>
+
+  
+  <h2>Perhe</h2>
+
+  <p>
+    Toteuta tämän jälkeen luokka <code>Perhe</code>. Luokan tulee toimia seuraavasti.
+  </p>
+
+  
+<pre class="sh_java code-highlight"><code>Henkilo dolores = new Henkilo("Dolores", "D.", "Parto");
+Henkilo enrico = new Henkilo("Enrico", dolores, hay);
+Henkilo luz = new Henkilo("Luz", nacho, valeria);
+Henkilo valentina = Henkilo("Valentina", enrico, luz);
+
+Perhe perhe = new Perhe();
+perhe.lisaa(dolores);
+perhe.lisaa(luz);
+perhe.lisaa(valentina);
+System.out.println(perhe);
+
+System.out.println();
+
+perhe.poista(luz);
+System.out.println(perhe);
+
+System.out.println();
+    
+Object perheObj = perhe;
+System.out.println(perheObj);
+
+System.out.println();
+    
+perhe.lisaa(enrico);
+System.out.println(perheObj);
+</code></pre>
+
+<pre class="sample-output">Dolores D. Parto
+Luz Cuesta Mogollon
+Valentina D. Cuesta
+
+Dolores D. Parto
+Valentina D. Cuesta
+
+Dolores D. Parto
+Valentina D. Cuesta
+Enrico D. Alen
+</pre>
+
+  <p>
+    Tee sekä metodista <code>lisaa</code> että metodista <code>poista</code> sellaiset, että ne eivät palauta mitään arvoa. 
+  </p>
+
+  <p>
+    Mikä tässä oikein oli monimuotoisuutta? Kaikki luokat ovat Object-tyyppisiä. Vaikka henkilöä tarkastellaan Object-oliona, suoritetaan <code>toString</code>-metodin lähdekoodi olion "oikeaan" tyyppiin liittyvästä luokasta.
+  </p>
+  
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Joukkoja (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä teemme eliöita ja eliöistä koostuvia laumoja jotka liikkuvat ympäriinsä. Eliöiden sijaintien ilmoittamiseen käytetään <em>kaksiulotteista koordinaatistoa</em>. Jokaiseen sijaintiin liittyy kaksi lukua, <code>x</code>- ja <code>y</code>-koordinaatti. Koordinaatti <code>x</code> kertoo, kuinka pitkällä "nollapisteestä" mitattuna sijainti on vaakasuunnassa, ja koordinaatti <code>y</code> vastaavasti kuinka pitkällä sijainti on pystysuunnassa. Jos koordinaatiston käsite ei ole tuttu, voit lukea siitä lisää esimerkiksi <a href="http://fi.wikipedia.org/wiki/Koordinaatisto">wikipediasta</a>.
+  </p>
+
+  <p>
+    Tehtävän mukana tulee rajapinta <code>Siirrettava</code>, joka kuvaa asiaa jota voidaan siirtää paikasta toiseen. Rajapinta sisältää metodin <code>void siirra(int dx, int dy)</code>. Parametri <code>dx</code> kertoo, paljonko asia siirtyy x-akselilla ja <code>dy</code> y-akselilla.
+  </p>
+
+  <p>
+    Tehtävässä toteutat luokat <code>Elio</code> ja <code>Lauma</code>, jotka molemmat ovat siirrettäviä. Toteuta kaikki toiminnallisuus pakkaukseen <code>siirrettava</code>.
+  </p>
+
+  <h2>Elio-luokan toteuttaminen</h2>
+
+  <p>
+    Luo pakkaukseen <code>siirrettava</code> luokka <code>Elio</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Eliön tulee tietää oma sijaintinsa (x, y -koordinaatteina). Luokan <code>Elio</code> APIn tulee olla seuraava:
+  </p>
+
+  <ul>
+    <li><strong>public Elio(int x, int y)</strong><br/>Luokan konstruktori, joka saa olion aloitussijainnin x- ja y-koordinaatit parametrina</li>
+    <li><strong>public String toString()</strong><br/> Luo ja palauttaa oliosta merkkijonoesityksen. Eliön merkkijonoesityksen tulee olla seuraavanlainen <code>"x: 3; y: 6"</code>. Huomaa että koordinaatit on erotettu puolipisteellä (<code>;</code>)</li>
+    <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää oliota parametrina saatujen arvojen verran. Muuttuja <code>dx</code> sisältää muutoksen koordinaattiin <code>x</code>, muuttuja <code>dy</code> sisältää muutoksen koordinaattiin <code>y</code>. Esimerkiksi jos muuttujan <code>dx</code> arvo on 5, tulee oliomuuttujan <code>x</code> arvoa kasvattaa viidellä</li>
+  </ul>
+
+  <p>
+    Kokeile luokan <code>Elio</code> toimintaa seuraavalla esimerkkikoodilla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Elio elio = new Elio(20, 30);
+System.out.println(elio);
+elio.siirra(-10, 5);
+System.out.println(elio);
+elio.siirra(50, 20);
+System.out.println(elio);
+</code></pre>
+
+<pre class="sample-output">x: 20; y: 30
+x: 10; y: 35
+x: 60; y: 55
+</pre>
+
+
+  <h2>Lauman toteutus</h2>
+
+  <p>
+    Luo pakkaukseen <code>siirrettava</code> luokka <code>Lauma</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Lauma koostuu useasta <code>Siirrettava</code>-rajapinnan toteutavasta oliosta, jotka tulee tallettaa esimerkiksi listarakenteeseen.
+  </p>
+
+  <p>
+    Luokalla <code>Lauma</code> tulee olla seuraavanlainen API.
+  </p>
+
+  <ul>
+    <li><strong>public String toString()</strong><br/> Palauttaa merkkijonoesityksen lauman jäsenten sijainnista rivin vaihdolla erotettuna.</li>
+    <li><strong>public void lisaaLaumaan(Siirrettava siirrettava)</strong><br/> Lisää laumaan uuden <code>Siirrettava</code>-rajapinnan toteuttavan olion</li>
+    <li><strong>public void siirra(int dx, int dy)</strong><br/> Siirtää laumaa parametrina saatujen arvojen verran. Huomaa että tässä sinun tulee siirtää jokaista lauman jäsentä.</li>
+  </ul>
+
+  <p>Kokeile ohjelmasi toimintaa alla olevalla esimerkkikoodilla.</p>
+
+<pre class="sh_java code-highlight"><code>Lauma lauma = new Lauma();
+lauma.lisaaLaumaan(new Elio(73, 56));
+lauma.lisaaLaumaan(new Elio(57, 66));
+lauma.lisaaLaumaan(new Elio(46, 52));
+lauma.lisaaLaumaan(new Elio(19, 107));
+System.out.println(lauma);
+</code></pre>
+
+<pre class="sample-output">x: 73; y: 56
+x: 57; y: 66
+x: 46; y: 52
+x: 19; y: 107
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Ryhmittely hajautustaulun avulla
+
+</h1>
+
+<p>
+  Kerrataan osan lopuksi vielä hieman hajautustaulun toimintaa sekä ryhmittelyä. Hajautustaulu sisältää korkeintaan yhden arvon yhtä avainta kohti. Alla luodaan henkilöiden puhelinnumeroita hajautustauluun.
+</p>
+
+<pre class="sh_java code-highlight"><code>Map&lt;String, String&gt; puhelinnumerot = new HashMap&lt;&gt;();
+puhelinnumerot.put("Pekka", "040-12348765");
+
+System.out.println("Pekan numero: " + puhelinnumerot.get("Pekka"));
+
+puhelinnumerot.put("Pekka", "09-111333");
+
+System.out.println("Pekan numero: " + puhelinnumerot.get("Pekka"));
+</code></pre>
+
+<pre class="sample-output">Pekan numero: 040-12348765
+Pekan numero: 09-111333
+</pre>
+
+
+<h2 class="material-heading">
+    Useampi arvo yhdelle avaimelle
+
+</h2>
+
+<p>
+  Entä jos haluaisimme liittää yhteen avaimeen useita arvoja, eli esimerkiksi useampia puhelinnumeroita yhdelle henkilölle?
+</p>
+
+<p>
+  Koska hajautustaulun avaimet ja arvot voivat olla mitä tahansa muuttujia, listojen käyttäminen hajautustaulun arvona onnistuu. Useamman arvon lisääminen yhdelle arvolle onnistuu liittämällä avaimeen lista. Muutetaan puhelinnumeroiden talletustapaa seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>Map&lt;String, List&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+</code></pre>
+
+<p>
+  Nyt hajautustaulussa on jokaiseen avaimeen liitettynä lista. Vaikka new-komento luo hajautustaulun, ei hajautustaulu sisällä alussa yhtäkään listaa. Ne on luotava tarvittaessa erikseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>Map&lt;String, List&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+
+// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new ArrayList&lt;&gt;());
+
+// ja lisätään Pekkaa vastaavalle listalle puhelinnumero
+puhelinnumerot.get("Pekka").add("040-12348765");
+// ja lisätään toinenkin puhelinnumero
+puhelinnumerot.get("Pekka").add("09-111333");
+
+System.out.println("Pekan numerot: " + puhelinnumerot.get("Pekka"));
+</code></pre>
+
+<pre class="sample-output">Pekan numero: [040-12348765, 09-111333]
+</pre>
+
+<p>
+  Määrittelimme muuttujan puhelinnumero tyypiksi <code>Map&lt;String, List&lt;String&gt;&gt;</code>. Tämä tarkoittaa hajautustaulua, joka käyttää avaimena merkkijonoa ja arvona merkkijonoja sisältävää listaa. Hajautustauluun lisättävät arvot ovat siis <code>List&lt;String&gt;</code>-rajapinnan toteuttavia konkreettisia olioita, eli esimerkiksi ArrayListejä.
+</p>
+
+<pre class="sh_java code-highlight"><code>// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
+
+// ...
+</code></pre>
+
+<h2 class="material-heading">
+    Joukoista
+
+</h2>
+
+<p>
+  Rajapinta <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html" target="_blank" rel="noopener">Set</a></code> kuvaa joukon toiminnallisuutta. Toisin kuin listalla, joukossa kutakin alkioita on korkeintaan yksi kappale, eli yhtään samanlaista oliota ei ole kahdesti. Olioiden samankaltaisuuden tarkistaminen toteutetaan <code>equals</code> ja <code>hashCode</code> -metodeja käyttämällä.
+</p>
+
+<p>
+  Yksi rajapinnan <code>Set</code> toteuttava luokka on <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank" rel="noopener">HashSet</a></code>. Toteutetaan sen avulla luokka <code>Tehtavakirjanpito</code>, joka tarjoaa mahdollisuuden tehtävien kirjanpitoon ja tehtyjen tehtävien tulostamiseen. Oletetaan että tehtävät ovat aina kokonaislukuja.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tehtavakirjanpito {
+    private Set&lt;Integer&gt; tehdytTehtavat;
+
+    public Tehtavakirjanpito() {
+        this.tehdytTehtavat = new HashSet&lt;&gt;();
+    }
+
+    public void lisaa(int tehtava) {
+        this.tehdytTehtavat.add(tehtava);
+    }
+
+    public void tulosta() {
+        this.tehdytTehtavat.stream().forEach(t -&gt; System.out.println(t));
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
+kirjanpito.lisaa(1);
+kirjanpito.lisaa(1);
+kirjanpito.lisaa(2);
+kirjanpito.lisaa(3);
+
+kirjanpito.tulosta();
+</code></pre>
+
+<pre class="sample-output">1
+2
+3
+</pre>
+
+<p>
+  Yllä oleva ratkaisu toimii tilanteessa, jossa emme tarvitse tietoa eri käyttäjien tekemistä tehtävistä. Muutetaan sovelluksen toiminnallisuutta siten, että tehtävät tallennetaan <em>käyttäjäkohtaisesti</em> hajautustaulua hyödyntäen. Käyttäjät tunnistetaan käyttäjän yksilöivällä merkkijonolla (esimerkiksi opiskelijanumero), ja jokaiselle käyttäjälle on oma joukko tehdyistä tehtävistä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tehtavakirjanpito {
+    private Map&lt;String, Set&lt;Integer&gt;&gt; tehdytTehtavat;
+
+    public Tehtavakirjanpito() {
+        this.tehdytTehtavat = new HashMap&lt;&gt;();
+    }
+
+    public void lisaa(String kayttaja, int tehtava) {
+        // uudelle käyttäjälle on lisättävä HashMapiin tyhjä tehtäväjoukko jos sitä
+        // ei ole jo lisätty
+        this.tehdytTehtavat.putIfAbsent(kayttaja, new HashSet&lt;&gt;());
+
+        // haetaan ensin käyttäjän tehtävät sisältävä joukko ja tehdään siihen lisäys
+        Set&lt;Integer&gt; tehdyt = this.tehdytTehtavat.get(kayttaja);
+        tehdyt.add(tehtava);
+
+        // edellinen olisi onnitunut myös ilman apumuuttujaa seuraavasti
+        // this.tehdytTehtavat.get(kayttaja).add(tehtava);
+    }
+
+    public void tulosta() {
+        this.tehdytTehtavat.entrySet().stream(entry -&gt; {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        });
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 4);
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 3);
+
+kirjanpito.lisaa("Pekka", 4);
+kirjanpito.lisaa("Pekka", 4);
+
+kirjanpito.lisaa("Matti", 1);
+kirjanpito.lisaa("Matti", 2);
+
+kirjanpito.tulosta();
+</code></pre>
+
+<pre class="sample-output">Matti: [1, 2]
+Pekka: [4]
+Ada: [3, 4]
+</pre>
+
+<p>
+  Huomaamme että käyttäjien nimet eivät tulostu järjestyksessä. Tämä selittyy sillä että <code>HashMap</code>-tyyppisessä hajautustaulussa alkioiden tallennus tapahtuu <code>hashCode</code>-metodin palauttaman hajautusarvon perusteella. HashMap-hajautustaulu ei ota kantaa alkioiden järjestykseen.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Usean käännöksen sanakirja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtävänäsi on toteuttaa pakkaukseen <code>sanakirja</code> luokka <code>OmaUseanKaannoksenSanakirja</code>, johon voidaan lisätä yksi tai useampi käännös jokaiselle sanalle. Luokan tulee toteuttaa tehtäväpohjassa annettu rajapinta <code>UseanKaannoksenSanakirja</code>, joka määrittelee seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public void lisaa(String sana, String kaannos)</code> lisää käännöksen sanalle säilyttäen vanhat käännökset</li>
+    <li><code>public Set&lt;String&gt; kaanna(String sana)</code> palauttaa <code>Set</code>-rajapinnan toteuttavan olion, jossa on kaikki käännökset sanalle. Jos sanalle ei ole yhtäkään käännöstä, metodin tulee palauttaa Set-olio, jossa ei ole yhtäkään alkiota</li>
+    <li><code>public void poista(String sana)</code> poistaa sanan ja sen kaikki käännökset sanakirjasta.</li>
+  </ul>
+
+  <p>
+    Käännökset kannattanee lisätä <code>Map&lt;String, Set&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan.
+  </p>
+
+  <p>Rajapinta UseanKaannoksenSanakirja:</p>
+
+<pre class="sh_java code-highlight"><code>package sanakirja;
+
+import java.util.Set;
+
+public interface UseanKaannoksenSanakirja {
+    void lisaa(String sana, String kaannos);
+    Set&lt;String&gt; kaanna(String sana);
+    void poista(String sana);
+}
+</code></pre>
+
+  <p>
+    Esimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>UseanKaannoksenSanakirja sanakirja = new OmaUseanKaannoksenSanakirja();
+sanakirja.lisaa("kuusi", "six");
+sanakirja.lisaa("kuusi", "spruce");
+
+sanakirja.lisaa("pii", "silicon");
+sanakirja.lisaa("pii", "pi");
+
+System.out.println(sanakirja.kaanna("kuusi"));
+sanakirja.poista("pii");
+System.out.println(sanakirja.kaanna("pii"));
+</code></pre>
+
+<pre class="sample-output">[six, spruce]
+[]
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Duplikaattien poistaja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtävänäsi on toteuttaa pakkaukseen <code>tyokalut</code> luokka <code>OmaDuplikaattienPoistaja</code>, joka tallettaa annetut merkkijonot siten, että annetuista merkkijonoista poistetaan samanlaiset merkkijonot (eli duplikaatit). Lisäksi luokka pitää kirjaa duplikaattien määrästä. Luokan tulee toteuttaa tehtäväpohjassa annettu rajapinta <code>DuplikaattienPoistaja</code>, jossa on seuraavat toiminnot:
+  </p>
+
+  <ul>
+    <li><code>public void lisaa(String merkkijono)</code></li> tallettaa merkkijonon, jos se ei ole duplikaatti<br/>
+    <li><code>public int getHavaittujenDuplikaattienMaara()</code></li> palauttaa tähän mennessä havaittujen duplikaattien määrän<br/>
+    <li><code>public Set&lt;String&gt; getUniikitMerkkijonot()</code></li> palauttaa <code>Set&lt;String&gt;</code>-rajapinnan toteuttavan olion, jossa on kaikki uniikit lisätyt merkkijonot (ei siis duplikaatteja!). Jos merkkijonoja ei ole, palautetaan tyhjä joukko-olio.<br/>
+    <li><code>public void tyhjenna()</code></li> poistaa talletetut merkkijonot ja nollaa havaittujen duplikaattien määrän<br/>
+  </ul>
+
+  <p>
+    Rajapinta:
+  </p>
+
+<pre class="sh_java code-highlight"><code>package tyokalut;
+
+import java.util.Set;
+
+public interface DuplikaattienPoistaja {
+    void lisaa(String merkkijono);
+    int getHavaittujenDuplikaattienMaara();
+    Set&lt;String&gt; getUniikitMerkkijonot();
+    void tyhjenna();
+}
+</code></pre>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    DuplikaattienPoistaja poistaja = new OmaDuplikaattienPoistaja();
+    poistaja.lisaa("eka");
+    poistaja.lisaa("toka");
+    poistaja.lisaa("eka");
+
+    System.out.println("Duplikaattien määrä nyt: " +
+        poistaja.getHavaittujenDuplikaattienMaara());
+
+    poistaja.lisaa("vika");
+    poistaja.lisaa("vika");
+    poistaja.lisaa("uusi");
+
+    System.out.println("Duplikaattien määrä nyt: " +
+        poistaja.getHavaittujenDuplikaattienMaara());
+
+    System.out.println("Uniikit merkkijonot: " +
+        poistaja.getUniikitMerkkijonot());
+
+    poistaja.tyhjenna();
+
+    System.out.println("Duplikaattien määrä nyt: " +
+        poistaja.getHavaittujenDuplikaattienMaara());
+
+    System.out.println("Uniikit merkkijonot: " +
+        poistaja.getUniikitMerkkijonot());
+}
+</code></pre>
+
+  <p>
+    Yllä oleva ohjelma tulostaisi esimerkiksi seuraavaa: (merkkijonojen järjestys saa vaihdella, sillä ei ole merkitystä)
+  </p>
+
+<pre class="sample-output">Duplikaattien määrä nyt: 1
+Duplikaattien määrä nyt: 2
+Uniikit merkkijonot: [eka, toka, vika, uusi]
+Duplikaattien määrä nyt: 0
+Uniikit merkkijonot: []
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Sama olio useammassa tietorakenteessa
+
+</h2>
+
+<p>
+  Oliot ovat viittaustyyppisiä, eli muuttuja ei tallenna olioa itseään vaan viitteen. Tämä tarkoittaa myös sitä, että jos olio lisätään esimerkiksi listaan, listalle lisätään viite olioon. Mikään ei estä lisäämästä saman olion viitettä useampaan paikkaan.
+</p>
+
+<p>
+  Tarkastellaan esimerkkinä kirjastoa joka tallettaa kirjat hajautustauluihin sekä kirjailijan että kirjan isbn-numeron perusteella. Tämän lisäksi kirjasto pitää kirjaa lainassa olevista sekä hyllyssä olevista kirjoista erillisillä listoilla.</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String ISBN;
+    private String kirjailija;
+    private String nimi;
+    private int vuosi;
+    // ...
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>public class Kirjasto {
+    private Map&lt;String, Kirja&gt; kirjaIsbnNumeronPerusteella;
+    private Map&lt;String, List&lt;Kirja&gt;&gt; kirjatKirjailijanPerusteella;
+    private List&lt;Kirja&gt; lainassaOlevatKirjat;
+    private List&lt;Kirja&gt; hyllyssaOlevatKirjat;
+
+    public Kirjasto() {
+        this.kirjaIsbnNumeronPerusteella = new HashMap&lt;&gt;();
+        this.kirjatKirjailijanPerusteella = new HashMap&lt;&gt;();
+        this.lainassaOlevatKirjat = new ArrayList&lt;&gt;();
+        this.hyllyssaOlevatKirjat = new ArrayList&lt;&gt;();
+    }
+
+    public void lisaaKirjaKokoelmaan(Kirja uusiKirja) {
+        this.kirjaIsbnNumeronPerusteella.put(uusiKirja.getIsbn(), uusiKirja);
+
+        this.kirjatKirjailijanPerusteella.putIfAbsent(uusiKirja.getKirjailija(), new ArrayList&lt;&gt;());
+        this.kirjatKirjailijanPerusteella.get(uusikirja.getKirjailija()).add(uusiKirja);
+
+        this.hyllyssaOlevatKirjat.add(uusiKirja);
+    }
+
+    public Kirja haeKirjaIsbnNumeronPerusteella(String isbn){
+        return kirjaIsbnNumeronPerusteella.get(isbn);
+    }
+
+    // ...
+}
+</code></pre>
+
+<p>
+  Jos olio on yhtäaikaa useassa kokoelmassa (listalla, joukossa tai map-rakenteessa), on kiinnitettävä erityistä huomiota, että kokoelmien tila on konsistentti. Jos esimerkiksi kirja päätetään poistaa, on se poistettava kaikista paikoista, missä kirjaan on viite.
+</p>
+
+
+<div class="quiznator-plugin" data-quiz-id="5aa2ef3854e41800043662c1"></div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Reseptikirja (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä kehität reseptikirjaa, josta voi hakea reseptejä sekä nimen että raaka-aineen perusteella. Tehtäväpohjassa on valmis luokka <code>Resepti</code> sekä tyhjät metodit sisältävä luokka <code>Reseptikirja</code>, jota sinun tulee täydentää. Käytä luokkaa täydentäessäsi oliomuuttujina vain <code>Map</code>-tyyppisiä olioita.
+  </p>
+
+  <h2>Reseptit nimen perusteella</h2>
+
+  <p>
+    Täydennä luokan <code>Reseptikirja</code> toimintaa siten, että luokasta tehtyyn olioon voi lisätä reseptejä ja reseptejä voi hakea reseptin nimen perusteella. 
+  </p>
+
+<pre class="sh_java code-highlight"><code>Reseptikirja kirja = new Reseptikirja();
+kirja.lisaaResepti(new Resepti("Omenaleivos"));
+
+Resepti resepti = kirja.haeNimella("Omenaleivos");
+System.out.println(resepti);
+    
+Resepti toinen = kirja.haeNimella("leivos");
+System.out.println(resepti);
+</code></pre>
+
+  
+<pre class="sample-output">Omenaleivos
+null
+</pre>
+
+  
+  <h2>Reseptit raaka-aineen perusteella</h2>
+  
+  <p>
+    Täydennä luokan <code>Reseptikirja</code> toimintaa siten, että luokasta tehdystä oliosta voi hakea reseptejä raaka-aineen perusteella. 
+  </p>
+
+<pre class="sh_java code-highlight"><code>Reseptikirja kirja = new Reseptikirja();
+Resepti omenaleivos = new Resepti("Omenaleivos");
+omenaleivos.lisaaRaakaAine("omena");
+omenaleivos.lisaaRaakaAine("kaurahiutale");
+omenaleivos.lisaaRaakaAine("fariinisokeri");
+omenaleivos.lisaaRaakaAine("voi");
+    
+kirja.lisaaResepti(omenaleivos);
+    
+List&lt;Resepti&gt; reseptit = kirja.haeRaakaAineella("jauheliha");
+System.out.println(reseptit);
+System.out.println(reseptit.size());
+
+List&lt;Resepti&gt; reseptit2 = kirja.haeRaakaAineella("omena");
+System.out.println(reseptit2.size());
+System.out.println(reseptit2.get(0).getNimi());
+
+List&lt;Resepti&gt; reseptit3 = kirja.haeRaakaAineella("mena");
+System.out.println(reseptit3.size());
+System.out.println(reseptit3);
+</code></pre>
+
+  
+<pre class="sample-output">[]
+0
+1
+Omenaleivos
+0
+[]
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Numerotiedustelu (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <strong>Huom: jotta testit toimisivat, ohjelmasi saa luoda vain yhden syötteen lukemiseen tarkoitetun Scanner-olion.</strong>
+  </p>
+
+  <p>
+    Tehdään sovellus jonka avulla on mahdollista hallinnoida ihmisten puhelinnumeroita ja osoitteita.
+  </p>
+
+  <p>
+    Tehtävän voi suorittaa 1-5 pisteen laajuisena. Yhden pisteen laajuuteen on toteutettava seuraavat toiminnot:
+  </p>
+
+  <ul>
+    <li>1 puhelinnumeron lisäys henkilölle</li>
+    <li>2 henkilön puhelinnumeroiden haku</li>
+  </ul>
+
+  <p>
+    kahteen pisteeseen vaaditaan edellisten lisäksi
+  </p>
+
+  <ul>
+    <li>3 numeroa vastaavan henkilön nimen haku</li>
+  </ul>
+
+  <p>
+    kolmeen pisteeseen vaaditaan edellisten lisäksi
+  </p>
+
+  <ul>
+    <li>4 osoitteen lisäys henkilölle</li>
+    <li>5 henkilön tietojen (osoite ja puhelinnumero) haku</li>
+  </ul>
+
+  <p>
+    neljään pisteeseen vaaditaan toiminto
+  </p>
+
+  <ul>
+    <li>6 henkilön tietojen poisto</li>
+  </ul>
+
+  <p>
+    ja täysiin pisteeseen vaaditaan vielä
+  </p>
+
+  <ul>
+    <li>7 hakusanalla filtteröity listaus, hakusana voi esiintyä henkilön nimessä tai osoitteessa</li>
+  </ul>
+
+  <p>
+    Esimerkki ohjelman toiminnasta:
+  </p>
+
+<pre class="sample-output">numerotiedustelu
+käytettävissä olevat komennot:
+1 lisää numero
+2 hae numerot
+3 hae puhelinnumeroa vastaava henkilö
+4 lisää osoite
+5 hae henkilön tiedot
+6 poista henkilön tiedot
+7 filtteröity listaus
+x lopeta
+
+komento: <font color="red">1</font>
+kenelle: <font color="red">pekka</font>
+numero: <font color="red">040-123456</font>
+
+komento: <font color="red">2</font>
+kenen: <font color="red">jukka</font>
+  ei löytynyt
+
+komento: <font color="red">2</font>
+kenen: <font color="red">pekka</font>
+    <font color="red">040-123456</font>
+
+komento: <font color="red">1</font>
+kenelle: <font color="red">pekka</font>
+numero: <font color="red">09-222333</font>
+
+komento: <font color="red">2</font>
+kenen: <font color="red">pekka</font>
+  040-123456
+  09-222333
+
+komento: <font color="red">3</font>
+numero: <font color="red">02-444123</font>
+  ei löytynyt
+
+komento: <font color="red">3</font>
+numero: <font color="red">09-222333</font>
+  pekka
+
+komento: <font color="red">5</font>
+kenen: <font color="red">pekka</font>
+  osoite ei tiedossa
+  puhelinnumerot:
+    040-123456
+    09-222333
+
+komento: <font color="red">4</font>
+kenelle: <font color="red">pekka</font>
+katu: <font color="red">ida ekmanintie</font>
+kaupunki: <font color="red">helsinki</font>
+
+komento: <font color="red">5</font>
+kenen: <font color="red">pekka</font>
+  osoite: ida ekmanintie helsinki
+  puhelinnumerot:
+    040-123456
+    09-222333
+
+komento: <font color="red">4</font>
+kenelle: <font color="red">jukka</font>
+katu: <font color="red">korsontie</font>
+kaupunki: <font color="red">vantaa</font>
+
+komento: <font color="red">5</font>
+kenen: <font color="red">jukka</font>
+  osoite: korsontie vantaa
+  ei puhelinta
+
+komento: <font color="red">7</font>
+hakusana (jos tyhjä, listataan kaikki): <font color="red">kk</font>
+
+  jukka
+    osoite: korsontie vantaa
+    ei puhelinta
+
+  pekka
+    osoite: ida ekmanintie helsinki
+    puhelinnumerot:
+      040-123456
+      09-222333
+
+komento: <font color="red">7</font>
+hakusana (jos tyhjä, listataan kaikki): <font color="red">vantaa</font>
+
+  jukka
+    osoite: korsontie vantaa
+    ei puhelinta
+
+komento: <font color="red">7</font>
+hakusana (jos tyhjä, listataan kaikki): <font color="red">seppo</font>
+  ei löytynyt
+
+komento: <font color="red">6</font>
+kenet: <font color="red">jukka</font>
+
+komento: <font color="red">5</font>
+kenen: <font color="red">jukka</font>
+  ei löytynyt
+
+komento: <font color="red">x</font>
+</pre>
+
+  <p>
+    Huomioita:
+  </p>
+
+  <ul>
+
+    <li>
+      Testien kannalta on oleellista että <em>käyttöliittymä</em> toimii kuten yllä olevassa esimerkissä. Sovellus voi itse päättää kuinka epäkelvot syötteet käsitellään. Testit sisältävät vaan kelvollisia syötteitä.
+    </li>
+    
+    <li>
+      <em><strong>Ohjelman tulee käynnistyä kun tehtäväpohjassa oleva main-metodi suoritetaan, tehtävässä saa luoda vain yhden Scanner-olion.</strong></em>
+    </li>
+    
+    <li>
+      Älä käytä luokkien nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin!
+    </li>
+    
+    <li>
+      Yksinkertaisuuden vuoksi oletetaan että nimi on yksittäinen merkkijono, eli jos halutaan sukunimen mukaan järjestetyn tulostus viimeiseen toimintoon, nimi on annettava muodossa <em>mikkola pekka</em>.
+    </li>
+    
+    <li>
+      Henkilöllä voi olla useita puhelinnumeroja sekä osoite. Henkilöllä ei kuitenkaan ole välttämättä yhtään puhelinnumeroa tai osoite ei ole tiedossa.
+    </li>
+    
+    <li>
+      Jos henkilö poistetaan, ei mikään haku saa enää palauttaa henkilön tietoja.
+    </li>
+  </ul>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a987a0f7863c4000454a03f"></div>
+
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/part9.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-k18">
+                Ohjelmoinnin jatkokurssi, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-ad02a43f.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        window.initTyponator();
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
