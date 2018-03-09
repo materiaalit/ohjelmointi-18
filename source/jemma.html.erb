@@ -1,0 +1,594 @@
+
+
+
+<% partial 'partials/material_heading' do %>
+  Tehtäväpohjien rakenne ja Maven
+<% end %>
+
+<p>
+  Ohjelmoinnin jatkokurssista lähtien kurssin tehtäväpohjat käyttävät <a href="https://maven.apache.org/" target="_blank" norel>Maven</a>-nimistä projektinhallintatyövälinettä. Kyseinen työväline helpottaa kurssin tehtävien mukana tuotavien kirjastojen hallintaa. Tehtäviin tämä vaikuttaa siten, että niiden kansiorakenne muuttuu hieman. 
+</p>
+
+<p>
+  Jatkossa tehtävän juurikansiossa on tiedosto pom.xml, joka kuvaa tehtäväpohjan rakenteen. Kansio <code>src</code> sisältää kansiot <code>main</code> ja <code>test</code>, jotka sisältävät lähdekooditiedostot sekä testitiedostot.
+
+</p>
+
+<pre>
+$/Osa08_01.SamaPaivays$ tree
+.
+├── pom.xml
+└── src
+    ├── main
+    │   └── java
+    │       ├── Paaohjelma.java
+    │       └── Paivays.java
+    └── test
+        └── java
+            └── PaivaysTest.java
+
+</pre>
+
+
+<p>
+  Ohjelmien toiminta ei käytännössä juurikaan muutu. Toisin kuin ennen, ohjelmien tarvitsemat kirjastot eivät kuitenkaan tule tehtäväpohjan mukana, vaan Mavenilta tulee pyytää tarvittaessa niiden lataamista. Tämä onnistuu klikkaamalla tehtäväpohjan Dependencies-kuvaketta Projects-välilehdellä ja valitsemalla "Download declared dependencies."
+</p>
+
+<img src="/img/maven-1.png"/>
+
+<br/>
+
+<p>
+  Riippuen tietokoneesi käyttöjärjestelmästä, on mahdollista, että joudut lisäämään Maven-ohjelmaan ajo-oikeudet kun sitä käytetään ensimmäistä kertaa. Windowsille ohjeita löytyy yleisesti ottaen googlettamalla ja mm. täältä: <a href="https://www.online-tech-tips.com/computer-tips/set-file-folder-permissions-windows/" target="_blank" norel>https://www.online-tech-tips.com/computer-tips/set-file-folder-permissions-windows/</a> -- myös pajassa neuvotaan tähän liittyen. 
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ongelmia ja ratkaisuja
+<% end %>
+
+<p>
+  Mavenin käyttöönottoon on liittynyt kurssilla ongelmia. Tässä lyhyt ongelmanratkaisuopas.
+</p>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Linux ja Mac
+<% end %>
+
+<p>
+  Ongelma: Maven-binäärin suoritusoikeudet puuttuvat. Mavenin virhe on (esimerkiksi) muotoa.
+</p>
+
+<pre>
+Cannot run program
+  /Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven/bin/mvn"
+  (in directory "/Users/[nimi]/NetBeansProjects/hy-[kurssi]/[tehtava]"):
+  error=13,
+  Permission denied
+</pre>
+
+<p>
+  Ratkaisu: lisää maven-binäärille suoritusoikeudet. Suorita terminaalissa (pääte) komento.
+</p>
+
+<pre>
+chmod +x /Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven/bin/mvn
+</pre>
+
+<p>
+  Huomaa, että edellä polku on sama kuin virheviestin "Cannot run program"-polku.
+</p>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Windows
+<% end %>
+
+<p>
+  Ongelma: Ympäristömuuttuja <code>JAVA_HOME</code> ei ole asetettu. Käytännössä Maven yrittää etsiä Javaa, mutta ei löydä sitä.
+</p>
+
+<p>
+  Ratkaisu: Lisää Windowsiin JAVA_HOME ympäristömuuttuja (esim.) osoitteessa <a href="https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html" target="_blank" norel>https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html</a> olevia ohjeita seuraamalla. Huomaa, että kansion tulee olla jdk, ei jre.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Tietojenkäsittelytieteen laitoksen koneet
+<% end %>
+
+<p>
+  Ongelma: Riippuvuuksien lataaminen ei onnistu tai ne eivät toimi. Tässä syynä on joko loppunut levytila tai verkkoyhteysongelma. Levytilan tilanteen saa selvitettyä komennolla "quota".
+</p>
+
+<p>
+  Ratkaisu:
+</p>
+
+<ol>
+  <li>
+    Poista vanhat ohjelmoinnin perusteiden (ja mahdollisesti muiden TMCtä käyttävien kurssien) tehtäväpohjat. Nämä löytyvät kotikansiosta kansion NetBeansProjects alta. Kannattanee harkita myös muiden turhien tiedostojen poistamista sekä esimerkiksi selaimen välimuistin tyhjentämistä ajoittain.
+  </li>
+
+  <li>
+    Poista kotikansiossa olevan .m2-kansion sisältö. Tämä tehdään sillä Maven luo ladattavista riippuvuuksista (eli kirjastoista) vahingossa tyhjät tiedostot mikäli levytila on loppunut.
+  </li>
+
+  <li>
+    (Jatkuva) Kun saat tehtäviä lähetettyä TMC:lle, klikkaa tehtäväpohjaa ja valitse "clean". Tämä poistaa tehtäväpohjasta käännetyt tiedostot.
+  </li>
+</ol>
+
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Breakout' } do %>
+
+  <p>
+    <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)" target="_blank" rel="noopener">Breakout</a> on <a href="https://en.wikipedia.org/wiki/Atari,_Inc." target="_blank" rel="noopener">Atarin</a> vuonna 1976 julkaisema videopeli. Pelin ideana käyttää pelin alalaidassa olevaa mailaa pelissä liikkuvan pallon lyömiseen siten, että pallolla saadaan rikottua ylälaidassa olevia palasia.
+  </p>
+
+  <p>
+    Termi "Breakout" tulee tilanteesta, missä pelaaja saa pallon ylälaidassa olevien palasten yläpuolelle, missä pallo tekee tuhoa useammalle palalle samaan aikaan.
+  </p>
+
+  <p>
+    Tässä tehtävässä fiilistellään Breakout-pelin tekemistä.
+  </p>
+
+  <p>
+    Tehtäväpohjaan on toteutettuna ensimmäisiä palasia Breakout peliin. Tehtävänäsi on täydentää pelin toimintaa. Alla lista täydennysehdotuksista:
+  </p>
+
+  <ol>
+    <li>Tällä hetkellä pelin ylälaidassa on vain muutama vaivainen palikka. Muokkaa peliä siten, että ylälaidassa on useita erivärisiä palikoita. Hae inspiraatiota <a href="https://images.google.com" target="_blank" rel="noopener">Googlen kuvahausta</a> avainsanalla "Breakout".</li>
+    <li>Pelin pelattavuus on tällä hetkellä melko heikko. Mailalla ei osuta palloon, vaikka kuinka yritettäisiin. Lisää peliin mahdollisuus osua mailalla palloon -- palloon osumisen pitäisi muuttaa pallon suuntaa. Osoitteesta <a href="http://www.edu4java.com/en/game/game6.html" target="_blank" rel="noopener">http://www.edu4java.com/en/game/game6.html</a> olevasta oppaasta saattaa olla hyötyä. Hifistelyä kaipaavat voivat lähteä liikenteeseen kysymyksestä <a href="http://gamedev.stackexchange.com/questions/10911/a-ball-hits-the-corner-where-will-it-deflect" target="_blank" rel="noopener">A ball hits the corner, where will it deflect?</a></li>
+    <li>Kun pallon osuminen mailaan on hanskassa, lisää samanlainen osumistoiminnallisuus kaikkiin paloihin. Tässä kohtaa paloja ei vielä tarvitse poistaa.</li>
+    <li>Kun pallo osuu palaan, pala pitäisi poistaa. Sehän on melkein jo peli!</li>
+    <li>Mieti minkälaisia luokkia pelissä kannattaisi olla. Nyt piirtämiseen käytetty paikka sisältää varmaankin jo hyvin paljon koodia.. Siistimisen paikka!</li>
+  </ol>
+
+  <p>
+    Tehtävässä ei ole automaattisia testejä ja se on yhden pisteen arvoinen. Voit palauttaa tehtävän jo kun saat ensimmäisen parannusehdotuksen tehtyä mutta peliä saa toki viilata enemmänkin.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Joukkueet ja pelaajat (5 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä tehdään joukkueiden ja joukkueen pelaajien ylläpitoon tarkoitettuun ohjelmistoon tarvittavat ydinluokat.
+  </p>
+
+  <h2>Joukkue</h2>
+
+  <p>
+    Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> konstruktori, jolle annetaan joukkueen nimi</li>
+    <li> <code>getNimi</code>, joka palauttaa joukkueen nimen</li>
+  </ul>
+
+  <p>
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+    public static void main(String[] args) {
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+    System.out.println("Joukkue: " + tapiiri.haeNimi());
+    } 
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostus on seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Joukkue: FC Tapiiri
+  <% end %>
+
+  <h2>Pelaaja</h2>
+
+  <p>
+    Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:
+  </p>
+
+  <ul>
+    <li> <code>getNimi</code>, joka palauttaa pelaajan nimen</li>
+    <li> <code>getMaalit</code>, joka palauttaa tehtyjen maalien määrän</li>
+    <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
+  </ul>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+    public static void main(String[] args) {
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+    System.out.println("Joukkue: " + tapiiri.getNimi());
+
+    Pelaaja matti = new Pelaaja("Matti");
+    System.out.println("Pelaaja: " + matti);
+
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+    System.out.println("Pelaaja: " + pekka);
+    }
+    }
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Joukkue: FC Tapiiri
+    Pelaaja: Matti, maaleja 0
+    Pelaaja: Pekka, maaleja 39
+  <% end %>
+
+  
+  <h2>Pelaajat joukkueisiin</h2>
+
+  <p>
+    Lisää luokkaan <code>Joukkue</code> seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
+    <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
+  </ul>
+
+  <p>
+    Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.
+  </p>
+
+  <p>
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+    public static void main(String[] args) {
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+
+    Pelaaja matti = new Pelaaja("Matti");
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+
+    tapiiri.lisaaPelaaja(matti);
+    tapiiri.lisaaPelaaja(pekka);
+    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+    tapiiri.tulostaPelaajat();
+    }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Matti, maaleja 0
+    Pekka, maaleja 39
+    Mikael, maaleja 1
+  <% end %>
+
+  
+  <h2>Joukkueen maksimikoko ja nykyinen koko</h2>
+
+  <p>
+    Lisää luokkaan <code>Joukkue</code> seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> <code>setMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
+    <li> <code>getPelaajienLukumaara</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
+  </ul>
+
+  <p>
+    Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16 (lisää tämä luokan oliomuuttujaksi ja alusta muuttujan arvo konstruktorissa). Metodin <code>setMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta edellisessä osassa tehtyä metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.
+  </p>
+
+  <p>
+    <strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.
+  </p>
+
+  <p>
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+    public static void main(String[] args) {
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+    tapiiri.setMaksimikoko(1);
+
+    Pelaaja matti = new Pelaaja("Matti");
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+    tapiiri.lisaaPelaaja(matti);
+    tapiiri.lisaaPelaaja(pekka);
+    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+    System.out.println("Pelaajia yhteensä: " + tapiiri.getPelaajienLukumaara());
+    }
+    }
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Pelaajia yhteensä: 1
+  <% end %>
+
+  
+  <h2>Joukkueen maalit</h2>
+
+  <p>
+    Lisää luokkaan <code>Joukkue</code> metodi:
+  </p>
+
+  <ul>
+    <li> <code>yhteismaalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
+  </ul>
+
+  <p>
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+    public static void main(String[] args) {
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+
+    Pelaaja matti = new Pelaaja("Matti");
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+    tapiiri.lisaaPelaaja(matti);
+    tapiiri.lisaaPelaaja(pekka);
+    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+    System.out.println("Maaleja yhteensä: " + tapiiri.yhteismaalit());
+    }
+    }
+  <% end %>
+
+  <% partial 'partials/sample_output' do%>
+    Maaleja yhteensä: 40
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Kellosta olio' } do %>
+
+  <p>
+    Teimme aiemmin luokan <code>YlhaaltaRajoitettuLaskuri</code> ja rakennettiin laskurien avulla pääohjelmaan kello. Tehdään tässä tehtävässä kellostakin oma olio -- kello sisältää kolme viisaria, jotka jokainen esitetään ylhäältä rajoitetun laskurin avulla. Luokan kello runko näyttää seuraavalta:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Kello {
+    private YlhaaltaRajoitettuLaskuri tunnit;
+    private YlhaaltaRajoitettuLaskuri minuutit;
+    private YlhaaltaRajoitettuLaskuri sekunnit;
+
+    public Kello(int tunnitAlussa, int minuutitAlussa, int sekunnitAlussa) {
+    // laskurit tunneille, minuuteille ja sekunneille;
+    // laskurien arvot tulee asettaa parametreina saatuun aikaan
+    }
+
+    public void etene() {
+    // kello etenee sekunnilla
+    }
+
+    public String toString() {
+    // palauttaa kellon merkkijonoesityksen
+    }
+    }
+  <% end %>
+
+  <p>
+    Luokkaan YlhaaltaRajoitettuLaskuri on kopioitu eräs ratkaisu viime osan tehtävään. Toteuta luokan <code>Kello</code> konstruktori ja puuttuvat metodit kolmea ylhäältä rajoitettua laskuria hyödyntäen.
+  </p>
+
+  <p>
+    Voit testata kelloasi seuraavalla pääohjelmalla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Main {
+    public static void main(String[] args) {
+    Kello kello = new Kello(23, 59, 50);
+
+    int i = 0;
+    while (i &lt; 20) {
+    System.out.println(kello);
+    kello.etene();
+    i++;
+    }
+    }
+    }
+  <% end %>
+
+  <p>
+    Tulostuksen tulisi edetä seuraavasti:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    23:59:50
+    23:59:51
+    23:59:52
+    23:59:53
+    23:59:54
+    23:59:55
+    23:59:56
+    23:59:57
+    23:59:58
+    23:59:59
+    00:00:00
+    00:00:01
+    ...
+  <% end %>
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Työntekijän eläkevakuutus' } do %>
+
+  <p>
+    Työntekijän eläkevakuutus (TyEL) on lakisääteinen ja pakollinen maksu, jolla rahoitetaan suurin osa nykyisistä ja tulevista työeläkkeistä. Työntekijän eläkevakuutuksen maksamisesta vastaa sekä työnantaja että työntekijä: <a href="http://www.etk.fi/uutinen/tyoelakemaksut-vuonna-2017/" target="_blank">Eläketurvakeskuksen mukaan</a> työnantajan maksama TyEL-maksu on vuonna 2017 noin 18% työntekijän palkasta, kun taas työntekijä maksaa palkastaan TyEL-maksua noin 6%.
+  </p>
+
+  <p>
+    Työnantaja maksaa osuutensa bruttopalkan lisäksi, kun taas työntekijän maksama osuus otetaan bruttopalkasta (eli palkasta ennen ennakonpidätyksiä, vakuutusmaksuja ja muita vähennyksiä).
+  </p>
+
+  <p>
+    Toteuta ohjelma, joka kertoo TyEL-kulut annetulle bruttopalkalle. Ohjelman tulee kertoa annetun bruttopalkan perusteella työnantajan maksut sekä palkasta tehtävät pidätykset. Käytä edellä annettuja arvioita (työnantajan osuus 18% ja työntekijän osuus 6%).
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Syötä bruttopalkka: <font color="red">800</font>
+    Työnantaja maksaa TyEL-maksuja: 144
+    Työntekijä maksaa työnantajalle vähintään: 944
+
+    Työntekijä maksaa TyEL-maksuja: 48
+    Työntekijän palkka TyEL-maksun jälkeen: 752
+
+    TyEL-kulut yhteensä: 192
+  <% end %>
+
+
+  <% partial 'partials/sample_output' do %>
+    Syötä bruttopalkka: <font color="red">1000</font>
+    Työnantaja maksaa TyEL-maksuja: 180
+    Työntekijä maksaa työnantajalle vähintään: 1180
+
+    Työntekijä maksaa TyEL-maksuja: 60
+    Työntekijän palkka TyEL-maksun jälkeen: 940
+
+    TyEL-kulut yhteensä: 240
+  <% end %>
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Lukujen keskiarvo' } do %>
+
+  <p>
+    Tehtävänannossa tulee käyttäjän syöttämien lukujen summan laskeva ohjelma. Ohjelma kysyy lukuja kunnes käyttäjä syöttää nollan. Tämän jälkeen lukujen lukeminen loppuu, ja ohjelma tulostaa lukujen summan luvun.
+  </p>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelma tulostaa syötettyjen lukujen summa lisäksi syötettyjen lukujen keskiarvon.
+  </p>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Salapaikka ranskassa' } do %>
+
+  <p>
+    Kameralta kuvien kopioimiseen tarkoitetun ohjelmiston toteuttaja löysi ohjelmastaan virheen, jonka lopputulos näkyy tehtäväpohjassa olevan ohjelman näyttämässä kuvassa. Ohjelmiston toteuttaja kertoo seuraavaa.
+  </p>
+  
+  <p>
+    "Tämä virhe oli aika harmittava. Se muutti kaikki siniset ja vihreät väriarvot pelkäksi kohinaksi, joten niistä ei ole mitään iloa eikä niitä saa koskaan takaisin kuvaan. Lisäksi punaisen värin määrä jokaisessa pikselissä jakautui noin kymmenellä kopioinnin yhteydessä, joten kuvan punainen väri on aivan liian tumma."
+  </p>
+
+  <p>
+    Selvitä kopiointiohjelmiston mitä kuvassa näkyy ja mistä kuva on otettu. Tietokoneella kuvatiedostoja käsitellään yleensä <a href="https://fi.wikipedia.org/wiki/RGB-v%C3%A4rimalli" target="_blank" norel>RGB-värimallin</a> kautta. Tässä tapauksessa jokaisen värin arvo on välillä 0-1, ja jokainen väriarvo esitetään desimaalilukuna.
+  </p>
+  
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Fibonaccin lukujono' } do %>
+
+  <p>
+    Fibonaccin lukujonon ajatuksena on laskea yhteen kaksi edellistä lukua, ja näin saada seuraavan luvun arvo. Lukujonon ensimmäiset kaksi lukua ovat 0 ja 1. Seuraavan luvun saa laskettua aina kahden edellisen luvun summana.
+  </p>
+
+  <p>
+    Toteuta ohjelma, joka ensin laskee Fibonaccin lukujonon ensimmäiset 40 lukua listalle. Ohjelma kysyy tämän jälkeen käyttäjältä halutun Fibonaccin luvun kohtaa. Kun käyttäjä syöttää luvun -- oleta, että luku on indeksi listalla -- ohjelma tulostaa halutun luvun.
+  </p>
+
+  <p>
+    Ohjelman suoritus päättyy kun käyttäjä syöttää luvun -1.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Monesko luku? <font color="red">0</font>
+    0
+    Monesko luku? <font color="red">1</font>
+    1
+    Monesko luku? <font color="red">7</font>
+    13
+    Monesko luku? <font color="red">22</font>
+    17711
+    Monesko luku? <font color="red">-1</font>
+
+    Kiitos!
+  <% end %>
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Pong' } do %>
+
+  <p>
+    Tässä tehtävässä täydennetään erästä tietokonepelien klassikkoa, <a href="https://en.wikipedia.org/wiki/Pong" target="_blank" norel>Pongia</a>. Tavoitteena pelissä on saada pallo lyötyä vastustajan mailasta ohi. Pisteen saa aina kun pallo osuu seinään. Tehtäväpohjaan on hahmoteltu Pong-peliä, joka näyttää seuraavalta:
+  </p>
+
+  <img src="/img/pong-screenshot.png"/>
+
+  <p>
+    Pelin saa käynnistettyä valitsemalla luokan PongApplication ja suorittamalla sen. Vasenta mailaa voi ohjata napeilla w ja s, oikeaa mailaa nuolinäppäimillä.
+  </p>
+  
+  <p>
+    Pohjasta puuttuu kuitenkin merkittävä osa pelin toiminnallisuudesta. Tässä tehtävässä tavoitteenasi on tutustua olemassaolevaan ohjelmaan ja täydentää peliä sopivasti. Tässä muutamia täydennysehdotuksia:
+  </p>
+
+  <ol>
+    <li>
+      Pisteiden tulee muuttua kun pallo osuu seinään.
+    </li>
+    <li>
+      Jos pallo osuu mailaan sen tulee kimmota mailasta.
+    </li>
+    <li>
+      Mailan nopeuden pitäisi olla suurempi.
+    </li>
+    <li>
+      Mailan ei pitäisi poistua alueelta.
+    </li>
+    <li>
+      pallon nopeuden tulee kasvaa pelin edetessä.
+    </li>
+    <li>
+      ...
+    </li>
+  </ol>
+
+  <p>
+    Tehtävässä ei ole testejä ja sen tekemisestä saa yhden pisteen. Saat itse käytännössä määritellä mitä tehtävän tekeminen tarkoittaa, eli voit vapaasti tehdä pelistä hyvinkin monimuotoisen, jota ehkäpä päädyt jopa demoamaan jollekin.
+  </p>
+
+  
+<% end %>
+
+
+
+
+<li>
+  typonator-olio?
+</li>
+<li>
+  emojohdanto?
+</li>
+<li>
+  luokkakaaviot selkeämmiksi (ei käsin piirretyn näköisiä)
+</li>
+<li>
+  selitystehtävä olioista? vertaispalaute selitystehtävästä?
+</li>
+
+
+
