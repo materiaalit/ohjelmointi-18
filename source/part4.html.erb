@@ -2408,11 +2408,11 @@ J. K. Rowling, Harry Potter ja viisasten kivi, 223 sivua
 <% partial 'partials/exercise', locals: { name: 'Harjoitusapuri' } do %>
 
   <p>
-    <a href="https://fi.wikipedia.org/wiki/Karvosen_kaava" target="_blank" norel>Karvosen kaavan</a> avulla voidaan laskea tavoitesyke fyysistä harjoittelua varten. Tavoitesykkeen laskeminen perustuu kaavaan <code>(maksimisyke - leposyke) * (tavoitesyke) + leposyke</code>, missä tavoitesyke annetaan prosenttina maksimisykkeestä.
+    <a href="https://fi.wikipedia.org/wiki/Karvosen_kaava" target="_blank" norel>Karvosen kaavan</a> avulla voidaan laskea tavoitesyke fyysistä harjoittelua varten. Tavoitesykkeen laskeminen perustuu kaavaan <code>(maksimisyke - leposyke) * (tavoitesykeprosentti) + leposyke</code>, missä tavoitesyke annetaan prosenttina maksimisykkeestä.
   </p>
 
   <p>
-    Esimerkiksi, jos henkilön maksimisyke on 200, leposyke 50, ja tavoitesyke 75% maksimisykkeestä, on tavoiteltava sydämen syke noin 162.5 lyöntiä minuutissa.
+    Esimerkiksi, jos henkilön maksimisyke on 200, leposyke 50, ja tavoitesyke 75% maksimisykkeestä, on tavoiteltava sydämen syke noin ((200-50) * (0.75) + 50) eli 162.5 lyöntiä minuutissa.
   </p>
 
   <p>
