@@ -1899,7 +1899,7 @@ mittaukset: [-10, -4, 5]
     Henkilo nacho = new Henkilo("Nacho", "Cuesta", "Parto");
     System.out.println(nacho);
 
-    Henkilo valeria = new Henkilo("Valeria", "Mogollon" "Gualarga");
+    Henkilo valeria = new Henkilo("Valeria", "Mogollon", "Gualarga");
     System.out.println(valeria);
 
     Henkilo enrico = new Henkilo("Enrico", dolores, hay);
@@ -1908,7 +1908,7 @@ mittaukset: [-10, -4, 5]
     Henkilo luz = new Henkilo("Luz", nacho, valeria);
     System.out.println(luz);
 
-    Henkilo valentina = Henkilo("Valentina", enrico, luz);
+    Henkilo valentina = new Henkilo("Valentina", enrico, luz);
     System.out.println(valentina);
 
     Object valObject = valentina;
@@ -1936,10 +1936,12 @@ mittaukset: [-10, -4, 5]
 
   
   <% partial 'partials/code_highlight' do %>
+    Henkilo hay = new Henkilo("Hay", "Alen", "Gualarga");
+    Henkilo nacho = new Henkilo("Nacho", "Cuesta", "Parto");
     Henkilo dolores = new Henkilo("Dolores", "D.", "Parto");
     Henkilo enrico = new Henkilo("Enrico", dolores, hay);
     Henkilo luz = new Henkilo("Luz", nacho, valeria);
-    Henkilo valentina = Henkilo("Valentina", enrico, luz);
+    Henkilo valentina = new Henkilo("Valentina", enrico, luz);
 
     Perhe perhe = new Perhe();
     perhe.lisaa(dolores);
