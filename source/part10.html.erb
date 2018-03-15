@@ -9,904 +9,20 @@
 <% partial 'partials/hint', locals: { name: 'Kymmenennen osan tavoitteet' } do %>
 
   <p>
-    Tuntee menetelmiä listojen järjestämiseen ja järjestetyistä listoista hakemiseen. Tuntee rajapinnan Comparable ja hyödyntää sitä olioiden järjestämisessä. Tutustuu perintään ja syventyy Javan luokkarakenteeseen. Tuntee Javan perintähierarkian ja osaa luoda luokkia, jotka perivät toisten luokkien muuttujia ja metodeja. Ymmärtää perinnän hyödyt. Osaa esittää tapauksia, joihin perintä ei sovi. Tuntee abstraktin luokan käsitteen. Tutustuu säännöllisiin lausekkeisiin, lueteltuihin tyyppeihin sekä iteraattoriin.
-  </p>
-  
-<% end %>
-
-
-<% partial 'partials/material_heading' do %>
-  Lisää rajapinnoista
-<% end %>
-
-<p>
-  Rajapinta määrittelee yhden tai useamman metodin, jotka rajapinnan toteuttavan luokan on pakko toteuttaa. Rajapintoja, kuten kaikkia luokkia voi asettaa pakkauksiin. Esimerkiksi seuraava <code>Tunnistettava</code>-rajapinta sijaitsee pakkauksessa <code>sovellus.domain</code>. Rajapinta määrää, että <code>Tunnistettava</code>-rajapinnan toteuttavien luokkien tulee toteuttaa metodi <code>public String getTunnus()</code>.</p>
-
-<% partial 'partials/code_highlight' do %>
-  package sovellus.domain;
-
-  public interface Tunnistettava {
-  String getTunnus();
-  }
-<% end %>
-
-<p>
-  Luokka toteuttaa rajapinnan <code>implements</code>-avainsanalla. Alla on esimerkkinä luokka <code>Henkilo</code>, joka toteuttaa rajapinnan tunnistettava. Rajapinnan Tunnistettava vaatima metodi <code>getTunnus</code> palauttaa aina henkilön henkilötunnuksen.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package sovellus.domain;
-
-  public class Henkilo implements Tunnistettava {
-  private String nimi;
-  private String henkilotunnus;
-
-  public Henkilo(String nimi, String henkilotunnus) {
-  this.nimi = nimi;
-  this.henkilotunnus = henkilotunnus;
-  }
-
-  public String getNimi() {
-  return this.nimi;
-  }
-
-  public String getHenkilotunnus() {
-  return this.henkilotunnus;
-  }
-
-  @Override
-  public String getTunnus() {
-  return getHenkilotunnus();
-  }
-
-  @Override
-  public String toString() {
-  return this.nimi + " hetu: " + this.henkilotunnus;
-  }
-  }
-<% end %>
-
-
-<p>
-  Rajapintojen vahvuus on se, että rajapintaa voidaan käyttää muuttujan tyyppinä. Tämä mahdollistaa yleiskäyttöisempien luokkien tekemisen.
-</p>
-
-<p>
-  Tehdään luokka <code>Rekisteri</code>, jota käytetään Tunnistettava-tyyppisten olioiden säilömiseen. Rekisteriin voidaan lisätä sekä henkilöitä että mitä tahansa muita olioita, jotka toteuttavat rajapinnan Tunnistettava. Yksittäisten henkilöiden hakemisen lisäksi <code>Rekisteri</code> tarjoaa metodin kaikkien henkilöiden hakemiseen listana.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Rekisteri {
-  private Map&lt;String, Tunnistettava&gt; rekisteroidyt;
-
-  public Rekisteri() {
-  this.rekisteroidyt = new HashMap&lt;&gt;();
-  }
-
-  public void lisaa(Tunnistettava lisattava) {
-  this.rekisteroidyt.put(lisattava.getTunnus(), lisattava);
-  }
-
-  public Tunnistettava hae(String tunnus) {
-  return this.rekisteroidyt.get(tunnus);
-  }
-
-  public List&lt;Tunnistettava&gt; haeKaikki() {
-  return new ArrayList&lt;Tunnistettava&gt;(rekisteroidyt.values());
-  }
-  }<% end %>
-
-<p>
-  Rekisterin käyttö onnistuu seuraavasti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  Rekisteri henkilokunta = new Rekisteri();
-  henkilokunta.lisaa(new Henkilo("Pekka", "221078-123X"));
-  henkilokunta.lisaa(new Henkilo("Jukka", "110956-326B"));
-
-  System.out.println(henkilokunta.hae("280283-111A"));
-
-  Henkilo loydetty = (Henkilo) henkilokunta.hae("110956-326B");
-  System.out.println(loydetty.getNimi());
-<% end %>
-
-<p>
-  Koska henkilöt on lisätty rekisteriin <code>Tunnistettava</code>-tyyppisinä, ne löytyvät sieltä myös Tunnistettava-tyyppisinä. Jos haluamme käsitellä henkilöitä sellaisten metodien kautta, joita rajapinnassa ei ole määritelty, joudumme muuntamaan ne takaisin Henkilo-olioiksi. Tämä tapahtuu eksplisiittisella tyyppimuunnoksella, jota demonstroidaan edellisen esimerkin kahdella viimeisellä rivillä.
-</p>
-
-<p>
-  Entä jos haluaisimme rekisteriin lisäksi metodin, joka palauttaa rekisteriin talletetut henkilöt tunnisteen mukaan järjestettynä? Yksi vaihtoehto olisi käyttää aiemmin tutuksi tullutta virran järjestämistä. Tutustutaan kuitenkin myös Javan valmiiseen järjestämisessä käytettävään rajapintaan.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Järjestämisessä käytettävä rajapinta Comparable
-<% end %>
-
-<p>
-  Javan valmis rajapinta <code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html">Comparable</a></code> määrittelee metodin <code>compareTo</code>, jota käytetään olioiden vertailuun. Jos olio on vertailujärjestyksessä ennen parametrina saatavaa olioa, tulee metodin palauttaa negatiivinen luku. Jos taas olio on järjestyksessä parametrina saatavan olion jälkeen, tulee metodin palauttaa positiivinen luku. Muulloin palautetaan luku 0. Tätä <code>compareTo</code>-metodin avulla johdettua järjestystä kutsutaan <em>luonnolliseksi järjestykseksi</em> (natural ordering).
-</p>
-
-<p>
-  Tarkastellaan tätä ensin kerhossa käyvää lasta tai nuorta kuvaavan luokan Kerholainen avulla. Jokaisella kerholaisella on nimi ja pituus. Kerholaisten tulee mennä syömään pituusjärjestyksessä, joten toteutetaan kerholaisille rajapinta <code>Comparable</code>. Comparable-rajapinta ottaa tyyppiparametrinaan luokan, johon vertaus tehdään. Käytetään tyyppiparametrina samaa luokkaa <code>Kerholainen</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Kerholainen implements Comparable&lt;Kerholainen&gt; {
-  private String nimi;
-  private int pituus;
-
-  public Kerholainen(String nimi, int pituus) {
-  this.nimi = nimi;
-  this.pituus = pituus;
-  }
-
-  public String getNimi() {
-  return this.nimi;
-  }
-
-  public int getPituus() {
-  return this.pituus;
-  }
-
-  @Override
-  public String toString() {
-  return this.getNimi() + " (" + this.getPituus() + ")";
-  }
-
-  @Override
-  public int compareTo(Kerholainen kerholainen) {
-  if (this.pituus == kerholainen.getPituus()) {
-  return 0;
-  } else if (this.pituus &gt; kerholainen.getPituus()) {
-  return 1;
-  } else {
-  return -1;
-  }
-  }
-  }<% end %>
-
-<p>
-  Rajapinnan vaatima metodi <code>compareTo</code> palauttaa kokonaisluvun, joka kertoo vertausjärjestyksestä. Koska <code>compareTo()</code>-metodista riittää palauttaa negatiivinen luku, jos <code>this</code>-olio on pienempi kuin parametrina annettu olio ja nolla, kun pituudet ovat samat, voidaan edellä esitelty metodi <code>compareTo</code> toteuttaa myös seuraavasti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  @Override
-  public int compareTo(Kerholainen kerholainen) {
-  return this.pituus - kerholainen.getPituus();
-  }
-<% end %>
-
-<p>
-  Kerholaisten järjestäminen on nyt suoraviivaista.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  List&lt;Kerholainen&gt; kerholaiset = new ArrayList&lt;&gt;();
-  kerholaiset.add(new Kerholainen("mikael", 182));
-  kerholaiset.add(new Kerholainen("matti", 187));
-  kerholaiset.add(new Kerholainen("ada", 184));
-
-  kerholaiset.stream().forEach(k -&gt; System.out.println(k);
-  System.out.println();
-  kerholaiset.stream().sorted().forEach(k -&gt; System.out.println(k);
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  mikael (182)
-  matti (187)
-  ada (184)
-
-  mikael (182)
-  ada (184)
-  matti (187)
-<% end %>
-
-<p>
-  Koska Kerholainen toteuttaa rajapinnan Comparable, ei virran <code>sorted</code>-metodille tarvitse enää antaa parametrina olioiden vertailuun liittyvää järjestystä. Toisin sanoen, minkä tahansa Comparable-rajapinnan toteuttavan luokan oliot voi järjestää virran sorted-metodilla. Huomaa kuitenkin, että virta ei järjestä alkuperäistä listaa, vaan <em>vain virrassa olevat alkiot ovat järjestyksessä</em> -- jos alkuperäisen listan haluaa järjestykseen, tulee lista korvata järjestetystä virrasta kerätyllä listalla.
-</p>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Palkkajärjestys' } do %>
-
-  <p>
-    Saat valmiin luokan Ihminen. Ihmisellä on nimi- ja palkkatiedot. Muokkaa Ihminen-luokasta <code>Comparable</code>-rajapinnan toteuttava niin, että <code>compareTo</code>-metodi lajittelee ihmiset palkan mukaan järjestykseen isoimmasta palkasta pienimpään.
+    Osaa luoda luokkia, jotka periytyvät toisesta luokasta. Ymmärtää perinnän hyödyt ja osaa toisaalta esittää tapauksia, joihin perintä ei sovi. Tietää miten abstraktit luokat toimivat. Tietää miten perintä merkitään luokkakaavioon. Osaa käsitellä tietokokoelmia arvojen virtana ja osaa käyttää lambda-lauseketta Javassa. 
   </p>
 
 <% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Opiskelijat nimijärjestykseen' } do %>
-
-  <p>
-    Saat valmiin luokan Opiskelija. Opiskelijalla on nimi. Muokkaa Opiskelija-luokasta <code>Comparable</code>-rajapinnan toteuttava niin, että <code>compareTo</code>-metodi lajittelee opiskelijat nimen mukaan aakkosjärjestykseen.
-  </p>
-
-  <p>
-    <strong>Vinkki:</strong> Opiskelijan nimi on String, ja String-luokka on itsessään <code>Comparable</code>. Voit hyödyntää String-luokan <code>compareTo</code>-metodia Opiskelija-luokan metodia toteuttaessasi. <code>String.compareTo</code> kohtelee kirjaimia eriarvoisesti kirjainkoon mukaan, ja tätä varten String-luokalla on myös metodi <code>compareToIgnoreCase</code> joka nimensä mukaisesti jättää kirjainkoon huomioimatta. Voit käyttää opiskelijoiden järjestämiseen kumpaa näistä haluat.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Useamman rajapinnan toteuttaminen
-<% end %>
-
-<p>
-  Luokka voi toteuttaa useamman rajapinnan. Useamman rajapinnan toteuttaminen tapahtuu erottamalla toteutettavat rajapinnat toisistaan pilkuilla (<code>public class ... implements <em>RajapintaEka</em>, <em>RajapintaToka</em> ...</code>). Toteuttaessamme useampaa rajapintaa, tulee meidän toteuttaa kaikki rajapintojen vaatimat metodit. Toteutetaan seuraavaksi luokalle <code>Henkilo</code> rajapinta <code>Comparable</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  package sovellus.domain;
-
-  public class Henkilo implements Tunnistettava, Comparable&lt;Henkilo&gt; {
-  private String nimi;
-  private String henkilotunnus;
-
-  public Henkilo(String nimi, String henkilotunnus) {
-  this.nimi = nimi;
-  this.henkilotunnus = henkilotunnus;
-  }
-
-  public String getNimi() {
-  return this.nimi;
-  }
-
-  public String getHenkilotunnus() {
-  return this.henkilotunnus;
-  }
-
-  @Override
-  public String getTunnus() {
-  return getHenkilotunnus();
-  }
-
-  @Override
-  public int compareTo(Henkilo toinen) {
-  return this.getTunnus().compareTo(toinen.getTunnus());
-  }
-  }
-<% end %>
-
-<p>
-  Kokeillaan lisätä aiemmin luomallemme Rekisteri-luokalle metodi haeKaikkiJarjestyksessa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public List&lt;Tunnistettava&gt; haeKaikkiJarjestyksessa() {
-  // ei toimi!
-  return rekisteroidyt.values()
-  .stream().sorted().collect(Collectors.toCollection(ArrayList::new));
-  }
-<% end %>
-
-<p>
-  Metodi ei kuitenkaan toimi. Koska henkilöt on talletettu rekisteriin <code>Tunnistettava</code>-tyyppisinä, on Henkilön toteutettava rajapinta <code>Comparable&lt;Tunnistettava&gt;</code>, jotta rekisteri osaisi järjestää henkilöt tunnistettavina. Joudumme joko muuttamaan henkilön toteuttamaa rajapintaa, tai lisäämään <code>sorted</code>-metodille järjestämiseen käytettävät tiedot. Muutetaan tässä henkilön toteuttamaa rajapintaa:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Henkilo implements Tunnistettava, Comparable&lt;Tunnistettava&gt; {
-  // ...
-
-  @Override
-  public int compareTo(Tunnistettava toinen) {
-  return this.getTunnus().compareTo(toinen.getTunnus());
-  }
-  }<% end %>
-
-<p>
-  Nyt ratkaisu toimii!
-</p>
-
-<p>
-  Rekisteri on täysin tietämätön sinne lisättyjen olioiden todellisesta tyypistä. Voimme käyttää luokkaa rekisteri myös muuntyyppisten olioiden kuin henkilöiden rekisteröintiin, kunhan olioiden luokka vaan toteuttaa rajapinnan <code>Tunnistettava</code>. Esim. seuraavassa käytetään rekisteriä kaupassa myytävien tuotteiden hallintaan:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Tuote implements Tunnistettava {
-
-  private String nimi;
-  private String viivakoodi;
-  private int varastosaldo;
-  private int hinta;
-
-  public Tuote(String nimi, String viivakoodi) {
-  this.nimi = nimi;
-  this.viivakoodi = viivakoodi;
-  }
-
-  public String getTunnus() {
-  return viivakoodi;
-  }
-
-  // ...
-  }
-<% end %>
-
-
-<% partial 'partials/code_highlight' do %>
-  Rekisteri tuotteet = new Rekisteri();
-  tuotteet.lisaa(new Tuote("maito", "11111111"));
-  tuotteet.lisaa(new Tuote("piimä", "11111112"));
-  tuotteet.lisaa(new Tuote("juusto", "11111113"));
-
-  System.out.println(tuotteet.hae("99999999"));
-
-  Tuote tuote = (Tuote) tuotteet.hae("11111112");
-  tuote.kasvataSaldoa(100);
-  tuote.muutaHinta(23);
-<% end %>
-
-<p>
-  Teimme luokasta <code>Rekisteri</code> melko yleiskäyttöisen pitämällä sen riippumattomana konkreettisista luokista. Mikä tähänsa luokka, joka toteuttaa rajapinnan <code>Tunnistettava</code>, on rekisterin kanssa käyttökelpoinen. Metodin <code>haeKaikkiJarjestyksessä</code> toimiminen tosin edellyttää luokalta myös vertailtavuuden eli Comparable&lt;Tunnistettava&gt;-rajapinnan toteuttamisen.
-</p>
-
-
-<% partial 'partials/hint', locals: { name: 'Muutama NetBeans-vihje' } do %>
-
-  <ul>
-    <li> <strong>Implement all abstract methods</strong>
-
-      <p>
-	Voit pyytää NetBeansia täydentämään metodirungot automaattisesti rajapinnan toteuttavalle luokalle. Kun olet määritellyt luokan toteuttavan rajapinnan, eli kirjoittanut
-      </p>
-
-      <% partial 'partials/code_highlight' do %>
-	public class Luokka implements Rajapinta {
-	}
-      <% end %>
-
-      <p>
-	NetBeans värjää luokan nimen punaisella. Mene rivin vasemmassa reunassa olevan lamppusymbolin kohdalle, klikkaa ja valitse <em>Implement all abstract methods</em> ja metodirungot ilmestyvät koodiin!
-      </p>
-
-    </li>
-
-    <li> <strong>Clean and Build</strong>
-
-      <p>
-	Tietyissä tilanteissa NetBeans saattaa mennä sekaisin ja yrittää ajaa koodista versiota johon ei ole huomioitu kaikkia koodiin kirjoitettuja muutoksia. Yleensä huomaat tilanteen siten, että jotain "outoa" vaikuttaa tapahtuvan. Ongelman korjaa usein <em>Clean and build</em> -operaation suorittaminen. Operaatio löytyy Run-valikosta ja sen voi suorittaa myös painamalla <em>harja ja vasara</em> -symbolia. Clean and build poistaa koodista olemassa olevat käännetyt versiot ja tekee uuden käännöksen.
-      </p>
-
-    </li>
-
-  </ul>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Oletusmetodit rajapinnoissa
-<% end %>
-
-<p>
-  Rajapintoihin voi määritellä oletusmetodeja, joiden mukana annetaan myös toteutus. Oletusmetodien määrittely alkaa avainsanalla <code>default</code>, jota seuraa metodin määrittely. Kuten rajapintojen metodeissa yleensä, myös tässäkään näkyvyyttä ei tarvitse määritellä erikseen. Rajapinnoissa määriteltyjen metodien näkyvyys on aina <code>public</code>.
-</p>
-
-<p>
-  Alla olevassa esimerkissä rajapintaan <code>Luettava</code> on lisätty oletusmetodi <code>lueTulostaen</code>, joka tulostaa <code>lue</code>-metodin palauttaman arvon.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public interface Luettava {
-  String lue();
-
-  default void lueTulostaen() {
-  System.out.println(lue());
-  }
-  }
-<% end %>
-
-<p>
-  Yksi oletusmetodien suurimmista hyödyistä ilmenee tilanteissa, missä rajapinta on määritelty aiemmin, ja useampi luokka toteuttaa sen jo valmiiksi. Jos rajapintaan lisätään uusi metodi, tulee sille ohjelmoida toteutus kaikkiin rajapinnan toteuttamiin luokkiin, jos uusi metodi ei tarjoa oletustoteutusta.
-</p>
-
-<p>
-  Toisaalta, jos oletustoteutus lisätään uuden metodin lisäämisen yhteydessä, ei aiemmin rajapinnan toteuttaneille luokille tarvitse tehdä minkäänlaisia muutoksia. Edellisestä osasta tutut luokat Tekstiviesti ja Sahkoposti toimisivat nyt myös seuraavasti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  Tekstiviesti viesti = new Tekstiviesti("G. Hopper", "COBOL kicks ass");
-  viesti.lueTulostaen();
-
-  Sahkoposti posti = new Sahkoposti("D. Knuth", "If you optimize everything, you will always be unhappy.");
-  posti.lueTulostaen();
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  COBOL kicks ass
-  If you optimize everything, you will always be unhappy.
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Järjestäminen ja hakeminen
-<% end %>
-
-<p>
-  Tähän mennessä käyttämämme järjestäminen stream-metodin avulla ei muuta alkuperäisen listan järjestystä, vaan se luo aina uuden järjestetyn listan. Tutustutaan seuraavaksi luokkakirjastoon <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html" target="_blank" rel="noopener">Collections</a>, joka tarjoaa tähän liittyviä yleishyödyllisiä metodeja.
-</p>
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Järjestäminen
-<% end %>
-
-<p>
-  Collections tarjoaa metodin <code>sort</code> listan järjestämiseen. Metodi olettaa, että listalla olevat oliot toteuttavat rajapinnan Comparable. Järjestäminen on suoraviivaista.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  List&lt;Kerholainen&gt; kerholaiset = new ArrayList&lt;&gt;();
-  kerholaiset.add(new Kerholainen("mikael", 182));
-  kerholaiset.add(new Kerholainen("matti", 187));
-  kerholaiset.add(new Kerholainen("ada", 184));
-
-  kerholaiset.stream().forEach(k -&gt; System.out.println(k));
-  Collections.sort(kerholaiset);
-
-  System.out.println();
-
-  kerholaiset.stream().forEach(k -&gt; System.out.println(k));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  mikael (182)
-  matti (187)
-  ada (184)
-
-  mikael (182)
-  ada (184)
-  matti (187)
-<% end %>
-
-<p>
-  Järjestämisen lisäksi luokkakirjaston avulla voi etsiä esimerkiksi minimi- (<code>min</code>-metodi) tai maksimialkioita (<code>max</code>-metodi), vaikkapa kääntää listan (<code>reverse</code>-metodi).
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  List&lt;Kerholainen&gt; kerholaiset = new ArrayList&lt;&gt;();
-  kerholaiset.add(new Kerholainen("mikael", 182));
-  kerholaiset.add(new Kerholainen("matti", 187));
-  kerholaiset.add(new Kerholainen("ada", 184));
-
-  kerholaiset.stream().forEach(k -&gt; System.out.println(k));
-  Collections.sort(kerholaiset);
-  Collections.reverse(kerholaiset);
-
-  System.out.println();
-
-  kerholaiset.stream().forEach(k -&gt; System.out.println(k));
-
-  System.out.println();
-  System.out.println(Collections.max(kerholaiset));
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  mikael (182)
-  matti (187)
-  ada (184)
-
-  matti (187)
-  ada (184)
-  mikael (182)
-
-  matti (187)
-<% end %>
-
-<%= partial 'partials/quiz', locals: { id: '59fdce547bced50004788107' } %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Kirjallisuutta (3 osaa)' } do %>
-  
-  <p>
-    Tee ohjelma, joka lukee käyttäjältä kirjoja ja niiden minimikohdeikiä. Minimikohdeiällä tarkoitetaan pienintä ikää vuosina, jolle kyseistä kirjaa suositellaan.
-  </p>
-
-  <p>
-    Ohjelma kysyy uusia kirjoja kunnes käyttäjä syöttää tyhjän merkkijonon kirjan nimen kohdalla (eli painaa rivinvaihtoa). Täämän jälkeen ohjelma tulostaa syötettyjen kirjojen lukumäärän sekä kirjat.
-  </p>
-
-  <h2>Kirjojen lukeminen ja tulostaminen</h2>
-
-  <p>
-    Toteuta ensin kirjojen lukeminen ja niiden listaaminen. Tässä vaiheessa kirjojen järjestyksellä ei ole vielä väliä.
-  </p>
-
-  <% partial 'partials/sample_output' do %> 
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Soiva tuutulaulukirja</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
-
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Kurkkaa kulkuneuvot</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Lunta tupaan</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">12</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Litmanen 10</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">10</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa:
-    
-    Yhteensä 4 kirjaa.
-    
-    Kirjat:
-    Soiva tuutulaulukirja (0 vuotiaille ja vanhemmille)
-    Kurkkaa kulkuneuvot (0 vuotiaille ja vanhemmille)
-    Lunta tupaan (12 vuotiaille ja vanhemmille)
-    Litmanen 10 (10 vuotiaille ja vanhemmille)
-  <% end %>
-  
-  <h2>Kirjojen järjestäminen kohdeiän perusteella</h2>
-
-  <p>
-    Täydennä toteuttamaasi ohjelmaa siten, että kirjat järjestetään tulostuksen yhteydessä kohdeiän perusteella. Jos kahdella kirjalla on sama kohdeikä, näiden kahden kirjan keskinäinen järjestys saa olla mielivaltainen.
-  </p>
-
-
-  <% partial 'partials/sample_output' do %> 
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Soiva tuutulaulukirja</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
-
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Kurkkaa kulkuneuvot</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Lunta tupaan</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">12</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Litmanen 10</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">10</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa:
-    
-    Yhteensä 4 kirjaa.
-    
-    Kirjat:
-    Soiva tuutulaulukirja (0 vuotiaille ja vanhemmille)
-    Kurkkaa kulkuneuvot (0 vuotiaille ja vanhemmille)
-    Litmanen 10 (10 vuotiaille ja vanhemmille)
-    Lunta tupaan (12 vuotiaille ja vanhemmille)
-  <% end %>
-
-  
-  <h2>Kirjojen järjestäminen kohdeiän ja nimen perusteella</h2>
-
-  <p>
-    Täydennä edellistä ohjelmaasi siten, että saman kohdeiän kirjat tulostetaan aakkosjärjestyksessä.
-  </p>
-
-
-  <% partial 'partials/sample_output' do %> 
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Soiva tuutulaulukirja</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
-
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Kurkkaa kulkuneuvot</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Lunta tupaan</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">12</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Litmanen 10</font>
-    Syötä kirjan pienin kohdeikä: <font color="red">10</font>
-    
-    Syötä kirjan nimi, tyhjä lopettaa:
-    
-    Yhteensä 4 kirjaa.
-    
-    Kirjat:
-    Kurkkaa kulkuneuvot (0 vuotiaille ja vanhemmille)
-    Soiva tuutulaulukirja (0 vuotiaille ja vanhemmille)
-    Litmanen 10 (10 vuotiaille ja vanhemmille)
-    Lunta tupaan (12 vuotiaille ja vanhemmille)
-  <% end %>
-
-<% end %>
-
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Muuttaminen (4 osaa)' } do %>
-
-  <p>
-    Muuttokuormaa pakattaessa esineitä lisätään muuttolaatikoihin siten, että tarvittujen laatikoiden määrä on mahdollisimman pieni. Tässä tehtävässä simuloidaan esineiden pakkaamista muuttolaatikoihin. Jokaisella esineellä on tilavuus, ja muuttolaatikoilla on maksimitilavuus.
-  </p>
-
-
-  <h2>Tavara ja Esine</h2>
-
-  <p>
-    Muuttomiehet siirtävät tavarat myöhemmin rekka-autoon (ei toteuteta tässä), joten toteutetaan ensin kaikkia esineitä ja laatikoita kuvaava <code>Tavara</code>-rajapinta.
-  </p>
-
-  <p>
-    Tavara-rajapinnan tulee määritellä metodi <code>int getTilavuus()</code>, jonka avulla tavaroita käsittelevät saavat selville kyseisen tavaran tilavuuden. Toteuta rajapinta <code>Tavara</code> pakkaukseen <code>muuttaminen.domain</code>.
-  </p>
-
-  <p>
-    Toteuta seuraavaksi pakkaukseen <code>muuttaminen.domain</code> luokka <code>Esine</code>, joka saa konstruktorin parametrina esineen nimen (String) ja esineen tilavuuden (int). Luokan tulee toteuttaa rajapinta <code>Tavara</code>.
-  </p>
-
-  <p>
-    Lisää luokalle <code>Esine</code> myös metodit <code>public String getNimi()</code> ja korvaa metodi <code>public String toString()</code> siten että se tuotta merkkijonoja muotoa "<code>nimi (tilavuus dm^3)</code>". Esineen tulee toimia seuraavasti:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Tavara esine = new Esine("hammasharja", 2);
-    System.out.println(esine);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    hammasharja (2 dm^3)
-  <% end %>
-
-
-  <h2>Esine vertailtavaksi</h2>
-
-  <p>
-    Pakatessamme esineitä muuttolaatikkoon haluamme aloittaa pakkaamisen järjestyksessä olevista esineistä. Toteuta <code>Esine</code>-luokalla rajapinta <code>Comparable</code> siten, että esineiden <em>luonnollinen järjestys</em> on tilavuuden mukaan nouseva. Kun olet toteuttanut esineellä rajapinnan <code>Comparable</code>, tulee niiden toimia <code>Collections</code>-luokan <code>sort</code>-metodin kanssa seuraavasti.
-  </p>
-
-
-  <% partial 'partials/code_highlight' do %>
-    List&lt;Esine&gt; esineet = new ArrayList&lt;&gt;();
-    esineet.add(new Esine("passi", 2));
-    esineet.add(new Esine("hammasharja", 1));
-    esineet.add(new Esine("sirkkeli", 100));
-
-    Collections.sort(esineet);
-    System.out.println(esineet);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    [hammasharja (1 dm^3), passi (2 dm^3), sirkkeli (100 dm^3)]
-  <% end %>
-
-
-  <h2>Muuttolaatikko</h2>
-
-  <p>Toteuta tämän jälkeen pakkaukseen <code>muuttaminen.domain</code> luokka <code>Muuttolaatikko</code>. Tee aluksi muuttolaatikolle seuraavat:</p>
-
-
-  <ul>
-    <li><code>public Muuttolaatikko(int maksimitilavuus)</code></li>Muuttolaatikko-luokan konstruktori. Saa parametrina muuttolaatikon maksimitilavuuden.<br/>
-    <li><code>public boolean lisaaTavara(Tavara tavara)</code></li> Lisää muuttolaatikkoon <code>Tavara</code>-rajapinnan toteuttaman esineen. Jos laatikkoon ei mahdu, metodi palauttaa arvon <code>false</code>. Jos tavara mahtuu laatikkoon, metodi palauttaa arvon <code>true</code>. Muuttolaatikon tulee tallettaa tavarat listaan.<br/>
-  </ul>
-
-  <p>
-    Laita vielä <code>Muuttolaatikko</code> toteuttamaan rajapinta <code>Tavara</code>. Metodilla <code>getTilavuus</code> tulee saada selville muuttolaatikossa olevien tavaroiden tämänhetkinen yhteistilavuus.
-  </p>
-
-
-  <h2>Esineiden pakkaaminen</h2>
-
-  <p>
-    Toteuta luokka <code>Pakkaaja</code> pakkaukseen <code>muuttaminen.logiikka</code>. Luokan <code>Pakkaaja</code> konstruktorille annetaan parametrina <code>int laatikoidenTilavuus</code>, joka määrittelee minkä kokoisia muuttolaatikoita pakkaaja käyttää.
-  </p>
-
-  <p>
-    Toteuta tämän jälkeen luokalle metodi <code>public List&lt;Muuttolaatikko&gt; pakkaaTavarat(List&lt;Tavara&gt; tavarat)</code>, joka pakkaa tavarat muuttolaatikoihin.
-  </p>
-
-  <p>
-    TODO: tulee heittää poikkeus mikäli tavarat eivät järjestyksessä.
-  </p>
-
-  <p>
-    Tee metodista sellainen, että kaikki parametrina annetussa listassa olevat tavarat päätyvät muuttolaatikoihin. Muuttolaatikot tulee luoda metodissa. Sinun ei tarvitse varautua tilanteisiin, joissa tavarat ovat suurempia kuin pakkaajan käyttämä muuttolaatikon koko. Testit eivät välitä siitä kuinka täyteen pakkaaja täyttää muuttolaatikot.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    // tavarat jotka haluamme pakata
-    List&lt;Tavara&gt; tavarat = new ArrayList&lt;&gt;();
-    tavarat.add(new Esine("passi", 2));
-    tavarat.add(new Esine("hammasharja", 1));
-    tavarat.add(new Esine("kirja", 4));
-    tavarat.add(new Esine("sirkkeli", 8));
-
-    // luodaan pakkaaja, joka käyttää tilavuudeltaan 10:n kokoisia muuttolaatikoita
-    Pakkaaja pakkaaja = new Pakkaaja(10);
-
-    // pyydetään pakkaajaa pakkaamaan tavarat laatikoihin
-    List&lt;Muuttolaatikko&gt; laatikot = pakkaaja.pakkaaTavarat(tavarat);
-
-    System.out.println("laatikoita: " + laatikot.size());
-
-    laatikot.stream().forEach(laatikko -&gt; {
-    System.out.println("  laatikossa tavaraa: " + laatikko.getTilavuus() + " dm^3");
-    });
-  <% end %>
-
-
-  <% partial 'partials/sample_output' do %>
-    laatikoita: 2
-    laatikossa tavaraa: 7 dm^3
-    laatikossa tavaraa: 8 dm^3
-  <% end %>
-
-  <p>
-    Pakkaaja on siis pakannut tavarat kahteen laatikkoon, ensimmäiseen laatikkoon on mennyt 3 ensimmäistä tavaraa, yhteistilavuudeltaan 7, ja listan viimeinen tavara eli sirkkeli jonka tilavuus on 8 on mennyt toiseen laatikkoon. Testit eivät aseta rajoitusta pakkaajan käyttävien muuttolaatioiden määrälle, tavarat olisi siis voitu pakata vaikka jokainen eri laatikkoon, eli tuloste olisi ollut:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    laatikoita: 4
-    laatikossa tavaraa: 2 dm^3
-    laatikossa tavaraa: 1 dm^3
-    laatikossa tavaraa: 7 dm^3
-    laatikossa tavaraa: 8 dm^3
-  <% end %>
-
-  <p>
-    <strong>Huom:</strong> tehtävän testaamista helpottamaan kannatanee tehdä luokalle <code>Muuttolaatikko</code> esim. toString-metodi, jonka avulla voi printata laatikon sisällön.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Binäärihaku ja hakeminen
-<% end %>
-
-<p>
-  Binäärihaku (tunnetaan myös nimellä puolitushaku) etsii annettua arvoa järjestyksessä olevasta listasta. Tutustutaan algoritmin ideaa seuraavan järjestyksessä olevan listan avulla.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  // indeksit   0   1   2   3    4   5    6   7   8   9  10
-  // luvut     -7  -3   3   7   11  15   17  21  24  28  30
-<% end %>
-
-<p>
-  Oletetaan että haluamme löytää luvun 17 indeksin. Hyödynnetään tietoa siitä että arvot ovat järjestyksessä. Sen sijaan, että kävisimme lukuja läpi alusta lähtien, tarkastelemme arvoa listan puolivälissä. Listan puolivälissä olevan alkion indeksi on isoin indeksi 10 jaettuna kahdella eli 5. Keskimmäinen alkio on merkattu seuraavaan tähdellä:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  *
-  // indeksit   0   1   2   3    4   5    6   7   8   9  10
-  // luvut     -7  -3   3   7   11  15   17  21  24  28  30
-<% end %>
-
-<p>
-  Puolessa välissä on luku 15, joka ei ollut hakemamme luku (eli luku 17). Koska taulukko on järjestyksessä (tässä suuruusjärjestyksessä), ei etsitty luku voi missään tapauksessa olla luvun 15 vasemmalla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat pienempiä tai yhtäsuuria kuin 5, eivät missään nimessä sisällä hakemaamme arvoa.
-</p>
-
-<p>
-  Alue, jolta etsimme haettavaa lukua voidaan nyt rajata lukuihin, jotka sijaitsevat indeksin 5 oikealla puolella, eli indekseihin välillä [6, 10] (6, 7, 8, 9, 10). Seuraavassa on merkitty harmaalla se osa taulukkoa jossa etsitty ei voi olla:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7   8   9  10
-  // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  24  28  30
-<% end %>
-
-<p>
-  Tutkitaan seuraavaksi jäljellä olevan etsintäalueen, eli indeksien 6-10 keskimmäistä indeksiä. Keskimmäinen indeksi löytyy laskemalla etsintäalueen pienimmän ja suurimman indeksin summan ja jakamalla se kahdella, eli (6+10)/2 = 16/2 = 8. Indeksi 8 on merkitty alle tähdellä.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  *
-  // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7   8   9  10
-  // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  24  28  30
-<% end %>
-
-<p>
-  Indeksissä 8 oleva luku on 24, joka ei ollut hakemamme luku. Koska luvut taulukossa ovat suuruusjärjestyksessä, ei etsittävä luku voi missään nimessä olla luvun 24 oikealla puolella. Voimme siis päätellä että kaikki indeksit, jotka ovat suurempia tai yhtäsuuria kuin 8, eivät missään nimessä sisällä hakemaamme arvoa. Etsintäalue rajautuu taas:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7  <font color="lightgrey"> 8   9  10</font>
-  // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  <font color="lightgrey">24  28  30</font>
-<% end %>
-
-<p>
-  Etsintä jatkuu. Tutkitaan jäljellä olevan etsintäalueen, eli indeksien 6-7, keskimmäistä indeksiä. Keskimmäinen indeksi löytyy taas ottamalla etsintäalueen pienimmän ja suurimman indeksin summa ja jakamalla se kahdella, eli (6+7)/2 = 6,5, joka pyöristyy alaspäin luvuksi 6. Kohta on merkitty alle tähdellä.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  *
-  // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    6   7  <font color="lightgrey"> 8   9  10</font>
-  // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   17  21  <font color="lightgrey">24  28  30</font>
-<% end %>
-
-<p>
-  Indeksissä 6 on luku 17, joka on sama kuin hakemamme luku. Voimme lopettaa haun ja ilmoittaa että etsitty luku on taulukossa. Jos luku ei olisi ollut taulukossa -- esimerkiksi jos haettava luku olisi ollut 16, etsintäalue olisi jäänyt lopulta tyhjäksi.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  *
-  // indeksit   <font color="lightgrey"> 0   1   2   3   4    5</font>    <font color="red">6</font>   7  <font color="lightgrey"> 8   9  10</font>
-  // luvut      <font color="lightgrey">-7  -3   3   7  11   15</font>   <font color="red">17</font>  21  <font color="lightgrey">24  28  30</font>
-<% end %>
-
-<p>
-  Simuloi kynällä ja paperilla miten binäärihaku toimii kun taulukkona on alla oleva taulukko ja haet ensin lukua 33, sitten lukua 1.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  // indeksit   0   1   2   3   4   5   6   7   8   9  10  11  12  13
-  // luvut     -5  -2   3   5   8  11  14  20  22  26  29  33  38  41
-<% end %>
-
-
-<% partial 'partials/hint', locals: { name: 'Binäärihaku vs. Peräkkäishaku' } do %>
-  
-  <p>
-    Peräkkäishaun pahimmassa tapauksessa käydään kaikki taulukon arvot läpi. Miljoona alkiota sisältävässä taulukossa tämä tarkoittaa miljoonan alkion tarkastelua.
-  </p>
-
-  <p>
-    Binäärihaun pahimmassa tapauksessa tutkittava alue jaetaan kahteen osaan kunnes osan koko on yksi. Alkioita tarkastellaan huomattavasti vähemmän kuin peräkkäishaussa. Tarkastellaan tätä hieman tarkemmin.
-  </p>
-
-  <p>
-    Lista, jossa on 16 alkiota, voidaan jakaa kahteen osaan korkeintaan 4 kertaa, eli 16 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1.
-  </p>
-
-  <p>
-    Toisaalta, lista, jossa on miljoona alkiota voidaan jakaa kahteen osaan korkeintaa 20 kertaa, eli 1000000 -&gt; 500000 -&gt; 250000 -&gt; 125000 -&gt; 62500 -&gt; 31250 -&gt; 15625 -&gt; ~7813 -&gt; ~3907 -&gt; 1954 -&gt; ~977 -&gt; ~489 -&gt; ~245 -&gt; ~123 -&gt; ~62 -&gt; ~31 -&gt; ~16 -&gt; ~8 -&gt; ~4 -&gt; ~2 -&gt; ~1.
-  </p>
-
-  <p>
-    Mitä tämä tarkoittaa? Binäärihakua käyttäen miljoona alkiota sisältävästä listasta tulee pahimmassa tapauksessa tarkastella noin kahtakymmentä alkiota, kun peräkkäishaussa tarkasteltavia alkioita on miljoona.
-  </p>
-
-  <p>
-    Koska haettavien alkioiden määrä puolittuu binäärihaussa jokaisen tarkastelun yhteydessä, voi binäärihaun tehokkuutta tarkastella kaksikantaisen logaritmin avulla. Kaksikantainen logaritmi (<code>log<sub>2</sub></code>) annetusta luvusta kertoo kuinka monta kertaa luku voidaan puolittaa. Esimerkiksi kaksikantainen logaritmi luvusta 16777216 (<code>log<sub>2</sub> 16777216</code>) on 24, ja luvun 4294967296 kaksikantainen logaritmi, (<code>log<sub>2</sub> 4294967296</code>) on 32. Tämä tarkoittaa että 4294967296 eri arvoa sisältävästä järjestyksessä olevasta listasta hakeminen vaatisi binäärihaulta korkeintaan 32 eri alkion tarkastamista.
-  </p>
-
-<% end %>
-
-
-<p>
-  Collections-luokkakirjasto tarjoaa valmiiksi toteutetun binäärihakualgoritmin. Kerholainen-luokkamme vertaa pituuksia <code>compareTo()</code>-metodissaan, eli listasta etsiessä etsisimme samanpituista kerholaista.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  List&lt;Kerholainen&gt; kerholaiset = new ArrayList&lt;&gt;();
-  kerholaiset.add(new Kerholainen("mikael", 182));
-  kerholaiset.add(new Kerholainen("matti", 187));
-  kerholaiset.add(new Kerholainen("joel", 184));
-
-  Collections.sort(kerholaiset);
-
-  Kerholainen haettava = new Kerholainen("Nimi", 180);
-  int indeksi = Collections.binarySearch(kerholaiset, haettava);
-
-  if (indeksi &gt;= 0) {
-  System.out.println("180 senttiä pitkä löytyi indeksistä " + indeksi);
-  System.out.println("nimi: " + kerholaiset.get(indeksi).getNimi());
-  }
-
-  haettava = new Kerholainen("Nimi", 187);
-  int indeksi = Collections.binarySearch(kerholaiset, haettava);
-
-  if (indeksi &gt;= 0) {
-  System.out.println("187 senttiä pitkä löytyi indeksistä " + indeksi);
-  System.out.println("nimi: " + kerholaiset.get(indeksi).getNimi());
-  }
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  187 senttiä pitkä löytyi indeksistä 2
-  nimi: matti
-<% end %>
-
-<p>
-  Esimerkissä kutsuttiin myös metodia <code>Collections.sort()</code> sillä binäärihakualgoritmi ei toimi jos käsiteltävä lista ei ole valmiiksi järjestyksessä. Huom! Älä kuitenkaan toteuta hakutoiminnallisuutta siten, että lista järjestetään jokaisen haun yhteydessä -- järjestäminen itsessään on hitaampaa kuin peräkkäishaku eli listan läpikäynti alkio kerrallaan. Binäärihaun hyödyt tulevatkin esille vasta useamman haun jälkeen.
-</p>
-
-
 
 
 
 <% partial 'partials/material_heading' do %>
-  Luokan ominaisuuksien periminen
+  Luokan periminen
 <% end %>
 
 
 <p>
-  Luokkia käytetään olio-ohjelmoinnissa ongelma-alueeseen liittyvien käsitteiden selkeyttämiseen. Jokainen luomamme luokka lisää toiminnallisuutta käytössämme olevaan ohjelmointikieleen. Tätä toiminnallisuutta tarvitaan kohtaamiemme ongelmien ratkomiseen, <em>ratkaisut syntyvät luokista luotujen olioiden välisen interaktion avulla</em>. Olio-ohjelmoinnissa olio on itsenäinen kokonaisuus, jolla on olion tarjoamien metodien avulla muutettava tila. Olioita käytetään yhteistyössä; jokaisella oliolla on oma vastuualue. Esimerkiksi käyttöliittymäluokkamme ovat tähän mennessä hyödyntäneet <code>Scanner</code>-olioita.
+  Luokkia käytetään olio-ohjelmoinnissa ongelma-alueeseen liittyvien käsitteiden selkeyttämiseen. Jokainen luomamme luokka lisää ohjelmointikieleen toiminnallisuutta. Tätä toiminnallisuutta tarvitaan kohtaamiemme ongelmien ratkomiseen, <em>ratkaisut syntyvät luokista luotujen olioiden välisen interaktion avulla</em>. Olio-ohjelmoinnissa olio on itsenäinen kokonaisuus, jolla on olion tarjoamien metodien avulla muutettava tila. Olioita käytetään yhteistyössä; jokaisella oliolla on oma vastuualue. Esimerkiksi käyttöliittymäluokkamme ovat tähän mennessä hyödyntäneet <code>Scanner</code>-olioita.
 </p>
 
 <p>
@@ -929,7 +45,11 @@
 </p>
 
 <p>
-  Luokan ominaisuudet peritään avainsanalla <code>extends</code>. Luokan perivää luokkaa kutsutaan aliluokaksi (<em>subclass</em>), perittävää luokkaa yliluokaksi (<em>superclass</em>). Tutustutaan erään autonvalmistajan järjestelmään, joka hallinnoi auton osia. Osien hallinan peruskomponentti on luokka <code>Osa</code>, joka määrittelee tunnuksen, valmistajan ja kuvauksen.
+  Luokan ominaisuudet peritään avainsanalla <code>extends</code>. Luokan perivää luokkaa kutsutaan aliluokaksi (<em>subclass</em>), perittävää luokkaa yliluokaksi (<em>superclass</em>).
+</p>
+
+<p>
+  Tutustutaan erään autonvalmistajan järjestelmään, joka hallinnoi auton osia. Osien hallinan peruskomponentti on luokka <code>Osa</code>, joka määrittelee tunnuksen, valmistajan ja kuvauksen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -959,7 +79,52 @@ public class Osa {
 }<% end %>
 
 <p>
-  Yksi osa autoa on moottori. Kuten kaikilla osilla, myös moottorilla on valmistaja, tunnus ja kuvaus. Näiden lisäksi moottoriin liittyy moottorityyppi: esimerkiksi polttomoottori, sähkömoottori tai hybridi. Luodaan luokan <code>Osa</code> perivä luokka <code>Moottori</code>: moottori on osan erikoistapaus.
+  Yksi osa autoa on moottori. Kuten kaikilla osilla, myös moottorilla on valmistaja, tunnus ja kuvaus. Näiden lisäksi moottoriin liittyy moottorityyppi: esimerkiksi polttomoottori, sähkömoottori tai hybridi.
+</p>
+
+<p>
+  Perinteinen, ei perintää hyödyntävä tapa olisi toteuttaa luokka <code>Moottori</code> seuraavasti.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Moottori {
+
+      private String moottorityyppi;
+      private String tunnus;
+      private String valmistaja;
+      private String kuvaus;
+
+      public Moottori(String moottorityyppi, String tunnus, String valmistaja, String kuvaus) {
+          this.moottorityyppi = moottorityyppi;
+          this.tunnus = tunnus;
+          this.valmistaja = valmistaja;
+          this.kuvaus = kuvaus;
+      }
+  
+      public String getMoottorityyppi() {
+          return moottorityyppi;
+      }
+  
+      public String getTunnus() {
+          return tunnus;
+      }
+
+      public String getKuvaus() {
+          return kuvaus;
+      }
+
+      public String getValmistaja() {
+          return valmistaja;
+      }
+  }
+<% end %>
+
+<p>
+  Huomaamme luokassa <code>Moottori</code> merkittävän määrän yhtäläisyyksiä luokan <code>Osa</code> kanssa. Voidaankin sanoa, että <code>Moottori</code> on luokan <code>Osa</code> erikoistapaus. Moottori <em>on</em> Osa, mutta sillä on myös joitakin omia ominaisuuksia eli tässä moottorin tyyppi.
+</p>
+
+<p>
+  Tehdään sama luokka <code>Moottori</code>, ja toteutetaan luokka perintää hyödyntämällä. Luodaan luokan <code>Osa</code> perivä luokka <code>Moottori</code>: moottori on osan erikoistapaus.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -983,6 +148,12 @@ public class Moottori extends Osa {
 
 <p>
   Moottori-luokan konstruktori on mielenkiintoinen. Konstruktorin ensimmäisellä rivillä on avainsana <code>super</code>, jolla kutsutaan yliluokan konstruktoria. Kutsu <code>super(tunnus, valmistaja, kuvaus)</code> kutsuu luokassa <code>Osa</code> määriteltyä konstruktoria <code>public Osa(String tunnus, String valmistaja, String kuvaus</code>, jolloin yliluokassa määritellyt oliomuuttujat saavat arvonsa. Tämän jälkeen oliomuuttujalle <code>moottorityyppi</code> asetetaan siihen liittyvä arvo.
+</p>
+
+<p>
+  <em>
+    Mikäli konstruktorissa käytetään yliluokan konstruktoria, eli konstruktorissa on <code>super</code>-kutsu, tulee <code>super</code>-kutsun olla konstruktorin ensimmäisellä rivillä.
+  </em>
 </p>
 
 <p>
@@ -1010,7 +181,7 @@ volkswagen
 <% end %>
 
 <p>
-  Jos metodilla tai muuttujalla on näkyvyysmääre <code>private</code>, ei se näy aliluokille eikä aliluokalla ole mitään suoraa tapaa päästä käsiksi siihen. Moottori ei siis pääse suoraan käsiksi yliluokassa Osa määriteltyihin ominaisuuksiinsa (tunnus, valmistaja, kuvaus) -- tällä tarkoitetaan sitä, että Moottori-luokassa ohjelmoija ei voi suoraan käsitellä niitä yliluokan muuttujia, joilla on näkyvyysmääre private.
+  Jos metodilla tai muuttujalla on näkyvyysmääre <code>private</code>, ei se näy aliluokille eikä aliluokalla ole mitään suoraa tapaa päästä käsiksi siihen. Moottori-luokasta ei siis pääse suoraan käsiksi yliluokassa Osa määriteltyihin muuttujiin tunnus, valmistaja, kuvaus. Tällä tarkoitetaan sitä, että Moottori-luokassa ohjelmoija ei voi suoraan käsitellä niitä yliluokan muuttujia, joilla on näkyvyysmääre private.
 </p>
 
 <p>
@@ -1082,7 +253,7 @@ Esko Ukkonen
   </p>
 
   <p>
-    Opiskelijalla on aluksi 0 opintopistettä. Aina kun opiskelija opiskelee, kasvaa opintopistemäärä. Luokan tulee toimia seuraavan esimerkin mukaisesti.
+    Opiskelijalla on aluksi 0 opintopistettä. Aina kun opiskelija opiskelee, opintopistemäärä kasvaa. Luokan tulee toimia seuraavan esimerkin mukaisesti.
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -1190,7 +361,7 @@ Olli
 <% end %>
 
 <p>
-  Olion kutsuttavissa olevat metodit määrittyvät muuttujan tyypin kautta. Esimerkiksi jos <code>Opiskelija</code>-tyyppisen olion viite on talletettu <code>Henkilo</code>-tyyppiseen muuttujaan, on oliosta käytössä vain <code>Henkilo</code>-luokassa määritellyt metodit (sekä Henkilo-luokan yliluokan ja rajapintojen metodit):
+  Olion kutsuttavissa olevat metodit määrittyvät muuttujan tyypin kautta. Esimerkiksi jos edellä toteutetun <code>Opiskelija</code>-tyyppisen olion viite on talletettu <code>Henkilo</code>-tyyppiseen muuttujaan, on oliosta käytössä vain <code>Henkilo</code>-luokassa määritellyt metodit (sekä Henkilo-luokan yliluokan ja rajapintojen metodit):
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1244,14 +415,17 @@ Liisa
   Suoritettava metodi valitaan olion todellisen tyypin perusteella, eli sen luokan perusteella, jonka konstruktoria kutsutaan kun olio luodaan. Jos kutsuttua metodia ei ole määritelty luokassa, suoritetaan perintähierarkiassa olion todellista tyyppiä lähinnä oleva metodin toteutus.
 </p>
 
-<p>
-  Hieman yleisemmin: <em>Suoritettava metodi valitaan aina olion todellisen tyypin perusteella riippumatta käytetyn muuttujan tyypistä. Oliot ovat monimuotoisia, eli olioita voi käyttää usean eri muuttujatyypin kautta. Suoritettava metodi liittyy aina olion todelliseen tyyppiin.</em> Tätä monimuotoisuutta kutsutaan <strong>polymorfismiksi</strong>.
-</p>
+<% partial 'partials/hint', locals: { name: 'Polymorfismi' } do %>
+
+  <p>
+    Suoritettava metodi valitaan aina olion todellisen tyypin perusteella riippumatta käytetyn muuttujan tyypistä. Oliot ovat monimuotoisia, eli olioita voi käyttää usean eri muuttujatyypin kautta. Suoritettava metodi liittyy aina olion todelliseen tyyppiin. Tätä monimuotoisuutta kutsutaan polymorfismiksi.
+  </p>
+
+<% end %>
 
 <p>
-  Tarkastellaan tätä vielä toisen esimerkin avulla.
+  Tarkastellaan Polymorfismia toisen esimerkin avulla.
 </p>
-
 
 <p>
   Kaksiulotteisessa koordinaatiostossa sijaitsevaa pistettä voisi kuvata seuraavan luokan avulla:
@@ -1312,7 +486,7 @@ public class VariPiste extends Piste {
 </p>
 
 <p>
-  Seuraavassa esimerkki, jossa listalle laitetaan muutama piste. Osa pisteistä on "normaaleja" ja osa väripisteitä. Lopulta tulostetaan listalla olevat pisteet. Jokaisen pisteen metodi toString suoritetaan pisteen todellisen tyypin perusteella, vaikka lista tuntee kaikki pisteet <code>Piste</code>-tyyppisinä.
+  Seuraavassa on esimerkki, jossa listalle laitetaan muutama piste. Osa pisteistä on "normaaleja" ja osa väripisteitä. Lopulta tulostetaan listalla olevat pisteet. Jokaisen pisteen metodi toString suoritetaan pisteen todellisen tyypin perusteella, vaikka lista tuntee kaikki pisteet <code>Piste</code>-tyyppisinä.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1444,9 +618,9 @@ public class Piste3D extends Piste {
 </p>
 
 
-<%= partial 'partials/quiz', locals: { id: '5a02e0b8fb43ca000414c183' } %>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a33a' } %>
 
-<%= partial 'partials/quiz', locals: { id: '5a02e190fb43ca000414c18b' } %>
+<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a33b' } %>
 
 
 
@@ -1468,12 +642,12 @@ public class Piste3D extends Piste {
 </p>
 
 <p>
-  Perintää käytettäessä tulee varmistaa että Single Responsibility Principle pätee myös perittäessä. Jokaisella luokalla tulee olla vain yksi syy muuttua. Jos huomaat että perintä lisää luokan vastuita, tulee luokka pilkkoa useammaksi luokaksi.
+  Perintää käytettäessä tulee varmistaa että <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank" norel>Single Responsibility Principle</a> pätee myös perittäessä. Jokaisella luokalla tulee olla vain yksi syy muuttua. Jos huomaat että perintä lisää luokan vastuita, tulee luokka pilkkoa useammaksi luokaksi.
 </p>
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
-  Perinnän väärinkäyttö
+  Esimerkki perinnän väärinkäytöstä
 <% end %>
 
 <p>
@@ -1538,7 +712,11 @@ public class Tilaus extends Asiakas {
 </p>
 
 <p>
-  Osoitteen muuttuessa joudumme muuttamaan <em>jokaista</em> kyseiseen asiakkaaseen liittyvää tilausoliota, mikä kertoo huonosta tilanteesta. Parempi ratkaisu olisi kapseloida <code>Asiakas</code> <code>Tilaus</code>-luokan oliomuuttujaksi. Jos ajattelemme tarkemmin tilauksen semantiikkaa, tämä on selvää. <em>Tilauksella on asiakas</em>. Muutetaan luokkaa <code>Tilaus</code> siten, että se sisältää <code>Asiakas</code>-viitteen.
+  Osoitteen muuttuessa joutuisimme muuttamaan <em>jokaista</em> kyseiseen asiakkaaseen liittyvää tilausoliota, mikä ei missään nimessä ole toivottua. Parempi ratkaisu olisi kapseloida <code>Asiakas</code> <code>Tilaus</code>-luokan oliomuuttujaksi. Jos ajattelemme tarkemmin tilauksen semantiikkaa, tämä on selvää. <em>Tilauksella on asiakas</em>.
+</p>
+
+<p>
+  Muutetaan luokkaa <code>Tilaus</code> siten, että se sisältää <code>Asiakas</code>-viitteen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1875,9 +1053,13 @@ Keskiarvo: 992.8
 </p>
 
 
-<% partial 'partials/material_heading' do %>
-  Abstrakti luokka
+<% partial 'partials/material_sub_heading' do %>
+  Abstraktit luokat
 <% end %>
+
+<p>
+  Perintähierarkiaa pohtiessa tulee joskus esille tilanteita, missä on olemassa selkeä käsite, mutta käsite ei sellaisenaan ole hyvä kandidaatti olioksi. Hyötyisimme käsitteestä perinnän kannalta, sillä se sisältää muuttujia ja toiminnallisuuksia, jotka ovat kaikille käsitteen periville luokille samoja, mutta toisaalta käsitteestä itsestään ei pitäisi pystyä tekemään olioita.
+</p>
 
 <p>
   Abstrakti luokka yhdistää rajapintoja ja perintää. Niistä ei voi tehdä ilmentymiä, vaan ilmentymät tehdään tehdään abstraktin luokan aliluokista.  Abstrakti luokka voi sisältää sekä normaaleja metodeja, joissa on metodirunko, että abstrakteja metodeja, jotka sisältävät ainoastaan metodimäärittelyn. Abstraktien metodien toteutus jätetään perivän luokan vastuulle. Yleisesti ajatellen abstrakteja luokkia käytetään esimerkiksi kun abstraktin luokan kuvaama käsite ei ole selkeä itsenäinen käsite. Tällöin siitä ei tule pystyä tekemään ilmentymiä.
@@ -2031,7 +1213,9 @@ public abstract class Laatikko {
     public abstract void lisaa(Tavara tavara);
 
     public void lisaa(Collection&lt;Tavara&gt; tavarat) {
-        tavarat.stream().forEach(t -&gt; lisaa(t));
+        for (Tavara t: tavarat) {
+            lisaa(t);
+        }
     }
 
     public abstract boolean onkoLaatikossa(Tavara tavara);
@@ -2112,6 +1296,106 @@ false
 
 
 
+<% partial 'partials/exercise', locals: { name: 'Eläimiä (4 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä demonstroit perinnän ja rajapintojen käyttöä. Toteuta kaikki luokat ja rajapinnat pakkaukseen <code>perintaa</code>.
+  </p>
+
+  
+  <h2>Eläin</h2>
+
+  <p>
+    Toteuta ensin abstrakti luokka <code>Elain</code>. Luokalla Elain on konstruktori, jolle annetaan parametrina eläimen nimi. Luokalla Elain on lisäksi parametrittomat metodit syo ja nuku, jotka eivät palauta arvoa (void), sekä parametriton metodi getNimi, joka palauttaa eläimen nimen.
+  </p>
+
+  <p>
+    Metodin nuku tulee tulostaa "(nimi) nukkuu" ja metodin syo tulee tulostaa "(nimi) syo". Tässä (nimi) on eläimelle annettu nimi.
+  </p>
+
+  
+  <h2>Koira</h2>
+
+  <p>
+    Toteuta luokan Elain perivä luokka <code>Koira</code>. Luokalla Koira tulee olla parametrillinen konstruktori, jolla luotavalle koiraoliolle voi antaa nimen. Tämän lisäksi koiralla tulee olla parametriton konstruktori, jolla koiran nimeksi tulee "Koira" sekä parametriton metodi hauku, joka ei palauta arvoa (void). Koiralla tulee olla myös metodit syo ja nuku kuten eläimillä yleensä ottaen.
+  </p>
+
+  <p>
+    Alla on esimerkki luokan Koira odotetusta toiminnasta:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    Koira koira = new Koira();
+    koira.hauku();
+    koira.syo();
+    
+    Koira vuffe = new Koira("Vuffe");
+    vuffe.hauku();
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Koira haukkuu
+    Koira syo
+    Vuffe haukkuu
+  <% end %>
+
+
+  <h2>Kissa</h2>
+
+  <p>
+    Toteuta seuraavaksi luokka <code>Kissa</code>, joka perii luokan Elain. Luokalla Kissa tulee olla parametrillinen konstruktori, jolla luotavalle kissaoliolle voi antaa nimen. Tämän lisäksi kissalla tulee olla parametriton konstruktori, jolla kissan nimeksi tulee "Kissa" sekä parametriton metodi mourua, joka ei palauta arvoa (void). Kissalla tulee olla myös metodit syo ja nuku kuten ensimmäisessä osassa.
+  </p>
+
+  <p>
+    Alla on esimerkki luokan Kissa odotetusta toiminnasta:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    Kissa kissa = new Kissa();
+    kissa.mourua();
+    kissa.syo();
+    
+    Kissa karvinen = new Kissa("Karvinen");
+    karvinen.mourua();
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Kissa mouruaa
+    Kissa syo
+    Karvinen mouruaa
+  <% end %>
+
+
+  <h2>Ääntelevä</h2>
+
+  <p>
+    Luo lopulta rajapinta <code>Aanteleva</code>, joka maarittelee parametrittoman metodin aantele, joka ei palauta arvoa (void). Toteuta rajapinta luokissa Koira että Kissa. Rajapinnan tulee hyödyntää aiemmin määriteltyjä hauku ja mourua -metodeja.
+  </p>
+
+  <p>
+    Alla on esimerkki odotetusta toiminnasta:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    Aanteleva koira = new Koira();
+    koira.aantele();
+    
+    Aanteleva kissa = new Kissa("Karvinen");
+    kissa.aantele();
+    Kissa k = (Kissa) kissa;
+    k.mourua();
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Koira haukkuu
+    Karvinen mouruaa
+    Karvinen mouruaa    
+  <% end %>
+
+<% end %>
+
+
+
 <% partial 'partials/material_heading' do %>
   Perintä ja abstraktit luokat luokkakaaviossa
 <% end %>
@@ -2172,1490 +1456,17 @@ false
 <% end %>
 
 
-<% partial 'partials/material_heading' do %>
-  Muutamia yleishyödyllisiä tekniikoita
-<% end %>
-
-
-<p>
-  Tutustutaan seuraavaksi muutamaan ohjelmoinnissa varsin näppärään tekniikaan sekä luokkaan.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Säännölliset lausekkeet
-<% end %>
-
-<p>
-  Säännöllinen lauseke määrittelee joukon merkkijonoja tiiviissä muodossa. Säännöllisiä lausekkeita käytetään muunmuassa merkkijonojen oikeellisuuden tarkistamiseen. Merkkijonojen oikeellisuuden tarkastaminen tapahtuu luomalla säännöllinen lauseke, joka määrittelee merkkijonot, jotka ovat oikein.
-</p>
-
-<p>
-  Tarkastellaan ongelmaa, jossa täytyy tarkistaa, onko käyttäjän antama opiskelijanumero oikeanmuotoinen. Opiskelijanumero alkaa merkkijonolla "01", jota seuraa 7 numeroa väliltä 0&ndash;9.
-</p>
-
-<p>
-  Opiskelijanumeron oikeellisuuden voisi tarkistaa esimerkiksi käymällä opiskelijanumeroa esittävän merkkijonon läpi merkki merkiltä <code>charAt</code>-metodin avulla. Toinen tapa olisi tarkistaa että ensimmäinen merkki on "0", ja käyttää <code>Integer.parseInt</code> metodikutsua merkkijonon muuntamiseen numeroksi. Tämän jälkeen voisi tarkistaa että <code>Integer.parseInt</code>-metodin palauttama luku on pienempi kuin 20000000.
-</p>
-
-<p>
-  Oikeellisuuden tarkistus säännöllisten lausekkeiden avulla tapahtuu ensin sopivan säännöllisen lausekkeen määrittelyn. Tämän jälkeen käytetään <code>String</code>-luokan metodia <code>matches</code>, joka tarkistaa vastaako merkkijono parametrina annettua säännöllistä lauseketta. Opiskelijanumeron tapauksessa sopiva säännöllinen lauseke on <code>"01[0-9]{7}"</code>, ja käyttäjän syöttämän opiskelijanumeron tarkistaminen käy seuraavasti:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  System.out.print("Anna opiskelijanumero: ");
-  String numero = lukija.nextLine();
-
-  if (numero.matches("01[0-9]{7}")) {
-      System.out.println("Muoto on oikea.");
-  } else {
-      System.out.println("Muoto ei ole oikea.");
-  }
-<% end %>
-
-<p>
-  Käydään seuraavaksi läpi eniten käytettyjä säännöllisten lausekkeiden merkintöjä.
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Vaihtoehtoisuus (pystyviiva)
-<% end %>
-
-<p>
-  Pystyviiva tarkoittaa, että säännöllisen lausekkeen osat ovat vaihtoehtoisia. Esimerkiksi lauseke <code>00|111|0000</code> määrittelee merkkijonot <code>00</code>, <code>111</code> ja <code>0000</code>. Metodi <code>matches</code> palauttaa arvon <code>true</code> jos merkkijono vastaa jotain määritellyistä vaihtoehdoista.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  String merkkijono = "00";
-
-  if (merkkijono.matches("00|111|0000")) {
-      System.out.println("Merkkijonosta löytyi joku kolmesta vaihtoehdosta");
-  } else {
-      System.out.println("Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista");
-  }
-<% end %>
-
-
-<% partial 'partials/sample_output' do %>
-  Merkkijonosta löytyi joku kolmesta vaihtoehdosta
-<% end %>
-
-<p>
-  Säännöllinen lauseke <code>00|111|0000</code> vaatii että merkkijono on täsmälleen määritellyn muotoinen: se ei määrittele <em>"contains"</em>-toiminnallisuutta.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  String merkkijono = "1111";
-
-  if (merkkijono.matches("00|111|0000")) {
-      System.out.println("Merkkijonosta löytyi joku kolmesta vaihtoehdosta");
-  } else {
-      System.out.println("Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista");
-  }
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  Merkkijonosta ei löytynyt yhtäkään vaihtoehdoista
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Merkkijonon osaan rajattu vaikutus (sulut)
-<% end %>
-
-<p>
-  Sulkujen avulla voi määrittää, mihin säännöllisen lausekkeen osaan sulkujen sisällä olevat merkinnät vaikuttavat. Jos haluamme sallia merkkijonot <code>00000</code> ja <code>00001</code>, voimme määritellä ne pystyviivan avulla muodossa <code>00000|00001</code>. Sulkujen avulla voimme rajoittaa vaihtoehtoisuuden vain osaan merkkijonoa. Lauseke <code>0000(0|1)</code> määrittelee merkkijonot <code>00000</code> ja <code>00001</code>.
-</p>
-
-<p>
-  Vastaavasti säännöllinen lauseke <code>auto(|n|a)</code> määrittelee sanan auto yksikön nominatiivin (auto), genetiivin (auton), partitiivin (autoa) ja akkusatiivin (auto tai auton).
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  System.out.print("Kirjoita joku sanan auto yksikön taivutusmuoto: ");
-  String sana = lukija.nextLine();
-
-  if (sana.matches("auto(|n|a|ssa|sta|on|lla|lta|lle|na|ksi|tta)")) {
-      System.out.println("Oikein meni! RRrakastan tätä kieltä!");
-  } else {
-      System.out.println("Taivutusmuoto ei ole oikea.");
-  }
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Toistomerkinnät
-<% end %>
-
-<p>
-  Usein halutaan, että merkkijonossa toistuu jokin tietty alimerkkijono. Säännöllisissä lausekkeissa on käytössä seuraavat toistomerkinnät:
-</p>
-
-<ul>
-  <li>Merkintä <strong><code>*</code></strong> toisto 0... kertaa, esim<br/>
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "trolololololo";
-
-      if (merkkijono.matches("trolo(lo)*")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto on oikea.
-    <% end %>
-  </li>
-
-  <li>Merkintä <strong><code>+</code></strong> toisto 1... kertaa, esim<br/>
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "trolololololo";
-
-      if (merkkijono.matches("tro(lo)+")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto on oikea.
-    <% end %>
-
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "nänänänänänänänä Bätmään!";
-
-      if (merkkijono.matches("(nä)+ Bätmään!")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto on oikea.
-    <% end %>
-  </li>
-
-  <li>Merkintä <strong><code>?</code></strong> toisto 0 tai 1 kertaa, esim<br/>
-
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "You have to accidentally the whole meme";
-
-      if (merkkijono.matches("You have to accidentally (delete )?the whole meme")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto on oikea.
-    <% end %>
-  </li>
-
-  <li>Merkintä <strong><code>{a}</code></strong> toisto <code>a</code> kertaa, esim<br/>
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "1010";
-
-      if (merkkijono.matches("(10){2}")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto on oikea.
-    <% end %>
-  </li>
-
-  <li>Merkintä <strong><code>{a,b}</code></strong> toisto <code>a</code> ... <code>b</code> kertaa, esim<br/>
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "1";
-
-      if (merkkijono.matches("1{2,4}")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto ei ole oikea.
-    <% end %>
-  </li>
-
-  <li>Merkintä <strong><code>{a,}</code></strong> toisto <code>a</code> ... kertaa, esim<br/>
-    <% partial 'partials/code_highlight' do %>
-      String merkkijono = "11111";
-
-      if (merkkijono.matches("1{2,}")) {
-          System.out.println("Muoto on oikea.");
-      } else {
-          System.out.println("Muoto ei ole oikea.");
-      }
-    <% end %>
-
-    <% partial 'partials/sample_output' do %>
-      Muoto on oikea.
-    <% end %>
-  </li>
-</ul>
-
-<p>
-  Samassa säännöllisessä lausekkeessa voi käyttää myös useampia toistomerkintöjä. Esimerkiksi säännöllinen lauseke <code>5{3}(1|0)*5{3}</code> määrittelee merkkijonot, jotka alkavat ja loppuvat kolmella vitosella. Välissä saa tulla rajaton määrä ykkösiä ja nollia.
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Merkkiryhmät (hakasulut)
-<% end %>
-
-<p>
-  Merkkiryhmän avulla voi määritellä lyhyesti joukon merkkejä. Merkit kirjoitetaan hakasulkujen sisään, ja merkkivälin voi määrittää viivan avulla. Esimerkiksi merkintä <code>[145]</code> tarkoittaa samaa kuin <code>(1|4|5)</code> ja merkintä <code>[2-36-9]</code> tarkoittaa samaa kuin <code>(2|3|6|7|8|9)</code>. Vastaavasti merkintä <code>[a-c]*</code> määrittelee säännöllisen lausekkeen, joka vaatii että merkkijono sisältää vain merkkejä <code>a</code>, <code>b</code> ja <code>c</code>.
-</p>
-
-
-<%= partial 'partials/quiz', locals: { id: '5a02e242fb43ca000414c18f' } %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Säännölliset lausekkeet (3 osaa)' } do %>
-
-  <p>
-    Harjoitellaan hieman säännöllisten lausekkeiden käyttöä. Tehtävissä haetut metodit tehdään luokkaan <code>Tarkistin</code>.
-  </p>
-
-
-  <h2>Viikonpäivä</h2>
-
-  <p>
-    Tee säännöllisen lausekkeen avulla metodi <code>public boolean onViikonpaiva(String merkkijono)</code>, joka palauttaa <code>true</code> jos sen parametrina saama merkkijono on viikonpäivän lyhenne (ma, ti, ke, to, pe, la tai su).
-  </p>
-
-  <p>
-    Esimerkkitulostuksia metodia käyttävästä ohjelmasta:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">ti</font>
-    Muoto on oikea.
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">abc</font>
-    Muoto ei ole oikea.
-  <% end %>
-
-
-  <h2>Vokaalitarkistus</h2>
-
-  <p>
-    Tee metodi <code>public boolean kaikkiVokaaleja(String merkkijono)</code> joka tarkistaa säännöllisen lausekkeen avulla ovatko parametrina olevan merkkijonon kaikki merkit vokaaleja.
-  </p>
-
-  <p>
-    Esimerkkitulostuksia metodia käyttävästä ohjelmasta:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">aie</font>
-    Muoto on oikea.
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">ane</font>
-    Muoto ei ole oikea.
-  <% end %>
-
-
-  <h2>Kellonaika</h2>
-
-  <p>
-    Säännölliset lausekkeet sopivat tietynlaisiin tilanteisiin. Joissain tapaukseesa lausekkeista tulee liian monimutkaisia, ja merkkijonon "sopivuus" kannattaa tarkastaa muulla tyylillä tai voi olla tarkoituksenmukaista käyttää säännöllisiä lausekkeita vain osaan tarkastuksesta.
-  </p>
-
-  <p>
-    Tee  metodi <code>public boolean kellonaika(String merkkijono)</code>  ohjelma, joka tarkistaa säännöllisen lausekkeen avulla onko parametrina oleva merkkijono muotoa <code>tt:mm:ss</code> oleva kellonaika (tunnit, minuutit ja sekunnit kaksinumeroisina).
-  </p>
-
-  <p>
-    Esimerkkitulostuksia metodia käyttävästä ohjelmasta:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">17:23:05</font>
-    Muoto on oikea.
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">abc</font>
-    Muoto ei ole oikea.
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Anna merkkijono: <font color="red">33:33:33</font>
-    Muoto ei ole oikea.
-  <% end %>
-
-<% end %>
-
-<p>
-  Nykyään lähes kaikista ohjelmointikielistä löytyy tuki säännöllisille lausekkeille. Säännöllisten lausekkeiden teoriaa tarkastellaan muunmuassa kurssilla <em>Laskennan mallit</em>. Lisää säännöllisistä lausekkeista löydät esim. googlaamalla hakusanalla <em>regular expressions java</em> -- kannattaa myös lukea Codinghorror-blogin lyhyt artikkeli <a href="https://blog.codinghorror.com/regex-use-vs-regex-abuse/" target="_blank" rel="noopener">Regex use vs. Regex abuse</a>.
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Lueteltu tyyppi eli Enum
-<% end %>
-
-<p>
-  Jos tiedämme muuttujien mahdolliset arvot ennalta, voimme käyttää niiden esittämiseen <code>enum</code>-tyyppistä luokkaa eli <em>lueteltua tyyppiä</em>. Luetellut tyypit ovat oma luokkatyyppinsä rajapinnan ja normaalin luokan lisäksi. Lueteltu tyyppi määritellään avainsanalla <code>enum</code>. Esimerkiksi seuraava <code>Maa</code>-enumluokka määrittelee neljä vakioarvoa: <code>RUUTU</code>, <code>PATA</code>, <code>RISTI</code> ja <code>HERTTA</code>.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public enum Maa {
-      RUUTU, PATA, RISTI, HERTTA
-  }
-<% end %>
-
-<p>
-  Yksinkertaisimmassa muodossaan <code>enum</code> luettelee pilkulla erotettuina määrittelemänsä vakioarvot. Lueteltujen tyyppien arvot eli vakiot on yleensä tapana kirjoittaa kokonaan isoin kirjaimin.
-</p>
-
-<p>
-  Enum luodaan (yleensä) omaan tiedostoon, samaan tapaan kuin luokka tai rajapinta. NetBeansissa Enumin saa luotua valitsemalla projektin kohdalla <em>new/other/java/java enum</em>.
-</p>
-
-<p>
-  Seuraavassa luokka <code>Kortti</code> jossa maa esitetään enumin avulla:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Kortti {
-
-      private int arvo;
-      private Maa maa;
-
-      public Kortti(int arvo, Maa maa) {
-          this.arvo = arvo;
-          this.maa = maa;
-      }
-
-      @Override
-      public String toString() {
-          return maa + " " + arvo;
-      }
-
-      public Maa getMaa() {
-          return maa;
-      }
-
-      public int getArvo() {
-          return arvo;
-      }
-  }
-<% end %>
-
-<p>
-  Korttia käytetään seuraavasti:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  Kortti eka = new Kortti(10, Maa.HERTTA);
-
-  System.out.println(eka);
-
-  if (eka.getMaa() == Maa.PATA) {
-      System.out.println("on pata");
-  } else {
-      System.out.println("ei ole pata");
-  }
-<% end %>
-
-<p>Tulostuu:</p>
-
-<% partial 'partials/sample_output' do %>
-  HERTTA 10
-  ei ole pata
-<% end %>
-
-<p>
-  Huomaamme, että enumin tunnukset tulostuvat mukavasti! Koska kortin maat ovat nyt tyyppiä <code>Maa</code> ei ylemmän esimerkin "järjenvastaiset" kummallisuudet, esim. "maan korottaminen toiseen potenssiin" onnistu. Oraclella on <code>enum</code>-tyyppiin liittyvä sivusto osoitteessa <a href="http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html" target="_blank" rel="noopener">http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html</a>.
-</p>
-
-
-
-<% partial 'partials/hint', locals: { name: 'Enumien vertailu' } do %>
-
-  <p>
-    Ylläolevassa esimerkissä kahta enumia verrattiin yhtäsuuruusmerkkien avulla. Miksi tämä on ok?
-  </p>
-
-  <p>
-    Jokainen lueteltu arvo saa oman uniikin numerotunnuksen, ja niiden vertailu keskenään yhtäsuuruusmerkillä on ok. Kuten muutkin Javan luokat, myös luetellut arvot perivät Object-luokan ja sen equals-metodin. Luetelluilla luokilla myös equals-metodi vertailee tätä numerotunnusta.
-  </p>
-
-  <p>
-    Luetellun arvon numeraalisen tunnuksen saa selville metodille <code>ordinal()</code>. Metodi palauttaa käytännössä järjestysnumeron -- jos lueteltu arvo on esitelty ensimmäisenä, on sen järjestysnumero 0. Jos toisena, järjestysnumero on 1, jne.
-  </p>
-
-  
-  <% partial 'partials/code_highlight' do %>
-    public enum Maa {
-        RUUTU, PATA, RISTI, HERTTA
-    }
-  <% end %>
-
-  <% partial 'partials/code_highlight' do %>
-    System.out.println(Maa.RUUTU.ordinal());
-    System.out.println(Maa.HERTTA.ordinal());
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    0
-    3
-  <% end %>
-  
-<% end %>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Lueteltujen tyyppien oliomuuttujat
-<% end %>
-
-<p>
-  Luetellut tyypit voivat sisältää oliomuuttujia. Oliomuuttujien arvot tulee asettaa luetellun tyypin määrittelevän luokan sisäisessä eli näkyvyysmääreen <code>private</code> omaavassa konstruktorissa. Enum-tyyppisillä luokilla ei saa olla <code>public</code>-konstruktoria.
-</p>
-
-<p>
-  Seuraavassa lueteltu tyyppi <code>Vari</code>, joka sisältää vakioarvot PUNAINEN, VIHREA ja SININEN. Vakioille on määritelty <a href="https://www.w3schools.com/colors/colors_picker.asp" target="_blank" rel="noopener">värikoodin</a> kertova oliomuuttuja:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public enum Vari {
-      // konstruktorin parametrit määritellään vakioarvoja lueteltaessa
-      PUNAINEN("#FF0000"),
-      VIHREA("#00FF00"),
-      SININEN("#0000FF");
-
-      private String koodi;        // oliomuuttuja
-
-      private Vari(String koodi) { // konstruktori
-          this.koodi = koodi;
-      }
-
-      public String getKoodi() {
-          return this.koodi;
-      }
-  }
-<% end %>
-
-<p>
-  Lueteltua tyyppiä <code>Vari</code> voidaan käyttää esimerkiksi seuraavasti:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  System.out.println(Vari.VIHREA.getKoodi());
-<% end %>
-
-<% partial 'partials/sample_output' do %>
-  #00FF00
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Iteraattori
-<% end %>
-
-<p>
-  Tarkastellaan seuraavaa luokkaa <code>Kasi</code>, joka mallintaa tietyssä korttipelissä pelaajan kädessä olevien korttien joukkoa:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Kasi {
-      private List&lt;Kortti&gt; kortit;
-
-      public Kasi() {
-          this.kortit = new ArrayList&lt;&gt;();
-      }
-
-      public void lisaa(Kortti kortti) {
-          this.kortit.add(kortti);
-      }
-
-      public void tulosta() {
-          this.kortit.stream().forEach(kortti -&gt; {
-              System.out.println(kortti);
-          });
-      }
-  }
-<% end %>
-
-<p>
-  Luokan metodi <code>tulosta</code> tulostaa jokaisen kädessä olevan kortin.
-</p>
-
-<p>
-  ArrayList ja muut <em>Collection</em>-rajapinnan toteuttavat "oliosäiliöt" toteuttavat rajapinnan <em>Iterable</em>, ja ne voidaan käydä läpi myös käyttäen <em>iteraattoria</em>, eli olioa, joka on varta vasten tarkoitettu tietyn oliokokoelman läpikäyntiin. Seuraavassa on iteraattoria käyttävä versio korttien tulostamisesta:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public void tulosta() {
-      Iterator&lt;Kortti&gt; iteraattori = kortit.iterator();
-
-      while (iteraattori.hasNext()) {
-          System.out.println(iteraattori.next());
-      }
-  }
-<% end %>
-
-<p>
-  Iteraattori pyydetään kortteja sisältävältä listalta <code>kortit</code>. Iteraattori on ikäänkuin "sormi", joka osoittaa aina tiettyä listan sisällä olevaa olioa, ensin ensimmäistä ja sitten seuraavaa jne... kunnes "sormen" avulla on käyty jokainen olio läpi.
-</p>
-
-<p>
-  Iteraattori tarjoaa muutaman metodin. Metodilla <code>hasNext()</code> kysytään onko läpikäytäviä olioita vielä jäljellä. Jos on, voidaan iteraattorilta pyytää seuraavana vuorossa oleva olio metodilla <code>next()</code>. Metodi siis palauttaa seuraavana läpikäyntivuorossa olevan olion ja laittaa iteraattorin eli "sormen" osoittamaan seuraavana vuorossa olevaa läpikäytävää olioa.
-</p>
-
-<p>
-  Iteraattorin next-metodin palauttama olioviite voidaan ottaa toki talteen myös muuttujaan, eli metodi <code>tulosta</code> voitaisiin muotoilla myös seuraavasti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public void tulosta(){
-      Iterator&lt;Kortti&gt; iteraattori = kortit.iterator();
-
-      while (iteraattori.hasNext()) {
-          Kortti seuraavanaVuorossa = iteraattori.next();
-          System.out.println(seuraavanaVuorossa);
-      }
-  }
-<% end %>
-
-
-<p>
-  Tarkastellaan seuraavaksi yhtä iteraattorin käyttökohdetta. Motivoidaan käyttökohde ensin ongelmallisella lähestymistavalla. Yritämme tehdä virran avulla metodia, joka poistaa käsiteltävästä virrasta ne kortit, joiden arvo on annettua arvoa pienempi.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Kasi {
-      // ...
-
-      public void poistaHuonommat(int arvo) {
-          this.kortit.stream().forEach(kortti -&gt; {
-              if (kortti.getArvo() &lt; arvo) {
-                  kortit.remove(kortti);
-              }
-          });
-      }
-  }
-<% end %>
-
-<p>
-  Metodin suoritus aiheuttaa ongelman.
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Exception in thread "main" java.util.ConcurrentModificationException
-          at ...
-          Java Result: 1
-<% end %>
-
-<p>
-  Virheen syynä on se, että listan läpikäynti forEach-metodilla olettaa, ettei listaa muokata läpikäynnin yhteydessä. Listan muokkaaminen (eli tässä tapauksessa alkion poistaminen) aiheuttaa virheen -- voimme ajatella, että komento forEach menee tästä "sekaisin".
-</p>
-
-<p>
-  Jos listalta halutaan poistaa osa olioista läpikäynnin aikana osa, tulee tämä tehdä iteraattoria käyttäen. Iteraattori-olion metodia <code>remove</code> kutsuttaessa listalta poistetaan siististi se alkio jonka iteraattori palautti edellisellä metodin <code>next</code> kutsulla. Toimiva versio metodista seuraavassa:
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public class Kasi {
-      // ...
-
-      public void poistaHuonommat(int arvo) {
-          Iterator&lt;Kortti&gt; iteraattori = kortit.iterator();
-
-          while (iteraattori.hasNext()) {
-              if (iteraattori.next().getArvo() &lt; arvo) {
-                  // poistetaan listalta olio jonka edellinen next-metodin kutsu palautti
-                  iteraattori.remove();
-              }
-          }
-      }
-  }
-<% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'Enum ja Iteraattori (4 osaa)' } do %>
-
-  <p>
-    Tehdään ohjelma pienen yrityksen henkilöstön hallintaan.
-  </p>
-
-  <h2>Koulutus</h2>
-
-  <p>
-    Tee pakkaukseen <code>henkilosto</code> lueteltu tyyppi eli enum <code>Koulutus</code> jolla on tunnukset <code>FT</code> (tohtori), <code>FM</code> (maisteri), <code>LuK</code> (kandidaatti), <code>FilYO</code> (ylioppilas).
-  </p>
-
-  <h2>Henkilo</h2>
-
-  <p>
-    Tee pakkaukseen <code>henkilosto</code> luokka Luokka <code>Henkilo</code>. Henkilölle annetaan konstruktorin parametrina annettava nimi ja koulutus. Henkilöllä on myös koulutuksen kertova metodi <code>public Koulutus getKoulutus()</code> sekä alla olevan esimerkin mukaista jälkeä tekevä <code>toString</code>-metodi.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Henkilo vilma = new Henkilo("Vilma", Koulutus.FT);
-    System.out.println(vilma);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Vilma, FT
-  <% end %>
-
-
-  <h2>Tyontekijat</h2>
-
-  <p>
-    Tee pakkaukseen <code>henkilosto</code> luokka Luokka <code>Tyontekijat</code>. Työntekijät-olio sisältää listan Henkilo-olioita. Luokalla on parametriton konstruktori ja seuraavat metodit:
-  </p>
-
-  <ul>
-    <li><code>public void lisaa(Henkilo lisattava)</code> lisää parametrina olevan henkilön työntekijäksi</li>
-    <li><code>public void lisaa(List&lt;Henkilo&gt; lisattavat)</code> lisää parametrina olevan listan henkilöitä työntekijöiksi</li>
-    <li><code>public void tulosta()</code> tulostaa kaikki työntekijät</li>
-    <li><code>public void tulosta(Koulutus koulutus)</code> tulostaa työntekijät joiden koulutus on sama kuin parametrissa määritelty koulutus</li>
-  </ul>
-
-  <p>
-    <strong>HUOM:</strong> Luokan <code>Tyontekijat</code> <code>tulosta</code>-metodit on toteutettava iteraattoria käyttäen!
-  </p>
-
-  
-  <h2>Irtisanominen</h2>
-
-  <p>
-    Tee luokalle  <code>Tyontekijat</code> metodi <code>public void irtisano(Koulutus koulutus)</code> joka poistaa Työntekijöiden joukosta kaikki henkilöt joiden koulutus on sama kuin metodin parametrina annettu.
-  </p>
-
-  <p>
-    <strong>HUOM:</strong> toteuta metodi iteraattoria käyttäen!
-  </p>
-
-  <p>
-    Seuraavassa esimerkki luokan käytöstä:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Tyontekijat yliopisto = new Tyontekijat();
-    yliopisto.lisaa(new Henkilo("Petrus", Koulutus.FT));
-    yliopisto.lisaa(new Henkilo("Arto", Koulutus.FilYO));
-    yliopisto.lisaa(new Henkilo("Elina", Koulutus.FT));
-
-    yliopisto.tulosta();
-
-    yliopisto.irtisano(Koulutus.FilYO);
-
-    System.out.println("==");
-
-    yliopisto.tulosta();
-  <% end %>
-
-  <p>
-    Tulostuu:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Petrus, FT
-    Arto, FilYO
-    Elina, FT
-    ==
-    Petrus, FT
-    Elina, FT
-  <% end %>
-
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Kortit ojennukseen (6 osaa)' } do %>
-
-  <p>
-    Tehtäväpohjan mukana on luokka, jonka oliot kuvaavat pelikortteja. Kortilla on arvo ja maa. Kortin arvo on esitetään numerona <em>2, 3, ..., 14</em> ja maa <em>Risti, Ruutu, Hertta</em> tai <em>Pata</em>. Ässä on siis arvo 14. Arvo esitetään kokonaislukuna ja maa enum-tyyppisenä oliona. Kortilla on myös metodi toString, jota käyttäen kortin arvo ja maa tulostuvat "ihmisystävällisesti".
-  </p>
-
-  <p>
-    Korttien luominen tapahtuu seuraavasti. 
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Kortti eka = new Kortti(2, Maa.RUUTU);
-Kortti toka = new Kortti(14, Maa.PATA);
-Kortti kolmas = new Kortti(12, Maa.HERTTA);
-
-System.out.println(eka);
-System.out.println(toka);
-System.out.println(kolmas);
-  <% end %>
-
-  <p>
-    Tulostuu:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-RUUTU 2
-PATA A
-HERTTA Q
-  <% end %>
-
-  
-  <h2>Kortti-luokasta Comparable</h2>
-
-  <p>
-    Tee Kortti-luokasta Comparable. Toteuta <code>compareTo</code>-metodi niin, että korttien järjestys on arvon mukaan nouseva. Jos verrattavien Korttien arvot ovat samat, verrataan niitä maan perusteella nousevassa järjestyksessä: <em>risti ensin, ruutu toiseksi, hertta kolmanneksi, pata viimeiseksi.</em>
-  </p>
-
-  <p>
-    Maiden järjestämisessä apua löytynee <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html#ordinal--"  target="_blank" norel>Enum-luokan ordinal-metodista</a>.
-  </p>
-
-  <p>
-    Järjestyksessä pienin kortti siis olisi risti kakkonen ja suurin pataässä.
-  </p>
-
-  
-  <h2>Käsi</h2>
-
-  <p>
-    Tee seuraavaksi luokka <code>Kasi</code> joka edustaa pelaajan kädessään pitämää korttien joukkoa. Tee kädelle seuraavat metodit:
-  </p>
-
-  <ul>
-    <li><code>public void lisaa(Kortti kortti)</code> lisää käteen kortin</li>
-    <li><code>public void tulosta()</code> tulostaa kädessä olevat kortit alla olevan esimerkin tyylillä</li>
-  </ul>
-
-  <% partial 'partials/code_highlight' do %>
-Kasi kasi = new Kasi();
-
-kasi.lisaa(new Kortti(2, Maa.RUUTU));
-kasi.lisaa(new Kortti(14, Maa.PATA));
-kasi.lisaa(new Kortti(12, Maa.HERTTA));
-kasi.lisaa(new Kortti(2, Maa.PATA));
-
-kasi.tulosta();
-  <% end %>
-
-  <p>
-    Tulostuu:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-RUUTU 2
-PATA A
-HERTTA Q
-PATA 2
-  <% end %>
-
-  <p>
-    Käytä ArrayListiä korttien tallentamiseen.
-  </p>
-
-
-  <h2>Käden järjestäminen</h2>
-
-  <p>
-    Tee kädelle metodi <code>public void jarjesta()</code> jota kutsumalla käden sisällä olevat kortit menevät suuruusjärjestykseen. Järjestämisen jälkeen kortit tulostuvat järjestyksessä:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Kasi kasi = new Kasi();
-
-kasi.lisaa(new Kortti(2, Maa.RUUTU));
-kasi.lisaa(new Kortti(14, Maa.PATA));
-kasi.lisaa(new Kortti(12, Maa.HERTTA));
-kasi.lisaa(new Kortti(2, Maa.PATA));
-
-kasi.jarjesta();
-
-kasi.tulosta();
-  <% end %>
-
-  <p>
-    Tulostuu:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-RUUTU 2
-PATA 2
-HERTTA Q
-PATA A
-  <% end %>
-
-  
-  <h2>Käsien vertailu</h2>
-
-  <p>
-    Eräässä korttipelissä kahdesta korttikädestä arvokkaampi on se, jonka sisältämien korttien arvon summa on suurempi. Tee luokasta <code>Kasi</code> vertailtava tämän kriteerin mukaan, eli laita luokka toteuttamaan rajapinta <code>Comparable&lt;Kasi&gt;</code>.
-  </p>
-
-  <p>
-    Esimerkkiohjelma, jossa vertaillaan käsiä:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Kasi kasi1 = new Kasi();
-
-kasi1.lisaa(new Kortti(2, Maa.RUUTU));
-kasi1.lisaa(new Kortti(14, Maa.PATA));
-kasi1.lisaa(new Kortti(12, Maa.HERTTA));
-kasi1.lisaa(new Kortti(2, Maa.PATA));
-
-Kasi kasi2 = new Kasi();
-
-kasi2.lisaa(new Kortti(11, Maa.RUUTU));
-kasi2.lisaa(new Kortti(11, Maa.PATA));
-kasi2.lisaa(new Kortti(11, Maa.HERTTA));
-
-int vertailu = kasi1.compareTo(kasi2);
-
-if (vertailu &lt; 0) {
-    System.out.println("arvokkaampi käsi sisältää kortit");
-    kasi2.tulosta();
-} else if (vertailu &gt; 0){
-    System.out.println("arvokkaampi käsi sisältää kortit");
-    kasi1.tulosta();
-} else {
-    System.out.println("kädet yhtä arvokkaat");
-}
-  <% end %>
-
-  <p>Tulostuu</p>
-
-  <% partial 'partials/sample_output' do %>
-arvokkaampi käsi sisältää kortit
-RUUTU J
-PATA J
-HERTTA J
-  <% end %>
-
-  
-  <h2>Korttien järjestäminen eri kriteerein</h2>
-
-  <p>
-    Entä jos haluaisimme välillä järjestää kortit hieman eri tavalla, esim. kaikki saman maan kortit peräkkäin? Luokalla voi olla vain yksi compareTo-metodi, joten joudumme muunlaisia järjestyksiä saadaksemme turvautumaan muihin keinoihin.
-  </p>
-
-  <p>
-    Vaihtoehtoiset järjestämistavat toteutetaan erillisten vertailun suorittavien luokkien avulla. Korttien vaihtoehtoisten järjestyksen määräävän luokkien tulee toteuttaa <code>Comparator&lt;Kortti&gt;</code>-rajapinta. Järjestyksen määräävän luokan olio vertailee kahta parametrina saamaansa korttia. Metodeja on ainoastaan yksi compare(Kortti k1, Kortti k2), jonka tulee palauttaa negatiivinen arvo, jos kortti k1 on järjestyksessä ennen korttia k2, positiivinen arvo jos k2 on järjestyksessä ennen k1:stä ja 0 muuten.
-  </p>
-
-  <p>
-    Periaatteena on luoda jokaista järjestämistapaa varten oma vertailuluokka, esim. saman maan kortit vierekkäin vievän järjestyksen määrittelevä luokka:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-import java.util.Comparator;
-
-public class SamatMaatVierekkain implements Comparator&lt;Kortti&gt; {
-    public int compare(Kortti k1, Kortti k2) {
-        return k1.getMaa().ordinal() - k2.getMaa().ordinal();
-    }
-}
-  <% end %>
-
-  <p>
-    Maittainen järjestys on sama kuin kortin metodin <code>compareTo</code> maille määrittelemä järjestys eli <em>ristit ensin, ruudut toiseksi, hertat kolmanneksi, padat viimeiseksi.</em>
-  </p>
-
-  <p>
-    Järjestäminen tapahtuu edelleen luokan Collections metodin sort avulla. Metodi saa nyt toiseksi parametrikseen järjestyksen määräävän luokan olion:
-  </p>
-  
-  <% partial 'partials/code_highlight' do %>
-ArrayList&lt;Kortti&gt; kortit = new ArrayList&lt;&gt;();
-
-kortit.add(new Kortti(3, Maa.PATA));
-kortit.add(new Kortti(2, Maa.RUUTU));
-kortit.add(new Kortti(14, Maa.PATA));
-kortit.add(new Kortti(12, Maa.HERTTA));
-kortit.add(new Kortti(2, Maa.PATA));
-
-SamatMaatVierekkain samatMaatVierekkainJarjestaja = new SamatMaatVierekkain();
-Collections.sort(kortit, samatMaatVierekkainJarjestaja);
-
-kortit.stream().forEach(k -&gt; System.out.println(k));
-  <% end %>
-
-  <p>
-    Tulostuu:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-RUUTU 2
-HERTTA Q
-PATA 3
-PATA A
-PATA 2
-  <% end %>
-
-  <p>
-    Järjestyksen määrittelevä olio voidaan myös luoda suoraan sort-kutsun yhteydessä:
-  </p>
-  
-  <% partial 'partials/code_highlight' do %>
-Collections.sort(kortit, new SamatMaatVierekkain());
-  <% end %>
-
-
-  <p>
-    Tarkempia ohjeita vertailuluokkien tekemiseen <a href="http://leepoint.net/data/collections/comparators.html">täällä</a>
-  </p>
-
-  <p>
-    Tee nyt luokka Comparator-rajapinnan toteuttava luokka <code>SamatMaatVierekkainArvojarjestykseen</code> jonka avulla saat kortit muuten samanlaiseen järjestykseen kuin edellisessä esimerkissä paitsi, että saman maan kortit järjestyvät arvon mukaisesti.
-  </p>
-
-
-  <h2>Käden järjestäminen maittain</h2>
-
-  <p>
-    Lisää luokalle <code>Kasi</code> metodi <code>public void jarjestaMaittain()</code> jota kutsumalla käden sisällä olevat kortit menevät edellisen tehtävän vertailijan määrittelemään järjestykseen. Järjestämisen jälkeen kortit tulostuvat järjestyksessä:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Kasi kasi = new Kasi();
-
-kasi.lisaa(new Kortti(12, Maa.HERTTA));
-kasi.lisaa(new Kortti(4, Maa.PATA));
-kasi.lisaa(new Kortti(2, Maa.RUUTU));
-kasi.lisaa(new Kortti(14, Maa.PATA));
-kasi.lisaa(new Kortti(7, Maa.HERTTA));
-kasi.lisaa(new Kortti(2, Maa.PATA));
-
-kasi.jarjestaMaittain();
-
-kasi.tulosta();
-  <% end %>
-  
-  <p>
-    Tulostuu:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-RUUTU 2
-HERTTA 7
-HERTTA Q
-PATA 2
-PATA 4
-PATA A
-  <% end %>
-
-
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Elokuvien suosittelija (8 osaa)' } do %>
-
-  <p>
-    <a href="https://signup.netflix.com/" target="_blank" rel="noopener">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank" rel="noopener">http://www.netflixprize.com/</a>).
-  </p>
-
-  <p>
-    Rakennetaan tässä tehtävässä ohjelma elokuvien suositteluun. Alla on sen toimintaesimerkki:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArvioRekisteri arviot = new ArvioRekisteri();
-
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikke");
-    Henkilo thomas = new Henkilo("Thomas");
-
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
-
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
-
-    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
-
-
-    Suosittelija suosittelija = new Suosittelija(arviot);
-    System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
-    System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Thomas suositus: Hiljaiset sillat
-    Mikke suositus: Tuulen viemää
-  <% end %>
-
-  <p>
-    Ohjelma osaa suositella elokuvia niiden yleisen arvion perusteella, sekä henkilökohtaisten henkilön antaminen arvioiden perusteella. Lähdetään rakentamaan ohjelmaa.
-  </p>
-
-
-  <h2>Henkilo ja Elokuva</h2>
-
-  <p>
-    Luo pakkaus <code>suosittelija.domain</code> ja lisää sinne luokat <code>Henkilo</code> ja <code>Elokuva</code>. Kummallakin luokalla on julkinen konstruktori <code>public <em>Luokka</em>(String nimi)</code>, sekä metodi <code>public String getNimi()</code>, joka palauttaa konstruktorissa saadun nimen.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Henkilo henkilo = new Henkilo("Pekka");
-    Elokuva elokuva = new Elokuva("Eraserhead");
-
-    System.out.println(henkilo.getNimi() + " ja " + elokuva.getNimi());
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Pekka ja Eraserhead
-  <% end %>
-
-  <p>
-    Lisää luokille myös <code>public String toString()</code>-metodi, joka palauttaa konstruktorissa parametrina annetun nimen, sekä korvaa metodit <code>equals</code> ja <code>hashCode</code>.
-  </p>
-
-  <p>
-    Korvaa <code>equals</code> siten että samuusvertailu tapahtuu oliomuuttujan <code>nimi</code> perusteella. Metodi hashCode kannattaa generoida automaattisesti seuraavan ohjeen mukaan:
-  </p>
-
-  <p>
-    <em>
-      NetBeans tarjoaa metodien equals ja hashCode automaattisen luonnin. Voit valita valikosta Source -> Insert Code, ja valita aukeavasta listasta equals() and hashCode(). Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään.
-    </em>
-  </p>
-
-
-  <h2>Arvio</h2>
-
-  <p>
-    Luo pakkaukseen <code>suosittelija.domain</code> lueteltu tyyppi <code>Arvio</code>. Enum-luokalla <code>Arvio</code> on julkinen metodi <code>public int getArvo()</code>, joka palauttaa arvioon liittyvän arvon. Arviotunnusten ja niihin liittyvien arvosanojen tulee olla seuraavat:
-  </p>
-
-  <table class="table">
-    <tr><th>Tunnus</th><th>Arvo</th></tr>
-    <tr><td>HUONO</td><td>-5</td></tr>
-    <tr><td>VALTTAVA</td><td>-3</td></tr>
-    <tr><td>EI_NAHNYT</td><td>0</td></tr>
-    <tr><td>NEUTRAALI</td><td>1</td></tr>
-    <tr><td>OK</td><td>3</td></tr>
-    <tr><td>HYVA</td><td>5</td></tr>
-  </table>
-
-  <p>
-    Luokkaa voi käyttää seuraavasti:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Arvio annettu = Arvio.HYVA;
-    System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
-    annettu = Arvio.NEUTRAALI;
-    System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Arvio HYVA, arvo 5
-    Arvio NEUTRAALI, arvo 1
-  <% end %>
-
-
-  <h2>ArvioRekisteri, osa 1</h2>
-
-  <p>
-    Aloitetaan arvioiden varastointiin liittyvän palvelun toteutus.
-  </p>
-
-  <p>
-    Luo pakkaukseen <code>suosittelija</code> luokka <code>ArvioRekisteri</code>, jolla on konstruktori <code>public ArvioRekisteri()</code> sekä seuraavat metodit:
-  </p>
-
-  <ul>
-    <li><code>public void lisaaArvio(Elokuva elokuva, Arvio arvio)</code> lisää arviorekisteriin parametrina annetulle elokuvalle uuden arvion. Samalla elokuvalla voi olla useita samanlaisiakin arvioita.</li>
-    <li><code>public List&lt;Arvio&gt; annaArviot(Elokuva elokuva)</code> palauttaa elokuvalle lisätyt arviot listana.</li>
-    <li><code>public Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot()</code> palauttaa mapin, joka sisältää arvioidut elokuvat avaimina. Jokaiseen elokuvaan liittyy lista, joka sisältää elokuvaan lisatyt arviot.</li>
-  </ul>
-
-  <p>
-    Testaa metodien toimintaa seuraavalla lähdekoodilla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-
-    ArvioRekisteri rekisteri = new ArvioRekisteri();
-    rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
-    rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
-    rekisteri.lisaaArvio(eraserhead, Arvio.HYVA);
-
-    rekisteri.lisaaArvio(hiljaisetSillat, Arvio.HYVA);
-    rekisteri.lisaaArvio(hiljaisetSillat, Arvio.OK);
-
-    System.out.println("Kaikki arviot: " + rekisteri.elokuvienArviot());
-    System.out.println("Arviot Eraserheadille: " + rekisteri.annaArviot(eraserhead));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Kaikki arviot: {Hiljaiset sillat=[HYVA, OK], Eraserhead=[HUONO, HUONO, HYVA]}
-    Arviot Eraserheadille: [HUONO, HUONO, HYVA]
-  <% end %>
-
-
-  <h2>ArvioRekisteri, osa 2</h2>
-
-  <p>
-    Lisätään seuraavaksi mahdollisuus henkilökohtaisten arvioiden lisäämiseen.
-  </p>
-
-  <p>
-    Lisää luokkaan <code>ArvioRekisteri</code> seuraavat metodit:
-  </p>
-
-  <ul>
-    <li><code>public void lisaaArvio(Henkilo henkilo, Elokuva elokuva, Arvio arvio)</code> lisää parametrina annetulle elokuvalle tietyn henkilön tekemän arvion. Sama henkilö voi arvioida tietyn elokuvan vain kertaalleen. Henkilön tekemä arvio tulee myös lisätä kaikkiin elokuviin liittyviin arvioihin.</li>
-    <li><code>public Arvio haeArvio(Henkilo henkilo, Elokuva elokuva)</code> palauttaa parametrina annetun henkilön tekemän arvion parametrina annetulle elokuvalle. Jos henkilö ei ole arvioinut kyseistä elokuvaa, palauta arvio <code>Arvio.EI_NAHNYT</code>.</li>
-    <li><code>public Map&lt;Elokuva, Arvio&gt; annaHenkilonArviot(Henkilo henkilo)</code> palauttaa hajautustaulun, joka sisältää henkilön tekemät arviot. Hajautustaulun avaimena on arvioidut elokuvat, arvoina arvioituihin elokuviin liittyvät arviot. Jos henkilö ei ole arvioinut yhtään elokuvaa, palautetaan tyhjä hajautustaulu.</li>
-    <li><code>public List&lt;Henkilo&gt; arvioijat()</code> palauttaa listan henkilöistä jotka ovat arvioineet elokuvia.</li></ul>
-
-  <p>
-    Henkilöiden tekemät arviot kannattanee tallentaa hajautustauluun, jossa avaimena on henkilö. Arvona hajautustaulussa on toinen hajautustaulu, jossa avaimena on elokuva ja arvona arvio.
-  </p>
-
-  <p>
-    Testaa paranneltua <code>ArvioRekisteri</code>-luokkaa seuraavalla lähdekoodipätkällä:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArvioRekisteri arviot = new ArvioRekisteri();
-
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
-
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.OK);
-
-    System.out.println("Arviot Eraserheadille: " + arviot.annaArviot(eraserhead));
-    System.out.println("Matin arviot: " + arviot.annaHenkilonArviot(matti));
-    System.out.println("Arvioijat: " + arviot.arvioijat());
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Arviot Eraserheadille: [OK, OK]
-    Matin arviot: {Tuulen viemää=HUONO, Eraserhead=OK}
-    Arvioijat: [Pekka, Matti]
-  <% end %>
-
-  <p>
-    Luodaan seuraavaksi muutama apuluokka arviointien helpottamiseksi.
-  </p>
-
-
-  <h2>HenkiloComparator</h2>
-
-  <p>
-    Luo pakkaukseen <code>suosittelija.comparator</code> luokka <code>HenkiloComparator</code>. Luokan <code>HenkiloComparator</code> tulee toteuttaa rajapinta <code>Comparator&lt;Henkilo&gt;</code>, ja sillä pitää olla konstruktori <code>public HenkiloComparator(Map&lt;Henkilo, Integer&gt; henkiloidenSamuudet)</code>. Luokkaa <code>HenkiloComparator</code> käytetään myöhemmin henkilöiden järjestämiseen henkilöön liittyvän luvun perusteella.
-  </p>
-
-  <p>
-    HenkiloComparator-luokan tulee mahdollistaa henkilöiden järjestäminen henkilöön liittyvän luvun perusteella.
-  </p>
-
-  <p>
-    Testaa luokan toimintaa seuraavalla lähdekoodilla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikke");
-    Henkilo thomas = new Henkilo("Thomas");
-
-    Map&lt;Henkilo, Integer&gt; henkiloidenSamuudet = new HashMap&lt;&gt;();
-    henkiloidenSamuudet.put(matti, 42);
-    henkiloidenSamuudet.put(pekka, 134);
-    henkiloidenSamuudet.put(mikke, 8);
-    henkiloidenSamuudet.put(thomas, 82);
-
-    List&lt;Henkilo&gt; henkilot = Arrays.asList(matti, pekka, mikke, thomas);
-    System.out.println("Henkilöt ennen järjestämistä: " + henkilot);
-
-    Collections.sort(henkilot, new HenkiloComparator(henkiloidenSamuudet));
-    System.out.println("Henkilöt järjestämisen jälkeen: " + henkilot);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Henkilöt ennen järjestämistä: [Matti, Pekka, Mikke, Thomas]
-    Henkilöt järjestämisen jälkeen: [Pekka, Thomas, Matti, Mikke]
-  <% end %>
-
-
-  <h2>ElokuvaComparator</h2>
-
-  <p>
-    Luo pakkaukseen <code>suosittelija.comparator</code> luokka <code>ElokuvaComparator</code>. Luokan <code>ElokuvaComparator</code> tulee toteuttaa rajapinta <code>Comparator&lt;Elokuva&gt;</code>, ja sillä pitää olla konstruktori <code>public ElokuvaComparator(Map&lt;Elokuva, List&lt;Arvio&gt;&gt; arviot)</code>. Luokkaa <code>ElokuvaComparator</code> käytetään myöhemmin elokuvien järjestämiseen niiden arvioiden perusteella.
-  </p>
-
-  <p>
-    ElokuvaComparator-luokan tulee tarjota mahdollisuus elokuvien järjestäminen niiden saamien arvosanojen keskiarvon perusteella. Korkeimman keskiarvon saanut elokuva tulee ensimmäisenä, matalimman keskiarvon saanut viimeisenä.
-  </p>
-
-  <p>
-    Testaa luokan toimintaa seuraavalla lähdekoodilla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArvioRekisteri arviot = new ArvioRekisteri();
-
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikke");
-
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
-
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
-
-    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
-
-    Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot = arviot.elokuvienArviot();
-
-    List&lt;Elokuva&gt; elokuvat = Arrays.asList(tuulenViemaa, hiljaisetSillat, eraserhead);
-    System.out.println("Elokuvat ennen järjestämistä: " + elokuvat);
-
-    Collections.sort(elokuvat, new ElokuvaComparator(elokuvienArviot));
-    System.out.println("Elokuvat järjestämisen jälkeen: " + elokuvat);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Elokuvat ennen järjestämistä: [Tuulen viemää, Hiljaiset sillat, Eraserhead]
-    Elokuvat järjestämisen jälkeen: [Hiljaiset sillat, Tuulen viemää, Eraserhead]
-  <% end %>
-
-
-  <h2>Suosittelija, osa 1</h2>
-
-  <p>
-    Toteuta pakkaukseen <code>suosittelija</code> luokka <code>Suosittelija</code>. Luokan <code>Suosittelija</code> konstruktori saa parametrinaan <code>ArvioRekisteri</code>-tyyppisen olion. Suosittelija käyttää arviorekisterissä olevia arvioita suositusten tekemiseen.
-  </p>
-
-  <p>
-    Toteuta luokalle metodi <code>public Elokuva suositteleElokuva(Henkilo henkilo)</code>, joka suosittelee henkilölle elokuvia.
-  </p>
-
-  <p>
-    Toteuta metodi ensin siten, että se suosittelee aina elokuvaa, jonka arvioiden arvosanojen keskiarvo on suurin. Vinkki: Tarvitset parhaan elokuvan selvittämiseen ainakin aiemmin luotua <code>ElokuvaComparator</code>-luokkaa, luokan <code>ArvioRekisteri</code> metodia <code>public Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot()</code>, sekä listaa olemassaolevista elokuvista.
-  </p>
-
-  <p>
-    Testaa ohjelman toimimista seuraavalla lähdekoodilla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArvioRekisteri arviot = new ArvioRekisteri();
-
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikael");
-
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
-
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.VALTTAVA);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
-
-    Suosittelija suosittelija = new Suosittelija(arviot);
-    Elokuva suositeltu = suosittelija.suositteleElokuva(mikke);
-    System.out.println("Mikaelille suositeltu elokuva oli: " + suositeltu);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Mikaelille suositeltu elokuva oli: Hiljaiset sillat
-  <% end %>
-
-  <p>
-    Nyt tekemämme ensimmäinen vaihe toimii oikein ainoastaan henkilöille, jotka eivät ole vielä arvostelleet yhtään elokuvaa. Heidän elokuvamaustaanhan on mahdoton sanoa mitään ja paras arvaus on suositella heille keskimäärin parhaan arvosanan saanutta elokuvaa.
-  </p>
-
-
-  <h2>Suosittelija, osa 2</h2>
-
-  <p>
-    <em>
-      Huom! Tehtävä on haastava. Kannattaa tehdä ensin muut tehtävät ja palata tähän myöhemmin. Voit palauttaa tehtäväsarjan TMC:hen vaikket saakaan tätä tehtävää tehdyksi, aivan kuten lähes kaikkien muidenkin tehtävien kohdalla.
-    </em>
-  </p>
-
-  <p>
-    Valitettavasti tämän osan virhediagnostiikkakaan ei ole samaa luokkaa kuin edellisissä kohdissa.
-  </p>
-
-  <p>
-    Jos henkilöt ovat lisänneet omia suosituksia suosituspalveluun, tiedämme jotain heidän elokuvamaustaan. Laajennetaan suosittelijan toiminnallisuutta siten, että se luo henkilökohtaisen suosituksen jos henkilö on jo arvioinut elokuvia. Edellisessä osassa toteutettu toiminnallisuus tulee säilyttää: Jos henkilö ei ole arvioinut yhtäkään elokuvaa, hänelle suositellaan elokuva arvosanojen perusteella.
-  </p>
-
-  <p>
-    Henkilökohtaiset suositukset perustuvat henkilön tekemien arvioiden samuuteen muiden henkilöiden tekemien arvioiden kanssa. Pohditaan seuraavaa taulukkoa, missä ylärivillä on elokuvat, ja vasemmalla on arvioita tehneet henkilöt. Taulukon solut kuvaavat annettuja arvioita.
-  </p>
-
-  <table class="table">
-    <tr><th>Henkilo \ Elokuva</th><td>Tuulen viemää</td><td>Hiljaiset sillat</td><td>Eraserhead</td><td>Blues Brothers</td></tr>
-    <tr><td>Matti</td><td>HUONO (-5)</td><td>HYVA (5)</td><td>OK (3)</td><td>-</td></tr>
-    <tr><td>Pekka</td><td>OK (3)</td><td>-</td><td>HUONO (-5)</td><td>VALTTAVA (-3)</td></tr>
-    <tr><td>Mikael</td><td>-</td><td>-</td><td>HUONO (-5)</td><td>-</td></tr>
-    <tr><td>Thomas</td><td>-</td><td>HYVA (5)</td><td>-</td><td>HYVA (5)</td></tr>
-  </table>
-
-  <p>
-    Kun haluamme hakea Mikaelille sopivaa elokuvaa, tutkimme Mikaelin samuutta kaikkien muiden arvioijien kesken. Samuus lasketaan arvioiden perusteella: samuus on kummankin katsomien elokuvien arvioiden tulojen summa. Esimerkiksi Mikaelin ja Thomasin samuus on 0, koska Mikael ja Thomas eivät ole katsoneet yhtäkään samaa elokuvaa.
-  </p>
-
-  <p>
-    Mikaelin ja Pekan samuutta laskettaessa yhteisten elokuvien tulojen summa olisi 25. Mikael ja Pekka ovat katsoneet vain yhden yhteisen elokuvan, ja kumpikin antaneet sille arvosanan huono (-5).
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    -5 * -5 = 25
-  <% end %>
-
-  <p>
-    Mikaelin ja Matin samuus on -15. Mikael ja Matti ovat myös katsoneet vain yhden yhteisen elokuvan. Mikael antoi elokuvalle arvosanan huono (-5), Matti antoi sille arvosanan ok (3).
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    -5 * 3 = -15
-  <% end %>
-
-  <p>
-    Näiden perusteella Mikaelille suositellaan elokuvia Pekan elokuvamaun mukaan: suosituksena on elokuva Tuulen viemää.
-  </p>
-
-  <p>
-    Kun taas haluamme hakea Matille sopivaa elokuvaa, tutkimme Matin samuutta kaikkien muiden arvioijien kesken. Matti ja Pekka ovat katsoneet kaksi yhteistä elokuvaa. Matti antoi Tuulen viemälle arvosanan huono (-5), Pekka arvosanan OK (3). Elokuvalle Eraserhead Matti antoi arvosanan OK (3), Pekka arvosanan huono (-5). Matin ja Pekan samuus on siis -30.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    -5 * 3 + 3 * -5 = -30
-  <% end %>
-
-  <p>
-    Matin ja Mikaelin samuus on edellisestä laskusta tiedetty -15. Samuudet ovat symmetrisia.
-  </p>
-
-  <p>
-    Matti ja Thomas ovat katsoneet Tuulen viemää, ja kumpikin antoi sille arvosanan hyvä (5). Matin ja Thomaksen samuus on siis 25.
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    5 * 5 = 25
-  <% end %>
-
-  <p>
-    Matille tulee siis suositella elokuvia Thomaksen elokuvamaun mukaan: suosituksena olisi Blues Brothers.
-  </p>
-
-  <p>
-    Toteuta yllä kuvattu suosittelumekanismi. Jos henkilölle ei löydy yhtään suositeltavaa elokuvaa, tai henkilö, kenen elokuvamaun mukaan elokuvia suositellaan on arvioinut elokuvat joita henkilö ei ole vielä katsonut huonoiksi, välttäviksi tai neutraaleiksi, palauta metodista <code>suositteleElokuva</code> arvo <code>null</code>. Edellisessä tehtävässä määritellyn lähestymistavan tulee toimia jos henkilö ei ole lisännyt yhtäkään arviota.
-  </p>
-
-  <p>
-    Älä suosittele elokuvia, jotka henkilö on jo nähnyt.
-  </p>
-
-  <p>
-    Voit testata ohjelmasi toimintaa seuraavalla lähdekoodilla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArvioRekisteri arviot = new ArvioRekisteri();
-
-    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
-    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
-    Elokuva eraserhead = new Elokuva("Eraserhead");
-    Elokuva bluesBrothers = new Elokuva("Blues Brothers");
-
-    Henkilo matti = new Henkilo("Matti");
-    Henkilo pekka = new Henkilo("Pekka");
-    Henkilo mikke = new Henkilo("Mikael");
-    Henkilo thomas = new Henkilo("Thomas");
-    Henkilo arto = new Henkilo("Arto");
-
-    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
-    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
-    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
-
-    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
-    arviot.lisaaArvio(pekka, eraserhead, Arvio.HUONO);
-    arviot.lisaaArvio(pekka, bluesBrothers, Arvio.VALTTAVA);
-
-    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
-
-    arviot.lisaaArvio(thomas, bluesBrothers, Arvio.HYVA);
-    arviot.lisaaArvio(thomas, hiljaisetSillat, Arvio.HYVA);
-
-    Suosittelija suosittelija = new Suosittelija(arviot);
-    System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
-    System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
-    System.out.println(matti + " suositus: " + suosittelija.suositteleElokuva(matti));
-    System.out.println(arto + " suositus: " + suosittelija.suositteleElokuva(arto));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Thomas suositus: Eraserhead
-    Mikael suositus: Tuulen viemää
-    Matti suositus: Blues Brothers
-    Arto suositus: Hiljaiset sillat
-  <% end %>
-
-  <p>
-    Miljoona käsissä? Ei ehkä vielä. Tietojenkäsittelytieteen tekoäly- ja koneoppimiskursseilla opitaan lisää tekniikoita oppivien järjestelmien rakentamiseen.
-  </p>
-
-<% end %>
-
-
-
 
 <% partial 'partials/material_heading' do %>
-  Lista arvojen virtana
+  Kokoelmien käsittely arvojen virtana
 <% end %>
 
 <p>
-  Tutustutaan listan läpikäyntiin arvojen virtana (stream). Virta on menetelmä tietoa sisältävän kokoelman läpikäyntiin siten, että ohjelmoija määrittelee kullekin listan arvolle suoritettavan toiminnallisuuden. Indeksistä tai kullakin hetkellä käsiteltävästä muuttujasta ei pidetä kirjaa.
+  Tutustutaan kokoelmien kuten listojen läpikäyntiin arvojen virtana (stream). Virta on menetelmä tietoa sisältävän kokoelman läpikäyntiin siten, että ohjelmoija määrittelee kullekin arvolle suoritettavan toiminnallisuuden. Indeksistä tai kullakin hetkellä käsiteltävästä muuttujasta ei pidetä kirjaa.
 </p>
 
 <p>
-  Virran avulla ohjelmoija määrittelee funktioketjun, joita kutsutaan tietokokoelman arvoille. Virran avulla voi muuntaa tietoa muodosta toiseen, mutta virta ei muuta alkuperäisen tietokokoelman arvoja.
+  Virran avulla ohjelmoija määrittelee käytännössä funktioketjun, joita kutsutaan tietokokoelman arvoille. Virran avulla voi muuntaa tietoa muodosta toiseen, mutta virta ei muuta alkuperäisen tietokokoelman arvoja.
 </p>
 
 <p>
@@ -3671,29 +1482,29 @@ PATA A
 <% partial 'partials/code_highlight' do %>
   // alustetaan lukija ja lista, johon syotteet luetaan
   Scanner lukija = new Scanner(System.in);
-  ArrayList&lt;String&gt; syotteet = new ArrayList&lt;&gt;();
+  List&lt;String&gt; syotteet = new ArrayList&lt;&gt;()
 
   // luetaan syotteet
   while (true) {
-  String rivi = lukija.nextLine();
-  if (rivi.equals("loppu")) {
-  break;
-  }
+      String rivi = lukija.nextLine();
+      if (rivi.equals("loppu")) {
+          break;
+      }
   
-  syotteet.add(rivi);
+      syotteet.add(rivi);
   }
 
   // selvitetään kolmella jaollisten lukumaara
   long kolmellaJaollistenLukumaara = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .filter(luku -&gt; luku % 3 == 0)
-  .count();
+      .mapToInt(s -&gt; Integer.parseInt(s))
+      .filter(luku -&gt; luku % 3 == 0)
+      .count();
 
   // selvitetään keskiarvo
   double keskiarvo = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .average()
-  .getAsDouble();
+      .mapToInt(s -&gt; Integer.parseInt(s))
+      .average()
+      .getAsDouble();
 
   // tulostetaan tilastot
   System.out.println("Kolmella jaollisia: " + kolmellaJaollistenLukumaara);
@@ -3707,13 +1518,13 @@ PATA A
 <% partial 'partials/code_highlight' do %>
   // selvitetään kolmella jaollisten lukumaara
   long kolmellaJaollistenLukumaara = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .filter(luku -&gt; luku % 3 == 0)
-  .count();
+      .mapToInt(s -&gt; Integer.parseInt(s))
+      .filter(luku -&gt; luku % 3 == 0)
+      .count();
 <% end %>
 
 <p>
-  Virta luodaan ArrayList-oliosta metodilla <code>stream()</code>. Tämän jälkeen merkkijonomuotoiset arvot muunnetaan kokonaislukumuotoon virran metodilla <code>mapToInt(arvo -&gt; muunnos)</code> -- muunto toteutetaan Integer-luokan tarjoamalla parseInt-metodilla, jota olemme käyttäneet aiemminkin. Seuraavaksi rajaamme metodilla <code>filter(arvo -&gt; rajausehto)</code> käsiteltäväksi vain ne luvut, jotka ovat kolmella jaollisia. Lopulta kutsumme virran metodia <code>count()</code>, joka laskee virran alkioiden lukumäärän ja palauttaa sen <code>long</code>-tyyppisenä muuttujana.
+  Virta luodaan mistä tahansa <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html" target="_blank" norel>Collection</a>-rajapinnan toteuttavasta oliosta (esim. ArrayList, HashSet, HashMap, ...) metodilla <code>stream()</code>. Tämän jälkeen merkkijonomuotoiset arvot muunnetaan ("map") kokonaislukumuotoon virran metodilla <code>mapToInt(arvo -&gt; muunnos)</code> -- muunto toteutetaan Integer-luokan tarjoamalla parseInt-metodilla, jota olemme käyttäneet aiemminkin. Seuraavaksi rajaamme metodilla <code>filter(arvo -&gt; rajausehto)</code> käsiteltäväksi vain ne luvut, jotka ovat kolmella jaollisia. Lopulta kutsumme virran metodia <code>count()</code>, joka laskee virran alkioiden lukumäärän ja palauttaa sen <code>long</code>-tyyppisenä muuttujana.
 </p>
 
 <p>
@@ -3723,9 +1534,9 @@ PATA A
 <% partial 'partials/code_highlight' do %>
   // selvitetään keskiarvo
   double keskiarvo = syotteet.stream()
-  .mapToInt(s -&gt; Integer.parseInt(s))
-  .average()
-  .getAsDouble();
+      .mapToInt(s -&gt; Integer.parseInt(s))
+      .average()
+      .getAsDouble();
 <% end %>
 
 <p>
@@ -3751,7 +1562,7 @@ PATA A
       Virran luominen: <code>stream()</code>
     </td>
     <td>
-      Metodia kutsutaan kokoelmalle kuten ArrayList-oliolle. Luotavalle virralle tehdään jotain.
+      Metodia kutsutaan Collection-rajapinnan toteuttavalle kokoelmalle kuten ArrayList-oliolle. Luotavalle virralle tehdään jotain.
     </td>
   </tr>
 
@@ -3825,6 +1636,7 @@ PATA A
   
 <% end %>
 
+
 <% partial 'partials/exercise', locals: { name: 'Tiettyjen lukujen keskiarvo' } do %>
 
   <p>
@@ -3867,62 +1679,101 @@ PATA A
 <% end %>
 
 
-<% partial 'partials/hint', locals: { name: 'Mikä ihmeen <code>x -&gt; ???</code>' } do %>
 
-  <p>
-    Virran arvoja käsitellään virtaan liittyvillä metodeilla. Arvoja käsittelevät metodit saavat parametrinaan funktion, joka kertoo mitä kullekin arvolle tulee tehdä. Funktion toiminnallisuus on metodikohtaista: rajaamiseen käytetylle metodille <code>filter</code> annetaan funktio, joka palauttaa totuusarvoisen muuttujan arvon <code>true</code> tai <code>false</code>, riippuen halutaanko arvo säilyttää virrassa; muuntamiseen käytetylle metodille <code>mapToInt</code> annetaan funktio, joka muuntaa arvon kokonaisluvuksi, jne.
-  </p>
+<% partial 'partials/material_sub_heading' do %>
+  Lambda-lauseke
+<% end %>
 
-  <p>
-    Miksi funktiot kirjoitetaan muodossa <code>luku -&gt; luku &gt; 5</code>?
-  </p>
+<p>
+  Virran arvoja käsitellään virtaan liittyvillä metodeilla. Arvoja käsittelevät metodit saavat parametrinaan funktion, joka kertoo mitä kullekin arvolle tulee tehdä. Funktion toiminnallisuus on metodikohtaista: rajaamiseen käytetylle metodille <code>filter</code> annetaan funktio, joka palauttaa totuusarvoisen muuttujan arvon <code>true</code> tai <code>false</code>, riippuen halutaanko arvo säilyttää virrassa; muuntamiseen käytetylle metodille <code>mapToInt</code> annetaan funktio, joka muuntaa arvon kokonaisluvuksi, jne.
+</p>
 
-  <p>
-    Kyseinen kirjoitusmuoto on Javan tarjoama lyhenne. Saman funktion voi kirjoittaa useammalla eri tavalla -- funktio sisältää sekä funktion parametrien määrittelyn että funktion rungon. Saman voi kirjoittaa useammassa muodossa, kts. alla.
-  </p>
+<p>
+  Miksi funktiot kirjoitetaan muodossa <code>luku -&gt; luku &gt; 5</code>?
+</p>
 
-  <% partial 'partials/code_highlight' do %>
-    // alkuperäinen
-    .filter(luku -&gt; luku &gt; 5)
+<p>
+  Kyseinen kirjoitusmuoto, <em>lambda-lauseke</em>, on Javan tarjoama lyhenne ns. anonyymeille metodeille, joilla ei ole "omistajaa" eli ne eivät ole osa luokkaa tai rajapintaa. Funktio sisältää sekä parametrien määrittelyn että funktion rungon. Saman funktion voi kirjoittaa useammalla eri tavalla, kts. alla.
+</p>
 
-    // on sama kuin
-    .filter((Integer luku) -&gt; 
-    if (luku &gt; 5) {
-    return true;
-    }
+<% partial 'partials/code_highlight' do %>
+  // alkuperäinen
+  <em>virta</em>.filter(luku -&gt; luku &gt; 5).<em>jatkokäsittely</em>
+  
+  // on sama kuin
+  <em>virta</em>.filter((Integer luku) -&gt; 
+      if (luku &gt; 5) {
+          return true;
+      }
     
-    return false;
-    })
-  <% end %>
+      return false;
+  }).<em>jatkokäsittely</em>
+<% end %>
+  
+<p>
+  Saman voi kirjoittaa myös eksplisiittisesti niin, että ohjelmaan määrittelee staattisen metodin, jota hyödynnetään virralle parametrina annetussa funktiossa.
+</p>
 
-  <p>
-    Käytännössä kyseessä on ns. anonyymi funktio. Saman voi kirjoittaa myös eksplisiittisesti niin, että ohjelmaan määrittelee staattisen metodin, jota kutsutaan virran metodista. Tämä tapahtuisi seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
+<% partial 'partials/code_highlight' do %>
     public class Rajaajat {
-    public static boolean vitostaSuurempi(int luku) {
-    return luku &gt; 5;
+        public static boolean vitostaSuurempi(int luku) {
+            return luku &gt; 5;
+        }
     }
-    }
+<% end %>  
 
-  <% end %>  
-
-  <% partial 'partials/code_highlight' do %>
+<% partial 'partials/code_highlight' do %>
     // alkuperäinen
-    .filter(luku -&gt; luku &gt; 5)
+    <em>virta</em>.filter(luku -&gt; luku &gt; 5).<em>jatkokäsittely</em>
 
     // on sama kuin
-    .filter(luku -&gt; Rajaajat.vitostaSuurempi(luku))
-    
+    <em>virta</em>.filter(luku -&gt; Rajaajat.vitostaSuurempi(luku)).<em>jatkokäsittely</em>
+<% end %>
+
+<p>
+  Funktion voi antaa myös suoraan parametrina. Alla oleva syntaksi <code>Rajaajat::vitostaSuurempi</code> tarkoittaa "hyödynnä tässä <code>Rajaajat</code>-luokassa olevaa staattista metodia <code>vitostaSuurempi</code>".
+</p>
+
+<% partial 'partials/code_highlight' do %>
     // on sama kuin
-    .filter(Rajaajat::vitostaSuurempi);
-  <% end %>
+    <em>virta</em>.filter(Rajaajat::vitostaSuurempi).<em>jatkokäsittely</em>
+<% end %>
 
-  <p>
-    Virran arvoja käsittelevät funktiot eivät voi muuttaa funktion ulkopuolisten muuttujien arvoja. Kyse on käytännössä lähes samasta kuin metodeja kutsuessa -- metodia kutsuttaessa metodin ulkopuolisiin muuttujiin ei pääse käsiksi. Funktioiden tilanteessa funktion ulkopuolisten muuttujien arvoja voi lukea olettaen, että luettavien muuttujien arvot eivät muutu lainkaan ohjelmassa.
-  </p>
+<p>
+  Virran arvoja käsittelevät funktiot eivät voi muuttaa funktion ulkopuolisten muuttujien arvoja. Kyse on käytännössä staattisten metodien käyttäytymisestä -- metodia kutsuttaessa metodin ulkopuolisiin muuttujiin ei pääse käsiksi. Funktioiden tilanteessa funktion ulkopuolisten muuttujien arvoja voi lukea olettaen, että luettavien muuttujien arvot eivät muutu lainkaan ohjelmassa.
+</p>
 
+<p>
+  Alla oleva ohjelma demonstroi tilannetta, missä funktiossa yritetään hyödyntää funktion ulkopuolista muuttujaa. Tämä ei toimi.
+</p>
+  
+
+<% partial 'partials/code_highlight' do %>
+  // alustetaan lukija ja lista, johon syotteet luetaan
+  Scanner lukija = new Scanner(System.in);
+  List&lt;String&gt; syotteet = new ArrayList&lt;&gt;()
+
+  // luetaan syotteet
+  while (true) {
+      String rivi = lukija.nextLine();
+      if (rivi.equals("loppu")) {
+          break;
+      }
+  
+      syotteet.add(rivi);
+  }
+
+  int muunnettujaYhteensa = 0;
+
+  // selvitetään kolmella jaollisten lukumaara
+  long kolmellaJaollistenLukumaara = syotteet.stream()
+      .mapToInt(s -&gt; {
+          // anonyymissä funktiossa ei voi käsitellä (tai tarkemmin muuttaa) funktion
+          // ulkopuolella määriteltyä muuttujaa, joten tämä ei toimi
+          muunnettujaYhteensa++;
+          return Integer.parseInt(s);
+      }).filter(luku -&gt; luku % 3 == 0)
+      .count();
 <% end %>
 
 
@@ -3947,7 +1798,7 @@ PATA A
 </p>
 
 <% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+  List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
   lista.add(3);
   lista.add(7);
   lista.add(4);
@@ -3955,9 +1806,9 @@ PATA A
   lista.add(6);
 
   ArrayList&lt;Integer&gt; luvut = lista.stream()
-  .filter(luku -&gt; luku &gt; 5)
-  .map(luku -&gt; luku * 2)
-  .collect(Collectors.toCollection(ArrayList::new));
+      .filter(luku -&gt; luku &gt; 5)
+      .map(luku -&gt; luku * 2)
+      .collect(Collectors.toCollection(ArrayList::new));
 <% end %>
 
 
@@ -3966,7 +1817,7 @@ PATA A
 <% end %>
 
 <p>
-  Tarkastellaan tässä kolmea pääteoperaatiota: listan arvojen lukumäärän selvittämistä <code>count</code>-metodin avulla, listan arvojen läpikäyntiä <code>forEach</code>-metodin avulla sekä listan arvojen keräämistä tietorakenteeseen <code>collect</code>-metodin avulla.
+  Tarkastellaan tässä neljää pääteoperaatiota: listan arvojen lukumäärän selvittämistä <code>count</code>-metodin avulla, listan arvojen läpikäyntiä <code>forEach</code>-metodin avulla sekä listan arvojen keräämistä tietorakenteeseen <code>collect</code>-metodin avulla, sekä listan alkioiden yhdistämistä <code>reduce</code>-metodin avulla.
 </p>
 
 <p>
@@ -3974,7 +1825,7 @@ PATA A
 </p>
 
 <% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+  List&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
   luvut.add(3);
   luvut.add(2);
   luvut.add(17);
@@ -3994,7 +1845,7 @@ PATA A
 </p>
 
 <% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+  List&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
   luvut.add(3);
   luvut.add(2);
   luvut.add(17);
@@ -4002,8 +1853,8 @@ PATA A
   luvut.add(8);
 
   luvut.stream()
-  .filter(luku -&gt; luku % 2 == 0)
-  .forEach(luku -&gt; System.out.println(luku));
+      .filter(luku -&gt; luku % 2 == 0)
+      .forEach(luku -&gt; System.out.println(luku));
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -4014,11 +1865,11 @@ PATA A
 
 
 <p>
-  Virran arvojen kerääminen toiseen kokoelmaan onnistuu metodin <code>collect</code> avulla. Alla olevassa esimerkissä luodaan uusi lista annetun positiivisista arvoista.
+  Virran arvojen kerääminen toiseen kokoelmaan onnistuu metodin <code>collect</code> avulla. Alla olevassa esimerkissä luodaan uusi lista annetun positiivisista arvoista. Metodille <code>collect</code> annetaan parametrina <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html" target="_blank" norel>Collectors</a>-luokan avulla luotu olio, johon virran arvot kerätään -- esimerkiksi kutsu <code>Collectors.toCollection(ArrayList::new)</code> luo uuden ArrayList-olion, johon arvot kerätään.
 </p>
 
 <% partial 'partials/code_highlight' do %>
-  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+  List&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
   luvut.add(3);
   luvut.add(2);
   luvut.add(-17);
@@ -4026,11 +1877,11 @@ PATA A
   luvut.add(8);
 
   ArrayList&lt;Integer&gt; positiiviset = luvut.stream()
-  .filter(luku -&gt; luku > 0)
-  .collect(Collectors.toCollection(ArrayList::new));
+      .filter(luku -&gt; luku > 0)
+      .collect(Collectors.toCollection(ArrayList::new));
 
   positiiviset.stream()
-  .forEach(luku -&gt; System.out.println(luku));
+      .forEach(luku -&gt; System.out.println(luku));
 <% end %>
 
 <% partial 'partials/sample_output' do %>
@@ -4040,6 +1891,7 @@ PATA A
 <% end %>
 
 
+<%= partial 'partials/quiz', locals: { id: '5aaac8d64d88860004a6ba46' } %>
 
 <% partial 'partials/exercise', locals: { name: 'Jaolliset' } do %>
 
@@ -4062,7 +1914,7 @@ PATA A
     ArrayList&lt;Integer&gt; jaolliset = jaolliset(luvut);
 
     jaolliset.stream()
-    .forEach(luku -&gt; System.out.println(luku));
+        .forEach(luku -&gt; System.out.println(luku));
   <% end %>
 
   
@@ -4072,6 +1924,54 @@ PATA A
     -5
   <% end %>  
 
+<% end %>
+
+
+<p>
+  Metodi <code>reduce</code> on hyödyllinen kun virrassa olevat alkiot halutaan yhdistää jonkinlaiseen toiseen muotoon. Metodin saamat parametrit ovat seuraavaa muotoa: <code>reduce(<em>alkutila</em>, (<em>edellinen</em>, <em>olio</em>) -&gt; <em>mitä oliolla tehdään</em>)</code>.
+</p>
+
+<p>
+  Esimerkiksi kokonaislukuja sisältävän listan summan saa luotua reduce-metodin avulla seuraavasti.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+  luvut.add(7);
+  luvut.add(3);
+  luvut.add(2);
+  luvut.add(1);
+  
+  int summa = luvut.stream()
+      .reduce(0, (edellinenSumma, luku) -&gt; edellinenSumma + luku);
+  System.out.println(summa);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  13
+<% end %>
+
+<p>
+  Vastaavasti merkkijonoista koostuvasta listasta saa luotua rivitetyn merkkijonon seuraavasti.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+  sanat.add("Eka");
+  sanat.add("Toka");
+  sanat.add("Kolmas");
+  sanat.add("Neljäs");
+  
+  String yhdistetty = sanat.stream()
+      .reduce("", (edellinenMjono, sana) -&gt; edellinenMjono + sana + "\n");
+  System.out.println(yhdistetty);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Eka
+  Toka
+  Kolmas
+  Neljäs
 <% end %>
 
 
@@ -4089,27 +1989,27 @@ PATA A
 
 <% partial 'partials/code_highlight' do %>
   public class Henkilo {
-  private String etunimi;
-  private String sukunimi;
-  private int syntymavuosi;
+      private String etunimi;
+      private String sukunimi;
+      private int syntymavuosi;
 
-  public Henkilo(String etunimi, String sukunimi, int syntymavuosi) {
-  this.etunimi = etunimi;
-  this.sukunimi = sukunimi;
-  this.syntymavuosi = syntymavuosi;
-  }
+      public Henkilo(String etunimi, String sukunimi, int syntymavuosi) {
+          this.etunimi = etunimi;
+          this.sukunimi = sukunimi;
+          this.syntymavuosi = syntymavuosi;
+      }
 
-  public String getEtunimi() {
-  return this.etunimi;
-  }
+      public String getEtunimi() {
+          return this.etunimi;
+      }
 
-  public String getSukunimi() {
-  return this.sukunimi;
-  }
+      public String getSukunimi() {
+          return this.sukunimi;
+      }
 
-  public int getSyntymavuosi() {
-  return this.syntymavuosi;
-  }
+      public int getSyntymavuosi() {
+          return this.syntymavuosi;
+      }
   }
 <% end %>
 
@@ -4129,8 +2029,8 @@ PATA A
   // ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
   long lkm = henkilot.stream()
-  .filter(henkilo -&gt; henkilo.getSyntymavuosi() &lt; 1970)
-  .count();
+      .filter(henkilo -&gt; henkilo.getSyntymavuosi() &lt; 1970)
+      .count();
   System.out.println("Lukumäärä: " + lkm);
 <% end %>
 
@@ -4150,8 +2050,8 @@ PATA A
   // ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
   long lkm = henkilot.stream()
-  .filter(henkilo -&gt; henkilo.getEtunimi().startsWith("A"))
-  .count();
+      .filter(henkilo -&gt; henkilo.getEtunimi().startsWith("A"))
+      .count();
   System.out.println("Lukumäärä: " + lkm);
 <% end %>
 
@@ -4170,11 +2070,15 @@ PATA A
   // ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
 
   henkilot.stream()
-  .map(henkilo -&gt; henkilo.getEtunimi())
-  .distinct()
-  .sorted()
-  .forEach(nimi -&gt; System.out.println(nimi));
+      .map(henkilo -&gt; henkilo.getEtunimi())
+      .distinct()
+      .sorted()
+      .forEach(nimi -&gt; System.out.println(nimi));
 <% end %>
+
+<p>
+  Yllä kuvattu <code>distinct</code>-metodi hyödyntää olioiden <code>equals</code>-metodia yhtäsuuruuden tarkasteluun. Metodi <code>sorted</code> taas osaa järjestää olioita, joilla on tieto siitä, miten olio tulee järjestää -- näitä ovat esimerkiksi luvut ja merkkijonot.
+</p>
 
 
 <% partial 'partials/exercise', locals: { name: 'Luettujen arvojen tulostaminen' } do %>
@@ -4248,7 +2152,9 @@ PATA A
   <% end %>
 
   <p>
-    Ohjelmassa ei ole valmiita automaattisia testejä. Voit kirjoittaa automaattisia testejä testiluokkaan <code>UniikitSukunimetTest</code> -- tässä tapauksessa olisi näppärää tehdä esimerkiksi erillinen listan palauttava metodi uniikkien sukunimien tunnistamiseen sille parametrina annetusta henkilölistasta. 
+    Ohjelmassa ei ole valmiita automaattisia testejä. Voit kirjoittaa automaattisia testejä testiluokkaan <code>UniikitSukunimetTest</code> -- tässä tapauksessa olisi näppärää tehdä esimerkiksi erillinen listan palauttava metodi uniikkien sukunimien tunnistamiseen sille parametrina annetusta henkilölistasta.
+  </p>
+
 <% end %>
 
 
@@ -4257,53 +2163,81 @@ PATA A
 <% end %>
 
 <p>
-  Olioiden käsittely virran metodien avulla on luontevaa. Kukin virran metodi, missä käsitellään virran arvoja, mahdollistaa myös arvoihin liittyvän metodin kutsumisen. Tarkastellaan vielä esimerkkiä, missä käytössämme on Kirjoja, joilla on kirjailijoita. Oletetaan, että kirjailijat ovat edellä kuvattuja Henkilo-olioita. Oletetaan lisäksi, että käytössämme on alla kuvattu luokka Kirja.
+  Olioiden käsittely virran metodien avulla on luontevaa. Kukin virran metodi, missä käsitellään virran arvoja, mahdollistaa myös arvoihin liittyvän metodin kutsumisen. Tarkastellaan esimerkkiä, missä käytössämme on Kirjoja, joilla on kirjailijoita. Luokat <code>Henkilo</code> ja <code>Kirja</code> on annettu alla.
 </p>
 
 
 <% partial 'partials/code_highlight' do %>
-  public class Kirja {
-  private Henkilo kirjailija;
-  private String nimi;
-  private int sivujenLukumaara;
+  public class Henkilo {
+      private String nimi;
+      private int syntymavuosi;
+
+      public Henkilo(String nimi, int syntymavuosi) {
+          this.nimi = nimi;
+          this.syntymavuosi = syntymavuosi;
+      }
+
+      public String getNimi() {
+          return this.nimi;
+      }
   
-  public Kirja(Henkilo kirjailija, String nimi, int sivuja) {
-  this.kirjailija = kirjailija;
-  this.nimi = nimi;
-  this.sivujenLukumaara = sivuja;
-  }
+      public int getSyntymavuosi() {
+          return this.syntymavuosi;
+      }
 
-  public Henkilo getKirjailija() {
-  return this.kirjailija;
+      public String toString() {
+          return this.nimi + " (" + this.syntymavuosi + ")";
+      }
   }
+<% end %>
 
-  public String getNimi() {
-  return this.nimi;
-  }
+<% partial 'partials/code_highlight' do %>
+  public class Kirja {
+      private Henkilo kirjailija;
+      private String nimi;
+      private int sivujenLukumaara;
+  
+      public Kirja(Henkilo kirjailija, String nimi, int sivuja) {
+          this.kirjailija = kirjailija;
+          this.nimi = nimi;
+          this.sivujenLukumaara = sivuja;
+      }
 
-  public int getSivujenLukumaara() {
-  return this.sivujenLukumaara;
-  }
+      public Henkilo getKirjailija() {
+          return this.kirjailija;
+      }
+
+      public String getNimi() {
+          return this.nimi;
+      }
+
+      public int getSivujenLukumaara() {
+          return this.sivujenLukumaara;
+      }
   }
 <% end %>
 
 <p>
-  Oletetaan, että käytössämme on lista kirjoja. Virran metodien avulla esimerkiksi kirjailijoiden syntymävuosien keskiarvon selvittäminen onnistuu luontevasti. Ensin muunnamme kirjoja sisältävän virran henkilöitä sisältäväksi virraksi, tämän jälkeen muunnamme henkilöitä sisältävän virran syntymävuosia sisältäväksi virraksi, ja lopulta pyydämme (kokonaislukuja sisältävältä) virralta keskiarvoa.
+  Oletetaan, että käytössämme on lista kirjoja. Virran metodien avulla esimerkiksi kirjailijoiden syntymävuosien keskiarvon selvittäminen onnistuu luontevasti. Ensin muunnamme kirjoja sisältävän virran henkilöitä sisältäväksi virraksi ja tämän jälkeen muunnamme henkilöitä sisältävän virran syntymävuosia sisältäväksi virraksi. Lopulta pyydämme (kokonaislukuja sisältävältä) virralta keskiarvoa.
 </p>
 
 <% partial 'partials/code_highlight' do %>
   // oletetaan, että käytössämme on lista kirjoja
-  // ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+  // List&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
 
   double keskiarvo = kirjat.stream()
-  .map(kirja -&gt; kirja.getKirjailija())
-  .mapToInt(kirjailija -&gt; kirjailija.getSyntymavuosi())
-  .average()
-  .getAsDouble();
+      .map(kirja -&gt; kirja.getKirjailija())
+      .mapToInt(kirjailija -&gt; kirjailija.getSyntymavuosi())
+      .average()
+      .getAsDouble();
 
   System.out.println("Kirjailijoiden syntymävuosien keskiarvo: " + keskiarvo);
-<% end %>
 
+  // muunnoksen kirjasta kirjailijan syntymävuoteen pystyisi tekemään myös yhdellä map-kutsulla
+  // double keskiarvo = kirjat.stream()
+  //     .mapToInt(kirja -&gt; kirja.getKirjailija().getSyntymavuosi())
+  //     ...
+<% end %>
 
 <p>
   Vastaavasti kirjojen, joiden nimessä esiintyy sana "Potter", kirjailijoiden nimet saa selville seuraavasti.
@@ -4311,16 +2245,16 @@ PATA A
 
 <% partial 'partials/code_highlight' do %>
   // oletetaan, että käytössämme on lista kirjoja
-  // ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+  // List&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
 
   kirjat.stream()
-  .filter(kirja -&gt; kirja.getNimi().contains("Potter"))
-  .map(kirja -&gt; kirja.getKirjailija())
-  .forEach(kirjailija -&gt; System.out.println(kirjailija.getEtunimi() + " " + kirjailija.getSukunimi()));
+      .filter(kirja -&gt; kirja.getNimi().contains("Potter"))
+      .map(kirja -&gt; kirja.getKirjailija())
+      .forEach(kirjailija -&gt; System.out.println(kirjailija));
 <% end %>
 
 <p>
-  Myös monimutkaisempien merkkijonoesitysten rakentaminen on virran avulla mahdollista. Alla olevassa esimerkissä tulostamme "Kirjailijan sukunimi: Kirja" -parit aakkosjärjestyksessä.
+  Myös monimutkaisempien merkkijonoesitysten rakentaminen on virran avulla mahdollista. Alla olevassa esimerkissä tulostamme "Kirjailijan nimi: Kirja" -parit aakkosjärjestyksessä.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -4328,9 +2262,9 @@ PATA A
   // ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
 
   kirjat.stream()
-  .map(kirja -&gt; kirja.getKirjailija().getSukunimi() + ": " + kirja.getNimi())
-  .sorted()
-  .forEach(nimi -&gt; System.out.println(nimi));
+      .map(kirja -&gt; kirja.getKirjailija().getNimi() + ": " + kirja.getNimi())
+      .sorted()
+      .forEach(nimi -&gt; System.out.println(nimi));
 <% end %>
 
 
@@ -4338,67 +2272,608 @@ PATA A
 <% partial 'partials/exercise', locals: { name: 'Painon laskemista (2 osaa)' } do %>
 
   <p>
-    Tehtäväpohjassa on edellisen osan tehtävä "Tavara, Matkalaukku ja Lastiruuma". Tässä tehtävässä tarkoituksenasi on muuttaa toistolausetta käyttävät metodit virtaa käyttäviksi metodeiksi niiltä osin, kuin tämä on mahdollista. Ohjelman toiminnallisuuden tulee säilyä samana.
+    Tehtäväpohjassa on tutuhko tehtävä "Tavara, Matkalaukku ja Lastiruuma". Tässä tehtävässä tarkoituksenasi on muuttaa toistolausetta käyttävät metodit virtaa käyttäviksi metodeiksi. Lopputuloksessa ei tule esiintyä <code>while (...)</code> tai <code>for (...)</code>-toistolauseita.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Tiedostot ja virta
+<% end %>
+
+
+<p>
+  Virta on myös erittäin näppärä tiedostojen käsittelyssä. Tiedoston lukeminen virtamuotoisena tapahtuu Javan valmiin <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html" target="_blank" rel="noopener">Files</a>-luokan avulla. Files-luokan metodin <code>lines</code> avulla tiedostosta voidaan luoda syötevirta, jonka avulla tiedoston rivit voidaan käsitellä yksi kerrallaan. Metodi <code>lines</code> saa patametrikseen polun, joka luodaan luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html" target="_blank" rel="noopener">Paths</a> tarjoamalla metodilla <code>get</code>, jolle annetaan parametrina tiedostopolkua kuvaava merkkijono.
+</p>
+
+<p>
+  Alla olevassa esimerkissä luetaan tiedoston "tiedosto.txt" kaikki rivit ja lisätään ne listaan.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  List&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+  try {
+      Files.lines(Paths.get("tiedosto.txt")).forEach(rivi -&gt rivit.add(rivi));
+  } catch (Exception e) {
+      System.out.println("Virhe: " + e.getMessage());
+  }
+
+  // tee jotain luetuilla riveillä
+<% end %>
+
+<p>
+  Jos tiedosto löytyy ja sen lukeminen onnistuu, tulee ohjelman suorituksen lopussa tiedoston "tiedosto.txt" rivit olemaan listamuuttujassa <code>rivit</code>. Jos taas tiedostoa ei löydy, tai sen lukeminen epäonnistuu, ilmoitetaan tästä virheviestillä. Alla eräs mahdollisuus:
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Virhe: tiedosto.txt (No such file or directory)
+<% end %>
+
+<p>
+  Virran metodit tekevät määritellyn muotoisten tiedostojen lukemisesta melko suoraviivaista. Tarkastellaan tilannetta, missä tiedosto sisältää henkilöiden tietoja. Kukin henkilö on omalla rivillään, ensin tulee henkilön nimi, sitten puolipiste, sitten henkilön syntymävuosi. Tiedoston muoto on seuraava.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Kaarlo Juho Ståhlberg; 1865
+  Lauri Kristian Relander; 1883
+  Pehr Evind Svinhufvud; 1861
+  Kyösti Kallio; 1873
+  Risto Heikki Ryti; 1889
+  Carl Gustaf Emil Mannerheim; 1867
+  Juho Kusti Paasikivi; 1870
+  Urho Kaleva Kekkonen; 1900
+  Mauno Henrik Koivisto; 1923
+  Martti Oiva Kalevi Ahtisaari; 1937
+  Tarja Kaarina Halonen; 1943
+  Sauli Väinämö Niinistö; 1948
+<% end %>
+
+<p>
+  Oletetaan, että tiedoston nimi on <code>presidentit.txt</code>. Henkilöiden lukeminen onnistuu seuraavasti. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  List&lt;Henkilo&gt; presidentit = new ArrayList&lt;&gt;();
+  try {
+      // luetaan tiedosto "presidentit.txt" riveittäin
+      Files.lines(Paths.get("presidentit.txt"))
+          // pilkotaan rivi osiin ";"-merkin kohdalta 
+          .map(rivi -&gt; rivi.split(";"))
+          // poistetaan ne pilkotut rivit, joissa alle 2 osaa
+          // (haluamme että rivillä on aina nimi ja syntymävuosi)
+          .filter(palat -&gt; palat.length &gt;= 2)
+          // luodaan palojen perusteella henkilöitä
+          .map(palat -&gt; new Henkilo(palat[0], Integer.parseInt(palat[1])))
+          // ja lisätään henkilöt lopulta listalle
+          .forEach(henkilo -&gt; presidentit.add(henkilo));
+  } catch (Exception e) {
+      System.out.println("Virhe: " + e.getMessage());
+  }
+
+  // nyt presidentit ovat listalla henkilöolioina
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Esimerkki: tekstin luominen
+<% end %>
+
+<p>
+  Materiaalin osassa 3 esiintynyt "Ajatustenlukija" sekä materiaalin osassa 6 esiintynyt "Kivi, Paperi, Sakset" perustuivat ajatukselle siitä, että pelaajan aiempia siirtoja voidaan hyödyntää tulevaisuuden ennustamisessa. Sama periaate -- eli aiemman tiedon hyödyntyminen tulevan määrittelyssä -- toimii myös tekstin luomisessa. Voimme "oppia" tekstiä ja käyttää sitä uuden tekstin luomiseen. 
+</p>
+
+<p>
+  Tarkastellaan seuraavaa katkelmaa 1990-luvun hittikappaleesta <a href="https://en.wikipedia.org/wiki/Scatman_(Ski-Ba-Bop-Ba-Dop-Bop)" target="_blank" norel>Scatman (Ski-Ba-Bop-Ba-Dop-Bop)</a>.
+</p>
+
+<pre>
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<p>
+  Tässä esiteltävässä tekstin luomismenetelmässä periaatteena on tarkastella kutakin tekstin sanaparia laskea sanapareja seuraavien sanojen lukumäärät. Aloitetaan. Ensimmäinen sanapari on <code>ski-bi dibby</code> ja sitä seuraa sana <code>dib</code>. 
+</p>
+
+<pre>
+<strong>ski-bi dibby</strong> <font color="red">dib</font> yo da dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<p>
+  Pidämme kirjaa esiintymien lukumääristä, yllä huomaamme esiintymän "ski-bi dibby -&gt; dib". Lukumäärien ylläpitoon sopisi esimerkiksi kaksiulotteinen hajautustaulu. 
+</p>
+
+<pre>
+ski-bi dibby -&gt; dib: 1
+</pre>
+
+<p>
+  Seuraavaksi tarkastellaan sanaparia <code>dibby dib</code>. Tätä seuraa sana <code>yo</code>. 
+</p>
+
+<pre>
+ski-bi <strong>dibby dib</strong> <font color="red">yo</font> da dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<p>
+  Esiintymien lukumäärät päivittyvät taas.
+</p>
+
+<pre>
+ski-bi dibby -&gt; dib: 1
+dibby dib -&gt; yo: 1
+</pre>
+
+<p>
+  Sanapari siirtyy yhdellä, ja esiintymien lukumäärät päivittyvät.
+</p>
+
+<pre>
+ski-bi dibby <strong>dib yo</strong> <font color="red">da</font> dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<pre>
+ski-bi dibby -&gt; dib: 1
+dibby dib -&gt; yo: 1
+dib yo &gt; da: 1
+</pre>
+
+<p>
+  Tätä jatketaan kunnes koko tekstidokumentti on käyty läpi. Tekstin läpikäynnin jälkeen esiintymien lukumäärät (opittu tekstimalli) ovat seuraavat.
+</p>
+
+<pre>
+ski-bi dibby -&gt; dib: 2
+dibby dib -&gt; yo: 2
+dib yo &gt; da: 2
+yo da &gt; dub: 4
+da dub &gt; dub: 4
+dub dub &gt; yo: 2
+dub yo &gt; da: 2
+dub dub &gt; ski-bi: 1
+dub ski-bi &gt; dibby: 1
+</pre>
+
+<p>
+  Sanaparia <code>ski-bi dibby</code> seuraa aina sana <code>dib</code>, sanaparia <code>dibby dib</code> seuraa aina sana <code>yo</code>, sanaparia <code>dib yo</code> seuraa aina sana <code>da</code>, sanaparia <code>yo da</code> seuraa aina sana <code>dub</code>, sanaparia <code>da dub</code> seuraa aina sana <code>dub</code>. Eli tähän mennessä tekstimalli on aika yksinkertainen.
+</p>
+
+<p>
+  Mutta! Sanaparia <code>dub dub</code> seuraa sana <code>yo</code> kaksi kertaa kolmesta, ja sana <code>ski-bi</code> kerran kolmesta. Voimme siis ajatella niin, että sanaparin <code>dub dub</code> kohdalla noin 33% todennäköisyydellä seuraava sana on <code>ski-bi</code>, ja noin 67% todennäköisyydellä seuraava sana on <code>yo</code>.
+</p>
+
+<p>
+  Yllä kuvattua tekstimallia voidaan tarkastella myös verkkona, missä jokainen solmu (pallo) on sanapari, ja solmujen välillä kulkevat kaaret kuvaavat sanojen välisiä yhteyksiä. Kaarien kohdalle merkitään todennäköisyydet sille, että sanaparin jälkeen valitaan tietty toinen sanapari. Alla kaikissa muissa tilanteissa päätös on selvä, mutta sanaparin <code>dub dub</code> jälkeen on kaksi vaihtoehtoa.
+</p>
+
+<img src="/img/lyrics.png" alt="Lyriikat verkkona kuvattuna"/>
+
+<p>
+  Tekstin tuottaminen yllä kuvatulla mallilla on suoraviivaista. Oletetaan, että aloitamme sanaparista <code>yo da</code>.
+</p>
+
+
+<% partial 'partials/sample_output' do %>
+  yo da
+<% end %>
+
+<p>
+  Sanaparia <code>yo da</code> seuraa aina sanapari <code>da dub</code>. 
+</p>
+
+<% partial 'partials/sample_output' do %>
+  yo da dub
+<% end %>
+
+<p>
+  Ja sanaparia <code>da dub</code> seuraa aina sanapari <code>dub dub</code>.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  yo da dub dub
+<% end %>
+
+<p>
+  Sanaparia <code>dub dub</code> seuraa 66.6% todennäköisyydellä sanapari <code>dub yo</code>, ja 33.3% todennäköisyydellä sanapari <code>dub ski-bi</code>. Tässä kohtaa hyödyntäisimme esimerkiksi Javan luokka <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Random.html" target="_blank">Random</a> ja valitsisimme sanan edellä kuvatun vaihtoehdon väliltä satunnaisesti. Mikäli Random-luokan tuottama satunnaisluku lukujen 0 ja 1 välillä on pienempi tai yhtäsuuri kuin 0.666%, valitsemme <code>dub yo</code>, muulloin <code>dub ski-bi</code>.
+</p>
+
+<p>
+  Ja tekstin generointi jatkuu..
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Vaalipuhe (5 osaa)' } do %>
+
+  <p>
+    Edellisessä esimerkissä lähtökohtana käytetty tekstidokumentti on melko suppea, eikä vaihtelua juurikaan tapahdu. Tarkastellaan tekstin luomista, mutta käytetään opittavana tekstinä <a href="https://yle.fi/uutiset/3-9526290" target="_blank">Ylen kuntavaalidataa</a>. Tavoitteena tässä tehtävässä on luoda vaalipuhegeneraattori, joka pyrkii luomaan perustelun kysymykselle "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?".
   </p>
 
   <p>
-    Tässä tehtävässä ei ole erillisiä virran käyttämistä testaavista testejä. Kun toistolausetta hyödyntävät osiot on muunnettu virtaa käyttäviksi, palauta tehtävä. Tehtävä on kokonaisuudessaan kahden pisteen arvoinen.
+    Tehtäväpohjassa on mukana dokumentti <code>vaalidata.txt</code>, joka sisältää osajoukon Ylen tarjoamasta vaalidatasta. Tekstidokumentti on jaettu sarakkeisiin puolipisteiden perusteella. Ensimmäisessä sarakkeessa on tieto siitä, tuliko ehdokas valituksi (0 tai 1), toisessa sarakkeessa on perustelu kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?", ja kolmannessa sarakkeessa on perustelu kysymykseen "Mitä asioita haluat edistää tai ajaa tulevalla vaalikaudella?". Tässä tehtävässä käytetty vaalidatatiedosto on lisensoitu <a href="https://creativecommons.org/licenses/by-sa/1.0/fi/" target="_blank">Creative Commons CC BY-SA</a>-lisenssillä alkuperäisen tiedoston tavoin.
   </p>
+
+  <p>
+    Tiedoston ensimmäiset kolme riviä ovat seuraavat:
+  </p>
+
+  <pre>
+1;olen aikaansaava ja aktiivinen luottamushenkilö joka pitää kuntalaisten puolia kuuntelen selvitän ja vien asioita eteenpäin hoidan koko sydämelläni kotiseutuni asioita ;edistää elinvointia kunnan tehtävä on huolehtia asukkaidensa hyvinvoinnista haluan tehdä edelleen aloitteita joissa on vahva terveyttä edistävä näkökulma haluan olla edelleen kaikkien kuntalaisten käytettävissä tiedän että kykenen vaikuttamaan asioihin oma alotteisesti sekä viemään kuntalaisten viestiä eteenpäin aina päätöksentekoon saakka tulevalla vaalikaudella meidän on panostettava ympäristönhoitoon jotta kunnassamme viihtyisi ja se houkuttelisi myös uusia asukkaita
+0;olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa ;päätösten pitkäjänteisyyttä helsinkiläisten aitoa kuuntelua kulttuuritarjonnan monipuolisuutta ja saatavuutta tietoisuutta jo olemassaolevasta tapahtumakirjosta koko kaupungin pitää olla turvallinen paikka asua syrjäytyneet nuoret tarvitsevat pikaisesti apua meillä ei ole varaa menettää yhtään sukupolvea kaikki ovat arvokkaita helsinki on koko suomen käyntikortti hyvä talous koulutus kulttuuri ja joukkoliikenne näiden turvaaminen ja säilyminen ovat kaikille tärkeitä
+0;uuden salon aikaiset kaksi valtuustokautta ovat tuoneet hyvän perehtyneisyyden ja hyvät verkostot kaupungin asioiden hoitoon nykyinen elämäntilanne antaa hyvin aikaa yhteisten asioiden hoitoon ;yrittäjänä näen kaupungin elinvoimapolitiikan edistämisen ensisijaiseksi toinen tärkeä asia tulevaisuuden kunnassa on sivistys siinä perusasioita ovat tietysti hyvä varhaiskasvatus ja perusopetus ja muu koulutus sivistyksen sektorilla erityisesti lähinnä sydäntäni on kulttuuri ja kirjasto säilytetään kattavat kirjastopalvelut kaupungin resurssit ovat rajalliset ja vastuun kulttuuriasioista hoitaa pääasiassa kolmas sektori kaupungin tuki sellaiselle tasolle että tekijöiden työn ilo säilyy
+  </pre>
+
+
+  <p>
+    Luodaan vaalipuhegeneraattori osissa. Teemme ensin luokan <code>Sanajakauma</code>, joka pitää kirjaa yksittäisten sanojen esiintymisisistä ja tarjoaa satunnaisia sanoja niiden esiintymistodennäköisyyksiin perustuen. Tämän jälkeen luomme luokan <code>Tekstimalli</code>, joka pitää kirjaa jokaiseen sanapariin liittyvistä sanajakaumista. Lopulta teemme luokan <code>Puhegeneraattori</code>, joka luo tekstiä annetun tekstimallin perusteella.
+  </p>
+
+  <p>
+    Edellisestä esimerkistä poiketen <strong>tekstimallia rakennettaessa otetaan huomioon vain peräkkäiset sanat</strong>, ei sanapareja. Esimerkiksi merkkijono "olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa" tuottaa seuraavanlaisen tekstimallin.
+  </p>
+
+  <pre>
+olen -&gt; ratkaisukeskeinen: 1
+ratkaisukeskeinen -&gt; yhteistyökykyinen: 1
+yhteistyökykyinen -&gt; ja: 1
+ja -&gt; avoin: 1
+avoin -&gt; henkilö: 1
+henkilö -&gt; teen: 1
+teen -&gt; aina: 1
+aina -&gt; päätöksiin: 1
+päätöksiin -&gt; vaadittavan: 1
+vaadittavan -&gt; taustatyön: 1
+taustatyön -&gt; huolellisesti: 1
+huolellisesti -&gt; arvostan: 1
+arvostan -&gt; tasa: 1
+tasa -&gt; arvoa: 1
+arvoa -&gt; ja: 1
+ja -&gt; vastuullisuutta: 1
+vastuullisuutta -&gt; yhteisten: 1
+yhteisten -&gt; asioiden: 1
+asioiden -&gt; hoidossa: 1
+  </pre>
+
+  <p>
+    Koko vaalidata-aineiston hyödyntäminen mahdollistaa esimerkiksi seuraavanlaisten puheiden luomisen: <em>tuijottamatta puoluerajoja olen kyvykäs ottamaan asioista selvää ja ensimmäistä kautta kunnallisesta päätöksenteosta olen aktiivinen eläkeläisten seurassa</em>.
+  </p>
+    
+
+  <h2>Sanajakauma, osa 1</h2>
+
+  <p>
+    Tehtäväpohjassa tulee valmiina seuraavanlainen luokka <code>Sanajakauma</code>. Sanajakauman tehtävänä on pitää kirjaa sanojen esiintymisistä ja tarjota sanoja niiden esiintymisten perusteella. 
+  </p>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    package vaalit;
+
+    public class Sanajakauma {
+    
+        public void lisaaSana(String sana) {
+        }
+    
+        public int esiintymiskertoja(String sana) {
+            return 0;
+        }
+
+        public String annaSana() {
+            return null;
+        }
+    }
+  <% end %>
+
+  <p>
+    Täydennä luokan toimintaa. Luokan tulee toimia seuraavasti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Sanajakauma jakauma = new Sanajakauma();
+    jakauma.lisaaSana("yo");
+    jakauma.lisaaSana("yo");
+    jakauma.lisaaSana("ski-bi");
+
+    System.out.println(jakauma.esiintymiskertoja("yo"));
+    System.out.println(jakauma.esiintymiskertoja("ski-bi"));
+    System.out.println(jakauma.esiintymiskertoja("dub"));
+
+    System.out.println(jakauma.annaSana());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    2
+    1
+    0
+    yo
+  <% end %>
+
+  <p>
+    Metodin <code>annaSana</code> palauttama arvo tulee valita satunnaisesti kaikkien sanojen niin, että kunkin sanan valinta on yhtä todennäköistä. Yllä kumpikin sanoista <code>"yo"</code> ja <code>"ski-bi"</code> tulee siis palauttaa metodikutsusta <code>annaSana</code> 50% todennäköisyydellä.
+  </p>
+
+  <p>
+    Mikäli olioon ei ole lisätty vielä yhtäkään sanaa, tulee metodin <code>annaSana</code> palauttaa <code>null</code>-viite.
+  </p>
+
+  
+  <h2>Sanajakauma, osa 2</h2>
+
+  <p>
+    Tässä osassa kehität metodin <code>annaSana</code>-toiminnallisuutta siten, että metodikutsun palauttaman merkkijonon todennäköisyys perustuu merkkijonon esiintymien todennäköisyyteen.
+  </p>
+
+  <p>
+    Oletetaan, että sanajakaumaan lisätään kolme sanaa, "yo", "yo", ja "ski-bi". Nyt sanajakauman tulee tietää, että sana "yo" on esiintynyt kahdesti ja sana "ski-bi" on esiintynyt kerran. Mikäli sanajakaumalta kysytään nyt sanaa, tulee sen palauttaa 2/3 kyselyistä eli 66.66..% todennäköisyydellä sana <code>yo</code>, ja 1/3 kyselyistä eli 33.333...% todennäköisyydellä sana <code>ski-bi</code>. 
+  </p>
+
+  <p>
+    Eräs tapa, millä satunnaisesti valitun sanan valintaa voi suoraviivaistaa, on hyödyntää kaikkien sanojen esiintymiskertoja satunnaisen sanan valitsemisessa. Oletetaan, että sanat ja niiden esiintymiskerrat ovat seuraavat:
+  </p>
+
+  <pre>
+yo: 4
+ski-bi: 2
+heh: 3
+  </pre>
+
+  <p>
+    Sanojen esiintymiskertoja on yhteensä 9. Javan Random-luokalta voi pyytää satunnaista lukua nollan ja yhdeksän välillä (yhdeksän poislukien): <code>int luku = new Random().nextInt(9);</code>. Oletetaan, että luvuksi tulee 8. Nyt sanoja voidaan käydä läpi yksitellen siten, että pidämme kirjaa esiintymiskertojen summasta ja etsimme sen avulla arvottua lukua vastaavan sanan:
+  </p>
+
+  <pre>
+    Sana yo, esiintymiskertoja 4, esiintymiskertojen summa 4
+    Sana ski-bi, esiintymiskertoja 2, esiintymiskertojen summa 6
+    Sana heh, esiintymiskertoja 3, esiintymiskertojen summa 9 --> palauta heh.
+  </pre>
+
+  <p>
+    Toisaalta, mikäli satunnaisesti valituksi luvuksi tulee 4, toimitaan seuraavasti:
+  </p>
+
+  <pre>
+    Sana yo, esiintymiskertoja 4, esiintymiskertojen summa 4
+    Sana ski-bi, esiintymiskertoja 2, esiintymiskertojen summa 6 --> palauta ski-bi
+  </pre>
+  
+
+
+  <h2>Tekstimalli, osa 1</h2>
+
+  <p>
+    Tekstimallin tulee sanajakaumaa sopivasti hyödyntäen pitää kirjaa jokaista sanaa seuraavista sanoista sekä niiden esiintymiskerroista. Tehtäväpohjassa tulee valmiina seuraavanlainen luokka <code>Tekstimalli</code>. 
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    package vaalit;
+
+    public class Tekstimalli {
+
+        public void lisaaAineisto(String aineisto) {
+        }
+
+        public String annaSana(String edeltava) {
+            return null;
+        }
+
+        public List&lt;String&gt; sanat() {
+            return null;
+        }
+    }
+  <% end %>
+
+  <p>
+    Toteuta tässä metodit <code>public void lisaaAineisto(String aineisto)</code>, joka saa parametrinaan tekstiaineistoa kuvaavan merkkijonon, sekä <code>public List&lt;String&gt; sanat()</code>, joka palauttaa uniikit sanat listana.
+  </p>
+
+  <p>
+    Ohjelman tulee toimia seuraavasti:
+  </p>
+
+
+  <% partial 'partials/code_highlight' do %>
+    Tekstimalli malli = new Tekstimalli();
+    malli.lisaaAineisto("olen kyvykäs ottamaan asioista selvää");
+    malli.lisaaAineisto("olen aktiivinen ja urheilullinen");
+    malli.lisaaAineisto("olen rauhallinen ja iloinen");
+
+    for (String sana: malli.sanat()) {
+        System.out.println(sana);
+    }
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    olen
+    kyvykäs
+    ottamaan
+    asioista
+    selvää
+    aktiivinen
+    ja
+    urheilullinen
+    rauhallinen
+    iloinen
+  <% end %>
+
+  <p>
+    Metodin <code>lisaaAineisto</code> tulee siis lisätä yksittäiset sanat tekstimalliin, ja metodin <code>sanat</code> tulee palauttaa uniikit sanat tekstimallista. Sanojen järjestyksellä ei metodin <code>sanat</code> palauttamassa listassa ole väliä. Voit olettaa, että sanat ovat eroteltu toisistaan välilyönneillä.
+  </p>
+
+  <p>
+    Hyödynnä metodissa <code>public void lisaaAineisto(String aineisto)</code> String-luokan tarjoamaa metodia <code>split</code>. Metodi toimii seuraavasti:
+  </p>
+
+
+  <% partial 'partials/code_highlight' do %>
+    String merkkijono = "eka toka kolmas neljäs";
+    String[] palat = merkkijono.split("\\s+");
+    System.out.println(palat[0]);
+    System.out.println(palat[1]);
+    System.out.println(palat[2]);
+    System.out.println(palat[3]);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    eka
+    toka
+    kolmas
+    neljäs
+  <% end %>
+
+  <p>
+    Mikäli sanoja ei ole lainkaan, metodin <code>sanat</code> tulee palauttaa tyhjä lista.
+  </p>
+  
+  <h2>Tekstimalli, osa 2</h2>
+
+  <p>
+    Muokkaa luokan <code>Tekstimalli</code> toimintaa siten, että tekstimallia rakennettaessa hyödynnetään aineiston peräkkäisiä sanoja. Esimerkiksi merkkijono "olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa" tuottaa seuraavanlaisen tekstimallin.
+  </p>
+
+  
+  <pre>
+olen -&gt; ratkaisukeskeinen: 1
+ratkaisukeskeinen -&gt; yhteistyökykyinen: 1
+yhteistyökykyinen -&gt; ja: 1
+ja -&gt; avoin: 1
+avoin -&gt; henkilö: 1
+henkilö -&gt; teen: 1
+teen -&gt; aina: 1
+aina -&gt; päätöksiin: 1
+päätöksiin -&gt; vaadittavan: 1
+vaadittavan -&gt; taustatyön: 1
+taustatyön -&gt; huolellisesti: 1
+huolellisesti -&gt; arvostan: 1
+arvostan -&gt; tasa: 1
+tasa -&gt; arvoa: 1
+arvoa -&gt; ja: 1
+ja -&gt; vastuullisuutta: 1
+vastuullisuutta -&gt; yhteisten: 1
+yhteisten -&gt; asioiden: 1
+asioiden -&gt; hoidossa: 1
+  </pre>
+
+  <p>
+    Tekstimalliin tulee pystyä lisäämään useita tekstiaineistoja. Alla on annettuna esimerkki ohjelman toiminnasta.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Tekstimalli malli = new Tekstimalli();
+    malli.lisaaAineisto("olen kyvykäs ottamaan asioista selvää");
+    malli.lisaaAineisto("olen aktiivinen ja urheilullinen");
+
+    System.out.println(malli.annaSana("ottamaan"));
+    System.out.println(malli.annaSana("aktiivinen"));
+    System.out.println(malli.annaSana("ja"));
+    System.out.println(malli.annaSana("olen"));
+    System.out.println(malli.annaSana("olen"));
+    System.out.println(malli.annaSana("olen"));
+    System.out.println(malli.annaSana("kumiankka"));
+    System.out.println(malli.annaSana("selvää"));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    asioista
+    ja
+    urheilullinen
+    aktiivinen
+    aktiivinen
+    kyvykäs
+    null
+    null
+  <% end %>
+
+  <p>
+    Huomaa, että tekstimallissa sanaa "olen" seuraa sekä sana "kyvykäs" että sana "aktiivinen". Yllä kummankin sanan todennäköisyys sanan "olen" seuraajana on 50%. Syötettävät aineistot tulee myös käsitellä erillisinä -- esimerkiksi yllä olevassa esimerkissä sanan "selvää" seuraaja ei ole sana "olen".
+  </p>
+  
+  
+  <h2>Puhegeneraattori</h2>
+  
+  <p>
+    Puhegeneraattorin tulee tekstimallia sopivasti hyödyntäen pitää tarjota mahdollisuus aineiston lukemiseen sekä puheen tuottamiseen. Tehtäväpohjassa on valmiina seuraavanlainen luokka <code>Puhegeneraattori</code>. 
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    package vaalit;
+
+    public class Puhegeneraattori {
+
+        public void lue(String tiedosto) {
+        }
+
+        public String tuotaPuhetta(int sanojaEnintaan) {
+            return null;
+        }
+    }
+  <% end %>
+  
+  <p>
+    Toteuta tässä metodit <code>public void lue(String tiedosto)</code>, joka saa parametrinaan luettavan tiedoston nimen ja luo tiedostossa olevasta datasta käytettävän tekstimallin, sekä <code>public String tuotaPuhetta(int sanojaEnintaan)</code>, joka tuottaa tekstimallista puhetta, jossa on korkeintaan annettu määrä sanoja.
+  </p>
+
+  <p>
+    Metodien tulee tarkemmin ottaen toimia seuraavasti:
+  </p>
+
+  <p>
+    Metodi <code>public void lue(String tiedosto)</code> lukee paramatetrina annetun tiedoston, joka on tehtävänannon alussa annettua muotoa. Jokaiselta riviltä tulee ottaa puolipisteillä eroteltu alue, missä ehdokas vastaa kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?" -- kun rivi pilkotaan puolipisteillä osiksi, kysymys löytyy indeksistä 1. Kukin rivi tulee lisätä tekstimalliin.
+  </p>
+
+  <p>
+    Metodi <code>public String tuotaPuhetta(int sanoja)</code> valitsee tekstimallin tarjoamasta sanalistasta satunnaisen sanan alkusanaksi. Tämän jälkeen tekstimalli tuottaa puhetta tekstimallia hyödyntäen -- alkusanalla saadaan seuraava sana, seuraavalla sanalla sitä seuraava ymym. Alla on esimerkki satunnaisen sanan valitsemiseksi listalta.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    List&lt;String&gt; lista = new ArrayList&lt;&gt;();
+    lista.add("eka");
+    lista.add("toka");
+    lista.add("kolmas");
+
+    Collections.shuffle(lista);
+
+    String satunnainen = lista.get(0);
+  <% end %>
+
+  <p>
+    Mikäli puhetta tuotettaessa päädytään sanaan, jolle ei löydy seuraajaa, puheen tuottaminen loppuu ja puhe palautetaan. Muulloin puhe palautetaan kun puheessa on metodille parametrina annettu määrä sanoja. Esimerkiksi, jos tekstimalli on rakennettu tekstistä "olipa kerran ihminen", ei tekstimallin perusteella luodussa puheessa tule sanan "ihminen" jälkeen enää sanoja. 
+  </p>
+  
+  <p>
+    Kun olet saanut Puhegeneraattorin luotua, seuraava ohjelma tuottaa satunnaista puhetta.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Puhegeneraattori generaattori = new Puhegeneraattori();
+    generaattori.lue("vaalidata.csv");
+    System.out.println(generaattori.tuotaPuhetta(10));
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    esiille mielipiteeni ja eri näkökulmat kiista tilanteissa kuntalaistemme hyvinvoinnin parantamiseksi
+  <% end %>  
   
 <% end %>
 
-
-
-<% partial 'partials/hint', locals: { name: 'Mikä ihmeen reduce?' } do %>
+<% partial 'partials/hint', locals: { name: 'Tekoälyä' } do %>
 
   <p>
-    Edellisessä esimerkissä käytettiin virtaan liittyvää reduce-metodia. Reduce-metodi on hyödyllinen kun virrassa olevat alkiot halutaan yhdistää jonkinlaiseen toiseen muotoon. Metodin saamat parametrit ovat seuraavaa muotoa: <code>reduce(<em>alkutila</em>, (<em>edellinen</em>, <em>olio</em>) -&gt; <em>mitä oliolla tehdään</em>)</code>.
+    Tehtävät, joissa opitaan historiasta ja sovelletaan opittua tulevaan, ovat oikeastaan esimerkkejä tekoälystä. Tekoälyalgoritmeja on toki useita muitakin. Näihinkin tutustutaan tietojenkäsittelytieteen perusopinnoissa.
   </p>
-
-  <p>
-    Esimerkiksi kokonaislukuja sisältävän listan summan saa luotua reduce-metodin avulla seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
-    luvut.add(7);
-    luvut.add(3);
-    luvut.add(2);
-    luvut.add(1);
-
-    int summa = luvut.stream()
-    .reduce(0, (edellinenSumma, luku) -&gt; edellinenSumma + luku);
-    System.out.println(summa);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    13
-  <% end %>
-
-  <p>
-    Vastaavasti merkkijonoista koostuvasta listasta saa luotua rivitetyn merkkijonon seuraavasti.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
-    sanat.add("Eka");
-    sanat.add("Toka");
-    sanat.add("Kolmas");
-    sanat.add("Neljäs");
-
-    String yhdistetty = sanat.stream()
-    .reduce("", (edellinenMjono, sana) -&gt; edellinenMjono + sana + "\n");
-    System.out.println(yhdistetty);
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Eka
-    Toka
-    Kolmas
-    Neljäs
-  <% end %>
 
 <% end %>
 
-
-<%= partial 'partials/quiz', locals: { id: '5a02d846fb43ca000414c15a' } %>
+<%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a040' } %>
