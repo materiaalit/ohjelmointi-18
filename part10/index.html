@@ -1,0 +1,3277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC, Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, kevät 2018 | Osa 10</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-4f205160.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../kertaus1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=kertaus1.html&gt;')">Kertaus 1-7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part8/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part8.html&gt;')">Osa 8</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part9/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part9.html&gt;')">Osa 9</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part10.html&gt;')">Osa 10</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Kymmenennen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Osaa luoda luokkia, jotka periytyvät toisesta luokasta. Ymmärtää perinnän hyödyt ja osaa toisaalta esittää tapauksia, joihin perintä ei sovi. Tietää miten abstraktit luokat toimivat. Tietää miten perintä merkitään luokkakaavioon. Osaa käsitellä tietokokoelmia arvojen virtana ja osaa käyttää lambda-lauseketta Javassa. 
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Luokan periminen
+
+</h1>
+
+
+<p>
+  Luokkia käytetään olio-ohjelmoinnissa ongelma-alueeseen liittyvien käsitteiden selkeyttämiseen. Jokainen luomamme luokka lisää ohjelmointikieleen toiminnallisuutta. Tätä toiminnallisuutta tarvitaan kohtaamiemme ongelmien ratkomiseen, <em>ratkaisut syntyvät luokista luotujen olioiden välisen interaktion avulla</em>. Olio-ohjelmoinnissa olio on itsenäinen kokonaisuus, jolla on olion tarjoamien metodien avulla muutettava tila. Olioita käytetään yhteistyössä; jokaisella oliolla on oma vastuualue. Esimerkiksi käyttöliittymäluokkamme ovat tähän mennessä hyödyntäneet <code>Scanner</code>-olioita.
+</p>
+
+<p>
+  Jokainen Javan luokka perii luokan Object, eli jokainen luomamme luokka saa käyttöönsä kaikki Object-luokassa määritellyt metodit. Jos haluamme muuttaa Object-luokassa määriteltyjen metodien toiminnallisuutta tulee ne korvata (<code>Override</code>) määrittelemällä niille uusi toteutus luodussa luokassa.
+</p>
+
+<p>
+  Luokan <code>Object</code> perimisen lisäksi myös muiden luokkien periminen on mahdollista. Javan <code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html" target="_blank" rel="noopener">ArrayList</a></code>-luokan APIa tarkasteltaessa huomaamme että <code>ArrayList</code> perii luokan <code>AbstractList</code>. Luokka <code>AbstractList</code> perii luokan <code>AbstractCollection</code>, joka perii luokan <code>Object</code>.
+</p>
+
+<pre>
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" target="_blank" rel="noopener">java.lang.Object</a>
+  <img src="../img/material/perinta-e36fbc5f.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/util/AbstractCollection.html" target="_blank" rel="noopener">java.util.AbstractCollection</a>&lt;E&gt;
+    <img src="../img/material/perinta-e36fbc5f.gif" /><a href="https://docs.oracle.com/javase/8/docs/api/java/AbstractList.html" target="_blank" rel="noopener">java.util.AbstractList</a>&lt;E&gt;
+      <img src="../img/material/perinta-e36fbc5f.gif" /><strong>java.util.ArrayList&lt;E&gt;</strong>
+</pre>
+
+<p>
+  Kukin luokka voi periä suoranaisesti yhden luokan. Välillisesti luokka kuitenkin perii kaikki perimänsä luokan ominaisuudet. Luokka <code>ArrayList</code> perii luokan <code>AbstractList</code>, ja välillisesti luokat <code>AbstractCollection</code> ja <code>Object</code>. Luokalla <code>ArrayList</code> on siis käytössään luokkien <code>AbstractList</code>, <code>AbstractCollection</code> ja <code>Object</code> muuttujat, metodit <em>ja</em> rajapinnat.
+</p>
+
+<p>
+  Luokan ominaisuudet peritään avainsanalla <code>extends</code>. Luokan perivää luokkaa kutsutaan aliluokaksi (<em>subclass</em>), perittävää luokkaa yliluokaksi (<em>superclass</em>).
+</p>
+
+<p>
+  Tutustutaan erään autonvalmistajan järjestelmään, joka hallinnoi auton osia. Osien hallinan peruskomponentti on luokka <code>Osa</code>, joka määrittelee tunnuksen, valmistajan ja kuvauksen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Osa {
+
+    private String tunnus;
+    private String valmistaja;
+    private String kuvaus;
+
+    public Osa(String tunnus, String valmistaja, String kuvaus) {
+        this.tunnus = tunnus;
+        this.valmistaja = valmistaja;
+        this.kuvaus = kuvaus;
+    }
+
+    public String getTunnus() {
+        return tunnus;
+    }
+
+    public String getKuvaus() {
+        return kuvaus;
+    }
+
+    public String getValmistaja() {
+        return valmistaja;
+    }
+}</code></pre>
+
+
+<p>
+  Yksi osa autoa on moottori. Kuten kaikilla osilla, myös moottorilla on valmistaja, tunnus ja kuvaus. Näiden lisäksi moottoriin liittyy moottorityyppi: esimerkiksi polttomoottori, sähkömoottori tai hybridi.
+</p>
+
+<p>
+  Perinteinen, ei perintää hyödyntävä tapa olisi toteuttaa luokka <code>Moottori</code> seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Moottori {
+
+    private String moottorityyppi;
+    private String tunnus;
+    private String valmistaja;
+    private String kuvaus;
+
+    public Moottori(String moottorityyppi, String tunnus, String valmistaja, String kuvaus) {
+        this.moottorityyppi = moottorityyppi;
+        this.tunnus = tunnus;
+        this.valmistaja = valmistaja;
+        this.kuvaus = kuvaus;
+    }
+  
+    public String getMoottorityyppi() {
+        return moottorityyppi;
+    }
+  
+    public String getTunnus() {
+        return tunnus;
+    }
+
+    public String getKuvaus() {
+        return kuvaus;
+    }
+
+    public String getValmistaja() {
+        return valmistaja;
+    }
+}
+</code></pre>
+
+<p>
+  Huomaamme luokassa <code>Moottori</code> merkittävän määrän yhtäläisyyksiä luokan <code>Osa</code> kanssa. Voidaankin sanoa, että <code>Moottori</code> on luokan <code>Osa</code> erikoistapaus. Moottori <em>on</em> Osa, mutta sillä on myös joitakin omia ominaisuuksia eli tässä moottorin tyyppi.
+</p>
+
+<p>
+  Tehdään sama luokka <code>Moottori</code>, ja toteutetaan luokka perintää hyödyntämällä. Luodaan luokan <code>Osa</code> perivä luokka <code>Moottori</code>: moottori on osan erikoistapaus.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Moottori extends Osa {
+
+    private String moottorityyppi;
+
+    public Moottori(String moottorityyppi, String tunnus, String valmistaja, String kuvaus) {
+        super(tunnus, valmistaja, kuvaus);
+        this.moottorityyppi = moottorityyppi;
+    }
+
+    public String getMoottorityyppi() {
+        return moottorityyppi;
+    }
+}</code></pre>
+
+
+<p>
+  Luokkamäärittely <code>public class Moottori extends Osa</code> kertoo että luokka <code>Moottori</code> perii luokan <code>Osa</code> toiminnallisuuden. Luokassa <code>Moottori</code> määritellään oliomuuttuja <code>moottorityyppi</code>.
+</p>
+
+<p>
+  Moottori-luokan konstruktori on mielenkiintoinen. Konstruktorin ensimmäisellä rivillä on avainsana <code>super</code>, jolla kutsutaan yliluokan konstruktoria. Kutsu <code>super(tunnus, valmistaja, kuvaus)</code> kutsuu luokassa <code>Osa</code> määriteltyä konstruktoria <code>public Osa(String tunnus, String valmistaja, String kuvaus</code>, jolloin yliluokassa määritellyt oliomuuttujat saavat arvonsa. Tämän jälkeen oliomuuttujalle <code>moottorityyppi</code> asetetaan siihen liittyvä arvo.
+</p>
+
+<p>
+  <em>
+    Mikäli konstruktorissa käytetään yliluokan konstruktoria, eli konstruktorissa on <code>super</code>-kutsu, tulee <code>super</code>-kutsun olla konstruktorin ensimmäisellä rivillä.
+  </em>
+</p>
+
+<p>
+  Kun luokka <code>Moottori</code> perii luokan <code>Osa</code>, saa se käyttöönsä kaikki luokan <code>Osa</code> tarjoamat metodit. Luokasta <code>Moottori</code> voi tehdä ilmentymän aivan kuten mistä tahansa muustakin luokasta.
+</p>
+
+<pre class="sh_java code-highlight"><code>Moottori moottori = new Moottori("polttomoottori", "hz", "volkswagen", "VW GOLF 1L 86-91");
+System.out.println(moottori.getMoottorityyppi());
+System.out.println(moottori.getValmistaja());
+</code></pre>
+
+<pre class="sample-output">polttomoottori
+volkswagen
+</pre>
+
+<p>
+  Kuten huomaat, luokalla <code>Moottori</code> on käytössä luokassa <code>Osa</code> määritellyt metodit.
+</p>
+
+
+<h2 class="material-heading">
+    Näkyvyysmääreet private, protected ja public
+
+</h2>
+
+<p>
+  Jos metodilla tai muuttujalla on näkyvyysmääre <code>private</code>, ei se näy aliluokille eikä aliluokalla ole mitään suoraa tapaa päästä käsiksi siihen. Moottori-luokasta ei siis pääse suoraan käsiksi yliluokassa Osa määriteltyihin muuttujiin tunnus, valmistaja, kuvaus. Tällä tarkoitetaan sitä, että Moottori-luokassa ohjelmoija ei voi suoraan käsitellä niitä yliluokan muuttujia, joilla on näkyvyysmääre private.
+</p>
+
+<p>
+  Aliluokka näkee kaiken yliluokan julkisen eli <code>public</code>-määreellä varustetun kaluston. Jos halutaan määritellä yliluokkaan joitain muuttujia tai metodeja joiden näkeminen halutaan sallia aliluokille, mutta estää muilta voidaan käyttää näkyvyysmäärettä <code>protected</code>.
+</p>
+
+
+<h2 class="material-heading">
+    Yliluokan konstruktorin ja metodien kutsuminen
+
+</h2>
+
+<p>
+  Yliluokan konstruktoria kutsutaan avainsanalla <code>super</code>. Kutsulle annetaan parametrina yliluokan konstruktorin vaatiman tyyppiset arvot.
+</p>
+
+<p>
+  Konstruktoria kutsuttaessa yliluokassa määritellyt muuttujat alustetaan. Konstruktorikutsussa tapahtuu käytännössä täysin samat asiat kuin normaalissa konstruktorikutsussa. Jos yliluokassa ei ole määritelty parametritonta konstruktoria, tulee aliluokan konstruktorikutsuissa olla aina mukana yliluokan konstruktorikutsu.
+</p>
+
+<p>
+  Huom! Kutsun <code>super</code> tulee olla aina konstruktorin ensimmäisellä rivillä!
+</p>
+
+
+<h2 class="material-heading">
+    Yliluokan metodin kutsuminen
+
+</h2>
+
+<p>
+  Yliluokassa määriteltyjä metodeja voi kutsua <code>super</code>-etuliitteen avulla, aivan kuten tässä luokassa määriteltyjä metodeja voi kutsua <code>this</code>-etuliitteellä. Esimerkiksi yliluokassa määriteltyä <code>toString</code>-metodia voi hyödyntää sen korvaavassa metodissa seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public String toString() {
+    return super.toString() + "\n  Ja oma viestini vielä!";
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Henkilö ja perilliset (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+
+  <h2>Henkilo</h2>
+
+  <p>
+    Tee pakkaus <code>henkilot</code> ja sinne luokka <code>Henkilo</code>. Luokan tulee toimia seuraavan esimerkin mukaisesti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Henkilo ada = new Henkilo("Ada Lovelace", "Korsontie 1 03100 Vantaa");
+Henkilo esko = new Henkilo("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki");
+System.out.println(ada);
+System.out.println(esko);
+</code></pre>
+
+<pre class="sample-output">Ada Lovelace
+  Korsontie 1 03100 Vantaa
+Esko Ukkonen
+  Mannerheimintie 15 00100 Helsinki
+</pre>
+
+
+  <h2>Opiskelija</h2>
+
+  <p>
+    Tee pakkaukseen <code>henkilot</code> luokka <code>Opiskelija</code> joka perii luokan <code>Henkilo</code>.
+  </p>
+
+  <p>
+    Opiskelijalla on aluksi 0 opintopistettä. Aina kun opiskelija opiskelee, opintopistemäärä kasvaa. Luokan tulee toimia seuraavan esimerkin mukaisesti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+System.out.println(olli);
+System.out.println("opintopisteitä " + olli.opintopisteita());
+olli.opiskele();
+System.out.println("opintopisteitä "+ olli.opintopisteita());
+</code></pre>
+
+<pre class="sample-output">Olli
+  Ida Albergintie 1 00400 Helsinki
+opintopisteitä 0
+opintopisteitä 1
+</pre>
+
+
+  <h2>Opiskelijalle toString</h2>
+
+  <p>
+    Edellisessä tehtävässä <code>Opiskelija</code> perii toString-metodin luokalta <code>Henkilo</code>. Perityn metodin voi myös ylikirjoittaa, eli korvata omalla versiolla. Tee luokalle Opiskelija oma versio toString-metodista. Metodin tulee toimia seuraavan esimerkin mukaisesti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+System.out.println(olli);
+olli.opiskele();
+System.out.println(olli);
+</code></pre>
+
+<pre class="sample-output">Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 0
+Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 1
+</pre>
+
+
+  <h2>Opettaja</h2>
+
+  <p>
+    Tee luokan Henkilo perivä luokka Opettaja. Opettajalla on palkka joka tulostuu opettajan merkkijonoesityksessä.
+  </p>
+
+  <p>Luokan tulee toimia seuraavan esimerkin mukaisesti.</p>
+
+<pre class="sh_java code-highlight"><code>Opettaja ada = new Opettaja("Ada Lovelace", "Korsontie 1 03100 Vantaa", 1200);
+Opettaja esko = new Opettaja("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki", 5400);
+System.out.println(ada);
+System.out.println(esko);
+
+Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+for (int i = 0; i &lt; 25; i++) {
+    olli.opiskele();
+}
+System.out.println(olli);
+</code></pre>
+
+<pre class="sample-output">Ada Lovelace
+  Korsontie 1 03100 Vantaa
+  palkka 1200 euroa/kk
+Esko Ukkonen
+  Mannerheimintie 15 00100 Helsinki
+  palkka 5400 euroa/kk
+Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 25
+</pre>
+
+
+  <h2>Kaikki Henkilot listalle</h2>
+
+  <p>
+    Toteuta luokkaan <code>HenkiloTulostus</code> metodi <code>public void tulostaLaitoksenHenkilot(List&lt;Henkilo&gt; henkilot)</code>, joka tulostaa kaikki metodille parametrina annetussa listassa olevat henkilöt. Metodin tulee toimia seuraavasti <code>main</code>-metodista kutsuttaessa.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    List&lt;Henkilo&gt; henkilot = new ArrayList&lt;Henkilo&gt;();
+    henkilot.add(new Opettaja("Ada Lovelace", "Korsontie 1 03100 Vantaa", 1200));
+    henkilot.add(new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki"));
+
+    new HenkiloTulostus().tulostaLaitoksenHenkilot(henkilot);
+}</code></pre>
+
+
+<pre class="sample-output">Ada Lovelace
+  Korsontie 1 03100 Vantaa
+  palkka 1200 euroa/kk
+Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 0
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Todellinen tyyppi määrää suoritettavan metodin
+
+</h2>
+
+<p>
+  Olion kutsuttavissa olevat metodit määrittyvät muuttujan tyypin kautta. Esimerkiksi jos edellä toteutetun <code>Opiskelija</code>-tyyppisen olion viite on talletettu <code>Henkilo</code>-tyyppiseen muuttujaan, on oliosta käytössä vain <code>Henkilo</code>-luokassa määritellyt metodit (sekä Henkilo-luokan yliluokan ja rajapintojen metodit):
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+olli.opintopisteita();        // EI TOIMI!
+olli.opiskele();              // EI TOIMI!
+String.out.println(olli);   // olli.toString() TOIMII
+</code></pre>
+
+<p>
+  Oliolla on siis käytössä jokainen sen tyyppiin sekä sen yliluokkiin ja rajapintoihin liittyvä metodi. Esimerkiksi Opiskelija-tyyppisellä oliolla on käytössä Henkilo-luokassa määritellyt metodit sekä Object-luokassa määritellyt metodit.
+</p>
+
+<p>
+  Edellisessä tehtävässä korvasimme Opiskelijan luokalta Henkilö perimän <code>toString</code> uudella versiolla. Myös luokka Henkilö oli jo korvannut Object-luokalta perimänsä toStringin. Jos käsittelemme olioa jonkun muun kuin sen todellisen tyypin kautta, mitä versiota olion metodista kutsutaan?
+</p>
+
+<p>
+  Seuraavassa esimerkissä kahta opiskelijaa käsitellään erityyppisten muuttujien kautta. Mikä versio metodista toString suoritetaan, luokassa Object, Henkilo vai Opiskelija määritelty?
+</p>
+
+<pre class="sh_java code-highlight"><code>Opiskelija olli = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki");
+String.out.println(olli);
+Henkilo olliHenkilo = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki")
+System.out.println(olliHenkilo);
+Object olliObject = new Opiskelija("Olli", "Ida Albergintie 1 00400 Helsinki")
+System.out.println(olliObject);
+
+Object liisa = new Opiskelija("Liisa", "Väinö Auerin katu 20 00500 Helsinki");
+String.out.println(liisa);
+</code></pre>
+
+<pre class="sample-output">Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 0
+Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 0
+Olli
+  Ida Albergintie 1 00400 Helsinki
+  opintopisteitä 0
+Liisa
+  Väinö Auerin katu 20 00500 Helsinki
+  opintopisteitä 0
+</pre>
+
+
+<p>
+  Suoritettava metodi valitaan olion todellisen tyypin perusteella, eli sen luokan perusteella, jonka konstruktoria kutsutaan kun olio luodaan. Jos kutsuttua metodia ei ole määritelty luokassa, suoritetaan perintähierarkiassa olion todellista tyyppiä lähinnä oleva metodin toteutus.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Polymorfismi
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Suoritettava metodi valitaan aina olion todellisen tyypin perusteella riippumatta käytetyn muuttujan tyypistä. Oliot ovat monimuotoisia, eli olioita voi käyttää usean eri muuttujatyypin kautta. Suoritettava metodi liittyy aina olion todelliseen tyyppiin. Tätä monimuotoisuutta kutsutaan polymorfismiksi.
+  </p>
+
+
+  </div>
+</div>
+
+<p>
+  Tarkastellaan Polymorfismia toisen esimerkin avulla.
+</p>
+
+<p>
+  Kaksiulotteisessa koordinaatiostossa sijaitsevaa pistettä voisi kuvata seuraavan luokan avulla:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Piste {
+
+    private int x;
+    private int y;
+
+    public Piste(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int manhattanEtaisyysOrigosta() {
+        return Math.abs(x) + Math.abs(y);
+    }
+
+    protected String sijainti(){
+        return x + ", " + y;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + this.sijainti() + ") etäisyys " + this.manhattanEtaisyysOrigosta();
+    }
+}</code></pre>
+
+
+<p>
+  Metodi <code>sijainti</code> ei ole tarkoitettu ulkoiseen käyttöön, joten se on näkyvyysmääreeltään protected, eli aliluokat pääsevät siihen käsiksi. Esimerkiksi reitinhakualgoritmien hyödyntämällä <a href="http://en.wiktionary.org/wiki/Manhattan_distance">Manhattan-etäisyydellä</a> tarkoitetaan pisteiden etäisyyttä, jos niiden välin voi kulkea ainoastaan koordinaattiakselien suuntaisesti.
+</p>
+
+<p>
+  Värillinen piste on muuten samanlainen kuin piste, mutta se sisältää merkkijonona ilmaistavan värin. Luokka voidaan siis tehdä perimällä Piste.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class VariPiste extends Piste {
+
+    private String vari;
+
+    public VariPiste(int x, int y, String vari) {
+        super(x, y);
+        this.vari = vari;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " väri: " + vari;
+    }
+}
+</code></pre>
+
+<p>
+  Luokka määrittelee oliomuuttujan värin talletusta varten. Koordinaatit on valmiiksi määriteltynä yliluokassa. Merkkijonoesityksestä halutaan muuten samanlainen kuin pisteellä, mutta väri tulee myös ilmaista. Ylikirjoitettu metodi <code>toString</code> kutsuu yliluokan toString-metodia ja lisää sen tulokseen pisteen värin.
+</p>
+
+<p>
+  Seuraavassa on esimerkki, jossa listalle laitetaan muutama piste. Osa pisteistä on "normaaleja" ja osa väripisteitä. Lopulta tulostetaan listalla olevat pisteet. Jokaisen pisteen metodi toString suoritetaan pisteen todellisen tyypin perusteella, vaikka lista tuntee kaikki pisteet <code>Piste</code>-tyyppisinä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        List&lt;Piste&gt; pisteet = new ArrayList&lt;&gt;();
+        pisteet.add(new Piste(4, 8));
+        pisteet.add(new VariPiste(1, 1, "vihreä"));
+        pisteet.add(new VariPiste(2, 5, "sininen"));
+        pisteet.add(new Piste(0, 0));
+
+        pisteet.stream().forEach(p -&gt; System.out.println(p));
+    }
+}
+</code></pre>
+
+<pre class="sample-output">(4, 8) etäisyys 12
+(1, 1) etäisyys 2 väri: vihreä
+(2, 5) etäisyys 7 väri: sininen
+(0, 0) etäisyys 0
+</pre>
+
+<p>
+  Haluamme ohjelmaamme myös kolmiulotteisen pisteen. Koska kyseessä ei ole värillinen versio, periytetään se luokasta piste.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Piste3D extends Piste {
+
+    private int z;
+
+    public Piste3D(int x, int y, int z) {
+        super(x, y);
+        this.z = z;
+    }
+
+    @Override
+    protected String sijainti() {
+        return super.sijainti() + ", " + z;    // tulos merkkijono muotoa "x, y, z"
+    }
+
+    @Override
+    public int manhattanEtaisyysOrigosta() {
+        // kysytään ensin yliluokalta x:n ja y:n perusteella laskettua etäisyyttä
+        // ja lisätään tulokseen z-koordinaatin vaikutus
+        return super.manhattanEtaisyysOrigosta() + Math.abs(z);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + this.sijainti() + ") etäisyys " + this.manhattanEtaisyysOrigosta();
+    }
+}
+</code></pre>
+
+<p>
+  Kolmiulotteinen piste siis määrittelee kolmatta koordinaattia vastaavan oliomuuttujan ja ylikirjoittaa metodit <code>sijainti</code>, <code>manhattanEtaisyysOrigosta</code> ja <code>toString</code> siten, että ne huomioivat kolmannen ulottuvuuden. Voimme nyt laajentaa edellistä esimerkkiä ja lisätä listalle myös kolmiulotteisia pisteitä.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+
+    public static void main(String[] args) {
+        List&lt;Piste&gt; pisteet = new ArrayList&lt;&gt;();
+        pisteet.add(new Piste(4, 8));
+        pisteet.add(new VariPiste(1, 1, "vihreä"));
+        pisteet.add(new VariPiste(2, 5, "sininen"));
+        pisteet.add(new Piste3D(5, 2, 8));
+        pisteet.add(new Piste(0, 0));
+
+        pisteet.stream().forEach(p -&gt; System.out.println(p));
+    }
+  }
+</code></pre>
+
+<pre class="sample-output">(4, 8) etäisyys 12
+(1, 1) etäisyys 2 väri: vihreä
+(2, 5) etäisyys 7 väri: sininen
+(5, 2, 8) etäisyys 15
+(0, 0) etäisyys 0
+</pre>
+
+<p>
+  Huomamme, että kolmiulotteisen pisteen metodi <code>toString</code> on täsmälleen sama kuin pisteen toString. Voisimmeko jättää toStringin ylikirjoittamatta? Vastaus on kyllä! Kolmiulotteinen piste pelkistyy seuraavanlaiseksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Piste3D extends Piste {
+
+    private int z;
+
+    public Piste3D(int x, int y, int z) {
+        super(x, y);
+        this.z = z;
+    }
+
+    @Override
+    protected String sijainti() {
+        return super.sijainti() + ", " + z;
+    }
+
+    @Override
+    public int manhattanEtaisyysOrigosta() {
+        return super.manhattanEtaisyysOrigosta() + Math.abs(z);
+    }
+}</code></pre>
+
+
+<p>
+  Mitä tarkalleenottaen tapahtuu kuin kolmiulotteiselle pisteelle kutsutaan toString-metodia? Suoritus etenee seuraavasti.
+</p>
+
+<ol>
+  <li>etsitään toString:in määrittelyä luokasta Piste3D, sitä ei löydy joten mennään yliluokkaan</li>
+  <li>etsitään toString:in määrittelyä yliluokasta Piste, metodi löytyy, joten suoritetaan sen koodi</li>
+  <ul>
+    <li>suoritettava koodi siis on <code>return "("+this.sijainti()+") etäisyys "+this.manhattanEtaisyysOrigosta();</code></li>
+    <li>esimmäisenä suoritetaan metodi sijainti</li>
+    <li>etsitään metodin sijainti määrittelyä luokasta Piste3D, metodi löytyy ja suoritetaan sen koodi</li>
+    <li>metodin sijainti laskee oman tuloksensa kutsumalla yliluokassa olevaa metodia sijainti</li>
+    <li>seuraavaksi etsitään metodin manhattanEtaisyysOrigosta määrittelyä luokasta Piste3D, metodi löytyy ja suoritetaan sen koodi</li>
+    <li>jälleen metodi laskee tuloksensa kutsuen ensin yliluokassa olevaa samannimistä metodia</li>
+  </ul>
+</ol>
+
+<p>
+  Metodikutsun aikaansaama toimintoketju siis on monivaiheinen. Periaate on kuitenkin selkeä: suoritettavan metodin määrittelyä etsitään ensin olion todellisen tyypin määrittelystä ja jos sitä ei löydy edetään yliluokkaan. Ja jos yliluokastakaan ei löydy metodin toteutusta siirrytään etsimään yliluokan yliluokasta jne...
+</p>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a33a"></div>
+
+
+<div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a33b"></div>
+
+
+
+
+
+<h2 class="material-heading">
+    Milloin perintää kannattaa käyttää?
+
+</h2>
+
+<p>
+  Perintä on väline käsitehierarkioiden rakentamiseen ja erikoistamiseen; aliluokka on aina yliluokan erikoistapaus. Jos luotava luokka on olemassaolevan luokan erikoistapaus, voidaan uusi luokka luoda perimällä olemassaoleva luokka. Esimerkiksi auton osiin liittyvässä esimerkissä moottori <em>on</em> osa, mutta moottoriin liittyy lisätoiminnallisuutta mitä jokaisella osalla ei ole.
+</p>
+
+<p>
+  Perittäessä aliluokka saa käyttöönsä yliluokan toiminnallisuudet. Jos aliluokka ei tarvitse tai käytä perittyä toiminnallisuutta, ei perintä ole perusteltua. Perityt luokat perivät yliluokkiensa metodit ja rajapinnat, eli aliluokkia voidaan käyttää missä tahansa missä yliluokkaa on käytetty. Perintähierarkia kannattaa pitää matalana, sillä hierarkian ylläpito ja jatkokehitys vaikeutuu perintöhierarkian kasvaessa. Yleisesti ottaen, jos perintähierarkian korkeus on yli 2 tai 3, ohjelman rakenteessa on todennäköisesti parannettavaa.
+</p>
+
+<p>
+  Perinnän käyttöä tulee miettiä. Esimerkiksi luokan <code>Auto</code> periminen luokasta <code>Osa</code> (tai <code>Moottori</code>) on väärin. Auto <em>sisältää</em> moottorin ja osia, mutta auto ei ole moottori tai osa. Voimme yleisemmin ajatella että <em>jos olio omistaa tai koostuu toisista olioista, ei perintää tule käyttää</em>.
+</p>
+
+<p>
+  Perintää käytettäessä tulee varmistaa että <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank" norel>Single Responsibility Principle</a> pätee myös perittäessä. Jokaisella luokalla tulee olla vain yksi syy muuttua. Jos huomaat että perintä lisää luokan vastuita, tulee luokka pilkkoa useammaksi luokaksi.
+</p>
+
+
+<h3 class="material-heading">
+    Esimerkki perinnän väärinkäytöstä
+
+</h3>
+
+<p>
+  Pohditaan postituspalveluun liittyviä luokkia <code>Asiakas</code>, joka sisältää asiakkaan tiedot, ja <code>Tilaus</code>, joka perii asiakkaan tiedot ja sisältää tilattavan tavaran tiedot. Luokassa <code>Tilaus</code> on myös metodi <code>postitusOsoite</code>, joka kertoo tilauksen postitusosoitteen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Asiakas {
+
+    private String nimi;
+    private String osoite;
+
+    public Asiakas(String nimi, String osoite) {
+        this.nimi = nimi;
+        this.osoite = osoite;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public String getOsoite() {
+        return osoite;
+    }
+
+    public void setOsoite(String osoite) {
+        this.osoite = osoite;
+    }
+}</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>public class Tilaus extends Asiakas {
+
+    private String tuote;
+    private String lukumaara;
+
+    public Tilaus(String tuote, String lukumaara, String nimi, String osoite) {
+        super(nimi, osoite);
+        this.tuote = tuote;
+        this.lukumaara = lukumaara;
+    }
+
+    public String getTuote() {
+        return tuote;
+    }
+
+    public String getLukumaara() {
+        return lukumaara;
+    }
+
+    public String postitusOsoite() {
+        return this.getNimi() + "\n" + this.getOsoite();
+    }
+}</code></pre>
+
+
+<p>
+  Yllä perintää on käytetty väärin. Luokkaa perittäessä aliluokan tulee olla yliluokan erikoistapaus; tilaus ei ole asiakkaan erikoistapaus. Väärinkäyttö ilmenee single responsibility principlen rikkomisena: luokalla <code>Tilaus</code> on vastuu sekä asiakkaan tietojen ylläpidosta, että tilauksen tietojen ylläpidosta.
+</p>
+
+<p>
+  Ratkaisussa piilevä ongelma tulee esiin kun mietimme mitä käy asiakkaan osoitteen muuttuessa.
+</p>
+
+<p>
+  Osoitteen muuttuessa joutuisimme muuttamaan <em>jokaista</em> kyseiseen asiakkaaseen liittyvää tilausoliota, mikä ei missään nimessä ole toivottua. Parempi ratkaisu olisi kapseloida <code>Asiakas</code> <code>Tilaus</code>-luokan oliomuuttujaksi. Jos ajattelemme tarkemmin tilauksen semantiikkaa, tämä on selvää. <em>Tilauksella on asiakas</em>.
+</p>
+
+<p>
+  Muutetaan luokkaa <code>Tilaus</code> siten, että se sisältää <code>Asiakas</code>-viitteen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tilaus {
+
+    private Asiakas asiakas;
+    private String tuote;
+    private String lukumaara;
+
+    public Tilaus(Asiakas asiakas, String tuote, String lukumaara) {
+        this.asiakas = asiakas;
+        this.tuote = tuote;
+        this.lukumaara = lukumaara;
+    }
+
+    public String getTuote() {
+        return tuote;
+    }
+
+    public String getLukumaara() {
+        return lukumaara;
+    }
+
+    public String postitusOsoite() {
+        return this.asiakas.getNimi() + "\n" + this.asiakas.getOsoite();
+    }
+}
+</code></pre>
+
+<p>
+  Yllä oleva luokka <code>Tilaus</code> on nyt parempi. Metodi <code>postitusosoite</code> käyttää <em>asiakas</em>-viitettä postitusosoitteen saamiseen sen sijaan että luokka perisi luokan <code>Asiakas</code>. Tämä helpottaa sekä ohjelman ylläpitoa, että sen konkreettista toiminnallisuutta.
+</p>
+
+<p>
+  Nyt asiakkaan muuttaessa tarvitsee muuttaa vain asiakkaan tietoja, tilauksiin ei tarvitse tehdä muutoksia.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Varastointia (9 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee mukana luokka <code>Varasto</code>, jonka tarjoamat konstruktorit ja metodit ovat seuraavat:
+  </p>
+
+  <ul>
+    <li><b>public Varasto(double tilavuus)</b><br/> Luo tyhjän varaston, jonka vetoisuus eli tilavuus annetaan parametrina; sopimaton tilavuus (&lt;=0) luo käyttökelvottoman varaston, jonka tilavuus on 0.</li>
+
+    <li><b>public double getSaldo()</b><br/> Palauttaa arvonaan varaston saldon, eli varastossa olevan tavaran tilavuuden.</li>
+
+    <li><b>public double getTilavuus()</b><br/> Palauttaa arvonaan varaston kokonaistilavuuden (eli sen, joka annettiin konstruktorille).</li>
+
+    <li><b>public double paljonkoMahtuu()</b><br/> Palauttaa arvonaan tiedon, paljonko varastoon vielä mahtuu.</li>
+
+    <li><b>public void lisaaVarastoon(double maara)</b><br/> Lisää varastoon pyydetyn määrän; jos määrä on negatiivinen, mikään ei muutu, jos kaikki pyydetty ei enää mahdu, varasto laitetaan täydeksi ja loput määrästä "heitetään menemään", "vuotaa yli".</li>
+
+    <li><b>public double otaVarastosta(double maara)</b><br/> Otetaan varastosta pyydetty määrä, metodi palauttaa paljonko <b>saadaan</b>. Jos pyydetty määrä on negatiivinen, mikään ei muutu ja palautetaan nolla. Jos pyydetään enemmän kuin varastossa on, annetaan mitä voidaan ja varasto tyhjenee.</li>
+
+    <li><b>public String toString()</b><br/> Palauttaa olion tilan merkkijonoesityksenä tyyliin <tt>saldo = 64.5, tilaa 123.5</tt></li></ul>
+
+  <p>
+    Tehtävässä rakennetaan <code>Varasto</code>-luokasta useampia erilaisia varastoja. Huom! Toteuta kaikki luokat pakkaukseen <code>varastot</code>.
+  </p>
+
+  <h2>Tuotevarasto, vaihe 1</h2>
+
+  <p>
+    Luokka <code>Varasto</code> hallitsee tuotteen määrään liittyvät toiminnot. Nyt tuotteelle halutaan lisäksi tuotenimi ja nimen käsittelyvälineet. <i>  <b>Ohjelmoidaan Tuotevarasto Varaston aliluokaksi!</b></i> Toteutetaan ensin pelkkä yksityinen oliomuuttuja tuotenimelle, konstruktori ja getteri nimikentälle:
+  </p>
+
+  <ul>
+    <li><b>public Tuotevarasto(String tuotenimi, double tilavuus)</b><br/> Luo tyhjän tuotevaraston. Tuotenimi ja vetoisuus annetaan parametrina.</li>
+
+    <li><b>public String getNimi()</b><br/> Palauttaa arvonaan tuotteen nimen.</li>
+  </ul>
+
+  <p>
+    <em>Muista millä tavoin konstruktori voi ensi toimenaan suorittaa yliluokan konstruktorin!</em>
+  </p>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
+mehu.lisaaVarastoon(1000.0);
+mehu.otaVarastosta(11.3);
+System.out.println(mehu.getNimi()); // Juice
+System.out.println(mehu);           // saldo = 988.7, tilaa 11.3
+</code></pre>
+
+<pre class="sample-output">Juice
+saldo = 988.7, vielä tilaa 11.3
+</pre>
+
+
+  <h2>Tuotevarasto, vaihe 2</h2>
+
+  <p>
+    Kuten edellisestä esimerkistä näkee, Tuotevarasto-olion perimä <code>toString()</code> ei tiedä (tietenkään!) mitään tuotteen nimestä. <em>Asialle on tehtävä jotain!</em> Lisätään samalla myös setteri tuotenimelle:
+  </p>
+
+  <ul>
+    <li><b>public void setNimi(String uusiNimi)</b> asettaa tuotteelle uuden nimen.</li>
+
+    <li><b>public String toString()</b> palauttaa olion tilan merkkijonoesityksenä tyyliin <tt>Juice: saldo = 64.5, tilaa 123.5</tt></li>
+  </ul>
+
+  <p>
+    Uuden <code>toString()</code>-metodin voisi toki ohjelmoida käyttäen yliluokalta perittyjä gettereitä, joilla perittyjen, mutta piilossa pidettyjen kenttien arvoja saa käyttöönsä. Koska yliluokkaan on kuitenkin jo ohjelmoitu tarvittava taito varastotilanteen merkkiesityksen tuottamiseen, miksi nähdä vaivaa sen uudelleen ohjelmointiin. Käytä siis hyväksesi perittyä <code>toString</code>iä.
+  </p>
+
+  <p>
+    <em>Muista miten korvattua metodia voi kutsua aliluokassa!</em>
+  </p>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Tuotevarasto mehu = new Tuotevarasto("Juice", 1000.0);
+mehu.lisaaVarastoon(1000.0);
+mehu.otaVarastosta(11.3);
+System.out.println(mehu.getNimi()); // Juice
+mehu.lisaaVarastoon(1.0);
+System.out.println(mehu);           // Juice: saldo = 989.7, tilaa 10.299999999999955
+</code></pre>
+
+<pre class="sample-output">Juice
+Juice: saldo = 989.7, tilaa 10.299999999999955
+</pre>
+
+
+  <h2>Muutoshistoria</h2>
+
+  <p>
+    Toisinaan saattaa olla kiinnostavaa tietää, millä tavoin jonkin tuotteen varastotilanne muuttuu: onko varasto usein hyvin vajaa, ollaanko usein ylärajalla, onko vaihelu suurta vai pientä, jne. Varustetaan siksi <code>Tuotevarasto</code>-luokka taidolla muistaa tuotteen määrän muutoshistoriaa.
+  </p>
+
+  <p>
+    Aloitetaan apuvälineen laadinnalla.
+  </p>
+
+  <p>
+    Muutoshistorian muistamisen voisi toki toteuttaa suoraankin <code>ArrayList&lt;Double&gt;</code>-oliona luokassa <i>Tuotevarasto</i>, mutta nyt laaditaan kuitenkin oma <i>erikoistettu väline</i> tähän tarkoitukseen. Väline toteutetaan kapseloimalla <code>ArrayList&lt;Double&gt;</code>-olio.
+  </p>
+
+  <p>
+    <code>Muutoshistoria</code>-luokan julkiset konstruktorit ja metodit:
+  </p>
+
+  <ul>
+    <li><b>public Muutoshistoria()</b> luo tyhjän <code>Muutoshistoria</code>-olion.</li>
+
+    <li><b>public void lisaa(double tilanne)</b> lisää muutoshistorian viimeisimmäksi muistettavaksi määräksi parametrina annetun tilanteen. </li>
+
+    <li><b>public void nollaa()</b> tyhjää muistin.</li>
+
+    <li><b>public String toString()</b> palauttaa muutoshistorian merkkijonoesityksen. <i>ArrayList-luokan antama merkkijonoesitys kelpaa sellaisenaan.</i> </li>
+
+  </ul>
+
+
+  <h2>Muutoshistoria, vaihe 2</h2>
+
+  <p>Täydennä <code>Muutoshistoria</code>-luokkaa analyysimetodein:</p>
+
+  <ul>
+
+    <li><b>public double maxArvo()</b> palauttaa muutoshistorian suurimman arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
+
+    <li><b>public double minArvo()</b> palauttaa muutoshistorian pienimmän arvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
+
+    <li><b>public double keskiarvo()</b> palauttaa muutoshistorian arvojen keskiarvon. Jos historia on tyhjä, metodi palauttaa nollan.</li>
+
+  </ul>
+
+  <h2>Muutoshistoria, vaihe 3</h2>
+
+  <p>
+    Täydennä <code>Muutoshistoria</code>-luokkaa analyysimetodein:
+  </p>
+
+  <ul>
+    <li><b>public double suurinMuutos()</b> palauttaa muutoshistorian isoimman (huom: -5:n kokoinen muutos on isompi kuin 4:n kokoinen muutos) yksittäisen muutoksen itseisarvon. Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan. Itseisarvo on luvun etäisyys nollasta. Esimerkiksi luvun -5.5 itseisarvo on 5.5, luvun 3.2 itseisarvo on 3.2. </li>
+
+    <li><b>public double varianssi()</b> palauttaa muutoshistorian arvojen varianssin (käytetään otosvarianssin kaavaa). Jos historia on tyhjä tai yhden arvon mittainen, metodi palauttaa nollan.</li>
+  </ul>
+
+  <p>
+    Ohjeen varianssin laskemiseksi voit katsoa esimerkiksi <a href="http://fi.wikipedia.org/wiki/Varianssi#Populaatio-_ja_otosvarianssi">Wikipediasta</a> kohdasta populaatio- ja otosvarianssi. Esimerkiksi lukujen 3, 2, 7, 2 keskiarvo on 3.5, joten otosvarianssi on ((3 - 3.5)² + (2 - 3.5)² + (7 - 3.5)² + (2 - 3.5)²)/(4 - 1) ≈ 5,666667.)
+  </p>
+
+
+  <h2>Muistava tuotevarasto, vaihe 1</h2>
+
+  <p>
+    Toteuta luokan <code>Tuotevarasto</code> aliluokkana <code>MuistavaTuotevarasto</code>. Uusi versio tarjoaa vanhojen lisäksi varastotilanteen muutoshistoriaan liittyviä palveluita. Historiaa hallitaan <code>Muutoshistoria</code>-oliolla.
+  </p>
+
+  <p>
+    Julkiset konstruktorit ja metodit:
+  </p>
+
+  <ul>
+    <li><b>public MuistavaTuotevarasto(String tuotenimi, double tilavuus, double alkuSaldo)</b>	luo tuotevaraston. Tuotenimi, vetoisuus ja alkusaldo annetaan parametrina. <i>Aseta alkusaldo sekä varaston alkusaldoksi että muutoshistorian ensimmäiseksi arvoksi.</i></li>
+
+    <li><b>public String historia()</b> palauttaa tuotehistorian tyyliin <tt>[0.0, 119.2, 21.2]</tt>.  <i>Käytä Muutoshistoria-olion merkkiesitystä sellaisenaan.</i></li>
+  </ul>
+
+  <p>
+    <b>Huomaa</b> että tässä esiversiossa historia ei vielä toimi kunnolla; nyt vasta vain aloitussaldo muistetaan.
+  </p>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>// tuttuun tapaan:
+MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
+mehu.otaVarastosta(11.3);
+System.out.println(mehu.getNimi()); // Juice
+mehu.lisaaVarastoon(1.0);
+System.out.println(mehu);           // Juice: saldo = 989.7, vielä tilaa 10.3
+...
+    <b>// mutta vielä historia() ei toimi kunnolla:</b>
+System.out.println(mehu.historia()); // [1000.0]
+    // saadaan siis vasta konstruktorin asettama historian alkupiste...
+...
+</code></pre>
+
+<pre class="sample-output">Juice
+Juice: saldo = 989.7, vielä tilaa 10.299999999999955
+[1000.0]
+</pre>
+
+  <h2>Muistava tuotevarasto, vaihe 2</h2>
+
+  <p>
+    <i>On aika aloittaa historia!</i> Ensimmäinen versio ei historiasta tiennyt kuin alkupisteen. Täydennä luokkaa metodein
+  </p>
+
+  <ul>
+    <li><b>public void lisaaVarastoon(double maara)</b> toimii kuin <i>Varasto</i>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan.	<b>Huom: </b> historiaan tulee kirjata lisäyksen jälkeinen varastosaldo, ei lisättävää määrää!</li>
+
+    <li><b>public double otaVarastosta(double maara)</b> toimii kuin <code>Varasto</code>-luokan metodi, mutta muuttunut tilanne kirjataan historiaan. <b>Huom: </b> historiaan tulee kirjata poiston jälkeinen varastosaldo, ei poistettavaa määrää!</li>
+  </ul>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>// tuttuun tapaan:
+MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
+mehu.otaVarastosta(11.3);
+System.out.println(mehu.getNimi()); // Juice
+mehu.lisaaVarastoon(1.0);
+System.out.println(mehu);           // Juice: saldo = 989.7, vielä tilaa 10.3
+...
+// mutta nyt on historiaakin:
+System.out.println(mehu.historia()); // [1000.0, 988.7, 989.7]
+...
+</code></pre>
+
+<pre class="sample-output">Juice
+Juice: saldo = 989.7, vielä tilaa 10.299999999999955
+[1000.0, 988.7, 989.7]
+</pre>
+
+  <p>
+    <i>Muista miten korvaava metodi voi käyttää hyväkseen korvattua metodia!</i>
+  </p>
+
+
+  <h2>Muistava tuotevarasto, vaihe 3</h2>
+
+  <p>
+    Täydennä luokkaa metodilla
+  </p>
+
+  <ul>
+
+    <li><b>public void tulostaAnalyysi()</b>, joka tulostaa tuotteeseen liittyviä historiatietoja esimerkin esittämään tapaan.</li>
+
+  </ul>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>MuistavaTuotevarasto mehu = new MuistavaTuotevarasto("Juice", 1000.0, 1000.0);
+mehu.otaVarastosta(11.3);
+mehu.lisaaVarastoon(1.0);
+//System.out.println(mehu.historia()); // [1000.0, 988.7, 989.7]
+
+mehu.tulostaAnalyysi();
+</code></pre>
+
+<pre class="sample-output">Tuote: Juice
+Historia: [1000.0, 988.7, 989.7]
+Suurin tuotemäärä: 1000.0
+Pienin tuotemäärä: 988.7
+Keskiarvo: 992.8
+</pre>
+
+  <h2>Muistava tuotevarasto, vaihe 4</h2>
+
+  <p>
+    Täydennä analyysin tulostus sellaiseksi, että mukana ovat myös muutoshistorian suurin muutos ja historian varianssi.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Perintä, rajapinnat, kumpikin, vai eikö kumpaakaan?
+
+</h2>
+
+<p>
+  Perintä ei sulje pois rajapintojen käyttöä, eikä rajapintojen käyttö sulje pois perinnän käyttöä. Rajapinnat toimivat sopimuksena luokan tarjoamasta toteutuksesta, ja mahdollistavat konkreettisen toteutuksen abstrahoinnin. Rajapinnan toteuttavan luokan vaihto on hyvin helppoa.
+</p>
+
+<p>
+  Aivan kuten rajapintaa toteuttaessa, sitoudumme perittäessä siihen, että aliluokkamme tarjoaa kaikki yliluokan metodit. Monimuotoisuuden ja polymorfismin takia perintäkin toimii kuin rajapinnat. Voimme antaa yliluokkaa käyttävälle metodille sen aliluokan ilmentymän.
+</p>
+
+
+<h2 class="material-heading">
+    Abstraktit luokat
+
+</h2>
+
+<p>
+  Perintähierarkiaa pohtiessa tulee joskus esille tilanteita, missä on olemassa selkeä käsite, mutta käsite ei sellaisenaan ole hyvä kandidaatti olioksi. Hyötyisimme käsitteestä perinnän kannalta, sillä se sisältää muuttujia ja toiminnallisuuksia, jotka ovat kaikille käsitteen periville luokille samoja, mutta toisaalta käsitteestä itsestään ei pitäisi pystyä tekemään olioita.
+</p>
+
+<p>
+  Abstrakti luokka yhdistää rajapintoja ja perintää. Niistä ei voi tehdä ilmentymiä, vaan ilmentymät tehdään tehdään abstraktin luokan aliluokista.  Abstrakti luokka voi sisältää sekä normaaleja metodeja, joissa on metodirunko, että abstrakteja metodeja, jotka sisältävät ainoastaan metodimäärittelyn. Abstraktien metodien toteutus jätetään perivän luokan vastuulle. Yleisesti ajatellen abstrakteja luokkia käytetään esimerkiksi kun abstraktin luokan kuvaama käsite ei ole selkeä itsenäinen käsite. Tällöin siitä ei tule pystyä tekemään ilmentymiä.
+</p>
+
+<p>
+  Sekä abstraktin luokan että abstraktien metodien määrittelyssä käytetään avainsanaa <code>abstract</code>. Abstrakti luokka määritellään lauseella <code>public abstract class <em>LuokanNimi</em></code>, abstrakti metodi taas lauseella <code>public abstract <em>palautustyyppi</em> <em>metodinNimi</em></code>. Pohditaan seuraavaa abstraktia luokkaa <code>Toiminto</code>, joka tarjoaa rungon toiminnoille ja niiden suorittamiselle.
+</p>
+
+<pre class="sh_java code-highlight"><code>public abstract class Toiminto {
+
+    private String nimi;
+
+    public Toiminto(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public abstract void suorita(Scanner lukija);
+}
+</code></pre>
+
+<p>
+  Abstrakti luokka <code>Toiminto</code> toimii runkona erilaisten toimintojen toteuttamiseen. Esimerkiksi pluslaskun voi toteuttaa perimällä luokka <code>Toiminto</code> seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Pluslasku extends Toiminto {
+
+    public Pluslasku() {
+        super("Pluslasku");
+    }
+
+    @Override
+    public void suorita(Scanner lukija) {
+        System.out.print("Anna ensimmäinen luku: ");
+        int eka = Integer.parseInt(lukija.nextLine());
+        System.out.print("Anna toinen luku: ");
+        int toka = Integer.parseInt(lukija.nextLine());
+
+        System.out.println("Lukujen summa on " + (eka + toka));
+    }
+}
+</code></pre>
+
+<p>
+  Koska kaikki <code>Toiminto</code>-luokan perivät luokat ovat myös tyyppiä toiminto, voimme rakentaa käyttöliittymän <code>Toiminto</code>-tyyppisten muuttujien varaan. Seuraava luokka <code>Kayttoliittyma</code> sisaltaa listan toimintoja ja lukijan. Toimintoja voi lisätä käyttöliittymään dynaamisesti.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+
+    private Scanner lukija;
+    private List&lt;Toiminto&gt; toiminnot;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+        this.toiminnot = new ArrayList&lt;&gt;();
+    }
+
+    public void lisaaToiminto(Toiminto toiminto) {
+        this.toiminnot.add(toiminto);
+    }
+
+    public void kaynnista() {
+        while (true) {
+            tulostaToiminnot();
+            System.out.println("Valinta: ");
+
+            String valinta = this.lukija.nextLine();
+            if (valinta.equals("0")) {
+                break;
+            }
+
+            suoritaToiminto(valinta);
+            System.out.println();
+        }
+    }
+
+    private void tulostaToiminnot() {
+        System.out.println("\t0: Lopeta");
+        for (int i = 0; i &lt; this.toiminnot.size(); i++) {
+            String toiminnonNimi = this.toiminnot.get(i).getNimi();
+            System.out.println("\t" + (i + 1) + ": " + toiminnonNimi);
+        }
+    }
+
+    private void suoritaToiminto(String valinta) {
+        int toiminto = Integer.parseInt(valinta);
+
+        Toiminto valittu = this.toiminnot.get(toiminto - 1);
+        valittu.suorita(lukija);
+    }
+}
+</code></pre>
+
+<p>
+  Käyttöliittymä toimii seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>Kayttoliittyma kayttolittyma = new Kayttoliittyma(new Scanner(System.in));
+kayttolittyma.lisaaToiminto(new Pluslasku());
+
+kayttolittyma.kaynnista();
+</code></pre>
+
+<pre class="sample-output">Toiminnot:
+        0: Lopeta
+        1: Pluslasku
+Valinta: <font color="red">1</font>
+Anna ensimmäinen luku: <font color="red">8</font>
+Anna toinen luku: <font color="red">12</font>
+Lukujen summa on 20
+
+Toiminnot:
+        0: Lopeta
+        1: Pluslasku
+Valinta: <font color="red">0</font>
+</pre>
+
+<p>
+  Rajapintojen ja abstraktien luokkien suurin ero on siinä, että abstrakteissa luokissa voidaan määritellä metodien lisäksi myös oliomuuttujia sekä konstruktoreja. Koska abstrakteihin luokkiin voidaan määritellä toiminnallisuutta, voidaan niitä käyttää esimerkiksi oletustoiminnallisuuden määrittelyyn. Yllä käyttöliittymä käytti abstraktissa luokassa määriteltyä toiminnan nimen tallentamista.
+</p>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Erilaisia laatikoita (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjan mukana tulee luokat <code>Tavara</code> ja <code>Laatikko</code>. Luokka <code>Laatikko</code> on abstrakti luokka, jossa useamman tavaran lisääminen on toteutettu siten, että kutsutaan aina <code>lisaa</code>-metodia. Yhden tavaran lisäämiseen tarkoitettu metodi <code>lisaa</code> on abstrakti, joten jokaisen <code>Laatikko</code>-luokan perivän laatikon tulee toteuttaa se. Tehtävänäsi on muokata luokkaa <code>Tavara</code> ja toteuttaa muutamia erilaisia laatikoita luokan <code>Laatikko</code> pohjalta.
+  </p>
+
+  <p>
+    Lisää kaikki uudet luokat pakkaukseen <code>laatikot</code>.
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>package laatikot;
+
+import java.util.Collection;
+
+public abstract class Laatikko {
+
+    public abstract void lisaa(Tavara tavara);
+
+    public void lisaa(Collection&lt;Tavara&gt; tavarat) {
+        for (Tavara t: tavarat) {
+            lisaa(t);
+        }
+    }
+
+    public abstract boolean onkoLaatikossa(Tavara tavara);
+}
+</code></pre>
+
+
+  <h2>Tavaran muokkaus</h2>
+
+  <p>
+    Lisää <code>Tavara</code>-luokan konstruktoriin tarkistus, jossa tarkistetaan että tavaran paino ei ole koskaan negatiivinen (paino 0 hyväksytään). Jos paino on negatiivinen, tulee konstruktorin heittää <code>IllegalArgumentException</code>-poikkeus. Toteuta <code>Tavara</code>-luokalle myös metodit <code>equals</code> ja <code>hashCode</code>, joiden avulla  pääset hyödyntämään erilaisten listojen ja kokoelmien <code>contains</code>-metodia. Toteuta metodit siten, että Tavara-luokan oliomuuttujan <code>paino</code> arvolla ei ole väliä. <em>Voit hyvin hyödyntää NetBeansin tarjoamaa toiminnallisuutta equalsin ja hashCoden toteuttamiseen.</em>
+  </p>
+
+
+  <h2>Maksimipainollinen laatikko</h2>
+
+  <p>
+    Toteuta pakkaukseen <code>laatikot</code> luokka <code>MaksimipainollinenLaatikko</code>, joka perii luokan <code>Laatikko</code>. Maksimipainollisella laatikolla on konstruktori <code>public MaksimipainollinenLaatikko(int maksimipaino)</code>, joka määrittelee laatikon maksimipainon. Maksimipainolliseen laatikkoon voi lisätä tavaraa jos ja vain jos tavaran lisääminen ei ylitä laatikon maksimipainoa.
+  </p>
+
+<pre class="sh_java code-highlight"><code>MaksimipainollinenLaatikko kahviLaatikko = new MaksimipainollinenLaatikko(10);
+kahviLaatikko.lisaa(new Tavara("Saludo", 5));
+kahviLaatikko.lisaa(new Tavara("Pirkka", 5));
+kahviLaatikko.lisaa(new Tavara("Kopi Luwak", 5));
+
+System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Saludo")));
+System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Pirkka")));
+System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Kopi Luwak")));
+</code></pre>
+
+<pre class="sample-output">true
+true
+false
+</pre>
+
+
+  <h2>Yhden tavaran laatikko ja Hukkaava laatikko</h2>
+
+  <p>
+    Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>YhdenTavaranLaatikko</code>, joka perii luokan <code>Laatikko</code>. Yhden tavaran laatikolla on konstruktori <code>public YhdenTavaranLaatikko()</code>, ja siihen mahtuu tasan yksi tavara. Jos tavara on jo laatikossa sitä ei tule vaihtaa. Laatikkoon lisättävän tavaran painolla ei ole väliä.
+  </p>
+
+<pre class="sh_java code-highlight"><code>YhdenTavaranLaatikko laatikko = new YhdenTavaranLaatikko();
+laatikko.lisaa(new Tavara("Saludo", 5));
+laatikko.lisaa(new Tavara("Pirkka", 5));
+
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));
+</code></pre>
+
+<pre class="sample-output">true
+false
+</pre>
+
+  <p>
+    Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>HukkaavaLaatikko</code>, joka perii luokan <code>Laatikko</code>. Hukkaavalla laatikolla on konstruktori <code>public HukkaavaLaatikko()</code>. Hukkaavaan laatikkoon voi lisätä kaikki tavarat, mutta tavaroita ei löydy niitä etsittäessä. Laatikkoon lisäämisen tulee siis aina onnistua, mutta metodin <code>onkoLaatikossa</code> kutsumisen tulee aina palauttaa false.
+  </p>
+
+<pre class="sh_java code-highlight"><code>HukkaavaLaatikko laatikko = new HukkaavaLaatikko();
+laatikko.lisaa(new Tavara("Saludo", 5));
+laatikko.lisaa(new Tavara("Pirkka", 5));
+
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
+System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));
+</code></pre>
+
+<pre class="sample-output">false
+false
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Eläimiä (4 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä demonstroit perinnän ja rajapintojen käyttöä. Toteuta kaikki luokat ja rajapinnat pakkaukseen <code>perintaa</code>.
+  </p>
+
+  
+  <h2>Eläin</h2>
+
+  <p>
+    Toteuta ensin abstrakti luokka <code>Elain</code>. Luokalla Elain on konstruktori, jolle annetaan parametrina eläimen nimi. Luokalla Elain on lisäksi parametrittomat metodit syo ja nuku, jotka eivät palauta arvoa (void), sekä parametriton metodi getNimi, joka palauttaa eläimen nimen.
+  </p>
+
+  <p>
+    Metodin nuku tulee tulostaa "(nimi) nukkuu" ja metodin syo tulee tulostaa "(nimi) syo". Tässä (nimi) on eläimelle annettu nimi.
+  </p>
+
+  
+  <h2>Koira</h2>
+
+  <p>
+    Toteuta luokan Elain perivä luokka <code>Koira</code>. Luokalla Koira tulee olla parametrillinen konstruktori, jolla luotavalle koiraoliolle voi antaa nimen. Tämän lisäksi koiralla tulee olla parametriton konstruktori, jolla koiran nimeksi tulee "Koira" sekä parametriton metodi hauku, joka ei palauta arvoa (void). Koiralla tulee olla myös metodit syo ja nuku kuten eläimillä yleensä ottaen.
+  </p>
+
+  <p>
+    Alla on esimerkki luokan Koira odotetusta toiminnasta:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>Koira koira = new Koira();
+koira.hauku();
+koira.syo();
+    
+Koira vuffe = new Koira("Vuffe");
+vuffe.hauku();
+</code></pre>
+
+<pre class="sample-output">Koira haukkuu
+Koira syo
+Vuffe haukkuu
+</pre>
+
+
+  <h2>Kissa</h2>
+
+  <p>
+    Toteuta seuraavaksi luokka <code>Kissa</code>, joka perii luokan Elain. Luokalla Kissa tulee olla parametrillinen konstruktori, jolla luotavalle kissaoliolle voi antaa nimen. Tämän lisäksi kissalla tulee olla parametriton konstruktori, jolla kissan nimeksi tulee "Kissa" sekä parametriton metodi mourua, joka ei palauta arvoa (void). Kissalla tulee olla myös metodit syo ja nuku kuten ensimmäisessä osassa.
+  </p>
+
+  <p>
+    Alla on esimerkki luokan Kissa odotetusta toiminnasta:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>Kissa kissa = new Kissa();
+kissa.mourua();
+kissa.syo();
+    
+Kissa karvinen = new Kissa("Karvinen");
+karvinen.mourua();
+</code></pre>
+
+<pre class="sample-output">Kissa mouruaa
+Kissa syo
+Karvinen mouruaa
+</pre>
+
+
+  <h2>Ääntelevä</h2>
+
+  <p>
+    Luo lopulta rajapinta <code>Aanteleva</code>, joka maarittelee parametrittoman metodin aantele, joka ei palauta arvoa (void). Toteuta rajapinta luokissa Koira että Kissa. Rajapinnan tulee hyödyntää aiemmin määriteltyjä hauku ja mourua -metodeja.
+  </p>
+
+  <p>
+    Alla on esimerkki odotetusta toiminnasta:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>Aanteleva koira = new Koira();
+koira.aantele();
+    
+Aanteleva kissa = new Kissa("Karvinen");
+kissa.aantele();
+Kissa k = (Kissa) kissa;
+k.mourua();
+</code></pre>
+
+<pre class="sample-output">Koira haukkuu
+Karvinen mouruaa
+Karvinen mouruaa    
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Perintä ja abstraktit luokat luokkakaaviossa
+
+</h1>
+
+
+<p>
+  Perintä merkitään luokkakaavioon kolmion muotoisella nuolella. Kolmio on perittävän luokan päädyssä. Alla olevassa esimerkissä luokka Moottori perii luokan Osa.
+</p>
+
+<img src="../img/diagrams/luokkakaavio-moottori-perii-osan-3db463cf.png" alt="[Osa|-tunnus:String;-valmistaja:String;-kuvaus:String]
+								   [Moottori|-moottorityyppi:String]
+								   [Osa]^-[Moottori]" />
+
+<p>&nbsp;</p>
+
+<p>
+  Alla olevaan esimerkkiin on kirjoitettu auki muistavaa tuotevarastoa käsittelevän tehtävän luokkakaavio. Muistava tuotevarasto perii tuotevaraston, joka taas perii varaston. Muutoshistoria on erillinen luokka, jonka muistava tuotevarasto sisältää. Muistava tuotevarasto tietää muutoshistorian, mutta muutoshistoria ei tiedä muistavasta tuotevarastosta. 
+</p>
+
+<img src="../img/diagrams/luokkakaavio-muistava-tuotevarasto-186f8e06.png" alt="[Varasto|-tilavuus:double;-saldo:double|+Varasto(tilavuus:double);+getSaldo():double;+getTilavuus():double;+paljonkoMahtuu():double;+lisaaVarastoon(maara:double):void;+otaVarastosta(maara:double):double;+toString():String]
+								     [Tuotevarasto|-nimi:String|+Tuotevarasto(nimi:String، tilavuus:double);+getNimi():String;+setNimi(nimi:String):String;+toString():String]
+								     [Muutoshistoria|-tilanteet:ArrayList|+Muutoshistoria();+lisaa(tilanne:double);+nollaa():void;...]
+								     [MuistavaTuotevarasto||+MuistavaTuotevarasto(nimi:String، tilavuus:double،alkusaldo:double);+historia():String;+tulostaAnalyysi():void;+lisaaVarastoon(maara:double);+otaVarastosta(maara:double):double]
+
+								     [Varasto]^-[Tuotevarasto]
+								     [Tuotevarasto]^-[MuistavaTuotevarasto]
+								     [Muutoshistoria]<-[MuistavaTuotevarasto]" />
+
+<p>&nbsp;</p>
+
+<p>
+  Abstraktien luokkien perintä toimii lähes samalla tavalla. Abstraktit luokat kuitenkin merkitään luokkakaavioon siten, että luokan nimen yläpuolella lukee <code>&lt;&lt;abstract&gt;&gt;</code>. Tämän lisäksi luokan nimi ja luokassa määritellyt abstraktit metodit kuvataan kursiivilla.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on tehtävän erilaisia laatikoita ensimmäistä kahta osaa kuvaava luokkaakaavio.
+</p>
+
+
+<img src="../img/diagrams/luokkakaavio-abstraktit-c7bc1037.png" />
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Miten näitä kannattaa piirtää?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Luokkakaaviot ovat erinomainen tapa kuvata ongelma-aluetta ja ongelman muotoa muille. Niiden käyttö on erittäin hyödyllistä myös silloin, kun ohjelmoija suunnittelee useammasta luokasta koostuvan ohjelman rakennetta.
+  </p>
+
+  <p>
+    Luokkakaavioita piirretään suunnitteluvaiheessa usein esimerkiksi valkotaulua tai isompaa paperiarkkia käyttäen. Luokkakaaviot kannattaa ajatella poisheitettävinä tuotoksina, jotka auttavat ohjelman rakennuksessa. Kaavion piirtämiseen -- eli tyylin oikeellisuuteen ja yksityiskohtiin -- ei kannata käyttää liian pitkään aikaa. Vastaavasti kaavio kannattaa piirtää sopivalla abstraktiotasolla. Esimerkiksi kymmeniä luokkia sisältävään luokkakaavioon ei todennäköisesti kannata merkitä jokaisen luokan jokaista metodia ja muuttujaa.
+  </p>
+
+  <p>
+    Materiaalissa käytetyt luokkakaaviot on piirretty sekä <a href="https://yuml.me/" target="_blank" norel>yUML</a> että <a href="https://creately.com" target="_blank" norel>Creately</a>n avulla. Myös NetBeansiin löytyy välineitä luokkakaavioiden luomiseen -- esimerkiksi <a href="http://plugins.netbeans.org/plugin/55435/easyuml" target="_blank" norel>easyUML</a> mahdollistaa luokkakaavioiden luomisen suoraan projektin koodista.
+  </p>
+  
+
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Kokoelmien käsittely arvojen virtana
+
+</h1>
+
+<p>
+  Tutustutaan kokoelmien kuten listojen läpikäyntiin arvojen virtana (stream). Virta on menetelmä tietoa sisältävän kokoelman läpikäyntiin siten, että ohjelmoija määrittelee kullekin arvolle suoritettavan toiminnallisuuden. Indeksistä tai kullakin hetkellä käsiteltävästä muuttujasta ei pidetä kirjaa.
+</p>
+
+<p>
+  Virran avulla ohjelmoija määrittelee käytännössä funktioketjun, joita kutsutaan tietokokoelman arvoille. Virran avulla voi muuntaa tietoa muodosta toiseen, mutta virta ei muuta alkuperäisen tietokokoelman arvoja.
+</p>
+
+<p>
+  Tutustutaan virran käyttöön konkreettisen esimerkin kautta. Tarkastellaan seuraavaa ongelmaa:
+</p>
+
+<p>
+  <em>
+    Kirjoita ohjelma, joka lukee käyttäjältä syötteitä ja tulostaa niihin liittyen tilastoja. Kun käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Muut syötteet ovat lukuja. Kun syötteiden lukeminen lopetetaan, ohjelma tulostaa kolmella jaollisten positiivisten lukujen lukumäärän sekä kaikkien lukujen keskiarvon.
+  </em>
+</p>
+
+<pre class="sh_java code-highlight"><code>// alustetaan lukija ja lista, johon syotteet luetaan
+Scanner lukija = new Scanner(System.in);
+List&lt;String&gt; syotteet = new ArrayList&lt;&gt;()
+
+// luetaan syotteet
+while (true) {
+    String rivi = lukija.nextLine();
+    if (rivi.equals("loppu")) {
+        break;
+    }
+  
+    syotteet.add(rivi);
+}
+
+// selvitetään kolmella jaollisten lukumaara
+long kolmellaJaollistenLukumaara = syotteet.stream()
+    .mapToInt(s -&gt; Integer.parseInt(s))
+    .filter(luku -&gt; luku % 3 == 0)
+    .count();
+
+// selvitetään keskiarvo
+double keskiarvo = syotteet.stream()
+    .mapToInt(s -&gt; Integer.parseInt(s))
+    .average()
+    .getAsDouble();
+
+// tulostetaan tilastot
+System.out.println("Kolmella jaollisia: " + kolmellaJaollistenLukumaara);
+System.out.println("Lukujen keskiarvo: " + keskiarvo);
+</code></pre>
+
+<p>
+  Tarkastellaan tarkemmin yllä kuvatun ohjelman osaa, missä luettuja syötteitä käsitellään virtana. 
+</p>
+
+<pre class="sh_java code-highlight"><code>// selvitetään kolmella jaollisten lukumaara
+long kolmellaJaollistenLukumaara = syotteet.stream()
+    .mapToInt(s -&gt; Integer.parseInt(s))
+    .filter(luku -&gt; luku % 3 == 0)
+    .count();
+</code></pre>
+
+<p>
+  Virta luodaan mistä tahansa <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html" target="_blank" norel>Collection</a>-rajapinnan toteuttavasta oliosta (esim. ArrayList, HashSet, HashMap, ...) metodilla <code>stream()</code>. Tämän jälkeen merkkijonomuotoiset arvot muunnetaan ("map") kokonaislukumuotoon virran metodilla <code>mapToInt(arvo -&gt; muunnos)</code> -- muunto toteutetaan Integer-luokan tarjoamalla parseInt-metodilla, jota olemme käyttäneet aiemminkin. Seuraavaksi rajaamme metodilla <code>filter(arvo -&gt; rajausehto)</code> käsiteltäväksi vain ne luvut, jotka ovat kolmella jaollisia. Lopulta kutsumme virran metodia <code>count()</code>, joka laskee virran alkioiden lukumäärän ja palauttaa sen <code>long</code>-tyyppisenä muuttujana.
+</p>
+
+<p>
+  Tarkastellaan tämän jälkeen listan alkioiden keskiarvon laskemiseen tarkoitettua ohjelmaa.
+</p>
+
+<pre class="sh_java code-highlight"><code>// selvitetään keskiarvo
+double keskiarvo = syotteet.stream()
+    .mapToInt(s -&gt; Integer.parseInt(s))
+    .average()
+    .getAsDouble();
+</code></pre>
+
+<p>
+  Keskiarvon laskeminen onnistuu virrasta, jolle on kutsuttu <code>mapToInt</code>-metodia. Kokonaislukuja sisältävällä virralla on metodi <code>average()</code>, joka palauttaa <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html" target="_blank" norel>OptionalDouble</a>-tyyppisen olion. Oliolla on metodi <code>getAsDouble()</code>, joka palauttaa listan arvojen keskiarvon <code>double</code>-tyyppisenä muuttujana.
+</p>
+
+<p>
+  Lyhyt yhteenveto tähän mennessä tutuiksi tulleista virtaan liittyvistä metodeista.
+</p>
+
+<table class="table">
+  <tr>
+    <th>
+      Tarkoitus ja metodi
+    </th>
+    <th>
+      Oletukset
+    </th>
+  </tr>
+
+  <tr>
+    <td>
+      Virran luominen: <code>stream()</code>
+    </td>
+    <td>
+      Metodia kutsutaan Collection-rajapinnan toteuttavalle kokoelmalle kuten ArrayList-oliolle. Luotavalle virralle tehdään jotain.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Virran muuntaminen kokonaislukuvirraksi: <code>mapToInt(arvo -&gt; toinen)</code>
+    </td>
+    <td>
+      Virta muuntuu kokonaislukuja sisältäväksi virraksi. Merkkijonoja sisältävä muunnos voidaan tehdä esimerkiksi Integer-luokan parseInt-metodin avulla. Kokonaislukuja sisältävälle virralle tehdään jotain.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Arvojen rajaaminen: <code>filter(arvo -&gt; hyvaksymisehto)</code>
+    </td>
+    <td>
+      Virrasta rajataan pois ne arvot, jotka eivät täytä hyväksymisehtoa. "Nuolen" oikealla puolella on lauseke, joka palauttaa totuusarvon. Jos totuusarvo on <code>true</code>, arvo hyväksytään virtaan. Jos totuusarvo on <code>false</code>, arvoa ei hyväksytä virtaan. Rajatuille arvoille tehdään jotain.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Keskiarvon laskeminen: <code>average()</code>
+    </td>
+    <td>
+      Palauttaa OptionalDouble-tyyppisen olion, jolla on <code>double</code> tyyppisen arvon palauttava metodi <code>getAsDouble()</code>. Metodin <code>average()</code> kutsuminen onnistuu kokonaislukuja sisältävälle virralle (luominen onnistuu <code>mapToInt</code>-metodilla.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Virrassa olevien alkioiden lukumaara: <code>count()</code>
+    </td>
+    <td>
+      Palauttaa virrassa olevien alkioiden lukumäärän <code>long</code>-tyyppisenä arvona.
+    </td>
+  </tr>
+  
+</table>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Harjoitellaan lukujen lukemista listalle sekä listan arvojen keskiarvon laskemista virran avulla.
+  </p>
+
+  <p>
+    Toteuta ohjelma, joka lukee käyttäjältä syötteitä. Jos käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Muut syötteet ovat lukuja. Kun käyttäjä syöttää merkkijonon "loppu", ohjelman tulee tulostaa syötettyjen lukujen keskiarvo.
+  </p>
+
+
+<pre class="sample-output">Kirjoita syötteitä, "loppu" lopettaa.
+<font color="red">2</font>
+<font color="red">4</font>
+<font color="red">6</font>
+<font color="red">loppu</font>
+Lukujen keskiarvo: 4.0
+</pre>
+  
+
+<pre class="sample-output">Kirjoita syötteitä, "loppu" lopettaa.
+<font color="red">-1</font>
+<font color="red">1</font>
+<font color="red">2</font>
+<font color="red">loppu</font>
+Lukujen keskiarvo: 0.6666666666666666
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tiettyjen lukujen keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Harjoitellaan lukujen lukemista listalle sekä listan arvojen rajaamista virran avulla.
+  </p>
+
+  <p>
+    Toteuta ohjelma, joka lukee käyttäjältä syötteitä. Jos käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Muut syötteet ovat lukuja. Kun käyttäjä syöttää merkkijonon "loppu", syötteiden lukeminen lopetetaan.
+  </p>
+
+  <p>
+    Tämän jälkeen käyttäjältä kysytään tulostetaanko negatiivisten vai positiivisten lukujen keskiarvo (n vai p). Jos käyttäjä syöttää merkkijonon "n", tulostetaan negatiivisten lukujen keskiarvo, muulloin tulostetaan positiivisten lukujen keskiarvo.
+  </p>
+
+
+<pre class="sample-output">Kirjoita syötteitä, "loppu" lopettaa.
+<font color="red">-1</font>
+<font color="red">1</font>
+<font color="red">2</font>
+<font color="red">loppu</font>
+    
+Tulostetaanko negatiivisten vai positiivisten lukujen keskiarvo? (n/p)
+<font color="red">n</font>
+Negatiivisten lukujen keskiarvo: -1.0
+</pre>
+
+<pre class="sample-output">Kirjoita syötteitä, "loppu" lopettaa.
+<font color="red">-1</font>
+<font color="red">1</font>
+<font color="red">2</font>
+<font color="red">loppu</font>
+    
+Tulostetaanko negatiivisten vai positiivisten lukujen keskiarvo? (n/p)
+<font color="red">p</font>
+Positiivisten lukujen keskiarvo: 1.5
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Lambda-lauseke
+
+</h2>
+
+<p>
+  Virran arvoja käsitellään virtaan liittyvillä metodeilla. Arvoja käsittelevät metodit saavat parametrinaan funktion, joka kertoo mitä kullekin arvolle tulee tehdä. Funktion toiminnallisuus on metodikohtaista: rajaamiseen käytetylle metodille <code>filter</code> annetaan funktio, joka palauttaa totuusarvoisen muuttujan arvon <code>true</code> tai <code>false</code>, riippuen halutaanko arvo säilyttää virrassa; muuntamiseen käytetylle metodille <code>mapToInt</code> annetaan funktio, joka muuntaa arvon kokonaisluvuksi, jne.
+</p>
+
+<p>
+  Miksi funktiot kirjoitetaan muodossa <code>luku -&gt; luku &gt; 5</code>?
+</p>
+
+<p>
+  Kyseinen kirjoitusmuoto, <em>lambda-lauseke</em>, on Javan tarjoama lyhenne ns. anonyymeille metodeille, joilla ei ole "omistajaa" eli ne eivät ole osa luokkaa tai rajapintaa. Funktio sisältää sekä parametrien määrittelyn että funktion rungon. Saman funktion voi kirjoittaa useammalla eri tavalla, kts. alla.
+</p>
+
+<pre class="sh_java code-highlight"><code>// alkuperäinen
+<em>virta</em>.filter(luku -&gt; luku &gt; 5).<em>jatkokäsittely</em>
+  
+// on sama kuin
+<em>virta</em>.filter((Integer luku) -&gt; 
+    if (luku &gt; 5) {
+        return true;
+    }
+    
+    return false;
+}).<em>jatkokäsittely</em>
+</code></pre>
+  
+<p>
+  Saman voi kirjoittaa myös eksplisiittisesti niin, että ohjelmaan määrittelee staattisen metodin, jota hyödynnetään virralle parametrina annetussa funktiossa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Rajaajat {
+    public static boolean vitostaSuurempi(int luku) {
+        return luku &gt; 5;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>// alkuperäinen
+<em>virta</em>.filter(luku -&gt; luku &gt; 5).<em>jatkokäsittely</em>
+
+// on sama kuin
+<em>virta</em>.filter(luku -&gt; Rajaajat.vitostaSuurempi(luku)).<em>jatkokäsittely</em>
+</code></pre>
+
+<p>
+  Funktion voi antaa myös suoraan parametrina. Alla oleva syntaksi <code>Rajaajat::vitostaSuurempi</code> tarkoittaa "hyödynnä tässä <code>Rajaajat</code>-luokassa olevaa staattista metodia <code>vitostaSuurempi</code>".
+</p>
+
+<pre class="sh_java code-highlight"><code>// on sama kuin
+<em>virta</em>.filter(Rajaajat::vitostaSuurempi).<em>jatkokäsittely</em>
+</code></pre>
+
+<p>
+  Virran arvoja käsittelevät funktiot eivät voi muuttaa funktion ulkopuolisten muuttujien arvoja. Kyse on käytännössä staattisten metodien käyttäytymisestä -- metodia kutsuttaessa metodin ulkopuolisiin muuttujiin ei pääse käsiksi. Funktioiden tilanteessa funktion ulkopuolisten muuttujien arvoja voi lukea olettaen, että luettavien muuttujien arvot eivät muutu lainkaan ohjelmassa.
+</p>
+
+<p>
+  Alla oleva ohjelma demonstroi tilannetta, missä funktiossa yritetään hyödyntää funktion ulkopuolista muuttujaa. Tämä ei toimi.
+</p>
+  
+
+<pre class="sh_java code-highlight"><code>// alustetaan lukija ja lista, johon syotteet luetaan
+Scanner lukija = new Scanner(System.in);
+List&lt;String&gt; syotteet = new ArrayList&lt;&gt;()
+
+// luetaan syotteet
+while (true) {
+    String rivi = lukija.nextLine();
+    if (rivi.equals("loppu")) {
+        break;
+    }
+  
+    syotteet.add(rivi);
+}
+
+int muunnettujaYhteensa = 0;
+
+// selvitetään kolmella jaollisten lukumaara
+long kolmellaJaollistenLukumaara = syotteet.stream()
+    .mapToInt(s -&gt; {
+        // anonyymissä funktiossa ei voi käsitellä (tai tarkemmin muuttaa) funktion
+        // ulkopuolella määriteltyä muuttujaa, joten tämä ei toimi
+        muunnettujaYhteensa++;
+        return Integer.parseInt(s);
+    }).filter(luku -&gt; luku % 3 == 0)
+    .count();
+</code></pre>
+
+
+<h2 class="material-heading">
+    Virran metodit
+
+</h2>
+
+<p>
+  Virran metodit voi jakaa karkeasti kahteen eri ryhmään: virran (1) arvojen käsittelyyn tarkoitettuihin välioperaatioihin sekä (2) käsittelyn lopettaviin pääteoperaatiohin. Edellisessä esimerkissä nähdyt metodit <code>filter</code> ja <code>mapToInt</code> ovat välioperaatioita. Välioperaatiot palauttavat arvonaan virran, jonka käsittelyä voi jatkaa -- käytännössä välioperaatioita voi olla käytännössä ääretön määrä ketjutettuna peräkkäin (pisteellä eroteltuna). Toisaalta edellisessä esimerkissä nähty metodi <code>average</code> on pääteoperaatio. Pääteoperaatio palauttaa käsiteltävän arvon, joka luodaan esimerkiksi virran arvoista.
+</p>
+
+<p>
+  Alla olevassa kuvassa on kuvattu virran toimintaa. Lähtötilanteena (1) on lista, jossa on arvoja. Kun listalle kutsutaan <code>stream()</code>-metodia, (2) luodaan virta listan arvoista. Arvoja käsitellään tämän jälkeen yksitellen. Virran arvoja voidaan (3) rajata metodilla <code>filter</code>. Tämä poistaa virrasta ne arvot, jotka ovat rajauksen ulkopuolella. Virran metodilla <code>map</code> voidaan (4) muuntaa virrassa olevia arvoja muodosta toiseen. Metodi <code>collect</code> (5) kerää virrassa olevat arvot arvot sille annettuun kokoelmaan, esim. listalle.
+</p>
+
+<img src="../img/drawings/stream-1500bc94.png" alt="Yllä tekstuaalisesti kuvattu virran toiminta kuvana." />
+
+<p>&nbsp;</p>
+
+<p>
+  Alla vielä yllä olevan kuvan kuvaama esimerkki ohjelmakoodina.
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+lista.add(3);
+lista.add(7);
+lista.add(4);
+lista.add(2);
+lista.add(6);
+
+ArrayList&lt;Integer&gt; luvut = lista.stream()
+    .filter(luku -&gt; luku &gt; 5)
+    .map(luku -&gt; luku * 2)
+    .collect(Collectors.toCollection(ArrayList::new));
+</code></pre>
+
+
+<h3 class="material-heading">
+    Pääteoperaatiot
+
+</h3>
+
+<p>
+  Tarkastellaan tässä neljää pääteoperaatiota: listan arvojen lukumäärän selvittämistä <code>count</code>-metodin avulla, listan arvojen läpikäyntiä <code>forEach</code>-metodin avulla sekä listan arvojen keräämistä tietorakenteeseen <code>collect</code>-metodin avulla, sekä listan alkioiden yhdistämistä <code>reduce</code>-metodin avulla.
+</p>
+
+<p>
+  Metodi <code>count</code> kertoo virran alkioiden lukumäärän <code>long</code>-tyyppisenä muuttujana.
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(3);
+luvut.add(2);
+luvut.add(17);
+luvut.add(6);
+luvut.add(8);
+
+System.out.println("Lukuja: " + luvut.stream().count());
+</code></pre>
+
+<pre class="sample-output">Lukuja: 5
+</pre>
+
+
+<p>
+  Metodi <code>forEach</code> kertoo mitä kullekin listan arvolle tulee tehdä ja samalla päättää virran käsittelyn. Alla olevassa esimerkissä luodaan ensin numeroita sisältävä lista, jonka jälkeen tulostetaan vain kahdella jaolliset luvut.
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(3);
+luvut.add(2);
+luvut.add(17);
+luvut.add(6);
+luvut.add(8);
+
+luvut.stream()
+    .filter(luku -&gt; luku % 2 == 0)
+    .forEach(luku -&gt; System.out.println(luku));
+</code></pre>
+
+<pre class="sample-output">2
+6
+8
+</pre>
+
+
+<p>
+  Virran arvojen kerääminen toiseen kokoelmaan onnistuu metodin <code>collect</code> avulla. Alla olevassa esimerkissä luodaan uusi lista annetun positiivisista arvoista. Metodille <code>collect</code> annetaan parametrina <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html" target="_blank" norel>Collectors</a>-luokan avulla luotu olio, johon virran arvot kerätään -- esimerkiksi kutsu <code>Collectors.toCollection(ArrayList::new)</code> luo uuden ArrayList-olion, johon arvot kerätään.
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(3);
+luvut.add(2);
+luvut.add(-17);
+luvut.add(-6);
+luvut.add(8);
+
+ArrayList&lt;Integer&gt; positiiviset = luvut.stream()
+    .filter(luku -&gt; luku > 0)
+    .collect(Collectors.toCollection(ArrayList::new));
+
+positiiviset.stream()
+    .forEach(luku -&gt; System.out.println(luku));
+</code></pre>
+
+<pre class="sample-output">3
+2
+8
+</pre>
+
+
+<div class="quiznator-plugin" data-quiz-id="5aaac8d64d88860004a6ba46"></div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Jaolliset</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtävässä harjoitellaan virran <code>filter</code> ja <code>collect</code>-metodien käyttöä.
+  </p>
+
+  <p>
+    Tehtäväpohjassa on annettuna metodirunko <code>public static ArrayList&lt;Integer&gt jaolliset(ArrayList&lt;Integer&gt; luvut)</code>. Toteuta metodirunkoon toiminnallisuus, kerää parametrina saadulta listalta kahdella, kolmella tai viidellä jaolliset luvut, ja palauttaa ne uudessa listassa. Metodille parametrina annetun listan ei tule muuttua.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(3);
+luvut.add(2);
+luvut.add(-17);
+luvut.add(-5);
+luvut.add(7);
+    
+ArrayList&lt;Integer&gt; jaolliset = jaolliset(luvut);
+
+jaolliset.stream()
+    .forEach(luku -&gt; System.out.println(luku));
+</code></pre>
+
+  
+<pre class="sample-output">3
+2
+-5
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Metodi <code>reduce</code> on hyödyllinen kun virrassa olevat alkiot halutaan yhdistää jonkinlaiseen toiseen muotoon. Metodin saamat parametrit ovat seuraavaa muotoa: <code>reduce(<em>alkutila</em>, (<em>edellinen</em>, <em>olio</em>) -&gt; <em>mitä oliolla tehdään</em>)</code>.
+</p>
+
+<p>
+  Esimerkiksi kokonaislukuja sisältävän listan summan saa luotua reduce-metodin avulla seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(7);
+luvut.add(3);
+luvut.add(2);
+luvut.add(1);
+  
+int summa = luvut.stream()
+    .reduce(0, (edellinenSumma, luku) -&gt; edellinenSumma + luku);
+System.out.println(summa);
+</code></pre>
+
+<pre class="sample-output">13
+</pre>
+
+<p>
+  Vastaavasti merkkijonoista koostuvasta listasta saa luotua rivitetyn merkkijonon seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+sanat.add("Eka");
+sanat.add("Toka");
+sanat.add("Kolmas");
+sanat.add("Neljäs");
+  
+String yhdistetty = sanat.stream()
+    .reduce("", (edellinenMjono, sana) -&gt; edellinenMjono + sana + "\n");
+System.out.println(yhdistetty);
+</code></pre>
+
+<pre class="sample-output">Eka
+Toka
+Kolmas
+Neljäs
+</pre>
+
+
+<h3 class="material-heading">
+    Välioperaatiot
+
+</h3>
+
+<p>
+  Virran välioperaatiot ovat metodeja, jotka palauttavat arvonaan virran. Koska palautettava arvo on virta, voidaan välioperaatioita kutsua peräkkäin. Tyypillisiä välioperaatioita ovat arvon muuntaminen muodosta toiseen <code>map</code> sekä sen erityistapaus <code>mapToInt</code>, arvojen rajaaminen <code>filter</code>, uniikkien arvojen tunnistaminen <code>distinct</code> sekä arvojen järjestäminen <code>sorted</code> (mikäli mahdollista).
+</p>
+
+<p>
+  Tarkastellaan näitä metodeja muutaman ongelman avulla. Oletetaan, että käytössämme on seuraava luokka Henkilo.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String etunimi;
+    private String sukunimi;
+    private int syntymavuosi;
+
+    public Henkilo(String etunimi, String sukunimi, int syntymavuosi) {
+        this.etunimi = etunimi;
+        this.sukunimi = sukunimi;
+        this.syntymavuosi = syntymavuosi;
+    }
+
+    public String getEtunimi() {
+        return this.etunimi;
+    }
+
+    public String getSukunimi() {
+        return this.sukunimi;
+    }
+
+    public int getSyntymavuosi() {
+        return this.syntymavuosi;
+    }
+}
+</code></pre>
+
+
+<p>
+  <em>
+    Ongelma 1: Saat käyttöösi listan henkilöitä. Tulosta ennen vuotta 1970 syntyneiden henkilöiden lukumäärä.
+  </em>
+</p>
+
+<p>
+  Käytetään <code>filter</code>-metodia henkilöiden rajaamiseen niihin, jotka ovat syntyneet ennen vuotta 1970. Lasketaan tämän jälkeen henkilöiden lukumäärä metodilla <code>count</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista henkiloita
+// ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+
+long lkm = henkilot.stream()
+    .filter(henkilo -&gt; henkilo.getSyntymavuosi() &lt; 1970)
+    .count();
+System.out.println("Lukumäärä: " + lkm);
+</code></pre>
+
+
+<p>
+  <em>
+    Ongelma 2: Saat käyttöösi listan henkilöitä. Kuinka monen henkilön etunimi alkaa kirjaimella "A"?
+  </em>
+</p>
+
+<p>
+  Käytetään <code>filter</code>-metodia henkilöiden rajaamiseen niihin, joiden etunimi alkaa kirjaimella "A". Lasketaan tämän jälkeen henkilöiden lukumäärä metodilla <code>count</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista henkiloita
+// ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+
+long lkm = henkilot.stream()
+    .filter(henkilo -&gt; henkilo.getEtunimi().startsWith("A"))
+    .count();
+System.out.println("Lukumäärä: " + lkm);
+</code></pre>
+
+<p>
+  <em>
+    Ongelma 3: Saat käyttöösi listan henkilöitä. Tulosta henkilöiden uniikit etunimet aakkosjärjestyksessä.
+  </em>
+</p>
+
+<p>
+  Käytetään ensin <code>map</code>-metodia, jonka avulla henkilö-olioita sisältävä virta muunnetaan etunimiä sisältäväksi virraksi. Tämän jälkeen kutsutaan metodia <code>distinct</code>, joka palauttaa virran, jossa on uniikit arvot. Seuraavaksi kutsutaan metodia <code>sorted</code>, joka järjestää merkkijonot. Lopulta kutsutaan metodia <code>forEach</code>, jonka avulla tulostetaan merkkijonot.
+</p>
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista henkiloita
+// ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+
+henkilot.stream()
+    .map(henkilo -&gt; henkilo.getEtunimi())
+    .distinct()
+    .sorted()
+    .forEach(nimi -&gt; System.out.println(nimi));
+</code></pre>
+
+<p>
+  Yllä kuvattu <code>distinct</code>-metodi hyödyntää olioiden <code>equals</code>-metodia yhtäsuuruuden tarkasteluun. Metodi <code>sorted</code> taas osaa järjestää olioita, joilla on tieto siitä, miten olio tulee järjestää -- näitä ovat esimerkiksi luvut ja merkkijonot.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Luettujen arvojen tulostaminen</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä merkkijonoja. Lukeminen tulee lopettaa kun käyttäjä syöttää tyhjän merkkijonon. Tulosta tämän jälkeen käyttäjän syöttämät merkkijonot.
+  </p>
+
+<pre class="sample-output"><font color="red">eka</font>
+<font color="red">toka</font>
+<font color="red">kolmas</font>
+eka
+toka
+kolmas
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Rajatut luvut</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä lukuja. Kun käyttäjä syöttää negatiivisen luvun, lukeminen lopetetaan. Tulosta tämän jälkeen ne luvut, jotka ovat välillä 1-5.
+  </p>
+
+<pre class="sample-output"><font color="red">7</font>
+<font color="red">14</font>
+<font color="red">4</font>
+<font color="red">5</font>
+<font color="red">4</font>
+<font color="red">-1</font>
+4
+5
+4
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Uniikit sukunimet</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjaan on hahmoteltu ohjelmaa, joka lukee käyttäjältä syötteenä henkilötietoja. Täydennä ohjelmaa siten, että tietojen lukemisen jälkeen ohjelma tulostaa henkilöiden uniikit sukunimet aakkosjärjestyksessä.
+  </p>
+
+  
+<pre class="sample-output">Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: 
+Syötä etunimi: <font color="red">Ada</font>
+Syötä sukunimi: <font color="red">Lovelace</font>
+Syötä syntymävuosi: <font color="red">1815</font>
+
+Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: 
+Syötä etunimi: <font color="red">Grace</font>
+Syötä sukunimi: <font color="red">Hopper</font>
+Syötä syntymävuosi: <font color="red">1906</font>
+
+Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: 
+Syötä etunimi: <font color="red">Alan</font>
+Syötä sukunimi: <font color="red">Turing</font>
+Syötä syntymävuosi: <font color="red">1912</font>
+    
+Syötetäänkö henkilöiden tietoja, "loppu" lopettaa: loppu
+    
+Uniikit sukunimet aakkosjärjestyksessä:
+Hopper
+Lovelace
+Turing
+</pre>
+
+  <p>
+    Ohjelmassa ei ole valmiita automaattisia testejä. Voit kirjoittaa automaattisia testejä testiluokkaan <code>UniikitSukunimetTest</code> -- tässä tapauksessa olisi näppärää tehdä esimerkiksi erillinen listan palauttava metodi uniikkien sukunimien tunnistamiseen sille parametrina annetusta henkilölistasta.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Oliot ja virta
+
+</h2>
+
+<p>
+  Olioiden käsittely virran metodien avulla on luontevaa. Kukin virran metodi, missä käsitellään virran arvoja, mahdollistaa myös arvoihin liittyvän metodin kutsumisen. Tarkastellaan esimerkkiä, missä käytössämme on Kirjoja, joilla on kirjailijoita. Luokat <code>Henkilo</code> ja <code>Kirja</code> on annettu alla.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int syntymavuosi;
+
+    public Henkilo(String nimi, int syntymavuosi) {
+        this.nimi = nimi;
+        this.syntymavuosi = syntymavuosi;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+  
+    public int getSyntymavuosi() {
+        return this.syntymavuosi;
+    }
+
+    public String toString() {
+        return this.nimi + " (" + this.syntymavuosi + ")";
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private Henkilo kirjailija;
+    private String nimi;
+    private int sivujenLukumaara;
+  
+    public Kirja(Henkilo kirjailija, String nimi, int sivuja) {
+        this.kirjailija = kirjailija;
+        this.nimi = nimi;
+        this.sivujenLukumaara = sivuja;
+    }
+
+    public Henkilo getKirjailija() {
+        return this.kirjailija;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public int getSivujenLukumaara() {
+        return this.sivujenLukumaara;
+    }
+}
+</code></pre>
+
+<p>
+  Oletetaan, että käytössämme on lista kirjoja. Virran metodien avulla esimerkiksi kirjailijoiden syntymävuosien keskiarvon selvittäminen onnistuu luontevasti. Ensin muunnamme kirjoja sisältävän virran henkilöitä sisältäväksi virraksi ja tämän jälkeen muunnamme henkilöitä sisältävän virran syntymävuosia sisältäväksi virraksi. Lopulta pyydämme (kokonaislukuja sisältävältä) virralta keskiarvoa.
+</p>
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista kirjoja
+// List&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+
+double keskiarvo = kirjat.stream()
+    .map(kirja -&gt; kirja.getKirjailija())
+    .mapToInt(kirjailija -&gt; kirjailija.getSyntymavuosi())
+    .average()
+    .getAsDouble();
+
+System.out.println("Kirjailijoiden syntymävuosien keskiarvo: " + keskiarvo);
+
+// muunnoksen kirjasta kirjailijan syntymävuoteen pystyisi tekemään myös yhdellä map-kutsulla
+// double keskiarvo = kirjat.stream()
+//     .mapToInt(kirja -&gt; kirja.getKirjailija().getSyntymavuosi())
+//     ...
+</code></pre>
+
+<p>
+  Vastaavasti kirjojen, joiden nimessä esiintyy sana "Potter", kirjailijoiden nimet saa selville seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista kirjoja
+// List&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+
+kirjat.stream()
+    .filter(kirja -&gt; kirja.getNimi().contains("Potter"))
+    .map(kirja -&gt; kirja.getKirjailija())
+    .forEach(kirjailija -&gt; System.out.println(kirjailija));
+</code></pre>
+
+<p>
+  Myös monimutkaisempien merkkijonoesitysten rakentaminen on virran avulla mahdollista. Alla olevassa esimerkissä tulostamme "Kirjailijan nimi: Kirja" -parit aakkosjärjestyksessä.
+</p>
+
+<pre class="sh_java code-highlight"><code>// oletetaan, että käytössämme on lista kirjoja
+// ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+
+kirjat.stream()
+    .map(kirja -&gt; kirja.getKirjailija().getNimi() + ": " + kirja.getNimi())
+    .sorted()
+    .forEach(nimi -&gt; System.out.println(nimi));
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Painon laskemista (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on tutuhko tehtävä "Tavara, Matkalaukku ja Lastiruuma". Tässä tehtävässä tarkoituksenasi on muuttaa toistolausetta käyttävät metodit virtaa käyttäviksi metodeiksi. Lopputuloksessa ei tule esiintyä <code>while (...)</code> tai <code>for (...)</code>-toistolauseita.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Tiedostot ja virta
+
+</h2>
+
+
+<p>
+  Virta on myös erittäin näppärä tiedostojen käsittelyssä. Tiedoston lukeminen virtamuotoisena tapahtuu Javan valmiin <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html" target="_blank" rel="noopener">Files</a>-luokan avulla. Files-luokan metodin <code>lines</code> avulla tiedostosta voidaan luoda syötevirta, jonka avulla tiedoston rivit voidaan käsitellä yksi kerrallaan. Metodi <code>lines</code> saa patametrikseen polun, joka luodaan luokan <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html" target="_blank" rel="noopener">Paths</a> tarjoamalla metodilla <code>get</code>, jolle annetaan parametrina tiedostopolkua kuvaava merkkijono.
+</p>
+
+<p>
+  Alla olevassa esimerkissä luetaan tiedoston "tiedosto.txt" kaikki rivit ja lisätään ne listaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;String&gt; rivit = new ArrayList&lt;&gt;();
+
+try {
+    Files.lines(Paths.get("tiedosto.txt")).forEach(rivi -&gt rivit.add(rivi));
+} catch (Exception e) {
+    System.out.println("Virhe: " + e.getMessage());
+}
+
+// tee jotain luetuilla riveillä
+</code></pre>
+
+<p>
+  Jos tiedosto löytyy ja sen lukeminen onnistuu, tulee ohjelman suorituksen lopussa tiedoston "tiedosto.txt" rivit olemaan listamuuttujassa <code>rivit</code>. Jos taas tiedostoa ei löydy, tai sen lukeminen epäonnistuu, ilmoitetaan tästä virheviestillä. Alla eräs mahdollisuus:
+</p>
+
+<pre class="sample-output">Virhe: tiedosto.txt (No such file or directory)
+</pre>
+
+<p>
+  Virran metodit tekevät määritellyn muotoisten tiedostojen lukemisesta melko suoraviivaista. Tarkastellaan tilannetta, missä tiedosto sisältää henkilöiden tietoja. Kukin henkilö on omalla rivillään, ensin tulee henkilön nimi, sitten puolipiste, sitten henkilön syntymävuosi. Tiedoston muoto on seuraava.
+</p>
+
+<pre class="sample-output">Kaarlo Juho Ståhlberg; 1865
+Lauri Kristian Relander; 1883
+Pehr Evind Svinhufvud; 1861
+Kyösti Kallio; 1873
+Risto Heikki Ryti; 1889
+Carl Gustaf Emil Mannerheim; 1867
+Juho Kusti Paasikivi; 1870
+Urho Kaleva Kekkonen; 1900
+Mauno Henrik Koivisto; 1923
+Martti Oiva Kalevi Ahtisaari; 1937
+Tarja Kaarina Halonen; 1943
+Sauli Väinämö Niinistö; 1948
+</pre>
+
+<p>
+  Oletetaan, että tiedoston nimi on <code>presidentit.txt</code>. Henkilöiden lukeminen onnistuu seuraavasti. 
+</p>
+
+<pre class="sh_java code-highlight"><code>List&lt;Henkilo&gt; presidentit = new ArrayList&lt;&gt;();
+try {
+    // luetaan tiedosto "presidentit.txt" riveittäin
+    Files.lines(Paths.get("presidentit.txt"))
+        // pilkotaan rivi osiin ";"-merkin kohdalta 
+        .map(rivi -&gt; rivi.split(";"))
+        // poistetaan ne pilkotut rivit, joissa alle 2 osaa
+        // (haluamme että rivillä on aina nimi ja syntymävuosi)
+        .filter(palat -&gt; palat.length &gt;= 2)
+        // luodaan palojen perusteella henkilöitä
+        .map(palat -&gt; new Henkilo(palat[0], Integer.parseInt(palat[1])))
+        // ja lisätään henkilöt lopulta listalle
+        .forEach(henkilo -&gt; presidentit.add(henkilo));
+} catch (Exception e) {
+    System.out.println("Virhe: " + e.getMessage());
+}
+
+// nyt presidentit ovat listalla henkilöolioina
+</code></pre>
+
+
+
+<h2 class="material-heading">
+    Esimerkki: tekstin luominen
+
+</h2>
+
+<p>
+  Materiaalin osassa 3 esiintynyt "Ajatustenlukija" sekä materiaalin osassa 6 esiintynyt "Kivi, Paperi, Sakset" perustuivat ajatukselle siitä, että pelaajan aiempia siirtoja voidaan hyödyntää tulevaisuuden ennustamisessa. Sama periaate -- eli aiemman tiedon hyödyntyminen tulevan määrittelyssä -- toimii myös tekstin luomisessa. Voimme "oppia" tekstiä ja käyttää sitä uuden tekstin luomiseen. 
+</p>
+
+<p>
+  Tarkastellaan seuraavaa katkelmaa 1990-luvun hittikappaleesta <a href="https://en.wikipedia.org/wiki/Scatman_(Ski-Ba-Bop-Ba-Dop-Bop)" target="_blank" norel>Scatman (Ski-Ba-Bop-Ba-Dop-Bop)</a>.
+</p>
+
+<pre>
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<p>
+  Tässä esiteltävässä tekstin luomismenetelmässä periaatteena on tarkastella kutakin tekstin sanaparia laskea sanapareja seuraavien sanojen lukumäärät. Aloitetaan. Ensimmäinen sanapari on <code>ski-bi dibby</code> ja sitä seuraa sana <code>dib</code>. 
+</p>
+
+<pre>
+<strong>ski-bi dibby</strong> <font color="red">dib</font> yo da dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<p>
+  Pidämme kirjaa esiintymien lukumääristä, yllä huomaamme esiintymän "ski-bi dibby -&gt; dib". Lukumäärien ylläpitoon sopisi esimerkiksi kaksiulotteinen hajautustaulu. 
+</p>
+
+<pre>
+ski-bi dibby -&gt; dib: 1
+</pre>
+
+<p>
+  Seuraavaksi tarkastellaan sanaparia <code>dibby dib</code>. Tätä seuraa sana <code>yo</code>. 
+</p>
+
+<pre>
+ski-bi <strong>dibby dib</strong> <font color="red">yo</font> da dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<p>
+  Esiintymien lukumäärät päivittyvät taas.
+</p>
+
+<pre>
+ski-bi dibby -&gt; dib: 1
+dibby dib -&gt; yo: 1
+</pre>
+
+<p>
+  Sanapari siirtyy yhdellä, ja esiintymien lukumäärät päivittyvät.
+</p>
+
+<pre>
+ski-bi dibby <strong>dib yo</strong> <font color="red">da</font> dub dub
+yo da dub dub
+ski-bi dibby dib yo da dub dub
+yo da dub dub
+</pre>
+
+<pre>
+ski-bi dibby -&gt; dib: 1
+dibby dib -&gt; yo: 1
+dib yo &gt; da: 1
+</pre>
+
+<p>
+  Tätä jatketaan kunnes koko tekstidokumentti on käyty läpi. Tekstin läpikäynnin jälkeen esiintymien lukumäärät (opittu tekstimalli) ovat seuraavat.
+</p>
+
+<pre>
+ski-bi dibby -&gt; dib: 2
+dibby dib -&gt; yo: 2
+dib yo &gt; da: 2
+yo da &gt; dub: 4
+da dub &gt; dub: 4
+dub dub &gt; yo: 2
+dub yo &gt; da: 2
+dub dub &gt; ski-bi: 1
+dub ski-bi &gt; dibby: 1
+</pre>
+
+<p>
+  Sanaparia <code>ski-bi dibby</code> seuraa aina sana <code>dib</code>, sanaparia <code>dibby dib</code> seuraa aina sana <code>yo</code>, sanaparia <code>dib yo</code> seuraa aina sana <code>da</code>, sanaparia <code>yo da</code> seuraa aina sana <code>dub</code>, sanaparia <code>da dub</code> seuraa aina sana <code>dub</code>. Eli tähän mennessä tekstimalli on aika yksinkertainen.
+</p>
+
+<p>
+  Mutta! Sanaparia <code>dub dub</code> seuraa sana <code>yo</code> kaksi kertaa kolmesta, ja sana <code>ski-bi</code> kerran kolmesta. Voimme siis ajatella niin, että sanaparin <code>dub dub</code> kohdalla noin 33% todennäköisyydellä seuraava sana on <code>ski-bi</code>, ja noin 67% todennäköisyydellä seuraava sana on <code>yo</code>.
+</p>
+
+<p>
+  Yllä kuvattua tekstimallia voidaan tarkastella myös verkkona, missä jokainen solmu (pallo) on sanapari, ja solmujen välillä kulkevat kaaret kuvaavat sanojen välisiä yhteyksiä. Kaarien kohdalle merkitään todennäköisyydet sille, että sanaparin jälkeen valitaan tietty toinen sanapari. Alla kaikissa muissa tilanteissa päätös on selvä, mutta sanaparin <code>dub dub</code> jälkeen on kaksi vaihtoehtoa.
+</p>
+
+<img src="../img/lyrics-c384ceae.png" alt="Lyriikat verkkona kuvattuna"/>
+
+<p>
+  Tekstin tuottaminen yllä kuvatulla mallilla on suoraviivaista. Oletetaan, että aloitamme sanaparista <code>yo da</code>.
+</p>
+
+
+<pre class="sample-output">yo da
+</pre>
+
+<p>
+  Sanaparia <code>yo da</code> seuraa aina sanapari <code>da dub</code>. 
+</p>
+
+<pre class="sample-output">yo da dub
+</pre>
+
+<p>
+  Ja sanaparia <code>da dub</code> seuraa aina sanapari <code>dub dub</code>.
+</p>
+
+<pre class="sample-output">yo da dub dub
+</pre>
+
+<p>
+  Sanaparia <code>dub dub</code> seuraa 66.6% todennäköisyydellä sanapari <code>dub yo</code>, ja 33.3% todennäköisyydellä sanapari <code>dub ski-bi</code>. Tässä kohtaa hyödyntäisimme esimerkiksi Javan luokka <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Random.html" target="_blank">Random</a> ja valitsisimme sanan edellä kuvatun vaihtoehdon väliltä satunnaisesti. Mikäli Random-luokan tuottama satunnaisluku lukujen 0 ja 1 välillä on pienempi tai yhtäsuuri kuin 0.666%, valitsemme <code>dub yo</code>, muulloin <code>dub ski-bi</code>.
+</p>
+
+<p>
+  Ja tekstin generointi jatkuu..
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Vaalipuhe (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Edellisessä esimerkissä lähtökohtana käytetty tekstidokumentti on melko suppea, eikä vaihtelua juurikaan tapahdu. Tarkastellaan tekstin luomista, mutta käytetään opittavana tekstinä <a href="https://yle.fi/uutiset/3-9526290" target="_blank">Ylen kuntavaalidataa</a>. Tavoitteena tässä tehtävässä on luoda vaalipuhegeneraattori, joka pyrkii luomaan perustelun kysymykselle "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?".
+  </p>
+
+  <p>
+    Tehtäväpohjassa on mukana dokumentti <code>vaalidata.txt</code>, joka sisältää osajoukon Ylen tarjoamasta vaalidatasta. Tekstidokumentti on jaettu sarakkeisiin puolipisteiden perusteella. Ensimmäisessä sarakkeessa on tieto siitä, tuliko ehdokas valituksi (0 tai 1), toisessa sarakkeessa on perustelu kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?", ja kolmannessa sarakkeessa on perustelu kysymykseen "Mitä asioita haluat edistää tai ajaa tulevalla vaalikaudella?". Tässä tehtävässä käytetty vaalidatatiedosto on lisensoitu <a href="https://creativecommons.org/licenses/by-sa/1.0/fi/" target="_blank">Creative Commons CC BY-SA</a>-lisenssillä alkuperäisen tiedoston tavoin.
+  </p>
+
+  <p>
+    Tiedoston ensimmäiset kolme riviä ovat seuraavat:
+  </p>
+
+  <pre>
+1;olen aikaansaava ja aktiivinen luottamushenkilö joka pitää kuntalaisten puolia kuuntelen selvitän ja vien asioita eteenpäin hoidan koko sydämelläni kotiseutuni asioita ;edistää elinvointia kunnan tehtävä on huolehtia asukkaidensa hyvinvoinnista haluan tehdä edelleen aloitteita joissa on vahva terveyttä edistävä näkökulma haluan olla edelleen kaikkien kuntalaisten käytettävissä tiedän että kykenen vaikuttamaan asioihin oma alotteisesti sekä viemään kuntalaisten viestiä eteenpäin aina päätöksentekoon saakka tulevalla vaalikaudella meidän on panostettava ympäristönhoitoon jotta kunnassamme viihtyisi ja se houkuttelisi myös uusia asukkaita
+0;olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa ;päätösten pitkäjänteisyyttä helsinkiläisten aitoa kuuntelua kulttuuritarjonnan monipuolisuutta ja saatavuutta tietoisuutta jo olemassaolevasta tapahtumakirjosta koko kaupungin pitää olla turvallinen paikka asua syrjäytyneet nuoret tarvitsevat pikaisesti apua meillä ei ole varaa menettää yhtään sukupolvea kaikki ovat arvokkaita helsinki on koko suomen käyntikortti hyvä talous koulutus kulttuuri ja joukkoliikenne näiden turvaaminen ja säilyminen ovat kaikille tärkeitä
+0;uuden salon aikaiset kaksi valtuustokautta ovat tuoneet hyvän perehtyneisyyden ja hyvät verkostot kaupungin asioiden hoitoon nykyinen elämäntilanne antaa hyvin aikaa yhteisten asioiden hoitoon ;yrittäjänä näen kaupungin elinvoimapolitiikan edistämisen ensisijaiseksi toinen tärkeä asia tulevaisuuden kunnassa on sivistys siinä perusasioita ovat tietysti hyvä varhaiskasvatus ja perusopetus ja muu koulutus sivistyksen sektorilla erityisesti lähinnä sydäntäni on kulttuuri ja kirjasto säilytetään kattavat kirjastopalvelut kaupungin resurssit ovat rajalliset ja vastuun kulttuuriasioista hoitaa pääasiassa kolmas sektori kaupungin tuki sellaiselle tasolle että tekijöiden työn ilo säilyy
+  </pre>
+
+
+  <p>
+    Luodaan vaalipuhegeneraattori osissa. Teemme ensin luokan <code>Sanajakauma</code>, joka pitää kirjaa yksittäisten sanojen esiintymisisistä ja tarjoaa satunnaisia sanoja niiden esiintymistodennäköisyyksiin perustuen. Tämän jälkeen luomme luokan <code>Tekstimalli</code>, joka pitää kirjaa jokaiseen sanapariin liittyvistä sanajakaumista. Lopulta teemme luokan <code>Puhegeneraattori</code>, joka luo tekstiä annetun tekstimallin perusteella.
+  </p>
+
+  <p>
+    Edellisestä esimerkistä poiketen <strong>tekstimallia rakennettaessa otetaan huomioon vain peräkkäiset sanat</strong>, ei sanapareja. Esimerkiksi merkkijono "olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa" tuottaa seuraavanlaisen tekstimallin.
+  </p>
+
+  <pre>
+olen -&gt; ratkaisukeskeinen: 1
+ratkaisukeskeinen -&gt; yhteistyökykyinen: 1
+yhteistyökykyinen -&gt; ja: 1
+ja -&gt; avoin: 1
+avoin -&gt; henkilö: 1
+henkilö -&gt; teen: 1
+teen -&gt; aina: 1
+aina -&gt; päätöksiin: 1
+päätöksiin -&gt; vaadittavan: 1
+vaadittavan -&gt; taustatyön: 1
+taustatyön -&gt; huolellisesti: 1
+huolellisesti -&gt; arvostan: 1
+arvostan -&gt; tasa: 1
+tasa -&gt; arvoa: 1
+arvoa -&gt; ja: 1
+ja -&gt; vastuullisuutta: 1
+vastuullisuutta -&gt; yhteisten: 1
+yhteisten -&gt; asioiden: 1
+asioiden -&gt; hoidossa: 1
+  </pre>
+
+  <p>
+    Koko vaalidata-aineiston hyödyntäminen mahdollistaa esimerkiksi seuraavanlaisten puheiden luomisen: <em>tuijottamatta puoluerajoja olen kyvykäs ottamaan asioista selvää ja ensimmäistä kautta kunnallisesta päätöksenteosta olen aktiivinen eläkeläisten seurassa</em>.
+  </p>
+    
+
+  <h2>Sanajakauma, osa 1</h2>
+
+  <p>
+    Tehtäväpohjassa tulee valmiina seuraavanlainen luokka <code>Sanajakauma</code>. Sanajakauman tehtävänä on pitää kirjaa sanojen esiintymisistä ja tarjota sanoja niiden esiintymisten perusteella. 
+  </p>
+
+  
+<pre class="sh_java code-highlight"><code>package vaalit;
+
+public class Sanajakauma {
+    
+    public void lisaaSana(String sana) {
+    }
+    
+    public int esiintymiskertoja(String sana) {
+        return 0;
+    }
+
+    public String annaSana() {
+        return null;
+    }
+}
+</code></pre>
+
+  <p>
+    Täydennä luokan toimintaa. Luokan tulee toimia seuraavasti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Sanajakauma jakauma = new Sanajakauma();
+jakauma.lisaaSana("yo");
+jakauma.lisaaSana("yo");
+jakauma.lisaaSana("ski-bi");
+
+System.out.println(jakauma.esiintymiskertoja("yo"));
+System.out.println(jakauma.esiintymiskertoja("ski-bi"));
+System.out.println(jakauma.esiintymiskertoja("dub"));
+
+System.out.println(jakauma.annaSana());
+</code></pre>
+
+<pre class="sample-output">2
+1
+0
+yo
+</pre>
+
+  <p>
+    Metodin <code>annaSana</code> palauttama arvo tulee valita satunnaisesti kaikkien sanojen niin, että kunkin sanan valinta on yhtä todennäköistä. Yllä kumpikin sanoista <code>"yo"</code> ja <code>"ski-bi"</code> tulee siis palauttaa metodikutsusta <code>annaSana</code> 50% todennäköisyydellä.
+  </p>
+
+  <p>
+    Mikäli olioon ei ole lisätty vielä yhtäkään sanaa, tulee metodin <code>annaSana</code> palauttaa <code>null</code>-viite.
+  </p>
+
+  
+  <h2>Sanajakauma, osa 2</h2>
+
+  <p>
+    Tässä osassa kehität metodin <code>annaSana</code>-toiminnallisuutta siten, että metodikutsun palauttaman merkkijonon todennäköisyys perustuu merkkijonon esiintymien todennäköisyyteen.
+  </p>
+
+  <p>
+    Oletetaan, että sanajakaumaan lisätään kolme sanaa, "yo", "yo", ja "ski-bi". Nyt sanajakauman tulee tietää, että sana "yo" on esiintynyt kahdesti ja sana "ski-bi" on esiintynyt kerran. Mikäli sanajakaumalta kysytään nyt sanaa, tulee sen palauttaa 2/3 kyselyistä eli 66.66..% todennäköisyydellä sana <code>yo</code>, ja 1/3 kyselyistä eli 33.333...% todennäköisyydellä sana <code>ski-bi</code>. 
+  </p>
+
+  <p>
+    Eräs tapa, millä satunnaisesti valitun sanan valintaa voi suoraviivaistaa, on hyödyntää kaikkien sanojen esiintymiskertoja satunnaisen sanan valitsemisessa. Oletetaan, että sanat ja niiden esiintymiskerrat ovat seuraavat:
+  </p>
+
+  <pre>
+yo: 4
+ski-bi: 2
+heh: 3
+  </pre>
+
+  <p>
+    Sanojen esiintymiskertoja on yhteensä 9. Javan Random-luokalta voi pyytää satunnaista lukua nollan ja yhdeksän välillä (yhdeksän poislukien): <code>int luku = new Random().nextInt(9);</code>. Oletetaan, että luvuksi tulee 8. Nyt sanoja voidaan käydä läpi yksitellen siten, että pidämme kirjaa esiintymiskertojen summasta ja etsimme sen avulla arvottua lukua vastaavan sanan:
+  </p>
+
+  <pre>
+    Sana yo, esiintymiskertoja 4, esiintymiskertojen summa 4
+    Sana ski-bi, esiintymiskertoja 2, esiintymiskertojen summa 6
+    Sana heh, esiintymiskertoja 3, esiintymiskertojen summa 9 --> palauta heh.
+  </pre>
+
+  <p>
+    Toisaalta, mikäli satunnaisesti valituksi luvuksi tulee 4, toimitaan seuraavasti:
+  </p>
+
+  <pre>
+    Sana yo, esiintymiskertoja 4, esiintymiskertojen summa 4
+    Sana ski-bi, esiintymiskertoja 2, esiintymiskertojen summa 6 --> palauta ski-bi
+  </pre>
+  
+
+
+  <h2>Tekstimalli, osa 1</h2>
+
+  <p>
+    Tekstimallin tulee sanajakaumaa sopivasti hyödyntäen pitää kirjaa jokaista sanaa seuraavista sanoista sekä niiden esiintymiskerroista. Tehtäväpohjassa tulee valmiina seuraavanlainen luokka <code>Tekstimalli</code>. 
+  </p>
+  
+<pre class="sh_java code-highlight"><code>package vaalit;
+
+public class Tekstimalli {
+
+    public void lisaaAineisto(String aineisto) {
+    }
+
+    public String annaSana(String edeltava) {
+        return null;
+    }
+
+    public List&lt;String&gt; sanat() {
+        return null;
+    }
+}
+</code></pre>
+
+  <p>
+    Toteuta tässä metodit <code>public void lisaaAineisto(String aineisto)</code>, joka saa parametrinaan tekstiaineistoa kuvaavan merkkijonon, sekä <code>public List&lt;String&gt; sanat()</code>, joka palauttaa uniikit sanat listana.
+  </p>
+
+  <p>
+    Ohjelman tulee toimia seuraavasti:
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>Tekstimalli malli = new Tekstimalli();
+malli.lisaaAineisto("olen kyvykäs ottamaan asioista selvää");
+malli.lisaaAineisto("olen aktiivinen ja urheilullinen");
+malli.lisaaAineisto("olen rauhallinen ja iloinen");
+
+for (String sana: malli.sanat()) {
+    System.out.println(sana);
+}
+</code></pre>
+
+<pre class="sample-output">olen
+kyvykäs
+ottamaan
+asioista
+selvää
+aktiivinen
+ja
+urheilullinen
+rauhallinen
+iloinen
+</pre>
+
+  <p>
+    Metodin <code>lisaaAineisto</code> tulee siis lisätä yksittäiset sanat tekstimalliin, ja metodin <code>sanat</code> tulee palauttaa uniikit sanat tekstimallista. Sanojen järjestyksellä ei metodin <code>sanat</code> palauttamassa listassa ole väliä. Voit olettaa, että sanat ovat eroteltu toisistaan välilyönneillä.
+  </p>
+
+  <p>
+    Hyödynnä metodissa <code>public void lisaaAineisto(String aineisto)</code> String-luokan tarjoamaa metodia <code>split</code>. Metodi toimii seuraavasti:
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>String merkkijono = "eka toka kolmas neljäs";
+String[] palat = merkkijono.split("\\s+");
+System.out.println(palat[0]);
+System.out.println(palat[1]);
+System.out.println(palat[2]);
+System.out.println(palat[3]);
+</code></pre>
+
+<pre class="sample-output">eka
+toka
+kolmas
+neljäs
+</pre>
+
+  <p>
+    Mikäli sanoja ei ole lainkaan, metodin <code>sanat</code> tulee palauttaa tyhjä lista.
+  </p>
+  
+  <h2>Tekstimalli, osa 2</h2>
+
+  <p>
+    Muokkaa luokan <code>Tekstimalli</code> toimintaa siten, että tekstimallia rakennettaessa hyödynnetään aineiston peräkkäisiä sanoja. Esimerkiksi merkkijono "olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa" tuottaa seuraavanlaisen tekstimallin.
+  </p>
+
+  
+  <pre>
+olen -&gt; ratkaisukeskeinen: 1
+ratkaisukeskeinen -&gt; yhteistyökykyinen: 1
+yhteistyökykyinen -&gt; ja: 1
+ja -&gt; avoin: 1
+avoin -&gt; henkilö: 1
+henkilö -&gt; teen: 1
+teen -&gt; aina: 1
+aina -&gt; päätöksiin: 1
+päätöksiin -&gt; vaadittavan: 1
+vaadittavan -&gt; taustatyön: 1
+taustatyön -&gt; huolellisesti: 1
+huolellisesti -&gt; arvostan: 1
+arvostan -&gt; tasa: 1
+tasa -&gt; arvoa: 1
+arvoa -&gt; ja: 1
+ja -&gt; vastuullisuutta: 1
+vastuullisuutta -&gt; yhteisten: 1
+yhteisten -&gt; asioiden: 1
+asioiden -&gt; hoidossa: 1
+  </pre>
+
+  <p>
+    Tekstimalliin tulee pystyä lisäämään useita tekstiaineistoja. Alla on annettuna esimerkki ohjelman toiminnasta.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Tekstimalli malli = new Tekstimalli();
+malli.lisaaAineisto("olen kyvykäs ottamaan asioista selvää");
+malli.lisaaAineisto("olen aktiivinen ja urheilullinen");
+
+System.out.println(malli.annaSana("ottamaan"));
+System.out.println(malli.annaSana("aktiivinen"));
+System.out.println(malli.annaSana("ja"));
+System.out.println(malli.annaSana("olen"));
+System.out.println(malli.annaSana("olen"));
+System.out.println(malli.annaSana("olen"));
+System.out.println(malli.annaSana("kumiankka"));
+System.out.println(malli.annaSana("selvää"));
+</code></pre>
+
+<pre class="sample-output">asioista
+ja
+urheilullinen
+aktiivinen
+aktiivinen
+kyvykäs
+null
+null
+</pre>
+
+  <p>
+    Huomaa, että tekstimallissa sanaa "olen" seuraa sekä sana "kyvykäs" että sana "aktiivinen". Yllä kummankin sanan todennäköisyys sanan "olen" seuraajana on 50%. Syötettävät aineistot tulee myös käsitellä erillisinä -- esimerkiksi yllä olevassa esimerkissä sanan "selvää" seuraaja ei ole sana "olen".
+  </p>
+  
+  
+  <h2>Puhegeneraattori</h2>
+  
+  <p>
+    Puhegeneraattorin tulee tekstimallia sopivasti hyödyntäen pitää tarjota mahdollisuus aineiston lukemiseen sekä puheen tuottamiseen. Tehtäväpohjassa on valmiina seuraavanlainen luokka <code>Puhegeneraattori</code>. 
+  </p>
+  
+<pre class="sh_java code-highlight"><code>package vaalit;
+
+public class Puhegeneraattori {
+
+    public void lue(String tiedosto) {
+    }
+
+    public String tuotaPuhetta(int sanojaEnintaan) {
+        return null;
+    }
+}
+</code></pre>
+  
+  <p>
+    Toteuta tässä metodit <code>public void lue(String tiedosto)</code>, joka saa parametrinaan luettavan tiedoston nimen ja luo tiedostossa olevasta datasta käytettävän tekstimallin, sekä <code>public String tuotaPuhetta(int sanojaEnintaan)</code>, joka tuottaa tekstimallista puhetta, jossa on korkeintaan annettu määrä sanoja.
+  </p>
+
+  <p>
+    Metodien tulee tarkemmin ottaen toimia seuraavasti:
+  </p>
+
+  <p>
+    Metodi <code>public void lue(String tiedosto)</code> lukee paramatetrina annetun tiedoston, joka on tehtävänannon alussa annettua muotoa. Jokaiselta riviltä tulee ottaa puolipisteillä eroteltu alue, missä ehdokas vastaa kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?" -- kun rivi pilkotaan puolipisteillä osiksi, kysymys löytyy indeksistä 1. Kukin rivi tulee lisätä tekstimalliin.
+  </p>
+
+  <p>
+    Metodi <code>public String tuotaPuhetta(int sanoja)</code> valitsee tekstimallin tarjoamasta sanalistasta satunnaisen sanan alkusanaksi. Tämän jälkeen tekstimalli tuottaa puhetta tekstimallia hyödyntäen -- alkusanalla saadaan seuraava sana, seuraavalla sanalla sitä seuraava ymym. Alla on esimerkki satunnaisen sanan valitsemiseksi listalta.
+  </p>
+
+<pre class="sh_java code-highlight"><code>List&lt;String&gt; lista = new ArrayList&lt;&gt;();
+lista.add("eka");
+lista.add("toka");
+lista.add("kolmas");
+
+Collections.shuffle(lista);
+
+String satunnainen = lista.get(0);
+</code></pre>
+
+  <p>
+    Mikäli puhetta tuotettaessa päädytään sanaan, jolle ei löydy seuraajaa, puheen tuottaminen loppuu ja puhe palautetaan. Muulloin puhe palautetaan kun puheessa on metodille parametrina annettu määrä sanoja. Esimerkiksi, jos tekstimalli on rakennettu tekstistä "olipa kerran ihminen", ei tekstimallin perusteella luodussa puheessa tule sanan "ihminen" jälkeen enää sanoja. 
+  </p>
+  
+  <p>
+    Kun olet saanut Puhegeneraattorin luotua, seuraava ohjelma tuottaa satunnaista puhetta.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Puhegeneraattori generaattori = new Puhegeneraattori();
+generaattori.lue("vaalidata.csv");
+System.out.println(generaattori.tuotaPuhetta(10));
+</code></pre>
+  
+<pre class="sample-output">esiille mielipiteeni ja eri näkökulmat kiista tilanteissa kuntalaistemme hyvinvoinnin parantamiseksi
+</pre>
+
+  <p>
+    <em>
+      Tässä tehtävässä kannattaa tarkastella myös tehtäväpohjan yksikkötestejä.
+    </em>
+  </p>
+  
+
+    </div>
+  </div>
+</div>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Tekoälyä
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tehtävät, joissa opitaan historiasta ja sovelletaan opittua tulevaan, ovat oikeastaan esimerkkejä tekoälystä. Tekoälyalgoritmeja on toki useita muitakin. Näihinkin tutustutaan tietojenkäsittelytieteen perusopinnoissa.
+  </p>
+
+
+  </div>
+</div>
+
+<div class="quiznator-plugin" data-quiz-id="5a987a0f7863c4000454a040"></div>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/part10.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-k18">
+                Ohjelmoinnin jatkokurssi, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-3f7075f4.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        window.initTyponator();
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
