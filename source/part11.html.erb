@@ -1190,6 +1190,39 @@
 
 
 <% partial 'partials/material_heading' do %>
+  CrowdSorcerer ja vapaa tehtävä
+<% end %>
+
+<p>
+  Tässä kohtaa pääset toteuttamaan vapaan, itse keksimäsi tehtävän tulevia sukupolvia varten. Mikäli et ole CrowdSorcereria aiemmin, käy katsomassa CrowdSorcererin opasvideo toisen osan materiaalista.
+</p>
+
+
+<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä' } do %>
+
+  <p>
+    Keksi ohjelmointitehtävä. Tehtävän aihealuetta ei ole rajattu, eli tehtävä on hyvin vapaa. Saat käyttää tehtävässä listoja, hajautustauluja, taulukoita sekä Scanneria. 
+  </p>
+
+  <p>
+    <b>Huom!</b> Tässä sinun täytyy todennäköisesti syöttää jokaiselle testitapaukselle useampi syöte. Useamman syötteen saat annettua, kun laitat rivinvaihdon <code>\n</code> jokaisen syötteen väliin.
+  </p>
+
+  <p>
+    Esimerkiksi jos haluat antaa testisyötteeksi "kissa", "koira", "lopeta", syötä input-kenttään teksti <code>kissa\nkoira\nlopeta</code>.
+  </p>
+
+  <p>
+    Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään tehtävänantoon.
+  </p>
+
+<% end %>
+
+
+<div class='crowdsorcerer-widget' data-assignment='9'></div>
+
+
+<% partial 'partials/material_heading' do %>
   Tiedon hakeminen ja järjestäminen
 <% end %>
 
