@@ -1,0 +1,2622 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin MOOC, Ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi, kevät 2018 | Osa 12</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-4f205160.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../kertaus1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=kertaus1.html&gt;')">Kertaus 1-7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part8/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part8.html&gt;')">Osa 8</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part9/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part9.html&gt;')">Osa 9</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part10/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part10.html&gt;')">Osa 10</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part11/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part11.html&gt;')">Osa 11</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part12.html&gt;')">Osa 12</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          <div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Kahdennentoista osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tutustuu graafisten käyttöliittymien ohjelmointiin. Tuntee muutamia käyttöliittymäkomponentteja, käyttöliittymäkomponenttien asettelun mekanismeja, sekä osaa käsitellä käyttöliittymän tapahtumia. Osaa tehdä käyttöliittymiä, jotka sisältävät useamman näkymän (esimerkiksi kirjautumisnäkymä, tiedon listaukseen käytettävä näkymä, tiedon muokkaukseen käytettävä näkymä).
+  </p>
+
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Graafiset käyttöliittymät
+
+</h1>
+
+<p>
+  Tutustutaan seuraavaksi graafisten käyttöliittymien luomiseen. Graafiset käyttöliittymät poikkeavat aiemmin toteuttamistamme tekstikäyttöliittymistä usealla tavalla. Graafisia käyttöliittymiä luodessa hyödynnämme ensisijaisesti käyttöliittymäkirjastoja, jotka tarjoavat valmiita käyttöliittymäkomponentteja kuten tekstikenttäelementtejä ja nappeja.
+</p>
+
+<p>
+  Käyttäjän syötteiden käsittely poikkeaa myös tekstikäyttöliittymistä. Siinä missä tekstikäyttöliittymissä toiminnallisuus kytketään tietyn muotoiseen syötteeseen, graafisissa käyttöliittymissä toiminnallisuus lisätään käyttöliittymäkomponentteihin. Ohjelmoija esimerkiksi lisää käyttöliittymän nappiin metodin, joka käsittelee napin painallukseen liittyvän tapahtuman.
+</p>
+
+<p>
+  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank" rel="noopener">JavaFX</a> käyttöliittymäkirjastoa.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Graafiset käyttöliittymät ja tarvittavat kirjastot
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Graafisten käyttöliittymien luomiseen käytetään JavaFx-nimistä kirjastoa. Linux-koneilla joudut -- riippuen Javan asennuksesta -- asentamaan myös openjfx-kirjaston. Tämän asentaminen onnistuu Ubuntussa (komentoriviltä) komennolla:
+  </p>
+
+  <pre>
+  sudo apt-get install openjfx
+  </pre>
+
+  <p>
+    Tehtäväpohjissa käytetään JavaFx-ohjelmien testaamiseen <a href="https://github.com/TestFX/TestFX/wiki" target="_blank" norel>TestFX</a>-nimistä apukirjastoa. Kirjasto tulee tehtäväpohjien mukana.
+  </p>
+  
+
+  </div>
+</div>
+
+<p>
+  Yksinkertaisen ikkunan luominen onnistuu JavaFX:n avulla seuraavanlaisella ohjelmalla.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        ikkuna.setTitle("Hei Maailma!");
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+
+
+<p>
+  Kun ohjelman käynnistää, sovellus näyttää seuraavalta.
+</p>
+
+<img src="../img/material/gui-helloworld-60b9506e.png" alt="Tyhjä ikkuna, jonka otsikko on 'Hei Maailma!'"/>
+
+<p>&nbsp;</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Omien JavaFX-sovellusten laatiminen
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Voit tehdä omia JavaFx-projekteja NetBeansissa valitsemalla File -&gt; New Project. Valitse tämän jälkeen projektilistauksesta JavaFx ja sieltä JavaFx Application. Tämän jälkeen edessäsi on projektien luomiseen käytetty näkymä, missä voit nimetä projektin.
+  </p>
+
+
+  </div>
+</div>
+
+<p>
+  Mitä ohjelmassa oikein tapahtuu? Luokkamme JavaFxSovellus perii luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html" target="_blank" rel="noopener">Application</a>, joka tarjoaa rungon graafisten käyttöliittymien luomiseen. Sovellus käynnistetään Application-luokalta perittävällä metodilla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch-java.lang.Class-java.lang.String...--" target="_blank" rel="noopener">launch</a>, jolle annetaan parametrina käynnistettävän luokan nimi muodossa <em>LuokanNimi.class</em>.
+</p>
+
+<p>
+  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init periytyy luokasta Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Jätimme sen tässä toteuttamatta, sillä ohjelmamme on melko yksinkertainen. Metodin init kutsumisen jälkeen ohjelma kutsuu metodia start, joka saa parametrinaan ikkunaa kuvaavan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank" rel="noopener">Stage</a>-olion. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle stage-oliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen. 
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Sovellukseni</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jonka otsikkona on "Sovellukseni". Sovelluksen tulee käynnistyä kun main-metodi suoritetaan.
+  </p>
+
+  <p>
+    Huom! Sekä tässä että tulevassa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank" rel="noopener">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+<h2 class="material-heading">
+    Käyttöliittymän rakenne
+
+</h2>
+
+<p>
+  Graafiset käyttöliittymät koostuvat oleellisesti kolmesta osasta. Stage-olio toimii ohjelman ikkunana. Stage-oliolle asetetaan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html" target="_blank" rel="noopener">Scene</a>-olio, joka kuvastaa ikkunassa olevaa näkymää. Scene-olio taas sisältää näkymään liittyvien komponenttien asettelusta vastaavan olion (esim. FlowPane), joka taas sisältää konkreettiset käyttöliittymäkomponentit.
+</p>
+
+<p>
+  Alla oleva ohjelma luo käyttöliittymän, jossa on yksittäinen nappi.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        Button nappi = new Button("Tämä on nappi");
+
+        FlowPane komponenttiryhma = new FlowPane();
+        komponenttiryhma.getChildren().add(nappi);
+
+        Scene nakyma = new Scene(komponenttiryhma);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<p>
+  Sovellus näyttää seuraavalta.
+</p>
+
+<img src="../img/material/gui-nappi-0751ce7b.png" alt="Ikkuna, jossa on nappi. Napissa on teksti 'Tämä on nappi'."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Käyttöliittymäkomponentit lisätään niiden asettelusta vastaavan olion -- edellä FlowPane -- "lapsiksi". Tämä liittyy JavaFx:n suunnittelussa tehtyyn päätökseen, missä jokainen käyttöliittymäkomponenttien asetteluun käytettävä olio voi sisältää muita käyttöliittymäkomponenttien asetteluun käytettäviä olioita sekä luonnollisesti myös käyttöliittymäkomponentteja. Tämä mahdollistaa graafiset käyttöliittymät, joissa käyttöliittymäkomponenttien asettelutapa riippuu niiden paikasta käyttöliittymässä. Esimerkiksi käyttöliittymässä ylhäällä olevan valikon vaihtoehdot asetetaan yleensä vierekkäin, kun taas listattavat asiat allekkain.
+</p>
+
+<p>
+  Käyttöliittymän rakenne on siis lyhyesti seuraava. Ikkuna sisältää Scene-olion. Scene-olio sisältää käyttöliittymäkomponenttien asettelusta vastaavan olion. Käyttöliittymäkomponenttien asettelusta vastaava olio voi sisältää sekä käyttöliitymäkomponentteja, että käyttöliittymäkomponenttien asettelusta vastaavia olioita.
+</p>
+
+<!--
+  TODO: kuva
+</p>
+
+stage
+ |
+scene
+ |
+käyttöliittymäkomponenttien asettelusta vastaava olio
+ |        |
+kälivast kälikomp kälikomp
+ |
+kälikomp
+   -->
+
+
+<h2 class="material-heading">
+    Käyttöliittymäkomponentit
+
+</h2>
+
+<p>
+  Graafisia käyttöliittymiä luodessa ohjelmoijat tyypillisesti hyödyntävät valmiiden käyttöliittymäkirjastojen tarjoamia osia sovellusten laatimiseen. Ohjelmoijan ei esimerkiksi kannata toteuttaa käyttöliittymän nappia tyhjästä (eli luoda luokkaa, joka piirtää napin sekä mahdollistaa siihen liittyvien toiminnallisuuksien käsittelyn), sillä vastaava komponentti löytyy yleensä käyttöliittymäkirjastoista valmiina. Tutustutaan seuraavaksi muutamaan käyttöliittymäkomponenttiin.
+</p>
+
+<p>
+  Tekstin näyttäminen tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html" target="_blank" rel="noopener">Label</a></code>-luokan avulla. Label tarjoaa käyttöliittymäkomponentin, jolle voi asettaa tekstiä ja jonka sisältämää tekstiä voi muokata metodien avulla. Näytettävä teksti asetetaan joko konstruktorissa tai erillisellä <code>setText</code>-metodilla.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        Label teksti = new Label("Tekstielementti");
+
+        FlowPane komponenttiryhma = new FlowPane();
+        komponenttiryhma.getChildren().add(teksti);
+
+        Scene nakyma = new Scene(komponenttiryhma);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<img src="../img/material/gui-tekstielementti-7c662093.png" alt="Ikkuna, jossa on tekstielementti. Ikkunassa näkyy teksti 'Tekstielementti'."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Käyttöliittymään saa painikkeita <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html" target="_blank" rel="noopener">Button</a>-luokan avulla. Napin lisääminen käyttöliittymään tapahtuu aivan kuten tekstielementin lisääminen.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        Button nappi = new Button("Tämä on nappi");
+
+        FlowPane komponenttiryhma = new FlowPane();
+        komponenttiryhma.getChildren().add(nappi);
+
+        Scene nakyma = new Scene(komponenttiryhma);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<img src="../img/material/gui-nappi-0751ce7b.png" alt="Ikkuna, jossa on nappi. Napissa on teksti 'Tämä on nappi'."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Sovellukseen voi lisätä myös useampia käyttöliittymäelementtejä samaan aikaan. Alla käytössä on sekä nappi että tekstielementti.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        Button nappi = new Button("Tämä on nappi");
+        Label teksti = new Label("Tekstielementti");
+
+        FlowPane komponenttiryhma = new FlowPane();
+        komponenttiryhma.getChildren().add(nappi);
+        komponenttiryhma.getChildren().add(teksti);
+
+        Scene nakyma = new Scene(komponenttiryhma);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<p>
+  Sovellus näyttää seuraavalta.
+</p>
+
+<img src="../img/material/gui-nappi-ja-teksti-6437f623.png" alt="Ikkuna, jossa on nappi sekä tekstielementti. Napissa on teksti 'Tämä on nappi' ja tekstielementti sisältää tekstin 'Tekstielementti'."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Osoitteessa <a href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/</a> on listattuna joukko valmiita käyttöliittymäkomponentteja. Sivu tarjoaa myös esimerkkejä käyttöliittymäkomponenttien käytöstä.
+</p>
+
+
+<p>
+  Käyttöliittymäkomponentteja on huomattava määrä. Niiden opiskeluun kannattaa käyttää verkossa olevia valmiita oppaita kuten edellä mainittua osoitetta <a href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/</a>. Käyttöliittymäkomponentteja kannattaa kokeilla aluksi erikseen siten, että kokeilee yhden komponentin lisäämistä ja tarkastelee sen toimintaa.
+</p>
+
+<p>
+  Kun yksittäiset komponentit tulevat tutuksi, on niiden käyttäminen suoraviivaisempaa. Lähes kaikille komponenteille yhteistä on se, miten ne lisätään sovellukseen. Kun osaat lisätä yhden komponentin käyttöliittymään, osaat lisätä käytännössä lähes kaikki komponentit käyttöliittymään.
+</p>
+
+<p>
+  Ainoa merkittävä ero käyttöliittymäkomponenttien lisäämisessä liittyy siihen, että mihin kohtaan käyttöliittymää komponentin haluaa lisätä. Tarkastellaan käyttöliittymäkomponenttien asettelua kohta.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Nappi ja tekstielementti</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo edellistä esimerkkiä seuraten tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on nappi (Button) ja tekstielementti (Label). Napin tulee olla tekstielementin vasemmalla puolella tai yläpuolella.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Nappi ja tekstikenttä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettua luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank" rel="noopener">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Käyttöliittymäkomponenttien asettelu
+
+</h2>
+
+<p>
+  Jokaisella käyttöliittymäkomponentilla on käyttöliittymässä sijainti. Komponentin sijainnin määrää käytössä oleva käyttöliittymäkomponenttien asetteluun käytettävä luokka.
+</p>
+
+<p>
+  Edellisissä esimerkeissä käytimme käyttöliittymäkomponenttien asetteluun <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html" target="_blank" rel="noopener">FlowPane</a>-nimistä luokkaa. FlowPanen avulla käyttöliittymään lisättävät komponentit tulevat vierekkäin. Jos ikkunan koko pienenee siten, että kaikki komponentit eivät mahdu vierekkäin, rivitetään komponentit automaattisesti. Alla olevassa kuvassa edellisen esimerkin tuottamaa sovellusta on kavennettu, jolloin elementit ovat rivittyneet automaattisesti.
+</p>
+
+<img src="../img/material/gui-nappi-ja-teksti-rivitetty-cff8f7ce.png" alt="Ikkuna, jossa on nappi sekä tekstielementti. Napissa on teksti 'Tämä on nappi' ja tekstielementti sisältää tekstin 'Tekstielementti'. Ikkunan leveys on niin pieni, että elementit ovat rivitetty omille riveilleen."/>
+
+<p>&nbsp;</p>
+
+
+<h3 class="material-heading">
+    BorderPane
+
+</h3>
+
+<p>
+  <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.html" target="_blank" norel>BorderPane</a>-luokan avulla käyttöliittymäkomponentit voidaan asetella viiteen pääkohtaan käyttöliittymässä: ylälaita, oikea laita, alalaita, vasen laita ja keskikohta. Perinteiset sovellukset, kuten käyttämäsi web-selain hyödyntävät tätä asettelua. Ylälaidassa on valikko sekä osoiterivi, ja keskellä on sivun sisältö.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        BorderPane asettelu = new BorderPane();
+        asettelu.setTop(new Label("ylälaita"));
+        asettelu.setRight(new Label("oikea laita"));
+        asettelu.setBottom(new Label("alalaita"));
+        asettelu.setLeft(new Label("vasen laita"));
+        asettelu.setCenter(new Label("keskikohta"));
+
+        Scene nakyma = new Scene(asettelu);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<img src="../img/material/gui-borderpane-dc2398c3.png" alt="BorderPane-asettelua käyttävä käyttöliittymä, jossa jokaiseen pääkohtaan on asetettu tekstielementti."/>
+
+<p>
+  &nbsp;
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">BorderPane</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, joka käyttää BorderPane-luokkaa elementtien asetteluun. Lisää ylälaitaan tekstielementti, jossa on teksti "NORTH", oikeaan laitaan tekstielementti, jossa on teksti "EAST", ja alalaitaan tekstielementti, jossa on teksti "SOUTH".
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    HBox
+
+</h3>
+
+<p>
+  <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html" target="_blank" norel>HBox</a>-luokan avulla käyttöliittymäkomponentit asetellaan riviin.
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+    HBox asettelu = new HBox();
+
+    asettelu.getChildren().add(new Label("eka"));
+    asettelu.getChildren().add(new Label("toka"));
+    asettelu.getChildren().add(new Label("kolmas"));
+
+    Scene nakyma = new Scene(asettelu);
+
+    ikkuna.setScene(nakyma);
+    ikkuna.show();
+}
+</code></pre>
+
+<img src="../img/material/gui-hbox-b84e8491.png" alt="Tekstielementit on asetettu riviin HBox-asettelun avulla. Elementit ovat kiinni toisissaan."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Kuten edellisestä esimerkistä huomaa, HBox asettaa käyttöliittymäelementit oletuksena täysin toisiinsa kiinni. Metodin setSpacing avulla elementtien väliin saa tyhjää.
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+    HBox asettelu = new HBox();
+    asettelu.setSpacing(10);
+
+    asettelu.getChildren().add(new Label("eka"));
+    asettelu.getChildren().add(new Label("toka"));
+    asettelu.getChildren().add(new Label("kolmas"));
+
+    Scene nakyma = new Scene(asettelu);
+
+    ikkuna.setScene(nakyma);
+    ikkuna.show();
+}
+</code></pre>
+
+<img src="../img/material/gui-hbox-spacing-8da3d665.png" alt="Tekstielementit on asetettu riviin HBox-asettelun avulla. Elementtien välillä on 10 pikseliä eroa."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Luokka <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/VBox.html" target="_blank">VBox</a> toimii vastaavasti, mutta asettelee käyttöliittymäkomponentit allekkain.
+</p>
+
+<img src="../img/material/gui-vbox-spacing-3b540d51.png" alt="Tekstielementit on asetettu allekkain VBox-asettelun avulla. Elementtien välillä on 10 pikseliä eroa."/>
+
+<p>
+  &nbsp;
+</p>
+
+
+<h3 class="material-heading">
+    GridPane
+
+</h3>
+
+<p>
+  <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html" target="_blank" rel="noopener">GridPane</a>-luokan avulla käyttöliittymäkomponentit asetellaan ruudukkoon. Alla olevassa esimerkissä luodaan 3x3-kokoinen ruudukko, jossa jokaisessa ruudussa on nappi.
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+    GridPane asettelu = new GridPane();
+
+    for (int x = 1; x <= 3; x++) {
+        for (int y = 1; y <= 3; y++) {
+            asettelu.add(new Button("" + x + ", " + y), x, y);
+        }
+    }
+
+    Scene nakyma = new Scene(asettelu);
+
+    ikkuna.setScene(nakyma);
+    ikkuna.show();
+}
+</code></pre>
+
+<img src="../img/material/gui-gridpane-3x3-1223db8d.png" alt="3 kertaa 3 ruudukkoon asetetut 9 nappia."/>
+
+<p>
+  &nbsp;
+</p>
+
+
+<h3 class="material-heading">
+    Useampi asettelija samassa
+
+</h3>
+
+<p>
+  Käyttöliittymäkomponenttien asettelijoita voi myös yhdistellä. Tyypillinen ratkaisu on BorderPane-asettelun käyttäminen pohjalla, jonka sisälle asetetaan muita asetteluja. Alla olevassa esimerkissä BorderPanen ylälaidassa on samalle riville asetteluun käytetty HBox ja vasemmassa laidassa allekkain asetteluun käytetty VBox. Keskelle on laitettu tekstikenttä.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+	BorderPane asettelu = new BorderPane();
+
+	HBox napit = new HBox();
+	napit.setSpacing(10);
+	napit.getChildren().add(new Button("Eka"));
+	napit.getChildren().add(new Button("Toka"));
+	napit.getChildren().add(new Button("Kolmas"));
+
+	VBox tekstit = new VBox();
+	tekstit.setSpacing(10);
+	tekstit.getChildren().add(new Label("Eka"));
+	tekstit.getChildren().add(new Label("Toka"));
+	tekstit.getChildren().add(new Label("Kolmas"));
+
+	asettelu.setTop(napit);
+	asettelu.setLeft(tekstit);
+
+	asettelu.setCenter(new TextArea(""));
+
+	Scene nakyma = new Scene(asettelu);
+
+	ikkuna.setScene(nakyma);
+	ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+	launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<img src="../img/material/gui-useampi-c3154fa5.png" alt="Samassa käyttöliittymässä käytetty useampaa asettelijaa. BorderPane luo rungon, ylälaidassa on HBox ja vasemmassa laidassa VBox. Keskellä olevaan tekstilaatikkoon on kirjoitettu tekstiä."/>
+
+<p>
+  &nbsp;
+</p>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tekstitilastointia</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstielementtiä. Aseta alalaidan tekstielementit HBox-olion sisään. Ensimmäisessä tekstielementissä tulee olla teksti "Kirjaimia: 0". Toisessa tekstielementissä tulee olla teksti "Sanoja: 0". Kolmannessa tekstielementissä tulee olla teksti "Pisin sana on:".
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Tapahtumien käsittely
+
+</h2>
+
+<p>
+  Edellä toteuttamamme käyttöliittymät eivät reagoi käyttöliittymässä tehtyihin tapahtumiin. Reagoimattomuus ei johdu käyttöliittymäkomponenteista, vaan siitä että emme ole lisänneet käyttöliittymäkomponentteihin tapahtumien käsittelyyn tarvittavaa toiminnallisuutta.
+</p>
+
+<p>
+  Nappien painaminen käsitellään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html" target="_blank" rel="noopener">EventHandler</a>-rajapinnan toteuttavalla luokalla. Tapahtuman tyyppi on tällöin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html" target="_blank" rel="noopener">ActionEvent</a>. Rajapinnan toteutukseen määritellään <em>mitä tehdään</em> silloin, kun käyttäjä painaa nappia.
+</p>
+
+<pre class="sh_java code-highlight"><code>Button nappi = new Button("Tämä on nappi");
+nappi.setOnAction(new EventHandler&lt;ActionEvent&gt;() {
+    @Override
+    public void handle(ActionEvent event) {
+        System.out.println("Painettu!");
+    }
+});
+</code></pre>
+
+<p>
+  Rajapinnan eksplisiittisen toteutuksen voi korvata halutessaan Lambda-lausekkeella.
+</p>
+
+<pre class="sh_java code-highlight"><code>Button nappi = new Button("Tämä on nappi");
+nappi.setOnAction((event) -&gt; {
+    System.out.println("Painettu!");
+});
+</code></pre>
+
+<p>
+  Kun edellä olevaa nappi painetaan, konsoliin tulostetaan teksti "Painettu!".
+</p>
+
+<p>
+  Käyttöliittymäkomponentteihin liitetyt tapahtumankäsittelijät kuten edellä käytetty EventHandler liittyvät aina tiettyihin käyttöliittymäkomponentteihin. Aina kun käyttöliittymäkomponentille tehdään toiminto, esimerkiksi napille napin painaminen, jokaista kyseiseen käyttöliittymäkomponenttiin liittyvää tapahtumankäsittelijää kutsutaan, ja niihin liittyvä ohjelmakoodi suoritetaan.
+</p>
+
+<p>
+  Haluamme tyypillisesti että tapahtumankäsittelijä muokkaa jonkun olion tilaa. Päästäksemme olioon käsiksi, tulee tapahtumankäsittelijällä olla viite käsiteltävään olioon. Pohditaan seuraavaa käyttöliittymää jossa on kaksi tekstikenttää sekä nappi.
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+    TextField vasenTeksti = new TextField();
+    TextField oikeaTeksti = new TextField();
+    Button nappi = new Button("Kopioi");
+
+    HBox komponenttiryhma = new HBox();
+    komponenttiryhma.setSpacing(20);
+    komponenttiryhma.getChildren().addAll(vasenTeksti, nappi, oikeaTeksti);
+
+    Scene nakyma = new Scene(komponenttiryhma);
+
+    ikkuna.setScene(nakyma);
+    ikkuna.show();
+}
+</code></pre>
+
+<p>
+  Käyttöliittymän vasemmassa ja oikeassa laidassa on tekstikenttä. Tekstikenttien lisäksi käyttöliittymän keskellä on nappi, jossa on teksti "Kopioi".
+</p>
+
+<img src="../img/material/gui-kopioija-35979788.png" alt="Kaksi tekstikenttää sekä nappi, jossa on teksti 'Kopioi'."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Haluaisimme luoda tilanteen, missä vasemman tekstikentän sisältö kopioituu oikean kentän sisällöksi kun käyttäjä painaa nappia. Tämä onnistuu EventHandler-rajapinnan toteuttavan olion avulla. Toteutettava metodi pystyy käyttämään metodin edellä määriteltyjä olioita, jos olioiden arvoa ei aseteta ohjelmassa uudestaan yhtäsuuruusmerkillä (eli viitteet eivät muutu).
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+    TextField vasenTeksti = new TextField();
+    TextField oikeaTeksti = new TextField();
+    Button nappi = new Button("Kopioi");
+
+    nappi.setOnAction((event) -&gt; {
+        oikeaTeksti.setText(vasenTeksti.getText());
+    });
+
+    HBox komponenttiryhma = new HBox();
+    komponenttiryhma.setSpacing(20);
+    komponenttiryhma.getChildren().addAll(vasenTeksti, nappi, oikeaTeksti);
+
+    Scene nakyma = new Scene(komponenttiryhma);
+
+    ikkuna.setScene(nakyma);
+    ikkuna.show();
+}
+</code></pre>
+
+<p>
+  Nyt nappia painettaessa vasemman tekstikentän sisältö kopioituu oikealla olevaan tekstikenttään.
+</p>
+
+<img src="../img/material/gui-kopioija-2-4b770390.png" alt="Kaksi tekstikenttää sekä nappi, jossa on teksti 'Kopioi'."/>
+
+<p>
+  &nbsp;
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Ilmoitin</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on kolme käyttöliittymäkomponenttia. Ylin komponentti on tekstikenttä (TextField), keskimmäinen komponentti nappi (Button), ja alin komponentti tekstielementti (Label). Asettele komponentit VBox-luokan avulla. Käyttöliittymän tulee näyttää (esimerkiksi) seuraavalta.
+  </p>
+
+  <img src="../img/material/gui-ilmoitin-1-c3d8b275.png" alt="."/>
+
+  <p>&nbsp;</p>
+
+  <p>
+    Lisää tämän jälkeen sovellukseen toiminnallisuus, missä napin painaminen johtaa siihen, että tekstikentän teksti kopioituu tekstielementin arvoksi. Alla olevassa esimerkissä tekstikenttään on kirjoitettu teksti "hei mualima!", jonka jälkeen nappia on painettu.
+  </p>
+
+  <img src="../img/material/gui-ilmoitin-2-fdd9ce96.png" alt="."/>
+
+  <p>&nbsp;</p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Ristinolla (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä toteutat 3x3-kokoisen ristinollapelin. Tehtävä on jaettu kolmeen osaan: ensin luodaan käyttöliittymän osat, sitten nappien toiminnallisuus, ja lopuksi mahdollisuus pelin loppuun pelaamiseen.
+  </p>
+
+  <img src="../img/material/gui-ristinolla-06a22539.png" alt="3x3 ristinolla."/>
+
+  <p>
+    Huom! Saat nappien merkit pysymään saman kokoisina sopivalla fontilla. Kuvakaappauksessa nappien käyttämä fontti on asetettu seuraavalla tavalla:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Button nappi = new Button(" ");
+nappi.setFont(Font.font("Monospaced", 40));
+</code></pre>
+
+
+  <h2>Käyttöliittymä</h2>
+
+  <p>
+    Muokkaa luokkaa RistinollaSovellus siten, että se käynnistää graafisen käyttöliittymän. Käytä käyttöliittymäkomponenttien asetteluun ensin BorderPane-luokkaa. Aseta BorderPanen ylälaitaan tekstielementti, joka sisältää tiedon vuorosta sekä pelin loppuessa tiedon pelin loppumisesta. Aseta BorderPanen keskelle GridPane, joka sisältää 9 nappia. GridPanessa tulee olla 3 riviä ja 3 saraketta, jolloin napit muodostavat 3x3-ruudukon.
+  </p>
+
+
+  <h2>Vuorojen vaihtaminen ja reilu peli</h2>
+
+  <p>
+    Pelissä pelaavat X ja O. Pelin aloittaa aina X. Lisää peliin toiminnallisuus, missä nappia painamalla tilanne päivittyy siten, että nappiin asetetaan vuorossa olevan pelaajan merkki (jos on X:n vuoro, nappiin tulee teksti X). Tämän jälkeen vuoro siirtyy seuraavalle pelaajalle.
+  </p>
+
+  <p>
+    Pelin ylälaidassa olevan tekstikentän tulee kertoa aina vuorossa oleva pelaaja. Teksti on aluksi "Vuoro: X". Kun X pelaa vuoronsa, eli painaa jotain nappia, tekstiksi asetetaan "Vuoro: O". Tämän jälkeen kun O pelaa vuoronsa, tekstiksi asetetaan taas "Vuoro: X".
+  </p>
+
+  <p>
+    Huom! Jos pelaaja on jo pelannut tietyn ruudun, ei toinen pelaaja saa enää pelata sitä. Varmista, ettei vuoro muutu tilanteessa, missä pelaaja yrittää pelata jo pelatun ruudun.
+  </p>
+
+  <p>
+    Huom2! Mahdollisesti kohtaamasi virhe "local variables referenced from a lambda expression must be final or effectively final" johtuu siitä, että rajapinnoista tehdyt oliot eivät voi käyttää metodin ulkopuolella määriteltyjä muuttujia. Voit "kiertää" virheen luomalla uudet muuttujat, joihin asetat ongelmalliset arvot juuri ennen niiden käyttöönottoa metodissa.
+  </p>
+
+
+  <h2>Pelin loppuun vieminen</h2>
+
+  <p>
+    Lisää peliin toiminnallisuus, missä pelin voi pelata loppuun. Peli loppuu jos toinen pelaajista saa kolme samaa merkkiä riviin (pysty, vaaka, vino). Pelin loppuminen tulee ilmaista siten, että ylälaidassa on teksti "Loppu!". Tämän jälkeen pelin jatkaminen ei enää onnistu.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Käytettävä tapahtumankäsittelijä riippuu käyttöliittymäkomponentista, johon tapahtumankäsittelijä kytketään. Jos haluaisimme seurata tekstikenttään tapahtuvia muutoksia merkki merkiltä, käyttäisimme rajapintaa <a href="https://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html" target="_blank" rel="noopener">ChangeListener</a>.  Alla olevassa esimerkissä vasempaan tekstikenttään on kytketty rajapinnan ChangeListener toteuttava olio, joka sekä tulostaa muutokset tekstikonsoliin että asettaa aina uuden arvon oikealla olevaan tekstikenttään.
+</p>
+
+<pre class="sh_java code-highlight"><code>vasenTeksti.textProperty().addListener(new ChangeListener&lt;String&gt;() {
+    @Override
+    public void changed(ObservableValue&lt;? extends String&gt; muutos,
+            String vanhaArvo, String uusiArvo) {
+
+        System.out.println(vanhaArvo + " -&gt; " + uusiArvo);
+        oikeaTeksti.setText(uusiArvo);
+    }
+});
+</code></pre>
+
+<p>
+  Edellä muutoksia havainnoidaan tekstikenttään liittyvästä tekstistä. Koska teksti on merkkijonomuotoista, on muutoksia käsittelevälle rajapinnalle annettu tyypiksi merkkijono. Kuten edellä, myös tässäkin esimerkissä ohjelmakoodi voidaan esittää lyhyemmässä muodossa.
+</p>
+
+<pre class="sh_java code-highlight"><code>vasenTeksti.textProperty().addListener((muutos, vanhaArvo, uusiArvo) -&gt; {
+    System.out.println(vanhaArvo + " -&gt; " + uusiArvo);
+    oikeaTeksti.setText(uusiArvo);
+});
+</code></pre>
+
+<p>
+  Ohjelma voi tehdä myös tilastointia. Edellisessä tehtävässä luotujen tekstikenttien arvot saa laskettua melko suoraviivaisesti. Alla olevaa esimerkkiä noudattaen arvot päivittyisivät aina kun käyttäjä muuttaa tekstikentän sisältöä.
+</p>
+
+<pre class="sh_java code-highlight"><code>vasenTeksti.textProperty().addListener((muutos, vanhaArvo, uusiArvo) -&gt; {
+    int merkkeja = uusiArvo.length();
+    String[] palat = uusiArvo.split(" ");
+    int sanoja = palat.length;
+    String pisin = Arrays.stream(palat)
+        .sorted((s1, s2) -&gt; s2.length() - s1.length())
+        .findFirst()
+        .get();
+
+    // asetetaan arvot tekstielementteihin
+});
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tekstitilastointia, osa II</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kopioi tehtävässä Tekstitilastointia tekemäsi toteutus tehtäväpohjassa olevaan luokkaan ja liitä mukaan yllä olevassa esimerkissä oleva toiminnallisuus tilastojen laskemiseen. Lopputuloksena ohjelman pitäisi laskea kirjoitetusta tekstistä tilastoja, jotka päivittyvät automaattisesti sovellukseen.
+  </p>
+
+  <img src="../img/material/gui-tilastoja-79e47db0.gif" alt="Esimerkki tekstitilastointiin tarkoitetun ohjelman toiminnasta."/>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Sovelluslogiikan ja käyttöliittymälogiikan eriyttäminen
+
+</h2>
+
+<p>
+  Sovelluslogiikan (esimerkiksi ristinollan rivien tarkastamiseen tai vuorojen ylläpitoon liittyvä toiminnallisuus) ja käyttöliittymän pitäminen samassa luokassa tai samoissa luokissa on yleisesti ottaen huono asia. Se vaikeuttaa ohjelman testaamista ja muokkaamista huomattavasti ja tekee lähdekoodista myös vaikeammin luettavaa. Motto "Jokaisella luokalla pitäisi olla vain yksi selkeä vastuu" pätee hyvin tässäkin.
+</p>
+
+<p>
+  Tarkastellaan sovelluslogiikan erottamista käyttöliittymälogiikasta. Oletetaan, että käytössämme on seuraavan rajapinnan toteuttava olio ja haluamme toteuttaa käyttöliittymän henkilöiden tallentamiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public interface Henkilovarasto {
+    void talleta(Henkilo henkilo);
+    Henkilo hae(String henkilotunnus);
+
+    void poista(Henkilo henkilo);
+    void poista(String henkilotunnus);
+    void poistaKaikki();
+
+    Collection&lt;Henkilo&gt; haeKaikki();
+}
+</code></pre>
+
+<p>
+  Käyttöliittymää toteutettaessa hyvä aloitustapa on ensin käyttöliittymän piirtäminen, jota seuraa sopivien käyttöliittymäkomponenttien lisääminen käyttöliittymään. Henkilöiden tallennuksessa tarvitsemme kentät nimelle ja henkilötunnukselle sekä napin jolla henkilö voidaan lisätä. Käytetään luokkaa TextField nimen ja henkilötunnuksen syöttämiseen ja luokkaa Button napin toteuttamiseen. Luodaan käyttöliittymään lisäksi selventävät Label-tyyppiset selitystekstit.
+</p>
+
+<p>
+  Käytetään käyttöliittymän asetteluun <code>GridPane</code>-asettelijaa. Rivejä käyttöliittymässä on 3, sarakkeita 2. Lisätään tapahtumien käsittelytoiminnallisuus myöhemmin. Käyttöliittymän alustusmetodi näyttää seuraavalta.
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+
+    Label nimiTeksti = new Label("Nimi: ");
+    TextField nimiKentta = new TextField();
+    Label hetuTeksti = new Label("Hetu: ");
+    TextField hetuKentta = new TextField();
+
+    Button lisaaNappi = new Button("Lisää henkilö!");
+
+    GridPane komponenttiryhma = new GridPane();
+    komponenttiryhma.add(nimiTeksti, 0, 0);
+    komponenttiryhma.add(nimiKentta, 1, 0);
+    komponenttiryhma.add(hetuTeksti, 0, 1);
+    komponenttiryhma.add(hetuKentta, 1, 1);
+    komponenttiryhma.add(lisaaNappi, 1, 2);
+
+    // tyylittelyä: lisätään tyhjää tilaa reunoille ym
+    komponenttiryhma.setHgap(10);
+    komponenttiryhma.setVgap(10);
+    komponenttiryhma.setPadding(new Insets(10, 10, 10, 10));
+
+    Scene nakyma = new Scene(komponenttiryhma);
+
+    ikkuna.setScene(nakyma);
+    ikkuna.show();
+}
+</code></pre>
+
+<img src="../img/material/gui-lisaa-henkilo-888a0249.png" alt="Kaksi tekstikenttää sekä nappi, jossa on teksti 'Kopioi'."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Luodaan seuraavaksi ohjelmaan ActionEvent-rajapinnan toteuttava olio, joka lisää kenttien arvot Henkilovarasto-rajapinnalle.
+</p>
+
+<pre class="sh_java code-highlight"><code>@Override
+public void start(Stage ikkuna) {
+    // ...
+
+    lisaaNappi.setOnAction((event) -&gt; {
+        henkilovarasto.talleta(new Henkilo(nimiTeksti.getText(), hetuTeksti.getText());
+    });
+    // ...
+}
+</code></pre>
+
+<p>
+  Mutta. Mistä saamme konkreettisen Henkilovarasto-olion? Se luodaan esimerkiksi start-metodin alussa. Alla annettuna koko sovelluksen runko.
+</p>
+
+<pre class="sh_java code-highlight"><code>// pakkaus
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class HenkiloSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        Henkilovarasto henkilovarasto = new OmaHenkilovarasto();
+
+        Label nimiTeksti = new Label("Nimi: ");
+        TextField nimiKentta = new TextField();
+        Label hetuTeksti = new Label("Hetu: ");
+        TextField hetuKentta = new TextField();
+
+        Button lisaaNappi = new Button("Lisää henkilö!");
+        lisaaNappi.setOnAction((event) -&gt; {
+            Henkilo lisattava = new Henkilo(nimiTeksti.getText(), hetuTeksti.getText());
+            henkilovarasto.talleta(new Henkilo(lisattava);
+        });
+
+        GridPane komponenttiryhma = new GridPane();
+        komponenttiryhma.add(nimiTeksti, 0, 0);
+        komponenttiryhma.add(nimiKentta, 1, 0);
+        komponenttiryhma.add(hetuTeksti, 0, 1);
+        komponenttiryhma.add(hetuKentta, 1, 1);
+        komponenttiryhma.add(lisaaNappi, 1, 2);
+
+        // tyylittelyä: lisätään tyhjää tilaa reunoille ym
+        komponenttiryhma.setHgap(10);
+        komponenttiryhma.setVgap(10);
+        komponenttiryhma.setPadding(new Insets(10, 10, 10, 10));
+
+        Scene nakyma = new Scene(komponenttiryhma);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(HenkiloSovellus.class);
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Sovelluksen käynnistäminen luokan ulkopuolelta
+
+</h2>
+
+<p>
+  Esimerkkien JavaFx-sovellukset on tähän mennessä käynnistetty <code>Application</code>-luokan perivän luokan sisällä olevasta pääohjelmametodista. Tarkastellaan tässä lyhyesti sovellusten käynnistämistä <code>Application</code>-luokan ulkopuolelta. Oletetaan, että käytössämme on seuraava yksinkertainen JavaFx-sovellus.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        ikkuna.setTitle("Hei Maailma!");
+        ikkuna.show();
+    }
+}
+</code></pre>
+
+<p>
+  Sovelluksen voi käynnistää luokan ulkopuolelta toisesta luokasta <code>Application</code>-luokan tarjoaman <code>launch</code>-metodin avulla. Alla olevassa esimerkissä erillinen luokka <code>Main</code> käynnistää sovelluksen.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Application.launch(JavaFxSovellus.class);
+    }
+}
+</code></pre>
+
+<p>
+  Kun yllä olevan luokan <code>main</code>-metodi suoritetaan, käynnistyy <code>JavaFxSovellus</code>-luokan määrittelemä käyttöliittymä.
+</p>
+
+<p>
+  Sovellukselle voi antaa myös käynnistyksenaikaisia parametreja osana <code>launch</code>-metodia. Metodi <code>launch</code> saa käynnistettävän luokan lisäksi rajattoman määrän merkkijonoja, joita voi käyttää osana käynnistystä. Nämä merkkijonot on saatavilla sovelluksen käynnistyksen yhteydessä <code>getParameters</code>-metodikutsulla.
+</p>
+
+<p>
+  Metodi <code>getParameters()</code> palauttaa <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html" target="_blank" norel>Parameters</a>-tyyppisen olion, jonka metodilla <code>getNamed</code> saa käyttöönsä avain-arvo -pareja sisältävän hajautustaulun. Avain-arvo -parit annetaan launch-metodille muodossa <code>--avain=arvo</code>. Alla olevassa esimerkissä otsikko muodostetaan kahdesta parametrista: <code>organisaatio</code> ja <code>kurssi</code>.  
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.application.Application.Parameters;
+import javafx.stage.Stage;
+
+public class JavaFxSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+        Parameters params = getParameters();
+        String organisaatio = params.getNamed().get("organisaatio");
+        String kurssi = params.getNamed().get("kurssi");
+  
+        ikkuna.setTitle(organisaatio + ": " + kurssi);
+        ikkuna.show();
+    }
+}
+</code></pre>
+
+<p>
+  Nyt sovelluksen käynnistäminen seuraavalla luokalla asettaa sovelluksen otsikoksi "Olipa kerran: Otsikko".
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Application.launch(JavaFxSovellus.class,
+            "--organisaatio=Olipa kerran",
+            "--kurssi=Otsikko");
+    }
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Käyttäjän otsikko</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy tekstikäyttöliittymässä käyttäjältä sovelluksen otsikkoa. Kun käyttäjä syöttää otsikon tekstikäyttöliittymään ja painaa enter, käyttäjälle näytetään graafinen käyttöliittymä, jonka otsikkona on käyttäjän syöttämä otsikko.
+  </p>
+
+  <p>
+    Huomaa, että tässä tehtävässä ei ole automaattisia testejä. Palauta sovellus kun se toimii toivotulla tavalla.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Useampi näkymä sovelluksessa
+
+</h1>
+
+<p>
+  Tähän mennessä toteuttamamme graafiset käyttöliittymät ovat sisältäneet aina yhden näkymän. Tutustutaan seuraavaksi useampia näkymiä sisältäviin käyttöliittymiin.
+</p>
+
+<p>
+  Yleisesti ottaen näkymät luodaan Scene-olion avulla, joiden välillä siirtyminen tapahtuu sovellukseen kytkettyjen tapahtumien avulla. Alla olevassa esimerkissä on luotu kaksi erillistä Scene-oliota, joista kummallakin on oma sisältö sekä sisältöön liittyvä tapahtuma. Alla Scene-olioihin ei ole erikseen liitetty käyttöliittymän asetteluun käytettyä komponenttia (esim. BorderPane), vaan kummassakin Scene-oliossa on täsmälleen yksi käyttöliittymäkomponentti.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+public class EdesTakaisinSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+
+        Button edes = new Button("Edes ..");
+        Button takaisin = new Button(".. takaisin.");
+
+        Scene eka = new Scene(edes);
+        Scene toka = new Scene(takaisin);
+
+        edes.setOnAction((event) -&gt; {
+            ikkuna.setScene(toka);
+        });
+
+        takaisin.setOnAction((event) -&gt; {
+            ikkuna.setScene(eka);
+        });
+
+        ikkuna.setScene(eka);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(EdesTakaisinSovellus.class);
+    }
+}
+</code></pre>
+
+<p>
+  Edellä olevan sovelluksen käynnistäminen luo käyttöliittymän, jossa siirtyminen näkymästä toiseen onnistuu nappia painamalla.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Useampi Näkymä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan UseampiNakyma sovellus, joka sisältää kolme erillistä näkymää. Näkymät ovat seuraavat:
+  </p>
+
+  <ul>
+    <li>
+      Ensimmäinen näkymä on aseteltu BorderPane-luokan avulla. Ylälaidassa on teksti "Eka näkymä!". Keskellä on nappi, jossa on teksti "Tokaan näkymään!", ja jota painamalla siirrytään toiseen näkymään.
+    </li>
+    <li>
+      Toinen näkymä on aseteltu VBox-luokan avulla. Asettelussa tulee ensin nappi, jossa on teksti "Kolmanteen näkymään!", ja jota painamalla siirrytään kolmanteen näkymään. Nappia seuraa teksti "Toka näkymä!".
+    </li>
+    <li>
+      Kolmas näkymä on aseteltu GridPane-luokan avulla. Asettelussa tulee koordinaatteihin (0,0) teksti "Kolmas näkymä!". Koordinaatteihin (1,1) tulee nappi, jossa on teksti "Ekaan näkymään!", ja jota painamalla siirrytään ensimmäiseen näkymään.
+    </li>
+  </ul>
+
+  <p>
+    Sovelluksen tulee käynnistyessään näyttää ensimmäinen näkymä.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Oma asettelu jokaista näkymää varten
+
+</h2>
+
+<p>
+  Tutustutaan seuraavaksi kaksi erillistä näkymää sisältävään esimerkkiin. Ensimmäisessä näkymässä käyttäjää pyydetään syöttämään salasana. Jos käyttäjä kirjoittaa väärän salasanan, väärästä salasanasta ilmoitetaan. Jos käyttäjä kirjoittaa oikean salasanan, ohjelma vaihtaa seuraavaan näkymään. Ohjelman toiminta on seuraavanlainen.
+</p>
+
+<img src="../img/material/gui-salasana-c3958a2b.gif" />
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Näkymien välillä vaihtaminen tapahtuu kuten edellisessä esimerkissä. Konkreettinen vaihtotapahtuma on määritelty kirjautumisnappiin. Nappia painettaessa ohjelma tarkastaa salasanakenttään kirjoitetun salasanan -- tässä toivotaan, että käyttäjä kirjoittaa "salasana". Jos salasana on oikein, ikkunan näyttämä näkymä vaihdetaan. Esimerkissämme näkymä sisältää vain tekstin "Tervetuloa, tästä se alkaa!".
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class SalattuSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) throws Exception {
+
+        // 1. Luodaan salasanan kysymiseen käytetty näkymä
+
+        // 1.1 luodaan käytettävät komponentit
+        Label ohjeteksti = new Label("Kirjoita salasana ja paina kirjaudu");
+        PasswordField salasanakentta = new PasswordField();
+        Button aloitusnappi = new Button("Kirjaudu");
+        Label virheteksti = new Label("");
+
+        // 1.2 luodaan asettelu ja lisätään komponentit siihen
+        GridPane asettelu = new GridPane();
+
+        asettelu.add(ohjeteksti, 0, 0);
+        asettelu.add(salasanakentta, 0, 1);
+        asettelu.add(aloitusnappi, 0, 2);
+        asettelu.add(virheteksti, 0, 3);
+
+        // 1.3 tyylitellään asettelua
+        asettelu.setPrefSize(300, 180);
+        asettelu.setAlignment(Pos.CENTER);
+        asettelu.setVgap(10);
+        asettelu.setHgap(10);
+        asettelu.setPadding(new Insets(20, 20, 20, 20));
+
+        // 1.4 luodaan itse näkymä ja asetetaan asettelu siihen
+        Scene salasanaNakyma = new Scene(asettelu);
+
+
+        // 2. Luodaan tervetuloa-tekstin näyttämiseen käytetty näkymä
+        Label tervetuloaTeksti = new Label("Tervetuloa, tästä se alkaa!");
+
+        StackPane tervetuloaAsettelu = new StackPane();
+        tervetuloaAsettelu.setPrefSize(300, 180);
+        tervetuloaAsettelu.getChildren().add(tervetuloaTeksti);
+        tervetuloaAsettelu.setAlignment(Pos.CENTER);
+
+        Scene tervetuloaNakyma = new Scene(tervetuloaAsettelu);
+
+
+        // 3. Lisätään salasanaruudun nappiin tapahtumankäsittelijä
+        //    näkymää vaihdetaan jos salasana on oikein
+        aloitusnappi.setOnAction((event) -&gt; {
+            if (!salasanakentta.getText().trim().equals("salasana")) {
+                virheteksti.setText("Tuntematon salasana!");
+                return;
+            }
+
+            ikkuna.setScene(tervetuloaNakyma);
+        });
+
+        ikkuna.setScene(salasanaNakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(SalattuSovellus.class);
+    }
+}
+</code></pre>
+
+<p>
+  Esimerkissä on hyödynnetty sekä GridPanen että StackPanen asettelussa niiden tarjoamia setPrefSize ja setAlignment-metodeja. Metodilla setPrefSize annetaan asettelulle toivottu koko, ja metodilla setAlignment kerrotaan miten asettelun sisältö tulee ryhmittää. Parametrilla Pos.CENTER toivotaan asettelua näkymän keskelle.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Tervehtijä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan TervehtijaSovellus sovellus, jossa on kaksi näkymää. Ensimmäisessä näkymässä on tekstikenttä, jolla kysytään käyttäjän nimeä. Toisessa näkymässä käyttäjälle näytetään tervehdysteksti. Tervehdystekstin tulee olla muotoa "Tervetuloa nimi!", missä nimen paikalle tulee käyttäjän kirjoittama nimi.
+  </p>
+
+  <p>
+    Esimerkki sovelluksen toiminnasta:
+  </p>
+
+  <img src="../img/material/gui-tervehtija-90186ac5.gif" alt="Tekstikenttään syötetään nimi, jonka jälkeen nappia painetaan. Näkymä vaihtuu toiseksi, jossa lukee 'Tervetuloa nimi!'"/>
+
+  <p>
+    &nbsp;
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Sama pääasettelu näkymillä
+
+</h2>
+
+<p>
+  Riippuen sovelluksen käyttötarpeesta, joskus sovellukselle halutaan pysyvä näkymä, jonka osia vaihdetaan tarvittaessa. Jonkinlaisen valikon tarjoavat ohjelmat toimivat tyypillisesti tällä tavalla.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on luotu sovellus, joka sisältää päävalikon sekä vaihtuvasisältöisen alueen. Vaihtuvasisältöisen alueen sisältö vaihtuu päävalikon nappeja painamalla.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class EsimerkkiSovellus extends Application {
+
+    @Override
+    public void start(Stage ikkuna) throws Exception {
+
+        // 1. Luodaan päätason asettelu
+        BorderPane asettelu = new BorderPane();
+
+        // 1.1. Luodaan päätason asettelun valikko
+        HBox valikko = new HBox();
+        valikko.setPadding(new Insets(20, 20, 20, 20));
+        valikko.setSpacing(10);
+
+        // 1.2. Luodaan valikon napit
+        Button eka = new Button("Eka");
+        Button toka = new Button("Toka");
+
+        // 1.3. Lisätään napit valikkoon
+        valikko.getChildren().addAll(eka, toka);
+
+        asettelu.setTop(valikko);
+
+
+        // 2. Luodaan alinäkymät ja kytketään ne valikon nappeihin
+        // 2.1. Luodaan alinäkymät -- tässä asettelut
+        StackPane ekaAsettelu = luoNakyma("Eka näkymä!");
+        StackPane tokaAsettelu = luoNakyma("Toka näkymä!");
+
+        // 2.2. Liitetään alinäkymät nappeihin. Napin painaminen vaihtaa alinäkymää.
+        eka.setOnAction((event) -> asettelu.setCenter(ekaAsettelu));
+        toka.setOnAction((event) -> asettelu.setCenter(tokaAsettelu));
+
+        // 2.3. Näytetään aluksi ekaAsettelu
+        asettelu.setCenter(ekaAsettelu);
+
+
+        // 3. Luodaan päänäkymä ja asetetaan päätason asettelu siihen
+        Scene nakyma = new Scene(asettelu);
+
+
+        // 4. Näytetään sovellus
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    private StackPane luoNakyma(String teksti) {
+
+        StackPane asettelu = new StackPane();
+        asettelu.setPrefSize(300, 180);
+        asettelu.getChildren().add(new Label(teksti));
+        asettelu.setAlignment(Pos.CENTER);
+
+        return asettelu;
+    }
+
+    public static void main(String[] args) {
+        launch(EsimerkkiSovellus.class);
+    }
+}
+</code></pre>
+
+<p>
+  Sovellus toimii seuraavalla tavalla:
+</p>
+
+<img src="../img/material/gui-nakyman-vaihto-76f2563b.gif" alt="Sovellus, joka sisältää valikon. Valikossa olevia nappeja painamalla voidaan vaihtaa sovelluksessa näkyvää sisältöä."/>
+
+<p>
+  &nbsp;
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Vitsi</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan VitsiSovellus sovellus, jota käytetään yhden vitsin selittämiseen. Sovellus tarjoaa kolme nappia sisältävän valikon sekä näitä nappeja painamalla näytettävät sisällöt. Ensimmäinen nappi (teksti "Vitsi") näyttää vitsiin liittyvän kysymyksen, toinen nappi (teksti "Vastaus") näyttää vitsin kysymykseen liittyvän vastauksen, ja kolmas nappi (teksti "Selitys") näyttää vitsin selityksen.
+  </p>
+
+  <p>
+    Oletuksena (kun sovellus käynnistyy) sovelluksen tulee näyttää vitsiin liittyvä kysymys. Käytä kysymyksenä merkkijonoa "What do you call a bear with no teeth?" ja vastauksena merkkijonoa "A gummy bear.". Saat päättää selityksen vapaasti.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Hieman suurempi sovellus: Sanaston harjoittelua
+
+</h2>
+
+<p>
+  Hahmotellaan vieraiden sanojen harjoitteluun tarkoitettua sovellusta. Sovellus tarjoaa käyttäjälle kaksi toimintoa: sanojen ja niiden käännösten syöttämisen sekä harjoittelun. Luodaan sovellusta varten neljä erillistä luokkaa: ensimmäinen luokka tarjoaa sovelluksen ydinlogiikkatoiminnallisuuden eli sanakirjan ylläpidon, toinen ja kolmas luokka sisältävät syöttönäkymän ja harjoittelunäkymän, ja neljäs luokka sovelluksen päävalikon sekä sovelluksen käynnistämiseen tarvittavan toiminnallisuuden.
+</p>
+
+
+<h3 class="material-heading">
+    Sanakirja
+
+</h3>
+
+<p>
+  Sanakirja toteutetaan hajautustaulun ja listan avulla. Hajautustaulu sisältää sanat ja niiden käännökset, ja listaa käytetään satunnaisesti kysyttävän sanan arpomiseen. Luokalla on metodit käännösten lisäämiseen, käännöksen hakemiseen sekä käännettävän sanan arpomiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+public class Sanakirja {
+
+    private List&lt;String&gt; sanat;
+    private Map&lt;String, String&gt; kaannokset;
+
+    public Sanakirja() {
+        this.sanat = new ArrayList&lt;&gt;();
+        this.kaannokset = new HashMap&lt;&gt;();
+
+        lisaa("sana", "word");
+    }
+
+    public String hae(String sana) {
+        return this.kaannokset.get(sana);
+    }
+
+    public void lisaa(String sana, String kaannos) {
+        if (!this.kaannokset.containsKey(sana)) {
+            this.sanat.add(sana);
+        }
+
+        this.kaannokset.put(sana, kaannos);
+    }
+
+    public String arvoSana() {
+        Random satunnainen = new Random();
+        return this.sanat.get(satunnainen.nextInt(this.sanat.size()));
+    }
+}
+</code></pre>
+
+<p>
+  Sanakirjan voisi toteuttaa myös niin, että sanan arpominen loisi aina uduen listan kaannokset-hajautustaulun avaimista. Tällöin sanat-listalle ei olisi erillistä tarvetta. Tämä vaikuttaisi kuitenkin sovelluksen tehokkuuteen (tai, olisi ainakin vaikuttanut ennen vuosituhannen vaihdetta -- nykyään koneet ovat jo hieman nopeampia..).
+</p>
+
+<h3 class="material-heading">
+    Sanojen syöttäminen
+
+</h3>
+
+<p>
+  Luodaan seuraavaksi sanojen syöttämiseen tarvittava toiminnallisuus. Sanojen syöttämistä varten tarvitsemme viitteen sanakirja-olioon sekä tekstikentät sanalle ja käännökselle. GridPane-asettelu sopii hyvin kenttien asetteluun. Luodaan luokka Syottonakyma, joka tarjoaa metodin getNakyma, joka luo sanojen syöttämiseen tarvittavan näkymän. Metodi palauttaa viitteen <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html" target="_blank" rel="noopener">Parent</a>-tyyppiseen olioon. Parent on muunmuassa asetteluun käytettävien luokkien yläluokka, joten mitä tahansa asetteluun käytettävää luokkaa voidaan esittää Parent-oliona.
+</p>
+
+<p>
+  Luokka määrittelee myös käyttöliittymään liittyvän napinpainallustoiminnallisuuden. Kun käyttäjä painaa nappia, sanapari lisätään sanakirjaan. Samalla myös tekstikentät tyhjennetään seuraavan sanan syöttämistä varten.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+
+public class Syottonakyma {
+
+    private Sanakirja sanakirja;
+
+    public Syottonakyma(Sanakirja sanakirja) {
+        this.sanakirja = sanakirja;
+    }
+
+    public Parent getNakyma() {
+        GridPane asettelu = new GridPane();
+
+        Label sanaohje = new Label("Sana");
+        TextField sanakentta = new TextField();
+        Label kaannosohje = new Label("Käännös");
+        TextField kaannoskentta = new TextField();
+
+        asettelu.setAlignment(Pos.CENTER);
+        asettelu.setVgap(10);
+        asettelu.setHgap(10);
+        asettelu.setPadding(new Insets(10, 10, 10, 10));
+
+        Button lisaanappi = new Button("Lisää sanapari");
+
+        asettelu.add(sanaohje, 0, 0);
+        asettelu.add(sanakentta, 0, 1);
+        asettelu.add(kaannosohje, 0, 2);
+        asettelu.add(kaannoskentta, 0, 3);
+        asettelu.add(lisaanappi, 0, 4);
+
+        lisaanappi.setOnMouseClicked((event) -&gt; {
+            String sana = sanakentta.getText();
+            String kaannos = kaannoskentta.getText();
+
+            sanakirja.lisaa(sana, kaannos);
+
+            sanakentta.clear();
+            kaannoskentta.clear();
+        });
+
+        return asettelu;
+    }
+}
+</code></pre>
+
+<h3 class="material-heading">
+    Sanaharjoittelu
+
+</h3>
+
+<p>
+  Luodaan tämän jälkeen harjoitteluun tarvittava toiminnallisuus. Harjoittelua varten tarvitsemme myös viitteen sanakirja-olioon, jotta voimme hakea harjoiteltavia sanoja sekä tarkastaa käyttäjän syöttämien käännösten oikeellisuuden. Sanakirjan lisäksi tarvitsemme tekstin, jonka avulla kysytään sanaa, sekä tekstikentän, johon käyttäjä voi syöttää käännöksen. Myös tässä GridPane sopii hyvin kenttien asetteluun.
+</p>
+
+<p>
+  Kullakin hetkellä harjoiteltava sana on luokalla oliomuuttujana. Oliomuuttujaa voi käsitellä ja muuttaa myös tapahtumankäsittelijän yhteyteen määrittelyssä metodissa.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+
+public class Harjoittelunakyma {
+
+    private Sanakirja sanakirja;
+    private String sana;
+
+    public Harjoittelunakyma(Sanakirja sanakirja) {
+        this.sanakirja = sanakirja;
+        this.sana = sanakirja.arvoSana();
+    }
+
+    public Parent getNakyma() {
+        GridPane asettelu = new GridPane();
+
+        Label sanaohje = new Label("Käännä sana '" + this.sana + "'");
+        TextField kaannoskentta = new TextField();
+
+        asettelu.setAlignment(Pos.CENTER);
+        asettelu.setVgap(10);
+        asettelu.setHgap(10);
+        asettelu.setPadding(new Insets(10, 10, 10, 10));
+
+        Button lisaanappi = new Button("Tarkista");
+
+        Label palaute = new Label("");
+
+        asettelu.add(sanaohje, 0, 0);
+        asettelu.add(kaannoskentta, 0, 1);
+        asettelu.add(lisaanappi, 0, 2);
+        asettelu.add(palaute, 0, 3);
+
+        lisaanappi.setOnMouseClicked((event) -> {
+            String kaannos = kaannoskentta.getText();
+            if (sanakirja.hae(sana).equals(kaannos)) {
+                palaute.setText("Oikein!");
+            } else {
+                palaute.setText("Väärin! Sanan '" + sana + "' käännös on '" + sanakirja.hae(sana) + "'.");
+                return;
+            }
+
+            this.sana = this.sanakirja.arvoSana();
+            sanaohje.setText("Käännä sana '" + this.sana + "'");
+            kaannoskentta.clear();
+        });
+
+        return asettelu;
+    }
+}
+</code></pre>
+
+<h3 class="material-heading">
+    Harjoittelusovellus
+
+</h3>
+
+<p>
+  Harjoittelusovellus sekä nitoo edellä toteutetut luokat yhteen että tarjoaa sovelluksen valikon. Harjoittelusovelluksen rakenne on seuraava.
+</p>
+
+<pre class="sh_java code-highlight"><code>package sovellus;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+public class HarjoitteluSovellus extends Application {
+
+    private Sanakirja sanakirja;
+  
+    @Override
+    public void init() throws Exception {
+        // 1. Luodaan sovelluksen käyttämä sanakirja
+        this.sanakirja = new Sanakirja();
+    }
+  
+    @Override
+    public void start(Stage ikkuna) throws Exception {
+        // 2. Luodaan näkymät ("alinäkymät")
+        Harjoittelunakyma harjoittelunakyma = new Harjoittelunakyma(sanakirja);
+        Syottonakyma syottonakyma = new Syottonakyma(sanakirja);
+
+        // 3. Luodaan päätason asettelu
+        BorderPane asettelu = new BorderPane();
+
+        // 3.1. Luodaan päätason asettelun valikko
+        HBox valikko = new HBox();
+        valikko.setPadding(new Insets(20, 20, 20, 20));
+        valikko.setSpacing(10);
+
+        // 3.2. Luodaan valikon napit
+        Button lisaanappi = new Button("Lisää sanoja");
+        Button harjoittelenappi = new Button("Harjoittele");
+
+        // 3.3. Lisätään napit valikkoon
+        valikko.getChildren().addAll(lisaanappi, harjoittelenappi);
+        asettelu.setTop(valikko);
+
+        // 4. Liitetään alinäkymät nappeihin. Napin painaminen vaihtaa alinäkymää.
+        lisaanappi.setOnAction((event) -&gt; asettelu.setCenter(syottonakyma.getNakyma()));
+        harjoittelenappi.setOnAction((event) -&gt; asettelu.setCenter(harjoittelunakyma.getNakyma()));
+
+        // 5. Näytetään ensin syöttönäkymä
+        asettelu.setCenter(syottonakyma.getNakyma());
+
+        // 6. Luodaan päänäkymä ja asetetaan päätason asettelu siihen
+        Scene nakyma = new Scene(asettelu, 400, 300);
+
+        // 7. Näytetään sovellus
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(HarjoitteluSovellus.class);
+    }
+}
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Sanojen harjoittelua</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä laadit edellä olevaa materiaalia noudattaen sanojen harjoitteluun tarkoitetun sovelluksen. Sovelluksen tulee käynnistyä kun luokan SanaharjoitteluSovellus main-metodi suoritetaan.
+  </p>
+
+  <p>
+    Luo edellistä esimerkkiä noudattaen sanojen harjoitteluun tarkoitettu sovellus. Sanojen harjoitteluun tarkoitetun sovelluksen tulee tarjota kaksi näkymää. Ensimmäisessä näkymässä käyttäjä voi syöttää alkuperäisiä sanoja ja niiden käännöksiä. Toisessa näkymässä käyttäjältä kysytään sanojen käännöksiä. Harjoiteltavat sanat tulee aina arpoa kaikista syötetyistä sanoista.
+  </p>
+
+  <p>
+    Käyttöliittymästä tarkemmin. Sanojen syöttämisnäkymän näyttävän napin tekstin tulee olla "Lisää sanoja". Sanojen harjoittelunäkymän näyttävän napin tekstin tulee olla "Harjoittele". Sanoja syötettäessä ensimmäisen tekstikentän tulee olla sana alkuperäiskielellä, ja toisen tekstikentän tulee olla sana käännettynä. Syöttämiseen käytetyn napin tekstin tulee olla "Lisää sanapari". Harjoittelutilassa käyttäjältä kysytään aina sanoja alkuperäiskielellä ja hänen tulee kirjoittaa sanojen käännöksiä. Vastauksen tarkistamiseen käytetyn napin tekstin tulee olla "Tarkista". Jos vastaus on oikein, käyttöliittymässä näytetään teksti "Oikein!". Jos taas vastaus on väärin, käyttöliittymässä näytetään teksti "Väärin!" sekä tieto oikeasta vastausksesta.
+  </p>
+
+  <img src="../img/material/gui-sanaharjoittelu-a2104d10.gif" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Sovelluksessa ei ole automaattisia testejä -- palauta tehtävä kun sovellus toimii oikein.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil exercise__icon"></i>
+      <h1 class="exercise__heading">Vaalipuheen tarkastaja (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  
+  <p>
+    Harjoittelimme aiemmin vaalipuheen luomista Ylen kuntavaalidatan perusteella. Tässä tehtävässä jatketaan kyseisen datan parissa ja luodaan ohjelma, joka pyrkii ennustamaan tuleeko kirjoitetun vaalipuheen perusteella valituksi.
+  </p>
+
+  <p>
+    Tehtäväpohjassa on mukana dokumentti <code>vaalidata.csv</code>, joka sisältää osajoukon Ylen tarjoamasta vaalidatasta. Tekstidokumentti on jaettu sarakkeisiin puolipisteiden perusteella. Ensimmäisessä sarakkeessa on tieto siitä, tuliko ehdokas valituksi (0 = ei, 1 = kyllä), toisessa sarakkeessa on perustelu kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?", ja kolmannessa sarakkeessa on perustelu kysymykseen "Mitä asioita haluat edistää tai ajaa tulevalla vaalikaudella?". Tässä tehtävässä käytetty vaalidatatiedosto on lisensoitu <a href="https://creativecommons.org/licenses/by-sa/1.0/fi/" target="_blank">Creative Commons CC BY-SA</a>-lisenssillä alkuperäisen tiedoston tavoin.
+  </p>
+
+  <p>
+    Tiedoston ensimmäiset kolme riviä ovat seuraavat:
+  </p>
+
+  <pre>
+1;olen aikaansaava ja aktiivinen luottamushenkilö joka pitää kuntalaisten puolia kuuntelen selvitän ja vien asioita eteenpäin hoidan koko sydämelläni kotiseutuni asioita ;edistää elinvointia kunnan tehtävä on huolehtia asukkaidensa hyvinvoinnista haluan tehdä edelleen aloitteita joissa on vahva terveyttä edistävä näkökulma haluan olla edelleen kaikkien kuntalaisten käytettävissä tiedän että kykenen vaikuttamaan asioihin oma alotteisesti sekä viemään kuntalaisten viestiä eteenpäin aina päätöksentekoon saakka tulevalla vaalikaudella meidän on panostettava ympäristönhoitoon jotta kunnassamme viihtyisi ja se houkuttelisi myös uusia asukkaita
+0;olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa ;päätösten pitkäjänteisyyttä helsinkiläisten aitoa kuuntelua kulttuuritarjonnan monipuolisuutta ja saatavuutta tietoisuutta jo olemassaolevasta tapahtumakirjosta koko kaupungin pitää olla turvallinen paikka asua syrjäytyneet nuoret tarvitsevat pikaisesti apua meillä ei ole varaa menettää yhtään sukupolvea kaikki ovat arvokkaita helsinki on koko suomen käyntikortti hyvä talous koulutus kulttuuri ja joukkoliikenne näiden turvaaminen ja säilyminen ovat kaikille tärkeitä
+0;uuden salon aikaiset kaksi valtuustokautta ovat tuoneet hyvän perehtyneisyyden ja hyvät verkostot kaupungin asioiden hoitoon nykyinen elämäntilanne antaa hyvin aikaa yhteisten asioiden hoitoon ;yrittäjänä näen kaupungin elinvoimapolitiikan edistämisen ensisijaiseksi toinen tärkeä asia tulevaisuuden kunnassa on sivistys siinä perusasioita ovat tietysti hyvä varhaiskasvatus ja perusopetus ja muu koulutus sivistyksen sektorilla erityisesti lähinnä sydäntäni on kulttuuri ja kirjasto säilytetään kattavat kirjastopalvelut kaupungin resurssit ovat rajalliset ja vastuun kulttuuriasioista hoitaa pääasiassa kolmas sektori kaupungin tuki sellaiselle tasolle että tekijöiden työn ilo säilyy
+  </pre>
+
+  <p>
+    Valinnan ennustajaan luodaan kaksi erillistä ennustustoiminnallisuutta. Ensimmäinen ennustustoiminnallisuus perustuu sanojen lukumäärien laskemiseen, ja toinen <em>mystiseen ennustukseen</em>. Täydennämme myös ohjelman mukana olevaa graafista käyttöliittymää, joka tulee näyttämään tuleeko puheella valituksi.
+  </p>
+
+
+  <h2>Valinnan ennustaja, osa 1</h2>
+
+  <p>
+    Ensimmäinen ennustustoiminnallisuus perustuu sanojen esiintymislukumääriin. Täydennä luokkaa <code>Ennustaja</code> siten, että metodi <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> tarkastelee lauseen jokaista sanaa ja laskee kunkin sanan esiintymislukumäärän valintaan johtaneista ja valintaan johtamattomista lauseista. 
+  </p>
+  
+  <p>
+    Mikäli lauseen sanat ovat esiintyneet useammin valintaan johtaneissa lauseissa kuin valintaan johtamattomissa lauseissa, tulee metodin <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> palauttaa arvo <code>1</code>. Mikäli taas lauseen sanat ovat esiintyneet useammin valintaan johtamattomissa lauseissa kuin valintaan johtaneissa lauseissa, tulee metodin <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> palauttaa arvo <code>-1</code>. Muulloin metodi palauttaa arvon 0. Sama sana voi esiintyä lauseessa useampaan kertaan -- tällöin sana myös lasketaan useampaan otteeseen.
+  </p>
+
+  <p>
+    Täydennä luokkaa muilta osin sopivasti. Tarvitset todennäköisesti muutamia oliomuuttujia, jonka lisäksi metodia <code>public void lisaa(boolean valitaan, String lause)</code> tulee toteuttaa sopivasti. Metodi saa parametrinaan tiedon valinnasta (true = valittu, false=ei valittu) sekä ehdokkaan käyttämän lauseen.
+  </p>
+
+  <p>
+    Voit pilkkoa merkkijonon osiin välilyöntien perusteella seuraavasti.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>String lause = " olipa   kerran     elämä  ";
+String[] palat = lause.trim().split("\\s+");
+// palat[0] sisältää merkkijonon olipa
+// palat[1] sisältää merkkijonon kerran
+// palat[2] sisältää merkkijonon elämä
+</code></pre>
+
+  <p>
+    Alla on esimerkki toivotusta toiminnallisuudesta.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Ennustaja ennustaja = new Ennustaja();
+ennustaja.lisaa(true, "minulla on rohkeutta");
+ennustaja.lisaa(true, "olen positiivisesti ajatteleva ja yhteistyökykyinen");
+ennustaja.lisaa(true, "olen valmis valtuustoon");
+ennustaja.lisaa(false, "olen ollut aktiivinen kuntapolitiikassa");
+ennustaja.lisaa(false, "olen ollut yhteiskunnan asioissa aina aktiivinen toimija");
+ennustaja.lisaa(false, "haluan olla valtuustossa");
+
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("haluan valtuustoon"));
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen aktiivinen toimija"));
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteistyökykyinen"));
+</code></pre>
+
+<pre class="sample-output">0
+-1
+1
+</pre>
+
+  <p>
+    Tarkastellaan vielä miten ennusteet muodostuvat. Yllä olevassa esimerkissä lisaa-kutsujen jälkeen ohjelman sisäinen sanakohtainen tieto valinnasta on seuraava.
+  </p>
+
+  <table class="table">
+    <tr>
+      <th>Sana</th>
+      <th>Esiintymisiä valintaan johtaneissa lauseissa</th>
+      <th>Esiintymisiä valintaan johtamattomissa lauseissa</th>
+    </tr>
+    <tr>
+      <td>aina</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ajatteleva</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>aktiivinen</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>asioissa</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>haluan</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ja</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>kuntapolitiikassa</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>minulla</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>on</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>olen</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>ollut</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>positiivisesti</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>rohkeutta</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>toimija</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>yhteiskunnan</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>yhteistyökykyinen</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>valmis</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>valtuustoon</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>valtuustossa</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </table>
+
+  <p>
+    Nyt kutsu <code>ennustaja.valitaanSanojenLukumaariinPerustuen("haluan valtuustoon")</code> laskee sanojen "haluan" ja "valtuustoon" esiintymislukumäärät valintaan johtaneista sekä ei valintaan johtaneista lauseista. Sana "haluan" ei ole esiintynyt kertaakaan valintaan johtaneissa lauseissa ja kerran kerran valintaan johtamattomissa lauseissa. Sana "valtuustoon" on esiintynyt kerran valintaan johtaneissa lauseissa ja ei kertaakaan valintaan johtamattomissa lauseissa. Sekä valintaan johtamattomien että valintaan johtaneiden sanojen summa lauseessa on tässä 1, eli ennustaja ei suosittele kumpaakaan. Metodi palauttaa arvon 0.
+  </p>
+
+  <p>
+    Huom! Vaikka yllä tieto esitetään taulukkona, kannattanee harkita ainakin yhden hajautustaulun käyttöä luokan <code>Ennustaja</code> sisäisen tilan esittämiseen.
+  </p>
+      
+  <h2>Graafinen käyttöliittymä</h2>
+
+  <p>
+    Sovelluksen graafinen käyttöliittymä näyttää tällä hetkellä seuraavalta.
+  </p>
+
+  <img src="../img/ennustaja-1-a1e015ec.png" alt="Tyhjä ikkuna, jossa on tekstikenttä."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Muokkaa käyttöliittymää siten, että lisäät tekstikentän alapuolelle VBox-elementin, joka sisältää kaksi Label-elementtiä. Ensimmäisen Label-elementin tulee sisältää teksti "Sanojen esiintymien perusteella: ???" ja toisen Label-elementin tulee sisältää teksti "Mystisen ennustajan perusteella: ???". Saat VBox-elementin metodilla <code>setPadding</code> asetettua elementille "ilmaa" reunoille.
+  </p>
+
+  <p>
+    Muokkauksen jälkeen sovelluksen tulee näyttää seuraavalta.
+  </p>
+
+  <img src="../img/ennustaja-2-4e71019f.png" alt="Tyhjä ikkuna, jossa on tekstikenttä. Tekstikentän alapuolella on odotetut merkkijonot."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Täydennä tämän jälkeen käyttöliittymää siten, että sovelluksen käynnistyksen yhteydessä graafiseen käyttöliittymään luodaan <code>Ennustaja</code>-olio, ja ennustajaoliolle lisätään tehtäväpohjassa olevasta <code>vaalidata.csv</code>-tiedostosta rivit.
+  </p>
+
+  <p>
+    Käytä ennustajalle syötettävinä lauseina vastausta kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?". Saat tiedoston rivit pilkottua osiin komennolla <code>rivi.split(";")</code> -- metodin palauttaman taulukon indeksissä 0 on tieto valinnasta (1 = valittu, 0 = ei valittu), ja indeksissä 1 vastaus kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?".
+  </p>
+
+  <p>
+    Muokkaa ohjelmaa lopulta siten, että tekstin "Sanojen esiintymien perusteella: ???" sisältämän tekstikentän arvo muuttuu lennossa kun käyttäjä kirjoittaa puhetta. Mikäli ennustajan palauttama arvo on "0" on ennustus "???", mikäli arvo on "1" on ennustus "Kyllä", mikäli arvo on "-1", on ennustus "Ei". Kun tehtävän tämä osa on valmis, sovellus toimii seuraavasti.
+  </p>
+  
+  <img src="../img/ennustaja-3-9173338f.gif" alt="Käyttöliittymä näyttää ennusteen kirjoitetun tekstin perusteella."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Käyttöliittymä näyttää nyt jonkinlaisen reaaliaikaisen ennustuksen vaalipuheen toimivuudesta.
+  </p>
+
+  <h2>Valinnan ennustaja, osa 2</h2>
+
+  <p>
+    Tehdään toinen ennustaja. Kukin sana esiintyy jollain todennäköisyydellä valituiksi johtaneissa lauseissa ja jollain todennäköisyydellä lauseissa, jotka eivät johtaneet valintaan. Tämä "tietty todennäköisyys" tai "jokin todennäköisyys" voidaan laskea havainnoista eli aiemmasta datasta.
+  </p>
+
+  <p>
+    Tarkastellaan tätä seuraavan esimerkkidatan perusteella. Datan ensimmäinen merkki kuvaa valintaa (1 = kyllä, 0 = ei) ja seuraavat sanoja. Datassa on yhteensä yhdeksän riviä, joista ensimmäiset neljä johtavat valintaan ja seuraavat viisi eivät johda valintaan. Valintaa seuraa merkkejä -- erilaisia merkkejä on esimerkissä yhteensä 4 (a, b, c ja d).
+  </p>
+
+<pre class="sample-output">1 a b
+1 a c d
+1 b c
+1 a a
+0 c c d
+0 a b d
+0 a b
+0 c d
+0 c d d d
+</pre>
+
+  <p>
+    Seuraava taulukko kuvaa kunkin merkin esiintymislukumääriä valintaan johtaneissa ja valintaan johtamattomissa lauseissa.
+  </p>
+
+  <table class="table">
+    <tr>
+      <th>
+	Merkki
+      </th>
+      <th>
+	Valittu
+      </th>
+      <th>
+	Ei valittu
+      </th>
+    </tr>
+    <tr>
+      <td>
+	a
+      </td>
+      <td>
+	4
+      </td>
+      <td>
+	2
+      </td>
+    </tr>
+    <tr>
+      <td>
+	b
+      </td>
+      <td>
+	2
+      </td>
+      <td>
+	2
+      </td>
+    </tr>
+    <tr>
+      <td>
+	c
+      </td>
+      <td>
+	2
+      </td>
+      <td>
+	4
+      </td>
+    </tr>
+    <tr>
+      <td>
+	d
+      </td>
+      <td>
+	1
+      </td>
+      <td>
+	6
+      </td>
+    </tr>
+  </table>
+
+
+  <p>
+    Tarkastellaan dataa.
+  </p>
+  
+  <p>
+    Nopeasti katsoen vastaus kysymykseen "Millä todennäköisyydellä merkki 'c' johtaa valintaan?" on (merkin 'c' esiintymislukumäärät valintaan johtaneissa lauseissa / merkin 'c' esiintymislukumäärät yhteensä), eli 2/6, eli noin 33.33%. Vastaavasti vastaus kysymykseen "Millä todennäköisyydellä merkki 'd' ei johda valintaan?" on (merkin 'd' esiintymislukumäärät valintaan johtamattomissa lauseissa / merkin 'd' esiintymislukumäärät yhteensä), eli 5/7, eli noin 71.28%.
+  </p>
+
+  <p>
+    Entäpä kysymys "Millä todennäköisyydellä merkit 'a' ja 'd' johtavat valintaan?". Oletetaan, että merkit ovat riippumattomia toisistaan (lisää aiheesta <a href="https://fi.wikipedia.org/wiki/Todenn%C3%A4k%C3%B6isyys" target="_blank" norel>Wikipedian artikkelissa todennäköisyydestä</a>), jolloin voimme tarkastella kysymystä muodossa "Millä todennäköisyydellä merkki 'a' johtaa valintaan, ja, millä todennäköisyydellä merkki 'd' johtaa valintaan?", eli todennäköisyys "Millä todennäköisyydellä merkki 'a' johtaa valintaan" kerrottuna todennäköisyydellä "Millä todennäköisyydellä merkki 'd' johtaa valintaan?". Tämä olisi 4/6 * 1/7 eli noin 9.52%. 
+  </p>
+
+  <p>
+    Asia ei ole kuitenkaan ihan näin yksinkertainen. Yllä oletamme, että valinnan todennäköisyys on aina fifti-fifti, eli joka toinen tulee valituksi ja joka toinen ei tule valituksi. Tämä ei kuitenkaan pidä paikkaansa. Datassa neljä riviä johti valintaan ja viisi riviä ei johtanut valintaan. Valinnan todennäköisyys riippumatta käytetyistä merkeistä tulee ottaa myös huomioon. 
+  </p>
+
+  <p>
+    Tarkastellaan nyt kysymystä "Millä todennäköisyydellä merkki 'b' johtaa valintaan?". Merkki 'b' esiintyy valituissa ja valitsematta jääneissä lauseissa yhtä usein, eli kaksi kertaa neljästä. Valinnan todennäköisyys on datassa olevien rivien perusteella neljä yhdeksästä, eli noin 44.44%. Nyt merkin 'b' johtaminen valintaan on 4/9 * 2/4, eli noin 22.22%. Vastaavasti todennäköisyys sille, että merkki 'b' johtaa valitsematta jäämiseen on noin 5/9 * 2/4 eli 27.78%.
+  </p>
+
+  <p>
+    <em>
+      Kun haluamme tarkastella johtavatko tietyt merkit valintaan vai johtavatko ne valitsematta jäämiseen, tarkastelemme kummankin vaihtoehdon todennäköisyyttä ja valitsemme niistä suuremman.
+    </em>
+  </p>
+
+  <p>
+    Sama ajatus toimii merkkien lisäksi myös lauseilla.  Ohjelmallisesti mystinen algoritmi on seuraavanlainen.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>double valitaan = valintaan johtaneiden sanojen lukumäärä / sanoja yhteensä;
+double hylataan = valintaan johtamattomien sanojen lukumäärä / sanoja yhteensä;
+
+jokaiselle sanalle sana annetussa lauseessa:
+
+    jos sanan sana esiintymiä on alle 5, jätä sana huomiotta
+
+    valitaan = valitaan * sanan sana esiintymiskerrat valituissa lauseissa / sanan esiintymiskerrat yhteensä
+
+    hylataan = hylataan * sanan sana esiintymiskerrat ei valituissa lauseissa / sanan esiintymiskerrat yhteensä
+
+
+jos valitaan on suurempi kuin hylataan, palauta arvo 1
+jos valitaan on pienempi kuin hylataan, palauta arvo -1
+muulloin, palauta arvo 0
+</code></pre>
+
+  <p>
+    Toteuta metodi <code>public int valitaanMystisellaEnnustajalla(String lause)</code> edellisen kuvauksen perusteella. Joudut mahdollisesti myös täydentämään luokkaan määriteltyjä oliomuuttujia sekä muokkaamaan metodia <code>public void lisaa(boolean valitaan, String lause)</code>.
+  </p>
+
+  <p>
+    Voit kokeilla ohjelmasi toimintaa seuraavalla esimerkillä. Alla olevassa esimerkissä rajaus "jos sanan sana esiintymiä on alle 5, jätä sana huomiotta" on poissa. Palautettavassa versiossa rajauksen tulee kuitenkin esiintyä.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>Ennustaja ennustaja = new Ennustaja();
+ennustaja.lisaa(true, "a b");
+ennustaja.lisaa(true, "a c d");
+ennustaja.lisaa(true, "b c");
+ennustaja.lisaa(true, "a a");
+ennustaja.lisaa(false, "c c d");
+ennustaja.lisaa(false, "a b d");
+ennustaja.lisaa(false, "a b");
+ennustaja.lisaa(false, "c d");
+ennustaja.lisaa(false, "c d d d");
+
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen aktiivinen toimija"));
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen(""));
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("a"));
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("b"));
+System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("a b c"));
+
+System.out.println();
+    
+System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a"));
+System.out.println(ennustaja.valitaanMystisellaEnnustajalla("b"));
+System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a b c"));
+</code></pre>
+
+<pre class="sample-output">0
+0
+1
+0
+0
+
+1
+-1
+-1
+</pre>
+
+  <p>
+    Muokkaa lopulta vielä graafista käyttöliittymää siten, että graafinen käyttöliittymä näyttää myös mystisen ennustajan tarjoaman ehdotuksen. Mikäli metodi <code>valitaanMystisellaEnnustajalla</code> palauttaa arvon 1, tulee tekstin olla "Mystisen ennustajan perusteella: Kyllä". Mikäli arvo on -1, tulee tekstin olla "Mystisen ennustajan perusteella: Ei". Muulloin tekstin tulee olla "Mystisen ennustajan perusteella: ???".
+  </p>
+
+  <p>
+    <em>
+      Ennustusmekanismi ei vieläkään ole kovin hyvä. Ohjelma ei esimerkiksi osaa käsitellä pilkkuja, pisteitä, tai muita erikoismerkkejä. Ohjelma käsittelee myös sanat kuten "kuntavaali" ja "kuntavaalit" täysin erillisinä sanoina. Edellä käsitelty "mystinen ennustaja" tulee tarkemmin tutuksi mm. tekoälyn johdatuskursseilla, missä ongelmaan opitaan myös parempia menetelmiä. Aiheesta opitaan lisää myös muunmuassa luonnollisen kielen käsittelyyn liittyvillä kursseilla sekä laajemmin digitaalisten ihmistieteiden tutkimuksen parissa.
+    </em>
+  </p>
+
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="quiznator-plugin" data-quiz-id="5a987a0f7863c4000454a041"></div>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/ohjelmointi-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/ohjelmointi-18/edit/master/source/part12.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-k18">
+                Ohjelmoinnin jatkokurssi, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-eed39bbb.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.initCodeStatesVisualizer();
+        window.initTyponator();
+        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
