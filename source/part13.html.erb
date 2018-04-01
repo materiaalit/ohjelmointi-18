@@ -14,6 +14,7 @@
 <% end %>
 
 
+
 <% partial 'partials/material_heading' do %>
   Sovelluksen käytettävyys
 <% end %>
@@ -44,6 +45,313 @@
 <p>
   Käytettävyyden lisäksi sovelluksissa oleellista on myös saavutettavuus, millä tarkoitetaan erilaisten käyttäjäryhmien huomiointia sovelluksen rakentamisessa. Näitä käsitellään tarkemmin Human-Computer Interaction -teeman kursseilla (Ihmisen ja tietokoneen välinen vuorovaikutus).
 </p>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Piirtäminen
+<% end %>
+
+<p>
+  JavaFX-käyttöliittymäkirjastossa piirtämiseen käytetään <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html" target="_blank" rel="noopener">Canvas</a>-oliota. Canvas-olio edustaa tyhjää taulua, johon voi piirtää. Piirtäminen tapahtuu Canvas-oliolta saatavalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html" target="_blank" rel="noopener">GraphicsContext</a>-oliolla.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank" rel="noopener">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun keskelle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // pakkaus
+
+  import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.canvas.Canvas;
+  import javafx.scene.canvas.GraphicsContext;
+  import javafx.scene.control.ColorPicker;
+  import javafx.scene.layout.BorderPane;
+  import javafx.stage.Stage;
+
+  public class MiniPaint extends Application {
+
+  @Override
+  public void start(Stage ikkuna) {
+
+  Canvas piirtoalusta = new Canvas(640, 480);
+  GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+
+  ColorPicker varinValitsin = new ColorPicker();
+
+  BorderPane asettelu = new BorderPane();
+  asettelu.setRight(varinValitsin);
+  asettelu.setCenter(piirtoalusta);
+
+  piirtoalusta.setOnMouseDragged((event) -&gt; {
+  double kohtaX = event.getX();
+  double kohtaY = event.getY();
+  piirturi.setFill(varinValitsin.getValue());
+  piirturi.fillOval(kohtaX, kohtaY, 4, 4);
+  });
+
+  Scene nakyma = new Scene(asettelu);
+
+  ikkuna.setScene(nakyma);
+  ikkuna.show();
+  }
+
+  public static void main(String[] args) {
+  launch(MiniPaint.class);
+  }
+  }
+<% end %>
+
+<p>
+  Sovellus näyttää seuraavanlaiselta. Alla sovellusta on käytetty jo hieman piirtämiseen.
+</p>
+
+<img src="/img/material/gui-paint.png" alt="Yksinkertainen piirto-ohjelma. Käyttäjä voi piirtää pitämällä hiirtä pohjassa. Oikeassa laidassa on värin valintaan käytettävä ColorPicker-olio."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Canvas-luokan avulla voidaan myös luoda ohjelma, joka piirtää kuvaa jatkuvasti. Tämä tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank" rel="noopener">AnimationTimer</a>-luokan avulla. AnimationTimer-luokka määrittelee metodin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html#handle-long-" target="_blank" rel="noopener">handle</a>, joka luokkaa käyttävän ohjelmoijan tulee toteuttaa. Metodi handle saa parametrina nykyhetken nanosekunteina, jonka avulla voidaan vaikuttaa piirtovälien pituuteen.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on ohjelma, jossa piirretään satunnaiseen kohtaan piste kymmenen kertaa sekunnissa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // pakkaus..
+
+  import java.util.Random;
+  import javafx.animation.AnimationTimer;
+  import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.canvas.Canvas;
+  import javafx.scene.canvas.GraphicsContext;
+  import javafx.scene.layout.BorderPane;
+  import javafx.scene.paint.Color;
+  import javafx.stage.Stage;
+
+  public class AnimaationAlku extends Application {
+
+  @Override
+  public void start(Stage ikkuna) {
+
+  Canvas piirtoalusta = new Canvas(320, 240);
+  GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+  piirturi.setFill(Color.BLACK);
+
+  BorderPane asettelu = new BorderPane();
+  asettelu.setCenter(piirtoalusta);
+
+  Random arpoja = new Random();
+
+  new AnimationTimer() {
+  long edellinen = 0;
+
+  @Override
+  public void handle(long nykyhetki) {
+  if (nykyhetki - edellinen < 100000000) {
+  return;
+  }
+
+  int x = arpoja.nextInt(310);
+  int y = arpoja.nextInt(230);
+
+  piirturi.fillOval(x, y, 10, 10);
+
+  this.edellinen = nykyhetki;
+  }
+  }.start();
+
+  Scene nakyma = new Scene(asettelu);
+
+  ikkuna.setScene(nakyma);
+  ikkuna.show();
+  }
+
+  public static void main(String[] args) {
+  launch(AnimaationAlku.class);
+  }
+  }
+<% end %>
+
+<p>
+  Ohjelma toimii käynnistyessään esimerkiksi seuraavasti.
+</p>
+
+<img src="/img/material/gui-animaatio.gif" alt="Edellinen ohjelma toiminnassa. Kuvaan ilmestyy kymmenen pistettä sekunnissa."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Silloin tällöin ohjelma halutaan toteuttaa siten, että uusi tila piirretään aina edellisen tilanteen päälle. Tällöin tapana on tyhjentää ruutu ennen uutta piirtämistä. Tämä onnistuu lisäämällä edelliseen ohjelmaamme rivi <code>piirturi.clearRect(0, 0, 320, 240);</code> ennen handle-metodissa olevaa piirtokomentoa. Komento tyhjentää kohdasta (0, 0) lähtien 320 pikseliä leveän ja 240 pikseliä korkean suunnikkaan.
+</p>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Hymiö' } do %>
+
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Lisää graafiseen käyttöliittymään Canvas-olio, ja piirrä käyttöliittymään Canvas-olioon liittyvän GraphicsContext-olion avulla hymiö.
+  </p>
+
+  <p>
+    Tehtävässä ei ole testejä -- palauta se kun saat hymiön piirtämisen toimimaan. Huomaa ettei tässä ole tarkoitus piirtää hymiötä esimerkiksi hiirellä -- käytä suoraan GraphicsContext-olion tarjoamia metodeja.
+  </p>
+
+  <img src="/img/material/gui-hymio.png" alt="Hymiö" />
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Hiekkaranta (5 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank" rel="noopener">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on esimerkiksi seuraavanlainen.
+  </p>
+
+  <img src="/img/material/gui-simulaatio.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Huom! Käytät tässä tehtävässä luokassa HiekkarantaSovellus olevaa metodia <code>public static int toteutetutOsat()</code> toteutettujen tehtävän osien raportointiin. Älä poista metodia, vaan muokkaa sitä aina kun saat yksittäisen osan valmiiksi. Tehtävä koostuu viidestä osasta.
+  </p>
+
+  <p>
+    Huom2! Kun toteutat simulaatiota, varmista että ohjelma pitää tarpeeksi pitkiä taukoja piirtämisten ja simulaatioiden välillä. Tällöin tehoja jää myös testien ajamiseen. Testien suorittaminen palvelimella päätyy heikosti, jos kaikki palvelimen teho menee animaation suorittamiseen. Tällöin testien ajon viestinä on esim. kryptinen "Missing test output.". Jos saat tämän virheen palvelimelta, kokeile suoritusta esimerkiksi siten, että simulaatiota piirretään ja päivitetään korkeintaan 20 kertaa sekunnissa.
+  </p>
+
+
+  <p>
+    Huom3! Kun piirrät hiekkalaatikkoa, piirrä musta alue yhtenä isona suorakulmiona piirtämisen alussa. Näin jokaista yksittäistä mustaa pistettä ei tarvitse erikseen piirtää, ja voit keskittyä muiden pisteiden piirtämiseen.
+  </p>
+
+
+  <h2>Palaset kohdalleen</h2>
+
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Graafisen käyttöliittymän komponenttien asettelu tulee tehdä BorderPane-luokan avulla. Lisää BorderPane-luokan keskelle Canvas-olio, jota käytetään piirtämiseen. Aseta Canvas-olion leveydeksi ja korkeudeksi 200 pikseliä. Lisää BorderPane-luokan oikealle laidalle VBox-olio, joka sisältää kolme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/RadioButton.html" target="_blank" rel="noopener">RadioButton</a>-oliota. Ensimmäiseen RadioButton-olioon tulee liittyä teksti "Metalli", toiseen teksti "Hiekka", ja kolmanteen teksti "Vesi".
+  </p>
+
+  <p>
+    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 1. Voit myös palauttaa tehtävän, niin saat siitä ensimmäisen pisteen.
+  </p>
+
+
+  <h2>Simulaation alkupalat</h2>
+
+  <p>
+    Luo pakkaukseen hiekkaranta luokka Simulaatio. Luokalla Simulaatio tulee olla seuraavat konstruktorit ja metodit. Käytä luokassa hyödyksi valmista enum-luokkaa Tyyppi.
+  </p>
+
+  <ul>
+    <li>
+      Konstruktori <code>public Simulaatio(int leveys, int korkeus)</code> luo annetun levyisen ja korkuisen simulaation. Jokainen kohta on aluksi tyhjä.
+    </li>
+    <li>
+      Metodi <code>public void lisaa(int x, int y, Tyyppi tyyppi</code> lisää annettuun kohtaan annetun tyyppisen elementin. Tyyppi on joko tyhjä, metalli, hiekka tai vesi.
+    </li>
+    <li>
+      Metodi <code>public Tyyppi sisalto(int x, int y)</code> palauttaa annetussa kohdassa olevan sisällön. Vastaus on joko Tyyppi.TYHJA, Tyyppi.METALLI, Tyyppi.HIEKKA tai Tyyppi.VESI. Jos kohtaan ei ole lisätty mitään arvoa, tyyppi on Tyyppi.TYHJA. Jos käyttäjä kysyy tietoa alueen ulkopuolelta, palauta Tyyppi.METALLI.
+    </li>
+    <li>
+      Metodi <code>public void paivita()</code> päivittää simulaatiota yhden askeleen. Päivitystoiminnallisuuden toteutus aloitetaan kohtapuoliin .
+    </li>
+  </ul>
+
+  <p>
+    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 2. Voit myös palauttaa tehtävän, niin saat siitä toisen pisteen.
+  </p>
+
+
+
+  <h2>Metallin lisääminen ja piirtäminen</h2>
+
+  <p>
+    Lisää edellä toteuttamasi Simulaatio osaksi käyttöliittymää. Aseta simulaation leveydeksi 200 ja korkeudeksi 200 pikseliä (simulaation tulee toimia myös muun kokoisena). Lisää tämän jälkeen sovellukseen mahdollisuus metallin lisäämiseen. Metallia lisätään kun käyttäjä piirtää kuvaan sisältöä ja metalli on valittuna oikealla laidalla olevasta valikosta.
+  </p>
+
+  <p>
+    Käytä simulaation käyttäjälle näyttämiseen AnimationTimer-luokkaa sekä Canvas-oliota. Piirrä canvas-olion sisältö uudestaan kymmenen kertaa sekunnissa. Kun metallin lisääminen onnistuu, se toimii esimerkiksi seuraavalla tavalla. Alla olevassa esimerkissä hiiren pohjassapito lisää useampia metallipisteitä samaan aikaan.
+  </p>
+
+  <img src="/img/material/gui-simulaatio-metalli.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 3. Voit myös palauttaa tehtävän, niin saat kolmannen pisteen.
+  </p>
+
+
+  <h2>Hiekan lisääminen ja toiminnallisuus</h2>
+
+  <p>
+    Lisää tämän jälkeen toiminnallisuus hiekan lisäämiseen ja piirtämiseen. Hiekka tulee piirtää eri värillä kuin metalli. Google auttaa tarvittaessa piirtämisessä -- esimerkiksi haku "javafx how to draw on canvas using animationtimer" antaa linkkejä, joista on hyötyä.
+  </p>
+
+  <p>
+    Kun onnistut myös hiekan lisäämiseen käyttöliittymässä (metallin lisäämisen tulee myös onnistua!), muokkaa tämän jälkeen Simulaatio-luokan metodia paivita. Metodin paivita tulee toimia siten, että se tarkistaa jokaiselle hiekkaa sisältävälle kohdalle kohdan alla olevat kolme vaihtoehtoa. Jos joku vaihtoehdoista on tyhjä, hiekka siirretään alaspäin tyhjään kohtaan.
+  </p>
+
+  <p>
+    Nyt sovelluksessa pitäisi tapahtua liikettä kun piirrät hiekkaa. Saat Random-luokan avulla sovellukseesi satunnaisuutta -- hiekan ei tarvitse toimia aina täsmälleen samalla tavalla.
+  </p>
+
+  <img src="/img/material/gui-simulaatio-metalli-ja-hiekka.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta. Kuvassa hiekka toimii metallin kanssa." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 4. Voit myös palauttaa tehtävän, niin saat neljännen pisteen.
+  </p>
+
+
+  <h2>Veden lisääminen</h2>
+
+  <p>
+    Lisää tämän jälkeen toiminnallisuus veden lisäämiseen ja piirtämiseen. Piirrä vesi eri värillä kuin hiekka tai metalli.
+  </p>
+
+  <p>
+    Muokkaa tämän jälkeen Simulaatio-luokan metodia paivita siten, että se siirtää kutsun yhteydessä vettä alaspäin <em>jos</em> joku veden alapuolella olevista kohdista on tyhjä. Jos yksikään kohdista ei ole tyhjiä, mutta jommalla kummalla laidalla on sijaa, siirretään vettä sivulle.
+  </p>
+
+  <p>
+    Muokkaa vielä sovellusta siten, että hiekka syrjäyttää veden. Kun lisäät hiekkaa, veden tulee siis väistää hiekkaa. Nyt sovelluksen pitäisi toimia kokonaisuudessaan!
+  </p>
+
+  <img src="/img/material/gui-simulaatio.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 5. Voit myös palauttaa tehtävän, niin saat viidennen pisteen.
+  </p>
+
+  <p>
+    Palauta tehtävä viimeistään nyt. Voit tämän jälkeen lähteä toteuttamaan uusia toiminnallisuuksia. Miten toteuttaisit esimerkiksi laavan?
+  </p>
+
+
+<% end %>
+
+
+
 
 
 
@@ -586,607 +894,6 @@ if (keskiarvo.getData().size() &gt; 100) {
 
   <p>
     Ohjelmoija voisi halutessaan vaikkapa visualisoida maanjäristyksiä. Osoitteessa <a href="http://www.seismi.org/api/eqs/" target="_blank" rel="noopener">http://www.seismi.org/api/eqs/</a> tarjotaan kerran tunnissa päivittyvä listaus maailmalla viimeksi tapahtuneista maanjäristyksistä (data on kuvattu <a href="https://en.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a>-muodossa). Vastaavasti ohjelmoija voisi tehdä <a href="http://dev.hsl.fi/" target="_blank" rel="noopener">Helsingin seudun liikenteen</a> tarjoamista rajapinnoista sopivan palvelun.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_heading' do %>
-  Useampi näkymä sovelluksessa
-<% end %>
-
-<p>
-  Tähän mennessä toteuttamamme graafiset käyttöliittymät ovat sisältäneet aina yhden näkymän. Tutustutaan seuraavaksi useampia näkymiä sisältäviin käyttöliittymiin.
-</p>
-
-<p>
-  Yleisesti ottaen näkymät luodaan Scene-olion avulla, joiden välillä siirtyminen tapahtuu sovellukseen kytkettyjen tapahtumien avulla. Alla olevassa esimerkissä on luotu kaksi erillistä Scene-oliota, joista kummallakin on oma sisältö sekä sisältöön liittyvä tapahtuma. Alla Scene-olioihin ei ole erikseen liitetty käyttöliittymän asetteluun käytettyä komponenttia (esim. BorderPane), vaan kummassakin Scene-oliossa on täsmälleen yksi käyttöliittymäkomponentti.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-public class EdesTakaisinSovellus extends Application {
-
-    @Override
-    public void start(Stage ikkuna) {
-
-        Button edes = new Button("Edes ..");
-        Button takaisin = new Button(".. takaisin.");
-
-        Scene eka = new Scene(edes);
-        Scene toka = new Scene(takaisin);
-
-        edes.setOnAction((event) -&gt; {
-            ikkuna.setScene(toka);
-        });
-
-        takaisin.setOnAction((event) -&gt; {
-            ikkuna.setScene(eka);
-        });
-
-        ikkuna.setScene(eka);
-        ikkuna.show();
-    }
-
-    public static void main(String[] args) {
-        launch(EdesTakaisinSovellus.class);
-    }
-}
-<% end %>
-
-<p>
-  Edellä olevan sovelluksen käynnistäminen luo käyttöliittymän, jossa siirtyminen näkymästä toiseen onnistuu nappia painamalla.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Useampi Näkymä' } do %>
-
-  <p>
-    Luo tehtäväpohjassa olevaan luokkaan UseampiNakyma sovellus, joka sisältää kolme erillistä näkymää. Näkymät ovat seuraavat:
-  </p>
-
-  <ul>
-    <li>Ensimmäinen näkymä on aseteltu BorderPane-luokan avulla. Ylälaidassa on teksti "Eka näkymä!". Keskellä on nappi, jossa on teksti "Tokaan näkymään!", ja jota painamalla siirrytään toiseen näkymään.</li>
-    <li>Toinen näkymä on aseteltu VBox-luokan avulla. Asettelussa tulee ensin nappi, jossa on teksti "Kolmanteen näkymään!", ja jota painamalla siirrytään kolmanteen näkymään. Nappia seuraa teksti "Toka näkymä!".</li>
-    <li>Kolmas näkymä on aseteltu GridPane-luokan avulla. Asettelussa tulee koordinaatteihin (0,0) teksti "Kolmas näkymä!". Koordinaatteihin (1,1) tulee nappi, jossa on teksti "Ekaan näkymään!", ja jota painamalla siirrytään ensimmäiseen näkymään.</li>
-  </ul>
-
-  <p>
-    Sovelluksen tulee käynnistyessään näyttää ensimmäinen näkymä.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Oma asettelu jokaista näkymää varten
-<% end %>
-
-<p>
-  Tutustutaan seuraavaksi kaksi erillistä näkymää sisältävään esimerkkiin. Ensimmäisessä näkymässä käyttäjää pyydetään syöttämään salasana. Jos käyttäjä kirjoittaa väärän salasanan, väärästä salasanasta ilmoitetaan. Jos käyttäjä kirjoittaa oikean salasanan, ohjelma vaihtaa seuraavaan näkymään. Ohjelman toiminta on seuraavanlainen.
-</p>
-
-<img src="/img/material/gui-salasana.gif" />
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Näkymien välillä vaihtaminen tapahtuu kuten edellisessä esimerkissä. Konkreettinen vaihtotapahtuma on määritelty kirjautumisnappiin. Nappia painettaessa ohjelma tarkastaa salasanakenttään kirjoitetun salasanan -- tässä toivotaan, että käyttäjä kirjoittaa "salasana". Jos salasana on oikein, ikkunan näyttämä näkymä vaihdetaan. Esimerkissämme näkymä sisältää vain tekstin "Tervetuloa, tästä se alkaa!".
-</p>
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
-public class SalattuSovellus extends Application {
-
-    @Override
-    public void start(Stage ikkuna) throws Exception {
-
-        // 1. Luodaan salasanan kysymiseen käytetty näkymä
-
-        // 1.1 luodaan käytettävät komponentit
-        Label ohjeteksti = new Label("Kirjoita salasana ja paina kirjaudu");
-        PasswordField salasanakentta = new PasswordField();
-        Button aloitusnappi = new Button("Kirjaudu");
-        Label virheteksti = new Label("");
-
-        // 1.2 luodaan asettelu ja lisätään komponentit siihen
-        GridPane asettelu = new GridPane();
-
-        asettelu.add(ohjeteksti, 0, 0);
-        asettelu.add(salasanakentta, 0, 1);
-        asettelu.add(aloitusnappi, 0, 2);
-        asettelu.add(virheteksti, 0, 3);
-
-        // 1.3 tyylitellään asettelua
-        asettelu.setPrefSize(300, 180);
-        asettelu.setAlignment(Pos.CENTER);
-        asettelu.setVgap(10);
-        asettelu.setHgap(10);
-        asettelu.setPadding(new Insets(20, 20, 20, 20));
-
-        // 1.4 luodaan itse näkymä ja asetetaan asettelu siihen
-        Scene salasanaNakyma = new Scene(asettelu);
-
-
-        // 2. Luodaan tervetuloa-tekstin näyttämiseen käytetty näkymä
-        Label tervetuloaTeksti = new Label("Tervetuloa, tästä se alkaa!");
-
-        StackPane tervetuloaAsettelu = new StackPane();
-        tervetuloaAsettelu.setPrefSize(300, 180);
-        tervetuloaAsettelu.getChildren().add(tervetuloaTeksti);
-        tervetuloaAsettelu.setAlignment(Pos.CENTER);
-
-        Scene tervetuloaNakyma = new Scene(tervetuloaAsettelu);
-
-
-        // 3. Lisätään salasanaruudun nappiin tapahtumankäsittelijä
-        //    näkymää vaihdetaan jos salasana on oikein
-        aloitusnappi.setOnAction((event) -&gt; {
-            if (!salasanakentta.getText().trim().equals("salasana")) {
-                virheteksti.setText("Tuntematon salasana!");
-                return;
-            }
-
-            ikkuna.setScene(tervetuloaNakyma);
-        });
-
-        ikkuna.setScene(salasanaNakyma);
-        ikkuna.show();
-    }
-
-    public static void main(String[] args) {
-        launch(SalattuSovellus.class);
-    }
-}
-<% end %>
-
-<p>
-  Esimerkissä on hyödynnetty sekä GridPanen että StackPanen asettelussa niiden tarjoamia setPrefSize ja setAlignment-metodeja. Metodilla setPrefSize annetaan asettelulle toivottu koko, ja metodilla setAlignment kerrotaan miten asettelun sisältö tulee ryhmittää. Parametrilla Pos.CENTER toivotaan asettelua näkymän keskelle.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Tervehtijä' } do %>
-
-  <p>
-    Luo tehtäväpohjassa olevaan luokkaan TervehtijaSovellus sovellus, jossa on kaksi näkymää. Ensimmäisessä näkymässä on tekstikenttä, jolla kysytään käyttäjän nimeä. Toisessa näkymässä käyttäjälle näytetään tervehdysteksti. Tervehdystekstin tulee olla muotoa "Tervetuloa nimi!", missä nimen paikalle tulee käyttäjän kirjoittama nimi.
-  </p>
-
-  <p>
-    Esimerkki sovelluksen toiminnasta:
-  </p>
-
-  <img src="/img/material/gui-tervehtija.gif" alt="Tekstikenttään syötetään nimi, jonka jälkeen nappia painetaan. Näkymä vaihtuu toiseksi, jossa lukee 'Tervetuloa nimi!'"/>
-
-  <p>
-    &nbsp;
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Sama pääasettelu näkymillä
-<% end %>
-
-<p>
-  Riippuen sovelluksen käyttötarpeesta, joskus sovellukselle halutaan pysyvä näkymä, jonka osia vaihdetaan tarvittaessa. Jonkinlaisen valikon tarjoavat ohjelmat toimivat tyypillisesti tällä tavalla.
-</p>
-
-<p>
-  Alla olevassa esimerkissä on luotu sovellus, joka sisältää päävalikon sekä vaihtuvasisältöisen alueen. Vaihtuvasisältöisen alueen sisältö vaihtuu päävalikon nappeja painamalla.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
-public class EsimerkkiSovellus extends Application {
-
-    @Override
-    public void start(Stage ikkuna) throws Exception {
-
-        // 1. Luodaan päätason asettelu
-        BorderPane asettelu = new BorderPane();
-
-        // 1.1. Luodaan päätason asettelun valikko
-        HBox valikko = new HBox();
-        valikko.setPadding(new Insets(20, 20, 20, 20));
-        valikko.setSpacing(10);
-
-        // 1.2. Luodaan valikon napit
-        Button eka = new Button("Eka");
-        Button toka = new Button("Toka");
-
-        // 1.3. Lisätään napit valikkoon
-        valikko.getChildren().addAll(eka, toka);
-
-        asettelu.setTop(valikko);
-
-
-        // 2. Luodaan alinäkymät ja kytketään ne valikon nappeihin
-        // 2.1. Luodaan alinäkymät -- tässä asettelut
-        StackPane ekaAsettelu = luoNakyma("Eka näkymä!");
-        StackPane tokaAsettelu = luoNakyma("Toka näkymä!");
-
-        // 2.2. Liitetään alinäkymät nappeihin. Napin painaminen vaihtaa alinäkymää.
-        eka.setOnAction((event) -> asettelu.setCenter(ekaAsettelu));
-        toka.setOnAction((event) -> asettelu.setCenter(tokaAsettelu));
-
-        // 2.3. Näytetään aluksi ekaAsettelu
-        asettelu.setCenter(ekaAsettelu);
-
-
-        // 3. Luodaan päänäkymä ja asetetaan päätason asettelu siihen
-        Scene nakyma = new Scene(asettelu);
-
-
-        // 4. Näytetään sovellus
-        ikkuna.setScene(nakyma);
-        ikkuna.show();
-    }
-
-    private StackPane luoNakyma(String teksti) {
-
-        StackPane asettelu = new StackPane();
-        asettelu.setPrefSize(300, 180);
-        asettelu.getChildren().add(new Label(teksti));
-        asettelu.setAlignment(Pos.CENTER);
-
-        return asettelu;
-    }
-
-    public static void main(String[] args) {
-        launch(EsimerkkiSovellus.class);
-    }
-}
-<% end %>
-
-<p>
-  Sovellus toimii seuraavalla tavalla:
-</p>
-
-<img src="/img/material/gui-nakyman-vaihto.gif" alt="Sovellus, joka sisältää valikon. Valikossa olevia nappeja painamalla voidaan vaihtaa sovelluksessa näkyvää sisältöä."/>
-
-<p>
-  &nbsp;
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Vitsi' } do %>
-
-  <p>
-    Luo tehtäväpohjassa olevaan luokkaan VitsiSovellus sovellus, jota käytetään yhden vitsin selittämiseen. Sovellus tarjoaa kolme nappia sisältävän valikon sekä näitä nappeja painamalla näytettävät sisällöt. Ensimmäinen nappi (teksti "Vitsi") näyttää vitsiin liittyvän kysymyksen, toinen nappi (teksti "Vastaus") näyttää vitsin kysymykseen liittyvän vastauksen, ja kolmas nappi (teksti "Selitys") näyttää vitsin selityksen.
-  </p>
-
-  <p>
-    Oletuksena (kun sovellus käynnistyy) sovelluksen tulee näyttää vitsiin liittyvä kysymys. Käytä kysymyksenä merkkijonoa "What do you call a bear with no teeth?" ja vastauksena merkkijonoa "A gummy bear.". Saat päättää selityksen vapaasti.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_sub_heading' do %>
-  Hieman suurempi sovellus: Sanaston harjoittelua
-<% end %>
-
-<p>
-  Hahmotellaan vieraiden sanojen harjoitteluun tarkoitettua sovellusta. Sovellus tarjoaa käyttäjälle kaksi toimintoa: sanojen ja niiden käännösten syöttämisen sekä harjoittelun. Luodaan sovellusta varten neljä erillistä luokkaa: ensimmäinen luokka tarjoaa sovelluksen ydinlogiikkatoiminnallisuuden eli sanakirjan ylläpidon, toinen ja kolmas luokka sisältävät syöttönäkymän ja harjoittelunäkymän, ja neljäs luokka sovelluksen päävalikon sekä sovelluksen käynnistämiseen tarvittavan toiminnallisuuden.
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Sanakirja
-<% end %>
-
-<p>
-  Sanakirja toteutetaan hajautustaulun ja listan avulla. Hajautustaulu sisältää sanat ja niiden käännökset, ja listaa käytetään satunnaisesti kysyttävän sanan arpomiseen. Luokalla on metodit käännösten lisäämiseen, käännöksen hakemiseen sekä käännettävän sanan arpomiseen.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
-public class Sanakirja {
-
-    private List&lt;String&gt; sanat;
-    private Map&lt;String, String&gt; kaannokset;
-
-    public Sanakirja() {
-	this.sanat = new ArrayList&lt;&gt;();
-	this.kaannokset = new HashMap&lt;&gt;();
-
-	lisaa("sana", "word");
-    }
-
-    public String hae(String sana) {
-	return this.kaannokset.get(sana);
-    }
-
-    public void lisaa(String sana, String kaannos) {
-	if (!this.kaannokset.containsKey(sana)) {
-	    this.sanat.add(sana);
-	}
-
-	this.kaannokset.put(sana, kaannos);
-    }
-
-    public String arvoSana() {
-	Random satunnainen = new Random();
-	return this.sanat.get(satunnainen.nextInt(this.sanat.size()));
-    }
-}
-<% end %>
-
-<p>
-  Sanakirjan voisi toteuttaa myös niin, että sanan arpominen loisi aina uduen listan kaannokset-hajautustaulun avaimista. Tällöin sanat-listalle ei olisi erillistä tarvetta. Tämä vaikuttaisi kuitenkin sovelluksen tehokkuuteen (tai, olisi ainakin vaikuttanut ennen vuosituhannen vaihdetta -- nykyään koneet ovat jo hieman nopeampia..).
-</p>
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Sanojen syöttäminen
-<% end %>
-
-<p>
-  Luodaan seuraavaksi sanojen syöttämiseen tarvittava toiminnallisuus. Sanojen syöttämistä varten tarvitsemme viitteen sanakirja-olioon sekä tekstikentät sanalle ja käännökselle. GridPane-asettelu sopii hyvin kenttien asetteluun. Luodaan luokka Syottonakyma, joka tarjoaa metodin getNakyma, joka luo sanojen syöttämiseen tarvittavan näkymän. Metodi palauttaa viitteen <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html" target="_blank" rel="noopener">Parent</a>-tyyppiseen olioon. Parent on muunmuassa asetteluun käytettävien luokkien yläluokka, joten mitä tahansa asetteluun käytettävää luokkaa voidaan esittää Parent-oliona.
-</p>
-
-<p>
-  Luokka määrittelee myös käyttöliittymään liittyvän napinpainallustoiminnallisuuden. Kun käyttäjä painaa nappia, sanapari lisätään sanakirjaan. Samalla myös tekstikentät tyhjennetään seuraavan sanan syöttämistä varten.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-
-public class Syottonakyma {
-
-    private Sanakirja sanakirja;
-
-    public Syottonakyma(Sanakirja sanakirja) {
-	this.sanakirja = sanakirja;
-    }
-
-    public Parent getNakyma() {
-	GridPane asettelu = new GridPane();
-
-	Label sanaohje = new Label("Sana");
-	TextField sanakentta = new TextField();
-        Label kaannosohje = new Label("Käännös");
-	TextField kaannoskentta = new TextField();
-
-        asettelu.setAlignment(Pos.CENTER);
-	asettelu.setVgap(10);
-	asettelu.setHgap(10);
-	asettelu.setPadding(new Insets(10, 10, 10, 10));
-
-	Button lisaanappi = new Button("Lisää sanapari");
-
-	asettelu.add(sanaohje, 0, 0);
-	asettelu.add(sanakentta, 0, 1);
-	asettelu.add(kaannosohje, 0, 2);
-	asettelu.add(kaannoskentta, 0, 3);
-	asettelu.add(lisaanappi, 0, 4);
-
-	lisaanappi.setOnMouseClicked((event) -&gt; {
-	    String sana = sanakentta.getText();
-	    String kaannos = kaannoskentta.getText();
-
-	    sanakirja.lisaa(sana, kaannos);
-
-	    sanakentta.clear();
-	    kaannoskentta.clear();
-	});
-
-        return asettelu;
-    }
-}
-<% end %>
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Sanaharjoittelu
-<% end %>
-
-<p>
-  Luodaan tämän jälkeen harjoitteluun tarvittava toiminnallisuus. Harjoittelua varten tarvitsemme myös viitteen sanakirja-olioon, jotta voimme hakea harjoiteltavia sanoja sekä tarkastaa käyttäjän syöttämien käännösten oikeellisuuden. Sanakirjan lisäksi tarvitsemme tekstin, jonka avulla kysytään sanaa, sekä tekstikentän, johon käyttäjä voi syöttää käännöksen. Myös tässä GridPane sopii hyvin kenttien asetteluun.
-</p>
-
-<p>
-  Kullakin hetkellä harjoiteltava sana on luokalla oliomuuttujana. Oliomuuttujaa voi käsitellä ja muuttaa myös tapahtumankäsittelijän yhteyteen määrittelyssä metodissa.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-
-public class Harjoittelunakyma {
-
-    private Sanakirja sanakirja;
-    private String sana;
-
-    public Harjoittelunakyma(Sanakirja sanakirja) {
-	this.sanakirja = sanakirja;
-	this.sana = sanakirja.arvoSana();
-    }
-
-    public Parent getNakyma() {
-	GridPane asettelu = new GridPane();
-
-	Label sanaohje = new Label("Käännä sana '" + this.sana + "'");
-	TextField kaannoskentta = new TextField();
-
-	asettelu.setAlignment(Pos.CENTER);
-	asettelu.setVgap(10);
-	asettelu.setHgap(10);
-	asettelu.setPadding(new Insets(10, 10, 10, 10));
-
-	Button lisaanappi = new Button("Tarkista");
-
-	Label palaute = new Label("");
-
-	asettelu.add(sanaohje, 0, 0);
-	asettelu.add(kaannoskentta, 0, 1);
-	asettelu.add(lisaanappi, 0, 2);
-	asettelu.add(palaute, 0, 3);
-
-	lisaanappi.setOnMouseClicked((event) -> {
-	    String kaannos = kaannoskentta.getText();
-	    if (sanakirja.hae(sana).equals(kaannos)) {
-   	        palaute.setText("Oikein!");
-	    } else {
-	        palaute.setText("Väärin! Sanan '" + sana + "' käännös on '" + sanakirja.hae(sana) + "'.");
-	        return;
-	    }
-
-	    this.sana = this.sanakirja.arvoSana();
-	    sanaohje.setText("Käännä sana '" + this.sana + "'");
-	    kaannoskentta.clear();
-	});
-
-	return asettelu;
-    }
-}
-<% end %>
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Harjoittelusovellus
-<% end %>
-
-<p>
-  Harjoittelusovellus sekä nitoo edellä toteutetut luokat yhteen että tarjoaa sovelluksen valikon. Harjoittelusovelluksen rakenne on seuraava.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-package sovellus;
-
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-
-public class HarjoitteluSovellus extends Application {
-
-    @Override
-    public void start(Stage ikkuna) throws Exception {
-	// 1. Luodaan sovelluksen käyttämä sanakirja
-	Sanakirja sanakirja = new Sanakirja();
-
-	// 2. Luodaan näkymät ("alinäkymät")
-	Harjoittelunakyma harjoittelunakyma = new Harjoittelunakyma(sanakirja);
-	Syottonakyma syottonakyma = new Syottonakyma(sanakirja);
-
-	// 3. Luodaan päätason asettelu
-	BorderPane asettelu = new BorderPane();
-
-	// 3.1. Luodaan päätason asettelun valikko
-	HBox valikko = new HBox();
-	valikko.setPadding(new Insets(20, 20, 20, 20));
-	valikko.setSpacing(10);
-
-	// 3.2. Luodaan valikon napit
-	Button lisaanappi = new Button("Lisää sanoja");
-	Button harjoittelenappi = new Button("Harjoittele");
-
-	// 3.3. Lisätään napit valikkoon
-	valikko.getChildren().addAll(lisaanappi, harjoittelenappi);
-	asettelu.setTop(valikko);
-
-	// 4. Liitetään alinäkymät nappeihin. Napin painaminen vaihtaa alinäkymää.
-	lisaanappi.setOnAction((event) -&gt; asettelu.setCenter(syottonakyma.getNakyma()));
-	harjoittelenappi.setOnAction((event) -&gt; asettelu.setCenter(harjoittelunakyma.getNakyma()));
-
-	// 5. Näytetään ensin syöttönäkymä
-	asettelu.setCenter(syottonakyma.getNakyma());
-
-	// 6. Luodaan päänäkymä ja asetetaan päätason asettelu siihen
-	Scene nakyma = new Scene(asettelu, 400, 300);
-
-	// 7. Näytetään sovellus
-	ikkuna.setScene(nakyma);
-	ikkuna.show();
-    }
-
-    public static void main(String[] args) {
-	launch(HarjoitteluSovellus.class);
-    }
-}
-<% end %>
-
-
-
-<% partial 'partials/exercise', locals: { name: 'Sanojen harjoittelua' } do %>
-
-  <p>
-    Tässä tehtävässä laadit edellä olevaa materiaalia noudattaen sanojen harjoitteluun tarkoitetun sovelluksen. Sovelluksen tulee käynnistyä kun luokan SanaharjoitteluSovellus main-metodi suoritetaan.
-  </p>
-
-  <p>
-    Luo edellistä esimerkkiä noudattaen sanojen harjoitteluun tarkoitettu sovellus. Sanojen harjoitteluun tarkoitetun sovelluksen tulee tarjota kaksi näkymää. Ensimmäisessä näkymässä käyttäjä voi syöttää alkuperäisiä sanoja ja niiden käännöksiä. Toisessa näkymässä käyttäjältä kysytään sanojen käännöksiä. Harjoiteltavat sanat tulee aina arpoa kaikista syötetyistä sanoista.
-  </p>
-
-  <p>
-    Käyttöliittymästä tarkemmin. Sanojen syöttämisnäkymän näyttävän napin tekstin tulee olla "Lisää sanoja". Sanojen harjoittelunäkymän näyttävän napin tekstin tulee olla "Harjoittele". Sanoja syötettäessä ensimmäisen tekstikentän tulee olla sana alkuperäiskielellä, ja toisen tekstikentän tulee olla sana käännettynä. Syöttämiseen käytetyn napin tekstin tulee olla "Lisää sanapari". Harjoittelutilassa käyttäjältä kysytään aina sanoja alkuperäiskielellä ja hänen tulee kirjoittaa sanojen käännöksiä. Vastauksen tarkistamiseen käytetyn napin tekstin tulee olla "Tarkista". Jos vastaus on oikein, käyttöliittymässä näytetään teksti "Oikein!". Jos taas vastaus on väärin, käyttöliittymässä näytetään teksti "Väärin!" sekä tieto oikeasta vastausksesta.
-  </p>
-
-  <img src="/img/material/gui-sanaharjoittelu.gif" />
-
-  <p>
-    &nbsp;
-  </p>
-
-  <p>
-    Sovelluksessa ei ole automaattisia testejä -- palauta tehtävä kun sovellus toimii oikein.
   </p>
 
 <% end %>
