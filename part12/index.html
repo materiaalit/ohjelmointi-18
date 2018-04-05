@@ -184,7 +184,7 @@
   <p>
     Tehtäväpohjissa käytetään JavaFx-ohjelmien testaamiseen <a href="https://github.com/TestFX/TestFX/wiki" target="_blank" norel>TestFX</a>-nimistä apukirjastoa. Kirjasto tulee tehtäväpohjien mukana.
   </p>
-  
+
 
   </div>
 </div>
@@ -242,7 +242,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init periytyy luokasta Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Jätimme sen tässä toteuttamatta, sillä ohjelmamme on melko yksinkertainen. Metodin init kutsumisen jälkeen ohjelma kutsuu metodia start, joka saa parametrinaan ikkunaa kuvaavan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank" rel="noopener">Stage</a>-olion. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle stage-oliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen. 
+  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init periytyy luokasta Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Jätimme sen tässä toteuttamatta, sillä ohjelmamme on melko yksinkertainen. Metodin init kutsumisen jälkeen ohjelma kutsuu metodia start, joka saa parametrinaan ikkunaa kuvaavan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank" rel="noopener">Stage</a>-olion. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle stage-oliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen.
 </p>
 
 
@@ -1280,7 +1280,7 @@ public class Main {
 </p>
 
 <p>
-  Metodi <code>getParameters()</code> palauttaa <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html" target="_blank" norel>Parameters</a>-tyyppisen olion, jonka metodilla <code>getNamed</code> saa käyttöönsä avain-arvo -pareja sisältävän hajautustaulun. Avain-arvo -parit annetaan launch-metodille muodossa <code>--avain=arvo</code>. Alla olevassa esimerkissä otsikko muodostetaan kahdesta parametrista: <code>organisaatio</code> ja <code>kurssi</code>.  
+  Metodi <code>getParameters()</code> palauttaa <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html" target="_blank" norel>Parameters</a>-tyyppisen olion, jonka metodilla <code>getNamed</code> saa käyttöönsä avain-arvo -pareja sisältävän hajautustaulun. Avain-arvo -parit annetaan launch-metodille muodossa <code>--avain=arvo</code>. Alla olevassa esimerkissä otsikko muodostetaan kahdesta parametrista: <code>organisaatio</code> ja <code>kurssi</code>.
 </p>
 
 <pre class="sh_java code-highlight"><code>package sovellus;
@@ -1296,7 +1296,7 @@ public class JavaFxSovellus extends Application {
         Parameters params = getParameters();
         String organisaatio = params.getNamed().get("organisaatio");
         String kurssi = params.getNamed().get("kurssi");
-  
+
         ikkuna.setTitle(organisaatio + ": " + kurssi);
         ikkuna.show();
     }
@@ -1925,13 +1925,13 @@ import javafx.stage.Stage;
 public class HarjoitteluSovellus extends Application {
 
     private Sanakirja sanakirja;
-  
+
     @Override
     public void init() throws Exception {
         // 1. Luodaan sovelluksen käyttämä sanakirja
         this.sanakirja = new Sanakirja();
     }
-  
+
     @Override
     public void start(Stage ikkuna) throws Exception {
         // 2. Luodaan näkymät ("alinäkymät")
@@ -2031,7 +2031,7 @@ public class HarjoitteluSovellus extends Application {
   <div class="collapse">
     <div class="exercise__body">
       
-  
+
   <p>
     Harjoittelimme aiemmin vaalipuheen luomista Ylen kuntavaalidatan perusteella. Tässä tehtävässä jatketaan kyseisen datan parissa ja luodaan ohjelma, joka pyrkii ennustamaan tuleeko kirjoitetun vaalipuheen perusteella valituksi.
   </p>
@@ -2058,9 +2058,9 @@ public class HarjoitteluSovellus extends Application {
   <h2>Valinnan ennustaja, osa 1</h2>
 
   <p>
-    Ensimmäinen ennustustoiminnallisuus perustuu sanojen esiintymislukumääriin. Täydennä luokkaa <code>Ennustaja</code> siten, että metodi <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> tarkastelee lauseen jokaista sanaa ja laskee kunkin sanan esiintymislukumäärän valintaan johtaneista ja valintaan johtamattomista lauseista. 
+    Ensimmäinen ennustustoiminnallisuus perustuu sanojen esiintymislukumääriin. Täydennä luokkaa <code>Ennustaja</code> siten, että metodi <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> tarkastelee lauseen jokaista sanaa ja laskee kunkin sanan esiintymislukumäärän valintaan johtaneista ja valintaan johtamattomista lauseista.
   </p>
-  
+
   <p>
     Mikäli lauseen sanat ovat esiintyneet useammin valintaan johtaneissa lauseissa kuin valintaan johtamattomissa lauseissa, tulee metodin <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> palauttaa arvo <code>1</code>. Mikäli taas lauseen sanat ovat esiintyneet useammin valintaan johtamattomissa lauseissa kuin valintaan johtaneissa lauseissa, tulee metodin <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> palauttaa arvo <code>-1</code>. Muulloin metodi palauttaa arvon 0. Sama sana voi esiintyä lauseessa useampaan kertaan -- tällöin sana myös lasketaan useampaan otteeseen.
   </p>
@@ -2072,7 +2072,7 @@ public class HarjoitteluSovellus extends Application {
   <p>
     Voit pilkkoa merkkijonon osiin välilyöntien perusteella seuraavasti.
   </p>
-  
+
 <pre class="sh_java code-highlight"><code>String lause = " olipa   kerran     elämä  ";
 String[] palat = lause.trim().split("\\s+");
 // palat[0] sisältää merkkijonon olipa
@@ -2114,8 +2114,8 @@ System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteisty�
     </tr>
     <tr>
       <td>aina</td>
-      <td>1</td>
       <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>ajatteleva</td>
@@ -2216,7 +2216,7 @@ System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteisty�
   <p>
     Huom! Vaikka yllä tieto esitetään taulukkona, kannattanee harkita ainakin yhden hajautustaulun käyttöä luokan <code>Ennustaja</code> sisäisen tilan esittämiseen.
   </p>
-      
+
   <h2>Graafinen käyttöliittymä</h2>
 
   <p>
@@ -2254,7 +2254,7 @@ System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteisty�
   <p>
     Muokkaa ohjelmaa lopulta siten, että tekstin "Sanojen esiintymien perusteella: ???" sisältämän tekstikentän arvo muuttuu lennossa kun käyttäjä kirjoittaa puhetta. Mikäli ennustajan palauttama arvo on "0" on ennustus "???", mikäli arvo on "1" on ennustus "Kyllä", mikäli arvo on "-1", on ennustus "Ei". Kun tehtävän tämä osa on valmis, sovellus toimii seuraavasti.
   </p>
-  
+
   <img src="../img/ennustaja-3-9173338f.gif" alt="Käyttöliittymä näyttää ennusteen kirjoitetun tekstin perusteella."/>
 
   <p>
@@ -2352,17 +2352,17 @@ System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteisty�
   <p>
     Tarkastellaan dataa.
   </p>
-  
+
   <p>
-    Nopeasti katsoen vastaus kysymykseen "Millä todennäköisyydellä merkki 'c' johtaa valintaan?" on (merkin 'c' esiintymislukumäärät valintaan johtaneissa lauseissa / merkin 'c' esiintymislukumäärät yhteensä), eli 2/6, eli noin 33.33%. Vastaavasti vastaus kysymykseen "Millä todennäköisyydellä merkki 'd' ei johda valintaan?" on (merkin 'd' esiintymislukumäärät valintaan johtamattomissa lauseissa / merkin 'd' esiintymislukumäärät yhteensä), eli 5/7, eli noin 71.28%.
+    Nopeasti katsoen vastaus kysymykseen "Millä todennäköisyydellä merkki 'c' johtaa valintaan?" on (merkin 'c' esiintymislukumäärät valintaan johtaneissa lauseissa / merkin 'c' esiintymislukumäärät yhteensä), eli 2/6, eli noin 33.33%. Vastaavasti vastaus kysymykseen "Millä todennäköisyydellä merkki 'd' ei johda valintaan?" on (merkin 'd' esiintymislukumäärät valintaan johtamattomissa lauseissa / merkin 'd' esiintymislukumäärät yhteensä), eli 6/7, eli noin 85.71%.
   </p>
 
   <p>
-    Entäpä kysymys "Millä todennäköisyydellä merkit 'a' ja 'd' johtavat valintaan?". Oletetaan, että merkit ovat riippumattomia toisistaan (lisää aiheesta <a href="https://fi.wikipedia.org/wiki/Todenn%C3%A4k%C3%B6isyys" target="_blank" norel>Wikipedian artikkelissa todennäköisyydestä</a>), jolloin voimme tarkastella kysymystä muodossa "Millä todennäköisyydellä merkki 'a' johtaa valintaan, ja, millä todennäköisyydellä merkki 'd' johtaa valintaan?", eli todennäköisyys "Millä todennäköisyydellä merkki 'a' johtaa valintaan" kerrottuna todennäköisyydellä "Millä todennäköisyydellä merkki 'd' johtaa valintaan?". Tämä olisi 4/6 * 1/7 eli noin 9.52%. 
+    Entäpä kysymys "Millä todennäköisyydellä merkit 'a' ja 'd' johtavat valintaan?". Oletetaan, että merkit ovat riippumattomia toisistaan (lisää aiheesta <a href="https://fi.wikipedia.org/wiki/Todenn%C3%A4k%C3%B6isyys" target="_blank" norel>Wikipedian artikkelissa todennäköisyydestä</a>), jolloin voimme tarkastella kysymystä muodossa "Millä todennäköisyydellä merkki 'a' johtaa valintaan, ja, millä todennäköisyydellä merkki 'd' johtaa valintaan?", eli todennäköisyys "Millä todennäköisyydellä merkki 'a' johtaa valintaan" kerrottuna todennäköisyydellä "Millä todennäköisyydellä merkki 'd' johtaa valintaan?". Tämä olisi 4/6 * 1/7 eli noin 9.52%.
   </p>
 
   <p>
-    Asia ei ole kuitenkaan ihan näin yksinkertainen. Yllä oletamme, että valinnan todennäköisyys on aina fifti-fifti, eli joka toinen tulee valituksi ja joka toinen ei tule valituksi. Tämä ei kuitenkaan pidä paikkaansa. Datassa neljä riviä johti valintaan ja viisi riviä ei johtanut valintaan. Valinnan todennäköisyys riippumatta käytetyistä merkeistä tulee ottaa myös huomioon. 
+    Asia ei ole kuitenkaan ihan näin yksinkertainen. Yllä oletamme, että valinnan todennäköisyys on aina fifti-fifti, eli joka toinen tulee valituksi ja joka toinen ei tule valituksi. Tämä ei kuitenkaan pidä paikkaansa. Datassa neljä riviä johti valintaan ja viisi riviä ei johtanut valintaan. Valinnan todennäköisyys riippumatta käytetyistä merkeistä tulee ottaa myös huomioon.
   </p>
 
   <p>
@@ -2378,9 +2378,9 @@ System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteisty�
   <p>
     Sama ajatus toimii merkkien lisäksi myös lauseilla.  Ohjelmallisesti mystinen algoritmi on seuraavanlainen.
   </p>
-  
-<pre class="sh_java code-highlight"><code>double valitaan = valintaan johtaneiden sanojen lukumäärä / sanoja yhteensä;
-double hylataan = valintaan johtamattomien sanojen lukumäärä / sanoja yhteensä;
+
+<pre class="sh_java code-highlight"><code>double valitaan = valintaan johtaneiden lauseiden lukumäärä / lauseita yhteensä;
+double hylataan = valintaan johtamattomien lauseiden lukumäärä / lauseita yhteensä;
 
 jokaiselle sanalle sana annetussa lauseessa:
 
@@ -2401,9 +2401,9 @@ muulloin, palauta arvo 0
   </p>
 
   <p>
-    Voit kokeilla ohjelmasi toimintaa seuraavalla esimerkillä. Alla olevassa esimerkissä rajaus "jos sanan sana esiintymiä on alle 5, jätä sana huomiotta" on poissa. Palautettavassa versiossa rajauksen tulee kuitenkin esiintyä.
+    Voit kokeilla ohjelmasi toimintaa seuraavalla esimerkillä. <strong>Alla olevassa esimerkissä rajaus "jos sanan sana esiintymiä on alle 5, jätä sana huomiotta" on poissa. Palautettavassa versiossa rajauksen tulee kuitenkin esiintyä.</strong>
   </p>
-  
+
 <pre class="sh_java code-highlight"><code>Ennustaja ennustaja = new Ennustaja();
 ennustaja.lisaa(true, "a b");
 ennustaja.lisaa(true, "a c d");
@@ -2422,7 +2422,7 @@ System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("b"));
 System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("a b c"));
 
 System.out.println();
-    
+
 System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a"));
 System.out.println(ennustaja.valitaanMystisellaEnnustajalla("b"));
 System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a b c"));
@@ -2449,7 +2449,7 @@ System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a b c"));
     </em>
   </p>
 
-  
+
 
     </div>
   </div>
