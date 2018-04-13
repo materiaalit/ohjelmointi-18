@@ -2,54 +2,31 @@
   title: Osa 13
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 <% partial 'partials/hint', locals: { name: 'Kolmannentoista osan tavoitteet' } do %>
 
   <p>
-    Tuntee erilaisia kaavioita (viivakaavio, pylväskaavio) ja osaa tehdä käyttöliittymiä, jotka sisältävät useamman näkymän (esimerkiksi kirjautumisnäkymä, tiedon listaukseen käytettävä näkymä, tiedon muokkaukseen käytettävä näkymä).
+    Osaa piirtää graafisen käyttöliittymän avulla. Tuntee erilaisia kaavioita (viivakaavio, pylväskaavio). Osaa näyttää kuvia sekä soittaa äänitiedostoja. Luo suuremman ohjelman esimerkkiä noudattaen.
   </p>
   
 <% end %>
 
 
 
+
 <% partial 'partials/material_heading' do %>
-  Sovelluksen käytettävyys
+  Multimedian käyttö sovelluksissa
 <% end %>
 
 <p>
-  Yksikkötestaus on vain osa ohjelmistojen testaamiseen liittyvää työtä. Tärkein sovelluksen testaamisen liittyvä ihmisryhmä on sovelluksen käyttäjät. Käyttäjät toimivat ohjelman parissa ja huomaavat toiminnassa esiintyviä puutteita.
-</p>
-
-<p>
-  Sovelluksen käytettävyyteen liittyy useita erilaisia näkökulmia, joista osa on <a href="https://www.iso.org/standard/16883.html" target="_blank" rel="noopener">standardoitu</a>. Käytettävyyden kannalta oleellisia ominaisuuksia ovat muunmuassa:
-</p>
-
-<ul>
-  <li>
-    Tavoitteiden saavuttaminen. Ohjelmiston käyttäjillä on tavoitteita, joita ohjelmiston avulla halutaan saavuttaa. Miten hyvin ohjelmisto auttaa käyttäjiä saavuttamaan tavoitteensa? Miten tehokkaasti käyttäjät saavuttavat tavoitteensa? Joutuvatko he käyttämään liikaa aikaa tavoitteiden saavuttamiseen? Voisiko tätä helpottaa sovelluksen suunnittelussa?
-  </li>
-  <li>
-    Tyytyväisyys sovelluksen toimintaan. Miten tyytyväisiä käyttäjät ovat sovelluksen toimintaan? Onko sovelluksen käyttö sujuvaa?
-  </li>
-  <li>
-    Ohjelmiston käytön oppiminen. Kuinka nopeasti ohjelmiston käyttö on opittavissa? Minkälaisia ohjeita sovelluksen käyttö vaatii? Tarjoaako ohjelmisto näitä ohjeita? Kuinka hyvin käyttäjä muistaa miten sovellusta käytetään?
-  </li>
-  <li>
-    Virhealttius. Kuinka paljon käyttäjä tekee virheitä sovellusta käyttäessään? Voisiko virheiden määrää vähentää?
-  </li>
-</ul>
-
-<p>
-  Käytettävyyden lisäksi sovelluksissa oleellista on myös saavutettavuus, millä tarkoitetaan erilaisten käyttäjäryhmien huomiointia sovelluksen rakentamisessa. Näitä käsitellään tarkemmin Human-Computer Interaction -teeman kursseilla (Ihmisen ja tietokoneen välinen vuorovaikutus).
+  Tutustutaan lyhyesti multimedian käyttöön JavaFX-sovelluksissa.
 </p>
 
 
 
-
-<% partial 'partials/material_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Piirtäminen
 <% end %>
 
@@ -58,7 +35,7 @@
 </p>
 
 <p>
-  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank" rel="noopener">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun keskelle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä.
+  Alla olevassa esimerkissä on luotu yksinkertainen piirto-ohjelma. Ohjelmassa luodaan 640 pikseliä leveä ja 480 pikseliä korkea piirtoalusta, joka asetetaan BorderPane-asettelun keskelle. Tämän lisäksi luodaan piirtovärin valintaan käytettävä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ColorPicker.html" target="_blank" rel="noopener">ColorPicker</a>-olio, jolta saa tietoonsa kullakin hetkellä valittuna olevan värin. Värin valitsin asetetaan BorderPane-asettelun oikealle laidalle. Piirtoalustaan lisätään hiiren liikkumista kuunteleva tapahtuman käsittelijä. Kun hiirtä liikutetaan nappi pohjassa (onMouseDragged), kutsutaan GraphicsContext-olion värin asetusmetodia sekä piirretään hiiren kohtaan pieni ympyrä.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -74,34 +51,34 @@
 
   public class MiniPaint extends Application {
 
-  @Override
-  public void start(Stage ikkuna) {
+      @Override
+      public void start(Stage ikkuna) {
 
-  Canvas piirtoalusta = new Canvas(640, 480);
-  GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+          Canvas piirtoalusta = new Canvas(640, 480);
+          GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
 
-  ColorPicker varinValitsin = new ColorPicker();
+          ColorPicker varinValitsin = new ColorPicker();
 
-  BorderPane asettelu = new BorderPane();
-  asettelu.setRight(varinValitsin);
-  asettelu.setCenter(piirtoalusta);
+          BorderPane asettelu = new BorderPane();
+          asettelu.setCenter(piirtoalusta);
+          asettelu.setRight(varinValitsin);
 
-  piirtoalusta.setOnMouseDragged((event) -&gt; {
-  double kohtaX = event.getX();
-  double kohtaY = event.getY();
-  piirturi.setFill(varinValitsin.getValue());
-  piirturi.fillOval(kohtaX, kohtaY, 4, 4);
-  });
+          piirtoalusta.setOnMouseDragged((event) -&gt; {
+              double kohtaX = event.getX();
+              double kohtaY = event.getY();
+              piirturi.setFill(varinValitsin.getValue());
+              piirturi.fillOval(kohtaX, kohtaY, 4, 4);
+          });
 
-  Scene nakyma = new Scene(asettelu);
+          Scene nakyma = new Scene(asettelu);
 
-  ikkuna.setScene(nakyma);
-  ikkuna.show();
-  }
+          ikkuna.setScene(nakyma);
+          ikkuna.show();
+      }
 
-  public static void main(String[] args) {
-  launch(MiniPaint.class);
-  }
+      public static void main(String[] args) {
+          launch(MiniPaint.class);
+      }
   }
 <% end %>
 
@@ -115,8 +92,28 @@
   &nbsp;
 </p>
 
+
+<% partial 'partials/exercise', locals: { name: 'Hymiö' } do %>
+
+  <p>
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Lisää graafiseen käyttöliittymään asettelusta vastaava BorderPane-olio. Lisää BorderPanen keskellä Canvas-olio. Piirrä tämän jälkeen Canvas-olioon liittyvän GraphicsContext-olion avulla hymiö. Käytä taustan värinä valkoista (Color.WHITE) ja hymiön värinä mustaa (Color.BLACK). 
+  </p>
+
+  <p>
+    Tehtävän testit tarkastavat vain, että piirrät ikkunaan. Palauta tehtävä vasta kun saat hymiön piirtämisen toimimaan. Huomaa ettei tässä ole tarkoitus piirtää hymiötä esimerkiksi hiirellä -- käytä suoraan GraphicsContext-olion tarjoamia metodeja.
+  </p>
+
+  <img src="/img/material/gui-hymio.png" alt="Hymiö" />
+
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Toistuva piirtäminen ja animaatiot
+<% end %>
+
 <p>
-  Canvas-luokan avulla voidaan myös luoda ohjelma, joka piirtää kuvaa jatkuvasti. Tämä tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank" rel="noopener">AnimationTimer</a>-luokan avulla. AnimationTimer-luokka määrittelee metodin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html#handle-long-" target="_blank" rel="noopener">handle</a>, joka luokkaa käyttävän ohjelmoijan tulee toteuttaa. Metodi handle saa parametrina nykyhetken nanosekunteina, jonka avulla voidaan vaikuttaa piirtovälien pituuteen.
+  Canvas-luokan avulla voidaan myös piirtää kuvaa jatkuvasti. Tällaista tarvitaan esimerkiksi animaation yhteydessä. Jatkuvasti piirtäminen -- tai oikeammin tietyn aikavälin jälkeen uudelleen piirtäminen -- tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank" rel="noopener">AnimationTimer</a>-luokan avulla. AnimationTimer-luokka määrittelee metodin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html#handle-long-" target="_blank" rel="noopener">handle</a>, joka luokkaa käyttävän ohjelmoijan tulee toteuttaa. Metodi saa parametrina nykyhetken nanosekunteina, jonka avulla voidaan vaikuttaa piirtovälien pituuteen. Samaa kuvaa ei esimerkiksi kannata piirtää käyttäjälle tuhatta kertaa sekunnissa, mutta toisaalta nopeasti liikkuvan kuvan päivittäminen käyttäjälle esimerkiksi kerran sekunnissa ei sekään ole toivottua.
 </p>
 
 <p>
@@ -138,50 +135,50 @@
 
   public class AnimaationAlku extends Application {
 
-  @Override
-  public void start(Stage ikkuna) {
+      @Override
+      public void start(Stage ikkuna) {
 
-  Canvas piirtoalusta = new Canvas(320, 240);
-  GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
-  piirturi.setFill(Color.BLACK);
+          Canvas piirtoalusta = new Canvas(320, 240);
+          GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+          piirturi.setFill(Color.BLACK);
 
-  BorderPane asettelu = new BorderPane();
-  asettelu.setCenter(piirtoalusta);
+          BorderPane asettelu = new BorderPane();
+          asettelu.setCenter(piirtoalusta);
 
-  Random arpoja = new Random();
+          Random arpoja = new Random();
 
-  new AnimationTimer() {
-  long edellinen = 0;
+          new AnimationTimer() {
+              long edellinen = 0;
 
-  @Override
-  public void handle(long nykyhetki) {
-  if (nykyhetki - edellinen < 100000000) {
-  return;
-  }
+              @Override
+              public void handle(long nykyhetki) {
+                  if (nykyhetki - edellinen < 100000000) {
+                      return;
+                  }
 
-  int x = arpoja.nextInt(310);
-  int y = arpoja.nextInt(230);
+                  int x = arpoja.nextInt(310);
+                  int y = arpoja.nextInt(230);
 
-  piirturi.fillOval(x, y, 10, 10);
+                  piirturi.fillOval(x, y, 10, 10);
 
-  this.edellinen = nykyhetki;
-  }
-  }.start();
+                  this.edellinen = nykyhetki;
+              }
+          }.start();
 
-  Scene nakyma = new Scene(asettelu);
+          Scene nakyma = new Scene(asettelu);
 
-  ikkuna.setScene(nakyma);
-  ikkuna.show();
-  }
+          ikkuna.setScene(nakyma);
+          ikkuna.show();
+      }
 
-  public static void main(String[] args) {
-  launch(AnimaationAlku.class);
-  }
+      public static void main(String[] args) {
+          launch(AnimaationAlku.class);
+      }
   }
 <% end %>
 
 <p>
-  Ohjelma toimii käynnistyessään esimerkiksi seuraavasti.
+  Ohjelma toimii käynnistyessään seuraavasti. Huomaathan, että pisteet ovat satunnaisia, joten oma kokeilusi tuskin tuottaa täsmälleen samanlaista tulosta.
 </p>
 
 <img src="/img/material/gui-animaatio.gif" alt="Edellinen ohjelma toiminnassa. Kuvaan ilmestyy kymmenen pistettä sekunnissa."/>
@@ -189,30 +186,16 @@
 <p>&nbsp;</p>
 
 <p>
-  Silloin tällöin ohjelma halutaan toteuttaa siten, että uusi tila piirretään aina edellisen tilanteen päälle. Tällöin tapana on tyhjentää ruutu ennen uutta piirtämistä. Tämä onnistuu lisäämällä edelliseen ohjelmaamme rivi <code>piirturi.clearRect(0, 0, 320, 240);</code> ennen handle-metodissa olevaa piirtokomentoa. Komento tyhjentää kohdasta (0, 0) lähtien 320 pikseliä leveän ja 240 pikseliä korkean suunnikkaan.
+  Silloin tällöin ohjelma halutaan toteuttaa siten, että uusi tila piirretään aina edellisen tilanteen päälle. Tällöin tapana on tyhjentää ruutu ennen uutta piirtämistä. Tämä onnistuu lisäämällä edelliseen ohjelmaan rivi <code>piirturi.clearRect(0, 0, 320, 240);</code> ennen handle-metodissa olevaa piirtokomentoa. Komento tyhjentää kohdasta (0, 0) lähtien 320 pikseliä leveän ja 240 pikseliä korkean suunnikkaan.
 </p>
 
 
-
-<% partial 'partials/exercise', locals: { name: 'Hymiö' } do %>
-
-  <p>
-    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Lisää graafiseen käyttöliittymään Canvas-olio, ja piirrä käyttöliittymään Canvas-olioon liittyvän GraphicsContext-olion avulla hymiö.
-  </p>
-
-  <p>
-    Tehtävässä ei ole testejä -- palauta se kun saat hymiön piirtämisen toimimaan. Huomaa ettei tässä ole tarkoitus piirtää hymiötä esimerkiksi hiirellä -- käytä suoraan GraphicsContext-olion tarjoamia metodeja.
-  </p>
-
-  <img src="/img/material/gui-hymio.png" alt="Hymiö" />
-
-<% end %>
 
 
 <% partial 'partials/exercise', locals: { name: 'Hiekkaranta (5 osaa)' } do %>
 
   <p>
-    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank" rel="noopener">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on esimerkiksi seuraavanlainen.
+    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank" rel="noopener">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on seuraavanlainen.
   </p>
 
   <img src="/img/material/gui-simulaatio.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
@@ -222,17 +205,46 @@
   </p>
 
   <p>
-    Huom! Käytät tässä tehtävässä luokassa HiekkarantaSovellus olevaa metodia <code>public static int toteutetutOsat()</code> toteutettujen tehtävän osien raportointiin. Älä poista metodia, vaan muokkaa sitä aina kun saat yksittäisen osan valmiiksi. Tehtävä koostuu viidestä osasta.
+    Huom! Kun toteutat simulaatiota, varmista että ohjelma pitää tarpeeksi pitkiä taukoja piirtämisten ja simulaatioiden välillä. Tällöin tehoja jää myös testien ajamiseen. Testien suorittaminen palvelimella päätyy heikosti, jos kaikki palvelimen teho menee animaation suorittamiseen. Tällöin testien ajon viestinä on esim. kryptinen "Missing test output.". Jos saat tämän virheen palvelimelta, kokeile suoritusta esimerkiksi siten, että simulaatiota piirretään korkeintaan 10 kertaa sekunnissa ja päivitetään korkeintaan 20 kertaa sekunnissa.
   </p>
 
   <p>
-    Huom2! Kun toteutat simulaatiota, varmista että ohjelma pitää tarpeeksi pitkiä taukoja piirtämisten ja simulaatioiden välillä. Tällöin tehoja jää myös testien ajamiseen. Testien suorittaminen palvelimella päätyy heikosti, jos kaikki palvelimen teho menee animaation suorittamiseen. Tällöin testien ajon viestinä on esim. kryptinen "Missing test output.". Jos saat tämän virheen palvelimelta, kokeile suoritusta esimerkiksi siten, että simulaatiota piirretään ja päivitetään korkeintaan 20 kertaa sekunnissa.
+    Huom2! Kun piirrät pohjaa, piirrä musta alue yhtenä isona suorakulmiona piirtämisen alussa. Näin jokaista yksittäistä tyhjää (eli mustaa)  pistettä ei tarvitse erikseen piirtää, ja voit keskittyä muiden pisteiden piirtämiseen.
   </p>
-
 
   <p>
-    Huom3! Kun piirrät hiekkalaatikkoa, piirrä musta alue yhtenä isona suorakulmiona piirtämisen alussa. Näin jokaista yksittäistä mustaa pistettä ei tarvitse erikseen piirtää, ja voit keskittyä muiden pisteiden piirtämiseen.
+    <em>
+      Tehtävässä käytetään <code>enum</code>-tyyppistä luokkaa <code>Tyyppi</code>. Javassa ohjelmoija voi määritellä rajatulle määrälle käsitteitä <code>enum</code>-tyyppisen luokan, jossa näille käsitteille annetaan nimi. Luokka on seuraavanlainen.
+    </em>
   </p>
+
+  <% partial 'partials/code_highlight' do %>
+    package hiekkaranta;
+
+    public enum Tyyppi {
+        TYHJA, METALLI, HIEKKA, VESI;
+    }
+
+  <% end %>
+
+  <p>
+    Enum-muuttujia käytetään esimerkiksi seuraavasti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Tyyppi t = Tyyppi.TYHJA;
+    if (t == Tyyppi.TYHJA) {
+        System.out.println("Tyhjää täynnä.");
+    }
+
+    if (t == Tyyppi.HIEKKA) {
+        System.out.println("Hiekalta näyttää.");
+    }
+
+    Tyyppi[] taulukko = new Tyyppi[10];
+    taulukko[0] = Tyyppi.VESI;
+    System.out.println(taulukko.length);
+  <% end %>
 
 
   <h2>Palaset kohdalleen</h2>
@@ -241,47 +253,42 @@
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Graafisen käyttöliittymän komponenttien asettelu tulee tehdä BorderPane-luokan avulla. Lisää BorderPane-luokan keskelle Canvas-olio, jota käytetään piirtämiseen. Aseta Canvas-olion leveydeksi ja korkeudeksi 200 pikseliä. Lisää BorderPane-luokan oikealle laidalle VBox-olio, joka sisältää kolme <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/RadioButton.html" target="_blank" rel="noopener">RadioButton</a>-oliota. Ensimmäiseen RadioButton-olioon tulee liittyä teksti "Metalli", toiseen teksti "Hiekka", ja kolmanteen teksti "Vesi".
   </p>
 
-  <p>
-    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 1. Voit myös palauttaa tehtävän, niin saat siitä ensimmäisen pisteen.
-  </p>
-
-
   <h2>Simulaation alkupalat</h2>
 
   <p>
-    Luo pakkaukseen hiekkaranta luokka Simulaatio. Luokalla Simulaatio tulee olla seuraavat konstruktorit ja metodit. Käytä luokassa hyödyksi valmista enum-luokkaa Tyyppi.
+    Luo pakkaukseen hiekkaranta luokka Simulaatio. Luokalla Simulaatio tulee olla seuraavat konstruktorit ja metodit. Käytä luokassa hyödyksi valmista enum-luokkaa Tyyppi, ja toteuta simulaation sisäinen tiedon esitys kaksiulotteisena taulukkona <code>Tyyppi[][]</code>.
   </p>
 
   <ul>
     <li>
-      Konstruktori <code>public Simulaatio(int leveys, int korkeus)</code> luo annetun levyisen ja korkuisen simulaation. Jokainen kohta on aluksi tyhjä.
+      Konstruktori <code>public Simulaatio(int leveys, int korkeus)</code> luo annetun levyisen ja korkuisen simulaation. Jokaisen kohdan arvon tulee olla aluksi <code>Tyyppi.TYHJA</code>.
     </li>
     <li>
-      Metodi <code>public void lisaa(int x, int y, Tyyppi tyyppi</code> lisää annettuun kohtaan annetun tyyppisen elementin. Tyyppi on joko tyhjä, metalli, hiekka tai vesi.
+      Metodi <code>public void lisaa(int x, int y, Tyyppi tyyppi</code> asettaa annettuun kohtaan annetun tyyppisen elementin. Tyyppi on joko <code>Tyyppi.TYHJA</code>, <code>Tyyppi.METALLI</code>, <code>Tyyppi.HIEKKA</code> tai <code>Tyyppi.VESI</code>. 
     </li>
     <li>
       Metodi <code>public Tyyppi sisalto(int x, int y)</code> palauttaa annetussa kohdassa olevan sisällön. Vastaus on joko Tyyppi.TYHJA, Tyyppi.METALLI, Tyyppi.HIEKKA tai Tyyppi.VESI. Jos kohtaan ei ole lisätty mitään arvoa, tyyppi on Tyyppi.TYHJA. Jos käyttäjä kysyy tietoa alueen ulkopuolelta, palauta Tyyppi.METALLI.
     </li>
     <li>
-      Metodi <code>public void paivita()</code> päivittää simulaatiota yhden askeleen. Päivitystoiminnallisuuden toteutus aloitetaan kohtapuoliin .
+      Metodi <code>public void paivita()</code> päivittää simulaatiota yhden askeleen. Päivitystoiminnallisuuden toteutus aloitetaan tehtävän myöhemmissä osassa.
     </li>
   </ul>
-
-  <p>
-    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 2. Voit myös palauttaa tehtävän, niin saat siitä toisen pisteen.
-  </p>
-
 
 
   <h2>Metallin lisääminen ja piirtäminen</h2>
 
   <p>
-    Lisää edellä toteuttamasi Simulaatio osaksi käyttöliittymää. Aseta simulaation leveydeksi 200 ja korkeudeksi 200 pikseliä (simulaation tulee toimia myös muun kokoisena). Lisää tämän jälkeen sovellukseen mahdollisuus metallin lisäämiseen. Metallia lisätään kun käyttäjä piirtää kuvaan sisältöä ja metalli on valittuna oikealla laidalla olevasta valikosta.
+    Lisää edellä toteuttamasi Simulaatio osaksi käyttöliittymää. Aseta simulaation leveydeksi 200 ja korkeudeksi 200 pikseliä (simulaation tulee toki toimia myös muun kokoisena). Lisää tämän jälkeen sovellukseen mahdollisuus metallin lisäämiseen. Metallia lisätään kun kun metalli on valittuna oikealla laidalla olevasta valikosta ja käyttäjä piirtää kuvaan (eli painaa hiiren napin pohjaan ja liikuttaa hiirtä sovelluksen päällä).
   </p>
 
   <p>
-    Käytä simulaation käyttäjälle näyttämiseen AnimationTimer-luokkaa sekä Canvas-oliota. Piirrä canvas-olion sisältö uudestaan kymmenen kertaa sekunnissa. Kun metallin lisääminen onnistuu, se toimii esimerkiksi seuraavalla tavalla. Alla olevassa esimerkissä hiiren pohjassapito lisää useampia metallipisteitä samaan aikaan.
+    Käytä simulaation käyttäjälle näyttämiseen AnimationTimer-luokkaa sekä Canvas-oliota. Piirrä canvas-olion sisältö uudestaan kymmenen kertaa sekunnissa. Käytä tyhjälle elementille mustaa väriä värillä (<code>Color.BLACK</code>) ja metallille valkoisella värillä (<code>Color.WHITE</code>).
   </p>
+
+  <p>
+    Kun metallin lisääminen onnistuu, ohjelma toimii seuraavalla tavalla. Alla olevassa esimerkissä hiiren pohjassapito lisää useampia metallipisteitä samaan aikaan -- yhden pisteen lisääminen on myös toki ok.
+  </p>
+
 
   <img src="/img/material/gui-simulaatio-metalli.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
 
@@ -289,50 +296,51 @@
     &nbsp;
   </p>
 
-  <p>
-    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 3. Voit myös palauttaa tehtävän, niin saat kolmannen pisteen.
-  </p>
-
 
   <h2>Hiekan lisääminen ja toiminnallisuus</h2>
 
   <p>
-    Lisää tämän jälkeen toiminnallisuus hiekan lisäämiseen ja piirtämiseen. Hiekka tulee piirtää eri värillä kuin metalli. Google auttaa tarvittaessa piirtämisessä -- esimerkiksi haku "javafx how to draw on canvas using animationtimer" antaa linkkejä, joista on hyötyä.
+    Lisää tämän jälkeen toiminnallisuus hiekan lisäämiseen ja piirtämiseen. Hiekka tulee piirtää oranssilla värillä <code>Color.ORANGE</code>.
   </p>
 
   <p>
-    Kun onnistut myös hiekan lisäämiseen käyttöliittymässä (metallin lisäämisen tulee myös onnistua!), muokkaa tämän jälkeen Simulaatio-luokan metodia paivita. Metodin paivita tulee toimia siten, että se tarkistaa jokaiselle hiekkaa sisältävälle kohdalle kohdan alla olevat kolme vaihtoehtoa. Jos joku vaihtoehdoista on tyhjä, hiekka siirretään alaspäin tyhjään kohtaan.
+    Kun hiekan lisääminen käyttöliittymässä onnistuu, muokkaa tämän jälkeen Simulaatio-luokan metodia paivita. Metodin paivita tulee toimia siten, että se tarkistaa jokaiselle hiekkaa sisältävälle kohdalle kohdan alla olevat kolme vaihtoehtoa (luode, etelä, kaakko). Jos joku vaihtoehdoista on tyhjä, hiekka siirretään alaspäin tyhjään kohtaan. Mikäli useampi kuin yksi em vaihtoehdoista on tyhjiä, tee valinta satunnaisesti tyhjien vaihtoehtojen välillä.
   </p>
 
   <p>
-    Nyt sovelluksessa pitäisi tapahtua liikettä kun piirrät hiekkaa. Saat Random-luokan avulla sovellukseesi satunnaisuutta -- hiekan ei tarvitse toimia aina täsmälleen samalla tavalla.
+    Satunnaisuutta saat Random-luokan avulla.
+  </p>
+
+  <p>
+    Huom! Toteuta simulaatio siten, että y-koordinaatti on "käänteinen". Simulaation sisällä y-koordinaatin kasvatus tarkoittaa alaspäin menoa, ja toisaalta y-koordinaatin pienennys ylöspäin menoa. Tämä auttaa piirtämisessä, sillä piirtäessä y-koordinaatti kasvaa alaspäin mennessä.
   </p>
 
   <img src="/img/material/gui-simulaatio-metalli-ja-hiekka.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta. Kuvassa hiekka toimii metallin kanssa." />
-
+  
   <p>
     &nbsp;
   </p>
 
-  <p>
-    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 4. Voit myös palauttaa tehtävän, niin saat neljännen pisteen.
-  </p>
-
+  
 
   <h2>Veden lisääminen</h2>
 
   <p>
-    Lisää tämän jälkeen toiminnallisuus veden lisäämiseen ja piirtämiseen. Piirrä vesi eri värillä kuin hiekka tai metalli.
+    Lisää tämän jälkeen toiminnallisuus veden lisäämiseen ja piirtämiseen. Piirrä vesi käyttäen väriä <code>Color.LIGHTBLUE</code>.
   </p>
 
   <p>
-    Muokkaa tämän jälkeen Simulaatio-luokan metodia paivita siten, että se siirtää kutsun yhteydessä vettä alaspäin <em>jos</em> joku veden alapuolella olevista kohdista on tyhjä. Jos yksikään kohdista ei ole tyhjiä, mutta jommalla kummalla laidalla on sijaa, siirretään vettä sivulle.
+    Muokkaa tämän jälkeen Simulaatio-luokan metodia paivita siten, että se siirtää kutsun yhteydessä vettä alaspäin <em>jos</em> joku veden alapuolella olevista kohdista (luode, etelä, kaakko) on tyhjä. Jos yksikään kohdista ei ole tyhjiä, mutta jommalla kummalla laidalla on sijaa, siirretään vettä sivulle.
   </p>
 
   <p>
     Muokkaa vielä sovellusta siten, että hiekka syrjäyttää veden. Kun lisäät hiekkaa, veden tulee siis väistää hiekkaa. Nyt sovelluksen pitäisi toimia kokonaisuudessaan!
   </p>
 
+  <p>
+    
+  </p>
+  
   <img src="/img/material/gui-simulaatio.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
 
   <p>
@@ -340,16 +348,307 @@
   </p>
 
   <p>
-    Kun saat tämän osan valmiiksi, muokkaa luokan HiekkarantaSovellus metodia <code>public static int toteutetutOsat()</code> siten, että se palauttaa arvon 5. Voit myös palauttaa tehtävän, niin saat viidennen pisteen.
-  </p>
-
-  <p>
-    Palauta tehtävä viimeistään nyt. Voit tämän jälkeen lähteä toteuttamaan uusia toiminnallisuuksia. Miten toteuttaisit esimerkiksi laavan?
+    Kun olet palauttanut tehtävän, jatka seuraaviin tehtäviin. Kun olet saanut osan kaikki tehtävät valmiiksi, voit palauta tähän tehtävään ja lähteä toteuttamaan uusia toiminnallisuuksia. Miten toteuttaisit esimerkiksi laavan?
   </p>
 
 
 <% end %>
 
+
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kuvat
+<% end %>
+
+<p>
+  Kuvan näyttämiseen osana sovellusta on useita tapoja. Eräs suoraviivainen lähestymistapa hyödyntää JavaFx:n <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/image/Image.html" target="_blank">Image</a> ja <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html" target="_blank">ImageView</a> luokkia.
+</p>
+
+<p>
+  Image-luokalle annetaan parametrina avattavan kuvatiedoston nimi -- nimeä tulee edeltää etuliite <code>file:</code>, joka kertoo kuvan olevan tiedosto. Alla olevassa esimerkissä ladataan tiedosto <code>humming.jpg</code>, joka annetaan luotavalle ImageView-oliolle parametrina. Tämän jälkeen ImageView-olio asetetaan Pane-asetteluun -- Pane-asettelu ei ota mm. kantaa sen sisältävien elementtien sijaintiin. Lopulta asettelu asetetaan osaksi Scene-oliota ja se asetetaan näkyville.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.application.Application;
+  import static javafx.application.Application.launch;
+  import javafx.scene.Scene;
+  import javafx.scene.image.Image;
+  import javafx.scene.image.ImageView;
+  import javafx.scene.layout.Pane;
+  import javafx.stage.Stage;
+
+  public class KuvaApplication extends Application {
+
+      @Override
+      public void start(Stage stage) {
+
+          Image kuvatiedosto = new Image("file:humming.jpg");
+          ImageView kuva = new ImageView(kuvatiedosto);
+
+          Pane ruutu = new Pane();
+          ruutu.getChildren().add(kuva);
+
+          stage.setScene(new Scene(ruutu));
+          stage.show();
+
+      }
+
+      public static void main(String[] args) {
+          launch(args);
+      }
+  }
+<% end %>
+
+<p>
+  Ohjelman suorittaminen luo seuraavanlaisen ikkunan. Tässä oletetaan, että tiedosto <code>humming.jpg</code> on olemassa, ja että se löytyy projektin juuresta (samasta kansiosta kuin tiedosto <code>pom.xml</code>).
+</p>
+
+<img src="/img/material/image-ja-imageview.png" />
+
+<p>&nbsp;</p>
+
+<p>
+  Esimerkissä käytetään <a href="https://www.flickr.com/photos/15323831@N05" target="_blank">Linda Tanner</a>in kuvaa osoitteesta <a href="http://www.freestockphotos.biz/stockphoto/17874" target="_blank">http://www.freestockphotos.biz/stockphoto/17874</a>. Kuva on lisensoitu <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons CC BY 2.0</a>-lisenssillä.
+</p>
+
+<p>
+  ImageView-olio tarjoaa joukon menetelmiä kuvan (yksinkertaiseen käsittelyyn). Kuvaa voi muunmuassa kääntää, sen kokoa voi muuttaa, ja sitä voi siirtää ruudulla. Alla olevassa esimerkissä kuva on käännetty ympäri, sen koko on puolitettu, ja sitä on siirretty hieman oikealle.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) {
+
+      Image kuvatiedosto = new Image("file:humming.jpg");
+      ImageView kuva = new ImageView(kuvatiedosto);
+  
+      kuva.setRotate(180);
+      kuva.setScaleX(0.5);
+      kuva.setScaleY(0.5);
+  
+      kuva.setTranslateX(50);
+
+      Pane ruutu = new Pane();
+      ruutu.getChildren().add(kuva);
+
+      stage.setScene(new Scene(ruutu));
+      stage.show();
+  }
+<% end %>
+
+<img src="/img/material/humming-kaannetty.png" />
+
+<p>&nbsp;</p>
+
+
+<p>
+  ImageView-luokka tarjoaa pääsyn kuvaan, mutta sen kautta ei pääse yksittäisiin pikseleihin (eli yksittäisiin yhtä väriä sisältäviin pieniin "ruutuihin", joista kuva koostuu). Kuvan yksittäisiä pikseleitä voi lukea Image-oliosta saatavan <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelReader.html" target="_blank">PixelReader</a>-olion avulla. PixelReader-olion avulla voidaan käydä koko kuva läpi pikseli pikseliltä, samalla kuvaa erilliseen <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/image/WritableImage.html" target="_blank">WritableImage</a>-olioon kirjoittaen.
+</p>
+
+<p>
+  Alla olevassa esimerkissä kuva kopioidaan pikseli pikseliltä erilliselle WritableImage-oliolle, joka näytetään sovelluksessa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) {
+
+      Image kuvatiedosto = new Image("file:humming.jpg");
+
+      PixelReader lukija = kuvatiedosto.getPixelReader();
+
+      int leveys = (int) kuvatiedosto.getWidth();
+      int korkeus = (int) kuvatiedosto.getHeight();
+
+      WritableImage kohdeKuva = new WritableImage(leveys, korkeus);
+      PixelWriter kirjoittaja = kohdeKuva.getPixelWriter();
+
+      for (int y = 0; y &lt; korkeus; y++) {
+          for (int x = 0; x &lt; leveys; x++) {
+
+              Color vari = lukija.getColor(x, y);
+              double punainen = vari.getRed();
+              double vihrea = vari.getGreen();
+              double sininen = vari.getBlue();
+              double lapinakyvyys = vari.getOpacity();
+
+              Color uusiVari = new Color(punainen, vihrea, sininen, lapinakyvyys);
+
+              kirjoittaja.setColor(x, y, uusiVari);
+          }
+      }
+
+      ImageView kuva = new ImageView(kohdeKuva);
+
+      Pane pane = new Pane();
+      pane.getChildren().add(kuva);
+
+      stage.setScene(new Scene(pane));
+      stage.show();
+  }
+<% end %>
+
+<p>
+  Kuvan ulkomuoto ei ole muuttunut lainkaan.
+</p>
+
+<img src="/img/material/image-ja-imageview.png" />
+
+<p>&nbsp;</p>
+
+<% partial 'partials/exercise', locals: { name: 'Kollaasi (3 osaa)' } do %>
+
+  <p>
+    Andy Warhol tuli tutuksi kuvakollaaseista, joissa yksi tai useampi kuva toistui useampaan otteeseen esimerkiksi eri väreissä.
+  </p>
+
+  <p>
+    Matkitaan tässä tehtävässä hänen tyyliään ja luodaan Andy Warholmainen versio klassisesta Mona Lisasta. Valmis ohjelma näyttää Mona Lisan seuraavan näköisenä.
+  </p>
+
+  <img src="/img/kollaasi-monalisa-neg.png" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Aloitetaan.
+  </p>
+  
+
+  <h2>Vasen yläkulma</h2>
+
+  <p>    
+    Tehtäväpohjassa on ohjelma, joka lataa ja näyttää Mona Lisan. Tässä tehtävän osassa tavoitteenasi on luoda tilanne, missä Mona Lisa näkyy pienempänä kuvana vasemmassa yläkulmassa. Pienemmän kuvan koon tulee olla neljäsosa alkuperäisestä kuvasta.
+  </p>
+
+  <img src="/img/kollaasi-monalisa-kulma.png" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Käytännössä siis koordinaattiin 0, 0 tulee kopioida koordinaatin 0, 0 arvo. Koordinaattiin 0, 1 koordinaatin 0, 2 arvo. Koordinaattiin 0, 2 koordinaatin 0, 4 arvo. Koordinaattiin 0, 3 koordinaatin 0, 6 arvo jne. Vastaavasti myös y-akselilla, eli esimerkiksi koordinaattiin 1, 1 koordinaatin 2, 2 arvo, ja koordinaattiin 1, 2 koordinaatin 2, 4 arvo. 
+  </p>
+
+  
+  <h2>Ruudukko</h2>
+
+  <p>
+    Muokkaa seuraavaksi ohjelmaa siten, että edellisessä osassa vasempaan yläkulmaan luotu kuva toistuu kuvassa neljään kertaan. Ensimmäisen kuvan vasemman yläkulman tulee olla koordinaatissa 0, 0. Toisen kuvan vasemman yläkulman tulee olla koordinaatissa (kuvan leveys / 2), 0. Kolmannen kuvan vasemman yläkulman tulee olla koordinaatissa 0, (kuvan korkeus / 2). Neljännen kuvan vasemman yläkulman tulee olla koordinaatissa (kuvan leveys / 2), (kuvan korkeus / 2).
+  </p>
+  
+  <img src="/img/kollaasi-monalisa-ruudut.png" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  
+  <h2>Negatiivi</h2>
+
+  <p>
+    Kun olet saanut muodostettua ruudukon, muokkaa kuvaa vielä siten, että kuvassa näytetään negatiivi alkuperäisen kuvan sijaan. Negatiivin luominen onnistuu ottamalla jokaisen pikselin värin erotus luvusta yksi, esim. <code>punainen = 1.0 - punainen</code>.
+  </p>
+
+  <img src="/img/kollaasi-monalisa-neg.png" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    <em>
+      Tehtäväpohjan mukana tuleva Mona Lisa -kuva on noudettu Wikimedian osoitteesta <a href="https://commons.wikimedia.org/wiki/Category:Mona_Lisa" target="_blank">https://commons.wikimedia.org/wiki/Category:Mona_Lisa</a>. Käytetty kuva on vapaasti käytettävissä.
+    </em>
+  </p>
+  
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Äänet
+<% end %>
+
+<p>
+  Äänitiedostojen käsittelyyn löytyy myös useampia menetelmiä, joista tässä käsitellään yksi tapa. Tapa liittyy äänitiedostojen käsittelyyn äänileikkeinä (audioclip), jotka ovat esimerkiksi ääniefektejä ym.
+</p>
+
+<p>
+  Esimerkissä käytetään Daniel Simionin <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0</a> -lisenssillä julkaisemaa äänitiedostoa. Äänitiedoston voi kuunnella alla. Äänitiedosto on noudettu osoitteessa <a href="http://soundbible.com/" target="_blank">http://soundbible.com/</a> olevasta palvelusta.
+</p>
+
+<audio controls>
+  <source src="../img/front-desk-bells-daniel_simon.wav" type="audio/wav"/>
+</audio>
+
+<p>
+  Oletetaan, että tiedoston nimi on <code>bell.wav</code>, ja että se sijaitsee projektin juuressa. Yksinkertaisimmillaan äänen soittaminen tapahtuu seuraavasti.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+AudioClip leike = new AudioClip("file:bell.wav");
+leike.play();
+<% end %>
+
+<p>
+  AudioClip-olion toiminta on riippuvainen JavaFx:n kirjastoista, joten äänitiedosto tulee käynnistää osana JavaFx-ohjelmaa. Allaoleva esimerkki etsii projektin juuresta tiedostoa <code>bell.wav</code> ja luo siitä äänileikkeen. Tämän jälkeen äänileike soitetaan, ja sovellukseen liittyvä (tyhjä) ikkuna avataan. 
+</p>  
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.application.Application;
+  import static javafx.application.Application.launch;
+  import javafx.scene.media.AudioClip;
+  import javafx.stage.Stage;
+
+  public class AudioClipApplication extends Application {
+
+      @Override
+      public void start(Stage stage) {
+
+          AudioClip leike = new AudioClip("file:bell.wav");
+          leike.play();
+
+          stage.show();
+      }
+
+      public static void main(String[] args) {
+          launch(args);
+      }
+
+  }
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Hurraa' } do %>
+
+  <p>
+    Tehtäväpohjan juurikansiossa on tiedosto <code>Applause-Yannick_Lemieux.wav</code>, joka sisältää hurrausäänen. Tehtävänäsi on luoda sovellus, missä on "Hurraa"-nappi. Kun käyttäjä painaa nappia, sovelluksen tulee soittaa edellä mainittu äänitiedosto.
+  </p>
+
+  <img src="/img/material/hurraa-nappi.png"/>
+
+  <p>&nbsp;</p>
+
+  <p>
+    <em>
+      Äänitiedosto on Yannick Lemieuxin nauhoittama. Tiedosto on lisensoitu Creative Commonsin Attribuutiolisenssillä (<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">https://creativecommons.org/licenses/by/3.0/</a>).
+    </em>
+  </p>
+<% end %>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Mediasoittimen luominen' } do %>
+
+  <p>
+    Osoitteessa <a href="https://examples.javacodegeeks.com/desktop-java/javafx/javafx-media-api/" target="_blank">https://examples.javacodegeeks.com/desktop-java/javafx/javafx-media-api/</a> on opas mediasoittimen luomiseen. Jos äänten soittaminen ja käsittely ohjelmallisesti kiinnostaa, oppaaseen kannattaa tutustua.
+  </p>
+  
+<% end %>
 
 
 
@@ -360,7 +659,7 @@
 <% end %>
 
 <p>
-  Sananlasku "a picture is worth a thousand words" eli "yksi kuva kertoo enemmän kuin tuhat sanaa" kuvaa hyvin tiedon visualisoinnin tavoitetta. Tiedon visualisoinnilla pyritään tilanteeseen, missä tieto esitetään tiiviissä mutta ymmärrettävässä muodossa. Tiedosta voi korostaa tärkeitä asioita ja siitä voi tehdä yhteenvetoja, jotka näytetään käyttäjälle. Aikasarjatieto on usein myös paljon ymmärrettävämpää kuvana kuin raakaa dataa sisältävänä tekstinä.
+  Sananlasku "a picture is worth a thousand words" eli "yksi kuva kertoo enemmän kuin tuhat sanaa" kuvaa hyvin tiedon visualisoinnin tavoitetta. Tiedon visualisoinnilla pyritään tilanteeseen, missä tieto esitetään tiiviissä mutta ymmärrettävässä muodossa. Visualisaatioilla voi korostaa tärkeitä asioita ja käyttäjälle voi esimerkiksi tehdä yhteenvetoja datasta. Aikasarjatieto on usein myös paljon ymmärrettävämpää kuvana kuin raakaa dataa sisältävänä tekstinä.
 </p>
 
 <p>
@@ -392,9 +691,9 @@ ke 1 tammi 2014 03:00;;2;;;;;;0;2;0;;7;;;5;3
 
 <% partial 'partials/code_highlight' do %>
   String rivi = "Päivämäärä;Huopalahti (asema);Kaisaniemi;Kulosaaren silta et.;..."
-  List&lt;String&gt; palat = Arrays.asList(rivi.split(";"));
-  for (int i = 0; i &lt; palat.size(); i++) {
-      System.out.println(i + ": " + palat.get(i));
+  String[] palat = rivi.split(";");
+  for (int i = 0; i &lt; palat.length; i++) {
+      System.out.println(i + ": " + palat[i]);
   }  
 <% end %>
 
@@ -603,7 +902,7 @@ arvot.keySet().stream().forEach(puolue -&gt; {
 <% partial 'partials/exercise', locals: { name: 'Shanghai' } do %>
 
   <p>
-    Yliopistoja vertaillaan vuosittain. Eräs kansainvälisesti tunnistettu arvioijataho on Shanghai Ranking Consultancy, joka julkaisee vuosittain listan kansainvälisesti tunnistetuista yliopistoista. Lista sisältää myös yliopiston sijan maailmanlaajuisessa vertailussa. Helsingin yliopiston sijoitus on vuosina 2007-2016 ollut seuraava:
+    Yliopistoja vertaillaan vuosittain. Eräs kansainvälisesti tunnistettu arvioijataho on Shanghai Ranking Consultancy, joka julkaisee vuosittain listan kansainvälisesti tunnistetuista yliopistoista. Lista sisältää myös yliopiston sijan maailmanlaajuisessa vertailussa. Helsingin yliopiston sijoitus on vuosina 2007-2017 ollut seuraava:
   </p>
 
   <pre>
@@ -616,7 +915,8 @@ arvot.keySet().stream().forEach(puolue -&gt; {
 2013 76
 2014 73
 2015 67
-2016 56</pre>
+2016 56
+2017 56</pre>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan ShanghaiSovellus ohjelma, joka näyttää Helsingin yliopiston sijoituksen kehityksen viivakaaviona. Huom! Älä käytä sovelluksessa mitään asettelua, eli anna viivakaavio-olio suoraan Scene-oliolle konstruktorin parametrina. Huomaa myös, että Scenelle tulee tällöin antaa näytettävän alueen leveys ja korkeus.
@@ -626,13 +926,9 @@ arvot.keySet().stream().forEach(puolue -&gt; {
     Sovelluksen tuottama tulos näyttää esimerkiksi seuraavanlaiselta:
   </p>
 
-  <img src="/img/material/kaavio-shanghai.png" />
+  <img src="/img/shanghai.png" />
 
   <p>&nbsp;</p>
-
-  <p>
-    Huom! Kuten edellisessä osassa, sekä tässä että tulevissa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank" rel="noopener">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
-  </p>
 
 <% end %>
 
@@ -683,8 +979,99 @@ KOK
 
   <p>&nbsp;</p>
 
+  <p>
+    <em>
+      Dataa vastaaviin kaavioihin löytyy muunmuassa Tilastokeskuksen <a href="https://pxnet2.stat.fi/PXWeb/pxweb/fi/StatFin/" target="_blank" norel>PX-Web-tietokannoista</a>.
+    </em>
+  </p>
+
 <% end %>
 
+<% partial 'partials/exercise', locals: { name: 'Säästölaskuri (3 osaa)' } do %>
+
+  <p>
+    Toteutetaan tässä tehtävässä sovellus, jota käytetään säästämiseen liittyvien mahdollisten tuottojen tarkasteluun. Laskuri tarjoaa mahdollisuuden sekä kuukausittaisen säästön määrittelyyn että vuosittaisen koron määrittelyyn, ja näyttää säästösumman kasvun kolmenkymmenen vuoden aikana yli.
+  </p>
+
+  <img src="/img/saastolaskuri.png" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <h2>Käyttöliittymä</h2>
+
+  <p>
+    Toteuta ensin sovelluksen käyttöliittymä. Sovelluksen komponentteja hallinnoidaan BorderPanen avulla. BorderPanen keskellä on viivakaavio (LineChart), joka sisältää kaksi numeerista akselia (NumberAxis). BorderPanen ylälaidassa on VBox-asettelu. VBox-asettelu sisältää kaksi BorderPanea. Ensimmäisessä (ylemmässä) BorderPanessa on vasemmalla teksti "Kuukausittainen tallennus", keskellä liukuri (Slider), ja oikealla liukurin arvoa kuvaava teksti. Toisessa (alemmassa) BorderPanessa on vasemmalla teksti "Vuosittainen", keskellä liukuri (Slider), ja oikealla liukurin arvoa kuvaava teksti. 
+  </p>
+
+  
+  <p>
+    Löydät vinkkejä Slider-luokan käyttöön hakemalla Googlesta avainsanoilla "javafx slider".
+  </p>
+
+  <p>
+    Määrittele Sliderit siten, että kuukausittaista tallennusta kuvaavan Sliderin minimiarvo on 25 ja maksimiarvo on 250. Vuosittaisen koron minimiarvo on 0 ja maksimiarvo on 10. Kaavion x-akselin tulee näyttää arvon nollasta kolmeenkymmeneen, jotka kuvaavat vuosien kehitystä. Y-akselin arvojen tulee mukautua näytettäviin arvoihin.
+  </p>
+
+  <p>
+    Sovellus näyttää tämän vaiheen jälkeen seuraavalta.
+  </p>
+  
+  <img src="/img/saastolaskuri-1.png" />
+
+  <p>
+    &nbsp;
+  </p>
+  
+  <h2>Tallennusten näyttäminen</h2>
+
+  <p>
+    Kun käyttöliittymän rakenne ja ulkoasu on kohdallaan, aloitetaan laskurin toiminnallisuuden toteuttaminen.
+  </p>
+
+  <p>
+    Muokkaa käyttöliittymää siten, että kun käyttäjä siirtää kuukausittaiseen tallennukseen liittyvää liukuria (ylempi liukureista), kaavion näyttämä tallennuksen kasvua vuosien yli kuvaava kaavio päivittyy ja näyttää tallennuksen kasvun. Esimerkiksi kun kuukausittainen tallennus on 50, tulee kaaviossa olla viiva, joka näyttää arvot [(0, 0), (1, 600), (2, 1200), (3, 1800), ...]
+  </p>
+  
+  <p>
+    Sovellus näyttää tämän vaiheen jälkeen (esimerkiksi) seuraavalta. Alla kuukausittaisen tallennuksen arvoksi on valittu 50.
+  </p>
+  
+  <img src="/img/saastolaskuri-2.png" />
+
+  <p>
+    &nbsp;
+  </p>
+  
+
+  
+  <h2>Tallennusten näyttäminen korkoineen</h2>
+
+  <p>
+    Muokkaa käyttöliittymää siten, että koron näyttäminen sovelluksessa toimii. Tämän jälkeen sovelluksen tulee näyttää kaksi viivaa, yksi viivoista näyttää pelkän talletuksen, ja toinen viiva näyttää talletuksen korkoineen.
+  </p>
+
+  <p>
+    Laske korko vuosittain vuoden lopussa olevan tallennuksen perusteella (eli hieman optimistisesti). Esimerkiksi kun kuukausittainen tallennus on 50 ja korko 5%, tulee kaaviossa olla viiva, joka näyttää arvot [(0, 0), (1, 52.5), (2, 107.625), (3, 165.50625), ...]
+  </p>
+
+  
+  <p>
+    Sovellus näyttää tämän vaiheen jälkeen (esimerkiksi) seuraavalta. Alla kuukausittaisen tallennuksen arvoksi on valittu 50 ja koroksi 10 (eli 10% korko).
+  </p>
+  
+  <img src="/img/saastolaskuri-3.png" />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kuvassa huomaamme ns. "korkoa korolle"-efektin, mutta epärealistiselle korolle. Kun olet saanut sovelluksen toimimaan ja olet palauttanut sen, voit tarkastella esimerkiksi miten 25 euron kuukausittainen tallennus 2% vuosikorolla kasvaa 50 vuoden aikana.
+  </p>
+
+<% end %>
 
 <% partial 'partials/material_sub_sub_heading' do %>
   Pylväskaaviot
@@ -899,176 +1286,1480 @@ if (keskiarvo.getData().size() &gt; 100) {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Matopeli (4 osaa)' } do %>
-
-  <p>
-    Tässä tehtävässä luodaan klassisen matopelin rakenteet, eli mato, omena sekä niitä hallinnoiva matopeli. Pelin graafinen käyttöliittymä on sovelluksessa toteutettu valmiina -- graafisesta käyttöliittymästä voi ottaa inspiraatiota omiin projekteihin. Kun olet toteuttanut tehtävän askeleet, poista kommentit luokasta MatopeliSovellus ja kokeile pelaamista.
-  </p>
-
-  <h2>Pala ja Omena</h2>
-
-  <p>
-    Luo pakkaukseen <code>matopeli.domain</code> luokka <code>Pala</code>. Luokalla <code>Pala</code> on konstruktori <code>public Pala(int x, int y)</code>, joka saa palan sijainnin parametrina. Lisäksi luokalla <code>Pala</code> on seuraavat metodit.
-  </p>
-
-  <ul>
-    <li><code>public int getX()</code> palauttaa Palan konstruktorissa saadun x-koordinaatin.</li>
-    <li><code>public int getY()</code> palauttaa Palan konstruktorissa saadun y-koordinaatin.</li>
-    <li><code>public boolean osuu(Pala pala)</code> palauttaa true jos oliolla on sama x- ja y-koordinaatti kuin parametrina saadulla Pala-luokan ilmentymällä.</li>
-    <li><code>public String toString()</code> palauttaa palan sijainnin muodossa <code>(x,y)</code>. Esim. <code>(5,2)</code> kun x-koordinaatin arvo on 5 ja y-koordinaatin arvo on 2.</li>
-  </ul>
-
-  <p>
-    Toteuta pakkaukseen <code>matopeli.domain</code> myös luokka <code>Omena</code>. Peri luokalla Omena luokka <code>Pala</code>.
-  </p>
 
 
-  <h2>Mato</h2>
 
-  <p>
-    Toteuta pakkaukseen <code>matopeli.domain</code> luokka <code>Mato</code>. Luokalla <code>Mato</code> on konstruktori <code>public Mato(int alkuX, int alkuY, Suunta alkusuunta)</code>, joka luo uuden madon. Madon suunta on parametrina annettu <code>alkusuunta</code>. Mato koostuu listasta <code>Pala</code>-luokan ilmentymiä.
-  </p>
 
-  <p>
-    Luokka <code>Suunta</code> löytyy valmiina pakkauksesta <code>Matopeli.domain</code>.
-  </p>
+<% partial 'partials/material_heading' do %>
+  Laajempi sovellus: Asteroids
+<% end %>
 
-  <p>
-    Mato luodaan yhden palan pituisena, mutta madon "aikuispituus" on kolme. Madon tulee kasvaa yhdellä aina kun se liikkuu. Kun madon pituus on kolme, se kasvaa isommaksi vain syödessään.
-  </p>
+<p>
+  <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)" target="_blank">Asteroids</a> on <a href="https://en.wikipedia.org/wiki/Atari,_Inc." target="_blank">Atari</a>n kehittämä ja vuonna 1979 julkaisema tietokonepeliklassikko. Pelissä pelaaja ohjaa kolmionmuotoista avaruusalusta, ja pelin tavoitteena on tuhota asteroideja niitä ampuen. 
+</p>
 
-  <p>
-    Toteuta madolle seuraavat metodit
-  </p>
+<p>
+  Seuraavaksi tehdään laajempi esimerkki, missä toteutetaan osa Asteroids-pelistä. Peli on myös kurssin tehtävänä -- tee peli esimerkkiä seuraten annettuun tehtäväpohjaan (esimerkin lopussa).
+</p>
 
-  <ul>
-    <li><code>public Suunta getSuunta()</code> palauttaa madon suunnan.</li>
-    <li><code>public void setSuunta(Suunta suunta)</code> asettaa madolle uuden suunnan. Mato liikkuu uuteen suuntaan kun metodia <code>liiku</code> kutsutaan seuraavan kerran.</li>
-    <li><code>public int getPituus()</code> palauttaa madon pituuden. Madon pituuden tulee olla sama kuin <code>getPalat()</code>-metodikutsun palauttaman listan alkioiden määrä.</li>
-    <li><code>public List&lt;Pala&gt; getPalat()</code> palauttaa listan pala-olioita, joista mato koostuu. Palat ovat listalla järjestyksessä, siten että pää sijaitsee listan lopussa.</li>
-    <li><code>public void liiku()</code> liikuttaa matoa yhden palan verran eteenpäin.</li>
-    <li><code>public void kasva()</code> kasvattaa madon kokoa yhdellä. Madon kasvaminen tapahtuu seuraavan <code>liiku</code>-metodikutsun yhteydessä. Sitä seuraaviin liiku-kutsuihin kasvaminen ei enää vaikuta. Jos madon pituus on 1 tai 2 kun metodia kutsutaan, ei kutsulla saa olla mitään vaikutusta matoon.</li>
-    <li><code>public boolean osuu(Pala pala)</code> tarkistaa osuuko mato parametrina annettuun palaan. Jos mato osuu palaan, eli joku madon pala osuu metodille parametrina annettuun palaan, tulee metodin palauttaa arvo <code>true</code>. Muuten metodi palauttaa arvon <code>false</code>.</li>
-    <li><code>public boolean osuuItseensa()</code> tarkistaa osuuko mato itseensä. Jos mato osuu itseensä, eli joku sen pala osuu johonkin toiseen sen palaan, metodi palauttaa arvon <code>true</code>. Muuten metodi palauttaa arvon <code>false</code>.</li>
-  </ul>
+<p>
+  Peli koostetaan useammassa osassa, jotka ovat seuraavat:
+</p>
 
-  <p>
-    Metodien <code>public void kasva()</code> ja <code>public void liiku()</code> toiminnallisuus tulee toteuttaa siten, että mato kasvaa vasta seuraavalla liikkumiskerralla.
-  </p>
+<ul>
+  <li>
+    Peliruudun luominen
+  </li>
+  <li>
+    Aluksen luominen
+  </li>
+  <li>
+    Aluksen kääntäminen
+  </li>
+  <li>
+    Aluksen liikuttaminen
+  </li>
+  <li>
+    Asteroidin luominen
+  </li>
+  <li>
+    Aluksen ja asteroidin törmääminen
+  </li>
+  <li>
+    Useampi asteroidi
+  </li>
+  <li>
+    Ruudussa pysyminen
+  </li>
+  <li>
+    Ammukset
+  </li>
+  <li>
+    Pisteiden lisääminen
+  </li>
+  <li>
+    Lisää asteroideja
+  </li>
+</ul>
 
-  <p>
-    Liikkuminen kannattaa toteuttaa siten, että madolle luodaan liikkuessa aina uusi pala. Uuden palan sijainti riippuu madon kulkusuunnasta: vasemmalle mennessä uuden palan sijainti on edellisen pääpalan sijainnista yksi vasemmalle, eli sen x-koordinaatti on yhtä pienempi. Jos uuden palan sijainti on edellisen pääpalan alapuolella, eli madon suunta on alas, tulee uuden palan y-koordinaatin olla yhtä isompi kuin pääpalan y-koordinaatti (käytämme siis piirtämisestä tuttua koordinaattijärjestelmää, jossa y-akseli on kääntynyt).
-  </p>
 
-  <p>
-    Liikkuessa uusi pala lisätään listan loppuun, ja poistetaan listan alussa oleva alkio. Uudesta palasta siis tulee madon "uusi pää" ja  jokaisen palan koordinaatteja ei tarvitse päivittää erikseen. Toteuta kasvaminen siten, että listan alussa olevaa palaa, eli "madon häntää" ei poisteta jos metodia <code>kasva</code> on juuri kutsuttu.
-  </p>
+<% partial 'partials/material_sub_heading' do %>
+  Peliruudun luominen
+<% end %>
 
-  <p>
-    Huom! Kasvata matoa aina sen liikkuessa jos sen pituus on pienempi kuin 3.
-  </p>
+<p>
+  Rakennetaan ohjelma niin, että ohjelman ruutu voi sisältää vapaavalintaisen määrän elementtejä, joiden sijaintiin käytettävä asettelu ei ota kantaa. Tähän sopii hyvin luokka <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html" target="_blank">Pane</a>. Luokka Pane sisältää edellisestä <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html" target="_blank">ObservableList</a>-tyyppisen listan lapsielementtejä. Listaan pääsee käsiksi Pane-luokan metodin <code>getChildren</code>-kautta.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on ohjelma, joka luo 300 pikseliä leveän ja 200 pikseliä korkean ruudun. Ruudussa on kohdassa 30, 50 ympyrä, jonka säde on 10 pikseliä. Tietokoneohjelmissa koordinaatiston origo on tyypillisesti ikkunan vasemmassa yläkulmassa. Lisäksi y-koordinaatin arvo kasvaa alaspäin mennessä.
+</p>
 
 <% partial 'partials/code_highlight' do %>
-Mato mato = new Mato(5, 5, Suunta.OIKEA);
-System.out.println(mato.getPalat());
-mato.liiku();
-System.out.println(mato.getPalat());
-mato.liiku();
-System.out.println(mato.getPalat());
-mato.liiku();
-System.out.println(mato.getPalat());
+  import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.layout.Pane;
+  import javafx.scene.shape.Circle;
+  import javafx.stage.Stage;
 
-mato.kasva();
-System.out.println(mato.getPalat());
-mato.liiku();
-System.out.println(mato.getPalat());
+  public class PaneEsimerkki extends Application {
 
-mato.setSuunta(Suunta.VASEN);
-System.out.println(mato.osuuItseensa());
-mato.liiku();
-System.out.println(mato.osuuItseensa());
-<% end %>
+      @Override
+      public void start(Stage stage) throws Exception {
+          Pane ruutu = new Pane();
+          ruutu.setPrefSize(300, 200);
+          ruutu.getChildren().add(new Circle(30, 50, 10));
+  
+          Scene scene = new Scene(ruutu);
+          stage.setScene(scene);
+          stage.show();
+      }
 
-<% partial 'partials/sample_output' do %>
-[(5,5)]
-[(5,5), (6,5)]
-[(5,5), (6,5), (7,5)]
-[(6,5), (7,5), (8,5)]
-[(6,5), (7,5), (8,5)]
-[(6,5), (7,5), (8,5), (9,5)]
-false
-true
+      public static void main(String[] args) {
+          launch(args);
+      }
+  }
 <% end %>
 
 
-  <h2>Matopeli, osa 1</h2>
+<img src="/img/material/pane-circle.png" alt="Ympyrä ikkunassa."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Kutsutaan ohjelmaamme AsteroidsSovellukseksi. AsteroidsSovellus mukailee yllä olevaa esimerkkiä. Sovelluksessa ei aseteta ruutuun ympyrää, mutta sovellukselle on asetettu otsikko. Ikkunan leveys on 600 pikseliä ja korkeus 400 pikseliä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.layout.Pane;
+  import javafx.stage.Stage;
+
+  public class AsteroidsSovellus extends Application {
+
+      @Override
+      public void start(Stage stage) throws Exception {
+          Pane ruutu = new Pane();
+          ruutu.setPrefSize(600, 400);
+  
+          Scene scene = new Scene(ruutu);
+          stage.setTitle("Asteroids!");
+          stage.setScene(scene);
+          stage.show();
+      }
+
+      public static void main(String[] args) {
+          launch(args);
+      }
+  }
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen luominen
+<% end %>
+
+<p>
+  Luodaan ohjelmaan seuraavaksi alus. Asteroidsissa alus on kolmio. Kolmion esittäminen onnistuu monikulmiota kuvaavan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Polygon.html" target="_blank">Polygon</a>-luokan avulla. Monikulmion kulmat asetetaan Polygon-oliolle joko konstruktorin parametrina tai Polygon-luokan sisältämään listaan. Listaan pääsee käsiksi metodilla <code>getPoints</code>.
+</p>
+
+<p>
+  Alla olevassa esimerkissä ruutuun on lisätty 100 pikseliä leveä ja 50 pikseliä korkea suunnikas, joka on luotu Polygon-luokan avulla.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) throws Exception {
+      Pane ruutu = new Pane();
+      ruutu.setPrefSize(300, 200);
+
+      Polygon suunnikas = new Polygon(0, 0, 100, 0, 100, 50, 0, 50);
+      ruutu.getChildren().add(suunnikas);
+  
+      Scene scene = new Scene(ruutu);
+      stage.setScene(scene);
+      stage.show();
+  }
+<% end %>
+
+<img src="/img/material/pane-suunnikas.png" alt="Suunnikas ikkunassa."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Polygon-olion siirtäminen sopivampaan paikkaan onnistuu sen tarjoamien <code>setTranslateX</code> ja <code>setTranslateY</code>-metodien avulla. Alla olevassa esimerkissä luodaan edellistä esimerkkiä vastaava suunnikas, mutta nyt suunnikasta on siirretty 100 pikseliä oikealle ja 20 pikseliä alas.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) throws Exception {
+      Pane ruutu = new Pane();
+      ruutu.setPrefSize(300, 200);
+
+      Polygon suunnikas = new Polygon(0, 0, 100, 0, 100, 50, 0, 50);
+      suunnikas.setTranslateX(100);
+      suunnikas.setTranslateY(20);
+
+      ruutu.getChildren().add(suunnikas);
+  
+      Scene scene = new Scene(ruutu);
+      stage.setScene(scene);
+      stage.show();
+  }
+<% end %>
+
+<img src="/img/material/pane-suunnikas-siirretty.png" alt="Suunnikas ikkunassa. Suunnikasta on siirretty 100 pikseliä oikealle ja 20 pikseliä alas."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Luodaan alusta kuvaava kolmio ja lisätään se aiempaan AsteroidsSovellukseemme. Siirretään hahmo ruudun keskelle -- koska ruudun leveys on 600 pikseliä ja ruudun korkeus on 400 pikseliä, hahmoa siirretään 300 pikseliä oikealla ja 200 pikseliä alas.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.layout.Pane;
+  import javafx.scene.shape.Polygon;
+  import javafx.stage.Stage;
+
+  public class AsteroidsSovellus extends Application {
+
+      @Override
+      public void start(Stage stage) throws Exception {
+          Pane ruutu = new Pane();
+          ruutu.setPrefSize(600, 400);
+
+          Polygon alus = new Polygon(-5, -5, 10, 0, -5, 5);
+          alus.setTranslateX(300);
+          alus.setTranslateY(200);
+  
+          ruutu.getChildren().add(alus);
+  
+          Scene scene = new Scene(ruutu);
+          stage.setTitle("Asteroids!");
+          stage.setScene(scene);
+          stage.show();
+      }
+
+      public static void main(String[] args) {
+          launch(args);
+      }
+  }
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen kääntäminen: Näppäimistön kuuntelija, osa 1
+<% end %>
+
+<p>
+  Luokat kuten Polygon ja Circle perivät JavaFx:n <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html" target="_blank">Node</a>-luokan. Node-luokalla on valmiina muuttuja <code>rotate</code>, joka kuvaa esineen käännöstä asteina. Minkä tahansa Node-luokan perivän olion kääntäminen on siis melko suoraviivaista -- tarvitsee vain käyttää valmista metodia <code>setRotate</code>. Metodille annetaan parametrina käännöksen asteluku. 
+</p>
+
+<p>
+  Alla olevassa esimerkissä edellä nähtyä esimerkkiä on muunnettu siten, että alusta on käännetty 30 astetta.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) throws Exception {
+      Pane ruutu = new Pane();
+      ruutu.setPrefSize(600, 400);
+
+      Polygon alus = new Polygon(-5, -5, 10, 0, -5, 5);
+      alus.setTranslateX(300);
+      alus.setTranslateY(200);
+      alus.setRotate(30);
+
+      ruutu.getChildren().add(alus);
+  
+      Scene scene = new Scene(ruutu);
+      stage.setScene(scene);
+      stage.show();
+  }
+<% end %>
+
+<p>
+  Todellisuudessa emme kuitenkaan halua tilannetta, missä alus kääntyy vain kerran, vaan tilanteen, missä alusta voi ohjata pelin käynnissäollessa. Tarvitsemme siis tapahtumankuuntelijan, joka kuuntelee näppäimistöä ja kääntää alusta näppäimistön painalluksen yhteydessä.
+</p>
+
+
+<p>
+  Ikkunan sisältöä kuvaava <code>Scene</code>-olio tarjoaa metodin <code>setOnKeyPressed</code>, jolle voidaan antaa parametrina tapahtumia käsittelevä olio. Luodaan tapahtumankäsittelijä, joka reagoi näppäimistöön. Näppäimistötapahtumiin liittyy enumeroitu muuttuja <code>KeyCode</code>, joka kertoo painetun napin. Olemme kiinnostuneita napeista vasen (LEFT) ja oikea (RIGHT).
+</p>
+
+<p>
+  Tehdään ensin testiversio, missä aluksen käännös on yksinkertainen. Jos käyttäjä painaa nuolta vasemmalle, asteeksi asetetaan -30. Jos taas käyttäjä painaa nuolta oikealle, asteeksi asetetaan 30.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  scene.setOnKeyPressed(event -&gt; {
+      if (event.getCode() == KeyCode.LEFT) {
+          alus.setRotate(-30);
+      }
+
+      if (event.getCode() == KeyCode.RIGHT) {
+          alus.setRotate(30);
+      }
+  });
+<% end %>
+
+<p>
+  Jos aluksen sijaan käytössä olisi suunnikas, ohjelman toiminta näyttäisi seuraavanlaiselta.
+</p>
+
+<img src="/img/material/pane-polygon-move.gif" alt="Suunnikasta voi kääntää vasemmalle tai oikealle."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Käännöksen saa tasaiseksi hyödyntämällä tietoa olemassaolevasta käännöksestä. Alla olevassa esimerkissä alus kääntyy viisi astetta kerrallaan.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  scene.setOnKeyPressed(event -&gt; {
+      if (event.getCode() == KeyCode.LEFT) {
+          alus.setRotate(alus.getRotate() - 5);
+      }
+
+      if (event.getCode() == KeyCode.RIGHT) {
+          alus.setRotate(alus.getRotate() + 5);
+      }
+  });
+<% end %>
+
+<p>
+  Alla kuvattuna vastaava esimerkki, missä aluksen sijaan käännetään suunnikasta.
+</p>
+
+<img src="/img/material/pane-polygon-move-rotate.gif" alt="Suunnikasta voi kääntää vasemmalle tai oikealle."/>
+
+<p>&nbsp;</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen kääntäminen: Näppäimistön kuuntelija, osa 2
+<% end %>
+
+<p>
+  Edellä kuvattu lähestymistapa mahdollistaa "ihan ok"-tyyppisen kääntämisen. Lähestymistavassa on samalla ongelma -- liike ei ole sulavaa. Kun nappia painaa, alus kääntyy, pitää pienen tauon, ja jatkaa vasta tämän jälkeen kääntymistä.
+</p>
+
+<p>
+  Tämä liittyy siihen, miten ohjelmat oletuksena käsittelevät näppäinten painalluksen. Jos ohjelma käsittelisi näppäimen painalluksen useana tapahtumana heti kun näppäintä painetaan, muuttuisi esimerkiksi tekstin kirjoittaminen paljon hankalammaksi, sillä hieman pidemmät painallukset tuottaisivat heti useampia merkkejä.
+</p>
+
+<p>
+  Muutetaan näppäinten käsittelyä siten, että pidämme kirjaa pohjassa olevista napeista. Tämä onnistuu (esimerkiksi) hajautustaulun avulla. Hajautustaulu sisältää avaimena KeyCode-olion, eli nappia kuvaavan olion, ja arvona Boolean-tyyppisen muuttujan. Jos tiettyyn nappiin liittyvän boolean-muuttujan arvo on <code>true</code>, nappi on pohjassa, muulloin nappi ei ole pohjassa.
+</p>
+
+<p>
+  Nyt huomioidaan myös napin nostaminen, eli <code>onKeyReleased</code>-tapahtuma.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Map&lt;KeyCode, Boolean&gt; painetutNapit = new HashMap&lt;&gt;();
+
+  scene.setOnKeyPressed(event -&gt; {
+      painetutNapit.put(event.getCode(), Boolean.TRUE);
+  });
+
+  scene.setOnKeyReleased(event -&gt; {
+      painetutNapit.put(event.getCode(), Boolean.FALSE);
+  });
+<% end %>
+
+<p>
+  Mutta! Eihän tuolla mikään nyt käännä alusta.
+</p>
+
+<p>
+  Ei niin. Tarvitsemme vielä kääntämistoiminnallisuuden. Otetaan käyttöön animaatioiden luomiseen tarkoitettu AnimationTimer-luokka, ja annetaan sen vastuulle aluksen kääntäminen mikäli vasen tai oikea nappi on pohjassa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Map&lt;KeyCode, Boolean&gt; painetutNapit = new HashMap&lt;&gt;();
+
+  scene.setOnKeyPressed(event -&gt; {
+      painetutNapit.put(event.getCode(), Boolean.TRUE);
+  });
+
+  scene.setOnKeyReleased(event -&gt; {
+      painetutNapit.put(event.getCode(), Boolean.FALSE);
+  });
+  
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if(painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.setRotate(alus.getRotate() - 5);
+          }
+  
+          if(painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.setRotate(alus.getRotate() + 5);
+          }
+      }
+  }.start();
+<% end %>
+
+<p>
+  AnimationTimer-luokan maetodia <code>handle</code> kutsutaan noin 60 kertaa sekunnissa. Nyt kääntyminen on paljon sulavampaa (tosin, sitä ei alla olevasta gif-kuvasta taida huomata...).
+</p>
+
+
+<img src="/img/material/pane-polygon-move-rotate-better.gif" alt="Suunnikasta voi kääntää vasemmalle tai oikealle."/>
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen liikuttaminen: Ensimmäinen yritys
+<% end %>
+
+<p>
+  Alustamme pystyy nyt kääntämään. Lisätään seuraavaksi mahdollisuus liikkumiseen. Alus voi liikkua mihin tahansa ilmansuuntaan, eli liikkeen kuvaamiseen tarvitaan sekä x- että y-koordinaatin arvo. Konkreettinen liikkuminen tapahtuu muuntamalla alusta kuvaavan polygonin sijaintia ohjelman edetessä.
+</p>
+
+<p>
+  Hyödynnetään Javan valmista <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Point2D.html" target="_blank">Point2D</a>-luokkaa liikkeen kuvaamiseen -- luokalla on sekä x- että y-koordinaatti.
+</p>
+
+<p>
+  Ensimmäinen testiversio on liike-muuttujan luominen sekä sen lisääminen AnimationTimer-luokan handle-metodiin.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Point2D liike = new Point2D(1, 0);
+<% end %>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if(painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.setRotate(alus.getRotate() - 5);
+          }
+  
+          if(painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.setRotate(alus.getRotate() + 5);
+          }
+  
+          alus.setTranslateX(alus.getTranslateX() + liike.getX());
+      }
+  }.start();
+<% end %>
+
+<p>
+  Huraa! Alus liikkuu (ja sitä voi kääntää). Se tosin katoaa aika nopeasti..
+</p>
+
+<img src="/img/material/pane-alus-liikkuu.gif" alt="Suunnikasta voi kääntää vasemmalle tai oikealle."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Valitsemamme Point2D luokka muistuttaa hieman String-luokkaa siinä, että se on <em>immutaabeli</em>. Emme voi muuttaa olemassaolevan pisteen arvoja, vaan pisteen metodien kutsuminen palauttaa aina uuden arvon. Tämä on hieman ongelmallista, sillä olioiden arvoja ei saa asettaa uudestaan metodien sisällä -- emme siis voi tehdä esimerkiksi seuraavasti.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          // .. ei toimi ..
+          if(painetutNapit.getOrDefault(KeyCode.UP, false)) {
+              liike = liike.add(new Point2D(1, 1));
+          }
+          // ..
+      }
+  }.start();
+<% end %>
+
+<p>
+  Metodikutsut ovat kuitenkin sallittuja. Taitaa olla aika refaktoroinnille, eli ohjelman rakenteen selkeyttämiselle..
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen liikuttaminen: Ohjelman refaktorointi
+<% end %>
+
+<p>
+  Luodaan luokka Alus, joka sisältää Polygon-olion sekä Point2D-olion. Polygon-olio kuvaa alusta, ja Point2D-olio aluksen liikettä. Alus saa konstruktorin parametrina aluksen x- ja y-koordinaatit, jonka lisäksi alusta voi kääntää vasemmalle ja oikealle. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.geometry.Point2D;
+  import javafx.scene.shape.Polygon;
+
+  public class Alus {
+
+      private Polygon hahmo;
+      private Point2D liike;
+
+      public Alus(int x, int y) {
+          this.hahmo = new Polygon(-5, -5, 10, 0, -5, 5);
+          this.hahmo.setTranslateX(x);
+          this.hahmo.setTranslateY(y);
+
+          this.liike = new Point2D(0, 0);
+      }
+
+      public Polygon getHahmo() {
+          return hahmo;
+      }
+
+      public void kaannaVasemmalle() {
+          this.hahmo.setRotate(this.hahmo.getRotate() - 5);
+      }
+
+      public void kaannaOikealle() {
+          this.hahmo.setRotate(this.hahmo.getRotate() - 5);
+      }
+
+      public void liikuta() {
+          this.hahmo.setTranslateX(this.hahmo.getTranslateX() + this.liike.getX());
+          this.hahmo.setTranslateY(this.hahmo.getTranslateY() + this.liike.getY());
+      }
+  }
+<% end %>
+
+<p>
+  Refaktoroinnin johdosta sovellusta tulee muuttaa muutamasta kohtaa. Liikettä kuvaavan pisteen sijaan ja alusta kuvaavan monikulmion sijaan luodaan Alus. Tämän lisäksi Pane-oliolle annetaan alukseen liittyvä Polygon-olio, mutta ei itse alus-oliota.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Alus alus = new Alus(150, 100);
+
+  ruutu.getChildren().add(alus.getHahmo());
+<% end %>
+
+<p>
+  Myös AnimationTimer-olion metodia tulee päivittää siten, että metodissa hyödynnetään aluksen metodeja.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if(painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.kaannaVasemmalle();
+          }
+  
+          if(painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.kaannaOikealle();
+          }
+  
+          alus.liiku();
+      }
+  }.start();
+<% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen liikuttaminen: Toinen yritys
+<% end %>
+
+<p>
+  Alus liikkuu, mutta aluksen liikettä ei voi vielä muuttaa. Lisätään alukselle kiihdytystoiminnallisuus. Kiihdytyksen tulee toimia niin, että aluksen nopeus kiihtyy aluksen osoittamaan suuntaan. Saamme kiihdytyksen monikulmion asteesta, jonka saa selville metodilla <code>getRotate()</code>. Olemme käyttäneet tätä jo paljon alusta kääntäessä.
+</p>
+
+<p>
+  Kiihdytyksen suunta saadaan selville sini- ja kosinifunktion avulla. Nämä löytyvät Javan valmiista <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html" target="_blank">Math</a>-luokasta. Metodit saavat parametrina asteen radiaaneina, joten joudumme hyödyntämään myös Math-luokan asteiden radiaaneiksi muuttavaa metodia.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  double muutosX = Math.cos(Math.toRadians(<em>kulmaAsteina</em>));
+  double muutosY = Math.sin(Math.toRadians(<em>kulmaAsteina</em>));
+<% end %>
+
+<p>
+  Luokan Alus kiihdyta-metodin ensimmäinen versio on seuraavanlainen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public void kiihdyta() {
+      double muutosX = Math.cos(Math.toRadians(this.hahmo.getRotate()));
+      double muutosY = Math.sin(Math.toRadians(this.hahmo.getRotate()));
+
+      this.liike = this.liike.add(muutosX, muutosY);
+  }
+<% end %>
+
+<p>
+  Lisätään sovellukseen vielä kiihdytystoiminnallisuus. Kiihdytysmetodia kutsutaan kun käyttäjä painaa ylös-nappia. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if(painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.kaannaVasemmalle();
+          }
+  
+          if(painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.kaannaOikealle();
+          }
+  
+          if(painetutNapit.getOrDefault(KeyCode.UP, false)) {
+              alus.kiihdyta();
+          }
+
+          alus.liiku();
+      }
+  }.start();
+<% end %>
+
+<img src="/img/material/pane-alus-kiihtyy.gif" alt="Alus kiihtyy."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Kuten huomaamme, alus kiihtyy. Kiihtyvyys on tosin aika kova, joten sitä on hyvä korjata hieman. Muokataan aluksen kiihdyta-metodia siten, että muutos on vain 5% edellisestä. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public void kiihdyta() {
+      double muutosX = Math.cos(Math.toRadians(this.hahmo.getRotate()));
+      double muutosY = Math.sin(Math.toRadians(this.hahmo.getRotate()));
+
+      muutosX *= 0.05;
+      muutosY *= 0.05;
+  
+      this.liike = this.liike.add(muutosX, muutosY);
+  }
+<% end %>
+
+<p>
+  Nyt aluksen ohjaus on jotenkuten mahdollista.
+</p>
+
+<img src="/img/material/alus-kiihtyy-fiksummin.gif" alt="Alus kiihtyy siten, että sitä pystyy kontrolloimaan."/>
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Asteroidin luominen
+<% end %>
+
+<p>
+  Luodaan seuraavaksi asteroidi. Asteroidilla on muoto, sijainti ja liike.
+</p>
+
+<p>
+  Hmm..
+</p>
+
+<p>
+  Oikeastaan lähes täysin samat asiat kuin mitä aluksella on -- vain muoto on erilainen. Tässä kohtaa on hyvä hetki <em>yleistämiselle</em>. Luodaan <em>abstrakti luokka</em> Hahmo, joka saa parametrina muodon ja sijainnin. Huomaat, että toiminnallisuus on lähes täysin kopioitu luokasta <code>Alus</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.geometry.Point2D;
+  import javafx.scene.shape.Polygon;
+
+  public abstract class Hahmo {
+
+      private Polygon hahmo;
+      private Point2D liike;
+
+      public Hahmo(Polygon monikulmio, int x, int y) {
+          this.hahmo = monikulmio;
+          this.hahmo.setTranslateX(x);
+          this.hahmo.setTranslateY(y);
+
+          this.liike = new Point2D(0, 0);
+      }
+
+      public Polygon getHahmo() {
+          return hahmo;
+      }
+
+      public void kaannaVasemmalle() {
+          this.hahmo.setRotate(this.hahmo.getRotate() - 5);
+      }
+
+      public void kaannaOikealle() {
+          this.hahmo.setRotate(this.hahmo.getRotate() + 5);
+      }
+
+      public void liiku() {
+          this.hahmo.setTranslateX(this.hahmo.getTranslateX() + this.liike.getX());
+          this.hahmo.setTranslateY(this.hahmo.getTranslateY() + this.liike.getY());
+      }
+
+      public void kiihdyta() {
+          double muutosX = Math.cos(Math.toRadians(this.hahmo.getRotate()));
+          double muutosY = Math.sin(Math.toRadians(this.hahmo.getRotate()));
+
+          muutosX *= 0.05;
+          muutosY *= 0.05;
+
+          this.liike = this.liike.add(muutosX, muutosY);
+      }
+  }
+<% end %>
+
+<p>
+  Muokataan luokkaa Alus siten, että se perii luokan Hahmo.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.scene.shape.Polygon;
+
+  public class Alus extends Hahmo {
+
+      public Alus(int x, int y) {
+          super(new Polygon(-5, -5, 10, 0, -5, 5), x, y);
+      }
+  }
+<% end %>
+
+<p>
+  Aika suoraviivaista.
+</p>
+
+<p>
+  Lisätään seuraavaksi luokka Asteroidi. Tehdään ensimmäisestä toteutuksesta suorakulmio ja palataan asteroidin muotoon myöhemmin.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.scene.shape.Polygon;
+
+  public class Asteroidi extends Hahmo {
+
+      public Asteroidi(int x, int y) {
+          super(new Polygon(20, -20, 20, 20, -20, 20, -20, -20), x, y);
+      }
+  }
+<% end %>
+
+<p>
+  Testataan vielä, että asteroidin voi lisätä sovellukseen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Pane ruutu = new Pane();
+  // koon asetus .. 
+
+  Alus alus = new Alus(150, 100);
+  Asteroidi asteroidi = new Asteroidi(50, 50);
+
+  ruutu.getChildren().add(alus.getHahmo());
+  ruutu.getChildren().add(asteroidi.getHahmo());
+  
+  asteroidi.kaannaOikealle();
+  asteroidi.kaannaOikealle();
+  asteroidi.kiihdyta();
+  asteroidi.kiihdyta();
+<% end %>
+
+<p>
+  Jotta asteroidi liikkuisi, tulee siihen liittyvää liiku-metodia kutsua animaatiossa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if (painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.kaannaVasemmalle();
+          }
+
+          if (painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.kaannaOikealle();
+          }
+
+          if (painetutNapit.getOrDefault(KeyCode.UP, false)) {
+              alus.kiihdyta();
+          }
+
+          alus.liiku();
+          asteroidi.liiku();
+      }
+  }.start();
+<% end %>
+
+<p>
+  Sovelluksessamme on nyt sekä alus että asteroidi.
+</p>
+
+<img src="/img/material/asteroidi-huti.gif" alt="Sovelluksessa sekä alus että yksi asteroidi."/>
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Aluksen ja asteroidin törmääminen
+<% end %>
+
+<p>
+  Toteutetaan seuraavaksi aluksen ja asteroidin törmäämisen tarkistaminen. Jos alus törmää asterodiin, kutsutaan AnimationTimer-olion metodia <code>stop</code>, joka lopettaa animaation.
+</p>
+
+<p>
+  Sekä alus että asteroidi ovat hahmoja. Lisätään luokalle <code>Hahmo</code> metodi, jota käytetään törmäyksen tarkastamiseen. Metodin ensimmäinen versio on sellainen, että hahmo ei koskaan törmää toiseen hahmoon.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public boolean tormaa(Hahmo toinen) {
+  return false;
+  }
+<% end %>
+
+<p>
+  Luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Shape.html" target="_blank">Shape</a>, jonka Polygon <em>myös</em> perii, on törmäyksen tarkastamista varten varsin näppärä metodi. Metodi <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Shape.html#intersect-javafx.scene.shape.Shape-javafx.scene.shape.Shape-" target="_blank">public static Shape intersect(Shape shape1, Shape shape2)</a> palauttaa kahden Shape-tyyppisen olion leikkausalueen.
+</p>
+
+<p>
+  Jos alue on tyhjä, törmäystä ei ole tapahtunut. Muokataan törmäysten tarkistamista siten, että se hyödyntää edellä mainittua metodia. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public boolean tormaa(Hahmo toinen) {
+  Shape tormaysalue = Shape.intersect(this.hahmo, toinen.getHahmo());
+  return tormaysalue.getBoundsInLocal().getWidth() != -1;
+  }
+<% end %>
+
+<p>
+  Lisätään ohjelmaan vielä toiminnallisuus, joka lopettaa sovelluksen törmäyksen yhteydessä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if (painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.kaannaVasemmalle();
+          }
+
+          if (painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.kaannaOikealle();
+          }
+
+          if (painetutNapit.getOrDefault(KeyCode.UP, false)) {
+              alus.kiihdyta();
+          }
+
+          alus.liiku();
+          asteroidi.liiku();
+
+          if (alus.tormaa(asteroidi)) {
+              stop();
+          }
+      }
+  }.start();
+<% end %>
+
+<p>
+  Nyt sovellus pysähtyy aluksen ja asteroidin törmätessä.
+</p>
+
+<img src="/img/material/asteroids-tormays.gif" alt="Sovellus pysähtyy mikäli alus ja asteroidi törmäävät."/>
+
+<p>&nbsp;</p>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Useampi asteroidi
+<% end %>
+
+<p>
+  Muokataan sovellusta seuraavaksi siten, että sovelluksessa on useampia asteroideja. Asteroidit on hyvä esittää listana. Alla olevassa esimerkissä luodaan ensin alus, jonka jälkeen sovellukseen lisätään viisi asteroidia.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  Alus alus = new Alus(150, 100);
+  List&lt;Asteroidi&gt; asteroidit = new ArrayList&lt;&gt;();
+  for (int i = 0; i &lt; 5; i++) {
+      Random rnd = new Random();
+      Asteroidi asteroidi = new Asteroidi(rnd.nextInt(100), rnd.nextInt(100));
+      asteroidit.add(asteroidi);
+  }
+
+  ruutu.getChildren().add(alus.getHahmo());
+  asteroidit.forEach(asteroidi -&gt; ruutu.getChildren().add(asteroidi.getHahmo()));
+<% end %>
+
+<p>
+  Muokataan vielä asteroidien piirtämistä ja törmäystoiminnallisuutta siten, että yksittäisen asteroidin sijaan käydään lista läpi.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  new AnimationTimer() {
+
+      @Override
+      public void handle(long nykyhetki) {
+          if (painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
+              alus.kaannaVasemmalle();
+          }
+
+          if (painetutNapit.getOrDefault(KeyCode.RIGHT, false)) {
+              alus.kaannaOikealle();
+          }
+
+          if (painetutNapit.getOrDefault(KeyCode.UP, false)) {
+              alus.kiihdyta();
+          }
+
+          alus.liiku();
+          asteroidit.forEach(asteroidi -&gt; asteroidi.liiku());
+
+          asteroidit.forEach(asteroidi -&gt; {
+              if (alus.tormaa(asteroidi)) {
+                  stop();
+              }
+          });
+
+      }
+  }.start();
+<% end %>
+
+<p>
+  Ohjelman käynnistyessä siinä on nyt useampia asteroideja.
+</p>
+
+<img src="/img/material/asteroids-monta-asteroidia.png" alt="Monta asteroidia."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Tällä hetkellä jokainen asteroidi näyttää samalta ja liikkuu samalla tavalla. Olisi hienoa, jos asteroideissa olisi vähän vaihtelua. Muokataan Asteroidi-luokkaa siten, että luokalla on erillinen metodi asteroidin rakenteen arpomiseen. Sovitaan, että asteroidit ovat aina viisikulmaisia, ja että niiden perusmuoto on viisikulmio. Luodaan vaihtelua asteroideihin muokkaamalla niiden kulmien sijainteja hieman.
+</p>
+
+<p>
+  Viisikulmion kulmien laskemiseen saa apua osoitteesta <a href="http://mathworld.wolfram.com/Pentagon.html" target=_blank">http://mathworld.wolfram.com/Pentagon.html</a>. Alla on sovellettu linkin takana olevaa kaavaa, jonka lisäksi monikulmion koko on vaihteleva sekä monikulmion kulmien sijainnit voivat vaihdella hieman.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.Random;
+  import javafx.scene.shape.Polygon;
+
+  public class MonikulmioTehdas {
+
+      public Polygon luoMonikulmio() {
+          Random rnd = new Random();
+
+          double koko = 10 + rnd.nextInt(10);
+
+          Polygon monikulmio = new Polygon();
+          double c1 = Math.cos(Math.PI * 2 / 5);
+          double c2 = Math.cos(Math.PI / 5);
+          double s1 = Math.sin(Math.PI * 2 / 5);
+          double s2 = Math.sin(Math.PI * 4 / 5);
+
+          monikulmio.getPoints().addAll(
+              koko, 0.0,
+              koko * c1, -1 * koko * s1,
+              -1 * koko * c2, -1 * koko * s2,
+              -1 * koko * c2, koko * s2,
+              koko * c1, koko * s1);
+
+          for (int i = 0; i &lt; monikulmio.getPoints().size(); i++) {
+              int muutos = rnd.nextInt(5) - 2;
+              monikulmio.getPoints().set(i, monikulmio.getPoints().get(i) + muutos);
+          }
+
+          return monikulmio;
+      }
+  }
+<% end %>
+
+<p>
+  Muokataan luokkaa Asteroidi siten, että se hyödyntää yllä kuvattua monikulmioiden luomiseen tarkoitettua luokkaa. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Asteroidi extends Hahmo {
+
+      public Asteroidi(int x, int y) {
+          super(new MonikulmioTehdas().luoMonikulmio(), x, y);
+      }
+
+  }
+<% end %>
+
+<p>
+  Nyt asteroidit ovat monipuolisempia. 
+</p>
+
+<img src="/img/material/asteroids-satunnaiset-monikulmiot.png" alt="Asteroideissa on vaihtelua."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Lisätään asteroideille vielä liike ja suunta. Liike ja suunta on osittain määriteltynä luokassa Hahmo, mutta haluamme toimintaan hieman satunnaisuutta. Kun asteroidi luodaan, sen suunnan tulee olla satunnainen luku välillä [0, 360[. Tämän lisäksi asteroidi liikkuu hieman -- liike määritetään satunnaisena määränä kiihdytyskutsuja hahmon luonnin yhteydessä. Lopuksi asteroidilla on myös pieni pyörimisliike. Aina kun asteroidi liikkuu, se myös pyörii hieman.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.Random;
+
+  public class Asteroidi extends Hahmo {
+
+      private double pyorimisliike;
+
+      public Asteroidi(int x, int y) {
+          super(new MonikulmioTehdas().luoMonikulmio(), x, y);
+
+          Random rnd = new Random();
+
+          super.getHahmo().setRotate(rnd.nextInt(360));
+
+          int kiihdytystenMaara = 1 + rnd.nextInt(10);
+          for (int i = 0; i &lt; kiihdytystenMaara; i++) {
+              kiihdyta();
+          }
+
+          this.pyorimisliike = 0.5 - rnd.nextDouble();
+      }
+
+      @Override
+      public void liiku() {
+          super.liiku();
+          super.getHahmo().setRotate(super.getHahmo().getRotate() + pyorimisliike);
+      }
+  }
+<% end %>
+
+<p>
+  Yllä olevassa esimerkissä hyödynnetään perintää myös metodissa <code>liiku</code>. Kun Asteroidin liiku-metodia kutsutaan, metodi kutsuu ensin yläluokassa Hahmo määriteltyä metodia liiku. Tämän jälkeen hahmoa käännetään pyörimisliikkeen verran. Lopputuloksena asteroidilla on pieni pyörimisliike.
+</p>
+
+
+<img src="/img/material/asteroidit-liikkuu.gif" />
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ruudussa pysyminen
+<% end %>
+
+<p>
+  Sovellus on hieman tylsä, sillä asteroidit ja alus voivat siirtyä pois ruudusta. Muokataan sovellusta siten, että asteroidit ja alus pysyvät jatkuvasti ruudussa. Tämä onnistuu muokkaamalla niiden liikkumista siten, että oikealta laidalta poistuttaessa hahmo tulee takaisin vasemmalta laidalta ja toisinpäin. Vastaava toiminnallisuus tarvitaan myös yläkautta ja alakautta poistumiselle. 
+</p>
+
+<p>
+  Määritellään AsteroidsSovellukselle vakioarvoiset muuttujat leveys ja korkeus. Luokille voidaan määritellä luokkakohtaisia arvoja avainsanan <code>static</code> avulla. Alla määritellään muuttujat <code>LEVEYS</code> ja <code>KORKEUS</code>, joihin voidaan viitata muualta ohjelmasta.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class AsteroidsSovellus extends Application {
+
+      public static int LEVEYS = 300;
+      public static int KORKEUS = 200;
+
+      @Override
+      public void start(Stage stage) throws Exception {
+          Pane ruutu = new Pane();
+          ruutu.setPrefSize(LEVEYS, KORKEUS);
+
+          Alus alus = new Alus(LEVEYS / 2, KORKEUS / 2);
+          List&lt;Asteroidi&gt; asteroidit = new ArrayList&lt;&gt;();
+          for (int i = 0; i &lt; 5; i++) {
+              Random rnd = new Random();
+              Asteroidi asteroidi = new Asteroidi(rnd.nextInt(LEVEYS / 3), rnd.nextInt(KORKEUS));
+              asteroidit.add(asteroidi);
+          }
+
+          ruutu.getChildren().add(alus.getHahmo());
+          asteroidit.forEach(asteroidi -&gt; ruutu.getChildren().add(asteroidi.getHahmo()));
+
+  // ...
+<% end %>
+
+<p>
+  Muuttujat, jotka on määritelty avainsanalla <code>static</code>, eivät liity luokasta tehtäviin olioihin. Jos <code>static</code>-muuttujalla on määre <code>public</code> -- kuten yllä -- voi muuttujaan viitata myös muista luokista. Muokataan luokan Hahmo liiku-metodia siten, että se hyödyntää AsteroidsSovelluksen <em>staattisia muuttujia</em> LEVEYS ja KORKEUS. Alla oleva liiku-metodi tarkastaa, että hahmo on jatkuvasti näkyvillä. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public void liiku() {
+      this.hahmo.setTranslateX(this.hahmo.getTranslateX() + this.liike.getX());
+      this.hahmo.setTranslateY(this.hahmo.getTranslateY() + this.liike.getY());
+
+      if (this.hahmo.getTranslateX() &lt; 0) {
+          this.hahmo.setTranslateX(this.hahmo.getTranslateX() + AsteroidsSovellus.LEVEYS);
+      }
+
+      if (this.hahmo.getTranslateX() &gt; AsteroidsSovellus.LEVEYS) {
+          this.hahmo.setTranslateX(this.hahmo.getTranslateX() % AsteroidsSovellus.LEVEYS);
+      }
+
+      if (this.hahmo.getTranslateY() &lt; 0) {
+          this.hahmo.setTranslateY(this.hahmo.getTranslateY() + AsteroidsSovellus.KORKEUS);
+      }
+
+      if (this.hahmo.getTranslateY() &gt; AsteroidsSovellus.KORKEUS) {
+          this.hahmo.setTranslateY(this.hahmo.getTranslateY() % AsteroidsSovellus.KORKEUS);
+      }
+  }
+<% end %>
+
+<p>
+  Nyt hahmot pysyvät ruudussa.
+</p>
+
+<img src="/img/material/asteroids-pysyy-ruudussa.gif" />
+
+<p>&nbsp;</p>
+
+<p>
+  Emme ole yllä kuvattuun versioon täysin tyytyväisiä, sillä hahmot saattavat "hypätä" ruudun laidalta toiselle. Hahmon kokoa ei huomioida yllä kuvatussa liikkumistoiminnossa, jolloin hahmon x- tai y-koordinaatti voi olla ulkona ruudusta, vaikka osa hahmosta olisi vielä näkyvissä. Tähän löytyy -- mahdollisesti -- ratkaisu Node-luokalta löytyvästä getBoundsInParent-metodista. Emme tarkastele tätä kuitenkaan sen enempää.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ammukset
+<% end %>
+
+<p>
+  Asteroids ilman ammuksia olisi pelkkää väistelyä. Lisätään asteroidsiin seuraavaksi ammukset. Ammuksilla on muoto, suunta ja liike. Voimme käyttää Hahmoa myös Ammusten luomiseen. Luodaan Ammus-luokan ensimmäinen versio, missä ammusta kuvataan neliön avulla.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import javafx.scene.shape.Polygon;
+
+  public class Ammus extends Hahmo {
+
+      public Ammus(int x, int y) {
+          super(new Polygon(2, -2, 2, 2, -2, 2, -2, -2), x, y);
+      }
+
+  }
+<% end %>
+
+<p>
+  Toisin kuin hahmojen ja asteroidien tapauksessa, emme halua että pelin alkutilassa on ammuksia. Määritellään ammuksia varten lista, mutta jätetään se aluksi tyhjäksi.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  List&lt;Ammus&gt; ammukset = new ArrayList&lt;&gt;();
+<% end %>
+
+<p>
+  Ammus luodaan kun käyttäjä painaa välilyöntiä. Ammuksen luomisen yhteydessä sen suunnaksi asetetaan aluksen suunta. Luodaan ampumisesta ensimmäinen versio.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  if (painetutNapit.getOrDefault(KeyCode.SPACE, false)) {
+      // ammutaan
+      Ammus ammus = new Ammus((int) alus.getHahmo().getTranslateX(), (int) alus.getHahmo().getTranslateY());
+      ammus.getHahmo().setRotate(alus.getHahmo().getRotate());
+      ammukset.add(ammus);
+
+       ruutu.getChildren().add(ammus.getHahmo());
+  }
+<% end %>
+
+<p>
+  Ensimmäisessä versiossa alus ampuu kun käyttäjä painaa välilyöntiä, mutta ammukset eivät liiku. Ammukset eivät myöskään törmää muihin hahmoihin.
+</p>
+
+<img src="/img/material/alus-ampuu.gif" />
+
+<p>&nbsp;</p>
+
+<p>
+  Haluamme, että ammuksen liikettä voidaan muokata. Tällä hetkellä Hahmon muuttuja <code>liike</code> on kuitenkin määritelty private-tyyppiseksi, eikä siihen ole pääsyä minkään metodin kautta. Lisätään luokalle <code>Hahmo</code> metodit <code>getLiike</code> ja <code>setLiike</code>.
+</p>
+
+<p>
+  Tämän jälkeen ammuksen nopeuden asettaminen on suoraviivaista. Kiihdytetään ammuksen nopeutta hieman (jottei ammus jää koskaan paikalleen), normalisoidaan nopeus (käytännössä nopeutta käsitellään vektorina, jonka pituudeksi asetetaan 1), jonka jälkeen nopeutta kasvatetaan hieman. Tässä nopeus kerrotaan kolmella.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  if (painetutNapit.getOrDefault(KeyCode.SPACE, false)) {
+      // ammutaan
+      Ammus ammus = new Ammus((int) alus.getHahmo().getTranslateX(), (int) alus.getHahmo().getTranslateY());
+      ammus.getHahmo().setRotate(alus.getHahmo().getRotate());
+      ammukset.add(ammus);
+  
+      ammus.kiihdyta();
+      ammus.setLiike(ammus.getLiike().normalize().multiply(3));
+  
+      ruutu.getChildren().add(ammus.getHahmo());
+  }
+<% end %>
+
+<p>
+  Lisätään vielä ammusten liikkuminen muiden hahmojen liikkumisen yhteyteen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  alus.liiku();
+  asteroidit.forEach(asteroidi -&gt; asteroidi.liiku());
+  ammukset.forEach(ammus -&gt; ammus.liiku());
+<% end %>
+
+<p>
+  Nyt ammukset liikkuvat. Ne eivät kuitenkaan vielä törmää mihinkään, ja niitä on aika.. paljon. Rajataan ammusten määrää ensin hieman -- sovitaan, että ammuksia saa olla kerrallaan korkeintaan 3.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  if (painetutNapit.getOrDefault(KeyCode.SPACE, false) && ammukset.size() &lt; 3) {
+      // ammutaan
+      Ammus ammus = new Ammus((int) alus.getHahmo().getTranslateX(), (int) alus.getHahmo().getTranslateY());
+      ammus.getHahmo().setRotate(alus.getHahmo().getRotate());
+      ammukset.add(ammus);
+
+      ammus.kiihdyta();
+      ammus.setLiike(ammus.getLiike().normalize().multiply(3));
+
+      ruutu.getChildren().add(ammus.getHahmo());
+  }
+<% end %>
+
+<p>
+  Lisätään tämän jälkeen ammuksille törmäystoiminnallisuus. Ammukset voivat törmätä asteroideihin. Jos ammus törmää asteroidiin, asteroidi poistetaan sekä piirrettävistä asteroideista että asteroidilistasta.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  ammukset.forEach(ammus -&gt; {
+      List&lt;Asteroidi&gt; tormatyt = asteroidit.stream()
+                                                 .filter(asteroidi -&gt; asteroidi.tormaa(ammus))
+                                                 .collect(Collectors.toList());
+
+      tormatyt.stream().forEach(tormatty -&gt; {
+          asteroidit.remove(tormatty);
+          ruutu.getChildren().remove(tormatty.getHahmo());
+      });
+  });
+<% end %>
+
+<img src="/img/material/ammus-poistaa-asteroidin.gif" />
+
+<p>&nbsp;</p>
+
+<p>
+  Ammukset eivät kuitenkaan poistu törmäyksen yhteydessä. Eräs tapa poistaa myös ammukset on esitelty seuraavassa esimerkissä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  List&lt;Ammus&gt; poistettavatAmmukset = ammukset.stream().filter(ammus -&gt; {
+      List&lt;Asteroidi&gt; tormatyt = asteroidit.stream()
+                                                 .filter(asteroidi -&gt; asteroidi.tormaa(ammus))
+                                                 .collect(Collectors.toList());
+
+      if(tormatyt.isEmpty()) {
+          return false; 
+      }
+  
+      tormatyt.stream().forEach(tormatty -&gt; {
+          asteroidit.remove(tormatty);
+          ruutu.getChildren().remove(tormatty.getHahmo());
+      });
+  
+      return true;
+  }).collect(Collectors.toList());
+  
+  poistettavatAmmukset.forEach(ammus -&gt; {
+      ruutu.getChildren().remove(ammus.getHahmo());
+      ammukset.remove(ammus);
+  });
+<% end %>
+
+<p>
+  Vaikka lähestymistapa toimii, voisi sitä ehkäpä parantaa hieman. Kyseessä on käytännössä hahmon "pelissä olemisen" määrittely. Hahmolle voisi esimerkiksi määritellä ominaisuuden "elossa", jota voisi hyödyntää edellä olevan selkeyttämiseen. Kyseisen muuttujan avulla ohjelma selkiytyy hieman.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  ammukset.forEach(ammus -&gt; {
+      asteroidit.forEach(asteroidi -&gt; {
+          if(ammus.tormaa(asteroidi)) {
+              ammus.setElossa(false);
+              asteroidi.setElossa(false);
+          }
+      });
+  });
+
+  ammukset.stream()
+          .filter(ammus -&gt; !ammus.isElossa())
+          .forEach(ammus -&gt; ruutu.getChildren().remove(ammus.getHahmo()));
+  ammukset.removeAll(ammukset.stream()
+                             .filter(ammus -&gt; !ammus.isElossa())
+                             .collect(Collectors.toList()));
+  
+  asteroidit.stream()
+            .filter(asteroidi -&gt; !asteroidi.isElossa())
+            .forEach(asteroidi -&gt; ruutu.getChildren().remove(asteroidi.getHahmo()));
+  asteroidit.removeAll(asteroidit.stream()
+                                 .filter(asteroidi -&gt; !asteroidi.isElossa())
+                                 .collect(Collectors.toList()));
+<% end %>
+
+<p>
+  Lopun riviparit ovat myös käytännössä identtiset -- kummatkin käsittelevät hahmoja. Ehkäpä tässä olisi lisäkohta refaktoroinnille.
+</p>
+
+<img src="/img/material/ammus-poistuu.gif" />
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Pisteiden lisääminen
+<% end %>
+
+<p>
+  Lähes jokaiseen Asteroids-peliin kuuluu pisteiden seuraaminen. Pisteet kirjoitetaan ohjelmaan teksti-oliona, jonka arvoa muutetaan aina pisteiden muuttuessa. Sovitaan, että käyttäjä saa aina 1000 pistettä kun hän saa tuhottua asteroidin. 
+</p>
+
+<p>
+  Javan tarjoama <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/Text.html" target="_blank">Text</a>-luokka on tähän tarkoitukseen mainio. Tekstioliolle määritellään koordinaatti sekä sisältö. Alla olevassa esimerkissä pisteet ovat aina 0.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) throws Exception {
+      Pane ruutu = new Pane();
+      Text text = new Text(10, 20, "Points: 0");
+      ruutu.getChildren().add(text);
+  
+      Scene scene = new Scene(ruutu);
+      stage.setTitle("Asteroids!");
+      stage.setScene(scene);
+      stage.show();
+  }
+<% end %>
+
+
+<img src="/img/material/asteroids-pisteet.png" alt="Ikkuna, jossa on teksti pisteet. Pisteet on nollassa."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Yllä olevassa esimerkissä pisteet ovat aina 0. Haluamme kuitenkin muuttuvat pisteet. Yksi näppärä väline tähän on luokka <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html" target="_blank">AtomicInteger</a>, joka tarjoaa kokonaisluvun kapseloituna oliona. AtomicInteger mahdollistaa myös pisteiden kasvattamisen metodikutsun yhteydessä.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  @Override
+  public void start(Stage stage) throws Exception {
+      Pane ruutu = new Pane();
+      Text text = new Text(10, 20, "Points: 0");
+      ruutu.getChildren().add(text);
+
+      AtomicInteger pisteet = new AtomicInteger();
+  
+      Scene scene = new Scene(ruutu);
+      stage.setTitle("Asteroids!");
+      stage.setScene(scene);
+      stage.show();
+
+
+      new AnimationTimer() {
+
+          @Override
+          public void handle(long nykyhetki) {
+              text.setText("Pisteet: " + pisteet.incrementAndGet());
+          }
+      }.start();
+  }
+<% end %>
+
+<img src="/img/material/pisteet-kasvavat.gif" alt="Ikkuna, jossa on teksti pisteet. Pisteet kasvavat."/>
+
+<p>&nbsp;</p>
+
+<p>
+  Saamme siis pisteet näkyville ja pisteet kasvamaan. Kytketään pisteiden laskenta asteroids-peliin siten, että pisteitä tulee aina kun pelaajan ammus osuu asteroidiin.
+</p>
+
+<p>
+  Tämän voi toteuttaa osana ammusten ja asteroidien törmäystä. 
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  ammukset.forEach(ammus -&gt; {
+      asteroidit.forEach(asteroidi -&gt; {
+          if(ammus.tormaa(asteroidi)) {
+              ammus.setElossa(false);
+              asteroidi.setElossa(false);
+          }
+      });
+
+      if(!ammus.isElossa()) {
+          text.setText("Points: " + pisteet.addAndGet(1000));
+      } 
+  });
+<% end %>
+
+<p>
+  Nyt, olettaen että pisteiden kasvatus on poistettu animationtimerin alusta, pisteitä saa aina asteroidiin osuttaessa.
+</p>
+
+<img src="/img/material/asteroids-ammuskelua.gif" alt="Like a boss."/>
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Lisää asteroideja
+<% end %>
+
+<p>
+  Kun osumme asteroideihin, ne katoavat ja ammuttava loppuu kesken. Tämä ei ole hyväksyttävää!
+</p>
+
+<p>
+  Lisätään ohjelmaan arpomistoiminnallisuus, mikä lisää asteroideja pelin edetessä. Asteroideja lisätään puolen prosentin todennäköisyydellä AnimationTimer-olion kutsujen yhteydessä. Tämän lisäksi uusi asteroidi lisätään vain mikäli se ei heti törmää alukseen.
+</p>
+
+<p>
+  AnimationTimer-olion metodia handle kutsutaan noin 60 kertaa sekunnissa, joten uusia asteroideja tulee kymmenessä sekunnissa muutamia. Kutsu lisätään AnimationTimer-olion handle-metodin loppuun.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  if(Math.random() &lt; 0.005) {
+      Asteroidi asteroidi = new Asteroidi(LEVEYS, KORKEUS);
+      if(!asteroidi.tormaa(alus)) {
+          asteroidit.add(asteroidi);
+          ruutu.getChildren().add(asteroidi.getHahmo());
+      }
+  }
+<% end %>
+
+
+<img src="/img/material/asteroids-ready.gif" alt="Like a boss."/>
+
+<p>&nbsp;</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Asteroids (4 osaa)' } do %>
 
   <p>
-    Matopeli tietää sekä madosta että omenasta. Se tarjoaa mahdollisuuden madon liikuttamiseen, hallinnoi mahdollista omenan syömistä, sekä arpoo uusia omenoita. Matopeli osaa myös kertoa jos peli on loppu, eli mato on törmännyt reunaan tai itseensä.
+    Tehtäväpohjassa on tyhjä ohjelmapohja. Toteuta tehtävään edellistä laajempaa esimerkkiä seuraten Asteroids-peli.
+  </p>
+  
+  <p>
+    Sitä mukaa kun toteutat peliä tehtäväpohjaan, päivitä luokan <code>AsteroidsSovellus</code> metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi tehtävän osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
   </p>
 
   <p>
-    Luo pakkaukseen <code>matopeli.domain</code> luokka <code>Matopeli</code>.
+    Kun saat tehtävän valmiiksi, saat toki jatkaa. Peliin voi lisätä esimerkisi ääniä ja erilaisia hahmoja -- miten esimerkiksi Ufot toimisivat pelissä? Voisivatko ne yrittää ampua hahmon alusta?
+  </p>
+
+
+  <h2>Osa 1</h2>
+
+  <p>
+    Toteuta Asteroids-peliä varten materiaalin osissa 3.1-3.4 esitellyt askeleet, eli (1) peliruudun luominen, (2) aluksen luominen, ja (3) aluksen kääntäminen. 
   </p>
 
   <p>
-    Matopelillä on tieto pelin leveydestä ja korkeudesta sekä tieto siitä jatkuuko peli yhä. Lisäksi matopeli sisältää viitteen mato-olioon ja omenaan.
+    Kun olet saanut nämä osat toimimaan, aseta luokan <code>AsteroidsSovellus</code> metodin <code>osiaToteutettu</code> palauttamaksi arvoksi <code>1</code>.
+  </p>
+
+
+  <h2>Osa 2</h2>
+
+  <p>
+    Täydennä Asteroids-peliä lisäämällä peliin materiaalin osissa 3.5-3.7 esitellyt askeleet, eli käytännössä toiminnallisuuden aluksen liikuttamiseen. 
   </p>
 
   <p>
-    Lisää luokalle Matopeli kaksiparametrinen konstruktori. Konstruktorin ensimmäisenä parametrina annetaan pelin leveys, toisena parametrina pelin korkeus. Leveys ja korkeus kerrotaan ruutujen lukumääränä.
+    Kun olet saanut nämä ja edelliset osat toimimaan, aseta luokan <code>AsteroidsSovellus</code> metodin <code>osiaToteutettu</code> palauttamaksi arvoksi <code>2</code>.
   </p>
 
-  <p>
-    Täydennä konstruktorin toiminnallisuutta siten, että konstruktorissa luodaan myös peliin liittyvä <code>Mato</code>. Luo mato siten, että sijainti riippuu Matopeli-luokan konstruktorissa saaduista parametreista. Madon x-koordinaatin tulee olla <code>leveys / 2</code>, y-koordinaatin <code>korkeus / 2</code> ja suunnan <code>Suunta.ALAS</code>.
-  </p>
 
-  <p>
-    Lisää matopeliin lisäksi seuraavat metodit
-  </p>
-
-  <ul>
-    <li><code>public Mato getMato()</code> palauttaa matopelin madon.</li>
-    <li><code>public void setMato(Mato mato)</code> asettaa matopeliin metodin parametrina olevan madon. Jos metodia <code>getMato</code> kutsutaan madon asetuksen jälkeen, tulee metodin <code>getMato</code> palauttaa viite <em>samaan</em> matoon.</li>
-  </ul>
-
-
-  <h2>Matopeli, osa 2</h2>
+  <h2>Osa 3</h2>
 
 
   <p>
-    Lisää matopelin konstruktoriin omenan luominen.  Konstruktorissa luotavan omenan sijainnin tulee olla satunnainen, kuitenkin niin että omenan x-koordinaatti on aina välillä <code>[0, leveys[</code>, ja y-koordinaatti välillä <code>[0, korkeus[</code>. Tässä luokasta Random on hyötyä.
+    Täydennä Asteroids-peliä lisäämällä peliin materiaalin osissa 3.8-3.10 esitellyt askeleet, eli (1) asteroidin luominen, (2) aluksen ja asteroidin törmääminen, ja (3) useamman asteroidin lisääminen.
   </p>
 
   <p>
-    Lisää matopelille myös seuraavat metodit:
+    Kun olet saanut nämä ja edelliset osat toimimaan, aseta luokan <code>AsteroidsSovellus</code> metodin <code>osiaToteutettu</code> palauttamaksi arvoksi <code>3</code>.
   </p>
 
-  <ul>
-    <li><code>public Omena getOmena</code> palauttaa matopelin omenan.</li>
-    <li><code>public void setOmena(Omena omena)</code> asettaa matopeliin metodin parametrina olevan omenan. Jos metodia <code>getOmena</code> kutsutaan omenan asetuksen jälkeen, tulee metodin <code>getOmena</code> palauttaa viite <em>samaan</em> omenaan.</li>
-    <li><code>public boolean loppu()</code> kertoo onko matopeli päättynyt. Matopeli päättyy jos mato törmää itseensä tai seinään. </li>
-  </ul>
+
+  <h2>Osa 4</h2>
+
 
   <p>
-    Lisää tämän jälkeen luokalle Matopeli metodi <code>public void paivita()</code>. Muokkaa metodin <code>paivita</code>-toiminnallisuutta siten, että metodissa toteutetaan seuraavat askeleet annetussa järjestyksessä.
+    Täydennä Asteroids-peliä lisäämällä peliin materiaalin osissa 3.11-3.14 esitellyt askeleet, eli (1) ruudussa pysyminen, (2) ammukset, (3) pisteiden lisääminen, ja (4) uusien asteroidien lisäämisen.
   </p>
 
-  <ol>
-    <li>Liikuta matoa</li>
-    <li>Jos mato osuu omenaan, syö omena ja kutsu madon kasva-metodia. Arvo peliin uusi omena. Omena tulee arpoa niin, että se ei ole madon päällä (tai ulkona pelialueelta).</li>
-    <li>Jos mato törmää itseensä tai seinään, matopelin tulee tietää siitä, että sen suoritus on loppunut (metodin loppu() tulee seuraavalla kerralla palauttaa arvo true).</li>
-  </ol>
 
   <p>
-    <em>
-      Kokeile nyt poistaa luokasta MatopeliSovellus kommentit ja pelaa matopeliä. Löydät pelistä todennäköisesti vieläkin korjattavaa ja paranneltavaa. Esimerkiksi ennätyslista tai jonkinlainen pistelasku olisi hieno...
-    </em>
+    Kun olet saanut nämä ja edelliset osat toimimaan, aseta luokan <code>AsteroidsSovellus</code> metodin <code>osiaToteutettu</code> palauttamaksi arvoksi <code>4</code>.
   </p>
 
 <% end %>
 
 
-<%= partial 'partials/quiz', locals: { id: '5a1b047a0d23220004ebf8bc' } %>
+<%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a042' } %>
 
 
