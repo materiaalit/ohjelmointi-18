@@ -1,0 +1,1075 @@
+---
+  title: Kertaus 8-14
+  exercise_page: true
+  quiz_page: false
+  published: false
+---
+
+
+<% partial 'partials/material_heading' do %>
+  Kertaustehtäviä osiin 8-14 liittyen
+<% end %>
+
+<p>
+  Tällä sivulla on kertaustehtäviä materiaalin osiin 8-14 liittyen.  Kertaustehtävät saa ladattua TMC:stä. Tehtävät eivät missään nimessä kata kaikkea osien 8-14 sisällöstä, vaan ne toimivat lisäkertauksena kurssin aihepiiriin.
+</p>
+
+<p>
+  Kertaustehtävissä ei ole automaattisia testejä mukana, eli palauta niitä sitä mukaa kun saat tehtävän toimimaan toivotusti. Mieti myös minkälaisilla syötteillä tehtävän toimintaa kannattaa testata.
+</p>
+
+<p>
+  <em>
+    Kertaustehtävät eivät ole "pakollisia", eikä niitä tarvitse tehdä esimerkiksi MOOCin kautta opiskelupaikkaa haettaessa.
+  </em>
+</p>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Matopeli (4 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä luodaan klassisen matopelin rakenteet, eli mato, omena sekä niitä hallinnoiva matopeli. Pelin graafinen käyttöliittymä on sovelluksessa toteutettu valmiina -- graafisesta käyttöliittymästä voi ottaa inspiraatiota omiin projekteihin. Kun olet toteuttanut tehtävän askeleet, poista kommentit luokasta MatopeliSovellus ja kokeile pelaamista.
+  </p>
+
+  <h2>Pala ja Omena</h2>
+
+  <p>
+    Luo pakkaukseen <code>matopeli.domain</code> luokka <code>Pala</code>. Luokalla <code>Pala</code> on konstruktori <code>public Pala(int x, int y)</code>, joka saa palan sijainnin parametrina. Lisäksi luokalla <code>Pala</code> on seuraavat metodit.
+  </p>
+
+  <ul>
+    <li><code>public int getX()</code> palauttaa Palan konstruktorissa saadun x-koordinaatin.</li>
+    <li><code>public int getY()</code> palauttaa Palan konstruktorissa saadun y-koordinaatin.</li>
+    <li><code>public boolean osuu(Pala pala)</code> palauttaa true jos oliolla on sama x- ja y-koordinaatti kuin parametrina saadulla Pala-luokan ilmentymällä.</li>
+    <li><code>public String toString()</code> palauttaa palan sijainnin muodossa <code>(x,y)</code>. Esim. <code>(5,2)</code> kun x-koordinaatin arvo on 5 ja y-koordinaatin arvo on 2.</li>
+  </ul>
+
+  <p>
+    Toteuta pakkaukseen <code>matopeli.domain</code> myös luokka <code>Omena</code>. Peri luokalla Omena luokka <code>Pala</code>.
+  </p>
+
+
+  <h2>Mato</h2>
+
+  <p>
+    Toteuta pakkaukseen <code>matopeli.domain</code> luokka <code>Mato</code>. Luokalla <code>Mato</code> on konstruktori <code>public Mato(int alkuX, int alkuY, Suunta alkusuunta)</code>, joka luo uuden madon. Madon suunta on parametrina annettu <code>alkusuunta</code>. Mato koostuu listasta <code>Pala</code>-luokan ilmentymiä.
+  </p>
+
+  <p>
+    Luokka <code>Suunta</code> löytyy valmiina pakkauksesta <code>Matopeli.domain</code>.
+  </p>
+
+  <p>
+    Mato luodaan yhden palan pituisena, mutta madon "aikuispituus" on kolme. Madon tulee kasvaa yhdellä aina kun se liikkuu. Kun madon pituus on kolme, se kasvaa isommaksi vain syödessään.
+  </p>
+
+  <p>
+    Toteuta madolle seuraavat metodit
+  </p>
+
+  <ul>
+    <li><code>public Suunta getSuunta()</code> palauttaa madon suunnan.</li>
+    <li><code>public void setSuunta(Suunta suunta)</code> asettaa madolle uuden suunnan. Mato liikkuu uuteen suuntaan kun metodia <code>liiku</code> kutsutaan seuraavan kerran.</li>
+    <li><code>public int getPituus()</code> palauttaa madon pituuden. Madon pituuden tulee olla sama kuin <code>getPalat()</code>-metodikutsun palauttaman listan alkioiden määrä.</li>
+    <li><code>public List&lt;Pala&gt; getPalat()</code> palauttaa listan pala-olioita, joista mato koostuu. Palat ovat listalla järjestyksessä, siten että pää sijaitsee listan lopussa.</li>
+    <li><code>public void liiku()</code> liikuttaa matoa yhden palan verran eteenpäin.</li>
+    <li><code>public void kasva()</code> kasvattaa madon kokoa yhdellä. Madon kasvaminen tapahtuu seuraavan <code>liiku</code>-metodikutsun yhteydessä. Sitä seuraaviin liiku-kutsuihin kasvaminen ei enää vaikuta. Jos madon pituus on 1 tai 2 kun metodia kutsutaan, ei kutsulla saa olla mitään vaikutusta matoon.</li>
+    <li><code>public boolean osuu(Pala pala)</code> tarkistaa osuuko mato parametrina annettuun palaan. Jos mato osuu palaan, eli joku madon pala osuu metodille parametrina annettuun palaan, tulee metodin palauttaa arvo <code>true</code>. Muuten metodi palauttaa arvon <code>false</code>.</li>
+    <li><code>public boolean osuuItseensa()</code> tarkistaa osuuko mato itseensä. Jos mato osuu itseensä, eli joku sen pala osuu johonkin toiseen sen palaan, metodi palauttaa arvon <code>true</code>. Muuten metodi palauttaa arvon <code>false</code>.</li>
+  </ul>
+
+  <p>
+    Metodien <code>public void kasva()</code> ja <code>public void liiku()</code> toiminnallisuus tulee toteuttaa siten, että mato kasvaa vasta seuraavalla liikkumiskerralla.
+  </p>
+
+  <p>
+    Liikkuminen kannattaa toteuttaa siten, että madolle luodaan liikkuessa aina uusi pala. Uuden palan sijainti riippuu madon kulkusuunnasta: vasemmalle mennessä uuden palan sijainti on edellisen pääpalan sijainnista yksi vasemmalle, eli sen x-koordinaatti on yhtä pienempi. Jos uuden palan sijainti on edellisen pääpalan alapuolella, eli madon suunta on alas, tulee uuden palan y-koordinaatin olla yhtä isompi kuin pääpalan y-koordinaatti (käytämme siis piirtämisestä tuttua koordinaattijärjestelmää, jossa y-akseli on kääntynyt).
+  </p>
+
+  <p>
+    Liikkuessa uusi pala lisätään listan loppuun, ja poistetaan listan alussa oleva alkio. Uudesta palasta siis tulee madon "uusi pää" ja  jokaisen palan koordinaatteja ei tarvitse päivittää erikseen. Toteuta kasvaminen siten, että listan alussa olevaa palaa, eli "madon häntää" ei poisteta jos metodia <code>kasva</code> on juuri kutsuttu.
+  </p>
+
+  <p>
+    Huom! Kasvata matoa aina sen liikkuessa jos sen pituus on pienempi kuin 3.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Mato mato = new Mato(5, 5, Suunta.OIKEA);
+    System.out.println(mato.getPalat());
+    mato.liiku();
+    System.out.println(mato.getPalat());
+    mato.liiku();
+    System.out.println(mato.getPalat());
+    mato.liiku();
+    System.out.println(mato.getPalat());
+
+    mato.kasva();
+    System.out.println(mato.getPalat());
+    mato.liiku();
+    System.out.println(mato.getPalat());
+
+    mato.setSuunta(Suunta.VASEN);
+    System.out.println(mato.osuuItseensa());
+    mato.liiku();
+    System.out.println(mato.osuuItseensa());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    [(5,5)]
+    [(5,5), (6,5)]
+    [(5,5), (6,5), (7,5)]
+    [(6,5), (7,5), (8,5)]
+    [(6,5), (7,5), (8,5)]
+    [(6,5), (7,5), (8,5), (9,5)]
+    false
+    true
+  <% end %>
+
+
+  <h2>Matopeli, osa 1</h2>
+
+  <p>
+    Matopeli tietää sekä madosta että omenasta. Se tarjoaa mahdollisuuden madon liikuttamiseen, hallinnoi mahdollista omenan syömistä, sekä arpoo uusia omenoita. Matopeli osaa myös kertoa jos peli on loppu, eli mato on törmännyt reunaan tai itseensä.
+  </p>
+
+  <p>
+    Luo pakkaukseen <code>matopeli.domain</code> luokka <code>Matopeli</code>.
+  </p>
+
+  <p>
+    Matopelillä on tieto pelin leveydestä ja korkeudesta sekä tieto siitä jatkuuko peli yhä. Lisäksi matopeli sisältää viitteen mato-olioon ja omenaan.
+  </p>
+
+  <p>
+    Lisää luokalle Matopeli kaksiparametrinen konstruktori. Konstruktorin ensimmäisenä parametrina annetaan pelin leveys, toisena parametrina pelin korkeus. Leveys ja korkeus kerrotaan ruutujen lukumääränä.
+  </p>
+
+  <p>
+    Täydennä konstruktorin toiminnallisuutta siten, että konstruktorissa luodaan myös peliin liittyvä <code>Mato</code>. Luo mato siten, että sijainti riippuu Matopeli-luokan konstruktorissa saaduista parametreista. Madon x-koordinaatin tulee olla <code>leveys / 2</code>, y-koordinaatin <code>korkeus / 2</code> ja suunnan <code>Suunta.ALAS</code>.
+  </p>
+
+  <p>
+    Lisää matopeliin lisäksi seuraavat metodit
+  </p>
+
+  <ul>
+    <li><code>public Mato getMato()</code> palauttaa matopelin madon.</li>
+    <li><code>public void setMato(Mato mato)</code> asettaa matopeliin metodin parametrina olevan madon. Jos metodia <code>getMato</code> kutsutaan madon asetuksen jälkeen, tulee metodin <code>getMato</code> palauttaa viite <em>samaan</em> matoon.</li>
+  </ul>
+
+
+  <h2>Matopeli, osa 2</h2>
+
+
+  <p>
+    Lisää matopelin konstruktoriin omenan luominen.  Konstruktorissa luotavan omenan sijainnin tulee olla satunnainen, kuitenkin niin että omenan x-koordinaatti on aina välillä <code>[0, leveys[</code>, ja y-koordinaatti välillä <code>[0, korkeus[</code>. Tässä luokasta Random on hyötyä.
+  </p>
+
+  <p>
+    Lisää matopelille myös seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public Omena getOmena</code> palauttaa matopelin omenan.</li>
+    <li><code>public void setOmena(Omena omena)</code> asettaa matopeliin metodin parametrina olevan omenan. Jos metodia <code>getOmena</code> kutsutaan omenan asetuksen jälkeen, tulee metodin <code>getOmena</code> palauttaa viite <em>samaan</em> omenaan.</li>
+    <li><code>public boolean loppu()</code> kertoo onko matopeli päättynyt. Matopeli päättyy jos mato törmää itseensä tai seinään. </li>
+  </ul>
+
+  <p>
+    Lisää tämän jälkeen luokalle Matopeli metodi <code>public void paivita()</code>. Muokkaa metodin <code>paivita</code>-toiminnallisuutta siten, että metodissa toteutetaan seuraavat askeleet annetussa järjestyksessä.
+  </p>
+
+  <ol>
+    <li>Liikuta matoa</li>
+    <li>Jos mato osuu omenaan, syö omena ja kutsu madon kasva-metodia. Arvo peliin uusi omena. Omena tulee arpoa niin, että se ei ole madon päällä (tai ulkona pelialueelta).</li>
+    <li>Jos mato törmää itseensä tai seinään, matopelin tulee tietää siitä, että sen suoritus on loppunut (metodin loppu() tulee seuraavalla kerralla palauttaa arvo true).</li>
+  </ol>
+
+  <p>
+    <em>
+      Kokeile nyt poistaa luokasta MatopeliSovellus kommentit ja pelaa matopeliä. Löydät pelistä todennäköisesti vieläkin korjattavaa ja paranneltavaa. Esimerkiksi ennätyslista tai jonkinlainen pistelasku olisi hieno...
+    </em>
+  </p>
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: '2048 (5 osaa)' } do %>
+
+  <p>
+    <a href="https://en.wikipedia.org/wiki/2048_(video_game)" target="_blank" rel="noopener">2048</a> on suosittu peli. Peliä pelataan 4x4 -kokoisessa lukuja sisältävässä ruudukossa, ja siinä on neljä mahdollista siirtoa: (o)ikealle, (a)las, (v)asemmalle ja (y)lös. Jokainen siirto siirtää kaikkia ruudukossa olevia arvoja niin paljon haluttuun suuntaan kuin mahdollista. Jos kahdessa vierekkäisessä ruudussa on sama arvo, yhdistetään ruutujen arvot yhteen. Esimerkiksi:
+  </p>
+
+  <pre>
+
+2 0 2 0
+0 0 0 1
+0 1 0 0
+0 0 0 0
+&gt; o
+
+0 0 0 4
+0 0 0 1
+0 0 0 1
+0 1 0 0
+  </pre>
+
+  <p>
+    Aina kun pelaaja tekee siirron, satunnaiseen nolla-arvoiseen kohtaan arvotaan uusi luku. Peli loppuu kun yhdessä ruuduista on luku 2048 tai siirtäminen ei enää onnistu. Alla esimerkki pelin kulusta.
+  </p>
+
+  <pre>
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+
+&gt; o
+0 0 0 1
+0 0 0 0
+0 0 0 0
+0 1 0 0
+
+&gt; o
+0 0 0 1
+0 0 0 0
+0 0 0 1
+0 0 0 1
+
+&gt; a
+0 0 0 0
+0 0 0 0
+1 0 0 2
+0 0 0 1
+
+&gt; a
+1 0 0 0
+0 0 0 0
+0 0 0 2
+1 0 0 1
+
+&gt; v
+1 0 0 0
+0 0 0 0
+2 0 0 0
+2 1 0 0
+
+&gt; y
+1 1 0 0
+4 0 0 0
+0 0 0 0
+0 1 0 0
+
+&gt; v
+2 0 0 0
+4 0 0 0
+0 0 0 0
+1 0 1 0
+
+&gt; v
+2 0 0 0
+4 1 0 0
+0 0 0 0
+2 0 0 0
+
+&gt;
+  </pre>
+
+  <p>
+    Tässä tehtävässä rakennat pelin toimintaan tarvittua ydintoiminnallisuutta. Tehtävässä kerrataan myös toistolauseiden ja indeksien käyttöä.
+  </p>
+
+  <h2>Peliruudukko</h2>
+
+  <p>
+    Luo pakkaukseen sovellus luokka Peliruudukko. Luokalla tulee olla parametriton konstruktori, joka luo 4x4-kokoisen ruudukon, ja jonka vasemmassa yläkulmassa on arvo 1. Oleta, että kaksiulotteisen taulukon ensimmäinen indeksi kuvaa y-koordinaattia, ja toinen indeksi x-koordinaattia. Oleta lisäksi, että y-koordinaatti kasvaa alaspäin. Vasen yläkulma on siis kohdassa taulukko[0][0] ja vasen alakulma kohdassa taulukko[3][0] -- olettaen, että taulukon koko on 4.
+  </p>
+
+  <p>
+    Lisää luokalle myös metodit public int[][] getTaulukko(), joka palauttaa pelin sisäisen tilan, ja public void setTaulukko(int[][] taulukko), jolla voi asettaa pelin sisäisen tilan.
+  </p>
+
+  <h2>Siirrä oikealle</h2>
+
+  <p>
+    Tee tämän jälkeen peliruudukolle metodi public void siirraOikealle(), joka siirtää jokaisen rivin palat oikealle. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat. Alla muutamia esimerkkeja.
+  </p>
+
+  <pre>
+1 1 1 1
+1 1 0 1
+1 1 1 0
+1 0 1 1
+
+&gt; o
+0 0 0 4
+0 0 1 2
+0 0 1 2
+0 0 1 2
+  </pre>
+
+  <pre>
+1 0 0 1
+0 1 0 1
+2 2 4 0
+0 1 0 0
+
+&gt; o
+0 0 0 2
+0 0 0 2
+0 0 0 8
+0 0 0 1
+  </pre>
+
+  <h2>Siirrä ylös ja siirrä alas</h2>
+
+  <p>
+    Tee seuraavaksi peliruudukolle metodit public void siirraYlos(), joka siirtää jokaisen rivin palat ylös, ja public void siirraAlas(), joka siirtää jokaisen rivin palat alas. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat.
+  </p>
+
+  <h2>Siirrä vasemmalle ja pelin loppuminen</h2>
+
+  <p>
+    Tee seuraavaksi peliruudukolle metodi public void siirraVasemmalle(), joka siirtää jokaisen rivin palat vasemmalle. Kun metodi siirraVasemmalle on valmis, toteuta sovellukseen metodi public boolean peliKaynnissa(), joka palauttaa tiedon pelin jatkumisesta.
+  </p>
+
+  <p>
+    Peli jatkuu jos (1) pelissä on yksikin ruutu, jossa on arvo 0, tai (2) kaksi pelin vierekkaista (vaaka- tai pystytasossa) ruutua ovat samanarvoiset.
+  </p>
+
+  <h2>Tekstikayttoliittyma ja uuden luvun arpominen</h2>
+
+  <p>
+    Tee lopulta pelille tekstikäyttöliittymä. Pelin tulee käynnistyä kun luokassa Peli olevaa main-metodia kutsutaan. Pelaajalle tulee tarjota vaihtoehdot o, v, y, a, x, missä o on oikealle, v on vasemmalle, y on ylös, a on alas, ja x on lopeta. Jokaisen siirron -- paitsi pelin lopettavan x:n -- jälkeen taulukon satunnaiseen tyhjään kohtaan tulee lisätä luku 1. Alla on esimerkki tekstikäyttöliittymän toiminnasta.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    1 0 0 0
+    0 0 0 0
+    0 0 0 0
+    0 0 0 0
+
+    &gt; <font color="red">o</font>
+    0 0 0 1
+    0 0 0 0
+    0 0 0 1
+    0 0 0 0
+
+    &gt; <font color="red">y</font>
+    0 0 0 2
+    1 0 0 0
+    0 0 0 0
+    0 0 0 0
+
+    &gt; <font color="red">v</font>
+    2 0 1 0
+    1 0 0 0
+    0 0 0 0
+    0 0 0 0
+
+    &gt; <font color="red">o</font>
+    0 0 2 1
+    0 0 0 1
+    0 1 0 0
+    0 0 0 0
+
+    &gt; <font color="red">y</font>
+    0 1 2 2
+    0 0 0 0
+    0 0 0 0
+    0 0 1 0
+
+    &gt; <font color="red">o</font>
+    0 0 1 4
+    0 0 0 0
+    0 0 0 1
+    0 0 0 1
+
+    &gt; <font color="red">x</font>
+  <% end %>
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Matkavalokuvat (2 osaa)' } do %>
+
+  <p>
+    Matkailijat tykkäävät ottaa valokuvia. Usein kuvissa sattuu kuitenkin olemaan ärsyttävä turisti, joka on esimerkiksi kuvatun kohteen edessä. Harmitus kasvaa erityisesti, jos samainen turisti esiintyy jokaisessa kuvassa.
+  </p>
+
+  <p>
+    Alla on kaksi kuvaa eräästä reissusta.
+  </p>
+
+  <img src="/img/exercises/06-19-matkavalokuvat-1.png"/>
+
+  <p>&nbsp;</p>
+
+  <img src="/img/exercises/06-19-matkavalokuvat-2.png"/>
+
+  <p>&nbsp;</p>
+
+  <p>
+    Täydennetään ohjelmaa, mikä mahdollistaa kuvan katsomisen ilman turistia. Apunamme meillä on iso nippu samasta kohteesta otettuja kuvia (turisti on harmittavasti kylläkin jokaisessa niistä...)
+  </p>
+
+  <p>
+    Tehtäväpohjassa on valmiina ohjelma, jolla voi tarkastella kuvia. Huomaat, että ohjelmassa käytetty kuvien näyttämistapa poikkeaa hieman edellisistä esimerkeistä -- kuten todettua, lähestymistapoja on useita. Kun ohjelma on käynnissä, painamalla numeronäppäintä saat näkyville kuvalistan tietyssä indeksissä olevan kuvan. Kun painat näppäintä "v", näet kuvan muodossa, missä jokaisen kuvan jokaisesta pikselistä on valittu vaaleimmat pikseliarvot.
+  </p>
+
+  <img src="/img/exercises/06-19-matkavalokuvat-vaalein.png"/>
+
+  <p>&nbsp;</p>
+
+  <h2>Tummimman värin valinta</h2>
+
+  <p>
+    Muokkaa sovellusta siten, että kun käyttäjä painaa näppäintä "t", ohjelma näyttää kuvan, missä näkyy yhdistettävien kuvien tummimmat pikselit. Toteuta tummimman värin valinta luokan Yhdistin metodiin <code>public WritableImage tummin(final ArrayList&lt;Image&gt; kuvat)</code> -- ota mallia metodista <code>vaalein</code>.
+  </p>
+
+  <p>
+    Kun olet lisännyt tummennustoiminnallisuuden, tumman kuvan pitäisi näyttää kutakuinkin seuraavalta.
+  </p>
+
+  <img src="/img/exercises/06-19-matkavalokuvat-tummin.png"/>
+
+  <p>&nbsp;</p>
+
+  <h2>Värien mediaani</h2>
+
+  <p>
+    Noniin, hankkiudutaan turistista eroon.
+  </p>
+
+  <p>
+    Muokkaa sovellusta siten, että kun käyttäjä painaa näppäintä "m", ohjelma näyttää kuvan, missä näkyy yhdistettävien kuvien väriarvojen mediaanit. Toteuta mediaanivärin valinta luokan Yhdistin metodiin <code>public WritableImage mediaani(final ArrayList&lt;Image&gt; kuvat)</code>.
+  </p>
+
+  <p>
+    Mediaani on järjestettyjen lukujen keskimmäinen arvo. Esimerkiksi, jos viiden kuvan sinisten värien arvot ovat <code>211, 123, 17, 155, 8</code>, on niiden mediaani <code>123</code>. Saat mediaanin selville järjestämällä arvot, ja valitsemalla listan keskimmäisen arvon.
+  </p>
+
+  <p>
+    Toteutuksen pitäisi poistaa ärsyttävä turisti:
+  </p>
+
+  <img src="/img/exercises/06-19-matkavalokuvat-mediaani.png"/>
+
+
+  <p>
+    <em>Tehtävän alkuperäinen versio: John Nicholson / Austin Peay State University</em>
+  </p>
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Elokuvien suosittelija (8 osaa)' } do %>
+
+  <p>
+    <a href="https://signup.netflix.com/" target="_blank" rel="noopener">Netflix</a> lupasi lokakuussa 2006 miljoona dollaria henkilölle tai ryhmälle, joka kehittäisi ohjelman, joka on 10% parempi elokuvien suosittelussa kuin heidän oma ohjelmansa. Kilpailu ratkesi syyskuussa 2009 (<a href="http://www.netflixprize.com/" target="_blank" rel="noopener">http://www.netflixprize.com/</a>).
+  </p>
+
+  <p>
+    Rakennetaan tässä tehtävässä ohjelma elokuvien suositteluun. Alla on sen toimintaesimerkki:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArvioRekisteri arviot = new ArvioRekisteri();
+
+    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+    Elokuva eraserhead = new Elokuva("Eraserhead");
+
+    Henkilo matti = new Henkilo("Matti");
+    Henkilo pekka = new Henkilo("Pekka");
+    Henkilo mikke = new Henkilo("Mikke");
+    Henkilo thomas = new Henkilo("Thomas");
+
+    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+
+    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
+    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
+
+    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
+
+
+    Suosittelija suosittelija = new Suosittelija(arviot);
+    System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
+    System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Thomas suositus: Hiljaiset sillat
+    Mikke suositus: Tuulen viemää
+  <% end %>
+
+  <p>
+    Ohjelma osaa suositella elokuvia niiden yleisen arvion perusteella, sekä henkilökohtaisten henkilön antaminen arvioiden perusteella. Lähdetään rakentamaan ohjelmaa.
+  </p>
+
+
+  <h2>Henkilo ja Elokuva</h2>
+
+  <p>
+    Luo pakkaus <code>suosittelija.domain</code> ja lisää sinne luokat <code>Henkilo</code> ja <code>Elokuva</code>. Kummallakin luokalla on julkinen konstruktori <code>public <em>Luokka</em>(String nimi)</code>, sekä metodi <code>public String getNimi()</code>, joka palauttaa konstruktorissa saadun nimen.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Henkilo henkilo = new Henkilo("Pekka");
+    Elokuva elokuva = new Elokuva("Eraserhead");
+
+    System.out.println(henkilo.getNimi() + " ja " + elokuva.getNimi());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Pekka ja Eraserhead
+  <% end %>
+
+  <p>
+    Lisää luokille myös <code>public String toString()</code>-metodi, joka palauttaa konstruktorissa parametrina annetun nimen, sekä korvaa metodit <code>equals</code> ja <code>hashCode</code>.
+  </p>
+
+  <p>
+    Korvaa <code>equals</code> siten että samuusvertailu tapahtuu oliomuuttujan <code>nimi</code> perusteella. Metodi hashCode kannattaa generoida automaattisesti seuraavan ohjeen mukaan:
+  </p>
+
+  <p>
+    <em>
+      Muistathan, että NetBeans tarjoaa metodien equals ja hashCode automaattisen luonnin. Voit valita valikosta Source -> Insert Code, ja valita aukeavasta listasta equals() and hashCode(). Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään.
+    </em>
+  </p>
+
+
+  <h2>Arvio</h2>
+
+  <p>
+    Luo pakkaukseen <code>suosittelija.domain</code> lueteltu tyyppi <code>Arvio</code>. Enum-luokalla <code>Arvio</code> on julkinen metodi <code>public int getArvo()</code>, joka palauttaa arvioon liittyvän arvon. Arviotunnusten ja niihin liittyvien arvosanojen tulee olla seuraavat:
+  </p>
+
+  <table class="table">
+    <tr><th>Tunnus</th><th>Arvo</th></tr>
+    <tr><td>HUONO</td><td>-5</td></tr>
+    <tr><td>VALTTAVA</td><td>-3</td></tr>
+    <tr><td>EI_NAHNYT</td><td>0</td></tr>
+    <tr><td>NEUTRAALI</td><td>1</td></tr>
+    <tr><td>OK</td><td>3</td></tr>
+    <tr><td>HYVA</td><td>5</td></tr>
+  </table>
+
+  <p>
+    Luokkaa voi käyttää seuraavasti:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Arvio annettu = Arvio.HYVA;
+    System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
+    annettu = Arvio.NEUTRAALI;
+    System.out.println("Arvio " + annettu + ", arvo " + annettu.getArvo());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Arvio HYVA, arvo 5
+    Arvio NEUTRAALI, arvo 1
+  <% end %>
+
+
+  <h2>ArvioRekisteri, osa 1</h2>
+
+  <p>
+    Aloitetaan arvioiden varastointiin liittyvän palvelun toteutus.
+  </p>
+
+  <p>
+    Luo pakkaukseen <code>suosittelija</code> luokka <code>ArvioRekisteri</code>, jolla on konstruktori <code>public ArvioRekisteri()</code> sekä seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public void lisaaArvio(Elokuva elokuva, Arvio arvio)</code> lisää arviorekisteriin parametrina annetulle elokuvalle uuden arvion. Samalla elokuvalla voi olla useita samanlaisiakin arvioita.</li>
+    <li><code>public List&lt;Arvio&gt; annaArviot(Elokuva elokuva)</code> palauttaa elokuvalle lisätyt arviot listana.</li>
+    <li><code>public Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot()</code> palauttaa hajautustaulun, joka sisältää arvioidut elokuvat avaimina. Jokaiseen elokuvaan liittyy lista, joka sisältää elokuvaan lisatyt arviot.</li>
+  </ul>
+
+  <p>
+    Testaa metodien toimintaa seuraavalla lähdekoodilla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+    Elokuva eraserhead = new Elokuva("Eraserhead");
+
+    ArvioRekisteri rekisteri = new ArvioRekisteri();
+    rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
+    rekisteri.lisaaArvio(eraserhead, Arvio.HUONO);
+    rekisteri.lisaaArvio(eraserhead, Arvio.HYVA);
+
+    rekisteri.lisaaArvio(hiljaisetSillat, Arvio.HYVA);
+    rekisteri.lisaaArvio(hiljaisetSillat, Arvio.OK);
+
+    System.out.println("Kaikki arviot: " + rekisteri.elokuvienArviot());
+    System.out.println("Arviot Eraserheadille: " + rekisteri.annaArviot(eraserhead));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Kaikki arviot: {Hiljaiset sillat=[HYVA, OK], Eraserhead=[HUONO, HUONO, HYVA]}
+    Arviot Eraserheadille: [HUONO, HUONO, HYVA]
+  <% end %>
+
+
+  <h2>ArvioRekisteri, osa 2</h2>
+
+  <p>
+    Lisätään seuraavaksi mahdollisuus henkilökohtaisten arvioiden lisäämiseen.
+  </p>
+
+  <p>
+    Lisää luokkaan <code>ArvioRekisteri</code> seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public void lisaaArvio(Henkilo henkilo, Elokuva elokuva, Arvio arvio)</code> lisää parametrina annetulle elokuvalle tietyn henkilön tekemän arvion. Sama henkilö voi arvioida tietyn elokuvan vain kertaalleen. Henkilön tekemä arvio tulee myös lisätä kaikkiin elokuviin liittyviin arvioihin.</li>
+    <li><code>public Arvio haeArvio(Henkilo henkilo, Elokuva elokuva)</code> palauttaa parametrina annetun henkilön tekemän arvion parametrina annetulle elokuvalle. Jos henkilö ei ole arvioinut kyseistä elokuvaa, palauta arvio <code>Arvio.EI_NAHNYT</code>.</li>
+    <li><code>public Map&lt;Elokuva, Arvio&gt; annaHenkilonArviot(Henkilo henkilo)</code> palauttaa hajautustaulun, joka sisältää henkilön tekemät arviot. Hajautustaulun avaimena on arvioidut elokuvat, arvoina arvioituihin elokuviin liittyvät arviot. Jos henkilö ei ole arvioinut yhtään elokuvaa, palautetaan tyhjä hajautustaulu.</li>
+    <li><code>public List&lt;Henkilo&gt; arvioijat()</code> palauttaa listan henkilöistä jotka ovat arvioineet elokuvia.</li></ul>
+
+  <p>
+    Henkilöiden tekemät arviot kannattanee tallentaa hajautustauluun, jossa avaimena on henkilö. Arvona hajautustaulussa on toinen hajautustaulu, jossa avaimena on elokuva ja arvona arvio.
+  </p>
+
+  <p>
+    Testaa paranneltua <code>ArvioRekisteri</code>-luokkaa seuraavalla lähdekoodipätkällä:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArvioRekisteri arviot = new ArvioRekisteri();
+
+    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+    Elokuva eraserhead = new Elokuva("Eraserhead");
+
+    Henkilo matti = new Henkilo("Matti");
+    Henkilo pekka = new Henkilo("Pekka");
+
+    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+
+    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+    arviot.lisaaArvio(pekka, eraserhead, Arvio.OK);
+
+    System.out.println("Arviot Eraserheadille: " + arviot.annaArviot(eraserhead));
+    System.out.println("Matin arviot: " + arviot.annaHenkilonArviot(matti));
+    System.out.println("Arvioijat: " + arviot.arvioijat());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Arviot Eraserheadille: [OK, OK]
+    Matin arviot: {Tuulen viemää=HUONO, Eraserhead=OK}
+    Arvioijat: [Pekka, Matti]
+  <% end %>
+
+  <p>
+    Luodaan seuraavaksi muutama apuluokka arviointien helpottamiseksi.
+  </p>
+
+
+  <h2>HenkiloComparator</h2>
+
+  <p>
+    Luo pakkaukseen <code>suosittelija.comparator</code> luokka <code>HenkiloComparator</code>. Luokan <code>HenkiloComparator</code> tulee toteuttaa rajapinta <code>Comparator&lt;Henkilo&gt;</code>, ja sillä pitää olla konstruktori <code>public HenkiloComparator(Map&lt;Henkilo, Integer&gt; henkiloidenSamuudet)</code>. Luokkaa <code>HenkiloComparator</code> käytetään myöhemmin henkilöiden järjestämiseen henkilöön liittyvän luvun perusteella.
+  </p>
+
+  <p>
+    HenkiloComparator-luokan tulee mahdollistaa henkilöiden järjestäminen henkilöön liittyvän luvun perusteella.
+  </p>
+
+  <p>
+    Testaa luokan toimintaa seuraavalla lähdekoodilla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Henkilo matti = new Henkilo("Matti");
+    Henkilo pekka = new Henkilo("Pekka");
+    Henkilo mikke = new Henkilo("Mikke");
+    Henkilo thomas = new Henkilo("Thomas");
+
+    Map&lt;Henkilo, Integer&gt; henkiloidenSamuudet = new HashMap&lt;&gt;();
+    henkiloidenSamuudet.put(matti, 42);
+    henkiloidenSamuudet.put(pekka, 134);
+    henkiloidenSamuudet.put(mikke, 8);
+    henkiloidenSamuudet.put(thomas, 82);
+
+    List&lt;Henkilo&gt; henkilot = Arrays.asList(matti, pekka, mikke, thomas);
+    System.out.println("Henkilöt ennen järjestämistä: " + henkilot);
+
+    Collections.sort(henkilot, new HenkiloComparator(henkiloidenSamuudet));
+    System.out.println("Henkilöt järjestämisen jälkeen: " + henkilot);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Henkilöt ennen järjestämistä: [Matti, Pekka, Mikke, Thomas]
+    Henkilöt järjestämisen jälkeen: [Pekka, Thomas, Matti, Mikke]
+  <% end %>
+
+
+  <h2>ElokuvaComparator</h2>
+
+  <p>
+    Luo pakkaukseen <code>suosittelija.comparator</code> luokka <code>ElokuvaComparator</code>. Luokan <code>ElokuvaComparator</code> tulee toteuttaa rajapinta <code>Comparator&lt;Elokuva&gt;</code>, ja sillä pitää olla konstruktori <code>public ElokuvaComparator(Map&lt;Elokuva, List&lt;Arvio&gt;&gt; arviot)</code>. Luokkaa <code>ElokuvaComparator</code> käytetään myöhemmin elokuvien järjestämiseen niiden arvioiden perusteella.
+  </p>
+
+  <p>
+    ElokuvaComparator-luokan tulee tarjota mahdollisuus elokuvien järjestäminen niiden saamien arvosanojen keskiarvon perusteella. Korkeimman keskiarvon saanut elokuva tulee ensimmäisenä, matalimman keskiarvon saanut viimeisenä.
+  </p>
+
+  <p>
+    Testaa luokan toimintaa seuraavalla lähdekoodilla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArvioRekisteri arviot = new ArvioRekisteri();
+
+    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+    Elokuva eraserhead = new Elokuva("Eraserhead");
+
+    Henkilo matti = new Henkilo("Matti");
+    Henkilo pekka = new Henkilo("Pekka");
+    Henkilo mikke = new Henkilo("Mikke");
+
+    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+
+    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.HUONO);
+    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
+
+    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
+
+    Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot = arviot.elokuvienArviot();
+
+    List&lt;Elokuva&gt; elokuvat = Arrays.asList(tuulenViemaa, hiljaisetSillat, eraserhead);
+    System.out.println("Elokuvat ennen järjestämistä: " + elokuvat);
+
+    Collections.sort(elokuvat, new ElokuvaComparator(elokuvienArviot));
+    System.out.println("Elokuvat järjestämisen jälkeen: " + elokuvat);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Elokuvat ennen järjestämistä: [Tuulen viemää, Hiljaiset sillat, Eraserhead]
+    Elokuvat järjestämisen jälkeen: [Hiljaiset sillat, Tuulen viemää, Eraserhead]
+  <% end %>
+
+
+  <h2>Suosittelija, osa 1</h2>
+
+  <p>
+    Toteuta pakkaukseen <code>suosittelija</code> luokka <code>Suosittelija</code>. Luokan <code>Suosittelija</code> konstruktori saa parametrinaan <code>ArvioRekisteri</code>-tyyppisen olion. Suosittelija käyttää arviorekisterissä olevia arvioita suositusten tekemiseen.
+  </p>
+
+  <p>
+    Toteuta luokalle metodi <code>public Elokuva suositteleElokuva(Henkilo henkilo)</code>, joka suosittelee henkilölle elokuvia.
+  </p>
+
+  <p>
+    Toteuta metodi siten, että se suosittelee aina elokuvaa, jonka arvioiden arvosanojen keskiarvo on suurin. Vinkki: Tarvitset parhaan elokuvan selvittämiseen ainakin aiemmin luotua <code>ElokuvaComparator</code>-luokkaa, luokan <code>ArvioRekisteri</code> metodia <code>public Map&lt;Elokuva, List&lt;Arvio&gt;&gt; elokuvienArviot()</code>, sekä listaa olemassaolevista elokuvista.
+  </p>
+
+  <p>
+    Testaa ohjelman toimimista seuraavalla lähdekoodilla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArvioRekisteri arviot = new ArvioRekisteri();
+
+    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+    Elokuva eraserhead = new Elokuva("Eraserhead");
+
+    Henkilo matti = new Henkilo("Matti");
+    Henkilo pekka = new Henkilo("Pekka");
+    Henkilo mikke = new Henkilo("Mikael");
+
+    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+
+    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+    arviot.lisaaArvio(pekka, hiljaisetSillat, Arvio.VALTTAVA);
+    arviot.lisaaArvio(pekka, eraserhead, Arvio.VALTTAVA);
+
+    Suosittelija suosittelija = new Suosittelija(arviot);
+    Elokuva suositeltu = suosittelija.suositteleElokuva(mikke);
+    System.out.println("Mikaelille suositeltu elokuva oli: " + suositeltu);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Mikaelille suositeltu elokuva oli: Hiljaiset sillat
+  <% end %>
+
+  <p>
+    Nyt tekemämme ensimmäinen vaihe toimii oikein ainoastaan henkilöille, jotka eivät ole vielä arvostelleet yhtään elokuvaa. Heidän elokuvamaustaanhan on mahdoton sanoa mitään ja paras arvaus on suositella heille keskimäärin parhaan arvosanan saanutta elokuvaa.
+  </p>
+
+
+  <h2>Suosittelija, osa 2</h2>
+
+  <p>
+    <em>
+      Huom! Tehtävä on haastava. Kannattaa tehdä ensin muut tehtävät ja palata tähän myöhemmin. Voit palauttaa tehtäväsarjan TMC:hen vaikket saakaan tätä tehtävää tehdyksi, aivan kuten lähes kaikkien muidenkin tehtävien kohdalla.
+    </em>
+  </p>
+
+  <p>
+    Valitettavasti tämän osan virhediagnostiikkakaan ei ole samaa luokkaa kuin edellisissä kohdissa.
+  </p>
+
+  <p>
+    Jos henkilöt ovat lisänneet omia suosituksia suosituspalveluun, tiedämme jotain heidän elokuvamaustaan. Laajennetaan suosittelijan toiminnallisuutta siten, että se luo henkilökohtaisen suosituksen jos henkilö on jo arvioinut elokuvia. Edellisessä osassa toteutettu toiminnallisuus tulee säilyttää: Jos henkilö ei ole arvioinut yhtäkään elokuvaa, hänelle suositellaan elokuva arvosanojen perusteella.
+  </p>
+
+  <p>
+    Henkilökohtaiset suositukset perustuvat henkilön tekemien arvioiden samuuteen muiden henkilöiden tekemien arvioiden kanssa. Pohditaan seuraavaa taulukkoa, missä ylärivillä on elokuvat, ja vasemmalla on arvioita tehneet henkilöt. Taulukon solut kuvaavat annettuja arvioita.
+  </p>
+
+  <table class="table">
+    <tr><th>Henkilo \ Elokuva</th><td>Tuulen viemää</td><td>Hiljaiset sillat</td><td>Eraserhead</td><td>Blues Brothers</td></tr>
+    <tr><td>Matti</td><td>HUONO (-5)</td><td>HYVA (5)</td><td>OK (3)</td><td>-</td></tr>
+    <tr><td>Pekka</td><td>OK (3)</td><td>-</td><td>HUONO (-5)</td><td>VALTTAVA (-3)</td></tr>
+    <tr><td>Mikael</td><td>-</td><td>-</td><td>HUONO (-5)</td><td>-</td></tr>
+    <tr><td>Thomas</td><td>-</td><td>HYVA (5)</td><td>-</td><td>HYVA (5)</td></tr>
+  </table>
+
+  <p>
+    Kun haluamme hakea Mikaelille sopivaa elokuvaa, tutkimme Mikaelin samuutta kaikkien muiden arvioijien kesken. Samuus lasketaan arvioiden perusteella: samuus on kummankin katsomien elokuvien arvioiden tulojen summa. Esimerkiksi Mikaelin ja Thomasin samuus on 0, koska Mikael ja Thomas eivät ole katsoneet yhtäkään samaa elokuvaa.
+  </p>
+
+  <p>
+    Mikaelin ja Pekan samuutta laskettaessa yhteisten elokuvien tulojen summa olisi 25. Mikael ja Pekka ovat katsoneet vain yhden yhteisen elokuvan, ja kumpikin antaneet sille arvosanan huono (-5).
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    -5 * -5 = 25
+  <% end %>
+
+  <p>
+    Mikaelin ja Matin samuus on -15. Mikael ja Matti ovat myös katsoneet vain yhden yhteisen elokuvan. Mikael antoi elokuvalle arvosanan huono (-5), Matti antoi sille arvosanan ok (3).
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    -5 * 3 = -15
+  <% end %>
+
+  <p>
+    Näiden perusteella Mikaelille suositellaan elokuvia Pekan elokuvamaun mukaan: suosituksena on elokuva Tuulen viemää.
+  </p>
+
+  <p>
+    Kun taas haluamme hakea Matille sopivaa elokuvaa, tutkimme Matin samuutta kaikkien muiden arvioijien kesken. Matti ja Pekka ovat katsoneet kaksi yhteistä elokuvaa. Matti antoi Tuulen viemälle arvosanan huono (-5), Pekka arvosanan OK (3). Elokuvalle Eraserhead Matti antoi arvosanan OK (3), Pekka arvosanan huono (-5). Matin ja Pekan samuus on siis -30.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    -5 * 3 + 3 * -5 = -30
+  <% end %>
+
+  <p>
+    Matin ja Mikaelin samuus on edellisestä laskusta tiedetty -15. Samuudet ovat symmetrisia.
+  </p>
+
+  <p>
+    Matti ja Thomas ovat katsoneet Tuulen viemää, ja kumpikin antoi sille arvosanan hyvä (5). Matin ja Thomaksen samuus on siis 25.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    5 * 5 = 25
+  <% end %>
+
+  <p>
+    Matille tulee siis suositella elokuvia Thomaksen elokuvamaun mukaan: suosituksena olisi Blues Brothers.
+  </p>
+
+  <p>
+    Toteuta yllä kuvattu suosittelumekanismi. Jos henkilölle ei löydy yhtään suositeltavaa elokuvaa, tai henkilö, kenen elokuvamaun mukaan elokuvia suositellaan on arvioinut elokuvat joita henkilö ei ole vielä katsonut huonoiksi, välttäviksi tai neutraaleiksi, palauta metodista <code>suositteleElokuva</code> arvo <code>null</code>. Edellisessä tehtävässä määritellyn lähestymistavan tulee toimia jos henkilö ei ole lisännyt yhtäkään arviota.
+  </p>
+
+  <p>
+    Älä suosittele elokuvia, jotka henkilö on jo nähnyt.
+  </p>
+
+  <p>
+    Voit testata ohjelmasi toimintaa seuraavalla lähdekoodilla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArvioRekisteri arviot = new ArvioRekisteri();
+
+    Elokuva tuulenViemaa = new Elokuva("Tuulen viemää");
+    Elokuva hiljaisetSillat = new Elokuva("Hiljaiset sillat");
+    Elokuva eraserhead = new Elokuva("Eraserhead");
+    Elokuva bluesBrothers = new Elokuva("Blues Brothers");
+
+    Henkilo matti = new Henkilo("Matti");
+    Henkilo pekka = new Henkilo("Pekka");
+    Henkilo mikke = new Henkilo("Mikael");
+    Henkilo thomas = new Henkilo("Thomas");
+    Henkilo arto = new Henkilo("Arto");
+
+    arviot.lisaaArvio(matti, tuulenViemaa, Arvio.HUONO);
+    arviot.lisaaArvio(matti, hiljaisetSillat, Arvio.HYVA);
+    arviot.lisaaArvio(matti, eraserhead, Arvio.OK);
+
+    arviot.lisaaArvio(pekka, tuulenViemaa, Arvio.OK);
+    arviot.lisaaArvio(pekka, eraserhead, Arvio.HUONO);
+    arviot.lisaaArvio(pekka, bluesBrothers, Arvio.VALTTAVA);
+
+    arviot.lisaaArvio(mikke, eraserhead, Arvio.HUONO);
+
+    arviot.lisaaArvio(thomas, bluesBrothers, Arvio.HYVA);
+    arviot.lisaaArvio(thomas, hiljaisetSillat, Arvio.HYVA);
+
+    Suosittelija suosittelija = new Suosittelija(arviot);
+    System.out.println(thomas + " suositus: " + suosittelija.suositteleElokuva(thomas));
+    System.out.println(mikke + " suositus: " + suosittelija.suositteleElokuva(mikke));
+    System.out.println(matti + " suositus: " + suosittelija.suositteleElokuva(matti));
+    System.out.println(arto + " suositus: " + suosittelija.suositteleElokuva(arto));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Thomas suositus: Eraserhead
+    Mikael suositus: Tuulen viemää
+    Matti suositus: Blues Brothers
+    Arto suositus: Hiljaiset sillat
+  <% end %>
+
+  <p>
+    Miljoona käsissä? Ei ehkä vielä. Tietojenkäsittelytieteen tekoäly- ja koneoppimiskursseilla opitaan lisää tekniikoita oppivien järjestelmien rakentamiseen.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Hirsipuu (3 osaa)' } do %>
+
+  <p>
+    Hirsipuu on peli, jossa käyttäjä yrittää arvata piilossa olevan sanan. Normaalissa hirsipuussa tietokone valitsee sanan ja pitää sitä piilossa käyttäjän yrittäessä arvata sanaan liittyviä kirjaimia. Arvauskertoja on rajattu määrä: jos pelaaja arvaa kaikki sanaan liittyvän kirjaimet, hän voittaa pelin. Jos taas pelaaja ei arvaa sanoja, tietokone voittaa pelin.
+  </p>
+
+  <p>
+    Toteutetaan tässä palasia hieman ärsyttävämpään versioon hirsipuusta, missä tietokone pyrkii voittamaan pelin huijaamalla.
+  </p>
+
+  <p>
+    Huijauksen ideana on se, että tietokone voi vaihtaa valitsemansa sanan tarvittaessa lennosta. Pelin lopullinen toiminnallisuus on seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    ...
+
+    Sinulla on 3 arvausta jäljellä.
+    Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j]
+    Sana: -a--a
+    Arvaus: <font color="red">r</font>
+    Ei r-kirjaimia.
+
+    Sinulla on 2 arvausta jäljellä.
+    Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, r]
+    Sana: -a--a
+    Arvaus: <font color="red">s</font>
+    Löytyi ainakin yksi s-kirjain.
+
+    Sinulla on 2 arvausta jäljellä.
+    Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, r, s]
+    Sana: -as-a
+    Arvaus: <font color="red">p</font>
+    Ei p-kirjaimia.
+
+    Sinulla on 1 arvaus jäljellä.
+    Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, p, r, s]
+    Sana: -as-a
+    Arvaus: <font color="red">t</font>
+    Löytyi ainakin yksi t-kirjain.
+
+    Sinulla on 1 arvaus jäljellä.
+    Olet käyttänyt merkit: [a, b, c, d, e, f, g, h, i, j, p, r, s, t]
+    Sana: -asta
+    Arvaus: <font color="red">v</font>
+    Ei v-kirjaimia.
+
+    Parempaa onnea ensi kerralla!
+    Sana oli: rasta
+  <% end %>
+
+  <p>
+    Ohjelman tekstikäyttöliittymä on toteutettu valmiiksi Main-luokkaan.
+  </p>
+
+  <h2>Sanalista</h2>
+
+  <p>
+    Tässä toteutettavaa luokkaa <code>Sanalista</code> käytetään käytettävissä olevien sanojen rajaamiseen. Luokkaan <code>Sanalista</code> on määritelty merkkijonolistan parametrina ottavan konstruktorin sekä seuraavat metodit.
+  </p>
+
+  <ol>
+    <li><code>public List&lt;String&gt; sanat()</code> - palauttaa sanalistalla olevat sanat.</li>
+    <li><code>public Sanalista sanatJoidenPituusOn(int pituus)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joiden pituus on parametrina annetun muuttujan arvo.</li>
+    <li><code>public Sanalista sanatJoissaEiEsiinnyKirjainta(char kirjain)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joissa ei esiinny parametrina annettua kirjainmerkkiä.</li>
+    <li><code>public Sanalista sanatJoissaMerkit(String merkkijono)</code> - palauttaa uuden sanalista-olion, jossa on vain ne sanat, joissa on merkit parametrina annetun merkkijonon määräämissä kohdissa. Annettu merkkijono on muotoa <code>--d-</code>, missä viivat kuvaavat mitä tahansa merkkiä ja kirjaimet merkkejä, joiden täytyy olla sanassa juuri annetulla paikalla.</li>
+    <li><code>public int koko()</code> - palauttaa sanalistan sisältämien sanojen määrän.</li>
+  </ol>
+
+  <p>
+    Toteuta edelliset metodit luokassa <code>Sanalista</code> oleviin metodirunkoihin.
+  </p>
+
+  <h2>Hirsipuu, osa 1</h2>
+
+  <p>
+    Luokka <code>Hirsipuu</code> pitää kirjaa hirsipuu-pelin tilanteesta. Hirsipuulla on konstruktori, joka saa parametrinaan sanalistan sekä arvausten määrän. Hirsipuu valitsee konstruktorissa myös arvattavan sanan annetulta sanalistalta.
+  </p>
+
+  <p>
+    Hirsipuu tarjoaa lisäksi ainakin seuraavat metodit.
+  </p>
+
+  <ol>
+    <li><code>public boolean arvaa(Character merkki)</code> - arvaa parametrina annettua merkkiä. Lisää arvauksen arvauslistalle. Jos merkki löytyy arvattavasta sanasta, palauttaa true. Jos merkkiä taas ei löydy, vähentää arvausten määrää yhdellä, ja palauttaa false.</li>
+    <li><code>public List&lt;Character&gt; arvaukset()</code> - palauttaa tehdyt arvaukset listaoliona.</p>
+      <li><code>public int arvauksiaJaljella()</code> - kertoo jäljellä olevien arvausten määrän.</li>
+      <li><code>public String sana()</code> - kertoo arvattavan sanan siten, että kirjaimet, joita ei ole vielä arvattu, peitetään merkillä <code>-</code>.</li>
+      <li><code>public String oikeaSana()</code> - kertoo arvattavan sanan ilman peittelyä.</li>
+      <li><code>public boolean onLoppu()</code> - kertoo onko peli loppu. Peli on loppu jos kaikki arvattavan sanan merkit on arvattu.</li>
+  </ol>
+
+  <p>
+    Toteuta edelliset metodit. Kun edelliset metodit on toteutettu, voit jo pelata hirsipuuta.
+  </p>
+
+  <p>
+    Tarkastele toteutuksen avuksi <code>Test Packages</code> -kansiossa sijaitsevaa luokkaa <code>BHirsipuuTest</code>. Voitko päätellä mitä luokassa olevat metodit tekevät?
+  </p>
+
+  <h2>Hirsipuu, osa 2</h2>
+
+  <p>
+    Jatka hirsipuun kehitystä siten, että hyödynnät sanalistaa ja pyrit tekemään hirsipuu-pelistä sellaisen, että se välttelee pelaajan arvauksia mahdollisimman hyvin. Kannattaa aloittaa arvaa-metodin parantamisesta.
+  </p>
+
+  <p>
+    Tähän osioon ei ole testejä -- palauta peli kun hirsipuu välttelee arvauksia mielestäsi tarpeeksi hyvin.
+  </p>
+
+  <p>
+    Kerro myös palautuksen yhteydessä hirsipuutekoälysi oleellisimmat tausta-ajatukset.
+  </p>
+
+<% end %>
+
+
+
+
