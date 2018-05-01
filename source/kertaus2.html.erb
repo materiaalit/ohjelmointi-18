@@ -2,7 +2,7 @@
   title: Kertaus 8-14
   exercise_page: true
   quiz_page: false
-  published: false
+  published: true
 ---
 
 
@@ -11,11 +11,7 @@
 <% end %>
 
 <p>
-  Tällä sivulla on kertaustehtäviä materiaalin osiin 8-14 liittyen.  Kertaustehtävät saa ladattua TMC:stä. Tehtävät eivät missään nimessä kata kaikkea osien 8-14 sisällöstä, vaan ne toimivat lisäkertauksena kurssin aihepiiriin.
-</p>
-
-<p>
-  Kertaustehtävissä ei ole automaattisia testejä mukana, eli palauta niitä sitä mukaa kun saat tehtävän toimimaan toivotusti. Mieti myös minkälaisilla syötteillä tehtävän toimintaa kannattaa testata.
+  Tälle sivulla on kerättynä kertaustehtäviä materiaalin osiin 8-14 liittyen.  Kertaustehtävät saa ladattua TMC:stä. Tehtävät eivät missään nimessä kata kaikkea osien 8-14 sisällöstä, vaan ne toimivat lisäkertauksena kurssin aihepiiriin. Osa tehtävistä on materiaalista tuttuja.
 </p>
 
 <p>
@@ -25,370 +21,637 @@
 </p>
 
 
-
-<% partial 'partials/exercise', locals: { name: 'Matopeli (4 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Painoindeksi' } do %>
 
   <p>
-    Tässä tehtävässä luodaan klassisen matopelin rakenteet, eli mato, omena sekä niitä hallinnoiva matopeli. Pelin graafinen käyttöliittymä on sovelluksessa toteutettu valmiina -- graafisesta käyttöliittymästä voi ottaa inspiraatiota omiin projekteihin. Kun olet toteuttanut tehtävän askeleet, poista kommentit luokasta MatopeliSovellus ja kokeile pelaamista.
+    <a href="https://fi.wikipedia.org/wiki/Painoindeksi" target="_blank">Painoindeksi</a> on mitta-arvo, jonka avulla voidaan arvioida ihmisen painon ja pituuden suhdetta. Painoindeksi lasketaan kaavalla:
+  </p>
+  
+  <p>
+    <strong>
+      Painoindeksi = paino / (pituus * pituus)
+    </strong>
+  </p>
+  
+  <p>
+    Painoindeksiä käytetään muunmuassa ali- ja ylipainon tunnistamisessa. Jos henkilön painoindeksi on alle 18.5 luokitellaan hänet alipainoiseksi ("alipaino"). Jos painoindeksi on vähintään 18.5 mutta alle 25, on luokittelu "normaali". Jos taas painoindeksi on vähintään 25 mutta alle 30, on luokittelu "ylipainoinen". Jos taas painoindeksi on vähintään 30, on luokittelu "merkittävästi ylipainoinen".
+  </p>
+  
+  <p>
+    Luokissa <code>Raportinluoja1</code> ja <code>Raportinluoja2</code> on metodi <code>public PainoindeksiRaportti painoindeksiRaportti(List&lt;Henkilo&gt; henkilotiedot)</code>, joka saa parametrina listan henkilöitä ja palauttaa painoindeksiraportin -- kannattaa tutustua luokkiin <code>Painoindeksiraportti</code> ja <code>Henkilo</code>.
   </p>
 
-  <h2>Pala ja Omena</h2>
+  <p>
+    Luo luokkiin <code>Raportinluoja1</code> ja <code>Raportinluoja2</code> <em>erilaiset</em> toteutukset metodille <code>painoindeksiRaportti</code> painoindeksiraporttien luomiseen.
+  </p>
+  
+  <p>
+    Tuotettavan painoindeksiraportin tulee sisältää lista nimistä (huom! ei henkilöistä) siten, että henkilöt ovat kategorisoitu heihin sopiviin painoindeksiluokkiin.
+  </p>
+  
+  <p>
+    Testaa toteutustasi ennen sen palautusta. Tehtävässä ei ole automaattisia testejä.
+  </p>
+  
+<% end %>
+    
+<% partial 'partials/exercise', locals: { name: 'Mittausten tasoitus' } do %>
+  
+  <p>
+    Data-analytiikassa mittausten tasoittamisella tarkoitetaan liiallisen kohinan tai muiden häiriöiden poistamiseen datasta, jonka jälkeen oleellisten hahmojen tunnistamista datasta tulee mahdollisesti helpommaksi. Eräs suoraviivainen tekniikka mittausten tasoitukseen on muuttaa jokainen mittausarvo sen, sitä edeltävän mittausarvon ja sitä seuraavan mittausarvon mittausten keskiarvoksi. Jos oletamme, että poikkeukselliset arvot ovat häiriö mittadatassa, tämä keskiarvomenetelmä tasaa arvot potentiaalisesti luotettavimmiksi arvoiksi.
+  </p>
+  
+  <p>
+    Tutkitaan esimerkiksi seuraavia sykemittauksia, jotka on kerätty henkilötietodatasta.
+  </p>
+
+  <pre>
+  95 102 98 88 105
+  </pre>
 
   <p>
-    Luo pakkaukseen <code>matopeli.domain</code> luokka <code>Pala</code>. Luokalla <code>Pala</code> on konstruktori <code>public Pala(int x, int y)</code>, joka saa palan sijainnin parametrina. Lisäksi luokalla <code>Pala</code> on seuraavat metodit.
+    Jos ylläolevan mittausdatan tasaa keskiarvomenetelmällä, on tasauksen tuottama data seuraavanlainen:
+  </p>
+
+  <pre>
+  95 98.33 96 97 105
+  </pre>
+
+  <p>
+    Tässä:
   </p>
 
   <ul>
-    <li><code>public int getX()</code> palauttaa Palan konstruktorissa saadun x-koordinaatin.</li>
-    <li><code>public int getY()</code> palauttaa Palan konstruktorissa saadun y-koordinaatin.</li>
-    <li><code>public boolean osuu(Pala pala)</code> palauttaa true jos oliolla on sama x- ja y-koordinaatti kuin parametrina saadulla Pala-luokan ilmentymällä.</li>
-    <li><code>public String toString()</code> palauttaa palan sijainnin muodossa <code>(x,y)</code>. Esim. <code>(5,2)</code> kun x-koordinaatin arvo on 5 ja y-koordinaatin arvo on 2.</li>
+    <li>Arvo 102 muutettiin arvoon 98.33: (95 + 102 + 98) / 3</li>
+    <li>Arvo 98 muutettiin arvoon 96: (102 + 98 + 88) / 3</li>
+    <li>Arvo 88 muutettiin arvoon 97: (98 + 88 + 105) / 3</li>
   </ul>
-
+  
   <p>
-    Toteuta pakkaukseen <code>matopeli.domain</code> myös luokka <code>Omena</code>. Peri luokalla Omena luokka <code>Pala</code>.
-  </p>
-
-
-  <h2>Mato</h2>
-
-  <p>
-    Toteuta pakkaukseen <code>matopeli.domain</code> luokka <code>Mato</code>. Luokalla <code>Mato</code> on konstruktori <code>public Mato(int alkuX, int alkuY, Suunta alkusuunta)</code>, joka luo uuden madon. Madon suunta on parametrina annettu <code>alkusuunta</code>. Mato koostuu listasta <code>Pala</code>-luokan ilmentymiä.
+    Luokissa <code>MittaustenTasoittaja1</code> ja <code>MittaustenTasoittaja2</code> on metodi <code>public List&lt;Double&gt; tasoita(List&lt;Henkilo&gt; henkilotiedot)</code>, joka saa parametrina listan henkilö-olioita (henkilöiden nimillä ei ole väliä, oleellista on sykemittausdata -- muuttuja <code>syke</code>) ja palauttaa listan tasattuja sykemittauksia -- luokka <code>Henkilo</code> on tässä sama kuin edellisessä tehtävässä.
   </p>
 
   <p>
-    Luokka <code>Suunta</code> löytyy valmiina pakkauksesta <code>Matopeli.domain</code>.
+    Luo luokkiin <code>MittaustenTasoittaja1</code> ja <code>MittaustenTasoittaja2</code> <em>erilaiset</em> toteutukset metodille <code>tasoita</code> listana annettujen henkilo-olioihin tallennettujen sykemittausten tasoittamiseen. Toteutusten tulee siis käsitellä lista henkilötietueita, joista jokaisessa on sykemittaus, ja palauttaa lista double-arvoja, jotka ovat tasoitettuja sykemittauksia.
+  </p>
+  
+  <p>
+    Testaa toteutustasi ennen sen palautusta. Tehtävässä ei ole automaattisia testejä.
+  </p>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Kolme yleisintä sanaa' } do %>
+
+  <p>
+    Luokissa <code>YleisimmatSanat1</code> ja <code>YleisimmatSanat2</code> on metodi <code>public List&lt;String&gt; yleisetSanat(List&lt;String&gt; sanat)</code>, joka saa parametrina listan merkkijonoja ja palauttaa listan merkkijonoja.
   </p>
 
   <p>
-    Mato luodaan yhden palan pituisena, mutta madon "aikuispituus" on kolme. Madon tulee kasvaa yhdellä aina kun se liikkuu. Kun madon pituus on kolme, se kasvaa isommaksi vain syödessään.
+    Luo luokkiin <code>YleisimmatSanat1</code> ja <code>YleisimmatSanat2</code> <em>erilaiset</em> toteutukset kolmen yleisimmän merkkijonon tunnistamiseen. Yleisimmät merkkijonot tulee tunnistaa metodille <code>yleisetSanat</code> syötteeksi annetusta listasta, ja metodin tulee palauttaa yleisimmät merkkijonot listassa. Palauttava lista tulee olla järjestettynä siten, että listan ensimmäisenä alkiona on yleisin merkkijono, toisena alkiona on toiseksi yleisin merkkijono, ja kolmantena alkiona on kolmanneksi yleisin merkkijono.
+  </p>
+      
+  <p>
+    Jos merkkijonot ovat yhtä yleisiä, aseta lyhin sana (vähiten merkkejä) ennen pidempää sanaa. Voit olettaa, että syötteen kolme yleisintä sanaa ovat eri pituisia. Voit lisäksi olettaa, että syötteessä on vähintään kolme eri sanaa.
   </p>
 
   <p>
-    Toteuta madolle seuraavat metodit
+    Testaa toteutustasi ennen sen palautusta. Tehtävässä ei ole automaattisia testejä.
+  </p>
+
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Seismiset mittaukset' } do %>
+  
+  <p>
+    Geologit haluavat tarkastella paikallisen vuoren mahdollista maanjäristystoimintaa. He ovat asentaneet mittarin seismisen toiminnan (maan tärinän) mittaamiseen. Mittari lukee seismistä toimintaa tietyin aikavälein ja lähettää mitattua dataa mittausarvo kerrallaan tutkimuslaboratorion tietokoneelle.
+  </p>
+  
+  <p>
+    Mittari lisää lisäksi mittausdataan päivämäärätietoja näyttämään seismisen toiminnan mittauspäivää. Mittarin lähettämä data on seuraavassa muodossa:
+  </p>
+  
+  <pre>
+  20151004 200 150 175 20151005 0.002 0.03 20151007 ...
+  </pre>
+
+  <p>
+    Kahdeksanlukuiset arvot ovat päivämääriä (vuosi-kuukausi-päivä -muodossa) ja numerot nollan ja viidensadan välillä ovat värähtelyjen taajuuksia (hertzeinä). Ylläoleva esimerkki näyttää mittaukset 200, 150, ja 175 lokakuun neljäntenä päivänä vuonna 2015 ja mittaukset 0.002 ja 0.03 lokakuun viidentenä päivänä vuonna 2015. Lokakuun kuudennelta päivältä ei ole lainkaan mittausdataa (välillä verkkoyhteydessä on ongelmia, jolloin mittausdataa saattaa kadota).
+  </p>
+  
+  <p>
+    Oleta, että mittausdata on järjestetty päivämäärien mukaan (myöhempi päivämäärä ei ikinä ilmesty datassa ennen aiempaa päivämäärää) ja että kaikki data on samalta vuodelta. Voit myös olettaa, että jokaiselta datassa olevalta päivältä on vähintään yksi mittausarvo.
+  </p>
+  
+  <p>
+    Luokissa <code>MittausRaportoija1</code> ja <code>MittausRaportoija2</code> on tyhjä metodi <code>List&lt;SuurinTaajuusRaportti&gt; paivittaisetMaksimit(List&lt;Double&gt; mittausData, int kuukausi)</code>, joka saa parametrina listan mittausdataa sekä kuukauden (oleta, että yksi (01) vastaa tammikuuta ja kaksitoista (12) vastaa joulukuuta). Metodin tulee tuottaa lista raportteja, joista jokainen sisältää suurimman mittaustuloksen kuukauden yksittäiselle päivälle, josta löytyy mittausdataa.
+  </p>
+  
+  <p>
+    Suunnittele ja toteuta <em>kaksi erilaista</em> toteutusta metodille <code>paivittaisetMaksimit</code> ja toteuta ne luokkiin <code>MittausRaportoija1</code> ja <code>MittausRaportoija2</code>. Metodin tulee siis käsitellä lista Double-muotoisia syötteitä, joista löytyy sekä päivämääriä että mittausarvoja. Metodin tulee käsitellä vain parametrina annettuun kuukauteen liittyviä arvoja, ja syötteiden perusteella tulee tunnistaa jokaiselle parametrina annetulle kuukauden päivälle suurin päiväkohtainen arvo. Suurimmat päiväkohtaiset arvot asetetaan palautettavaan listaan <code>SuurinTaajuusRaportti</code>-muotoisina olioina, ja metodi palauttaa lopulta listan tulevaa käsittelyä varten.
+  </p>
+  
+  <p>
+    Testaa toteutustasi ennen sen palautusta. Tehtävässä ei ole automaattisia testejä.
+  </p>
+
+<% end %>
+
+<p>
+  Kun olet tehnyt neljä edellistä tehtävää (tai ainakin yrittänyt tehdä kaikkia neljää tehtävää), vastaa osoitteessa <a href="http://goo.gl/forms/VZ2yyRNUVB" target="_blank">http://goo.gl/forms/VZ2yyRNUVB</a> olevaan kyselyyn. Tämän jälkeen voit jatkaa seuraavien kertaustehtävien parissa.
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Joukkueet ja pelaajat (5 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä tehdään joukkueiden ja joukkueen pelaajien ylläpitoon tarkoitettuun ohjelmistoon tarvittavat ydinluokat.
+  </p>
+
+  
+  <h2>Joukkue</h2>
+
+  <p>
+    Tee luokka <code>Joukkue</code>, johon tallennetaan joukkueen nimi (<code>String</code>). Tee luokkaan seuraavat metodit:
   </p>
 
   <ul>
-    <li><code>public Suunta getSuunta()</code> palauttaa madon suunnan.</li>
-    <li><code>public void setSuunta(Suunta suunta)</code> asettaa madolle uuden suunnan. Mato liikkuu uuteen suuntaan kun metodia <code>liiku</code> kutsutaan seuraavan kerran.</li>
-    <li><code>public int getPituus()</code> palauttaa madon pituuden. Madon pituuden tulee olla sama kuin <code>getPalat()</code>-metodikutsun palauttaman listan alkioiden määrä.</li>
-    <li><code>public List&lt;Pala&gt; getPalat()</code> palauttaa listan pala-olioita, joista mato koostuu. Palat ovat listalla järjestyksessä, siten että pää sijaitsee listan lopussa.</li>
-    <li><code>public void liiku()</code> liikuttaa matoa yhden palan verran eteenpäin.</li>
-    <li><code>public void kasva()</code> kasvattaa madon kokoa yhdellä. Madon kasvaminen tapahtuu seuraavan <code>liiku</code>-metodikutsun yhteydessä. Sitä seuraaviin liiku-kutsuihin kasvaminen ei enää vaikuta. Jos madon pituus on 1 tai 2 kun metodia kutsutaan, ei kutsulla saa olla mitään vaikutusta matoon.</li>
-    <li><code>public boolean osuu(Pala pala)</code> tarkistaa osuuko mato parametrina annettuun palaan. Jos mato osuu palaan, eli joku madon pala osuu metodille parametrina annettuun palaan, tulee metodin palauttaa arvo <code>true</code>. Muuten metodi palauttaa arvon <code>false</code>.</li>
-    <li><code>public boolean osuuItseensa()</code> tarkistaa osuuko mato itseensä. Jos mato osuu itseensä, eli joku sen pala osuu johonkin toiseen sen palaan, metodi palauttaa arvon <code>true</code>. Muuten metodi palauttaa arvon <code>false</code>.</li>
+    <li> konstruktori, jolle annetaan joukkueen nimi</li>
+    <li> <code>getNimi</code>, joka palauttaa joukkueen nimen</li>
   </ul>
 
   <p>
-    Metodien <code>public void kasva()</code> ja <code>public void liiku()</code> toiminnallisuus tulee toteuttaa siten, että mato kasvaa vasta seuraavalla liikkumiskerralla.
-  </p>
-
-  <p>
-    Liikkuminen kannattaa toteuttaa siten, että madolle luodaan liikkuessa aina uusi pala. Uuden palan sijainti riippuu madon kulkusuunnasta: vasemmalle mennessä uuden palan sijainti on edellisen pääpalan sijainnista yksi vasemmalle, eli sen x-koordinaatti on yhtä pienempi. Jos uuden palan sijainti on edellisen pääpalan alapuolella, eli madon suunta on alas, tulee uuden palan y-koordinaatin olla yhtä isompi kuin pääpalan y-koordinaatti (käytämme siis piirtämisestä tuttua koordinaattijärjestelmää, jossa y-akseli on kääntynyt).
-  </p>
-
-  <p>
-    Liikkuessa uusi pala lisätään listan loppuun, ja poistetaan listan alussa oleva alkio. Uudesta palasta siis tulee madon "uusi pää" ja  jokaisen palan koordinaatteja ei tarvitse päivittää erikseen. Toteuta kasvaminen siten, että listan alussa olevaa palaa, eli "madon häntää" ei poisteta jos metodia <code>kasva</code> on juuri kutsuttu.
-  </p>
-
-  <p>
-    Huom! Kasvata matoa aina sen liikkuessa jos sen pituus on pienempi kuin 3.
+    Seuraava pääohjelma demonstroi luokan toimintaa:
   </p>
 
   <% partial 'partials/code_highlight' do %>
-    Mato mato = new Mato(5, 5, Suunta.OIKEA);
-    System.out.println(mato.getPalat());
-    mato.liiku();
-    System.out.println(mato.getPalat());
-    mato.liiku();
-    System.out.println(mato.getPalat());
-    mato.liiku();
-    System.out.println(mato.getPalat());
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+    System.out.println("Joukkue: " + tapiiri.haeNimi());
+  <% end %>
 
-    mato.kasva();
-    System.out.println(mato.getPalat());
-    mato.liiku();
-    System.out.println(mato.getPalat());
+  <p>
+    Ohjelman tulostus on seuraava:
+  </p>
 
-    mato.setSuunta(Suunta.VASEN);
-    System.out.println(mato.osuuItseensa());
-    mato.liiku();
-    System.out.println(mato.osuuItseensa());
+  <% partial 'partials/sample_output' do %>
+    Joukkue: FC Tapiiri
+  <% end %>
+
+  
+  <h2>Pelaaja</h2>
+
+  <p>
+    Luo luokka <code>Pelaaja</code>, johon tallennetaan pelaajan nimi ja tehtyjen maalien määrä. Tee luokkaan kaksi konstruktoria: yksi jolle annetaan vain pelaajan nimi, toinen jolle annetaan sekä pelaajan nimi että pelaajan tekemien maalien määrä. Lisää pelaajalle myös metodit:
+  </p>
+
+  <ul>
+    <li> <code>getNimi</code>, joka palauttaa pelaajan nimen</li>
+    <li> <code>getMaalit</code>, joka palauttaa tehtyjen maalien määrän</li>
+    <li> <code>toString</code>, joka palauttaa pelaajan merkkijonoesityksen</li>
+  </ul>
+
+  <% partial 'partials/code_highlight' do %>
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+    System.out.println("Joukkue: " + tapiiri.getNimi());
+
+    Pelaaja matti = new Pelaaja("Matti");
+    System.out.println("Pelaaja: " + matti);
+
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+    System.out.println("Pelaaja: " + pekka);
   <% end %>
 
   <% partial 'partials/sample_output' do %>
-    [(5,5)]
-    [(5,5), (6,5)]
-    [(5,5), (6,5), (7,5)]
-    [(6,5), (7,5), (8,5)]
-    [(6,5), (7,5), (8,5)]
-    [(6,5), (7,5), (8,5), (9,5)]
-    false
-    true
+    Joukkue: FC Tapiiri
+    Pelaaja: Matti, maaleja 0
+    Pelaaja: Pekka, maaleja 39
   <% end %>
 
-
-  <h2>Matopeli, osa 1</h2>
-
-  <p>
-    Matopeli tietää sekä madosta että omenasta. Se tarjoaa mahdollisuuden madon liikuttamiseen, hallinnoi mahdollista omenan syömistä, sekä arpoo uusia omenoita. Matopeli osaa myös kertoa jos peli on loppu, eli mato on törmännyt reunaan tai itseensä.
-  </p>
+  
+  <h2>Pelaajat joukkueisiin</h2>
 
   <p>
-    Luo pakkaukseen <code>matopeli.domain</code> luokka <code>Matopeli</code>.
-  </p>
-
-  <p>
-    Matopelillä on tieto pelin leveydestä ja korkeudesta sekä tieto siitä jatkuuko peli yhä. Lisäksi matopeli sisältää viitteen mato-olioon ja omenaan.
-  </p>
-
-  <p>
-    Lisää luokalle Matopeli kaksiparametrinen konstruktori. Konstruktorin ensimmäisenä parametrina annetaan pelin leveys, toisena parametrina pelin korkeus. Leveys ja korkeus kerrotaan ruutujen lukumääränä.
-  </p>
-
-  <p>
-    Täydennä konstruktorin toiminnallisuutta siten, että konstruktorissa luodaan myös peliin liittyvä <code>Mato</code>. Luo mato siten, että sijainti riippuu Matopeli-luokan konstruktorissa saaduista parametreista. Madon x-koordinaatin tulee olla <code>leveys / 2</code>, y-koordinaatin <code>korkeus / 2</code> ja suunnan <code>Suunta.ALAS</code>.
-  </p>
-
-  <p>
-    Lisää matopeliin lisäksi seuraavat metodit
+    Lisää luokkaan <code>Joukkue</code> seuraavat metodit:
   </p>
 
   <ul>
-    <li><code>public Mato getMato()</code> palauttaa matopelin madon.</li>
-    <li><code>public void setMato(Mato mato)</code> asettaa matopeliin metodin parametrina olevan madon. Jos metodia <code>getMato</code> kutsutaan madon asetuksen jälkeen, tulee metodin <code>getMato</code> palauttaa viite <em>samaan</em> matoon.</li>
+    <li> <code>lisaaPelaaja</code>, joka lisää pelaajan joukkueeseen</li>
+    <li> <code>tulostaPelaajat</code>, joka tulostaa joukkueessa olevat pelaajat</li>
   </ul>
 
-
-  <h2>Matopeli, osa 2</h2>
-
-
   <p>
-    Lisää matopelin konstruktoriin omenan luominen.  Konstruktorissa luotavan omenan sijainnin tulee olla satunnainen, kuitenkin niin että omenan x-koordinaatti on aina välillä <code>[0, leveys[</code>, ja y-koordinaatti välillä <code>[0, korkeus[</code>. Tässä luokasta Random on hyötyä.
+    Tallenna joukkueessa olevat pelaajat <code>Joukkue</code>-luokan sisäiseen <code>ArrayList</code>-listaan.
   </p>
 
   <p>
-    Lisää matopelille myös seuraavat metodit:
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+
+    Pelaaja matti = new Pelaaja("Matti");
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+
+    tapiiri.lisaaPelaaja(matti);
+    tapiiri.lisaaPelaaja(pekka);
+    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+    tapiiri.tulostaPelaajat();
+  <% end %>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Matti, maaleja 0
+    Pekka, maaleja 39
+    Mikael, maaleja 1
+  <% end %>
+
+  
+  <h2>Joukkueen maksimikoko ja nykyinen koko</h2>
+
+  <p>
+    Lisää luokkaan <code>Joukkue</code> seuraavat metodit:
   </p>
 
   <ul>
-    <li><code>public Omena getOmena</code> palauttaa matopelin omenan.</li>
-    <li><code>public void setOmena(Omena omena)</code> asettaa matopeliin metodin parametrina olevan omenan. Jos metodia <code>getOmena</code> kutsutaan omenan asetuksen jälkeen, tulee metodin <code>getOmena</code> palauttaa viite <em>samaan</em> omenaan.</li>
-    <li><code>public boolean loppu()</code> kertoo onko matopeli päättynyt. Matopeli päättyy jos mato törmää itseensä tai seinään. </li>
+    <li> <code>setMaksimikoko(int maksimikoko)</code>, joka asettaa joukkueen maksimikoon (eli maksimimäärän pelaajia)</li>
+    <li> <code>getPelaajienLukumaara</code>, joka palauttaa pelaajien määrän (<code>int</code>)</li>
   </ul>
 
   <p>
-    Lisää tämän jälkeen luokalle Matopeli metodi <code>public void paivita()</code>. Muokkaa metodin <code>paivita</code>-toiminnallisuutta siten, että metodissa toteutetaan seuraavat askeleet annetussa järjestyksessä.
+    Joukkueen suurin sallittu pelaajamäärä on oletusarvoisesti 16 (lisää tämä luokan oliomuuttujaksi ja alusta muuttujan arvo konstruktorissa). Metodin <code>setMaksimikoko</code> avulla tätä rajaa voi muuttaa. Muuta edellisessä osassa tehtyä metodia <code>lisaaPelaaja</code> niin, että se ei lisää pelaajaa joukkueeseen, jos sallittu pelaajamäärä ylittyisi.
   </p>
-
-  <ol>
-    <li>Liikuta matoa</li>
-    <li>Jos mato osuu omenaan, syö omena ja kutsu madon kasva-metodia. Arvo peliin uusi omena. Omena tulee arpoa niin, että se ei ole madon päällä (tai ulkona pelialueelta).</li>
-    <li>Jos mato törmää itseensä tai seinään, matopelin tulee tietää siitä, että sen suoritus on loppunut (metodin loppu() tulee seuraavalla kerralla palauttaa arvo true).</li>
-  </ol>
 
   <p>
-    <em>
-      Kokeile nyt poistaa luokasta MatopeliSovellus kommentit ja pelaa matopeliä. Löydät pelistä todennäköisesti vieläkin korjattavaa ja paranneltavaa. Esimerkiksi ennätyslista tai jonkinlainen pistelasku olisi hieno...
-    </em>
+    <strong>HUOM:</strong> muista lisätä oletusarvoinen maksimikoko koodiisi sillä muuten arvoksi tulee 0. Tämä aiheuttaa edellisen kohdan testien hajoamisen, sillä testit luovat oletusmaksimikokoisia joukkueita ja jos joukkueen maksimikoko on 0, ei joukkueeseen voi lisätä yhtään pelaajaa.
   </p>
+
+  <p>
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+    tapiiri.setMaksimikoko(1);
+
+    Pelaaja matti = new Pelaaja("Matti");
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+    tapiiri.lisaaPelaaja(matti);
+    tapiiri.lisaaPelaaja(pekka);
+    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+    System.out.println("Pelaajia yhteensä: " + tapiiri.getPelaajienLukumaara());
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Pelaajia yhteensä: 1
+  <% end %>
+
+  
+  <h2>Joukkueen maalit</h2>
+
+  <p>
+    Lisää luokkaan <code>Joukkue</code> metodi:
+  </p>
+
+  <ul>
+    <li> <code>yhteismaalit</code>, joka palauttaa joukkueen pelaajien tekemien maalien yhteismäärän.</li>
+  </ul>
+
+  <p>
+    Seuraava pääohjelma testaa luokan toimintaa:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Joukkue tapiiri = new Joukkue("FC Tapiiri");
+
+    Pelaaja matti = new Pelaaja("Matti");
+    Pelaaja pekka = new Pelaaja("Pekka", 39);
+    tapiiri.lisaaPelaaja(matti);
+    tapiiri.lisaaPelaaja(pekka);
+    tapiiri.lisaaPelaaja(new Pelaaja("Mikael", 1)); //vaikutus on sama kuin edellisillä
+
+    System.out.println("Maaleja yhteensä: " + tapiiri.yhteismaalit());
+  <% end %>
+
+  <% partial 'partials/sample_output' do%>
+    Maaleja yhteensä: 40
+  <% end %>
 
 <% end %>
 
 
 
-<% partial 'partials/exercise', locals: { name: '2048 (5 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Erilaisia laatikoita (3 osaa)' } do %>
 
   <p>
-    <a href="https://en.wikipedia.org/wiki/2048_(video_game)" target="_blank" rel="noopener">2048</a> on suosittu peli. Peliä pelataan 4x4 -kokoisessa lukuja sisältävässä ruudukossa, ja siinä on neljä mahdollista siirtoa: (o)ikealle, (a)las, (v)asemmalle ja (y)lös. Jokainen siirto siirtää kaikkia ruudukossa olevia arvoja niin paljon haluttuun suuntaan kuin mahdollista. Jos kahdessa vierekkäisessä ruudussa on sama arvo, yhdistetään ruutujen arvot yhteen. Esimerkiksi:
-  </p>
-
-  <pre>
-
-2 0 2 0
-0 0 0 1
-0 1 0 0
-0 0 0 0
-&gt; o
-
-0 0 0 4
-0 0 0 1
-0 0 0 1
-0 1 0 0
-  </pre>
-
-  <p>
-    Aina kun pelaaja tekee siirron, satunnaiseen nolla-arvoiseen kohtaan arvotaan uusi luku. Peli loppuu kun yhdessä ruuduista on luku 2048 tai siirtäminen ei enää onnistu. Alla esimerkki pelin kulusta.
-  </p>
-
-  <pre>
-1 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-
-&gt; o
-0 0 0 1
-0 0 0 0
-0 0 0 0
-0 1 0 0
-
-&gt; o
-0 0 0 1
-0 0 0 0
-0 0 0 1
-0 0 0 1
-
-&gt; a
-0 0 0 0
-0 0 0 0
-1 0 0 2
-0 0 0 1
-
-&gt; a
-1 0 0 0
-0 0 0 0
-0 0 0 2
-1 0 0 1
-
-&gt; v
-1 0 0 0
-0 0 0 0
-2 0 0 0
-2 1 0 0
-
-&gt; y
-1 1 0 0
-4 0 0 0
-0 0 0 0
-0 1 0 0
-
-&gt; v
-2 0 0 0
-4 0 0 0
-0 0 0 0
-1 0 1 0
-
-&gt; v
-2 0 0 0
-4 1 0 0
-0 0 0 0
-2 0 0 0
-
-&gt;
-  </pre>
-
-  <p>
-    Tässä tehtävässä rakennat pelin toimintaan tarvittua ydintoiminnallisuutta. Tehtävässä kerrataan myös toistolauseiden ja indeksien käyttöä.
-  </p>
-
-  <h2>Peliruudukko</h2>
-
-  <p>
-    Luo pakkaukseen sovellus luokka Peliruudukko. Luokalla tulee olla parametriton konstruktori, joka luo 4x4-kokoisen ruudukon, ja jonka vasemmassa yläkulmassa on arvo 1. Oleta, että kaksiulotteisen taulukon ensimmäinen indeksi kuvaa y-koordinaattia, ja toinen indeksi x-koordinaattia. Oleta lisäksi, että y-koordinaatti kasvaa alaspäin. Vasen yläkulma on siis kohdassa taulukko[0][0] ja vasen alakulma kohdassa taulukko[3][0] -- olettaen, että taulukon koko on 4.
+    Tehtäväpohjan mukana tulee luokat <code>Tavara</code> ja <code>Laatikko</code>. Luokka <code>Laatikko</code> on abstrakti luokka, jossa useamman tavaran lisääminen on toteutettu siten, että kutsutaan aina <code>lisaa</code>-metodia. Yhden tavaran lisäämiseen tarkoitettu metodi <code>lisaa</code> on abstrakti, joten jokaisen <code>Laatikko</code>-luokan perivän laatikon tulee toteuttaa se. Tehtävänäsi on muokata luokkaa <code>Tavara</code> ja toteuttaa muutamia erilaisia laatikoita luokan <code>Laatikko</code> pohjalta.
   </p>
 
   <p>
-    Lisää luokalle myös metodit public int[][] getTaulukko(), joka palauttaa pelin sisäisen tilan, ja public void setTaulukko(int[][] taulukko), jolla voi asettaa pelin sisäisen tilan.
+    Lisää kaikki uudet luokat pakkaukseen <code>laatikot</code>.
   </p>
 
-  <h2>Siirrä oikealle</h2>
+
+  <% partial 'partials/code_highlight' do %>
+    package laatikot;
+
+    import java.util.Collection;
+
+    public abstract class Laatikko {
+
+        public abstract void lisaa(Tavara tavara);
+
+        public void lisaa(Collection&lt;Tavara&gt; tavarat) {
+            for (Tavara t: tavarat) {
+                lisaa(t);
+            }
+        }
+
+        public abstract boolean onkoLaatikossa(Tavara tavara);
+    }
+  <% end %>
+
+
+  <h2>Tavaran muokkaus</h2>
 
   <p>
-    Tee tämän jälkeen peliruudukolle metodi public void siirraOikealle(), joka siirtää jokaisen rivin palat oikealle. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat. Alla muutamia esimerkkeja.
+    Lisää <code>Tavara</code>-luokan konstruktoriin tarkistus, jossa tarkistetaan että tavaran paino ei ole koskaan negatiivinen (paino 0 hyväksytään). Jos paino on negatiivinen, tulee konstruktorin heittää <code>IllegalArgumentException</code>-poikkeus. Toteuta <code>Tavara</code>-luokalle myös metodit <code>equals</code> ja <code>hashCode</code>, joiden avulla  pääset hyödyntämään erilaisten listojen ja kokoelmien <code>contains</code>-metodia. Toteuta metodit siten, että Tavara-luokan oliomuuttujan <code>paino</code> arvolla ei ole väliä. <em>Voit hyvin hyödyntää NetBeansin tarjoamaa toiminnallisuutta equalsin ja hashCoden toteuttamiseen.</em>
   </p>
 
-  <pre>
-1 1 1 1
-1 1 0 1
-1 1 1 0
-1 0 1 1
 
-&gt; o
-0 0 0 4
-0 0 1 2
-0 0 1 2
-0 0 1 2
-  </pre>
-
-  <pre>
-1 0 0 1
-0 1 0 1
-2 2 4 0
-0 1 0 0
-
-&gt; o
-0 0 0 2
-0 0 0 2
-0 0 0 8
-0 0 0 1
-  </pre>
-
-  <h2>Siirrä ylös ja siirrä alas</h2>
+  <h2>Maksimipainollinen laatikko</h2>
 
   <p>
-    Tee seuraavaksi peliruudukolle metodit public void siirraYlos(), joka siirtää jokaisen rivin palat ylös, ja public void siirraAlas(), joka siirtää jokaisen rivin palat alas. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat.
+    Toteuta pakkaukseen <code>laatikot</code> luokka <code>MaksimipainollinenLaatikko</code>, joka perii luokan <code>Laatikko</code>. Maksimipainollisella laatikolla on konstruktori <code>public MaksimipainollinenLaatikko(int maksimipaino)</code>, joka määrittelee laatikon maksimipainon. Maksimipainolliseen laatikkoon voi lisätä tavaraa jos ja vain jos tavaran lisääminen ei ylitä laatikon maksimipainoa.
   </p>
 
-  <h2>Siirrä vasemmalle ja pelin loppuminen</h2>
+  <% partial 'partials/code_highlight' do %>
+    MaksimipainollinenLaatikko kahviLaatikko = new MaksimipainollinenLaatikko(10);
+    kahviLaatikko.lisaa(new Tavara("Saludo", 5));
+    kahviLaatikko.lisaa(new Tavara("Pirkka", 5));
+    kahviLaatikko.lisaa(new Tavara("Kopi Luwak", 5));
 
-  <p>
-    Tee seuraavaksi peliruudukolle metodi public void siirraVasemmalle(), joka siirtää jokaisen rivin palat vasemmalle. Kun metodi siirraVasemmalle on valmis, toteuta sovellukseen metodi public boolean peliKaynnissa(), joka palauttaa tiedon pelin jatkumisesta.
-  </p>
-
-  <p>
-    Peli jatkuu jos (1) pelissä on yksikin ruutu, jossa on arvo 0, tai (2) kaksi pelin vierekkaista (vaaka- tai pystytasossa) ruutua ovat samanarvoiset.
-  </p>
-
-  <h2>Tekstikayttoliittyma ja uuden luvun arpominen</h2>
-
-  <p>
-    Tee lopulta pelille tekstikäyttöliittymä. Pelin tulee käynnistyä kun luokassa Peli olevaa main-metodia kutsutaan. Pelaajalle tulee tarjota vaihtoehdot o, v, y, a, x, missä o on oikealle, v on vasemmalle, y on ylös, a on alas, ja x on lopeta. Jokaisen siirron -- paitsi pelin lopettavan x:n -- jälkeen taulukon satunnaiseen tyhjään kohtaan tulee lisätä luku 1. Alla on esimerkki tekstikäyttöliittymän toiminnasta.
-  </p>
+    System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Saludo")));
+    System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Pirkka")));
+    System.out.println(kahviLaatikko.onkoLaatikossa(new Tavara("Kopi Luwak")));
+  <% end %>
 
   <% partial 'partials/sample_output' do %>
-    1 0 0 0
-    0 0 0 0
-    0 0 0 0
-    0 0 0 0
+    true
+    true
+    false
+  <% end %>
 
-    &gt; <font color="red">o</font>
-    0 0 0 1
-    0 0 0 0
-    0 0 0 1
-    0 0 0 0
 
-    &gt; <font color="red">y</font>
-    0 0 0 2
-    1 0 0 0
-    0 0 0 0
-    0 0 0 0
+  <h2>Yhden tavaran laatikko ja Hukkaava laatikko</h2>
 
-    &gt; <font color="red">v</font>
-    2 0 1 0
-    1 0 0 0
-    0 0 0 0
-    0 0 0 0
+  <p>
+    Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>YhdenTavaranLaatikko</code>, joka perii luokan <code>Laatikko</code>. Yhden tavaran laatikolla on konstruktori <code>public YhdenTavaranLaatikko()</code>, ja siihen mahtuu tasan yksi tavara. Jos tavara on jo laatikossa sitä ei tule vaihtaa. Laatikkoon lisättävän tavaran painolla ei ole väliä.
+  </p>
 
-    &gt; <font color="red">o</font>
-    0 0 2 1
-    0 0 0 1
-    0 1 0 0
-    0 0 0 0
+  <% partial 'partials/code_highlight' do %>
+    YhdenTavaranLaatikko laatikko = new YhdenTavaranLaatikko();
+    laatikko.lisaa(new Tavara("Saludo", 5));
+    laatikko.lisaa(new Tavara("Pirkka", 5));
 
-    &gt; <font color="red">y</font>
-    0 1 2 2
-    0 0 0 0
-    0 0 0 0
-    0 0 1 0
+    System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
+    System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));
+  <% end %>
 
-    &gt; <font color="red">o</font>
-    0 0 1 4
-    0 0 0 0
-    0 0 0 1
-    0 0 0 1
+  <% partial 'partials/sample_output' do %>
+    true
+    false
+  <% end %>
 
-    &gt; <font color="red">x</font>
+  <p>
+    Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>HukkaavaLaatikko</code>, joka perii luokan <code>Laatikko</code>. Hukkaavalla laatikolla on konstruktori <code>public HukkaavaLaatikko()</code>. Hukkaavaan laatikkoon voi lisätä kaikki tavarat, mutta tavaroita ei löydy niitä etsittäessä. Laatikkoon lisäämisen tulee siis aina onnistua, mutta metodin <code>onkoLaatikossa</code> kutsumisen tulee aina palauttaa false.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    HukkaavaLaatikko laatikko = new HukkaavaLaatikko();
+    laatikko.lisaa(new Tavara("Saludo", 5));
+    laatikko.lisaa(new Tavara("Pirkka", 5));
+
+    System.out.println(laatikko.onkoLaatikossa(new Tavara("Saludo")));
+    System.out.println(laatikko.onkoLaatikossa(new Tavara("Pirkka")));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    false
+    false
+  <% end %>
+
+<% end %>
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Eläimiä (4 osaa)' } do %>
+
+  <p>
+    Tässä tehtävässä demonstroit perinnän ja rajapintojen käyttöä. Toteuta kaikki luokat ja rajapinnat pakkaukseen <code>perintaa</code>.
+  </p>
+
+  
+  <h2>Eläin</h2>
+
+  <p>
+    Toteuta ensin abstrakti luokka <code>Elain</code>. Luokalla Elain on konstruktori, jolle annetaan parametrina eläimen nimi. Luokalla Elain on lisäksi parametrittomat metodit syo ja nuku, jotka eivät palauta arvoa (void), sekä parametriton metodi getNimi, joka palauttaa eläimen nimen.
+  </p>
+
+  <p>
+    Metodin nuku tulee tulostaa "(nimi) nukkuu" ja metodin syo tulee tulostaa "(nimi) syo". Tässä (nimi) on eläimelle annettu nimi.
+  </p>
+
+  
+  <h2>Koira</h2>
+
+  <p>
+    Toteuta luokan Elain perivä luokka <code>Koira</code>. Luokalla Koira tulee olla parametrillinen konstruktori, jolla luotavalle koiraoliolle voi antaa nimen. Tämän lisäksi koiralla tulee olla parametriton konstruktori, jolla koiran nimeksi tulee "Koira" sekä parametriton metodi hauku, joka ei palauta arvoa (void). Koiralla tulee olla myös metodit syo ja nuku kuten eläimillä yleensä ottaen.
+  </p>
+
+  <p>
+    Alla on esimerkki luokan Koira odotetusta toiminnasta:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    Koira koira = new Koira();
+    koira.hauku();
+    koira.syo();
+    
+    Koira vuffe = new Koira("Vuffe");
+    vuffe.hauku();
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Koira haukkuu
+    Koira syo
+    Vuffe haukkuu
+  <% end %>
+
+
+  <h2>Kissa</h2>
+
+  <p>
+    Toteuta seuraavaksi luokka <code>Kissa</code>, joka perii luokan Elain. Luokalla Kissa tulee olla parametrillinen konstruktori, jolla luotavalle kissaoliolle voi antaa nimen. Tämän lisäksi kissalla tulee olla parametriton konstruktori, jolla kissan nimeksi tulee "Kissa" sekä parametriton metodi mourua, joka ei palauta arvoa (void). Kissalla tulee olla myös metodit syo ja nuku kuten ensimmäisessä osassa.
+  </p>
+
+  <p>
+    Alla on esimerkki luokan Kissa odotetusta toiminnasta:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    Kissa kissa = new Kissa();
+    kissa.mourua();
+    kissa.syo();
+    
+    Kissa karvinen = new Kissa("Karvinen");
+    karvinen.mourua();
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Kissa mouruaa
+    Kissa syo
+    Karvinen mouruaa
+  <% end %>
+
+
+  <h2>Ääntelevä</h2>
+
+  <p>
+    Luo lopulta rajapinta <code>Aanteleva</code>, joka maarittelee parametrittoman metodin aantele, joka ei palauta arvoa (void). Toteuta rajapinta luokissa Koira että Kissa. Rajapinnan tulee hyödyntää aiemmin määriteltyjä hauku ja mourua -metodeja.
+  </p>
+
+  <p>
+    Alla on esimerkki odotetusta toiminnasta:
+  </p>
+  
+  <% partial 'partials/code_highlight' do %>
+    Aanteleva koira = new Koira();
+    koira.aantele();
+    
+    Aanteleva kissa = new Kissa("Karvinen");
+    kissa.aantele();
+    Kissa k = (Kissa) kissa;
+    k.mourua();
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Koira haukkuu
+    Karvinen mouruaa
+    Karvinen mouruaa    
+  <% end %>
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Kirjallisuutta (3 osaa)' } do %>
+  
+  <p>
+    Tee ohjelma, joka lukee käyttäjältä kirjoja ja niiden minimikohdeikiä. Minimikohdeiällä tarkoitetaan pienintä ikää vuosina, jolle kyseistä kirjaa suositellaan.
+  </p>
+
+  <p>
+    Ohjelma kysyy uusia kirjoja kunnes käyttäjä syöttää tyhjän merkkijonon kirjan nimen kohdalla (eli painaa rivinvaihtoa). Täämän jälkeen ohjelma tulostaa syötettyjen kirjojen lukumäärän sekä kirjat.
+  </p>
+
+  
+  <h2>Kirjojen lukeminen ja tulostaminen</h2>
+
+  <p>
+    Toteuta ensin kirjojen lukeminen ja niiden listaaminen. Tässä vaiheessa kirjojen järjestyksellä ei ole vielä väliä.
+  </p>
+
+  <% partial 'partials/sample_output' do %> 
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Soiva tuutulaulukirja</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
+
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Kurkkaa kulkuneuvot</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Lunta tupaan</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">12</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Litmanen 10</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">10</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa:
+    
+    Yhteensä 4 kirjaa.
+    
+    Kirjat:
+    Soiva tuutulaulukirja (0 vuotiaille ja vanhemmille)
+    Kurkkaa kulkuneuvot (0 vuotiaille ja vanhemmille)
+    Lunta tupaan (12 vuotiaille ja vanhemmille)
+    Litmanen 10 (10 vuotiaille ja vanhemmille)
+  <% end %>
+  
+
+  <h2>Kirjojen järjestäminen kohdeiän perusteella</h2>
+
+  <p>
+    Täydennä toteuttamaasi ohjelmaa siten, että kirjat järjestetään tulostuksen yhteydessä kohdeiän perusteella. Jos kahdella kirjalla on sama kohdeikä, näiden kahden kirjan keskinäinen järjestys saa olla mielivaltainen.
+  </p>
+
+
+  <% partial 'partials/sample_output' do %> 
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Soiva tuutulaulukirja</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
+
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Kurkkaa kulkuneuvot</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Lunta tupaan</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">12</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Litmanen 10</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">10</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa:
+    
+    Yhteensä 4 kirjaa.
+    
+    Kirjat:
+    Soiva tuutulaulukirja (0 vuotiaille ja vanhemmille)
+    Kurkkaa kulkuneuvot (0 vuotiaille ja vanhemmille)
+    Litmanen 10 (10 vuotiaille ja vanhemmille)
+    Lunta tupaan (12 vuotiaille ja vanhemmille)
+  <% end %>
+
+  
+  <h2>Kirjojen järjestäminen kohdeiän ja nimen perusteella</h2>
+
+  <p>
+    Täydennä edellistä ohjelmaasi siten, että saman kohdeiän kirjat tulostetaan aakkosjärjestyksessä.
+  </p>
+
+
+  <% partial 'partials/sample_output' do %> 
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Soiva tuutulaulukirja</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
+
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Kurkkaa kulkuneuvot</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">0</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Lunta tupaan</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">12</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa: <font color="red">Litmanen 10</font>
+    Syötä kirjan pienin kohdeikä: <font color="red">10</font>
+    
+    Syötä kirjan nimi, tyhjä lopettaa:
+    
+    Yhteensä 4 kirjaa.
+    
+    Kirjat:
+    Kurkkaa kulkuneuvot (0 vuotiaille ja vanhemmille)
+    Soiva tuutulaulukirja (0 vuotiaille ja vanhemmille)
+    Litmanen 10 (10 vuotiaille ja vanhemmille)
+    Lunta tupaan (12 vuotiaille ja vanhemmille)
   <% end %>
 
 <% end %>
@@ -425,6 +688,7 @@
 
   <p>&nbsp;</p>
 
+
   <h2>Tummimman värin valinta</h2>
 
   <p>
@@ -439,11 +703,8 @@
 
   <p>&nbsp;</p>
 
-  <h2>Värien mediaani</h2>
 
-  <p>
-    Noniin, hankkiudutaan turistista eroon.
-  </p>
+  <h2>Värien mediaani</h2>
 
   <p>
     Muokkaa sovellusta siten, että kun käyttäjä painaa näppäintä "m", ohjelma näyttää kuvan, missä näkyy yhdistettävien kuvien väriarvojen mediaanit. Toteuta mediaanivärin valinta luokan Yhdistin metodiin <code>public WritableImage mediaani(final ArrayList&lt;Image&gt; kuvat)</code>.
@@ -1009,6 +1270,7 @@
     Ohjelman tekstikäyttöliittymä on toteutettu valmiiksi Main-luokkaan.
   </p>
 
+  
   <h2>Sanalista</h2>
 
   <p>
@@ -1026,6 +1288,7 @@
   <p>
     Toteuta edelliset metodit luokassa <code>Sanalista</code> oleviin metodirunkoihin.
   </p>
+
 
   <h2>Hirsipuu, osa 1</h2>
 
@@ -1054,6 +1317,7 @@
     Tarkastele toteutuksen avuksi <code>Test Packages</code> -kansiossa sijaitsevaa luokkaa <code>BHirsipuuTest</code>. Voitko päätellä mitä luokassa olevat metodit tekevät?
   </p>
 
+
   <h2>Hirsipuu, osa 2</h2>
 
   <p>
@@ -1064,12 +1328,207 @@
     Tähän osioon ei ole testejä -- palauta peli kun hirsipuu välttelee arvauksia mielestäsi tarpeeksi hyvin.
   </p>
 
-  <p>
-    Kerro myös palautuksen yhteydessä hirsipuutekoälysi oleellisimmat tausta-ajatukset.
-  </p>
-
 <% end %>
 
 
 
+<% partial 'partials/exercise', locals: { name: '2048 (5 osaa)' } do %>
 
+  <p>
+    <a href="https://en.wikipedia.org/wiki/2048_(video_game)" target="_blank" rel="noopener">2048</a> on suosittu peli. Peliä pelataan 4x4 -kokoisessa lukuja sisältävässä ruudukossa, ja siinä on neljä mahdollista siirtoa: (o)ikealle, (a)las, (v)asemmalle ja (y)lös. Jokainen siirto siirtää kaikkia ruudukossa olevia arvoja niin paljon haluttuun suuntaan kuin mahdollista. Jos kahdessa vierekkäisessä ruudussa on sama arvo, yhdistetään ruutujen arvot yhteen. Esimerkiksi:
+  </p>
+
+  <pre>
+
+2 0 2 0
+0 0 0 1
+0 1 0 0
+0 0 0 0
+&gt; o
+
+0 0 0 4
+0 0 0 1
+0 0 0 1
+0 1 0 0
+  </pre>
+
+  <p>
+    Aina kun pelaaja tekee siirron, satunnaiseen nolla-arvoiseen kohtaan arvotaan uusi luku. Peli loppuu kun yhdessä ruuduista on luku 2048 tai siirtäminen ei enää onnistu. Alla esimerkki pelin kulusta.
+  </p>
+
+  <pre>
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+
+&gt; o
+0 0 0 1
+0 0 0 0
+0 0 0 0
+0 1 0 0
+
+&gt; o
+0 0 0 1
+0 0 0 0
+0 0 0 1
+0 0 0 1
+
+&gt; a
+0 0 0 0
+0 0 0 0
+1 0 0 2
+0 0 0 1
+
+&gt; a
+1 0 0 0
+0 0 0 0
+0 0 0 2
+1 0 0 1
+
+&gt; v
+1 0 0 0
+0 0 0 0
+2 0 0 0
+2 1 0 0
+
+&gt; y
+1 1 0 0
+4 0 0 0
+0 0 0 0
+0 1 0 0
+
+&gt; v
+2 0 0 0
+4 0 0 0
+0 0 0 0
+1 0 1 0
+
+&gt; v
+2 0 0 0
+4 1 0 0
+0 0 0 0
+2 0 0 0
+
+&gt;
+  </pre>
+
+  <p>
+    Tässä tehtävässä rakennat pelin toimintaan tarvittua ydintoiminnallisuutta. Tehtävässä kerrataan myös toistolauseiden ja indeksien käyttöä.
+  </p>
+
+
+  <h2>Peliruudukko</h2>
+
+  <p>
+    Luo pakkaukseen sovellus luokka Peliruudukko. Luokalla tulee olla parametriton konstruktori, joka luo 4x4-kokoisen ruudukon, ja jonka vasemmassa yläkulmassa on arvo 1. Oleta, että kaksiulotteisen taulukon ensimmäinen indeksi kuvaa y-koordinaattia, ja toinen indeksi x-koordinaattia. Oleta lisäksi, että y-koordinaatti kasvaa alaspäin. Vasen yläkulma on siis kohdassa taulukko[0][0] ja vasen alakulma kohdassa taulukko[3][0] -- olettaen, että taulukon koko on 4.
+  </p>
+
+  <p>
+    Lisää luokalle myös metodit public int[][] getTaulukko(), joka palauttaa pelin sisäisen tilan, ja public void setTaulukko(int[][] taulukko), jolla voi asettaa pelin sisäisen tilan.
+  </p>
+
+
+  <h2>Siirrä oikealle</h2>
+
+  <p>
+    Tee tämän jälkeen peliruudukolle metodi public void siirraOikealle(), joka siirtää jokaisen rivin palat oikealle. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat. Alla muutamia esimerkkeja.
+  </p>
+
+  <pre>
+1 1 1 1
+1 1 0 1
+1 1 1 0
+1 0 1 1
+
+&gt; o
+0 0 0 4
+0 0 1 2
+0 0 1 2
+0 0 1 2
+  </pre>
+
+  <pre>
+1 0 0 1
+0 1 0 1
+2 2 4 0
+0 1 0 0
+
+&gt; o
+0 0 0 2
+0 0 0 2
+0 0 0 8
+0 0 0 1
+  </pre>
+
+  
+  <h2>Siirrä ylös ja siirrä alas</h2>
+
+  <p>
+    Tee seuraavaksi peliruudukolle metodit public void siirraYlos(), joka siirtää jokaisen rivin palat ylös, ja public void siirraAlas(), joka siirtää jokaisen rivin palat alas. Metodi yhdistää tarvittaessa myös samanarvoiset muuttujat.
+  </p>
+
+  
+  <h2>Siirrä vasemmalle ja pelin loppuminen</h2>
+
+  <p>
+    Tee seuraavaksi peliruudukolle metodi public void siirraVasemmalle(), joka siirtää jokaisen rivin palat vasemmalle. Kun metodi siirraVasemmalle on valmis, toteuta sovellukseen metodi public boolean peliKaynnissa(), joka palauttaa tiedon pelin jatkumisesta.
+  </p>
+
+  <p>
+    Peli jatkuu jos (1) pelissä on yksikin ruutu, jossa on arvo 0, tai (2) kaksi pelin vierekkaista (vaaka- tai pystytasossa) ruutua ovat samanarvoiset.
+  </p>
+
+  
+  <h2>Tekstikayttoliittyma ja uuden luvun arpominen</h2>
+
+  <p>
+    Tee lopulta pelille tekstikäyttöliittymä. Pelin tulee käynnistyä kun luokassa Peli olevaa main-metodia kutsutaan. Pelaajalle tulee tarjota vaihtoehdot o, v, y, a, x, missä o on oikealle, v on vasemmalle, y on ylös, a on alas, ja x on lopeta. Jokaisen siirron -- paitsi pelin lopettavan x:n -- jälkeen taulukon satunnaiseen tyhjään kohtaan tulee lisätä luku 1. Alla on esimerkki tekstikäyttöliittymän toiminnasta.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    1 0 0 0
+    0 0 0 0
+    0 0 0 0
+    0 0 0 0
+
+    &gt; <font color="red">o</font>
+    0 0 0 1
+    0 0 0 0
+    0 0 0 1
+    0 0 0 0
+
+    &gt; <font color="red">y</font>
+    0 0 0 2
+    1 0 0 0
+    0 0 0 0
+    0 0 0 0
+
+    &gt; <font color="red">v</font>
+    2 0 1 0
+    1 0 0 0
+    0 0 0 0
+    0 0 0 0
+
+    &gt; <font color="red">o</font>
+    0 0 2 1
+    0 0 0 1
+    0 1 0 0
+    0 0 0 0
+
+    &gt; <font color="red">y</font>
+    0 1 2 2
+    0 0 0 0
+    0 0 0 0
+    0 0 1 0
+
+    &gt; <font color="red">o</font>
+    0 0 1 4
+    0 0 0 0
+    0 0 0 1
+    0 0 0 1
+
+    &gt; <font color="red">x</font>
+  <% end %>
+
+<% end %>
