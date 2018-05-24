@@ -33,6 +33,13 @@ class LoginModal {
     initQuiznator();
     initStudentDashboard();
 
+    const researchAgreement = localStorage.getItem('research-agreement') || window['research-agreement'] || ""
+    const agreed = researchAgreement.indexOf('j71pjik42i') !== -1
+    window['research-agreement-agreed'] = agreed
+    if (!agreed) {
+      return;
+    }
+
     this.initPheromones();
     this.initLogger();
 
@@ -54,9 +61,6 @@ class LoginModal {
   initPheromones(){
     const { username } = client.getUser();
 
-    if (!~localStorage.getItem('research-agreement').indexOf('j71pjik42i')) {
-      return;
-    }
 
     pheromones.init({
       apiUrl: 'https://data.pheromones.io/',
