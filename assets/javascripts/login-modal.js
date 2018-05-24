@@ -36,7 +36,7 @@ class LoginModal {
     this.initPheromones();
     this.initLogger();
 
-    this.getUserGroup();
+    //this.getUserGroup();
   }
 
   getUserGroup() {
@@ -50,7 +50,7 @@ class LoginModal {
       }
     });
   }
-    
+
   initPheromones(){
     const { username } = client.getUser();
 
