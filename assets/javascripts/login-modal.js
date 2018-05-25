@@ -115,6 +115,7 @@ class LoginModal {
       client.unauthenticate();
 
       try {
+        localStorage.removeItem('research-agreement')
         window.StudentDashboard.destroy();
         window.Quiznator.removeUser();
       } catch(e) {}
