@@ -36,11 +36,17 @@ class LoginModal {
     const researchAgreement = localStorage.getItem('research-agreement') || window['research-agreement'] || ""
     const agreed = researchAgreement.indexOf('j71pjik42i') !== -1
     window['research-agreement-agreed'] = agreed
+
+    window.initCodeStatesVisualizer();
+    window.initTyponator();
+    window.initCrowdsorcerer();
+
     if (!agreed) {
       return;
     }
 
     this.initPheromones();
+
     this.initLogger();
 
     //this.getUserGroup();
