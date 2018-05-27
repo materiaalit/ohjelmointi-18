@@ -1777,10 +1777,10 @@ if (keskiarvo.getData().size() &gt; 100) {
       }
 
       public void kaannaOikealle() {
-          this.hahmo.setRotate(this.hahmo.getRotate() - 5);
+          this.hahmo.setRotate(this.hahmo.getRotate() + 5);
       }
 
-      public void liikuta() {
+      public void liiku() {
           this.hahmo.setTranslateX(this.hahmo.getTranslateX() + this.liike.getX());
           this.hahmo.setTranslateY(this.hahmo.getTranslateY() + this.liike.getY());
       }
