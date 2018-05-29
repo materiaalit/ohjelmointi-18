@@ -1,0 +1,34 @@
+---
+  exercise_page: false
+  quiz_page: false
+  published: true
+---
+
+
+<h1>Näin ilmoitat virheen materiaalissa</h1>
+
+<p>Voit ilmoittaa huomaamasi virheen kurssin Github-projekin virheilmoitustaululle. Github on yleinen palvelu, jossa voi hallinnoida ja jakaa muille projekteja, ohjelmistoja ja lähdekoodia.</p>
+
+<p>Virheiden ilmoittaminen vaatii käyttäjätunnukset Githubiin. Jos sinulla ei ole vielä Github-tunnusta, voit luoda sen <a href="https://github.com/join?return_to=<%= URI.escape(config[:github_url]) %>%2Fissues%2Fnew&source=login">täältä</a>.</p>
+
+<p>Ennen kuin avaat uuden virheilmoituksen löytämästäsi virheestä, katsothan <a href="<%= config[:github_url] %>/issues">täältä</a> ettei sillä ole jo avointa ilmoitusta.</p>
+
+<div class="text-center text-xs-center">
+  <p>
+    <a class="btn btn-success" href="<%= config[:github_url] %>/issues/new" target="_blank">
+      Luo uusi virheilmoitus
+    </a>
+  </p>
+</div>
+
+<h2>Luo virheilmoitus näin</h2>
+<ol>
+  <li>Paina yllä olevaa nappia.</li>
+  <li>Laita ilmoituksen otsikoksi lyhyt ja ytimekäs kuvaus ongelmasta, esimerkiksi "Osan 1 tehtävässä 30 kirjoitusvirhe".</li>
+  <li>Kirjoita kommenttiosioon tarkempi kuvaus ongelmasta, esimerkiksi "Osan 1 tehtävän 30 esimerkkitulosteessa on kirjoitusvirhe. Esimerkkitulosteen ylläoleva koodi sisältää rivin System.out.println("Syötä liukuluku");, mutta esimerkkitulosteessa lukee "Juota liukuluku"".</li>
+  <li>Paina lopuksi vihreää nappia "Submit new issue".</li>
+</ol>
+<p>Saatamme kysyä ilmoituksestasi tarkentavia kysymyksiä, jos emme osaa korjata ongelmaa ilman apuasi. Näistä kysymyksistä pitäisi tulla sähköposti-ilmoitus siihen osoitteeseen, jonka liitit Github-tunnukseesi.</p>
+
+<p>Kiitos kun autat meitä parantamaan materiaaleja!</p>
+
