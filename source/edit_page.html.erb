@@ -1,0 +1,60 @@
+---
+  exercise_page: false
+  quiz_page: false
+  published: true
+---
+
+
+<h1>Näin lähetät muutosehdotuksen materiaaliin</h1>
+
+<p>Voit lähettää muutosehdotuksen kurssin Github-projekiin. Github on yleinen palvelu, jossa voi hallinnoida ja jakaa muille projekteja, ohjelmistoja ja lähdekoodia.</p>
+
+<p>Muutosehdotusten lähettäminen vaatii käyttäjätunnukset Githubiin. Jos sinulla ei ole vielä Github-tunnusta, voit luoda sen <a id="login-then-edit">täältä</a>.</p>
+
+<p>Ennen kuin lähetät muutosehdotuksesi, katsothan <a href="<%= config[:github_url] %>/pulls">täältä</a> ettei joku muu ole jo lähettänyt samaa muutosehdotusta.</p>
+
+<div class="text-center text-xs-center">
+  <p>
+    <a id="edit-button" class="btn btn-success" target="_blank"></a>
+  </p>
+</div>
+
+<h2>Lähetä muutosehdotus näin</h2>
+<ol>
+  <li>Paina yllä olevaa nappia muokataksesi sivua, jolla olit äsken.</li>
+  <li>Vaihda muokkausikkunan oikeasta yläkulmasta "No wrap" --> "Soft wrap".</li>
+  <li>Etsi materiaalin kohta, johon haluat tehdä muutoksen. Voit hakea sopivaa kohtaa painamalla näppäinyhdistelmää Ctrl+f ja kirjoittamalla hakukenttään sopivan hakutermin.</li>
+  <li>Selaa sivun alareunaan, ja kirjoita osioon "Propose file change" lyhyt ja ytimekäs otsikko, esimerkiksi "Kappaleen 2 kirjoitusvirheen korjaus".</li>
+  <li>Paina vihreää nappia "Propose file change".</li>
+  <li>Paina avautuvalta sivulta nappia "New Pull Request".</li>
+</ol>
+
+<p>Kiitos kun autat meitä parantamaan materiaaleja!</p>
+
+<script>
+  var qs = (function(a) {
+      if (a == "") return {};
+      var b = {};
+      for (var i = 0; i < a.length; ++i)
+      {
+          var p=a[i].split('=', 2);
+          if (p.length == 1)
+              b[p[0]] = "";
+          else
+              b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+      }
+      return b;
+  })(window.location.search.substr(1).split('&'));
+
+  var path = qs.path
+
+  var editButton = document.getElementById("edit-button")
+  editButton.text = "Muokkaa sivua " + path
+
+  var editPath = "<%= config[:github_url] %>/edit/master/source/" + path + ".erb"
+  editButton.href = editPath
+
+  var loginThenEditPath = "https://github.com/join?return_to=" + editPath + "&source=login"
+  var loginThenEdit = document.getElementById("login-then-edit")
+  loginThenEdit.href = loginThenEditPath
+</script>

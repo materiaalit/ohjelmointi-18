@@ -3,9 +3,10 @@
     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
     Ilmoita virhe
   <% end %>
-  <a href="<%= config[:github_url] %>/edit/master/source/<%= current_page.path %>.erb" target="_blank" rel="noopener" class="btn btn-primary">
-    <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
-  </a>
+  <% link_to "edit_page.html?path=#{URI.escape(current_page.path)}", target: "_blank", rel: "noopener", class: "btn btn-primary" do %>
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    Muokkaa sivua
+  <% end %>
   <a href="<%= config[:github_url] %>" class="footer__github-link" target="_blank" rel="noopener">
     <i class="fa fa-github"></i>
   </a>
