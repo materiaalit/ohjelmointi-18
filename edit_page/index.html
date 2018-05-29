@@ -131,33 +131,59 @@
         <div class="container material" id="material">
 
           
-<h1>Näin ilmoitat virheen materiaalissa</h1>
+<h1>Näin lähetät muutosehdotuksen materiaaliin</h1>
 
-<p>Voit ilmoittaa huomaamasi virheen kurssin Github-projekin virheilmoitustaululle. Github on yleinen palvelu, jossa voi hallinnoida ja jakaa muille projekteja, ohjelmistoja ja lähdekoodia.</p>
+<p>Voit lähettää muutosehdotuksen kurssin Github-projekiin. Github on yleinen palvelu, jossa voi hallinnoida ja jakaa muille projekteja, ohjelmistoja ja lähdekoodia.</p>
 
-<p>Virheiden ilmoittaminen vaatii käyttäjätunnukset Githubiin. Jos sinulla ei ole vielä Github-tunnusta, voit luoda sen <a href="https://github.com/join?return_to=https://github.com/materiaalit/ohjelmointi-18%2Fissues%2Fnew&source=login">täältä</a>.</p>
+<p>Muutosehdotusten lähettäminen vaatii käyttäjätunnukset Githubiin. Jos sinulla ei ole vielä Github-tunnusta, voit luoda sen <a id="login-then-edit">täältä</a>.</p>
 
-<p>Ennen kuin avaat uuden virheilmoituksen löytämästäsi virheestä, katsothan <a href="https://github.com/materiaalit/ohjelmointi-18/issues">täältä</a> ettei sillä ole jo avointa ilmoitusta.</p>
+<p>Ennen kuin lähetät muutosehdotuksesi, katsothan <a href="https://github.com/materiaalit/ohjelmointi-18/pulls">täältä</a> ettei joku muu ole jo lähettänyt samaa muutosehdotusta.</p>
 
 <div class="text-center text-xs-center">
   <p>
-    <a class="btn btn-success" href="https://github.com/materiaalit/ohjelmointi-18/issues/new" target="_blank">
-      Luo uusi virheilmoitus
-    </a>
+    <a id="edit-button" class="btn btn-success" target="_blank"></a>
   </p>
 </div>
 
-<h2>Luo virheilmoitus näin</h2>
+<h2>Lähetä muutosehdotus näin</h2>
 <ol>
-  <li>Paina yllä olevaa nappia.</li>
-  <li>Laita ilmoituksen otsikoksi lyhyt ja ytimekäs kuvaus ongelmasta, esimerkiksi "Osan 1 tehtävässä 30 kirjoitusvirhe".</li>
-  <li>Kirjoita kommenttiosioon tarkempi kuvaus ongelmasta, esimerkiksi "Osan 1 tehtävän 30 esimerkkitulosteessa on kirjoitusvirhe. Esimerkkitulosteen ylläoleva koodi sisältää rivin System.out.println("Syötä liukuluku");, mutta esimerkkitulosteessa lukee "Juota liukuluku"".</li>
-  <li>Paina lopuksi vihreää nappia "Submit new issue".</li>
+  <li>Paina yllä olevaa nappia muokataksesi sivua, jolla olit äsken.</li>
+  <li>Vaihda muokkausikkunan oikeasta yläkulmasta "No wrap" --> "Soft wrap".</li>
+  <li>Etsi materiaalin kohta, johon haluat tehdä muutoksen. Voit hakea sopivaa kohtaa painamalla näppäinyhdistelmää Ctrl+f ja kirjoittamalla hakukenttään sopivan hakutermin.</li>
+  <li>Selaa sivun alareunaan, ja kirjoita osioon "Propose file change" lyhyt ja ytimekäs otsikko, esimerkiksi "Kappaleen 2 kirjoitusvirheen korjaus".</li>
+  <li>Paina vihreää nappia "Propose file change".</li>
+  <li>Paina avautuvalta sivulta nappia "New Pull Request".</li>
 </ol>
-<p>Saatamme kysyä ilmoituksestasi tarkentavia kysymyksiä, jos emme osaa korjata ongelmaa ilman apuasi. Näistä kysymyksistä pitäisi tulla sähköposti-ilmoitus siihen osoitteeseen, jonka liitit Github-tunnukseesi.</p>
 
 <p>Kiitos kun autat meitä parantamaan materiaaleja!</p>
 
+<script>
+  var qs = (function(a) {
+      if (a == "") return {};
+      var b = {};
+      for (var i = 0; i < a.length; ++i)
+      {
+          var p=a[i].split('=', 2);
+          if (p.length == 1)
+              b[p[0]] = "";
+          else
+              b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+      }
+      return b;
+  })(window.location.search.substr(1).split('&'));
+
+  var path = qs.path
+
+  var editButton = document.getElementById("edit-button")
+  editButton.text = "Muokkaa sivua " + path
+
+  var editPath = "https://github.com/materiaalit/ohjelmointi-18/edit/master/source/" + path + ".erb"
+  editButton.href = editPath
+
+  var loginThenEditPath = "https://github.com/join?return_to=" + editPath + "&source=login"
+  var loginThenEdit = document.getElementById("login-then-edit")
+  loginThenEdit.href = loginThenEditPath
+</script>
 
         </div>
       </div>
@@ -171,9 +197,9 @@
     Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
   </div>
     <div class="improvement">
-<a href="./" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+<a href="../report_issue/" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
     Ilmoita virhe
-</a><a href="../edit_page/?path=report_issue.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil" aria-hidden="true"></i>
+</a><a href="./?path=edit_page.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil" aria-hidden="true"></i>
     Muokkaa sivua
 </a>  <a href="https://github.com/materiaalit/ohjelmointi-18" class="footer__github-link" target="_blank" rel="noopener">
     <i class="fa fa-github"></i>
