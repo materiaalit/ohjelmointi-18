@@ -34,7 +34,7 @@ class LoginModal {
     initStudentDashboard();
 
     const researchAgreement = localStorage.getItem('research-agreement') || window['research-agreement'] || ""
-    const agreed = researchAgreement.indexOf('j71pjik42i') !== -1
+    const agreed = researchAgreement.indexOf('j71pjmey1n') !== -1
     window['research-agreement-agreed'] = agreed
 
     window.initCodeStatesVisualizer();
