@@ -6,7 +6,7 @@ import initStudentDashboard from './student-dashboard';
 import pheromones from './pheromones';
 import jsLogger from './js-logger';
 
-const client = new TmcClient();
+const client = new TmcClient("2d2084443754c26933fa53548177386c8210bff472e8bd157df84033f24cadd5", "34a49ed3d20b8a524889cc64a4668e9fced34ab41b7c74a11689a4602e906a12");
 
 class LoginModal {
   mount() {
