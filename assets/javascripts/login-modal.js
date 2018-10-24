@@ -154,11 +154,7 @@ class LoginModal {
           this.afterLogin();
         })
         .catch(() => {
-          if(username.indexOf('@') > 0) {
-            this.showError('Käyttäjätunnus tai salasana on virheellinen. Huomaathan, että sinun tulee kirjautua sisään käyttäjätunnuksellasi, eikä sähköpostiosoitteellasi')
-          } else {
-            this.showError('Käyttäjätunnus tai salasana on virheellinen');
-          }
+          this.showError('Käyttäjätunnus tai salasana on virheellinen');
         });
     }
   }
